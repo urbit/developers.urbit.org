@@ -8,7 +8,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
+      <main className="prose lg:prose-lg">
         <h1>
           Urbit is a general-purpose platform for building decentralized,
           peer-to-peer applications.

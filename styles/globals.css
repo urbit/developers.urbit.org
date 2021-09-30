@@ -36,7 +36,7 @@ strong {
 
 /* Typography */
 
-h1,
+/* h1,
 .type-h1 {
   @apply text-4xl lg:text-5xl font-extrabold leading-tight text-wall-600;
 }
@@ -51,20 +51,20 @@ h3,
   @apply text-xl font-semibold;
 }
 
-h4,
-.type-ui {
-  @apply text-lg font-semibold;
-}
 
 h5,
 .type-h5,
 .type-bold {
   @apply text-base font-semibold leading-relaxed;
-}
+} */
 
-p,
+/* p,
 .type-p {
   @apply text-base leading-relaxed;
+} */
+
+.type-ui {
+  @apply text-lg font-semibold;
 }
 
 .type-sub {

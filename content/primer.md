@@ -1,6 +1,6 @@
-+++
+---
 title: Primer
-+++
+---
 
 Urbit development involves a fairly typical client/server/database stack. Urbit is both a server, database, and an entire operating system—this means exposes a filesystem, HTTP server, timer, and much more to the programmer (these different parts of the operating system are called vanes).
 

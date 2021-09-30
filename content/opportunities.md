@@ -1,6 +1,6 @@
-+++
+---
 title: Opportunities
-+++
+---
 
 Developer Grants
 Work on Urbit - get a job

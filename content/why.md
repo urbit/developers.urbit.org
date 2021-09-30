@@ -1,6 +1,6 @@
-+++
+---
 title: Why become an Urbit developer?
-+++
+---
 
 Urbit is a novel general-purpose computer that’s captivated thousands, and it’s no wonder why—truly novel computing architectures are few and far between, and they tend to be highly transformative. For recent examples, consider iOS and Ethereum. We think Urbit is at least as big of a deal.
 
