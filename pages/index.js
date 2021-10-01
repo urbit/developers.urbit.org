@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Container from "../components/Container";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
@@ -14,18 +15,24 @@ export default function Home() {
       <Container>
         <SingleColumn>
           <Section>
-            <h1>
+            <h1 className="pb-12">
               Urbit is a general-purpose platform for building decentralized,
               peer-to-peer applications.
             </h1>
-            <button>
+            <button className="button-lg bg-green-400 text-white text-ui">
               <span className="type-ui">Learn More</span>
             </button>
           </Section>
           <Section>
-            <div className="p-6 bg-green-100 rounded-xl prose lg:prose-lg">
-              <h2>Learn</h2>
-              <span>Become an Urbit developer</span>
+            <div className="p-12 bg-green-100 rounded-3xl prose lg:prose-lg">
+              <Link href="/learn">
+                <h2 className="cursor-pointer hover:opacity-80">
+                  Learn{" "}
+                  <span className="block mt-2 text-base text-green-400">
+                    Become an Urbit developer
+                  </span>
+                </h2>
+              </Link>
 
               <p>
                 Urbit is an entirely new computer and novel programming
@@ -44,9 +51,15 @@ export default function Home() {
             </div>
           </Section>
           <Section>
-            <div className="p-6 bg-blue-100 rounded-xl prose lg:prose-lg">
-              <h2>Community</h2>
-              <span>Join the community </span>
+            <div className="p-12 bg-blue-100 rounded-3xl prose lg:prose-lg">
+              <Link href="/community">
+                <h2 className="cursor-pointer hover:opacity-80">
+                  Community{" "}
+                  <span className="block mt-2 text-base text-green-400">
+                    Join the community{" "}
+                  </span>
+                </h2>
+              </Link>
 
               <p>
                 The developer community is friendly, helpful, and organized from
@@ -67,9 +80,15 @@ export default function Home() {
             </div>
           </Section>
           <Section>
-            <div className="p-6 bg-yellow-100 rounded-xl prose lg:prose-lg">
-              <h2>Opportunities </h2>
-              <span>Apply your skills</span>
+            <div className="p-12 bg-yellow-100 rounded-3xl prose lg:prose-lg">
+              <Link href="/opportunities">
+                <h2 className="cursor-pointer hover:opacity-80">
+                  Opportunities{" "}
+                  <span className="block mt-2 text-base text-green-400">
+                    Apply your skills
+                  </span>
+                </h2>
+              </Link>
 
               <p>
                 The Urbit ecosystem is growing rapidly, which presents many
