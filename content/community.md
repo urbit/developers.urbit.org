@@ -4,11 +4,11 @@ title: Community
 
 The developer community is a combination of top-down stewardship from the Urbit Foundation and Tlon, as well as organic, bottom-up coordination from unaffiliated enthusiasts.
 
-The Forge is a community-run Landscape group (~middev/the-forge) focused on all things related to Urbit development. Its members consist of enthusiasts, Tlon and Foundation developers, and grant workers. It’s also a great repository of community-compiled knowledge of common issues and development techniques.
+The Forge is a community-run Landscape group (`~middev/the-forge`) focused on all things related to Urbit development. Its members consist of enthusiasts, Tlon and Foundation developers, and grant workers. It’s also a great repository of community-compiled knowledge of common issues and development techniques.
 
-The Urbit Foundation makes direct investments of address space into the community as a means of improving the network. The Foundation also maintains developer documentation, runs Developer Calls, and acts as the hub of the Urbit ecosystem. You can find us hanging around in the Foundation group in Landscape (~wolref-podlex/foundation).
+The Urbit Foundation makes direct investments of address space into the community as a means of improving the network. The Foundation also maintains developer documentation, runs Developer Calls, and acts as the hub of the Urbit ecosystem. You can find us hanging around in the Foundation group in Landscape (`~wolref-podlex/foundation`).
 
-Tlon is the primary developer of Urbit itself and the foremost product developer within the Urbit ecosystem. They’ve been developing Urbit since 2013 and are naturally a great source of information. They maintain the most popular Landscape groups, Urbit Community (~bitbex-bolbel/urbit-community) and Urbit Index (~todo-todo/urbit-index).
+Tlon is the primary developer of Urbit itself and the foremost product developer within the Urbit ecosystem. They’ve been developing Urbit since 2013 and are naturally a great source of information. They maintain the most popular Landscape groups, Urbit Community (`~bitbex-bolbel/urbit-community`) and Urbit Index (`~todo-todo/urbit-index`).
 
 ## Directory
 
@@ -58,4 +58,4 @@ Infrastructure development, Vere, Arvo
 Senior infrastructure engineer, Tlon
 Infrastructure development, Arvo, software distribution
 
-~palfun-foslup, ~littel-wolfur, ~lavlyn-litmeg, ~mocrux-nomdep, ~sicdev-pilnup, etc.
+`~palfun-foslup`, `~littel-wolfur`, `~lavlyn-litmeg`, `~mocrux-nomdep`, `~sicdev-pilnup`, etc.

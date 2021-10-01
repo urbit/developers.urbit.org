@@ -36,11 +36,11 @@ strong {
 
 /* Typography */
 
-/* h1,
+h1,
 .type-h1 {
   @apply text-4xl lg:text-5xl font-extrabold leading-tight text-wall-600;
 }
-
+/* 
 h2,
 .type-h2 {
   @apply text-3xl lg:text-4xl font-bold leading-tight;
@@ -128,84 +128,25 @@ a:hover {
   opacity: 0.66;
 }
 
-/* BEM Classes - Use sparingly */
-
-.port-hero-card-height {
-  height: 36em;
+.prose pre,
+.prose pre[class*="language-"] {
 }
 
-.port-hero-image-height {
-  height: 32em;
+.prose code,
+.prose code[class*="language-"] {
+  @apply px-2 py-0.5 bg-wall-100 rounded-md;
 }
 
-.port-hero-image {
-  transform: translateX(8%);
-  background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 85%,
-      rgba(255, 255, 255, 1) 100%
-    ),
-    url("https://media.urbit.org/port.svg");
-  background-size: cover;
+.prose a code,
+.prose a code[class*="language-"] {
+  @apply bg-green-100 text-green-400;
 }
 
-.tray-menu-open {
-  transform: translateX(0);
-  transition: transform var(--tray-time);
+.prose pre {
+  @apply block p-4 bg-wall-100 rounded-md overflow-x-auto;
 }
 
-.tray-menu-closed {
-  transform: translateX(-110vw);
-  transition: transform var(--tray-time);
-}
-
-.tray-menu-width {
-  width: calc(100vw - 4rem - 1rem - 1rem);
-}
-
-.mobile-search-button-width {
-  width: calc(100vw - 4rem - 1rem - 1rem - 1rem - 1rem);
-}
-
-.tray-overlay-open {
-  opacity: 1;
-  transition: opacity var(--tray-time);
-}
-
-.tray-overlay-closed {
-  opacity: 0;
-  transition: opacity var(--tray-time);
-}
-
-.menu-open {
-  left: 0;
-  visibility: visible;
-  display: block;
-}
-
-.menu-closed {
-  left: -100vw;
-  visibility: hidden;
-  display: none;
-}
-
-.dot::before {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 99px;
-  content: "";
-  position: absolute;
-  left: -0.75rem;
-  top: 0.4rem;
-  @apply bg-green-400;
-}
-
-.sidebar figure,
-.sidebar img {
-  width: auto !important;
-  margin: 0 auto !important;
-  left: 0 !important;
-  display: block !important;
-  position: static !important;
-  border-radius: 0 !important;
+.prose pre > code,
+.prose pre[class*="language-"] > code {
+  /* @apply p-0; */
 }

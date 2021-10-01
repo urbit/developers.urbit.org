@@ -48,6 +48,26 @@ module.exports = {
       mono: ["Source Code Pro", "monospace"],
     },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              color: "#24221E",
+              maxWidth: "none",
+              "p:nth-child(1)": { marginTop: "none" },
+              code: {
+                background: "#F3F2F0",
+              },
+              "code::before": {
+                content: "none",
+              },
+              "code::after": {
+                content: "none",
+              },
+            },
+          ],
+        },
+      },
       fontSize: {
         xs: "0.75rem",
         sm: "0.875rem",

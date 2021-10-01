@@ -1,7 +1,10 @@
 import { useRouter } from "next/router";
 import { getPostBySlug, getAllPosts } from "../lib/api";
 import markdownToHtml from "../lib/markdownToHtml";
+import Container from "../components/Container";
 import Layout from "../components/Layout";
+import Section from "../components/Section";
+import SingleColumn from "../components/SingleColumn";
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter();
@@ -10,10 +13,18 @@ export default function Post({ post, morePosts, preview }) {
   }
   return (
     <Layout>
-      <div className="prose lg:prose-lg">
-        <h1>{post.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
-      </div>
+      <Container>
+        <SingleColumn>
+          <Section>
+            <h1>{post.title}</h1>
+          </Section>
+          <Section>
+            <div className="prose lg:prose-lg">
+              <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+            </div>
+          </Section>
+        </SingleColumn>
+      </Container>
     </Layout>
   );
 }
