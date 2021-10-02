@@ -23,7 +23,7 @@ export default function Home() {
               <span className="type-ui">Learn More</span>
             </button>
           </Section>
-          <Section>
+          <Section short>
             <div className="p-12 bg-green-100 rounded-3xl prose lg:prose-lg">
               <Link href="/learn">
                 <h2 className="cursor-pointer hover:opacity-80">
@@ -52,15 +52,15 @@ export default function Home() {
                   <Link href="/primer">Stack Overview</Link>
                 </li>
                 <li>
-                  <Link href="/learn">Urbit 101</Link>
+                  <Link href="/learn#urbit-101">Urbit 101</Link>
                 </li>
                 <li>
-                  <Link href="/learn">Urbit 201</Link>
+                  <Link href="/learn#urbit-201">Urbit 201</Link>
                 </li>
               </ul>
             </div>
           </Section>
-          <Section>
+          <Section short>
             <div className="p-12 bg-blue-100 rounded-3xl prose lg:prose-lg">
               <Link href="/community">
                 <h2 className="cursor-pointer hover:opacity-80">
@@ -88,7 +88,7 @@ export default function Home() {
                   <Link href="/community">Join the Mailing List</Link>
                 </li>
               </ul>
-              <p>
+              <p className="text-wall-400">
                 The mailing list is meant to be a separate, developer-only list
                 for those that want to stay up-to-date on developer-specific
                 announcements. These would be things like new documentation,
@@ -97,7 +97,7 @@ export default function Home() {
               </p>
             </div>
           </Section>
-          <Section>
+          <Section short>
             <div className="p-12 bg-yellow-100 rounded-3xl prose lg:prose-lg">
               <Link href="/opportunities">
                 <h2 className="cursor-pointer hover:opacity-80">
@@ -124,7 +124,7 @@ export default function Home() {
                   <Link href="/opportunities">Jobs</Link>
                 </li>
                 <li>
-                  <Link href="/opportunities">The Combine</Link>
+                  <Link href="https://the-combine.org/">The Combine</Link>
                 </li>
               </ul>
             </div>
