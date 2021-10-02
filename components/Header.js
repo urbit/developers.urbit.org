@@ -1,12 +1,32 @@
 import Link from "next/link";
 import SingleColumn from "./SingleColumn";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 // import { useState, useEffect } from "react";
-// import classnames from "classnames";
+import classnames from "classnames";
 // import path from "path";
 // import Section from "../components/Section";
 
+function ActiveLink({ children, href, className, currentPath }) {
+  const firstCrumb = currentPath.split("/")[1];
+
+  const activeClassName = classnames({
+    "text-wall-600": "/" + firstCrumb === href,
+    "text-wall-500": "/" + firstCrumb !== href,
+  });
+
+  return (
+    <Link href={href}>
+      <a className={`${className} ${activeClassName}`}>{children}</a>
+    </Link>
+  );
+}
+
 export default function Header(props) {
+  const currentPath = useRouter().asPath;
+
+  const routeDepth = currentPath.split("/").length;
+
+  const firstCrumb = currentPath.split("/")[1];
   return (
     <div className="flex flex-col w-full items-center">
       <SingleColumn>
@@ -15,12 +35,36 @@ export default function Header(props) {
             <a className="type-ui">Urbit Developers</a>
           </Link>
 
-          {/* <a className="type-ui flex" href="urbit.org" target="_blank">
-            Urbit.org{" "}
-            <div className="font-sans w-8 h-8 rounded-full bg-wall-600 dark:bg-antiwall-600 ml-2 text-wall-100 dark:text-antiwall-100 flex items-center justify-center">
-              {"↗"}
-            </div>
-          </a> */}
+          <nav className="items-center hidden md:flex">
+            <ActiveLink
+              currentPath={currentPath}
+              className="mr-5 type-ui"
+              href="/learn"
+            >
+              Learn
+            </ActiveLink>
+            <ActiveLink
+              currentPath={currentPath}
+              className="mr-5 type-ui"
+              href="/community"
+            >
+              Community
+            </ActiveLink>
+            <ActiveLink
+              currentPath={currentPath}
+              className="mr-5 type-ui"
+              href="/opportunities"
+            >
+              Opportunities
+            </ActiveLink>
+            <ActiveLink
+              currentPath={currentPath}
+              className="text-green-400 type-ui button-text"
+              href="/why"
+            >
+              Why Urbit?
+            </ActiveLink>
+          </nav>
         </header>
       </SingleColumn>
     </div>

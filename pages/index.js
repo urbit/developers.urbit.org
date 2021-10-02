@@ -19,9 +19,11 @@ export default function Home() {
               Urbit is a general-purpose platform for building decentralized,
               peer-to-peer applications.
             </h1>
-            <button className="button-lg bg-green-400 text-white text-ui">
-              <span className="type-ui">Learn More</span>
-            </button>
+            <Link href="/why">
+              <button className="button-lg bg-green-400 text-white text-ui">
+                <span className="type-ui">Learn More</span>
+              </button>
+            </Link>
           </Section>
           <Section short>
             <div className="p-12 bg-green-100 rounded-3xl prose lg:prose-lg">

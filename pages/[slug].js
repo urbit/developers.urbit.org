@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { getPostBySlug, getAllPosts } from "../lib/api";
 import markdownToHtml from "../lib/markdownToHtml";
@@ -13,6 +14,9 @@ export default function Post({ post, morePosts, preview }) {
   }
   return (
     <Layout>
+      <Head>
+        <title>{post.title} &bull; Urbit Developers</title>
+      </Head>
       <Container>
         <SingleColumn>
           <Section>

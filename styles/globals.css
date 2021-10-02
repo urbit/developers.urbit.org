@@ -24,8 +24,9 @@ a {
 }
 
 /* Links in p tags should be green */
-p a {
-  @apply text-green-400 font-semibold;
+p a,
+.prose a {
+  @apply text-green-400 font-semibold no-underline;
 }
 
 /* Reduce b and strong tag weight default */
