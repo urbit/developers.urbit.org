@@ -47,7 +47,17 @@ export default function Home() {
                 201.
               </p>
 
-              <p>Stack overview | Urbit 101 | Urbit 201 </p>
+              <ul>
+                <li>
+                  <Link href="/primer">Stack Overview</Link>
+                </li>
+                <li>
+                  <Link href="/learn">Urbit 101</Link>
+                </li>
+                <li>
+                  <Link href="/learn">Urbit 201</Link>
+                </li>
+              </ul>
             </div>
           </Section>
           <Section>
@@ -67,9 +77,17 @@ export default function Home() {
                 Join our public groups on the network, or tune into a Developer
                 Call to join the community.{" "}
               </p>
-
-              <p>Get involved | Developer Calls | Join the mailing list </p>
-
+              <ul>
+                <li>
+                  <Link href="/community">Get Involved</Link>
+                </li>
+                <li>
+                  <Link href="/community">Developer Calls</Link>
+                </li>
+                <li>
+                  <Link href="/community">Join the Mailing List</Link>
+                </li>
+              </ul>
               <p>
                 The mailing list is meant to be a separate, developer-only list
                 for those that want to stay up-to-date on developer-specific
@@ -98,8 +116,17 @@ export default function Home() {
                 developers, and The Combine is funding startups that build on
                 Urbit.{" "}
               </p>
-
-              <p>Grants | Jobs | The Combine</p>
+              <ul>
+                <li>
+                  <Link href="/opportunities">Grants</Link>
+                </li>
+                <li>
+                  <Link href="/opportunities">Jobs</Link>
+                </li>
+                <li>
+                  <Link href="/opportunities">The Combine</Link>
+                </li>
+              </ul>
             </div>
           </Section>
         </SingleColumn>
