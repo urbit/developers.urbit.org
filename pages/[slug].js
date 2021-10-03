@@ -13,6 +13,7 @@ import Container from "../components/Container";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
+import Sigil from "../components/Sigil";
 
 const components = {
   // a: CustomLink,
@@ -21,6 +22,7 @@ const components = {
   // See the notes in README.md for more details.
   // TestComponent: dynamic(() => import('../../components/TestComponent')),
   Head,
+  Sigil,
 };
 
 export default function Post({ source, frontMatter }) {
