@@ -144,10 +144,10 @@ a:hover {
 }
 
 .prose pre {
-  @apply block p-4 bg-wall-100 rounded-md overflow-x-auto;
+  @apply block p-0 bg-wall-100 rounded-md overflow-x-auto;
 }
 
 .prose pre > code,
 .prose pre[class*="language-"] > code {
-  /* @apply p-0; */
+  @apply p-4;
 }

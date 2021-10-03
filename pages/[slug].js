@@ -1,30 +1,46 @@
-import Head from "next/head";
+import fs from "fs";
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import { useRouter } from "next/router";
-import { getPostBySlug, getAllPosts } from "../lib/api";
-import markdownToHtml from "../lib/markdownToHtml";
+import dynamic from "next/dynamic";
+import Head from "next/head";
+import Link from "next/link";
+import path from "path";
+import remarkSlug from "remark-slug";
+import { postFilePaths, POSTS_PATH } from "../lib/api";
 import Container from "../components/Container";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
 
-export default function Post({ post, morePosts, preview }) {
+const components = {
+  // a: CustomLink,
+  // It also works with dynamically-imported components, which is especially
+  // useful for conditionally loading components for certain routes.
+  // See the notes in README.md for more details.
+  // TestComponent: dynamic(() => import('../../components/TestComponent')),
+  Head,
+};
+
+export default function Post({ source, frontMatter }) {
   const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
+  // if (!router.isFallback && !source?.slug) {
+  //   return <div>You die</div>;
+  // }
   return (
     <Layout>
       <Head>
-        <title>{post.title} &bull; Urbit Developers</title>
+        <title>{frontMatter.title} &bull; Urbit Developers</title>
       </Head>
       <Container>
         <SingleColumn>
           <Section>
-            <h1>{post.title}</h1>
+            <h1>{frontMatter.title}</h1>
           </Section>
           <Section>
             <div className="prose lg:prose-lg">
-              <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+              <MDXRemote {...source} components={components} />
             </div>
           </Section>
         </SingleColumn>
@@ -33,39 +49,32 @@ export default function Post({ post, morePosts, preview }) {
   );
 }
 
-export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "author",
-    "content",
-    "ogImage",
-    "coverImage",
-  ]);
-  const content = await markdownToHtml(post.content || "");
+export const getStaticProps = async ({ params }) => {
+  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
+  const source = fs.readFileSync(postFilePath);
+  const { content, data } = matter(source);
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [require("remark-prism"), remarkSlug],
+    },
+    scope: data,
+  });
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      source: mdxSource,
+      frontMatter: data,
     },
   };
-}
+};
 
-export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+export const getStaticPaths = async () => {
+  const paths = postFilePaths
+    .map((path) => path.replace(/\.mdx?$/, ""))
+    .map((slug) => ({ params: { slug } }));
 
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      };
-    }),
+    paths,
     fallback: false,
   };
-}
+};

@@ -21,7 +21,7 @@ export default function Home() {
             </h1>
             <Link href="/why">
               <button className="button-lg bg-green-400 text-white text-ui">
-                <span className="type-ui">Learn More</span>
+                Learn More
               </button>
             </Link>
           </Section>
