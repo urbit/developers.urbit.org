@@ -19,7 +19,7 @@ export default function Home() {
               Urbit is a general-purpose platform for building decentralized,
               peer-to-peer applications.
             </h1>
-            <Link href="/why">
+            <Link href="/primer">
               <button className="button-lg bg-green-400 text-white text-ui">
                 Learn More
               </button>
@@ -83,20 +83,9 @@ export default function Home() {
                 <li>
                   <Link href="/community">Get Involved</Link>
                 </li>
-                <li>
-                  <Link href="/community">Developer Calls</Link>
-                </li>
-                <li>
-                  <Link href="/community">Join the Mailing List</Link>
-                </li>
+                <li>Developer Calls</li>
+                <li>Join the Mailing List</li>
               </ul>
-              <p className="text-wall-400">
-                The mailing list is meant to be a separate, developer-only list
-                for those that want to stay up-to-date on developer-specific
-                announcements. These would be things like new documentation,
-                upcoming developer calls, infrastructure updates/breaking
-                changes, etc.{" "}
-              </p>
             </div>
           </Section>
           <Section short>
