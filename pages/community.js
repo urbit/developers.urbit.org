@@ -7,6 +7,7 @@ import Container from "../components/Container";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
 import Sigil from "../components/Sigil";
+
 export default function Post() {
   const source = require(`../content/community.md`);
   const { content, data } = matter(source.default);
