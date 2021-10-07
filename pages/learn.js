@@ -8,7 +8,7 @@ import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
 import Sigil from "../components/Sigil";
 
-export default function Post() {
+export default function StaticLearnPage() {
   const source = require(`../content/learn.page.md`);
   const { content, data } = matter(source.default);
 

@@ -8,7 +8,7 @@ import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
 import Sigil from "../components/Sigil";
 
-export default function Post() {
+export default function StaticCommunityPage() {
   const source = require(`../content/community.page.md`);
   const { content, data } = matter(source.default);
 

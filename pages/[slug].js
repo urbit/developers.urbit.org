@@ -8,17 +8,13 @@ import Head from "next/head";
 import Link from "next/link";
 import path from "path";
 import remarkSlug from "remark-slug";
-import { postFilePaths, POSTS_PATH } from "../lib/api";
+import { contentFilePaths, CONTENT_PATH } from "../lib/api";
 import Container from "../components/Container";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
 
-const mdxGlobalComponents = {
-  Head,
-};
-
-export default function Post({ content, frontMatter }) {
+export default function DynamicPage({ content, data }) {
   const router = useRouter();
   // if (!router.isFallback && !source?.slug) {
   //   return <div>You die</div>;
@@ -27,12 +23,12 @@ export default function Post({ content, frontMatter }) {
   return (
     <Layout>
       <Head>
-        <title>{frontMatter.title} &bull; Urbit Developers</title>
+        <title>{data.title} &bull; Urbit Developers</title>
       </Head>
       <Container>
         <SingleColumn>
           <Section>
-            <h1>{frontMatter.title}</h1>
+            <h1>{data.title}</h1>
           </Section>
           <Section>
             <div className="prose lg:prose-lg">
@@ -46,20 +42,20 @@ export default function Post({ content, frontMatter }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.md`);
-  const source = fs.readFileSync(postFilePath);
+  const pagePath = path.join(CONTENT_PATH, `${params.slug}.md`);
+  const source = fs.readFileSync(pagePath);
   const { content, data } = matter(source);
 
   return {
     props: {
       content: content,
-      frontMatter: data,
+      data: data,
     },
   };
 };
 
 export const getStaticPaths = async () => {
-  const paths = postFilePaths
+  const paths = contentFilePaths
     .map((path) => path.replace(/\.md?$/, ""))
     .map((slug) => ({ params: { slug } }));
 
