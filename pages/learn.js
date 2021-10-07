@@ -34,6 +34,13 @@ export default function Post() {
             </div>
           </Section>
         </SingleColumn>
+        <SingleColumn>
+          <Section>
+            <div className="prose lg:prose-lg">
+              <h2 id="urbit-101">Urbit 101</h2>
+            </div>
+          </Section>
+        </SingleColumn>
         <div className="px-8 lg:px-16 grid gap-8 lg:grid-cols-2 2xl:grid-cols-4 prose">
           {data.courses
             .filter((course) => course.course.includes("101"))
@@ -52,6 +59,7 @@ export default function Post() {
         <SingleColumn>
           <Section>
             <div className="prose lg:prose-lg">
+              <h2 id="urbit-201">Urbit 201</h2>
               <p>
                 Equipped with knowledge of the basics of all parts of the stack,
                 there are a number of additional supplementary tutorials and

@@ -1,7 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
+import html from "remark-html";
+import { Remark } from "react-remark";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -18,7 +18,7 @@ const mdxGlobalComponents = {
   Head,
 };
 
-export default function Post({ source, frontMatter }) {
+export default function Post({ content, frontMatter }) {
   const router = useRouter();
   // if (!router.isFallback && !source?.slug) {
   //   return <div>You die</div>;
@@ -36,7 +36,7 @@ export default function Post({ source, frontMatter }) {
           </Section>
           <Section>
             <div className="prose lg:prose-lg">
-              <MDXRemote {...source} components={mdxGlobalComponents} />
+              <Remark remarkPlugins={[html]}>{content}</Remark>
             </div>
           </Section>
         </SingleColumn>
@@ -49,16 +49,10 @@ export const getStaticProps = async ({ params }) => {
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.md`);
   const source = fs.readFileSync(postFilePath);
   const { content, data } = matter(source);
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [require("remark-prism"), remarkSlug],
-    },
-    scope: data,
-  });
 
   return {
     props: {
-      source: mdxSource,
+      content: content,
       frontMatter: data,
     },
   };
