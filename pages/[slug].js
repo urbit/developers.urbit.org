@@ -14,12 +14,7 @@ import Layout from "../components/Layout";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
 
-const components = {
-  // a: CustomLink,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
-  // TestComponent: dynamic(() => import('../../components/TestComponent')),
+const mdxGlobalComponents = {
   Head,
 };
 
@@ -41,7 +36,7 @@ export default function Post({ source, frontMatter }) {
           </Section>
           <Section>
             <div className="prose lg:prose-lg">
-              <MDXRemote {...source} components={components} />
+              <MDXRemote {...source} components={mdxGlobalComponents} />
             </div>
           </Section>
         </SingleColumn>
@@ -51,7 +46,7 @@ export default function Post({ source, frontMatter }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
+  const postFilePath = path.join(POSTS_PATH, `${params.slug}.md`);
   const source = fs.readFileSync(postFilePath);
   const { content, data } = matter(source);
   const mdxSource = await serialize(content, {
@@ -71,7 +66,7 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
   const paths = postFilePaths
-    .map((path) => path.replace(/\.mdx?$/, ""))
+    .map((path) => path.replace(/\.md?$/, ""))
     .map((slug) => ({ params: { slug } }));
 
   return {

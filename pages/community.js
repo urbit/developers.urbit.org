@@ -9,7 +9,7 @@ import SingleColumn from "../components/SingleColumn";
 import Sigil from "../components/Sigil";
 
 export default function Post() {
-  const source = require(`../content/community.md`);
+  const source = require(`../content/community.page.md`);
   const { content, data } = matter(source.default);
 
   return (
