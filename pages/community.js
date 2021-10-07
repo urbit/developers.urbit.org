@@ -45,8 +45,9 @@ export default function Post() {
                   </div>
                 ))}
                 <div>
-                  Others: `~palfun-foslup`, `~littel-wolfur`, `~lavlyn-litmeg`,
-                  `~mocrux-nomdep`, `~sicdev-pilnup`
+                  Others: <code>~palfun-foslup</code>,{" "}
+                  <code>~littel-wolfur</code>, <code>~lavlyn-litmeg</code>,
+                  <code>~mocrux-nomdep</code>, <code>~sicdev-pilnup</code>
                 </div>
               </div>
             </div>
