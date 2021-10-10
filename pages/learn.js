@@ -9,36 +9,21 @@ import SingleColumn from "../components/SingleColumn";
 import Sigil from "../components/Sigil";
 import Markdown from "../components/Markdown";
 
-const getPageMarkdown = async () => {
-  const source = require(`../content/learn.page.md`);
-  const { content, data } = matter(source.default);
-  const parsed = await Markdown(content);
-  return { parsed, data };
-};
-
-export default function StaticLearnPage() {
-  const [pageData, setPageData] = useState({});
-  const [pageContent, setPageContent] = useState("");
-  useEffect(() => {
-    getPageMarkdown().then((result) => {
-      setPageContent(result.parsed);
-      setPageData(result.data);
-    });
-  }, []);
+export default function DynamicPage({ parsed, data }) {
   return (
     <Layout>
       <Head>
-        <title>{pageData?.title} &bull; Urbit Developers</title>
+        <title>{data.title} &bull; Urbit Developers</title>
       </Head>
       <Container>
         <SingleColumn>
           <Section>
-            <h1>{pageData?.title}</h1>
+            <h1>{data.title}</h1>
           </Section>
           <Section>
             <div
               className="prose lg:prose-lg"
-              dangerouslySetInnerHTML={{ __html: decode(pageContent) }}
+              dangerouslySetInnerHTML={{ __html: decode(parsed) }}
             />
           </Section>
         </SingleColumn>
@@ -50,7 +35,7 @@ export default function StaticLearnPage() {
           </Section>
         </SingleColumn>
         <div className="px-8 lg:px-16 grid gap-8 lg:grid-cols-2 2xl:grid-cols-4 prose">
-          {pageData?.courses?.map((course, i) => {
+          {data.courses.map((course, i) => {
             if (course.course === "Urbit 101")
               return (
                 <div className="px-8 rounded-xl bg-wall-100" key={course.link}>
@@ -63,7 +48,6 @@ export default function StaticLearnPage() {
                   </p>
                 </div>
               );
-            return <></>;
           })}
         </div>
         <SingleColumn>
@@ -79,7 +63,7 @@ export default function StaticLearnPage() {
           </Section>
         </SingleColumn>
         <div className="px-8 lg:px-16 grid gap-8 lg:grid-cols-2 2xl:grid-cols-4 prose pb-16">
-          {pageData?.courses?.map((course, i) => {
+          {data.courses.map((course, i) => {
             if (course.course === "Urbit 201")
               return (
                 <div className="px-8 rounded-xl bg-wall-100" key={course.link}>
@@ -92,10 +76,22 @@ export default function StaticLearnPage() {
                   </p>
                 </div>
               );
-            return <></>;
           })}
         </div>
       </Container>
     </Layout>
   );
 }
+
+export const getServerSideProps = async ({ context }) => {
+  const source = require(`../content/learn.page.md`);
+  const { content, data } = matter(source.default);
+  const parsed = await Markdown(content);
+
+  return {
+    props: {
+      parsed,
+      data,
+    },
+  };
+};
