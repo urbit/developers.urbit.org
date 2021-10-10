@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Head from "next/head";
 import matter from "gray-matter";
 import { decode } from "html-entities";
@@ -6,43 +5,28 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
-import Sigil from "../components/Sigil";
 import Markdown from "../components/Markdown";
+import Sigil from "../components/Sigil";
 
-const getPageMarkdown = async () => {
-  const source = require(`../content/community.page.md`);
-  const { content, data } = matter(source.default);
-  const parsed = await Markdown(content);
-  return { parsed, data };
-};
-
-export default function StaticCommunityPage() {
-  const [pageData, setPageData] = useState({});
-  const [pageContent, setPageContent] = useState("");
-  useEffect(() => {
-    getPageMarkdown().then((result) => {
-      setPageContent(result.parsed);
-      setPageData(result.data);
-    });
-  }, []);
+export default function DynamicPage({ parsed, data }) {
   return (
     <Layout>
       <Head>
-        <title>{pageData?.title} &bull; Urbit Developers</title>
+        <title>{data.title} &bull; Urbit Developers</title>
       </Head>
       <Container>
         <SingleColumn>
           <Section>
-            <h1>{pageData?.title}</h1>
+            <h1>{data.title}</h1>
           </Section>
           <Section>
             <div
               className="prose lg:prose-lg"
-              dangerouslySetInnerHTML={{ __html: decode(pageContent) }}
+              dangerouslySetInnerHTML={{ __html: decode(parsed) }}
             />
             <div className="prose lg:prose-lg">
               <div className="py-8 grid gap-8 xl:grid-cols-2">
-                {pageData?.directory?.map((person, i) => (
+                {data.directory.map((person, i) => (
                   <div className="p-8 rounded-xl bg-wall-100" key={person.patp}>
                     <div className="flex">
                       <div className="mr-4">
@@ -71,3 +55,16 @@ export default function StaticCommunityPage() {
     </Layout>
   );
 }
+
+export const getServerSideProps = async ({ context }) => {
+  const source = require(`../content/community.page.md`);
+  const { content, data } = matter(source.default);
+  const parsed = await Markdown(content);
+
+  return {
+    props: {
+      parsed,
+      data,
+    },
+  };
+};
