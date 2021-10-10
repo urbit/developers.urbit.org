@@ -2,6 +2,9 @@
 title: Why become an Urbit developer?
 ---
 
+by `~wolref-podlex`<br />
+Executive Director, Urbit Foundation
+
 Urbit is a novel general-purpose computer that’s captivated thousands, and it’s no wonder why—truly novel computing architectures are few and far between, and they tend to be highly transformative. For recent examples, consider iOS and Ethereum. We think Urbit is at least as big of a deal.
 
 Most developers are drawn to Urbit because they’re fascinated by it—this author being no exception. The artful elegance of Nock, Hoon, and Arvo are reason enough for many, but are by no means the only reasons to bother learning Urbit.

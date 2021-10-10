@@ -1,37 +1,45 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import matter from "gray-matter";
-import html from "remark-html";
-import { Remark } from "react-remark";
+import { decode } from "html-entities";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
 import Sigil from "../components/Sigil";
+import Markdown from "../components/Markdown";
 
-export default function StaticLearnPage() {
+const getPageMarkdown = async () => {
   const source = require(`../content/learn.page.md`);
   const { content, data } = matter(source.default);
+  const parsed = await Markdown(content);
+  return { parsed, data };
+};
 
+export default function StaticLearnPage() {
+  const [pageData, setPageData] = useState({});
+  const [pageContent, setPageContent] = useState("");
+  useEffect(() => {
+    getPageMarkdown().then((result) => {
+      setPageContent(result.parsed);
+      setPageData(result.data);
+    });
+  }, []);
   return (
     <Layout>
       <Head>
-        <title>{data.title} &bull; Urbit Developers</title>
+        <title>{pageData?.title} &bull; Urbit Developers</title>
       </Head>
       <Container>
         <SingleColumn>
           <Section>
-            <h1>{data.title}</h1>
+            <h1>{pageData?.title}</h1>
           </Section>
           <Section>
-            <div className="prose lg:prose-lg">
-              <p>
-                We’ve made several self-guided tutorials and guides available to
-                get your started on your journey, which should be read in order.
-                All-in-all, a programmer with some experience should be able to
-                work through this material and become proficient at Urbit
-                programming in under a month of regular study.
-              </p>
-            </div>
+            <div
+              className="prose lg:prose-lg"
+              dangerouslySetInnerHTML={{ __html: decode(pageContent) }}
+            />
           </Section>
         </SingleColumn>
         <SingleColumn>
@@ -42,19 +50,21 @@ export default function StaticLearnPage() {
           </Section>
         </SingleColumn>
         <div className="px-8 lg:px-16 grid gap-8 lg:grid-cols-2 2xl:grid-cols-4 prose">
-          {data.courses
-            .filter((course) => course.course.includes("101"))
-            .map((course, i) => (
-              <div className="px-8 rounded-xl bg-wall-100" key={course.link}>
-                <h3>
-                  <a href={course.link}>{course.title}</a>
-                </h3>
-                <p>{course.description}</p>
-                <p className="text-sm uppercase tracking-wide">
-                  {course.duration}
-                </p>
-              </div>
-            ))}
+          {pageData?.courses?.map((course, i) => {
+            if (course.course === "Urbit 101")
+              return (
+                <div className="px-8 rounded-xl bg-wall-100" key={course.link}>
+                  <h3>
+                    <a href={course.link}>{course.title}</a>
+                  </h3>
+                  <p>{course.description}</p>
+                  <p className="text-sm uppercase tracking-wide">
+                    {course.duration}
+                  </p>
+                </div>
+              );
+            return <></>;
+          })}
         </div>
         <SingleColumn>
           <Section>
@@ -69,19 +79,21 @@ export default function StaticLearnPage() {
           </Section>
         </SingleColumn>
         <div className="px-8 lg:px-16 grid gap-8 lg:grid-cols-2 2xl:grid-cols-4 prose pb-16">
-          {data.courses
-            .filter((course) => course.course.includes("201"))
-            .map((course, i) => (
-              <div className="px-8 rounded-xl bg-wall-100" key={course.link}>
-                <h3>
-                  <a href={course.link}>{course.title}</a>
-                </h3>
-                <p>{course.description}</p>
-                <p className="text-sm uppercase tracking-wide">
-                  {course.duration}
-                </p>
-              </div>
-            ))}
+          {pageData?.courses?.map((course, i) => {
+            if (course.course === "Urbit 201")
+              return (
+                <div className="px-8 rounded-xl bg-wall-100" key={course.link}>
+                  <h3>
+                    <a href={course.link}>{course.title}</a>
+                  </h3>
+                  <p>{course.description}</p>
+                  <p className="text-sm uppercase tracking-wide">
+                    {course.duration}
+                  </p>
+                </div>
+              );
+            return <></>;
+          })}
         </div>
       </Container>
     </Layout>
