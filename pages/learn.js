@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-import Head from "next/head";
-import matter from "gray-matter";
-import { decode } from "html-entities";
-import Layout from "../components/Layout";
-import Container from "../components/Container";
-import Section from "../components/Section";
-import SingleColumn from "../components/SingleColumn";
-import Sigil from "../components/Sigil";
-import Markdown from "../components/Markdown";
+import React from 'react'
+import Head from 'next/head'
+import matter from 'gray-matter'
+import { decode } from 'html-entities'
+import Layout from '../components/Layout'
+import Container from '../components/Container'
+import Section from '../components/Section'
+import SingleColumn from '../components/SingleColumn'
+import Markdown from '../components/Markdown'
 
-export default function DynamicPage({ parsed, data }) {
+export default function DynamicPage ({ parsed, data }) {
   return (
     <Layout>
       <Head>
@@ -36,7 +35,7 @@ export default function DynamicPage({ parsed, data }) {
         </SingleColumn>
         <div className="px-8 lg:px-16 grid gap-8 lg:grid-cols-2 2xl:grid-cols-4 prose">
           {data.courses.map((course, i) => {
-            if (course.course === "Urbit 101")
+            if (course.course === 'Urbit 101') {
               return (
                 <div className="px-8 rounded-xl bg-wall-100" key={course.link}>
                   <h3>
@@ -47,7 +46,9 @@ export default function DynamicPage({ parsed, data }) {
                     {course.duration}
                   </p>
                 </div>
-              );
+              )
+            }
+            return false
           })}
         </div>
         <SingleColumn>
@@ -64,7 +65,7 @@ export default function DynamicPage({ parsed, data }) {
         </SingleColumn>
         <div className="px-8 lg:px-16 grid gap-8 lg:grid-cols-2 2xl:grid-cols-4 prose pb-16">
           {data.courses.map((course, i) => {
-            if (course.course === "Urbit 201")
+            if (course.course === 'Urbit 201') {
               return (
                 <div className="px-8 rounded-xl bg-wall-100" key={course.link}>
                   <h3>
@@ -75,23 +76,25 @@ export default function DynamicPage({ parsed, data }) {
                     {course.duration}
                   </p>
                 </div>
-              );
+              )
+            }
+            return false
           })}
         </div>
       </Container>
     </Layout>
-  );
+  )
 }
 
 export const getServerSideProps = async ({ context }) => {
-  const source = require(`../content/learn.page.md`);
-  const { content, data } = matter(source.default);
-  const parsed = await Markdown(content);
+  const source = require('../content/learn.page.md')
+  const { content, data } = matter(source.default)
+  const parsed = await Markdown(content)
 
   return {
     props: {
       parsed,
-      data,
-    },
-  };
-};
+      data
+    }
+  }
+}
