@@ -1,25 +1,17 @@
+import React from "react";
 import fs from "fs";
-import matter from "gray-matter";
-import html from "remark-html";
-import { Remark } from "react-remark";
-import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import Head from "next/head";
-import Link from "next/link";
 import path from "path";
-import remarkSlug from "remark-slug";
+import Head from "next/head";
+import matter from "gray-matter";
+import { decode } from "html-entities";
 import { contentFilePaths, CONTENT_PATH } from "../lib/api";
+import Markdown from "../components/Markdown";
 import Container from "../components/Container";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
 
-export default function DynamicPage({ content, data }) {
-  const router = useRouter();
-  // if (!router.isFallback && !source?.slug) {
-  //   return <div>You die</div>;
-  // }
-
+export default function DynamicPage({ markdown, data }) {
   return (
     <Layout>
       <Head>
@@ -32,7 +24,7 @@ export default function DynamicPage({ content, data }) {
           </Section>
           <Section>
             <div className="prose lg:prose-lg">
-              <Remark remarkPlugins={[html]}>{content}</Remark>
+              <div dangerouslySetInnerHTML={{ __html: decode(markdown) }} />
             </div>
           </Section>
         </SingleColumn>
@@ -45,11 +37,12 @@ export const getStaticProps = async ({ params }) => {
   const pagePath = path.join(CONTENT_PATH, `${params.slug}.md`);
   const source = fs.readFileSync(pagePath);
   const { content, data } = matter(source);
+  const markdown = await Markdown(content);
 
   return {
     props: {
-      content: content,
-      data: data,
+      markdown,
+      data,
     },
   };
 };

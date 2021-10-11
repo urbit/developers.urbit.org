@@ -42,3 +42,5 @@ courses:
     link: https://urbit.org/docs/userspace/threads/overview
     description: TODO Maybe this is better for 101?
 ---
+
+We’ve made several self-guided tutorials and guides available to get your started on your journey, which should be read in order. All-in-all, a programmer with some experience should be able to work through this material and become proficient at Urbit programming in under a month of regular study.

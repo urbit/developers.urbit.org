@@ -1,17 +1,15 @@
+import React from "react";
 import Head from "next/head";
 import matter from "gray-matter";
-import html from "remark-html";
-import { Remark } from "react-remark";
+import { decode } from "html-entities";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Section from "../components/Section";
 import SingleColumn from "../components/SingleColumn";
+import Markdown from "../components/Markdown";
 import Sigil from "../components/Sigil";
 
-export default function StaticCommunityPage() {
-  const source = require(`../content/community.page.md`);
-  const { content, data } = matter(source.default);
-
+export default function DynamicPage({ parsed, data }) {
   return (
     <Layout>
       <Head>
@@ -23,9 +21,10 @@ export default function StaticCommunityPage() {
             <h1>{data.title}</h1>
           </Section>
           <Section>
-            <div className="prose lg:prose-lg">
-              <Remark remarkPlugins={[html]}>{content}</Remark>
-            </div>
+            <div
+              className="prose lg:prose-lg"
+              dangerouslySetInnerHTML={{ __html: decode(parsed) }}
+            />
             <div className="prose lg:prose-lg">
               <div className="py-8 grid gap-8 xl:grid-cols-2">
                 {data.directory.map((person, i) => (
@@ -57,3 +56,16 @@ export default function StaticCommunityPage() {
     </Layout>
   );
 }
+
+export const getServerSideProps = async ({ context }) => {
+  const source = require(`../content/community.page.md`);
+  const { content, data } = matter(source.default);
+  const parsed = await Markdown(content);
+
+  return {
+    props: {
+      parsed,
+      data,
+    },
+  };
+};

@@ -1,3 +1,4 @@
+import React from "react";
 import { sigil, reactRenderer } from "@tlon/sigil-js";
 
 export default function Sigil(props) {

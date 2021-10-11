@@ -1,10 +1,8 @@
+import React from "react";
 import Link from "next/link";
 import SingleColumn from "./SingleColumn";
 import { useRouter } from "next/router";
-// import { useState, useEffect } from "react";
 import classnames from "classnames";
-// import path from "path";
-// import Section from "../components/Section";
 
 function ActiveLink({ children, href, className, currentPath }) {
   const firstCrumb = currentPath.split("/")[1];
@@ -23,10 +21,6 @@ function ActiveLink({ children, href, className, currentPath }) {
 
 export default function Header(props) {
   const currentPath = useRouter().asPath;
-
-  const routeDepth = currentPath.split("/").length;
-
-  const firstCrumb = currentPath.split("/")[1];
   return (
     <div className="flex flex-col w-full items-center">
       <SingleColumn>
