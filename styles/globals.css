@@ -114,6 +114,12 @@ code .type-code {
   @apply flex-center px-6 py-1 rounded-xl h-14 type-ui;
 }
 
+/* Buttons in p tags should have white text */
+p .button-lg,
+.prose .button-lg {
+  @apply inline-flex text-white;
+}
+
 .badge-sm {
   @apply flex-center text-base font-medium px-3 h-8 rounded-full;
 }

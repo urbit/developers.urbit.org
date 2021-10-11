@@ -84,8 +84,14 @@ export default function Home() {
                 <li>
                   <Link href="/community">Get Involved</Link>
                 </li>
-                <li>Developer Calls</li>
-                <li>Join the Mailing List</li>
+                <li>
+                  <Link href="https://urbit.org/events">Developer Calls</Link>
+                </li>
+                <li>
+                  <Link href="https://groups.google.com/a/urbit.org/g/dev?pli=1">
+                    Join the Mailing List
+                  </Link>
+                </li>
               </ul>
             </div>
           </Section>
@@ -99,7 +105,6 @@ export default function Home() {
                   </span>
                 </h2>
               </Link>
-
               <p>
                 The Urbit ecosystem is growing rapidly, which presents many
                 opportunities to enterprising developers. Address space grants
@@ -110,13 +115,13 @@ export default function Home() {
               </p>
               <ul>
                 <li>
-                  <Link href="/opportunities">Grants</Link>
+                  <Link href="/opportunities#grants">Grants</Link>
                 </li>
                 <li>
-                  <Link href="/opportunities">Jobs</Link>
+                  <Link href="/opportunities#jobs">Jobs</Link>
                 </li>
                 <li>
-                  <Link href="https://the-combine.org/">The Combine</Link>
+                  <Link href="/opportunities#the-combine">The Combine</Link>
                 </li>
               </ul>
             </div>
