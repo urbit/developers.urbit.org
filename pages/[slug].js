@@ -1,19 +1,17 @@
-import React from 'react'
-import fs from 'fs'
-import path from 'path'
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-import matter from 'gray-matter'
-import { decode } from 'html-entities'
-import { contentFilePaths, CONTENT_PATH } from '../lib/api'
-import Markdown from '../components/Markdown'
-import Container from '../components/Container'
-import Layout from '../components/Layout'
-import Section from '../components/Section'
-import SingleColumn from '../components/SingleColumn'
+import React from "react";
+import fs from "fs";
+import path from "path";
+import Head from "next/head";
+import matter from "gray-matter";
+import { decode } from "html-entities";
+import { contentFilePaths, CONTENT_PATH } from "../lib/api";
+import Markdown from "../components/Markdown";
+import Container from "../components/Container";
+import Layout from "../components/Layout";
+import Section from "../components/Section";
+import SingleColumn from "../components/SingleColumn";
 
-export default function DynamicPage ({ markdown, data }) {
-  const router = useRouter()
+export default function DynamicPage({ markdown, data }) {
   return (
     <Layout>
       <Head>
@@ -32,30 +30,30 @@ export default function DynamicPage ({ markdown, data }) {
         </SingleColumn>
       </Container>
     </Layout>
-  )
+  );
 }
 
 export const getStaticProps = async ({ params }) => {
-  const pagePath = path.join(CONTENT_PATH, `${params.slug}.md`)
-  const source = fs.readFileSync(pagePath)
-  const { content, data } = matter(source)
-  const markdown = await Markdown(content)
+  const pagePath = path.join(CONTENT_PATH, `${params.slug}.md`);
+  const source = fs.readFileSync(pagePath);
+  const { content, data } = matter(source);
+  const markdown = await Markdown(content);
 
   return {
     props: {
       markdown,
-      data
-    }
-  }
-}
+      data,
+    },
+  };
+};
 
 export const getStaticPaths = async () => {
   const paths = contentFilePaths
-    .map((path) => path.replace(/\.md?$/, ''))
-    .map((slug) => ({ params: { slug } }))
+    .map((path) => path.replace(/\.md?$/, ""))
+    .map((slug) => ({ params: { slug } }));
 
   return {
     paths,
-    fallback: false
-  }
-}
+    fallback: false,
+  };
+};

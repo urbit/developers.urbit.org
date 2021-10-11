@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import matter from "gray-matter";
 import { decode } from "html-entities";
