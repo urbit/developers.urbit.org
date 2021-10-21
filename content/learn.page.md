@@ -9,7 +9,7 @@ courses:
   - title: 2. Hoon Tutorial
     duration: 1-2 weeks
     course: Urbit 101
-    link: https://urbit.org/docs/hoon/hoon-school
+    link: https://urbit.org/docs/hoon/hoon-school/intro
     description: This is the recommended starting point for anyone that wants to learn full stack Urbit development. It walks you through the Hoon programming language, generators, and the basics of Urbit programming.
   - title: 3. Gall Tutorial
     duration: 1-2 weeks
@@ -39,8 +39,8 @@ courses:
     description: Graph store is a gall agent that’s designed to be a general-purpose database for storing graph-like data. Comprising the bulk of the backend for Tlon’s Landscape applciation, it’s battle tested and optimized for real-world use. This guide walks you through its architecture and implementation, and then shows you how to use it as a data store for your own application.
   - title: Guide to Threads
     course: Urbit 201
-    link: https://urbit.org/docs/userspace/threads/overview
-    description: TODO Maybe this is better for 101?
+    link: https://urbit.org/docs/userspace/threads/basics/fundamentals
+    description: Threads are monadic functions primarily used too spin out complex IO operations from Gall agents. If you're writing an app that must make a series of external API calls where the next call depends on the result of the last, threads are the proper solution. This guide walks through the basics of writing threads, and the Gall section beneath it demonstrates how to work with threads from Gall agents.
 ---
 
 We’ve made several self-guided tutorials and guides available to get your started on your journey, which should be read in order. All-in-all, a programmer with some experience should be able to work through this material and become proficient at Urbit programming in under a month of regular study.
