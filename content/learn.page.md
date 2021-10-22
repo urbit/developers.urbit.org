@@ -27,7 +27,7 @@ courses:
     description: JSON is a dynamically-defined datastructure, and Hoon is a statically-typed language, which means that the two don’t play together really well. This guide gives a comprehensive overview of how to parse and serialize JSON from Hoon.
   - title: Software Distribution Guide
     course: Urbit 201
-    link: https://urbit.org/docs/userspace/dist/dist
+    link: https://urbit.org/docs/userspace/dist/guide
     description: After you’ve created something on Urbit you’ll probably want to share it with other people. This guide walks you through the mechanisms for distributing software over the network.
   - title: Fullstack Development Tutorial - TodoMVC (Coming soon)
     course: Urbit 201
