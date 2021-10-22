@@ -40,7 +40,7 @@ courses:
   - title: Guide to Threads
     course: Urbit 201
     link: https://urbit.org/docs/userspace/threads/basics/fundamentals
-    description: Threads are monadic functions primarily used too spin out complex IO operations from Gall agents. If you're writing an app that must make a series of external API calls where the next call depends on the result of the last, threads are the proper solution. This guide walks through the basics of writing threads, and the Gall section beneath it demonstrates how to work with threads from Gall agents.
+    description: Threads are monadic functions primarily used to spin out complex IO operations from Gall agents. If you're writing an app that must make a series of external API calls where the next call depends on the result of the last, threads are the proper solution. This guide walks through the basics of writing threads, and the Gall section beneath it demonstrates how to work with threads from Gall agents.
 ---
 
 We’ve made several self-guided tutorials and guides available to get your started on your journey, which should be read in order. All-in-all, a programmer with some experience should be able to work through this material and become proficient at Urbit programming in under a month of regular study.
