@@ -23,7 +23,7 @@ courses:
     description: The vane eyre allows clients to interact with Urbit over an HTTP interface. Urbit’s architecture is organized around command query responsibility segregation (CQRS), which makes heavy use of pub/sub patterns. Working with this API is different than more typical request/response architecture, and this guide gives you a comprehensive overview of how to do so.
   - title: Guide to Working with JSON
     course: Urbit 201
-    link: https://github.com/urbit/urbit.org/pull/1131
+    link: https://urbit.org/docs/hoon/guides/json-guide
     description: JSON is a dynamically-defined datastructure, and Hoon is a statically-typed language, which means that the two don’t play together really well. This guide gives a comprehensive overview of how to parse and serialize JSON from Hoon.
   - title: Software Distribution Guide
     course: Urbit 201
