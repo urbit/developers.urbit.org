@@ -19,7 +19,7 @@ courses:
   - title: 4. Client-side Integration Guide
     duration: 1 day
     course: Urbit 101
-    link: https://urbit.org/docs/arvo/eyre/eyre
+    link: https://urbit.org/docs/arvo/eyre/guide
     description: The vane eyre allows clients to interact with Urbit over an HTTP interface. Urbit’s architecture is organized around command query responsibility segregation (CQRS), which makes heavy use of pub/sub patterns. Working with this API is different than more typical request/response architecture, and this guide gives you a comprehensive overview of how to do so.
   - title: Guide to Working with JSON
     course: Urbit 201
