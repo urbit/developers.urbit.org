@@ -14,7 +14,7 @@ Since Urbit is actually an operating system, not just a server, when we talk abo
 
 - A web or mobile interface that interacts with one or more agents to define something that looks a lot like an “app”
 - A single agent that runs in the background
-- A script called a **generator** that’s executed from Urbit’s own CLI (called the **dojo**)
+- A script called a **generator** that’s executed from Urbit’s own command-line shell (called the **dojo**)
 
 Generators, agents and supporting code are packaged up into **desks**. These provide a mechanism for packaging up related code, and can be shared directly with other users over the network—this is how software distribution works on Urbit.
 
