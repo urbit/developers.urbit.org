@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@socialgouv/matomo-next": "^1.2.2",
     "@tailwindcss/typography": "^0.4.1",
     "@tlon/sigil-js": "^1.4.4",
     "classnames": "^2.3.1",
