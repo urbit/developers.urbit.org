@@ -14,7 +14,7 @@ courses:
   - title: 3. Gall Tutorial
     duration: 1-2 weeks
     course: Urbit 101
-    link: https://github.com/timlucmiptev/gall-guide
+    link: https://urbit.org/docs/userspace/gall-guide/intro
     description: This course picks up where Hoon School left off by teaching you how to use the language to build a real-world application using a gall agent. This covers the entirety of the gall API, best practices for developing agents over time, and exercises to push your knowledge.
   - title: 4. Client-side Integration Guide
     duration: 1 day
