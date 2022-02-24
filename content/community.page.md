@@ -42,7 +42,7 @@ The Forge is a community-run Landscape group (`~middev/the-forge`) focused on al
 
 The Urbit Foundation makes direct investments of address space into the community as a means of improving the network. The Foundation also maintains developer documentation, runs Developer Calls, and acts as the hub of the Urbit ecosystem. You can find us hanging around in the Foundation group in Landscape (`~wolref-podlex/foundation`).
 
-Tlon is the primary developer of Urbit itself and the foremost product developer within the Urbit ecosystem. They’ve been developing Urbit since 2013 and are naturally a great source of information. They maintain the most popular Landscape groups, Urbit Community (`~bitbex-bolbel/urbit-community`) and Urbit Index (`~bollug-worlus/urbit-index`).
+Tlon is the primary developer of Urbit itself and the foremost product developer within the Urbit ecosystem. They’ve been developing Urbit since 2013 and are naturally a great source of information. They maintain the most popular Landscape groups, Urbit Community (`~bitbet-bolbel/urbit-community`) and Urbit Index (`~bollug-worlus/urbit-index`).
 
 ## Directory
 
