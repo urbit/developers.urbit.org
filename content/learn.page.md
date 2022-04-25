@@ -25,14 +25,18 @@ courses:
     course: Urbit 201
     link: https://urbit.org/docs/hoon/guides/json-guide
     description: JSON is a dynamically-defined datastructure, and Hoon is a statically-typed language, which means that the two don’t play together really well. This guide gives a comprehensive overview of how to parse and serialize JSON from Hoon.
+  - title: HTTP-API Guide
+    course: Urbit 201
+    link: https://urbit.org/docs/userspace/http-api-guide
+    description: The @urbit/http-api NPM module makes it easy to talk to a ship from a Javascript front-end. This guide and reference goes over how to use it.
   - title: Software Distribution Guide
     course: Urbit 201
     link: https://urbit.org/docs/userspace/dist/guide
     description: After you’ve created something on Urbit you’ll probably want to share it with other people. This guide walks you through the mechanisms for distributing software over the network.
-  - title: Fullstack Development Tutorial - TodoMVC (Coming soon)
+  - title: Fullstack Development Walkthrough
     course: Urbit 201
-    link: https://urbit.org/grants/educational-guide-todomvc-urbit-edition
-    description: This tutorial walks you though everthing you’ve learned to date -- writing a gall agent in Hoon from scratch, adapting the classic TodoMVC frontend to interface with that gall agent, and then package up the entire application for distribution over the network.
+    link: https://urbit.org/docs/userspace/full-stack/1-intro
+    description: This tutorial walks though everthing you’ve learned to date -- writing a gall agent in Hoon from scratch, writing a React front-end that talks to the agent through Eyre, and then packaging up the entire application for distribution over the network.
   - title: Graph Store Tutorial
     course: Urbit 201
     link: https://urbit.org/docs/userspace/graph-store/overview
