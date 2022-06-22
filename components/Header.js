@@ -90,7 +90,7 @@ export default function Header(props) {
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}
-            className="mr-5 type-ui"
+            className="type-ui"
             href="/blog"
           >
             Blog
