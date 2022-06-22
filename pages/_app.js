@@ -1,21 +1,9 @@
-import React, { useEffect } from "react";
-import { init } from "@socialgouv/matomo-next";
-
-import "../styles/globals.css";
-import "../styles/prism.css";
-
-const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
-const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
+import "foundation-design-system/styles/globals.css";
+import "foundation-design-system/styles/markdown.css";
+import "foundation-design-system/styles/prism.css";
+import "../styles/developers.css";
 
 function MyApp({ Component, pageProps }) {
-  
-  useEffect(() => {
-    init({
-      url: MATOMO_URL,
-      siteId: MATOMO_SITE_ID,
-    });
-  });
-
   return <Component {...pageProps} />;
 }
 
