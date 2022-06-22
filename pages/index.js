@@ -61,7 +61,7 @@ export default function Home() {
                 return (
                   <div
                     key={each.title}
-                    className="basis-1/2 xl:basis-1/3 flex space-x-2 justify-start items-start my-8 pr-8"
+                    className="basis-full md:basis-1/2 xl:basis-1/3 flex space-x-2 justify-start items-start my-8 pr-8"
                   >
                     {each.icon}
                     <div className="flex flex-col">
@@ -83,7 +83,7 @@ export default function Home() {
           </Section>
           <Section>
             <h2 className="pt-12">Quickstart: Lightning Tutorials</h2>
-            <div className="flex space-x-4 pt-12">
+            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4 pt-12">
               <Card
                 icon={<Comms />}
                 title="Encrypted Chat Application"
@@ -147,7 +147,7 @@ export default function Home() {
               The developer community is friendly, helpful, and organized from
               within Urbit itself.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4">
               <Card
                 title="Developer Calls"
                 text="We regularly host livestreams, meetups, and hackathons"
