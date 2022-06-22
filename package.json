@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@iarna/toml": "^2.2.5",
+    "browserify-zlib": "^0.2.0",
     "classnames": "^2.3.1",
-    "foundation-design-system": "github:urbit/foundation-design-system#01f35f1ff8775b300508fe334e44d473e4201ba1",
+    "foundation-design-system": "github:urbit/foundation-design-system",
+    "gray-matter": "^4.0.3",
+    "luxon": "^2.4.0",
     "next": "12.1.6",
+    "path-browserify": "^1.0.1",
     "react": "^17",
     "react-dom": "^17",
-    "react-swipeable": "^7.0.0"
+    "react-swipeable": "^7.0.0",
+    "stream-browserify": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "8.18.0",
