@@ -19,13 +19,11 @@ export default function Card({
       )}
     >
       {icon}
-      <div className="flex flex-col justify-between pr-4">
+      <div className="flex flex-col space-y-4 justify-between pr-4">
         <h3 className="font-bold">{title}</h3>
         <p>{text}</p>
         <Link href={href} passHref>
-          <a className="button-sm bg-green-400 text-white w-fit mt-4">
-            {callout}
-          </a>
+          <a className="button-sm bg-green-400 text-white w-fit">{callout}</a>
         </Link>
       </div>
     </div>
