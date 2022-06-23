@@ -168,21 +168,3 @@ export default function Overview({ markdown, search }) {
     </Container>
   );
 }
-
-export async function getStaticProps({ params }) {
-  const post = getPostBySlug(
-    "overview",
-    ["title", "slug", "content", "extra"],
-    "/"
-  );
-
-  let { index } = post?.extra || { index: null };
-
-  if (index === undefined) {
-    index = null;
-  }
-  const markdown = JSON.stringify(Markdown.parse({ post }));
-  return {
-    props: { post, markdown, index },
-  };
-}
