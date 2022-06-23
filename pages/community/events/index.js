@@ -49,7 +49,7 @@ export default function Events({ events, search }) {
         <title>Developer Events • developer.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section short narrow>
           <h1 className="pb-16">Developer Events</h1>

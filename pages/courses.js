@@ -20,7 +20,7 @@ export default function Courses({ search }) {
         <title>Courses • developers.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section>
           <h1>Courses</h1>

@@ -30,7 +30,7 @@ export default function BasicPage({
         <title>{post.title} • developers.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section narrow={!wide}>
           <h1>{post.title}</h1>

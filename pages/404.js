@@ -14,7 +14,7 @@ export default function NotFound(props) {
         <title>404 • developers.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={props.search} />
       <SingleColumn>
         <Section className="pt-48">
           <h1>404</h1>

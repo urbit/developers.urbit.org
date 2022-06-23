@@ -11,7 +11,7 @@ import {
 import Meta from "../../components/Meta";
 import Card from "../../components/Card";
 
-export default function Community() {
+export default function Community({ search }) {
   const post = {
     title: "Community",
     description:
@@ -23,7 +23,7 @@ export default function Community() {
         <title>Blog • developers.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section>
           <h1>Community</h1>

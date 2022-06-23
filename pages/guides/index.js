@@ -12,7 +12,7 @@ import {
 } from "foundation-design-system";
 import { Comms, MintFiller } from "../../components/icons";
 
-export default function GuidePage() {
+export default function GuidePage({ search }) {
   const post = {
     title: "Guides",
     description:
@@ -24,7 +24,7 @@ export default function GuidePage() {
         <title>Guides • developers.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section>
           <h1>Guides</h1>

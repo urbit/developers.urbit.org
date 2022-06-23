@@ -21,7 +21,7 @@ function ActiveLink({ children, href, className, currentPath }) {
   );
 }
 
-export default function Header(props) {
+export default function Header({ search }) {
   const [isOpen, setTray] = useState(false);
 
   const currentPath = useRouter().asPath;
@@ -33,7 +33,7 @@ export default function Header(props) {
   return (
     <>
       {" "}
-      <IntraNav ourSite="https://developers.urbit.org" search={() => null} />
+      <IntraNav ourSite="https://developers.urbit.org" search={search} />
       <header className="layout max-w-screen-lg px-4 md:px-8 flex justify-between items-center pt-8 md:pt-10 lg:pt-12 pb-10 md:pb-12 lg:pb-24">
         <div>
           <Link href="/" passHref>
@@ -100,7 +100,7 @@ export default function Header(props) {
         {
           // Small screen header
         }
-        <MenuTray isOpen={isOpen} setTray={setTray} search={() => null}>
+        <MenuTray isOpen={isOpen} setTray={setTray} search={search}>
           <Link href="/" passHref>
             <a className="type-ui mb-12">Urbit</a>
           </Link>

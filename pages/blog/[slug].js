@@ -22,7 +22,13 @@ import {
   TwoUp,
 } from "foundation-design-system";
 
-export default function BlogPost({ post, markdown, nextPost, previousPost }) {
+export default function BlogPost({
+  post,
+  search,
+  markdown,
+  nextPost,
+  previousPost,
+}) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage />;
@@ -35,7 +41,7 @@ export default function BlogPost({ post, markdown, nextPost, previousPost }) {
         <title>{post.title} • Blog • developers.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section short narrow>
           <h1>{post.title}</h1>

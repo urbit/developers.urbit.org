@@ -3,24 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run prebuild && next dev",
+    "prebuild": "npm run cache-posts",
+    "cache-posts": "node lib/cache.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
+    "@tlon/sigil-js": "^1.4.5",
     "browserify-zlib": "^0.2.0",
     "classnames": "^2.3.1",
+    "downshift": "^6.1.7",
     "foundation-design-system": "github:urbit/foundation-design-system",
     "gray-matter": "^4.0.3",
+    "leven-sort": "^3.0.0",
+    "lodash.debounce": "^4.0.8",
     "luxon": "^2.4.0",
     "next": "12.1.6",
     "path-browserify": "^1.0.1",
     "react": "^17",
     "react-dom": "^17",
+    "react-hotkeys": "^2.0.0",
     "react-swipeable": "^7.0.0",
-    "stream-browserify": "^3.0.0"
+    "stream-browserify": "^3.0.0",
+    "urbit-ob": "^5.0.1"
   },
   "devDependencies": {
     "eslint": "8.18.0",

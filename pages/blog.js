@@ -11,7 +11,7 @@ import {
 import { getAllPosts, formatDate, generateDisplayDate } from "../lib/lib";
 import Footer from "../components/Footer";
 
-export default function Blog({ posts }) {
+export default function Blog({ posts, search }) {
   const post = {
     title: "Developer Blog",
     description: "Technical-oriented posts by Urbit engineers.",
@@ -23,7 +23,7 @@ export default function Blog({ posts }) {
         <title>Blog • developers.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section narrow short>
           <h1 className="pb-16">Developer Blog</h1>

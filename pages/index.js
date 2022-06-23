@@ -21,14 +21,14 @@ import {
 import Card from "../components/Card";
 import TallCard from "../components/TallCard";
 
-export default function Home() {
+export default function Home({ search }) {
   return (
     <div>
       <Head>
         <title>Urbit Developers</title>
       </Head>
       <Container>
-        <Header />
+        <Header search={search} />
         <SingleColumn>
           <Section className="pb-72">
             {/* Hero statement */}

@@ -46,7 +46,7 @@ export default function Event({
         <title>{event.title} • Events • urbit.org</title>
         {Meta(event)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section narrow short>
           <h1>{event.title}</h1>

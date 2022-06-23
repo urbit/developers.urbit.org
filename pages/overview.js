@@ -20,7 +20,7 @@ import {
 } from "../components/icons";
 import Footer from "../components/Footer";
 
-export default function Overview({ markdown }) {
+export default function Overview({ markdown, search }) {
   const post = {
     title: "Overview",
     description: "Urbit's stack in a nutshell.",
@@ -31,7 +31,7 @@ export default function Overview({ markdown }) {
         <title>Overview • developers.urbit.org</title>
         {Meta(post)}
       </Head>
-      <Header />
+      <Header search={search} />
       <SingleColumn>
         <Section>
           <h1>Overview</h1>
