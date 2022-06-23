@@ -37,9 +37,9 @@ export default function Card({
         }
       >
         {icon}
-        <div className="flex flex-col pr-4">
+        <div className="flex flex-col pr-4 basis-2/3">
           <p className="font-bold">{title}</p>
-          <p>{text}</p>
+          <p className="text-sm">{text}</p>
         </div>
       </div>
     </Link>
