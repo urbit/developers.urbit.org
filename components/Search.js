@@ -18,6 +18,7 @@ class Search extends Component {
     this.onSelect = this.onSelect.bind(this);
     // this.glossarySearch = this.glossarySearch.bind(this);
     this.patpSearch = this.patpSearch.bind(this);
+    this.urbitOrgSearch = this.urbitOrgSearch.bind(this);
   }
 
   searchEndpoint(query) {
@@ -41,6 +42,10 @@ class Search extends Component {
     );
   }
 
+  urbitOrgSearch(query) {
+    return `/api/urbit-org-search?q=${query}`;
+  }
+
   onSelect(item) {
     if (item.slug) {
       this.props.router.push(item.slug);
@@ -54,12 +59,11 @@ class Search extends Component {
     this.props.closeSearch();
   }
 
-  onInputValueChange = debounce((query) => {
+  onInputValueChange = debounce(async (query) => {
     if (query.length) {
       fetch(this.searchEndpoint(query))
         .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
+        .then(async (res) => {
           // Wrap results in an object which will tell React what component to use to render results.
           const results = res.results.map((item) => ({
             type: "RESULT",
@@ -84,13 +88,22 @@ class Search extends Component {
               ]
             : [];
 
+          const urbitOrgResults = await fetch(this.urbitOrgSearch(query))
+            .then((res) => res.json())
+            .then((res) => {
+              return res.results.map((item) => ({
+                type: "URBIT_ORG_RESULT",
+                content: item,
+              }));
+            });
+
           //   const glossaryResults = this.glossarySearch(query).map((item) => ({
           //     type: "GLOSSARY_RESULT",
           //     content: item,
           //   }));
 
           //   const list = [...glossaryResults, ...patpResult, ...results];
-          const list = [...patpResult, ...results];
+          const list = [...patpResult, ...results, ...urbitOrgResults];
           this.setState({ results: list });
         });
     } else {
@@ -241,6 +254,47 @@ class Search extends Component {
                                   {item.content.parent !== "Content"
                                     ? `${item.content.parent} /`
                                     : ""}{" "}
+                                  {item.content.title}
+                                </p>
+                                <p
+                                  className={`text-base font-regular text-small ${
+                                    selected ? "text-midWhite" : "text-wall-500"
+                                  }`}
+                                >
+                                  {item.content.content}
+                                </p>
+                              </div>
+                            </li>
+                          );
+                        }
+                        if (item.type === "URBIT_ORG_RESULT") {
+                          const urbOrgItem = Object.assign({}, item.content);
+                          urbOrgItem[
+                            "slug"
+                          ] = `https://urbit.org${item.content.slug}`;
+                          return (
+                            <li
+                              className={`cursor-pointer flex text-left w-full ${
+                                selected ? "bg-green-400" : ""
+                              }`}
+                              {...getItemProps({
+                                key: item.content.link + "-" + index,
+                                index,
+                                item: urbOrgItem,
+                                selected,
+                              })}
+                            >
+                              <div className="p-3">
+                                <p
+                                  className={`font-medium text-base ${
+                                    selected ? "text-white" : "text-wall-600"
+                                  }`}
+                                >
+                                  <span className="text-wall-400">
+                                    {item.content.parent !== "Content"
+                                      ? `urbit.org / ${item.content.parent} /`
+                                      : "urbit.org /"}{" "}
+                                  </span>
                                   {item.content.title}
                                 </p>
                                 <p
