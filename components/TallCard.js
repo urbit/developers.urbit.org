@@ -10,7 +10,7 @@ export default function TallCard({
 }) {
   return (
     <div
-      className={`cursor-pointer lg:aspect-w-10 lg:aspect-h-6 xl:aspect-w-16 xl:aspect-h-8 ${className}`}
+      className={`cursor-pointer lg:aspect-w-8 lg:aspect-h-10 xl:aspect-w-8 xl:aspect-h-8 ${className}`}
     >
       <div key={title} className={`bg-wall-100 rounded-xl min-h-0 `}>
         <Link href={href}>

@@ -1,7 +1,12 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Container, SingleColumn, Section } from "foundation-design-system";
+import {
+  Container,
+  SingleColumn,
+  Section,
+  TwoUp,
+} from "foundation-design-system";
 import Link from "next/link";
 import {
   Comms,
@@ -83,7 +88,7 @@ export default function Home() {
           </Section>
           <Section>
             <h2 className="pt-12">Quickstart: Lightning Tutorials</h2>
-            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4 pt-12">
+            <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
               <Card
                 icon={<Comms />}
                 title="Encrypted Chat Application"
@@ -104,14 +109,14 @@ export default function Home() {
               Learn the foundations of software development on Urbit with our
               core curriculum of guides.
             </p>
-            <div className="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-4">
+            <TwoUp>
               <TallCard
                 title="Hoon School"
                 description="Learn the fundamentals of the Hoon programming language"
                 callout="View Guide"
                 href="/guides/hoon-school"
                 image="/images/hoon.svg"
-                className="basis-1/2"
+                className="h-full"
               />
               <TallCard
                 title="App School"
@@ -119,9 +124,9 @@ export default function Home() {
                 callout="View Guide"
                 href="/guides/app-school"
                 image="/images/app.svg"
-                className="basis-1/2"
+                className="h-full"
               />
-            </div>
+            </TwoUp>
             <Link href="/guides" passHref>
               <a className="button-lg bg-wall-600 text-white w-fit">
                 View All Guides
