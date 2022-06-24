@@ -1,21 +1,21 @@
 +++
-title = "Guides"
+title = "Additional Guides"
 weight = 20
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 insert_anchor_links = "right"
 +++
 
-## [Writing Aqua Tests](/docs/hoon/guides/aqua)
+## [Writing Aqua Tests](/guides/additional/aqua)
 
-## [CLI Apps](/docs/hoon/guides/cli-tutorial)
+## [CLI Apps](/guides/additional/cli-tutorial)
 
-## [Parsing](/docs/hoon/guides/parsing)
+## [Parsing](/guides/additional/parsing)
 
-## [Strings](/docs/hoon/guides/strings)
+## [Strings](/guides/additional/strings)
 
-## [JSON](/docs/hoon/guides/json-guide)
+## [JSON](/guides/additional/json-guide)
 
-## [Sail](/docs/hoon/guides/sail)
+## [Sail](/guides/additional/sail)
 
-## [Unit tests](/docs/hoon/guides/unit-tests)
+## [Unit tests](/guides/additional/unit-tests)

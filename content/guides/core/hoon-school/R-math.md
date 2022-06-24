@@ -180,6 +180,97 @@ The `++equ:rs` arm checks for complete equality of two values.  The downside of 
 
     <img src="https://latex.codecogs.com/svg.image?\large&space;|a-b|&space;\leq&space;\texttt{atol}" title="https://latex.codecogs.com/svg.image?\large |a-b| \leq \texttt{atol}" />
 
+#### Tutorial:  Length Converter
+
+- Write a generator to take a `@tas` input measurement unit of length, a `@rs` value, and a `@tas` output unit to which we will convert the input measurement.  For instance, this generator could convert a number of imperial feet to metric decameters.
+
+```hoon
+|=  [fr-meas=@tas num=@rs to-meas=@tas]
+=<
+^-  @rs
+?.  (check fr-meas to-meas)
+  ~|("Invalid Measures" !!)
+(output (meters fr-meas num) to-meas)
+::
+|%
++$  allowed  ?(%inch %foot %yard %furlong %chain %link %rod %fathom %shackle %cable %nautical-mile %hand %span %cubit %ell %bolt %league %megalithic-yard %smoot %barleycorn %poppy-seed %atto %femto %pico %nano %micro %milli %centi %deci %meter %deca %hecto %kilo %mega %giga %tera %peta %exa)
+::
+++  check
+  |=  [fr-meas=@tas to-meas=@tas]
+  &(?=(allowed fr-meas) ?=(allowed to-meas))
+::
+++  meters
+  |=  [in=@tas value=@rs]
+  =/  factor-one
+    (~(got by convert-to-map) in)
+  (mul:rs value factor-one)
+::
+++  output
+  |=  [in=@rs out=@tas]
+  ?:  =(out %meter)
+    in
+  (div:rs in (~(got by convert-to-map) out))
+::
+++  convert-to-map
+  ^-  (map @tas @rs)
+  %-  malt
+  ^-  (list [@tas @rs])
+  :~  :-  %atto             .1e-18
+      :-  %femto            .1e-15
+      :-  %pico             .1e-12
+      :-  %nano             .1e-8
+      :-  %micro            .1e-6
+      :-  %milli            .1e-3
+      :-  %poppy-seed       .2.212e-2
+      :-  %barleycorn       .8.47e-2
+      :-  %centi            .1e-2
+      :-  %inch             .2.54e-2
+      :-  %deci             .1e-1
+      :-  %hand             .1.016e-1
+      :-  %link             .2.012e-1
+      :-  %span             .2.228e-1
+      :-  %foot             .3.048e-1
+      :-  %cubit            .4.472e-1
+      :-  %megalithic-yard  .8.291e-1
+      :-  %yard             .9.145e-1
+      :-  %ell              .1.143
+      :-  %smoot            .1.7
+      :-  %fathom           .1.83
+      :-  %rod              .5.03
+      :-  %deca             .1e1
+      :-  %chain            .2.012e1
+      :-  %shackle          .2.743e1
+      :-  %bolt             .3.658e1
+      :-  %hecto            .1e2
+      :-  %cable            .1.8532e2
+      :-  %furlong          .2.0117e2
+      :-  %kilo             .1e3
+      :-  %mile             .1.609e3
+      :-  %nautical-mile    .1.850e3
+      :-  %league           .4.830e3
+      :-  %mega             .1e6
+      :-  %giga             .1e8
+      :-  %tera             .1e12
+      :-  %peta             .1e15
+      :-  %exa              .1e18
+      :-  %meter            .1
+    ==
+  --
+```
+
+This program shows several interesting aspects, which we've covered before but highlight here:
+
+- Meters form the standard unit of length.
+- [`~|` sigbar](https://urbit.org/docs/hoon/reference/rune/sig#-sigbar) produces an error message in case of a bad input.
+- [`+$` lusbuc](https://urbit.org/docs/hoon/reference/rune/lus#-lusbuc) is a type constructor arm, here for a type union over units of length.
+
+#### Exercise:  Measurement Converter
+
+- Add to this generator the ability to convert some other measurement (volume, mass, force, or another of your choosing).
+- Add an argument to the cell required by the gate that indicates whether the measurements are distance or your new measurement.
+- Enforce strictly that the `fr-meas` and `to-meas` values are either lengths or your new type.
+- Create a new map of conversion values to handle your new measurement conversion method.
+- Convert the functionality into a library.
 
 ### `++rs` as a Door
 
