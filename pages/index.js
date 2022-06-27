@@ -34,7 +34,8 @@ export default function Home({ search }) {
             {/* Hero statement */}
             <div className="flex flex-col space-y-4">
               <h1 className="max-w-prose">
-                Discover the creative possibility of a unified operating system
+                Discover the creative possibilities of a unified operating
+                system
               </h1>
               <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                 <Link href="/guides/quickstart" passHref>
