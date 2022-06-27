@@ -1,5 +1,6 @@
 +++
 title = "Text Processing I"
+weight = 10
 nodes = [160, 163]
 objectives = ["Review Unicode text structure.", "Distinguish cords and tapes and their characteristics.", "Transform and manipulate text using text conversion arms.", "Interpolate text.", "Employ sigpam logging levels.", "Create a `%say` generator.", "Identify how Dojo sees and interprets a generator as a cell with a head tag.", "Identify the elements of a `sample` for a `%say` generator.", "Produce a `%say` generator with optional arguments."]
 +++

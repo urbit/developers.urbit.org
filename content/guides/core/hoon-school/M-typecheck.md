@@ -1,5 +1,6 @@
 +++
 title = "Type Checking"
+weight = 10
 nodes = [183]
 objectives = ["Use assertions to enforce type constraints."]
 +++
