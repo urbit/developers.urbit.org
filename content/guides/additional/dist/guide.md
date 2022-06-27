@@ -7,15 +7,15 @@ In this document we'll walk through an example of creating and publishing a desk
 
 ## Create desk
 
-To begin, we'll need to clone the [urbit git repo](https://github.com/urbit/urbit) from the Unix terminal:
+To begin, we'll need to clone the [Urbit Git repo](https://github.com/urbit/urbit) from the Unix terminal:
 
-```
+```sh
 [user@host ~]$ git clone https://github.com/urbit/urbit urbit-git
 ```
 
 Once that's done, we can navigate to the `pkg` directory in our cloned repo:
 
-```
+```sh
 [user@host ~]$ cd urbit-git/pkg
 [user@host pkg]$ ls .
 arvo      btc-wallet    garden        grid  interface   npm                webterm
@@ -29,7 +29,7 @@ To make the creation of a new desk easier, `base-dev` and `garden-dev` contain s
 
 Let's create a new `hello` desk:
 
-```
+```sh
 [user@host pkg]$ mkdir hello
 [user@host pkg]$ ./symbolic-merge.sh base-dev hello
 [user@host pkg]$ ./symbolic-merge.sh garden-dev hello
@@ -42,7 +42,7 @@ lib  mar  sur
 
 Our desk must include a `sys.kelvin` file which specifies the kernel version it's compatible with. Let's create that:
 
-```
+```sh
 [user@host hello]$ echo "[%zuse 418]" > sys.kelvin
 [user@host hello]$ cat sys.kelvin
 [%zuse 418]
@@ -52,7 +52,7 @@ Our desk must include a `sys.kelvin` file which specifies the kernel version it'
 
 We can also add a `desk.ship` file to specify the original publisher of this desk. We'll try this on a fakezod so let's just add `~zod` as the publisher:
 
-```
+```sh
 [user@host hello]$ echo "~zod" > desk.ship
 [user@host hello]$ cat desk.ship
 ~zod
@@ -88,7 +88,7 @@ In the text editor, we'll add the following:
     base+'hello'
     glob-ames+[~zod 0v0]
     version+[0 0 1]
-    website+'https://urbit.org/guides/additional/dist/guide'
+    website+'https://developers.urbit.org/guides/additional/dist/guide'
     license+'MIT'
 ==
 ```

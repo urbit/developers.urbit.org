@@ -477,7 +477,7 @@ We get a different value from the same generator between runs, something that is
 
 ##  Scrying (In Brief)
 
-A _peek_ or a _scry_ is a request to Arvo to tell you something about the state of part of the Urbit OS.  Scries are used to determine the state of an agent or a vane.  The [`.^` dotket](/reference/hoon/rune/dot#dotket) rune sends the scry request to a particular vane with a certain _care_ or type of scry.  The request is then routed to a particular path in that vane.  Scries are discused in detail in [the App Guide](https://urbit.org/guides/core/app-school/10-scry).  We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and agent state.
+A _peek_ or a _scry_ is a request to Arvo to tell you something about the state of part of the Urbit OS.  Scries are used to determine the state of an agent or a vane.  The [`.^` dotket](/reference/hoon/rune/dot#dotket) rune sends the scry request to a particular vane with a certain _care_ or type of scry.  The request is then routed to a particular path in that vane.  Scries are discused in detail in [App School](/guides/core/app-school/10-scry).  We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and agent state.
 
 ### `%c` Clay
 

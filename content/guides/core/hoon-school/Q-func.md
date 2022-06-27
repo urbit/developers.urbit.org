@@ -140,7 +140,7 @@ Basically, one uses a `rule` on `[hair tape]` to yield an `edge`.
 
 A substantial swath of the standard library is built around parsing for various scenarios, and there's a lot to know to effectively use these tools.  **If you can parse arbitrary input using Hoon after this lesson, you're in fantastic shape for building things later.**  It's worth spending extra effort to understand how these programs work.
 
-There is a [full guide on parsing](https://urbit.org/guides/additional/hoon/parsing) which goes into more detail than this quick overview.
+There is a [full guide on parsing](/guides/additional/hoon/parsing) which goes into more detail than this quick overview.
 
 ### Scanning Through a `tape`
 
@@ -310,7 +310,7 @@ However, to parse iteratively, we need to use the [`++knee`]() function, which t
 |-(;~(plug prn ;~(pose (knee *tape |.(^$)) (easy ~))))
 ```
 
-There is an example of a calculator [in the docs](https://urbit.org/guides/additional/hoon/parsing#recursive-parsers) that's worth a read.  It uses `++knee` to scan in a set of numbers at a time.
+There is an example of a calculator [in the parsing guide](/guides/additional/hoon/parsing#recursive-parsers) that's worth a read.  It uses `++knee` to scan in a set of numbers at a time.
 
 ```hoon
 |=  math=tape
