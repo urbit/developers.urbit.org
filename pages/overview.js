@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Meta from "../components/Meta";
 import {
   Container,
@@ -38,7 +39,56 @@ export default function Overview({ markdown, search }) {
         </Section>
         <Section className="space-y-4">
           <h3>How to use this site</h3>
-          <p>Very carefully.</p>
+          <div className="md:columns-2 space-y-4 mt-4">
+            <p>
+              Hoon is a powerful and expressive language which builds on the
+              Urbit platform to promote complete app interoperability and user
+              control. We believe you'll find it to be a pleasantly innovative
+              approach to thinking about how computation works and what a
+              development experience should be.
+            </p>
+            <p>
+              This site is intended for developers who want to learn how Urbit
+              works from the inside out and how to build and deploy apps. If you
+              are new to the platform, start with{" "}
+              <Link href="/guides/core/hoon-school" passHref>
+                <a>Hoon School</a>
+              </Link>{" "}
+              and{" "}
+              <Link href="/guides/core/app-school" passHref>
+                <a>App School I</a>
+              </Link>{" "}
+              and{" "}
+              <Link href="/guides/core/app-school-full-stack" passHref>
+                <a>II</a>
+              </Link>
+              . Complete documentation for the{" "}
+              <Link href="/reference/hoon" passHref>
+                <a>Hoon language</a>
+              </Link>{" "}
+              and the{" "}
+              <Link href="/reference/stdlib" passHref>
+                <a>standard library</a>
+              </Link>{" "}
+              are included.
+            </p>
+            <p>
+              If you are a regular Urbit user (rather than a developer), you
+              will find operational instructions on the{" "}
+              <Link href="https://urbit.org" passHref>
+                <a>main site</a>
+              </Link>
+              .
+            </p>
+            <p>
+              Instructions for operators (hosting providers, power users, etc.)
+              are hosted on the{" "}
+              <Link href="https://operators.urbit.org" passHref>
+                <a>operators site</a>
+              </Link>
+              .
+            </p>
+          </div>
         </Section>
         <Section short>
           <h3>Primer</h3>
