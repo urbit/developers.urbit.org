@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import BlogPreview from "../components/BlogPreview";
+import EventPreview from "../components/EventPreview";
 import {
   Container,
   SingleColumn,
@@ -20,8 +22,11 @@ import {
 } from "../components/icons";
 import Card from "../components/Card";
 import TallCard from "../components/TallCard";
+import { getAllPosts, getAllEvents } from "../lib/lib";
+import { eventKeys } from "../lib/constants";
+import { DateTime } from "luxon";
 
-export default function Home({ search }) {
+export default function Home({ search, whatsNew }) {
   return (
     <div>
       <Head>
@@ -176,6 +181,38 @@ export default function Home({ search }) {
           </Section>
           <Section className="flex flex-col space-y-8">
             <h2>What's New</h2>
+            <TwoUp>
+              {whatsNew.slice(0, 2).map((e) => {
+                if (e.type === "event") {
+                  return (
+                    <EventPreview event={e} className="basis-1/2 h-full" />
+                  );
+                } else if (e.type === "blog") {
+                  return (
+                    <Link href={`/blog/${e.slug}`}>
+                      <div className="cursor-pointer bg-wall-100 rounded-xl basis-1/2 h-full">
+                        <div className="flex flex-col p-6 justify-between items-between h-full relative">
+                          <img
+                            className="rounded-xl w-full flex-1 object-cover"
+                            src={e.extra.image}
+                            style={{ aspectRatio: "16 / 9" }}
+                          />
+                          <div className="grow-1 shrink-0 flex flex-col h-full min-h-0 pt-4">
+                            <h3 className="mb-2">{e.title}</h3>
+                            <div className="flex flex-col xl:flex-row justify-between">
+                              <p className="truncate text-sm">
+                                {e.description}
+                              </p>
+                              <p className="text-sm">{e.date}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                }
+              })}
+            </TwoUp>
           </Section>
         </SingleColumn>
         <Footer />
@@ -220,3 +257,26 @@ const pitch = [
       "Urbit applications can be built on any interface framework, including the web",
   },
 ];
+
+export async function getStaticProps() {
+  const posts = getAllPosts(
+    ["title", "slug", "date", "description", "extra"],
+    "blog",
+    "date"
+  ).map((e) => ({ ...e, type: "blog" }));
+  const events = getAllEvents(eventKeys, "community/events").map((e) => ({
+    ...e,
+    type: "event",
+  }));
+  const whatsNew = [...posts, ...events].sort((a, b) => {
+    return DateTime.fromISO(a.date || a.ends) >
+      DateTime.fromISO(b.date || b.ends)
+      ? -1
+      : 1;
+  });
+  return {
+    props: {
+      whatsNew,
+    },
+  };
+}
