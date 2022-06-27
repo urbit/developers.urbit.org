@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
-import Meta from "../components/Meta";
+import Meta from "../../components/Meta";
+import { useRouter } from "next/router";
+import classnames from "classnames";
 import {
   Container,
   Markdown,
@@ -8,9 +10,11 @@ import {
   SingleColumn,
   TwoUp,
 } from "foundation-design-system";
-import { getPostBySlug } from "../lib/lib";
-import Header from "../components/Header";
-import Card from "../components/Card";
+import Header from "../../components/Header";
+import Card from "../../components/Card";
+import Sidebar from "../../components/Sidebar";
+import ContentArea from "../../components/ContentArea";
+import Pagination from "../../components/Pagination";
 import {
   Arvo,
   Hoon,
@@ -18,10 +22,128 @@ import {
   Vere,
   Azimuth,
   Cryptography,
-} from "../components/icons";
-import Footer from "../components/Footer";
+} from "../../components/icons";
+import Footer from "../../components/Footer";
+import overviewTree from "../../cache/overview.json";
+import { join } from "path";
+import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";
 
-export default function Overview({ markdown, search }) {
+export default function Overview({
+  posts,
+  markdown,
+  data,
+  search,
+  previousPost,
+  nextPost,
+  params,
+}) {
+  if (!params.slug) {
+    return <Landing search={search} />;
+  }
+  return (
+    <>
+      <Head>
+        <title>{data.title} • Overview • developers.urbit.org</title>
+        {Meta(data)}
+      </Head>
+      <div className="flex h-screen min-h-screen w-screen sidebar">
+        <Sidebar search={search}>
+          {childPages("/overview", posts.pages)}
+        </Sidebar>
+        <ContentArea
+          breadcrumbs={breadcrumbs(posts, params.slug?.slice(0, -1) || "")}
+          title={data.title}
+          search={search}
+          section="Overview"
+          params={params}
+        >
+          <div className="markdown technical">
+            <Markdown.render content={JSON.parse(markdown)} />
+          </div>
+          <div className="flex justify-between mt-16">
+            {previousPost === null ? (
+              <div className={""} />
+            ) : (
+              <Pagination
+                previous
+                title="Previous Post"
+                post={previousPost}
+                className=""
+                section={join("overview", params.slug?.slice(0, -1).join("/"))}
+              />
+            )}
+            {nextPost === null ? (
+              <div className={""} />
+            ) : (
+              <Pagination
+                next
+                title="Next Post"
+                post={nextPost}
+                className=""
+                section={join("overview", params.slug?.slice(0, -1).join("/"))}
+              />
+            )}
+          </div>
+          <a
+            className="font-semibold rounded-xl block p-2 text-wall-400 hover:text-green-400 mt-16"
+            target="_blank"
+            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/overview/${
+              params.slug?.join("/") || "_index"
+            }.md`}
+          >
+            Edit this page on GitHub
+          </a>
+        </ContentArea>
+      </div>
+    </>
+  );
+}
+
+const breadcrumbs = (posts, paths) => {
+  const results = [<Link href="/overview">Overview</Link>];
+  let thisLink = "/overview";
+  for (const path of paths) {
+    posts = posts.children[path];
+    thisLink = join(thisLink, path);
+    results.push(
+      <span className="px-1">/</span>,
+      <Link href={thisLink}>{posts.title}</Link>
+    );
+  }
+  return results;
+};
+
+const childPages = (thisLink, children, level = 0) => (
+  <ul>
+    {children?.map((child) => (
+      <li>{pageTree(join(thisLink, child.slug), child, level)}</li>
+    ))}
+  </ul>
+);
+
+const pageTree = (thisLink, tree, level = 0) => {
+  const router = useRouter();
+
+  const isThisPage = router.asPath === thisLink;
+
+  const pageItemClasses = classnames({
+    "pl-4 text-base hover:text-green-400": level === 0,
+    "pl-8 text-base hover:text-green-400": level === 1,
+    "pl-12 text-base hover:text-green-400": level === 2,
+    "dot relative text-green-400": isThisPage,
+    "text-wall-600": !isThisPage,
+  });
+
+  return (
+    <>
+      <Link href={thisLink} passHref>
+        <a className={`${pageItemClasses} cursor-pointer`}>{tree.title}</a>
+      </Link>
+    </>
+  );
+};
+
+function Landing({ search }) {
   const post = {
     title: "Overview",
     description: "Urbit's stack in a nutshell.",
@@ -217,4 +339,54 @@ export default function Overview({ markdown, search }) {
       <Footer />
     </Container>
   );
+}
+
+export async function getStaticProps({ params }) {
+  let posts = overviewTree;
+
+  const { data, content } = getPage(
+    join(process.cwd(), "content/overview", params.slug?.join("/") || "/")
+  );
+
+  const previousPost =
+    getPreviousPost(
+      params.slug?.slice(-1).join("") || "overview",
+      ["title", "slug", "weight"],
+      join("overview", params.slug?.slice(0, -1).join("/") || "/"),
+      "weight"
+    ) || null;
+
+  const nextPost =
+    getNextPost(
+      params.slug?.slice(-1).join("") || "overview",
+      ["title", "slug", "weight"],
+      join("overview", params.slug?.slice(0, -1).join("/") || "/"),
+      "weight"
+    ) || null;
+
+  const markdown = JSON.stringify(Markdown.parse({ post: { content } }));
+
+  return { props: { posts, data, markdown, params, previousPost, nextPost } };
+}
+
+export async function getStaticPaths() {
+  const posts = overviewTree;
+  const slugs = [];
+
+  const allHrefs = (thisLink, tree) => {
+    slugs.push(thisLink, ...tree.pages.map((e) => join(thisLink, e.slug)));
+    allHrefsChildren(thisLink, tree.children);
+  };
+
+  const allHrefsChildren = (thisLink, children) => {
+    Object.entries(children).map(([childSlug, child]) => {
+      allHrefs(join(thisLink, childSlug), child);
+    });
+  };
+
+  allHrefs("/overview", posts);
+  return {
+    paths: slugs,
+    fallback: false,
+  };
 }
