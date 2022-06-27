@@ -3,8 +3,6 @@ title = "Hoon School Live"
 weight = 3
 +++
 
-#   Hoon School Live
-
 Periodically, the Urbit Foundation has offered synchronous cohort classes which
 cover the [Hoon School](/guides/core/hoon-school) curriculum.
 

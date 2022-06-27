@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Meta from "../components/Meta";
+import { getAllPosts } from "../lib/lib";
 import {
   Container,
+  Markdown,
   SingleColumn,
   Section,
   TwoUp,
@@ -9,11 +11,12 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-export default function Courses({ search }) {
+export default function Courses({ search, courses }) {
   const post = {
     title: "Courses",
     description: "Join the next session of Hoon School or App School.",
   };
+  console.log(courses);
   return (
     <Container>
       <Head>
@@ -27,22 +30,35 @@ export default function Courses({ search }) {
         </Section>
         <Section>
           <TwoUp>
-            <div className="flex flex-col space-y-4">
-              <h3>Hoon School Live</h3>
-              <a className="button-sm bg-green-400 text-white w-fit" href="#">
-                Register
-              </a>
-            </div>
-            <div className="flex flex-col space-y-4">
-              <h3>App School Live</h3>
-              <a className="button-sm bg-green-400 text-white w-fit" href="#">
-                Register
-              </a>
-            </div>
+            {courses.map((course) => {
+              return (
+                <div className="flex flex-col space-y-4 bg-wall-100 rounded-xl p-6 h-full">
+                  <h3>{course.title}</h3>
+                  <div className="markdown">
+                    <Markdown.render content={JSON.parse(course.content)} />
+                  </div>
+                </div>
+              );
+            })}
           </TwoUp>
         </Section>
       </SingleColumn>
       <Footer />
     </Container>
   );
+}
+
+export async function getStaticProps() {
+  const courses = getAllPosts(
+    ["title", "slug", "date", "description", "extra", "content"],
+    "courses",
+    "weight"
+  ).map((e) => ({
+    ...e,
+    content: JSON.stringify(Markdown.parse({ post: { content: e.content } })),
+  }));
+
+  return {
+    props: { courses },
+  };
 }

@@ -3,8 +3,6 @@ title = "App School Live"
 weight = 3
 +++
 
-#   App School Live
-
 Periodically, the Urbit Foundation will offer synchronous cohort classes which
 cover the [App School](/guides/core/hoon-school) curriculum.
 
