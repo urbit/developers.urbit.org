@@ -70,6 +70,8 @@ The dry gate does not preserve the type of `a` and `b`, but downcasts it to `*`;
 
 Wet gates are therefore used when incoming type information is not well known and needs to be preserved.  This includes parsing, building, and structuring arbitrary nouns.  (If you are familiar with them, you can think of C++'s templates and operator overloading, and Haskell's typeclasses.)  Wet gates are very powerful; they're enough rope to hang yourself with.  Don't use them unless you have a specific reason to do so.  (If you see `mull-*` errors then something has gone wrong with using wet gates.)
 
+- [~timluc-miptev, “Wet Gates”](https://blog.timlucmiptev.space/wetgates.html)
+
 #### Exercise:  The Trapezoid Rule
 
 The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a definite integral.  It approximates the area under the curve by a trapezoid or (commonly) a series of trapezoids.  The rule requires a function as one of the inputs, i.e. it applies _for a specific function_.  We will use wet gates to accomplish this without stripping type information of the input gate core.
@@ -172,7 +174,7 @@ nest-fail
 ```
 
 
-##  Variadicity
+##  Variance
 
 Dry polymorphism works by substituting cores.  Typically, one core is used as the interface definition, then replaced with another core which does something useful.
 

@@ -242,9 +242,9 @@ A `+$vase` is a pair of type and value, such as that returned by `!>` zapgar.  A
 
 `map`s and `set`s are frequently used in the standard library and in the extended ecosystem (such as in `graph-store`).  There are a some other common patterns which recur often enough that they have their own names:
 
-- [`++jar`](https://urbit.org/docs/hoon/reference/stdlib/2o#jar) is a mold for a `map` of `list`s.  `++jar` uses the [`++ja`](https://urbit.org/docs/hoon/reference/stdlib/2j#ja) core.
+- [`++jar`](https://urbit.org/docs/hoon/reference/stdlib/2o#jar) is a mold for a `map` of `list`s.  `++jar` uses the [`++ja`](https://urbit.org/docs/hoon/reference/stdlib/2j#ja) core.  (Mnemonic:  jars hold solid ordered things, like a `list`.)
 
-- [`++jug`](https://urbit.org/docs/hoon/reference/stdlib/2o#jug) is a mold for a `map` of `set`s.  `++jug` uses the  [`++ju`](https://urbit.org/docs/hoon/reference/stdlib/2j#ju) core.
+- [`++jug`](https://urbit.org/docs/hoon/reference/stdlib/2o#jug) is a mold for a `map` of `set`s.  `++jug` uses the  [`++ju`](https://urbit.org/docs/hoon/reference/stdlib/2j#ju) core.  (Mnemonic:  jugs hold liquids, evoking the unordered nature of a `set`.)
 
 - `++mip` is a mold for a map of maps.  `++mip` lives in the `%garden` desk in the Urbit repo in `/lib/mip.hoon`.  Affordances are still few and there are not currently docs on how to use `++mip`, but a short example follows:
 

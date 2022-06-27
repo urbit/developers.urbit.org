@@ -6,9 +6,9 @@ template = "doc.html"
 
 **Nock** is a purely functional typeless programming language and acts as
 Urbit's lowest-level language. To be more precise, it is a minimalist Turing 
-complete combinator calculus. Nock can be thought of as the assembly-level
-language specification for Urbit.  Nock is evaluated by the runtime system
-[Vere](/docs/glossary/vere).
+complete [combinator calculus](https://en.wikipedia.org/wiki/Combinatory_logic).
+Nock can be thought of as the assembly-level language specification for Urbit.
+Nock is evaluated by the runtime system [Vere](/docs/glossary/vere).
 
 The only basic data type in Nock is the [atom](/docs/glossary/atom), which is a
 non-negative integer. Computation in Nock occurs through the use of
