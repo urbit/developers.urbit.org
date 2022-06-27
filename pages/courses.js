@@ -16,7 +16,6 @@ export default function Courses({ search, courses }) {
     title: "Courses",
     description: "Join the next session of Hoon School or App School.",
   };
-  console.log(courses);
   return (
     <Container>
       <Head>
