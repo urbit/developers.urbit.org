@@ -219,8 +219,7 @@ we can try out `dbug`. To start it, run the following in the dojo:
 ```
 
 For details of using the `|rein` generator, see the [Dojo
-Tools](/docs/userspace/dist/tools#rein) section of the software distribution
-documentation.
+Tools](/using/os/dojo-tools#rein) documentation.
 
 Now our agent should be running, so let's try out `dbug`. In the dojo, let's try
 poking our agent with the `+dbug` generator:
