@@ -11,6 +11,7 @@ import ContentArea from "../../components/ContentArea";
 import Sidebar from "../../components/Sidebar";
 import TallCard from "../../components/TallCard";
 import Pagination from "../../components/Pagination";
+import BasicPage from "../../components/BasicPage";
 import {
   Container,
   Section,
@@ -19,7 +20,7 @@ import {
   Markdown,
 } from "foundation-design-system";
 import { Comms, MintFiller } from "../../components/icons";
-import guidesTree from "../../cache/guides.json";
+import referenceTree from "../../cache/reference.json";
 import { join } from "path";
 import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";
 
@@ -33,23 +34,30 @@ export default function GuidePage({
   nextPost,
 }) {
   if (!params.slug) {
-    return <Landing search={search} />;
+    return (
+      <BasicPage
+        wide
+        post={{ title: data.title, slug: "/reference" }}
+        markdown={markdown}
+        search={search}
+      />
+    );
   }
   return (
     <>
       <Head>
-        <title>{data.title} • Guides • developers.urbit.org</title>
+        <title>{data.title} • Reference • developers.urbit.org</title>
         {Meta(data)}
       </Head>
       <div className="flex h-screen min-h-screen w-screen sidebar">
         <Sidebar search={search}>
-          {childPages("/guides", posts.children)}
+          {childPages("/reference", posts.children)}
         </Sidebar>
         <ContentArea
           breadcrumbs={breadcrumbs(posts, params.slug?.slice(0, -1) || "")}
           title={data.title}
           search={search}
-          section="Guides"
+          section="Reference"
           params={params}
         >
           <div className="markdown technical">
@@ -64,7 +72,7 @@ export default function GuidePage({
                 title="Previous Post"
                 post={previousPost}
                 className=""
-                section={join("guides", params.slug?.slice(0, -1).join("/"))}
+                section={join("reference", params.slug?.slice(0, -1).join("/"))}
               />
             )}
             {nextPost === null ? (
@@ -75,7 +83,7 @@ export default function GuidePage({
                 title="Next Post"
                 post={nextPost}
                 className=""
-                section={join("guides", params.slug?.slice(0, -1).join("/"))}
+                section={join("reference", params.slug?.slice(0, -1).join("/"))}
               />
             )}
           </div>
@@ -95,8 +103,8 @@ export default function GuidePage({
 }
 
 const breadcrumbs = (posts, paths) => {
-  const results = [<Link href="/guides">Guides</Link>];
-  let thisLink = "/guides";
+  const results = [<Link href="/reference">Reference</Link>];
+  let thisLink = "/reference";
   for (const path of paths) {
     posts = posts.children[path];
     thisLink = join(thisLink, path);
@@ -187,113 +195,26 @@ const pageTree = (thisLink, tree, level = 0) => {
   );
 };
 
-function Landing({ search }) {
-  const post = {
-    title: "Guides",
-    description:
-      "Everything you need to know to start building applications on Urbit.",
-  };
-  return (
-    <Container>
-      <Head>
-        <title>Guides • developers.urbit.org</title>
-        {Meta(post)}
-      </Head>
-      <Header search={search} />
-      <SingleColumn>
-        <Section>
-          <h1>Guides</h1>
-        </Section>
-        <Section short>
-          <h3 className="pt-12">Quickstart: Lightning Tutorials</h3>
-          <p className="pt-4">
-            Build an application on Urbit in 15 minutes with these instant
-            application guides.
-          </p>
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
-            <Card
-              icon={<Comms />}
-              title="Encrypted Chat Application"
-              text="Build your own secure comms tool"
-              className="basis-1/2"
-            />
-            <Card
-              icon={<MintFiller />}
-              title="Lorem Ipsum Dolorem"
-              text="Roll your own encrypted chat application in minutes"
-              className="basis-1/2"
-            />
-          </div>
-        </Section>
-        <Section short className="space-y-6">
-          <h3>Core Curriculum</h3>
-          <p>
-            The following guides will teach you everything you need to know to
-            start building applications on Urbit.
-          </p>
-          <TwoUp>
-            <TallCard
-              title="Environment Setup"
-              description="Learn how to get your urbit development environment configured"
-              callout="View Guide"
-              href="/guides/additional/development/environment"
-              image="/images/environment.svg"
-              className="h-full"
-            />
-            <TallCard
-              title="Hoon School"
-              description="Learn the fundamentals of the Hoon programming language"
-              callout="View Guide"
-              href="/guides/core/hoon-school"
-              image="/images/hoon.svg"
-              className="h-full"
-            />
-          </TwoUp>
-          <TwoUp className="!mt-0">
-            <TallCard
-              title="App School"
-              description="Learn how to build Urbit userspace applications by writing your own Gall agents"
-              callout="View Guide"
-              href="/guides/core/app-school"
-              image="/images/app.svg"
-              className="h-full"
-            />
-            <TallCard
-              title="Full Stack Integration"
-              description="Learn how to create Gall agents and integrate them into a React front-end"
-              callout="View Guide"
-              href="/guides/core/app-school-full-stack"
-              image="/images/fullstack.svg"
-              className="h-full"
-            />
-          </TwoUp>
-        </Section>
-      </SingleColumn>
-      <Footer />
-    </Container>
-  );
-}
-
 export async function getStaticProps({ params }) {
-  let posts = guidesTree;
+  let posts = referenceTree;
 
   const { data, content } = getPage(
-    join(process.cwd(), "content/guides", params.slug?.join("/") || "/")
+    join(process.cwd(), "content/reference", params.slug?.join("/") || "/")
   );
 
   const previousPost =
     getPreviousPost(
-      params.slug?.slice(-1).join("") || "guides",
+      params.slug?.slice(-1).join("") || "reference",
       ["title", "slug", "weight"],
-      join("guides", params.slug?.slice(0, -1).join("/") || "/"),
+      join("reference", params.slug?.slice(0, -1).join("/") || "/"),
       "weight"
     ) || null;
 
   const nextPost =
     getNextPost(
-      params.slug?.slice(-1).join("") || "guides",
+      params.slug?.slice(-1).join("") || "reference",
       ["title", "slug", "weight"],
-      join("guides", params.slug?.slice(0, -1).join("/") || "/"),
+      join("reference", params.slug?.slice(0, -1).join("/") || "/"),
       "weight"
     ) || null;
 
@@ -303,7 +224,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = guidesTree;
+  const posts = referenceTree;
   const slugs = [];
 
   const allHrefs = (thisLink, tree) => {
@@ -317,7 +238,7 @@ export async function getStaticPaths() {
     });
   };
 
-  allHrefs("/guides", posts);
+  allHrefs("/reference", posts);
   return {
     paths: slugs,
     fallback: false,
