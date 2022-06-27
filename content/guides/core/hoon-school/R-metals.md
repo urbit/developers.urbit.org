@@ -1,15 +1,8 @@
----
-title: Gates
-nodes: 288, 299
-objectives:
-  - "Distinguish dry and wet cores."
-  - "Describe use cases for wet gates (using genericity)."
-  - "Enumerate and distinguish use cases for dry cores (using variance):"
-  - "- Covariant (`%zinc`)"
-  - "- Contravariant (`%iron`)"
-  - "- Bivariant (`%lead`)"
-  - "- Invariant (`%gold`)"
----
++++
+title: Generic and Variant Cores
+nodes: [288, 299]
+objectives: ["Distinguish dry and wet cores.", "Describe use cases for wet gates (using genericity).", "Enumerate and distinguish use cases for dry cores (using variance):", "- Covariant (`%zinc`)", "- Contravariant (`%iron`)", "- Bivariant (`%lead`)", "- Invariant (`%gold`)"]
++++
 
 #   Adaptive Cores
 
@@ -66,7 +59,7 @@ In a nutshell, compare these two gates:
 [%dog %cat]
 ```
 
-The dry gate does not preserve the type of `a` and `b`, but downcasts it to `*`; the wet gate does preserve the input types.  It is good practice to include a cast in all gates, even wet gates.  But in many cases the desired output type depends on the input type.  How can we cast appropriately? Often we can cast by example, using the input values themselves (using `^+` ketlus).
+The dry gate does not preserve the type of `a` and `b`, but downcasts it to `*`; the wet gate does preserve the input types.  It is good practice to include a cast in all gates, even wet gates.  But in many cases the desired output type depends on the input type.  How can we cast appropriately?  Often we can cast by example, using the input values themselves (using `^+` ketlus).
 
 Wet gates are therefore used when incoming type information is not well known and needs to be preserved.  This includes parsing, building, and structuring arbitrary nouns.  (If you are familiar with them, you can think of C++'s templates and operator overloading, and Haskell's typeclasses.)  Wet gates are very powerful; they're enough rope to hang yourself with.  Don't use them unless you have a specific reason to do so.  (If you see `mull-*` errors then something has gone wrong with using wet gates.)
 

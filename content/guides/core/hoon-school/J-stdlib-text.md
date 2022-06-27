@@ -1,21 +1,12 @@
----
-title: Handling Text
-nodes: 160, 163
-objectives:
-  - "Review Unicode text structure."
-  - "Distinguish cords and tapes and their characteristics."
-  - "Transform and manipulate text using text conversion arms."
-  - "Interpolate text."
-  - "Employ sigpam logging levels."
-  - "Create a `%say` generator."
-  - "Identify how Dojo sees and interprets a generator as a cell with a head tag."
-  - "Identify the elements of a `sample` for a `%say` generator."
-  - "Produce a `%say` generator with optional arguments."
----
++++
+title: Text Processing I
+nodes: [160, 163]
+objectives: ["Review Unicode text structure.", "Distinguish cords and tapes and their characteristics.", "Transform and manipulate text using text conversion arms.", "Interpolate text.", "Employ sigpam logging levels.", "Create a `%say` generator.", "Identify how Dojo sees and interprets a generator as a cell with a head tag.", "Identify the elements of a `sample` for a `%say` generator.", "Produce a `%say` generator with optional arguments."]
++++
 
 #   Text Processing I
 
-_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type.  We don't deal with formatted text (`tank`s) or parsers here, deferring that discussion.  Formatted text and text parsing are covered [in a later module](./O-stdlib-io.md)._
+_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type.  We don't deal with formatted text (`tank`s) or parsers here, deferring that discussion.  Formatted text and text parsing are covered [in a later module](./P-stdlib-io.md)._
 
 ##  Text in Hoon
 
@@ -115,7 +106,7 @@ A further tweak of the ASCII-only concept, the `@tas` `term` permits only “tex
 
 `term`s are rarely used for message-like text, but they are used all the time for internal labels in code.  They differ from regular text in a couple of key ways that can confuse you until you're used to them.
 
-For instance, a `@tas` value is also a mold, and the value will _only_ match its own mold, so they are commonly used with [type unions](./M-logic.md) to filter for acceptable values.
+For instance, a `@tas` value is also a mold, and the value will _only_ match its own mold, so they are commonly used with [type unions](./N-logic.md) to filter for acceptable values.
 
 ```hoon
 > ^-  @tas  %5
@@ -330,7 +321,7 @@ To _tokenize_ text is to break it into pieces according to some rule.  For insta
  1   2   3     4   5    6   7   8     9  10         11    12 13 14  15
 ```
 
-Hoon has a sophisticated parser built into it that [we'll use later](./O-stdlib-io.md).  There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other.  We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
+Hoon has a sophisticated parser built into it that [we'll use later](./P-stdlib-io.md).  There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other.  We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
 
 #### Exercise: Break Text at a Space
 
@@ -636,8 +627,6 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`.  Let's use 
 Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` faslus rune.  When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that.  It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
 
 Below `/+  playing-cards`, you have the standard `say` generator boilerplate that allows us to get a bit of entropy from `arvo` when the generator is run. Then we feed the entropy and a `deck` created by `make-deck` into `shuffle-deck` to get back a shuffled `deck`.
-
----
 
 #### Solutions to Exercises
 

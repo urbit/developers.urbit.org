@@ -1,15 +1,8 @@
----
++++
 title: Cores
-nodes: 130, 133
-objectives:
-  - "Employ a trap to produce a reentrant block of code."
-  - "Produce a recursive gate."
-  - "Distinguish head and tail recursion."
-  - "Consider Hoon structures as cores."
-  - "Identify the special role of the `$` buc arm in many cores."
-  - "Order neighboring cores within the subject for addressibility."
-  - "Produce a type arm."
----
+nodes: [130, 133]
+objectives: ["Employ a trap to produce a reentrant block of code.", "Produce a recursive gate.", "Distinguish head and tail recursion.", "Consider Hoon structures as cores.", "Identify the special role of the `$` buc arm in many cores.", "Order neighboring cores within the subject for addressibility.", "Produce a type arm."]
++++
 
 #   Cores
 
@@ -347,7 +340,7 @@ This core defines a set of types intended to work with playing cards:
 +$  rank  ?(1 2 3 4 5 6 7 8 9 10 11 12 13)
 +$  card  [sut=suit val=rank]
 +$  deck  (list card)
----
+--
 ```
 
 #### Cores in Generators

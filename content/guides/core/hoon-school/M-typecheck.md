@@ -1,9 +1,8 @@
----
++++
 title: Type Checking
-nodes: 183
-objectives:
-  - "Use assertions to enforce type constraints."
----
+nodes: [183]
+objectives: ["Use assertions to enforce type constraints."]
++++
 
 #   Type Checking
 
@@ -208,7 +207,7 @@ nest-fail
 nest-fail
 ```
 
-We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation [when we discuss type polymorphism](./Q-metals.md).
+We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation [when we discuss type polymorphism](./R-metals.md).
 
 This isn't a comprehensive list of the type checks in Hoon:  for instance, some other runes that include a type check are [`=.`](https://urbit.org/docs/hoon/reference/rune/tis#-tisdot) and [`%_` cencab](https://urbit.org/docs/hoon/reference/rune/cen#_-cencab).
 
@@ -253,7 +252,7 @@ It's important to remember to include a cast rune with each gate and trap expres
 
 ### (Dry) Gate Sample Definitions
 
-By now you've used the `|=` rune to define several gates.  This rune is used to produce a _dry gate_, which has different type-checking and type-inference properties than a _wet gate_ does.  We won't explain the distinction until [a later module](./Q-metals.md)—for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
+By now you've used the `|=` rune to define several gates.  This rune is used to produce a _dry gate_, which has different type-checking and type-inference properties than a _wet gate_ does.  We won't explain the distinction until [a later module](./R-metals.md)—for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
 
 The first subexpression after the `|=` defines the sample type.  Any faces used in this definition have the type declared for it in this definition.  Consider an addition generator `/gen/add.hoon`:
 

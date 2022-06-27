@@ -1,16 +1,8 @@
----
++++
 title: Libraries
-nodes: 145, 153, 175
-objectives:
-  - "Import a library using `/+` faslus."
-  - "Create a new library in `/lib`."
-  - "Identify the role of a desk in the Clay filesystem."
-  - "Identify the components of a beak."
-  - "Identify filesystem locations (including desks)."
-  - "Identify the components of a path."
-  - "Build code samples with `-build-file` thread."
-  - "Discuss Ford import runes."
----
+nodes: [145, 153, 175]
+objectives: ["Import a library using `/+` faslus.", "Create a new library in `/lib`.", "Identify the role of a desk in the Clay filesystem.", "Identify the components of a beak.", "Identify filesystem locations (including desks).", "Identify the components of a path.", "Build code samples with `-build-file` thread.", "Discuss Ford import runes."]
++++
 
 #   Libraries
 
@@ -77,7 +69,7 @@ Watch for these being used in generators and libraries over the next few modules
 
 #### Exercise:  A Playing Card Library
 
-In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](./K-doors.md) to produce [randomness](./N-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](https://urbit.org/docs/hoon/reference/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
+In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](./K-doors.md) to produce [randomness](./O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](https://urbit.org/docs/hoon/reference/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
 
 ```hoon
 |%
@@ -242,7 +234,7 @@ Unfortunately `/` fas runes don't work in the Dojo right now, so we need to buil
     > =playing-cards -build-file /===/lib/playing-cards/hoon
     ```
 
-    We then invoke it using the _entropy_ or system randomness.  (This is an unpredictable value we will use when we want a process to be random.  We will discuss it in detail when we talk about [subject-oriented programming](./N-subject.md).)
+    We then invoke it using the _entropy_ or system randomness.  (This is an unpredictable value we will use when we want a process to be random.  We will discuss it in detail when we talk about [subject-oriented programming](./O-subject.md).)
 
     ```hoon
     > =deck (shuffle-deck:playing-cards make-deck:playing-cards eny)

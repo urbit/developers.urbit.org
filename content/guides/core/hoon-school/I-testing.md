@@ -1,13 +1,10 @@
----
-title: Building Code Confidently
-nodes: 170, 190
-objectives:
-  - "Run existing unit tests."
-  - "Produce a unit test."
-  - "Employ a debugging strategy to identify and correct errors in Hoon code."
----
++++
+title: Testing Code
+nodes: [170, 190]
+objectives: ["Run existing unit tests.", "Produce a unit test.", "Employ a debugging strategy to identify and correct errors in Hoon code."]
++++
 
-#   Building Code Confidently
+#   Testing Code
 
 _This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies._
 

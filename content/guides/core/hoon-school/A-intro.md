@@ -1,11 +1,10 @@
----
-title: Introduction to Hoon
-nodes: 100, 103
-objectives:
-  - "Explain what an Urbit ship is."
-  - "Distinguish a fakeship from a liveship."
-  - "Pronounce ASCII characters per standard Hoon developer practice."
----
++++
+title = "Introduction to Hoon"
+weight = 10
+template = "doc.html"
+nodes: [100, 103]
+objectives: ["Explain what an Urbit ship is.", "Distinguish a fakeship from a liveship.", "Pronounce ASCII characters per standard Hoon developer practice."
++++
 
 #   Introduction to Hoon
 
@@ -114,7 +113,7 @@ Hoon uses _runes_, or two-character ASCII symbols, to describe its structure.  (
 It is highly advisable for you to learn these pronunciations, as the documentation and other developers employ them frequently.  For instance, a rune like `|=` is called a “bartis”, and you will find it designated as such in the docs, in the source code, and among the developers.
 
 | Name | Character | Name | Character | Name | Character |
-| ---- | ----- | ---- | ----- | ---- | ----- |
+| ]---- | ----- | ---- | ----- | ---- | ----- |
 | `ace` | `␣` | `gap` | `␣␣`, `\n` | pat | `@` |
 | `bar` | `|` | `gar` | `>` | `sel` | `[` |
 | `bas` | `\` | `hax` | `#` | `ser` | `]` |

@@ -1,16 +1,8 @@
----
++++
 title: Mathematics
-nodes: 234, 236, 284
-objectives:
-  - "Review floating-point mathematics including IEEE-754."
-  - "Examine `@r` atomic representation of floating-point values."
-  - "Manipulate and convert floating-point values using the `@r` operations."
-  - "Examine `@s` atomic representation of signed integer values."
-  - "Use `+si` to manipulate `@s` signed integer values."
-  - "Define entropy and its source."
-  - "Utilize `eny` in a random number generator (`og`)."
-  - "Distinguish insecure hashing (`mug`) from secure hashing (`shax` and friends)."
----
+nodes: [234, 236, 284]
+objectives: ["Review floating-point mathematics including IEEE-754.", "Examine `@r` atomic representation of floating-point values.", "Manipulate and convert floating-point values using the `@r` operations.", "Examine `@s` atomic representation of signed integer values.", "Use `+si` to manipulate `@s` signed integer values.", "Define entropy and its source.", "Utilize `eny` in a random number generator (`og`).", "Distinguish insecure hashing (`mug`) from secure hashing (`shax` and friends)."]
++++
 
 #   Mathematics
 
@@ -662,7 +654,7 @@ Computers often mix both deterministic processes (called “pseudorandom number 
 
 ### Random Numbers
 
-Given a source of entropy to seed a random number generator, one can then use the [`++og`](https://urbit.org/docs/hoon/reference/stdlib/3d#og) door to produce various kinds of random numbers.  The basic operations of `++og` are described in [the lesson on subject-oriented programming](./N-subject.md).
+Given a source of entropy to seed a random number generator, one can then use the [`++og`](https://urbit.org/docs/hoon/reference/stdlib/3d#og) door to produce various kinds of random numbers.  The basic operations of `++og` are described in [the lesson on subject-oriented programming](./O-subject.md).
 
 #### Exercise:  Implement a random-number generator from scratch
 

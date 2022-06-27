@@ -1,12 +1,8 @@
----
-title: Gates
-nodes: 185
-objectives:
-  - "Identify tanks, tangs, wains, walls, and similar formatted printing data structures."
-  - "Interpret logging message structures (`%leaf`, `$rose`, `$palm`)."
-  - "Interpolate to tanks with `><` syntax."
-  - "Produce useful error annotations using `~|` sigbar."
----
++++
+title: Text Processing II
+nodes: [185]
+objectives: ["Identify tanks, tangs, wains, walls, and similar formatted printing data structures.", "Interpret logging message structures (`%leaf`, `$rose`, `$palm`).", "Interpolate to tanks with `><` syntax.", "Produce useful error annotations using `~|` sigbar."]
++++
 
 #   Text Processing II
 
@@ -29,7 +25,7 @@ We frequently need to convert from text to data, and between different text-base
 - How can we evaluate Nock expressions?
     - [`++mink`](https://urbit.org/docs/hoon/reference/stdlib/4n#mink)
 
-(If you see a `|*` bartar rune in the code, it's similar to a `|=` bartis, but produces what's called a [_wet gate_](./Q-metals.md).)
+(If you see a `|*` bartar rune in the code, it's similar to a `|=` bartis, but produces what's called a [_wet gate_](./R-metals.md).)
 
 The `++html` core of the standard libary contains some additional important tools for working with web-based data, such as [MIME types](https://en.wikipedia.org/wiki/Media_type) and [JSON strings](https://en.wikipedia.org/wiki/JSON).
 
@@ -160,7 +156,7 @@ This generator requires a path argument in its sample and optionally accepts a v
 =+  lon=.^(arch (cat 3 vane %y) arg)
 ```
 
-We saw [`.^` dotket](https://urbit.org/docs/hoon/reference/rune/dot#-dotket) for the first time in [the previous module](./N-subject.md), where we learned that it performs a _peek_ or _scry_ into the state of an Arvo vane.  Most of the time this functionality is used to ask `%c` Clay or `%g` Gall for information about a path, desk, agent, etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
+We saw [`.^` dotket](https://urbit.org/docs/hoon/reference/rune/dot#-dotket) for the first time in [the previous module](./O-subject.md), where we learned that it performs a _peek_ or _scry_ into the state of an Arvo vane.  Most of the time this functionality is used to ask `%c` Clay or `%g` Gall for information about a path, desk, agent, etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
 
 ```hoon
 tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~

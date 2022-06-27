@@ -1,12 +1,8 @@
----
-title: Doors
-nodes: 150, 155
-objectives:
-  - "Identify the structure of a door and relate it to a core."
-  - "Pull an arm in a door."
-  - "Build cores for later use and with custom samples."
-  - "Identify the `$` buc arm in several structures and its role."
----
++++
+title: Cores and Doors
+nodes: [150, 155]
+objectives: ["Identify the structure of a door and relate it to a core.", "Pull an arm in a door.", "Build cores for later use and with custom samples.", "Identify the `$` buc arm in several structures and its role."]
++++
 
 #   Cores and Doors
 
@@ -193,7 +189,7 @@ It follows from this definition that a gate is a special case of a door.  A gate
 Doors are created with the [`|_` barcab](https://urbit.org/docs/hoon/reference/rune/bar#_-barcab) rune.  Doors get used for a few different purposes in the standard library:
 
 - instrumenting and storing persistent data structures like `map`s (this module and the next)
-- implementing state machines (the [subject-oriented programming module](./N-subject.md))
+- implementing state machines (the [subject-oriented programming module](./O-subject.md))
 
 One BIG pitfall for thinking about doors is thinking of them as “containing” gates, as if they were more like “objects”.  Instead, think of them the same way as you think of gates, just that they can be altered at a higher level.
 
@@ -369,7 +365,7 @@ Readers with some mathematical background may notice that `~( )` expressions all
 
 Thus, you may think of the `c` door as a function for making functions. Use the `~(arm c arg)` syntax—`arm` defines which kind of gate is produced (i.e., which arm of the door is used to create the gate), and `arg` defines the value of `b` in that gate, which in turn affects the product value of the gate produced.
 
-The standard library provides [currying functionality](./P-func.md) outside of the context of doors.
+The standard library provides [currying functionality](./Q-func.md) outside of the context of doors.
 
 #### Creating Doors with a Modified Sample
 

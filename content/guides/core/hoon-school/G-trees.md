@@ -1,20 +1,8 @@
----
++++
 title: Trees, Addressing, and Lists
-nodes: 135, 140, 156
-objectives:
-  - "Address nodes in a tree using numeric notation."
-  - "Address nodes in a tree using lark notation."
-  - "Address data in a tree using faces."
-  - "Distinguish `.` and `:` notation."
-  - "Diagram Hoon structures such as gates into the corresponding abstract syntax tree."
-  - "Use lists to organize data."
-  - "Convert between kinds of lists (e.g. tapes)."
-  - "Diagram lists as binary trees."
-  - "Operate on list elements using `snag`, `find`, `weld`, etc."
-  - "Explain how Hoon manages the subject and wing search paths."
-  - "Explain how to skip to particular matches in a wing search path through the subject."
-  - "Identify common Hoon patterns: batteries, and doors, arms, wings, and legs."
----
+nodes: [135, 140, 156]
+objectives: ["Address nodes in a tree using numeric notation.", "Address nodes in a tree using lark notation.", "Address data in a tree using faces.", "Distinguish `.` and `:` notation.", "Diagram Hoon structures such as gates into the corresponding abstract syntax tree.", "Use lists to organize data.", "Convert between kinds of lists (e.g. tapes).", "Diagram lists as binary trees.", "Operate on list elements using `snag`, `find`, `weld`, etc.", "Explain how Hoon manages the subject and wing search paths.", "Explain how to skip to particular matches in a wing search path through the subject.", "Identify common Hoon patterns: batteries, and doors, arms, wings, and legs."]
++++
 
 #   Trees, Addressing, and Lists
 
@@ -200,7 +188,7 @@ A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon a
 
 ##  Addressing Limbs
 
-Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](./Q-metals.md) work.)
+Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](./R-metals.md) work.)
 
 There are three different ways to access values:
 
@@ -236,7 +224,7 @@ Much like relative directions, one can also state “left, left, right, left” 
 
 ![](binary-tree-lark.png)
 
-Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](./L2-struct.md)):
+Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](./M-typecheck.md)):
 
 ```hoon
 -:!>('hello Mars')
@@ -771,8 +759,6 @@ First, bind these faces.
 #### Exercise:  Palindrome
 
 - Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise.  You may use the `++flop` function.
-
----
 
 #### Solutions to Exercises
 

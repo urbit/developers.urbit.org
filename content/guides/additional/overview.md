@@ -19,7 +19,7 @@ media primitives and common factors.  The docs for Graph Store have been moved
 to the Urbit-native `%docs` app.
 
 ```hoon
-|install ~TODO %docs
+|install ~pocwet %docs
 ```
 
 ## [Threads](/guides/additional/threads/)
@@ -50,4 +50,3 @@ using the `@urbit/http-api` Javascript module.
   uses to represent text.
 - [Unit tests](/guides/additional/hoon/unit-tests) afford the developer
   confidence in designing code and avoiding certain categories of bugs.
-
