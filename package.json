@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "npm run prebuild && next dev",
-    "prebuild": "npm run cache-posts && npm run guide",
+    "prebuild": "npm run cache-posts && npm run guide && npm run reference",
     "cache-posts": "node lib/cache.js",
     "guide": "node lib/buildPageTree guides weight",
+    "reference": "node lib/buildPageTree reference weight",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
