@@ -170,14 +170,14 @@ export default function Overview({ markdown, search }) {
               title="Arvo"
               text="Urbit's purely functional OS, written in Hoon, that serves as the event manager of your urbit"
               className="h-full"
-              href="/reference/arvo"
+              href="/overview/arvo"
             />
             <Card
               icon={<Hoon />}
               title="Hoon"
               text="A strictly typed functional programming language that compiles itself to Nock"
               className="h-full"
-              href="/reference/hoon"
+              href="/overview/hoon"
             />
           </TwoUp>
           <TwoUp>
@@ -186,14 +186,14 @@ export default function Overview({ markdown, search }) {
               title="Nock"
               text="A low-level homoiconic combinator language"
               className="h-full"
-              href="/reference/Nock"
+              href="/overview/Nock"
             />
             <Card
               icon={<Vere />}
               title="Vere"
               text="The Nock runtime environment and Urbit Virtual Machine"
               className="h-full"
-              href="/reference/vere"
+              href="/overview/vere"
             />
           </TwoUp>
           <TwoUp>
@@ -202,14 +202,14 @@ export default function Overview({ markdown, search }) {
               title="Azimuth"
               text="A general-purpose public-key infrastructure (PKI) on the Ethereum blockchain"
               className="h-full"
-              href="/reference/azimuth"
+              href="/overview/azimuth"
             />
             <Card
               icon={<Cryptography />}
               title="Cryptography"
               text="There are two categories of keys and five components of the system involved with cryptography on Urbit"
               className="h-full"
-              href="/reference/cryptography"
+              href="/overview/cryptography"
             />
           </TwoUp>
         </Section>
