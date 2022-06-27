@@ -1,7 +1,6 @@
 +++
 title = "Dojo Tools"
 weight = 5
-template = "doc.html"
 +++
 
 A number of generators are included for managing and viewing the status of desks and their agents. Each of these are documented below.

@@ -1,14 +1,13 @@
 +++
 title = "Introduction"
 weight = 1
-template = "doc.html"
 +++
 
 This guide will walk through everything you need to know to write your own Gall
 agents.
 
 The Gall Guide is suitable for anyone with an intermediate knowledge of Hoon. If
-you've worked through [Hoon School](/docs/hoon/hoon-school/intro) or something
+you've worked through [Hoon School](/guides/core/hoon-school/) or something
 equivalent, you should be fine.
 
 ## What are Gall agents?

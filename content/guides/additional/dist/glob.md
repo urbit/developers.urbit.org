@@ -1,12 +1,11 @@
 +++
 title = "Glob"
 weight = 4
-template = "doc.html"
 +++
 
 A `glob` contains the client bundle—client-side resources like HTML, JS, and CSS files—for a landscape app distributed in a desk. Globs are managed separately from other files in desks because they often contain large files that frequently change, and would therefore bloat a ship's state if they were subject to Clay's revision control mechanisms.
 
-The hash and source of an app's glob is defined in a desk's [docket file](/docs/userspace/dist/docket). The `%docket` agent reads the docket file, obtains the glob from the specified source, and makes its contents available to the browser client. On a desk publisher's ship, if the glob is to be distributed over Ames, the glob is also made available to desk subscribers.
+The hash and source of an app's glob is defined in a desk's [docket file](/guides/additional/dist/docket). The `%docket` agent reads the docket file, obtains the glob from the specified source, and makes its contents available to the browser client. On a desk publisher's ship, if the glob is to be distributed over Ames, the glob is also made available to desk subscribers.
 
 ## The `glob` type
 
@@ -73,7 +72,7 @@ There are a couple of different methods depending on whether the glob will be di
 
 For globs distributed over Ames from our ship, the client bundle can be uploaded directly with `%docket`'s Globulator tool, which is available in the browser at `http[s]://[host]/docket/upload`. It looks like this:
 
-![Globulator](https://media.urbit.org/docs/userspace/dist/globulator.png)
+![Globulator](https://media.urbit.org/guides/additional/dist/globulator.png)
 
 Simply select the target desk, select the folder to be globulated, and hit `glob!`.
 

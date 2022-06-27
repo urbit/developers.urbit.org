@@ -1,7 +1,6 @@
 +++
 title = "Guide"
 weight = 2
-template = "doc.html"
 +++
 
 In this document we'll walk through an example of creating and publishing a desk that others can install. We'll create a simple "Hello World!" front-end with a "Hello" tile to launch it. For simplicity, the desk won't include an actual Gall agent, but we'll note everything necessary if there were one.
@@ -85,22 +84,22 @@ In the text editor, we'll add the following:
 :~  title+'Hello'
     info+'A simple hello world app.'
     color+0x81.88c9
-    image+'https://media.urbit.org/docs/userspace/dist/wut.svg'
+    image+'https://media.urbit.org/guides/additional/dist/wut.svg'
     base+'hello'
     glob-ames+[~zod 0v0]
     version+[0 0 1]
-    website+'https://urbit.org/docs/userspace/dist/guide'
+    website+'https://urbit.org/guides/additional/dist/guide'
     license+'MIT'
 ==
 ```
 
-You can refer to the [Docket File](/docs/userspace/dist/docket) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](/docs/userspace/dist/docket) which configure the appearance of the app tile, the source of the [glob](/docs/userspace/dist/glob), and some other metadata.
+You can refer to the [Docket File](/guides/additional/dist/docket) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](/guides/additional/dist/docket) which configure the appearance of the app tile, the source of the [glob](/guides/additional/dist/glob), and some other metadata.
 
-We've given the app a [`%title`](/docs/userspace/dist/docket#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](/docs/userspace/dist/docket#color) of `#8188C9`, and also specified the URL of an [`%image`](/docs/userspace/dist/docket#image) to display on the tile.
+We've given the app a [`%title`](/guides/additional/dist/docket#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](/guides/additional/dist/docket#color) of `#8188C9`, and also specified the URL of an [`%image`](/guides/additional/dist/docket#image) to display on the tile.
 
-The [`%base`](/docs/userspace/dist/docket#base) clause specifies the base URL path for the app. We've specified "hello" so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](/docs/userspace/dist/glob), we've used a clause of [`%glob-ames`](/docs/userspace/dist/docket#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](/docs/userspace/dist/docket#glob-http) clause or having an Eyre binding with a [`%site`](/docs/userspace/dist/docket#site) clause. You can refer to the [glob](/docs/userspace/dist/glob) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since `~zod` is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the `glob`, so we can just specify `0v0` here as it'll get overwritten later.
+The [`%base`](/guides/additional/dist/docket#base) clause specifies the base URL path for the app. We've specified "hello" so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](/guides/additional/dist/glob), we've used a clause of [`%glob-ames`](/guides/additional/dist/docket#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](/guides/additional/dist/docket#glob-http) clause or having an Eyre binding with a [`%site`](/guides/additional/dist/docket#site) clause. You can refer to the [glob](/guides/additional/dist/glob) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since `~zod` is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the `glob`, so we can just specify `0v0` here as it'll get overwritten later.
 
-The [`%version`](/docs/userspace/dist/docket#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
+The [`%version`](/guides/additional/dist/docket#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
 
 So let's save that to the `desk.docket-0` file and have a look at our desk:
 
@@ -161,11 +160,11 @@ kiln: installing %hello locally
 docket: awaiting manual glob for %hello desk
 ```
 
-The `docket: awaiting manual glob for %hello desk` message is because our `desk.docket-0` file includes a [`%glob-ames`](/docs/userspace/dist/docket#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob.
+The `docket: awaiting manual glob for %hello desk` message is because our `desk.docket-0` file includes a [`%glob-ames`](/guides/additional/dist/docket#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob.
 
 If we open a browser now, navigate to `http://localhost:8080` and login with the default fakezod code `lidlut-tabwed-pillex-ridrup`, we'll see our tile's appeared but it says "installing" with a spinner due to the missing glob:
 
-![Installing Tile](https://media.urbit.org/docs/userspace/dist/local-install-1.png)
+![Installing Tile](https://media.urbit.org/guides/additional/dist/local-install-1.png)
 
 ## Create files for glob
 
@@ -176,7 +175,7 @@ We'll now create the files for the glob. We'll use a very simple static HTML pag
 [user@host ~]$ mkdir hello-glob
 [user@host ~]$ cd hello-glob
 [user@host hello-glob]$ mkdir img
-[user@host hello-glob]$ wget -P img https://media.urbit.org/docs/userspace/dist/pot.svg
+[user@host hello-glob]$ wget -P img https://media.urbit.org/guides/additional/dist/pot.svg
 [user@host hello-glob]$ tree
 .
 └── img
@@ -227,19 +226,19 @@ Our `hello-glob` folder should now look like this:
 
 ## Upload to glob
 
-We can now create a glob from the directory. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](/docs/userspace/dist/glob#globulator) tool:
+We can now create a glob from the directory. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](/guides/additional/dist/glob#globulator) tool:
 
-![Globulator](https://media.urbit.org/docs/userspace/dist/globulator.png)
+![Globulator](https://media.urbit.org/guides/additional/dist/globulator.png)
 
 Simply select the `hello` desk from the drop-down, click `Choose file` and select the `hello-glob` folder in the the file browser, then hit `glob!`.
 
 Now if we return to our ship's homescreen, we should see the tile looks as we specified in the docket file:
 
-![Installed Tile](https://media.urbit.org/docs/userspace/dist/local-install-2.png)
+![Installed Tile](https://media.urbit.org/guides/additional/dist/local-install-2.png)
 
 And if we click on the tile, it'll load the `index.html` in our glob:
 
-![Hello World!](https://media.urbit.org/docs/userspace/dist/local-install-3.png)
+![Hello World!](https://media.urbit.org/guides/additional/dist/local-install-3.png)
 
 Our app is working!
 
@@ -267,16 +266,16 @@ Note: For desks without a docket file (and therefore without a tile and glob), u
 
 In the browser, navigate to `http://localhost:8081` and login with `~bus`'s code `riddec-bicrym-ridlev-pocsef`. Next, type `~zod/` in the search bar, and it should pop up a list of `~zod`'s published apps, which in this case is our `Hello` app:
 
-![Remote install search](https://media.urbit.org/docs/userspace/dist/remote-install-1.png)
+![Remote install search](https://media.urbit.org/guides/additional/dist/remote-install-1.png)
 
 When we click on the app, it'll show some of the information from the clauses in the docket file:
 
-![Remote app info](https://media.urbit.org/docs/userspace/dist/remote-install-2.png)
+![Remote app info](https://media.urbit.org/guides/additional/dist/remote-install-2.png)
 
 Click `Get App` and it'll ask as if we want to install it:
 
-![Remote app install](https://media.urbit.org/docs/userspace/dist/remote-install-3.png)
+![Remote app install](https://media.urbit.org/guides/additional/dist/remote-install-3.png)
 
 Finally, click `Get "Hello"` and it'll be installed as a tile on `~bus` which can then be opened:
 
-![Remote app finished](https://media.urbit.org/docs/userspace/dist/remote-install-4.png)
+![Remote app finished](https://media.urbit.org/guides/additional/dist/remote-install-4.png)

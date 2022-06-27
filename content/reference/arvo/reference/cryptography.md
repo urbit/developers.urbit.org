@@ -1,7 +1,6 @@
 +++
 title = "Cryptography"
 weight = 10
-template = "doc.html"
 +++
 
 This is a summary of the cryptography functions found in `sys/zuse.hoon`, Arvo's
@@ -200,10 +199,10 @@ Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algori
 These functionalities are ultimately utilized by [`+crub:crypto`](#crub), the
 only cryptosuite which [Ames](/reference/arvo/ames/ames) makes use of.
 
-Most gates in `+ed:crypto` are [jetted](/docs/vere/jetting), meaning that an
+Most gates in `+ed:crypto` are [jetted](/reference/vere/jetting), meaning that an
 external reference library is utilized whenever these functions are called,
 rather than running in Nock natively. See the [Vere
-documentation](/docs/vere/cryptography#ed) for more information about the
+documentation](/reference/vere/cryptography#ed) for more information about the
 library utilized by jets.
 
 ## `+aes:crypto` {% #aes %}
@@ -213,7 +212,7 @@ This core contains cryptographic primitives and helper functions for
 encryption and decryption. As is the case with `ed:crypto`, these
 functionalities are utilized by [`+crub:crypto`](#crub), and most gates are
 jetted. See also the Vere documentation on [AES
-SIV](/docs/vere/cryptography#aes) for more information about the library
+SIV](/reference/vere/cryptography#aes) for more information about the library
 utilized by jets.
 
 This core contains several doors, each one used for a different variation of AES

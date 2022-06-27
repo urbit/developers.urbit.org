@@ -1,7 +1,6 @@
 +++
 title = "OTA Updates"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

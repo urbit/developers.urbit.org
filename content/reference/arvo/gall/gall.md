@@ -1,8 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
-aliases = ["/docs/learn/arvo/gall/"]
 +++
 
 This document describes Gall, the Arvo userspace vane.

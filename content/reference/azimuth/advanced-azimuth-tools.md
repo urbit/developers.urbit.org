@@ -1,7 +1,6 @@
 +++
 title = "Advanced Azimuth Tools"
 weight = 7
-template = "doc.html"
 +++
 
 This document outlines some advanced techniques for generating, signing, and

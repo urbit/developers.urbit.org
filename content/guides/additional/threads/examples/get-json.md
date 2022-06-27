@@ -1,7 +1,6 @@
 +++
 title = "Fetch JSON"
 weight = 1
-template = "doc.html"
 +++
 
 Grabbing JSON from some url is very easy.

@@ -2,7 +2,6 @@
 title = "Environment Setup"
 description = "How to set up an environment for Urbit development."
 weight = 11
-template = "doc.html"
 +++
 
 This guide covers best practices for preparing your environment to develop

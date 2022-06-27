@@ -1,7 +1,6 @@
 +++
 title = "Chat App Guide"
 weight = 1
-template = "doc.html"
 +++
 
 In this lightning guide, we're going to build a simple chat app named Hut. It'll

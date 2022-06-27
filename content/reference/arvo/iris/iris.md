@@ -1,7 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
 +++
 
 Iris is the HTTP client vane.

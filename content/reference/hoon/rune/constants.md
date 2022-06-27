@@ -1,8 +1,6 @@
 +++
 title = "Atoms and strings"
 weight = 1
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/constants/"]
 +++
 
 The simplest expressions in every language are constants:

@@ -1,7 +1,6 @@
 +++
 title = "Upgrade Proposal"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++

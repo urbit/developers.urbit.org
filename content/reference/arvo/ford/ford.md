@@ -1,8 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
-aliases = ["/docs/learn/arvo/ford/"]
 +++
 
 *The Ford vane was refactored so drastically in 2020 that it was completely

@@ -1,7 +1,6 @@
 +++
 title = "Gall"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++
@@ -12,7 +11,6 @@ Gall is located at `/base/sys/vane/gall.hoon` within Arvo.
 
 ### Further Reading
 
-- [The Hoon Tutorial](/docs/hoon/hoon-school/): Our guide to learning the Hoon programming language that will give you the foundation necessary for app development.
-  - [Lesson 2.7: Gall](/docs/hoon/hoon-school/gall): A Hoon Tutorial lesson that explains how to write a simple Gall app.
+- [App School](/guides/core/app-school/): Our guide to learning how to build apps on the Urbit platform using the Hoon programming language.
 - [Gall vane documentation](/reference/arvo/gall/gall): Documentation of the Gall vane.
 - [Gall Guide](/guides/core/app-school): A tutorial for writing Gall agents.

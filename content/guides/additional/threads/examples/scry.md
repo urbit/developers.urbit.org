@@ -1,7 +1,6 @@
 +++
 title = "Scry"
 weight = 5
-template = "doc.html"
 +++
 
 Here's an example of a thread that scries ames for the IP address & port of a ship and nicely prints it:

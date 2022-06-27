@@ -1,6 +1,5 @@
 +++
 title = "Factory Reset"
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

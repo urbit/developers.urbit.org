@@ -1,7 +1,6 @@
 +++
 title = "API Reference"
 weight = 6
-template = "doc.html"
 +++
 
 This document details all the `task`s you're likely to use to interact with Clay, as well as the `gift`s you'll receive in response. Each section has a corresponding practical example in the [Examples](/reference/arvo/clay/examples) document. Many of the types referenced are detailed in the [Data Types](/reference/arvo/clay/data-types) document. It may also be useful to look at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.

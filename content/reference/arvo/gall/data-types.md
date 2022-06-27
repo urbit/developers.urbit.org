@@ -1,7 +1,6 @@
 +++
 title = "Data Types"
 weight = 5
-template = "doc.html"
 +++
 
 This document describes the data types for Gall defined in `lull.hoon`.

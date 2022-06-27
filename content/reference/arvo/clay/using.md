@@ -1,7 +1,6 @@
 +++
 title = "Using Clay"
 weight = 3
-template = "doc.html"
 +++
 
 ### Reading and Subscribing

@@ -1,7 +1,6 @@
 +++
 title = "Ecliptic"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++

@@ -2,7 +2,6 @@
 title = "Reference"
 weight = 300
 sort_by = "weight"
-template = "sections/docs/chapters.html"
 +++
 
 [Cryptography](/reference/arvo/reference/cryptography)

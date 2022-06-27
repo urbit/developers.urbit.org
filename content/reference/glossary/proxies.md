@@ -1,7 +1,6 @@
 +++
 title = "Proxies"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++
@@ -31,4 +30,4 @@ Creates new child points given Ethereum address. For [stars](/reference/glossary
 ### Further Reading
 
 - [Azimuth glossary page](/reference/glossary/azimuth): The glossary entry for Azimuth.
-- [The Azimuth concepts page](/docs/azimuth/advanced-azimuth-tools): A more in-depth explanation of Azimuth, including information the storage of Urbit identities.
+- [The Azimuth concepts page](/reference/azimuth/advanced-azimuth-tools): A more in-depth explanation of Azimuth, including information the storage of Urbit identities.

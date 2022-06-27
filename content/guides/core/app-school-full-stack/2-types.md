@@ -1,7 +1,6 @@
 +++
 title = "2. Types"
 weight = 2
-template = "doc.html"
 +++
 
 The best place to start when building a new agent is its type definitions in its

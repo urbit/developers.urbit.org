@@ -1,7 +1,6 @@
 +++
 title = "9. Vanes"
 weight = 45
-template = "doc.html"
 +++
 
 In this lesson we're going to look at interacting with vanes (kernel modules).

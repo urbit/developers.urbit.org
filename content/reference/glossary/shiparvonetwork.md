@@ -1,7 +1,6 @@
 +++
 title = "ship.arvo.network"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

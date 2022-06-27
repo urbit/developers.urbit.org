@@ -1,7 +1,6 @@
 +++
 title = "Take Result"
 weight = 2
-template = "doc.html"
 +++
 
 Here we've added an extra card to subscribe for the result and a couple of lines in on-agent to test if it succeeded:

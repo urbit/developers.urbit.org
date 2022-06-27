@@ -1,7 +1,6 @@
 +++
 title = "HTTP API"
 weight = 2
-template = "doc.html"
 +++
 
 Spider has an Eyre binding which allows threads to be run externally via [authenticated](/reference/arvo/eyre/external-api-ref#authentication) HTTP POST requests.

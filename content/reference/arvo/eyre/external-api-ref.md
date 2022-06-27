@@ -1,7 +1,6 @@
 +++
 title = "External API Reference"
 weight = 2
-template = "doc.html"
 +++
 
 This document contains reference information about Eyre's external APIs including [the channel system](#channels) and [scries](#scry). Each section will also have practical examples in the [Guide](/reference/arvo/eyre/guide) document.
@@ -356,4 +355,4 @@ See the [Scrying](/reference/arvo/eyre/guide#scrying) section of the [Guide](/re
 
 ## Spider
 
-See the [HTTP API](/docs/userspace/threads/http-api) section of the [Threads](/docs/userspace/threads/overview) documentation.
+See the [HTTP API](/guides/additional/threads/http-api) section of the [Threads](/guides/additional/threads/overview) documentation.

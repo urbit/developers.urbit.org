@@ -1,7 +1,6 @@
 +++
 title = "5. Marks"
 weight = 5
-template = "doc.html"
 +++
 
 In this section we'll write the mark files for our agent. We'll need two marks,

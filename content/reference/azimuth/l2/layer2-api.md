@@ -1,7 +1,6 @@
 +++
 title = "Roller HTTP RPC-API"
 weight = 10
-template = "doc.html"
 +++
 
 With the introduction of Layer 2 arrived a new set of Gall agents equipped with

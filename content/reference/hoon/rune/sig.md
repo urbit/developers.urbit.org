@@ -1,7 +1,6 @@
 +++
 title = "Hints ~ ('sig')"
 weight = 14
-template = "doc.html"
 +++
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter. A

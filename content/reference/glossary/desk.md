@@ -1,7 +1,6 @@
 +++
 title = "Desk"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

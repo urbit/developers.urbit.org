@@ -1,12 +1,11 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
 +++
 
 Jael is the networking key infrastructure vane.
 
-The main purpose of Jael is keeping track of [Azimuth](/docs/azimuth/azimuth) related information. For each ship, this consists of its public keys, its key revision number (or `life`), its continuity breach number (or `rift`) (see [Life and Rift](/docs/azimuth/life-and-rift)), and who the sponsor of the ship is. It also handles the local ship's private keys, keeps track of galaxy domain prefixes, and performs some boot-related tasks.
+The main purpose of Jael is keeping track of [Azimuth](/reference/azimuth/azimuth) related information. For each ship, this consists of its public keys, its key revision number (or `life`), its continuity breach number (or `rift`) (see [Life and Rift](/reference/azimuth/life-and-rift)), and who the sponsor of the ship is. It also handles the local ship's private keys, keeps track of galaxy domain prefixes, and performs some boot-related tasks.
 
 By default, Jael's primary source of information is the Gall agent `%azimuth-tracker`, which (using `%eth-watcher`) runs a thread that polls an Ethereum node for transactions in the Azimuth contract. It can also get updates from other ships on the network. This is always the case for moons, where it subscribes to the moon's parent's Jael for updates.
 

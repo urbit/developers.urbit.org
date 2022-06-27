@@ -2,11 +2,14 @@
 title = "Reference"
 weight = 40
 sort_by = "weight"
-template = "sections/docs/chapters.html"
 insert_anchor_links = "right"
 +++
 
 This is where you look for answers to specific technical questions.
+
+## [Hoon Overview](/reference/hoon/overview)
+
+The design decisions underlying Hoon.
 
 ## [Syntax Cheat Sheet](/reference/hoon/cheat-sheet)
 

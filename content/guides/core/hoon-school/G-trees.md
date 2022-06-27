@@ -619,7 +619,7 @@ Enter the following into dojo:
 
 Once you have your data in the form of a `list`, there are a lot of tools available to manipulate and analyze the data:
 
-- [`++flop`](https://urbit.org/docs/hoon/hoon-school/lists#flop) reverses the order of the elements (exclusive of the `~`):
+- [`++flop`](reference/stdlib/2b#flop) reverses the order of the elements (exclusive of the `~`):
   
     ```hoon
     > (flop ~[1 2 3 4 5])
@@ -630,14 +630,14 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
     - Without using flop, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of the page.
 
-- [`++sort`](https://urbit.org/docs/hoon/hoon-school/lists#sort) uses a `list` and a comparison function (like `++lth`) to order things:
+- [`++sort`](reference/stdlib/2b#sort) uses a `list` and a comparison function (like `++lth`) to order things:
 
     ```hoon
     > (sort ~[1 3 5 2 4] lth)
     ~[1 2 3 4 5]
     ```
 
-- [`++snag`](https://urbit.org/docs/hoon/hoon-school/lists#snag) takes a index and a `list` to grab out a particular element (note that it starts counting at zero):
+- [`++snag`](reference/stdlib/2b#snag) takes a index and a `list` to grab out a particular element (note that it starts counting at zero):
 
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
@@ -654,7 +654,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     '!'
     ```
 
-- [`++weld`](https://urbit.org/docs/hoon/hoon-school/lists#weld) takes two lists of the same type and concatenates them:
+- [`++weld`](reference/stdlib/2b#weld) takes two lists of the same type and concatenates them:
 
     ```hoon
     > (weld ~[1 2 3] ~[4 5 6])

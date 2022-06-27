@@ -1,8 +1,6 @@
 +++
 title = "Advanced Types"
 weight = 60
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/advanced/"]
 +++
 The definition of `type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not **that** simple.
 
@@ -53,7 +51,6 @@ changed two parts: `%core` and `%face`.  We added polymorphism to
 
 If cores never changed, we wouldn't need polymorphism.  Of
 course, nouns are immutable and never change, but we use them as
-templates to construct new nouns around.
 
 Suppose we take a core, a cell `[battery payload]`, and replace
 the payload with a different noun.  Then, we invoke an arm from

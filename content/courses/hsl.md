@@ -1,7 +1,6 @@
 +++
 title = "Hoon School Live"
 weight = 3
-template = "doc.html"
 +++
 
 #   Hoon School Live

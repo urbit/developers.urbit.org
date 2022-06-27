@@ -1,7 +1,6 @@
 +++
 title = "10. Summary"
 weight = 10
-template = "doc.html"
 +++
 
 That's it! We've built our agent and React front-end, put together a desk and
@@ -94,7 +93,7 @@ Here is the reference material for each section of this walkthrough.
 
 #### React App Setup and Logic
 
-- [HTTP API Guide](/docs/userspace/http-api-guide) - Reference documentation for
+- [HTTP API Guide](/guides/additional/http-api-guide) - Reference documentation for
   `@urbit/http-api`.
 
 - [React app source
@@ -107,12 +106,12 @@ Here is the reference material for each section of this walkthrough.
 
 #### Desk and Glob
 
-- [App publishing/distribution docs](/docs/userspace/dist/dist) -
+- [App publishing/distribution docs](/guides/additional/dist/dist) -
   Documentation covering third party desk composition, publishing and
   distribution.
 
-- [Glob documentation](/docs/userspace/dist/glob) - Comprehensive documentation
+- [Glob documentation](/guides/additional/dist/glob) - Comprehensive documentation
   of handling front-end files.
 
-- [Desk publishing guide](/docs/userspace/dist/guide) - A step-by-step guide to
+- [Desk publishing guide](/guides/additional/dist/guide) - A step-by-step guide to
   creating and publishing a desk.

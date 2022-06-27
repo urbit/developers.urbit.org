@@ -1,7 +1,6 @@
 +++
 title = "1. Arvo"
 weight = 5
-template = "doc.html"
 +++
 
 This document is a prologue to the Gall guide. If you've worked though [Hoon
@@ -15,7 +14,7 @@ just what is necessary to understand it from the perspective of userspace.
 ## Arvo and its Vanes
 
 [Arvo](/reference/arvo/overview) is the Urbit OS and kernel which is written in
-[Hoon](/reference/glossary/hoon), compiled to [Nock](/docs/gossary/nock), and
+[Hoon](/reference/glossary/hoon), compiled to [Nock](/reference/glossary/nock), and
 executed by the runtime environment and virtual machine
 [Vere](/reference/glossary/vere). Arvo has eight kernel modules called vanes:
 [Ames](/reference/arvo/ames/ames), [Behn](/reference/arvo/behn/behn),
@@ -59,7 +58,7 @@ Here's a brief summary of each of the vanes:
 - **Eyre**: Webserver vane. App web front-ends are served via Eyre. It's possible to
   handle HTTP requests directly in a Gall agent (see the [Eyre
   Guide](/reference/arvo/eyre/guide) for details), but usually you'd just serve a
-  front-end [glob](/docs/userspace/dist/glob) via the `%docket` agent, so you'd
+  front-end [glob](/guides/additional/dist/glob) via the `%docket` agent, so you'd
   not typically have your agent deal with Eyre directly.
 
 - **Gall**: App management vane; this is where your agent lives.
@@ -107,15 +106,15 @@ there's also:
   IO logic in a separate thread which is completely atomic. That way the Gall
   agent only has to deal with the two conditions of success or failure. Writing
   threads is covered in a [separate
-  guide](/docs/userspace/threads/basics/fundamentals), which you might like to
+  guide](/guides/additional/threads/basics/fundamentals), which you might like to
   work through after completing the Gall Guide.
 
 - **Front-end**: Web UIs. It's possible for Gall agents to handle HTTP requests
   directly and dynamically produce responses, but it's also possible to have a
-  static [glob](/docs/userspace/dist/glob) of HTML, CSS, Javascript, images,
+  static [glob](/guides/additional/dist/glob) of HTML, CSS, Javascript, images,
   etc, which are served to the client like an ordinary web app. Such front-end
   files are typically managed by the `%docket` agent which serves them via Eyre.
-  The [software distribution guide](/docs/userspace/dist/guide) covers this in
+  The [software distribution guide](/guides/additional/dist/guide) covers this in
   detail, and you might like to work through it after completing the Gall Guide.
 
 ## The Filesystem
@@ -299,7 +298,7 @@ described here cover the majority of cases.
 Before proceeding with the Gall Guide, you'll need to have an appropriate text
 editor installed and configured, and know how to work with a fake ship for
 development. Best practices are described in the [environment setup
-guide](/docs/development/environment). Example agents and other code throughout
+guide](/guides/additional/development/environment). Example agents and other code throughout
 this guide will just be committed to the `%base` desk of a fake ship, but it's a
 good idea to have a read through that guide for when you begin work on your own
 apps.

@@ -1,7 +1,6 @@
 +++
 title = "Main-loop"
 weight = 3
-template = "doc.html"
 +++
 
 `main-loop` is a useful function included in `strandio` that:

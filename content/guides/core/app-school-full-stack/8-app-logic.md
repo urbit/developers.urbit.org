@@ -1,7 +1,6 @@
 +++
 title = "8. React app logic"
 weight = 8
-template = "doc.html"
 +++
 
 With the basic things setup, we can now go over the logic of our app. We'll just
@@ -394,7 +393,7 @@ the needs of your app.
 
 ## Resources
 
-- [HTTP API Guide](/docs/userspace/http-api-guide) - Reference documentation for
+- [HTTP API Guide](/guides/additional/http-api-guide) - Reference documentation for
   `@urbit/http-api`.
 
 - [React app source

@@ -2,8 +2,6 @@
 title = "Getting Started"
 description = "How to get started developing on Urbit."
 weight = 10
-template = "doc.html"
-aliases = ["/docs/using/creating-a-development-ship/", "/docs/getting-started/contributing"]
 +++
 
 There are many ways to get involved as a developer. This guide serves to give
@@ -13,7 +11,7 @@ contribute to. At a high level, you can:
 - [Build clients](#clients), which use Urbit as their back-end to store data and
   interact with the network
 - [Develop agents](#agents), or more precisely [_gall_
-  agents](/reference/arvo/gall/gall), which are written in [Hoon](/docs/hoon/)
+  agents](/reference/arvo/gall/gall), which are written in [Hoon](/reference/glossary/hoon)
   and can best be thought of as microservices
 - [Contribute to Urbit's core](#core), which involves contributing to Urbit
   itself &mdash; either the operating system
@@ -59,7 +57,7 @@ library called `shoe`, which you can learn more about
 
 Gall agents can be best thought of as individual services with a
 statically-typed interface and built-in database. They're written in
-[Hoon](/docs/hoon/overview) and all conform to a specific
+[Hoon](/reference/glossary/hoon) and all conform to a specific
 [interface](/reference/arvo/gall/gall-api) that's defined by the kernel vane
 called [Gall](/reference/arvo/gall/gall).
 
@@ -67,7 +65,7 @@ Applications built on Urbit utilize a collection of different agents, each of
 which handle specific functionality.
 
 If you want to learn how to build gall agents, your best bet is to first [learn
-the Hoon programming language](/docs/hoon/hoon-school/), and then follow that
+the Hoon programming language](/guides/core/hoon-school/), and then follow that
 up with the [Gall guide](/guides/core/app-school/intro).
 
 ### Contribute to Urbit Core {% #core %}
@@ -78,7 +76,7 @@ generally more challenging from an engineering standpoint.
 
 Just arrived and unsure what to work on? An ideal way to get started is by
 experimenting with the system, talking to other developers, and reading (or
-[contributing to](https://github.com/urbit/docs)) the [documentation](/docs/).
+[contributing to](https://github.com/urbit/developers.urbit.org)) the documentation.
 
 Prefer learning with an instructor? Our community runs an online course that
 covers the basics of Urbit development called
@@ -103,11 +101,11 @@ communication for your ideas, you can also always reach out to us directly at
 
 From here, you'll probably want to learn more about:
 
-- How to set up a [development environment](/docs/development/environment)
-- Our [grants program](/docs/development/grants), where you can earn address
+- How to set up a [development environment](/guides/additional/development/environment)
+- Our [grants program](/guides/additional/development/grants), where you can earn address
   space for helping the project grow
 - The different [project
-  repositories](/docs/development/project-repositories), both official and
+  repositories](/guides/additional/development/project-repositories), both official and
   community-maintained
-- Our development [Precepts](/docs/development/precepts), which outline the
+- Our development [Precepts](/guides/additional/development/precepts), which outline the
   philosophies that drive Urbit development

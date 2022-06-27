@@ -2,7 +2,6 @@
 title = "Table of Contents"
 weight = 0
 sort_by = "weight"
-template = "doc.html"
 +++
 
 Documentation for the Zuse library.

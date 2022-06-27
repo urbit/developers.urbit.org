@@ -357,7 +357,7 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself.  How
 
 If you have a Hoon value and you want to convert it into text as such, use `++scot` and `++scow`.  These call for a value of type `+$dime`, which means the `@tas` equivalent of a regular aura.  These are labeled as returning `cord`s (`@t`s) but in practice seem to return `knot`s (`@ta`s).
 
-- [`++scot`](https://urbit.org/docs/reference/library/4m/#scot) renders a `dime` as a `cord` (`dime`→`cord`); the user must include any necessary aura transformation.
+- [`++scot`](reference/stdlib/4m/#scot) renders a `dime` as a `cord` (`dime`→`cord`); the user must include any necessary aura transformation.
 
     ```hoon
     > `@t`(scot %ud 54.321)
@@ -373,7 +373,7 @@ If you have a Hoon value and you want to convert it into text as such, use `++sc
     '~sampel-palnet'
     ```
 
-- [`++scow`](https://urbit.org/docs/reference/library/4m/#scow) renders a `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to `++scot`.
+- [`++scow`](reference/stdlib/4m/#scow) renders a `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to `++scot`.
 
 - [`++sane`](/reference/hoon/stdlib/4b#sane) checks the validity of a possible text string as a `knot` or `term`.  The usage of `++sane` will feel a bit strange to you:  it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`).  (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.)  `++sane` is also not infallible yet.
 

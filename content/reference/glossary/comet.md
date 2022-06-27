@@ -1,6 +1,5 @@
 +++
 title = "Comet"
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

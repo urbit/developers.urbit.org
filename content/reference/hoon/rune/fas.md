@@ -1,7 +1,6 @@
 +++
 title = "Imports / ('fas')"
 weight = 15
-template = "doc.html"
 +++
 
 Fas (`/`) runes are not technically hoon runes, but instead are instructions to

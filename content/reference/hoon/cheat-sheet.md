@@ -1,8 +1,6 @@
 +++
 title = "Cheat Sheet"
 weight = 10
-template = "doc.html"
-aliases = ["docs/reference/cheat-sheet/"]
 +++
 
 Download the cheat sheet PDF [here](https://media.urbit.org/docs/hooncard-2022-04-03.pdf)

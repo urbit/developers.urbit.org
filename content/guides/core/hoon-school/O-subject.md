@@ -51,7 +51,7 @@ In the Dojo, if you use `+1` by itself, you can see the current subject.
 
 `.` does the same thing:  it always refers to the current subject.
 
-If `.` is the subject, then `..arm` is the subject of a given `arm` (the second `.` dot being the wing resolution operator).  You can check the details of the parent core using something like `..add`.  This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](https://urbit.org/docs/vere/jetting#edit-the-hoon-source-code), for instance.
+If `.` is the subject, then `..arm` is the subject of a given `arm` (the second `.` dot being the wing resolution operator).  You can check the details of the parent core using something like `..add`.  This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](/reference/vere/jetting#edit-the-hoon-source-code), for instance.
 
 Another use case for the `..arm` syntax is when there is a core in the subject without a face bound to it; i.e., the core might be nameless.  In that case you can use an arm name in that core to refer to the whole core.
 
@@ -351,7 +351,7 @@ We have some more tools available for managing deferred or chained computations,
 
 - [`=^` tisket](/reference/hoon/rune/tis#tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` cenhep.  (Used in Gall agents frequently.)
 - [`=*` tistar](/reference/hoon/rune/tis#tistar) defers an expression (rather like a macro).
-- [`;<` micgal](/reference/hoon/rune/mic#micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](https://urbit.org/docs/userspace/threads/overview).)
+- [`;<` micgal](/reference/hoon/rune/mic#micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](/guides/additional/threads/overview).)
 - [`;~` micsig](/reference/hoon/rune/mic#micsig) produces a pipeline, a way of piping the output of one gate into another in a chain.  (This is particularly helpful when parsing text.)
 
 ### `++og` Randomness

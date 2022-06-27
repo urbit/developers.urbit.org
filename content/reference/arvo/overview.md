@@ -1,8 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-aliases = ["/docs/learn/arvo/arvo/"]
-template = "doc.html"
 +++
 
 Arvo, also called Urbit OS, is our operating system.
@@ -23,10 +21,10 @@ companion to this document, and some segments are direct quotes or paraphrases, 
 The conceptual section titled [What is Arvo?](#what-is-arvo) can be understood
 without knowing Hoon, the Urbit programming language. The technical section
 titled [The kernel](#the-kernel) will require Chapter One of the [Hoon
-tutorial](/docs/hoon/hoon-school/) for full understanding, and some
+tutorial](/guides/core/hoon-school/) for full understanding, and some
 material from Chapter Two will be helpful as well. At the bare minimum, we
 presume that the reader has read through the [Technical
-Overview](/docs/system-overview/).
+Overview](/overview/).
 
 We also suggest to the reader to peruse the [glossary](/reference/glossary/) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
@@ -105,7 +103,7 @@ The formal state of an Arvo instance is an event history, as a linked list of [n
 
 The Arvo event log is a list of every action ever performed on your ship that
 lead up to the current state. In principle, this event log is maintained by the
-[Nock runtime environment](/docs/vere/), but in practice
+[Nock runtime environment](/reference/vere/), but in practice
 event logs become too long over time to keep, as the event log has a size of
 O(n) where n is the number of events. Thus it is our intention to
 implement a feature whereby periodic snapshots of the state of Arvo are taken
@@ -182,7 +180,7 @@ Database theory studies in precise terms the possible properties of anything tha
   Arvo
   transactions are sequential and performed by the daemon, persistence and effect application are performed
   in parallel by the worker; see [worker and
-  daemon](/docs/vere/) for more detail.
+  daemon](/reference/vere/) for more detail.
 
 - Durability: Completed transactions will survive permanently. In other words,
   since the event log is stored on disk, if power is lost you are guaranteed
@@ -223,7 +221,7 @@ cooperative multitasking.
 
 The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose primary purpose is to implement the transition function, `+poke`. In this section we point out the most important parts of `arvo.hoon` and describe their role in the greater system. We also give brief descriptions of Arvo's kernel modules, known as vanes, and how Arvo interfaces with them.
 
-This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](/docs/hoon/hoon-school/).
+This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](/guides/core/hoon-school/).
 
 After concluding this section, the reader is encouraged to follow along with the
 [move trace tutorial](/reference/arvo/tutorials/move-trace),
@@ -240,7 +238,7 @@ which applies many of the concepts covered below.
 - Larval stage core
 - Formal interface
 
-See [Section 1.7](/docs/hoon/hoon-school/arms-and-cores) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
+See [Hoon School “Subject-Oriented Programming”](/guides/core/hoon-school/P-subject#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
 
 ### Formal interface
 

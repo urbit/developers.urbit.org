@@ -1,7 +1,6 @@
 +++
 title = "Landscape"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

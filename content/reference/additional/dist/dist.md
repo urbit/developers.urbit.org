@@ -1,12 +1,11 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
 +++
 
 Urbit allows peer-to-peer distribution and installation of applications. A user can click on a link to an app hosted by another ship to install that app. The homescreen interface lets users manage their installed apps and launch their interfaces in new tabs.
 
-This document describes the architecture of Urbit's app distribution system. For a walkthrough of creating and distributing an app, see the [`Guide`](/docs/userspace/dist/guide) document.
+This document describes the architecture of Urbit's app distribution system. For a walkthrough of creating and distributing an app, see the [`Guide`](/guides/additional/dist/guide) document.
 
 ## Architecture
 
@@ -28,7 +27,7 @@ Tlon has done this internally. Most desks will want to sync the `%base-dev` desk
 
 A "landscape app", i.e. a desk that defines a tile that the user can launch from the home screen, should also sync from the `%garden-dev` desk. This desk includes the versioned `%docket-0` mark, which the app needs in order to include a `/desk/docket-0` file.
 
-The `%docket` agent reads the `/desk/docket-0` file to display an app tile on the home screen and hook up other front-end functionality, such as downloading the app's client bundle ([glob](/docs/userspace/dist/glob)). Docket is a new agent, in the `%garden` desk, that manages app installations. Docket serves the home screen, downloads client bundles, and communicates with Kiln to configure the apps on your system.
+The `%docket` agent reads the `/desk/docket-0` file to display an app tile on the home screen and hook up other front-end functionality, such as downloading the app's client bundle ([glob](/guides/additional/dist/glob)). Docket is a new agent, in the `%garden` desk, that manages app installations. Docket serves the home screen, downloads client bundles, and communicates with Kiln to configure the apps on your system.
 
 For those of you familiar with the old `%glob` and `%file-server` agents, they have now been replaced by Docket.
 
@@ -73,16 +72,16 @@ Suspending a desk turns off all its agents, saving their states in Gall. If ther
 
 Turning agents on and off is managed declaratively, rather than imperatively. Kiln maintains state for each desk about which agents should be forced on and which should be forced off. The set of running agents is now a function of the desk's `/desk/bill` manifest file and that user configuration state in Kiln. This means starting or stopping an agent is idempotent, both in Kiln and Gall.
 
-For details of the generators for managing desks and agents in Kiln, see the [`Dojo Tools`](/docs/userspace/dist/tools) document.
+For details of the generators for managing desks and agents in Kiln, see the [`Dojo Tools`](/guides/additional/dist/tools) document.
 
 ### Landscape apps
 
 It's possible to create and distribute desks without a front-end, but typically you'll want to distribute an app with a user interface. Such an app has two primary components:
 
 - Gall agents and associated backend code which reside in the desk.
-- A client bundle called a [`glob`](/docs/userspace/dist/glob), which contains the front-end files like HTML, CSS, JS, images, and so forth.
+- A client bundle called a [`glob`](/guides/additional/dist/glob), which contains the front-end files like HTML, CSS, JS, images, and so forth.
 
-When a desk is installed, Kiln will start up the Gall agents in the `desk.bill` manifest, and the `%docket` agent will read the `desk.docket-0` file. This file will specify the name of the app, various metadata, the appearance of the app's tile in the homescreen, and the source of the `glob` so it can serve the interface. For more details of the docket file, see the [Docket File](/docs/userspace/dist/docket) document.
+When a desk is installed, Kiln will start up the Gall agents in the `desk.bill` manifest, and the `%docket` agent will read the `desk.docket-0` file. This file will specify the name of the app, various metadata, the appearance of the app's tile in the homescreen, and the source of the `glob` so it can serve the interface. For more details of the docket file, see the [Docket File](/guides/additional/dist/docket) document.
 
 ### Globs
 
@@ -92,14 +91,14 @@ If the glob is to be served over Ames, there is an HTTP-based glob uploader that
 
 Note that serving a glob over Ames might increase the install time for your app, since Ames is currently pretty slow compared to HTTP — but being able to serve a glob from your ship allows you to serve your whole app, both server-side and client-side, without setting up a CDN or any other external web tooling. Your ship can do it all on its own.
 
-For further details of globs, see the [Glob](/docs/userspace/dist/glob) document.
+For further details of globs, see the [Glob](/guides/additional/dist/glob) document.
 
 ## Sections
 
-- [Glob](/docs/userspace/dist/glob) - Documentation of `glob`s (client bundles).
+- [Glob](/guides/additional/dist/glob) - Documentation of `glob`s (client bundles).
 
-- [Docket Files](/docs/userspace/dist/docket) - Documentation of docket files.
+- [Docket Files](/guides/additional/dist/docket) - Documentation of docket files.
 
-- [Guide](/docs/userspace/dist/guide) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
+- [Guide](/guides/additional/dist/guide) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
 
-- [Dojo Tools](/docs/userspace/dist/tools) - Documentation of useful generators for managing and distributing desks.
+- [Dojo Tools](/guides/additional/dist/tools) - Documentation of useful generators for managing and distributing desks.

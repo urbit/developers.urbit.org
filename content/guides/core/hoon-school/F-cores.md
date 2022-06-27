@@ -363,7 +363,7 @@ A library (a file in `/lib`) is typically structured as a `|%` barcen core.
 
 ### Legs
 
-A [_leg_](https://urbit.org/docs/hoon/hoon-school/the-subject-and-its-legs) is a data value.  They tend to be trivial but useful ways to pin constants.  `=/` tisfas values are legs, for instance.
+A _leg_ is a data value.  They tend to be trivial but useful ways to pin constants.  `=/` tisfas values are legs, for instance.
 
 ```hoon
 > =/  a  1

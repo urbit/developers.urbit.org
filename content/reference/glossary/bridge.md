@@ -1,6 +1,5 @@
 +++
 title = "Bridge"
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++
@@ -29,4 +28,4 @@ This function allows you to view the public information of any Urbit identity, s
 
 - [bridge.urbit.org](https://bridge.urbit.org/): The Bridge website.
 - [Using Bridge](/using/id/using-bridge): A guide to starting out with Bridge.
-- [The Azimuth concepts page](/docs/azimuth/advanced-azimuth-tools): A more in-depth explanation of our identity layer.
+- [The Azimuth concepts page](/reference/azimuth/advanced-azimuth-tools): A more in-depth explanation of our identity layer.

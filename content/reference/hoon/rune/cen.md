@@ -1,8 +1,6 @@
 +++
 title = "Calls % ('cen')"
 weight = 10
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/cen/"]
 +++
 
 The `%` family of runes is used for making 'function calls' in Hoon. To be more

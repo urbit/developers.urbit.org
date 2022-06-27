@@ -1,6 +1,5 @@
 +++
 title = "Behn"
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

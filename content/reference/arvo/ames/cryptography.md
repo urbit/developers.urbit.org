@@ -1,7 +1,6 @@
 +++
 title = "Cryptography"
 weight = 2
-template = "doc.html"
 +++
 
 Here we give a technical overview of how Ames implements cryptography.

@@ -1,6 +1,5 @@
 +++
 title = "Censures"
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++

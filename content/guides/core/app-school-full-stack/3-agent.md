@@ -1,7 +1,6 @@
 +++
 title = "3. Agent"
 weight = 3
-template = "doc.html"
 +++
 
 Now that we have our agent's types defined and have thought through its

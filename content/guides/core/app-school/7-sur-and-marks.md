@@ -1,7 +1,6 @@
 +++
 title = "7. Structures and Marks"
 weight = 35
-template = "doc.html"
 +++
 
 Before we get into subscription mechanics, there's three things we need to touch
@@ -313,7 +312,7 @@ originated, and is updated for every new event.
 When messages come in over Ames from other ships on the network, they're
 [encrypted](/reference/arvo/ames/cryptography) with our ship's public keys and signed by the ship which sent them.
 The Ames vane decrypts and verifies the messages using keys in the Jael vane,
-which are obtained from the [Azimuth Ethereum contract](/docs/azimuth/azimuth-eth) and [Layer 2 data](/docs/azimuth/l2/layer2) where Urbit ID ownership
+which are obtained from the [Azimuth Ethereum contract](/reference/azimuth/azimuth-eth) and [Layer 2 data](/reference/azimuth/l2/layer2) where Urbit ID ownership
 and keys are recorded. This means the originating `@p` of all messages are
 cryptographically validated before being passed on to Gall, so the `@p`
 specified in the `src` field of the `bowl` can be trusted to be correct, which

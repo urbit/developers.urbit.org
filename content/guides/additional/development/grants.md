@@ -1,7 +1,6 @@
 +++
 title = "Grants Program"
 weight = 20
-template = "doc.html"
 +++
 
 The [Urbit Foundation](https://urbit.org/blog/first-steps-towards-urbit-org/)
@@ -59,8 +58,8 @@ time with us [here](https://calendly.com/wolref/30min).
 Scholarships are the newest addition to the grants program that pairs
 contributors with core Urbit developers to tackle infrastructure projects. These
 generally take the form of contributions to
-[Arvo](/docs/system-overview/arvo) or
-[Vere](/docs/system-overview/vere).
+[Arvo](/overview/arvo) or
+[Vere](/overview/vere).
 
 Tackling a scholarship requires an advanced understanding of Urbit. It's
 expected that you've got a demonstrated command of the Hoon language or other

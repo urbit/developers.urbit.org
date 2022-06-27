@@ -1,7 +1,6 @@
 +++
 title = "chat"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

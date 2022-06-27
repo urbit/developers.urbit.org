@@ -1,7 +1,6 @@
 +++
 title = "Scry Reference"
 weight = 3
-template = "doc.html"
 +++
 
 Here are the scry endpoints of Dill. They take a `%x` `care` and require the `desk` in the path prefix be empty, so the general format is `.^([type] %dx /=//=/[some-path])`.

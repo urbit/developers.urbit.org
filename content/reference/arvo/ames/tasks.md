@@ -1,7 +1,6 @@
 +++
 title = "API Reference"
 weight = 3
-template = "doc.html"
 +++
 
 In this document we describe the public interface for Ames. Namely, we describe

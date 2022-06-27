@@ -2,15 +2,13 @@
 title = "Arvo"
 weight = 300
 sort_by = "weight"
-template = "sections/docs/chapters.html"
-aliases = ["/docs/learn/arvo/"]
 +++
 
 Resources about the Urbit OS.
 
 ## [Overview](/reference/arvo/overview)
 
-Arvo is Urbit's functional operating system, written in [Hoon](/docs/hoon/hoon-school/). It's composed of modules called _vanes_, each of which has its own folder:
+Arvo is Urbit's functional operating system, written in [Hoon](/guides/core/hoon-school/). It's composed of modules called _vanes_, each of which has its own folder:
 
 ## [Ames](/reference/arvo/ames/ames)
 

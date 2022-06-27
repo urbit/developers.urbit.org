@@ -2,7 +2,6 @@
 title = "System Overview"
 weight = 200
 sort_by = "weight"
-template = "sections/docs/chapters.html"
 +++
 
 Urbit is a clean-slate software stack designed to implement an encrypted P2P

@@ -1,7 +1,6 @@
 +++
 title = "6. Pokes"
 weight = 30
-template = "doc.html"
 +++
 
 In this lesson we'll look at sending and receiving one-off messages called
@@ -144,7 +143,7 @@ nack, and otherwise do nothing. Sometimes you'll want your agent to do something
 different depending on whether the poke failed or succeeded (and therefore
 whether it's a nack or an ack).
 
-As stated in the [Precepts](/docs/development/precepts#specifics): "Route on wire before sign, never sign before wire.". Thus we first test the
+As stated in the [Precepts](/guides/additional/development/precepts#specifics): "Route on wire before sign, never sign before wire.". Thus we first test the
 `wire` so you can tell what the `%poke-ack` was for. You might do something
 like:
 

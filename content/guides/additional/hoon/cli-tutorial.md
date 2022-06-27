@@ -1,7 +1,6 @@
 +++
 title = "CLI apps"
 weight = 2
-template = "doc.html"
 +++
 
 ## Introduction
@@ -23,7 +22,7 @@ the functionality of the `%shoe` app and then go through the code line-by-line.
 
 This tutorial can be
 considered to be an application equivalent of the [Hoon school
-lesson](/docs/hoon/hoon-school/generators#ask) on `sole` and `%ask`
+lesson](/guides/core/hoon-school/P-stdlib#ask-generators) on `sole` and `%ask`
 generators, which only covers the bare minimum necessary to write generators
 that take user input.
 

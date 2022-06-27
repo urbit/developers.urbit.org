@@ -1,6 +1,5 @@
 +++
 title = "Aqua"
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

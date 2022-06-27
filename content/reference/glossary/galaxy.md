@@ -1,7 +1,6 @@
 +++
 title = "Galaxy"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

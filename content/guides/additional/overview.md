@@ -1,7 +1,6 @@
 +++
 title = "Additional Guides"
 weight = 2
-template = "doc.html"
 +++
 
 Once you have mastered the content of [Hoon School](/guides/core/hoon-school)

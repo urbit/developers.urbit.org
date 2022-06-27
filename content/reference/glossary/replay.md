@@ -1,7 +1,6 @@
 +++
 title = "Replay"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++
@@ -10,4 +9,4 @@ category = "arvo"
 
 ### Further Reading
 
-- [The Vere tutorial](/docs/vere/): An in-depth technical guide to Vere.
+- [The Vere tutorial](/reference/vere/): An in-depth technical guide to Vere.

@@ -1,6 +1,5 @@
 +++
 title = "Atom"
-template = "doc.html"
 [extra]
 category = "hoon-nock"
 +++
@@ -15,6 +14,6 @@ number, etc, and an optional constant. A Hoon atom type is _warm_ or _cold_ base
 
 ### Further Reading
 
-- [The Hoon Tutorial](/docs/hoon/hoon-school/): Our guide to learning the Hoon programming language.
-  - [Lesson 1.2: Nouns](/docs/hoon/hoon-school/nouns): A Hoon Tutoral lesson that explains how atoms work.
-- [The Nock explanation](/docs/nock/explanation): Includes an explanation of atoms.
+- [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon programming language.
+  - [“Hoon Syntax”](/guides/core/hoon-school/B-syntax#nouns): A Hoon Tutoral lesson that explains how atoms work.
+- [The Nock explanation](/reference/nock/explanation): Includes an explanation of atoms.

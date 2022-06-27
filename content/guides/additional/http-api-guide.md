@@ -1,7 +1,6 @@
 +++
 title = "HTTP API Guide"
 weight = 4
-template = "doc.html"
 +++
 
 [Eyre] is the web-server [vane] (kernel module) of [Arvo], an Urbit ship's

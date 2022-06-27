@@ -1,7 +1,6 @@
 +++
 title = "Trap"
 
-template = "doc.html"
 [extra]
 category = "hoon-nock"
 +++
@@ -10,5 +9,5 @@ A **trap** is a [core](/reference/glossary/core) with one arm named $ and no sam
 
 ### Further Reading
 
-- [The Hoon Tutorial](/docs/hoon/hoon-school/): Our guide to learning the Hoon programming language.
-  - [Lesson 1.4.1: Walkthrough: Recursion](/docs/hoon/hoon-school/recursion): A Hoon Tutorial lesson that uses traps to build recursive functions.
+- [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon programming language.
+  - [Lesson 1.4.1: Walkthrough: Recursion](/guides/core/hoon-school/F-cores#recursion): A Hoon School lesson that uses traps to build recursive functions.

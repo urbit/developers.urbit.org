@@ -1,7 +1,6 @@
 +++
 title = "10. Scries"
 weight = 50
-template = "doc.html"
 +++
 
 In this lesson we'll look at scrying agents, as well as how agents handle such

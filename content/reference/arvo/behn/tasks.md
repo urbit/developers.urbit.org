@@ -1,7 +1,6 @@
 +++
 title = "API Reference"
 weight = 2
-template = "doc.html"
 +++
 
 In this document we describe the public interface for Behn. Namely, we describe each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in return.

@@ -1,7 +1,6 @@
 +++
 title = "Noun"
 
-template = "doc.html"
 [extra]
 category = "hoon-nock"
 +++
@@ -10,6 +9,6 @@ A **noun** is an [atom](/reference/glossary/atom) or a cell, which is an ordered
 
 ### Further Reading
 
-- [The Hoon Tutorial](/docs/hoon/hoon-school/): Our guide to learning the Hoon programming language.
-  - [Lesson 1.2: Nouns](/docs/hoon/hoon-school/nouns): A Hoon Tutoral lesson that explains how nouns work.
-- [The Nock explanation](/docs/nock/): Includes a low-level explanation of nouns.
+- [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon programming language.
+  - [“Hoon Syntax”](/guides/core/hoon-school/B-syntax#nouns): A Hoon Tutoral lesson that explains how nouns work.
+- [The Nock explanation](/reference/nock/): Includes a low-level explanation of nouns.

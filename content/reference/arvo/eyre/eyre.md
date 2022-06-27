@@ -1,7 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
 +++
 
 Eyre is the webserver vane.
@@ -28,7 +27,7 @@ Details of Eyre's scry API are in the [Scry](/reference/arvo/eyre/external-api-r
 
 ## Spider Threads
 
-Spider (the Gall agent that manages threads) has an Eyre binding that allows you to run threads through Eyre. Spider's [HTTP API](/docs/userspace/threads/http-api) is not part of Eyre proper, so is documented separately in the [Threads](/docs/userspace/threads/overview) documentation.
+Spider (the Gall agent that manages threads) has an Eyre binding that allows you to run threads through Eyre. Spider's [HTTP API](/guides/additional/threads/http-api) is not part of Eyre proper, so is documented separately in the [Threads](/guides/additional/threads/overview) documentation.
 
 ## Generators
 

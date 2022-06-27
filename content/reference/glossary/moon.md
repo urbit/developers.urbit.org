@@ -1,6 +1,5 @@
 +++
 title = "Moon"
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

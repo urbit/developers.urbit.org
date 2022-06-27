@@ -1,7 +1,6 @@
 +++
 title = "Parsing"
 weight = 3
-template = "doc.html"
 +++
 
 This document serves as an introduction to parsing text with Hoon. No prior
@@ -323,7 +322,7 @@ need to deal directly with `nail`s except where it is illustrative to do so.
 
 ### Parsing atoms
 
-[Recall](/docs/hoon/hoon-school/lists) that `cord`s are atoms with the aura
+[Recall from Hoon School](/guides/core/hoon-school/E-types) that `cord`s are atoms with the aura
 `@t` and are typically used to represent strings internally as data, as atoms
 are faster for the computer to work with than `tape`s, which are `list`s of
 `@tD` atoms. [`+rash`](/reference/hoon/stdlib/4g/#rash) and [`+rush`](/reference/hoon/stdlib/4g/#rush) are for parsing atoms, with `+rash` being

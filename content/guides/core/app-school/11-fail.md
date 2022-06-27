@@ -1,7 +1,6 @@
 +++
 title = "11. Failure"
 weight = 55
-template = "doc.html"
 +++
 
 In this lesson we'll cover the last agent arm we haven't touched on yet:

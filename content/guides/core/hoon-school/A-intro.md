@@ -1,7 +1,6 @@
 +++
 title = "Introduction to Hoon"
 weight = 10
-template = "doc.html"
 nodes: [100, 103]
 objectives: ["Explain what an Urbit ship is.", "Distinguish a fakeship from a liveship.", "Pronounce ASCII characters per standard Hoon developer practice."
 +++
@@ -30,9 +29,9 @@ Urbit consists of an identity protocol (“Azimuth”, or “Urbit ID”) and a 
 
 2. **Urbit OS (Arvo)** is an operating system which provides the software for the personal server platform that constitutes the day-to-day usage of Urbit.  Arvo works over a [peer-to-peer](https://en.wikipedia.org/wiki/Peer-to-peer) [end-to-end-encrypted](https://en.wikipedia.org/wiki/End-to-end_encryption) network to interact with other Urbit ships (or unique instances).
 
-Arvo is an axiomatic operating system which restricts itself to pure mathematical functions, making it [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) and [functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming).  Such strong guarantees require an operating protocol, the [Nock virtual machine](https://urbit.org/docs/nock/definition), which will be persistent across hardware changes and always provide an upgrade path for necessary changes.
+Arvo is an axiomatic operating system which restricts itself to pure mathematical functions, making it [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) and [functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming).  Such strong guarantees require an operating protocol, the [Nock virtual machine](https://urbit.org/reference/nock/definition), which will be persistent across hardware changes and always provide an upgrade path for necessary changes.
 
-It's hard to write a purely functional operating system on hardware which doesn't make such guarantees, so Urbit OS uses a new language, Hoon, which compiles to Nock and hews to the necessary conceptual models for a platform like Urbit.  [The Hoon overview](https://urbit.org/docs/hoon/overview) covers more of the high-level design decisions behind the language, as does [developer ~rovnys-ricfer's explanation](https://urbit.org/blog/why-hoon/).
+It's hard to write a purely functional operating system on hardware which doesn't make such guarantees, so Urbit OS uses a new language, Hoon, which compiles to Nock and hews to the necessary conceptual models for a platform like Urbit.  [The Hoon overview](/reference/hoon/overview) covers more of the high-level design decisions behind the language, as does [developer ~rovnys-ricfer's explanation](https://urbit.org/blog/why-hoon/).
 
 Hoon School introduces and explains the fundamental concepts you need in order to understand Hoon's semantics.  It then introduces a number of key examples and higher-order abstractions which will make you a more fluent Hoon programmer.
 
@@ -47,7 +46,7 @@ Since live network identities (_liveships_) are finite, scarce, and valuable, mo
 
 Two fakeships can communicate with each other on the same machine, but have no awareness of the broader Urbit network.  We won't need to use this capability in Hoon School Live, but it will be helpful later when you start developing networked apps.
 
-Before beginning, you'll need to get a development ship running and configure an appropriate editor.  See the [Environment Setup](https://urbit.org/docs/development/environment) guide for details.
+Before beginning, you'll need to get a development ship running and configure an appropriate editor.  See the [Environment Setup](https://urbit.org/guides/additional/development/environment) guide for details.
 
 Once you have a `dojo>` prompt, the system is ready to go and waiting on input.
 

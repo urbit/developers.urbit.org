@@ -1,7 +1,6 @@
 +++
 title = "pH"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

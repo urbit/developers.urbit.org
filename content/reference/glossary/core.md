@@ -1,7 +1,6 @@
 +++
 title = "Core"
 
-template = "doc.html"
 [extra]
 category = "hoon-nock"
 +++
@@ -12,5 +11,5 @@ in use to objects in object-oriented programming languages.
 
 ### Further Reading
 
-- [The Hoon Tutorial](/docs/hoon/hoon-school/): Our guide to learning the Hoon programming language.
-  - [Lesson 1.7: Arms and Cores](/docs/hoon/hoon-school/arms-and-cores): A Hoon Tutorial lesson that discusses cores.
+- [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon programming language.
+  - [“Cores”](/guides/core/hoon-school/F-cores#cores): A Hoon Tutorial lesson that discusses cores.

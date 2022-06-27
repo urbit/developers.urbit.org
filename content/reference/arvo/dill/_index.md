@@ -2,11 +2,10 @@
 title = "Dill"
 weight = 40
 sort_by = "weight"
-template = "sections/docs/chapters.html"
 insert_anchor_links = "right"
 +++
 
-[Overview](/docs/avro/dill/dill)
+[Overview](/reference/arvo/dill/dill)
 
 A brief overview of the Dill vane.
 

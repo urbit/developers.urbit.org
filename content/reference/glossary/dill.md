@@ -1,7 +1,6 @@
 +++
 title = "Dill"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

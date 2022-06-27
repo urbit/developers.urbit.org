@@ -1,7 +1,6 @@
 +++
 title = "Scry Reference"
 weight = 4
-template = "doc.html"
 +++
 
 Here are all of Eyre's scry endpoints. There's not too many and they mostly deal with either CORS settings or aspects of the state of connections.

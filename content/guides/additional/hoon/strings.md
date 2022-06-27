@@ -1,7 +1,6 @@
 +++
 title = "Strings"
 weight = 4
-template = "doc.html"
 +++
 
 This document discusses hoon's two main string types: `cord`s (as well as its

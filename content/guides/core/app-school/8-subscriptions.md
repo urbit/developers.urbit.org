@@ -1,7 +1,6 @@
 +++
 title = "8. Subscriptions"
 weight = 40
-template = "doc.html"
 +++
 
 In this lesson we're going to look at subscriptions. Subscriptions are probably
@@ -245,7 +244,7 @@ the initial `%watch-ack`. The `%fact` `sign` will have the following format:
 
 You would typically handle such `%fact`s in the following manner: Test the
 `wire`, test whether the `sign` is a `%fact`, test the `mark` in the `cage`,
-extract the data from the `vase` in the `cage`, and apply your logic. Again, routing on `wire` before `sign` is one of the [Precepts](/docs/development/precepts#specifics). For example:
+extract the data from the `vase` in the `cage`, and apply your logic. Again, routing on `wire` before `sign` is one of the [Precepts](/guides/additional/development/precepts#specifics). For example:
 
 ```hoon
 ++  on-agent

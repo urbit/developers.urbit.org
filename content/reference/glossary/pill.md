@@ -1,7 +1,6 @@
 +++
 title = "Pill"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

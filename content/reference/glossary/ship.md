@@ -1,7 +1,6 @@
 +++
 title = "Ship"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

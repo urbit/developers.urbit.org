@@ -1,7 +1,6 @@
 +++
 title = "Iris"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

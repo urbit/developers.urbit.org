@@ -1,7 +1,6 @@
 +++
 title = "Precepts"
 weight = 40
-template = "doc.html"
 +++
 
 ![](https://media.urbit.org/site/posts/essays/pre-01.jpg)

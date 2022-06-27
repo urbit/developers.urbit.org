@@ -1,6 +1,5 @@
 +++
 title = "Khan"
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

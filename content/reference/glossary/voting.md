@@ -1,7 +1,6 @@
 +++
 title = "Voting"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++

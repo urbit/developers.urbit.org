@@ -1,8 +1,6 @@
 +++
 title = "Nock Definition"
 weight = 1
-template = "doc.html"
-aliases = ["docs/learn/nock/definition/"]
 +++
 
 Nock is a Turing-complete function that maps a cell

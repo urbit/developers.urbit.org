@@ -1,7 +1,6 @@
 +++
 title = "Take Facts"
 weight = 3
-template = "doc.html"
 +++
 
 Most of the time you'll just want the final result like how we did previously. Sometimes, though, you might want to send out facts while the thread runs rather than just at the end.

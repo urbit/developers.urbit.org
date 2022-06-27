@@ -1,7 +1,6 @@
 +++
 title = "Data Types"
 weight = 3
-template = "doc.html"
 +++
 
 Iris itself only has three structures defined in `lull.hoon`, but it also uses `$http` structures which are shared between Iris and Eyre. The `$http` structures are detailed in the [Eyre](/reference/arvo/eyre/data-types#http) Data Types documentation.

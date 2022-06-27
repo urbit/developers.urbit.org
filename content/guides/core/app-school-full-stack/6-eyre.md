@@ -1,7 +1,6 @@
 +++
 title = "6. Eyre"
 weight = 6
-template = "doc.html"
 +++
 
 Now that we have our structure file, agent, `$json` conversion library and mark

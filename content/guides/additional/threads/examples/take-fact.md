@@ -1,7 +1,6 @@
 +++
 title = "Take Fact"
 weight = 6
-template = "doc.html"
 +++
 
 Taking a fact from an agent, arvo or whatever is easy. First you subscribe using `watch:strandio` or `watch-our:strandio`, then you use `take-fact:strandio` to receive the fact. Here's an example that takes an update from `graph-store` and prints the message to the dojo:

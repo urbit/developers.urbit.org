@@ -1,8 +1,6 @@
 +++
 title = "Irregular forms"
 weight = 20
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/irregular/"]
 +++
 
 ## Quick Lookup of Irregular Forms

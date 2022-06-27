@@ -1,7 +1,6 @@
 +++
 title = "Urbit HD Wallet"
 weight = 3
-template = "doc.html"
 +++
 
 Owners of Urbit identities need safeguards that allow for the use of Urbit
@@ -42,7 +41,7 @@ smart-contracts.
 ### Proxies
 
 Each permanent Urbit ID can designate one or more
-[proxies](/docs/using/id/proxies), which are Ethereum addresses capable of a
+[proxies](/using/id/proxies), which are Ethereum addresses capable of a
 limited subset of Urbit ID transactions, such as spawning planets or rotating
 keys. The HD wallet automatically generates additional addresses utilized as
 proxies according to what is appropriate for your Urbit ID.
@@ -132,6 +131,4 @@ concrete suggestions on security practices.
 
 One tool useful for this setup is `claz`, located at `app/claz.hoon`. `claz` is
 used for making and signing Bridge transactions from an offline computer. A
-guide to using `claz` is available [here](/docs/azimuth/advanced-azimuth-tools).
-
-
+guide to using `claz` is available [here](/reference/azimuth/advanced-azimuth-tools).

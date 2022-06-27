@@ -1,7 +1,6 @@
 +++
 title = "Nock"
 
-template = "doc.html"
 +++
 
 **Nock** is a purely functional typeless programming language and acts as
@@ -22,4 +21,4 @@ unnecessary to learn Nock to write code in Hoon.
 
 ### Further Reading
 
-- [The Nock Tutorial](/docs/nock/): An-in depth technical guide.
+- [The Nock Tutorial](/reference/nock/): An-in depth technical guide.

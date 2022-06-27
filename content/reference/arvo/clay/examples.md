@@ -1,7 +1,6 @@
 +++
 title = "Examples"
 weight = 7
-template = "doc.html"
 +++
 
 This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](/reference/arvo/clay/tasks) document.

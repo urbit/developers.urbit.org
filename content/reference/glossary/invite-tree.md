@@ -1,7 +1,6 @@
 +++
 title = "Invite Tree"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++

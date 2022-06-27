@@ -1,7 +1,6 @@
 +++
 title = "Scries"
 weight = 40
-template = "doc.html"
 +++
 
 ### What is a scry?

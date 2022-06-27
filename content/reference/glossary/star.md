@@ -1,7 +1,6 @@
 +++
 title = "Star"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

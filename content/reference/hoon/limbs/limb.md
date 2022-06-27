@@ -1,8 +1,6 @@
 +++
 title = "Limbs"
 weight = 1
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/limb/limb/"]
 +++
 A limb is an attribute of subject.
 

@@ -1,7 +1,6 @@
 +++
 title = "Data Types"
 weight = 4
-template = "doc.html"
 +++
 
 This section will be reference documentation for the data types used by our

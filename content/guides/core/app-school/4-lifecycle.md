@@ -1,7 +1,6 @@
 +++
 title = "4. Lifecycle"
 weight = 20
-template = "doc.html"
 +++
 
 In the last lesson we looked at a couple of useful things used as boilerplate in

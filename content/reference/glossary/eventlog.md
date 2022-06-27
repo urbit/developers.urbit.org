@@ -1,7 +1,6 @@
 +++
 title = "Event Log"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

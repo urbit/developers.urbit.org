@@ -1,7 +1,6 @@
 +++
 title = "Architecture"
 weight = 2
-template = "doc.html"
 +++
 
 Clay is the primary filesystem for the [Arvo](/reference/arvo/overview)

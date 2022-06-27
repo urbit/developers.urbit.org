@@ -1,7 +1,6 @@
 +++
 title = "1. Introduction"
 weight = 1
-template = "doc.html"
 +++
 
 This series walks through the writing of a full Gall agent, and then the process

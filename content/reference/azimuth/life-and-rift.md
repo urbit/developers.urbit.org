@@ -1,7 +1,6 @@
 +++
 title = "Life and Rift"
 weight = 8
-template = "doc.html"
 +++
 
 Associated to every Azimuth point are two non-negative integers known as _life_
@@ -15,7 +14,7 @@ networking state is appropriately reset when a breach has occurred.
 
 Every ship begins with a `life` and `rift` of 0. For galaxies, stars, and
 planets, these values are stored in the [Azimuth
-PKI](/docs/azimuth/azimuth-eth#points) as `keyRevisionNumber` and
+PKI](/reference/azimuth/azimuth-eth#points) as `keyRevisionNumber` and
 `continuityNumber`, while for moons, these values are stored by their parent.
 Comets cannot change their networking keys, nor can they breach, and so their
 `life` and `rift` are always 0.

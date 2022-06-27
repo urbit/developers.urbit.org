@@ -1,7 +1,6 @@
 +++
 title = "Writing Marks"
 weight = 2
-template = "doc.html"
 +++
 
 Here we'll walk through a practical example of writing a `mark` file.

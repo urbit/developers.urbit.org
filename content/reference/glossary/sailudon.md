@@ -1,7 +1,6 @@
 +++
 title = "Sail/Udon"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

@@ -1,7 +1,6 @@
 +++
 title = "Claims"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++

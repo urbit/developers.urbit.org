@@ -1,7 +1,6 @@
 +++
 title = "Input"
 weight = 3
-template = "doc.html"
 +++
 
 The input to a `strand` is defined in `/lib/strand/hoon` as:

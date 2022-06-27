@@ -1,7 +1,6 @@
 +++
 title = "Arms + ('lus')"
 weight = 8
-template = "doc.html"
 +++
 
 A core is a cell of `[battery payload]`. The battery is made of one or more

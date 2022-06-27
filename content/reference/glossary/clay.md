@@ -1,7 +1,6 @@
 +++
 title = "Clay"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

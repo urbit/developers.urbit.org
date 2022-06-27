@@ -1,8 +1,6 @@
 +++
 title = "Wings"
 weight = 2
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/limb/wing/"]
 +++
 `[%wing p=(list limb)]`
 

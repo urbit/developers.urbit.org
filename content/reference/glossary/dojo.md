@@ -12,4 +12,4 @@ and [Chat](/reference/glossary/chat) press Ctrl-X. The Dojo is the first thing y
 
 ### Further Reading
 
-- [Hoon Tutorial Lesson 1.1: Introduction](/docs/hoon/hoon-school/intro): A great way to get started with using Hoon in the Dojo.
+- [“Introduction to Hoon”](/guides/core/hoon-school/A-intro): A great way to get started with using Hoon in the Dojo.

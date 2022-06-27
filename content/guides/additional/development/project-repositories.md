@@ -1,7 +1,6 @@
 +++
 title = "Project Repositories"
 weight = 30
-template = "doc.html"
 +++
 
 Here's a breakdown of the various repositories the project comprises. All of

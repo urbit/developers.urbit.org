@@ -1,7 +1,6 @@
 +++
 title = "2. The Agent Core"
 weight = 10
-template = "doc.html"
 +++
 
 In this lesson we'll look at the basic type and structure of a Gall agent.
@@ -71,7 +70,7 @@ for this possibility.
 
 ## State
 
-If you've worked through [Hoon School](/docs/hoon/hoon-school/intro), you may
+If you've worked through [Hoon School](/guides/core/hoon-school/), you may
 recall that a core is a cell of `[battery payload]`. The battery is the core
 itself compiled to Nock, and the payload is the subject which it operates on.
 

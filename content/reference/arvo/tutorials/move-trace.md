@@ -1,7 +1,6 @@
 +++
 title = "Move Trace"
 weight = 12
-template = "doc.html"
 +++
 
 In this tutorial we will run a simple "move trace" and use the output to get a

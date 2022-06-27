@@ -1,7 +1,6 @@
 +++
 title = "Appendix: Types"
 weight = 65
-template = "doc.html"
 +++
 
 This document explains a few of the types commonly used in Gall agents. In

@@ -1,8 +1,6 @@
 +++
 title = "Conditionals ? ('wut')"
 weight = 6
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/wut/"]
 +++
 
 Hoon has the usual program control branches. It also has the usual logical

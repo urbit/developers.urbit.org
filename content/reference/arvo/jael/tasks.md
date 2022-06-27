@@ -1,7 +1,6 @@
 +++
 title = "API Reference"
 weight = 2
-template = "doc.html"
 +++
 
 This document details all the `task`s you may wish to send Jael, as well as the `gift`s you'll receive in response.

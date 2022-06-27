@@ -1,7 +1,6 @@
 +++
 title = "JSON"
 weight = 4
-template = "doc.html"
 +++
 
 If you are working on a Gall agent with any kind of web interface, it's likely you will encounter the problem of converting Hoon data structures to JSON and vice versa. This is what we'll look at in this document.

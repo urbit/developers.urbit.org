@@ -1,7 +1,6 @@
 +++
 title = "Senate"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++

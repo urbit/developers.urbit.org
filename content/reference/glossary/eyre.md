@@ -1,7 +1,6 @@
 +++
 title = "Eyre"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

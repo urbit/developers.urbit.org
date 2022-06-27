@@ -1,6 +1,5 @@
 +++
 title = "Arvo"
-template = "doc.html"
 +++
 
 **Arvo** is the Urbit operating system and kernel. Arvo's state is a pure
@@ -40,5 +39,5 @@ A ship creates its own copy of Arvo via a bootstrap sequence known as a
 
 - [The Arvo tutorial](/reference/arvo/overview): An in-depth technical
   guide to Arvo and its vanes.
-- [The Technical Overview](/docs/system-overview/): An
+- [The Technical Overview](/overview/): An
   overview of all of Urbit.

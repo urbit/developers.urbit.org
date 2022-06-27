@@ -1,7 +1,6 @@
 +++
 title = "Gate"
 
-template = "doc.html"
 [extra]
 category = "hoon-nock"
 +++
@@ -12,5 +11,5 @@ the same properties of functions from other programming languages.
 
 ### Further Reading
 
-- [The Hoon Tutorial](/docs/hoon/hoon-school/): Our guide to learning the Hoon 
+- [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon 
 programming language.

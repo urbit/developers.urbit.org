@@ -1,6 +1,5 @@
 +++
 title = "Azimuth"
-template = "doc.html"
 +++
 
 **Azimuth** is Urbit's identity layer, built as a suite of smart contracts on
@@ -31,7 +30,7 @@ identity system for other projects.
 
 ### Further Reading
 
-- [The Azimuth concepts page](/docs/azimuth/azimuth): A more in-depth
+- [The Azimuth concepts page](/reference/azimuth/azimuth): A more in-depth
   explanation of Azimuth.
 - [Install instructions](/getting-started/): Guide to installing Urbit, which
   includes instructions on booting with your Urbit identity.

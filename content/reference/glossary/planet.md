@@ -1,7 +1,6 @@
 +++
 title = "Planet"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

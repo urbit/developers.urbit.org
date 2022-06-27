@@ -1,7 +1,6 @@
 +++
 title = "5. Cards"
 weight = 25
-template = "doc.html"
 +++
 
 As we previously discussed, most arms of an agent core produce a cell of

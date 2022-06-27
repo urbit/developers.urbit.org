@@ -1,7 +1,6 @@
 +++
 title = "|sync"
 
-template = "doc.html"
 [extra]
 category = "arvo"
 +++

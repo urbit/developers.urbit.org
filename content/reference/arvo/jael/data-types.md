@@ -1,7 +1,6 @@
 +++
 title = "Data Types"
 weight = 4
-template = "doc.html"
 +++
 
 Jael's section in `lull.hoon` contains three ancillary cores with their own type definitions as well as Jael's general types.

@@ -1,7 +1,6 @@
 +++
 title = "App School Live"
 weight = 3
-template = "doc.html"
 +++
 
 #   App School Live

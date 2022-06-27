@@ -1,7 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
 +++
 
 Clay is a typed filesystem, and we call these file types `mark`s. When talking about Hoon and Arvo we'll often talk of types like `@ud`, `(list @t)`, etc. A `mark` will specify such a type for its files, but it does more than just that - it also defines conversion routines to and from other `mark`s, as well as diff, patch, and merge routines.

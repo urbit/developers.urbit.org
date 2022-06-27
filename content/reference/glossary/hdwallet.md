@@ -1,7 +1,6 @@
 +++
 title = "HD Wallet"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++
@@ -14,5 +13,5 @@ If a proxy or ownership address is compromised or has its keys lost, it can alwa
 
 ### Further Reading
 
-- [The Azimuth concepts page](/docs/azimuth/azimuth): A more in-depth explanation of Azimuth.
-- [Urbit HD Wallet](/docs/azimuth/hd-wallet): An in-depth explanation of the HD wallet.
+- [The Azimuth concepts page](/reference/azimuth/azimuth): A more in-depth explanation of Azimuth.
+- [Urbit HD Wallet](/reference/azimuth/hd-wallet): An in-depth explanation of the HD wallet.

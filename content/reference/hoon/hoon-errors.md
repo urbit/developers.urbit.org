@@ -1,7 +1,6 @@
 +++
 title = "Hoon Errors"
 weight = 30
-template = "doc.html"
 +++
 
 In this section we explore strategies for debugging and understanding what your

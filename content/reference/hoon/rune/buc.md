@@ -1,8 +1,6 @@
 +++
 title = "Structures $ ('buc')"
 weight = 12
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/buc/"]
 +++
 
 The `$` family of runes is used for defining custom types. Strictly speaking,

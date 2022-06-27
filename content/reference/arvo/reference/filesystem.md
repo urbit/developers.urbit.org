@@ -1,7 +1,6 @@
 +++
 title = "Filesystem Hierarchy"
 weight = 20
-template = "doc.html"
 +++
 
 Here we describe what each of the primary folders present in a Clay desk. This
@@ -33,7 +32,7 @@ is not perfectly adhered to - sometimes you may find structure definitions in
   rule - structures and functions that are central to Hoon, Arvo, and its vanes,
   are all located within this folder rather than in `/lib` and `/sur`. See
   [below](#sys) for more information on `/sys`.
-- `/ted` contains [threads](/docs/userspace/threads/overview). These may be run
+- `/ted` contains [threads](/guides/additional/threads/overview). These may be run
   from dojo using `-`. For example, `/ted/foo/hoon` on the `%base` desk is run
   with `-foo`. Threads on desks other than the `%base` desk can be run with
   `-desk!thread` like `-garden!foo`.
@@ -52,7 +51,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
 - `hoon.hoon` contains the Hoon compiler and the [Hoon standard
   library](/reference/hoon/stdlib/table-of-contents). The Hoon
   compiler is self-hosted. This is the first file loaded by the Nock virtual
-  machine, [Vere](/docs/vere/runtime), in order for it to learn how to
+  machine, [Vere](/reference/vere/runtime), in order for it to learn how to
   interpret Hoon. The kelvin version number is the subject of `hoon.hoon`,
   currently at 140. One may see this from dojo by inspecting the subject with
   `.` and noting that `%140` is the final entry of the subject.
@@ -91,13 +90,13 @@ desks and their Gall agents:
   automatically started when it's installed. This file may be omitted if there
   are no agents to start.
 - `desk.docket-0` - This file configures the tile,
-  [glob](/docs/userspace/dist/glob) and other metadata for apps with a
+  [glob](/guides/additional/dist/glob) and other metadata for apps with a
   front-end. This file may be omitted if the desk does not have a tile or
   front-end to be installed. This file is versioned so the number appended may
   change in the future as changes to its specification are made. See the [Docket
-  File](/docs/userspace/dist/docket) documentation for more details.
+  File](/guides/additional/dist/docket) documentation for more details.
 - `desk.ship` - This specifies the original publisher of the desk and is useful
   if a desk is being republished. It is optional and may be omitted.
 
 For more details of creating and distributing desks, see the
-[Distribution](/docs/userspace/dist/dist) documentation.
+[Distribution](/guides/additional/dist/dist) documentation.

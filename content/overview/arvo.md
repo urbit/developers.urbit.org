@@ -1,7 +1,6 @@
 +++
 title = "Arvo"
 weight = 10
-template = "doc.html"
 +++
 
 Arvo is a purely functional,

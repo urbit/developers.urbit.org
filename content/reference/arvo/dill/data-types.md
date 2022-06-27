@@ -1,7 +1,6 @@
 +++
 title = "Data Types"
 weight = 4
-template = "doc.html"
 +++
 
 Here are the data types used by Dill, as defined in `/sys/lull.hoon`.

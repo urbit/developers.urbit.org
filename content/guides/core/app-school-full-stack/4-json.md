@@ -1,7 +1,6 @@
 +++
 title = "4. JSON"
 weight = 4
-template = "doc.html"
 +++
 
 Data sent between our agent and our front-end will all be encoded as JSON. In

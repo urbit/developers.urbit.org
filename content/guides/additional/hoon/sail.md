@@ -1,7 +1,6 @@
 +++
 title = "Sail (HTML)"
 weight = 6
-template = "doc.html"
 +++
 
 Sail is a domain-specific language for composing HTML (and XML) structures in

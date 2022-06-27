@@ -1,7 +1,6 @@
 +++
 title = "Examples"
 weight = 5
-template = "doc.html"
 +++
 
 This documents contains practical examples of a number of Jael's `task`s.

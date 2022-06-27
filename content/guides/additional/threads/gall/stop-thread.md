@@ -1,7 +1,6 @@
 +++
 title = "Stop Thread"
 weight = 4
-template = "doc.html"
 +++
 
 Here we've added one last card to `on-poke` to stop the thread and a little extra to `on-agent` to print things for demonstrative purposes.

@@ -1,14 +1,13 @@
 +++
 title = "Auras"
 weight = 70
-template = "doc.html"
 +++
 
 Auras are system of nested "soft types" on [atoms](/reference/glossary/atom) that
 are used to track metadata about how a particular atom is to be interpreted.
 This is used for type checking as well as pretty printing.
 
-You can learn more about auras in [Hoon school](/docs/hoon/hoon-school/atoms-auras-and-simple-cell-types).
+You can learn more about auras in [Hoon school](/guides/core/hoon-school/B-syntax#nouns).
 
 ### Table of Auras
 

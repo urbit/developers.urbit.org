@@ -1,7 +1,6 @@
 +++
 title = "Keyfile"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++

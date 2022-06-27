@@ -1,8 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
-aliases = ["/docs/learn/arvo/ames/"]
 +++
 
 Our networking protocol.
@@ -163,7 +161,7 @@ through a relay.
 algorithm utilized to encrypt Ames packets (see the page on [Ames
 cryptography](/reference/arvo/ames/cryptography)). It is formed from the
 following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see
-[Life and Rift](/docs/azimuth/life-and-rift) for information on what `life`
+[Life and Rift](/reference/azimuth/life-and-rift) for information on what `life`
 is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus
 the mod 16 sender and receiver life in the first 8 bits are only for quick
 filtering of honest packets sent to or from a stale life.
@@ -427,7 +425,7 @@ message.
 
 Urbit's functionality is split between the two binaries `urbit-worker` (sometimes
 called the Serf) and `urbit-king` (sometimes called the King). This division of
-labor is currently not well-documented outside of the [Vere documents](/docs/vere/), but we summarize it here.
+labor is currently not well-documented outside of the [Vere documents](/reference/vere/), but we summarize it here.
 
 In short, the Serf is the Nock runtime and so keeps track of the current state
 of Arvo as a Nock noun and updates the state by `%poke`ing it with nouns, and
