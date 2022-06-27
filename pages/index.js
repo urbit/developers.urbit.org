@@ -12,11 +12,11 @@ import {
   Comms,
   Database,
   Distribution,
+  Functional,
   Identity,
   Interface,
   MintFiller,
   Peer,
-  State,
 } from "../components/icons";
 import Card from "../components/Card";
 import TallCard from "../components/TallCard";
@@ -37,29 +37,33 @@ export default function Home({ search }) {
                 Discover the creative possibility of a unified operating system
               </h1>
               <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <Link href="/guides/quickstart" passHref>
+                  <a className="button-lg bg-green-400 text-white">
+                    Quickstart
+                  </a>
+                </Link>
                 <Link href="/overview" passHref>
-                  <a className="button-lg bg-white border-wall-500 border-2">
+                  <a className="button-lg bg-blue-400 text-white">
                     Read the Overview
                   </a>
                 </Link>
                 <Link href="/reference" passHref>
-                  <a className="button-lg bg-blue-400 text-white">
+                  <a className="button-lg bg-white border-wall-500 border-2">
                     Learn the Stack
-                  </a>
-                </Link>
-                <Link href="/guides" passHref>
-                  <a className="button-lg bg-green-400 text-white">
-                    Quickstart
                   </a>
                 </Link>
               </div>
             </div>
           </Section>
           <Section short>
-            <h2>
-              Urbit provides foundational primitives at the operating system
-              layer, serving as a better platform for building networked,
-              decentralized applications.
+            <h2 className="font-normal">
+              Urbit provides{" "}
+              <span className="font-bold">foundational primitives</span> at the
+              operating system layer, serving as a better platform for building{" "}
+              <span className="font-bold">
+                networked, decentralized applications
+              </span>
+              .
             </h2>
             <div className="flex flex-wrap pt-12">
               {pitch.map((each) => {
@@ -183,32 +187,35 @@ const pitch = [
   {
     icon: <Identity className="shrink-0" />,
     title: "Identity",
-    content: "Urbit ID works for individuals and organizations alike",
+    content:
+      "Identity is built-in at the lowest level of the stack. Say goodbye to auth systems.",
   },
   {
-    icon: <State className="shrink-0" />,
-    title: "State",
+    icon: <Functional className="shrink-0" />,
+    title: "Functional Network",
     content:
-      "Every action is cryptographically secured and tied to an identity",
+      "Immutable, functional programming across the entire OS and network",
   },
   {
     icon: <Database className="shrink-0" />,
-    title: "Persistent Database",
-    content: "Lorem ipsum dolorem sin atmet ad piscing",
+    title: "Built-in Database",
+    content: "Every piece of state in your application is persistent, always.",
   },
   {
     icon: <Peer className="shrink-0" />,
     title: "Peer-to-Peer Applications",
-    content: "Urbit is end-to-end encrypted and multiplayer by default",
+    content: "Urbit makes robust peer-to-peer applications easy to build",
   },
   {
     icon: <Distribution className="shrink-0" />,
     title: "Open Distribution",
-    content: "Distribute software without corporate oversight",
+    content:
+      "Distribute software directly to users — you are your own app store",
   },
   {
     icon: <Interface className="shrink-0" />,
     title: "Web Interfaces",
-    content: "Natural integration with front-end web frameworks",
+    content:
+      "Urbit applications can be built on any interface framework, including the web",
   },
 ];

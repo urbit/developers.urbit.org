@@ -16,7 +16,7 @@ export default function Interface({ className }) {
         x2="46.5"
         y2="31"
         stroke="black"
-        strokeLinecap="round"
+        stroke-linecap="round"
       />
       <line
         x1="14.5"
@@ -24,7 +24,7 @@ export default function Interface({ className }) {
         x2="46.5"
         y2="41"
         stroke="black"
-        strokeLinecap="round"
+        stroke-linecap="round"
       />
       <line
         x1="14.5"
@@ -32,7 +32,7 @@ export default function Interface({ className }) {
         x2="46.5"
         y2="51"
         stroke="black"
-        strokeLinecap="round"
+        stroke-linecap="round"
       />
       <line
         x1="14.5"
@@ -40,7 +40,7 @@ export default function Interface({ className }) {
         x2="41.5"
         y2="46"
         stroke="black"
-        strokeLinecap="round"
+        stroke-linecap="round"
       />
       <line
         x1="14.5"
@@ -48,7 +48,7 @@ export default function Interface({ className }) {
         x2="33.5"
         y2="36"
         stroke="black"
-        strokeLinecap="round"
+        stroke-linecap="round"
       />
       <line
         x1="14.5"
@@ -56,7 +56,7 @@ export default function Interface({ className }) {
         x2="33.5"
         y2="56"
         stroke="black"
-        strokeLinecap="round"
+        stroke-linecap="round"
       />
       <line
         x1="0.666504"
