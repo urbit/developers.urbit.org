@@ -189,7 +189,7 @@ function Landing({ search }) {
                 <a>Hoon language</a>
               </Link>{" "}
               and the{" "}
-              <Link href="/reference/stdlib" passHref>
+              <Link href="/reference/hoon/stdlib" passHref>
                 <a>standard library</a>
               </Link>{" "}
               are included.
