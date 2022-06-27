@@ -6,8 +6,8 @@ template = "doc.html"
 category = "arvo"
 +++
 
-**Chat** is a suite of [Gall](/docs/glossary/gall) applications that handle "instant
-messaging"-style communication between [ships](/docs/glossary/ship).
+**Chat** is a suite of [Gall](/reference/glossary/gall) applications that handle "instant
+messaging"-style communication between [ships](/reference/glossary/ship).
 
 A chat is a named collection of messages created by and hosted in a ship's
 `chat-store`. Most of Chat revolves around doing things with these chats.
@@ -27,6 +27,6 @@ There are two "kinds" of chats:
 
 ### Further Reading
 
-- [Landscape](/docs/glossary/landscape) includes a web interface for using Chat.
+- [Landscape](/reference/glossary/landscape) includes a web interface for using Chat.
 - [Messaging guide](/using/os/messaging): A guide to
   using Chat from the command line.

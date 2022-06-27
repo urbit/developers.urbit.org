@@ -10,14 +10,14 @@ insert_anchor_links = "right"
 
 A brief overview of the Dill vane.
 
-[API Reference](/docs/arvo/dill/tasks)
+[API Reference](/reference/arvo/dill/tasks)
 
 The `task`s Dill takes and the `gift`s it returns.
 
-[Scry Reference](/docs/arvo/dill/scry)
+[Scry Reference](/reference/arvo/dill/scry)
 
 The scry endpoints of Dill.
 
-[Data Types](/docs/arvo/dill/data-types)
+[Data Types](/reference/arvo/dill/data-types)
 
 Reference documentation of the data types used by Dill.

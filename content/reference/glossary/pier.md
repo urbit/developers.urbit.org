@@ -6,11 +6,11 @@ category = "arvo"
 +++
 
 A **pier** is the directory which contains the state of an Urbit
-[ship](/docs/glossary/ship). It is automatically created in the current
+[ship](/reference/glossary/ship). It is automatically created in the current
 directory when booting a ship for the first time.
 
 Your pier should be kept safe - if it's deleted, you will need to perform a
-[factory reset](/docs/glossary/reset) in order to inform the rest of the network
+[factory reset](/reference/glossary/reset) in order to inform the rest of the network
 that your ship's state has been lost.
 
 Note that a backup should usually _not_ be taken of your pier as a means of
@@ -22,7 +22,7 @@ possible.
 
 ### Further Reading
 
-- [Event Log](/docs/glossary/eventlog): The main important content of the pier directory.
+- [Event Log](/reference/glossary/eventlog): The main important content of the pier directory.
 - [Guide to Factory Resets](/using/id/guide-to-resets): Instructions on
   performing a factory reset.
 - [Ship Troubleshooting](/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.

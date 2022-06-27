@@ -6,7 +6,7 @@ template = "doc.html"
 
 The [Urbit Foundation](https://urbit.org/blog/first-steps-towards-urbit-org/)
 runs a [Grants program](https://grants.urbit.org), where you can earn address
-space ([stars](/docs/glossary/star)) in exchange for contributing to the
+space ([stars](/reference/glossary/star)) in exchange for contributing to the
 project.
 
 Grants come in four different flavors at present: [bounties](#bounties),

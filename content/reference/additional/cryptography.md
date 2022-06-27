@@ -25,20 +25,20 @@ blockchain, and as such is contained in a wallet whose private key you possess.
 If you are are utilizing a [master
 ticket](/docs/azimuth/azimuth#master-ticket), this private key is derived
 from a seed, which is what you use to login to
-[Bridge](/docs/glossary/bridge). Otherwise, you have generated the key by
+[Bridge](/reference/glossary/bridge). Otherwise, you have generated the key by
 some other process, of which there are too many to list here. Besides the
 private key which unlocks your ownership wallet address, you may have a few
 other private keys which unlock a wallet that corresponds to your ship's
-[proxies](/docs/glossary/proxies). We refer collectively to these keys as
+[proxies](/reference/glossary/proxies). We refer collectively to these keys as
 your _Azimuth keys_.
 
-Only [planets](/docs/glossary/planet), [stars](/docs/glossary/star), and
-[galaxies](/docs/glossary/galaxy) have Azimuth keys.
-[Moons](/docs/glossary/moon) and [comets](/docs/glossary/comet) do not,
+Only [planets](/reference/glossary/planet), [stars](/reference/glossary/star), and
+[galaxies](/reference/glossary/galaxy) have Azimuth keys.
+[Moons](/reference/glossary/moon) and [comets](/reference/glossary/comet) do not,
 as they do not exist on the Ethereum blockchain.
 
 It is important to note that no Azimuth keys are stored anywhere within your
-ship's [pier](/docs/glossary/pier) - Ethereum and Urbit ID are entirely
+ship's [pier](/reference/glossary/pier) - Ethereum and Urbit ID are entirely
 separate entities from Urbit itself, and so you lose access to your Azimuth
 private keys there is no way to retrieve them somehow from your ship.
 
@@ -47,18 +47,18 @@ the [Azimuth documentation](/docs/azimuth/azimuth).
 
 #### Networking keys
 
-All communications in Urbit over the [Ames](/docs/glossary/ames) network
+All communications in Urbit over the [Ames](/reference/glossary/ames) network
 are end-to-end encrypted, and thus your ship stores its own public/private pair
 of _networking keys_ utilized for encryption and authentication. Networking keys
-for all ship types are stored within the ship's [Jael](/docs/glossary/jael)
-[vane](/docs/glossary/vane).
+for all ship types are stored within the ship's [Jael](/reference/glossary/jael)
+[vane](/reference/glossary/vane).
 
 For planets, stars, and galaxies, your networking public key is configured on
 the Ethereum blockchain using one of your Azimuth private keys - either the one
 associated to the wallet which owns the ship, or the one which holds the
-[management proxy](/docs/glossary/proxies). This is typically accomplished
+[management proxy](/reference/glossary/proxies). This is typically accomplished
 with Bridge. Your networking private key (in the
-[keyfile](/docs/glossary/keyfile)) is a necessary input for the initial boot
+[keyfile](/reference/glossary/keyfile)) is a necessary input for the initial boot
 sequence of your ship (sometime called its `%dawn`), and this is also provided
 by Bridge.
 
@@ -86,7 +86,7 @@ limitation is slated to be implemented as of May 2021.
 
 ### System components
 
-[Ames](/docs/arvo/ames/ames) is Arvo's networking vane. All packets sent by
+[Ames](/reference/arvo/ames/ames) is Arvo's networking vane. All packets sent by
 Ames are encrypted utilizing a cryptosuite found in `zuse`. The only exception
 to this are comet self-attestation packets utilized to transmit authentication
 of ownership of the private networking key associated to their public key. Ames
@@ -94,7 +94,7 @@ is responsible for encryption, decryption, and authentication of all packets. By
 default, this utilizes AES symmetric key encryption, whose shared private key is
 got by elliptic curve Diffie-Hellman key exchange of the ships' networking keys.
 
-[Jael](/docs/arvo/jael/jael-api) is primarily utilized for the safe storage
+[Jael](/reference/arvo/jael/jael-api) is primarily utilized for the safe storage
 of private networking keys and retrieval of public networking keys utilized by
 Ames. The Jael vane of planets, stars, and galaxies are responsible for
 distributing the public keys of their moons (ultimately via Ames).
@@ -119,6 +119,6 @@ Jael and utilized by Ames for end-to-end encrypted communication.
 The following pages contained more detailed information about the cryptography
 utilized by each of the system components.
 
-- [Ames](/docs/arvo/ames/cryptography)
-- [Zuse](/docs/arvo/reference/cryptography)
+- [Ames](/reference/arvo/ames/cryptography)
+- [Zuse](/reference/arvo/reference/cryptography)
 - [Vere](/docs/vere/cryptography)

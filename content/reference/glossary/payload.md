@@ -6,7 +6,7 @@ template = "doc.html"
 category = "hoon-nock"
 +++
 
-A **payload** is the set of data needed to run computations in a [core](/docs/glossary/core)
+A **payload** is the set of data needed to run computations in a [core](/reference/glossary/core)
 
 ### Further Reading
 

@@ -172,7 +172,7 @@ If you have text but you need to change part of it or alter its form, you can us
 
 Applicable `list` operations—some of which you've seen before—include:
 
-- [`++flop`](https://urbit.org/docs/hoon/reference/stdlib/2b#flop) takes a list and returns it in reverse order:
+- [`++flop`](/reference/hoon/stdlib/2b#flop) takes a list and returns it in reverse order:
 
     ```hoon
     > (flop "Hello!")
@@ -182,7 +182,7 @@ Applicable `list` operations—some of which you've seen before—include:
     "Hello!"
     ```
 
-- [`++sort`](https://urbit.org/docs/hoon/reference/stdlib/2b#sort) uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list.  It takes a `list` to sort and a gate that serves as a comparator.  For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the `++lth` gate (for “less than”):
+- [`++sort`](/reference/hoon/stdlib/2b#sort) uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list.  It takes a `list` to sort and a gate that serves as a comparator.  For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the `++lth` gate (for “less than”):
 
     ```hoon
     > (sort ~[37 62 49 921 123] lth)
@@ -205,7 +205,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     The function passed to sort must produce a flag, i.e., `?`.
 
-- [`++weld`](https://urbit.org/docs/hoon/reference/stdlib/2b#weld) takes two lists of the same type and concatenates them:
+- [`++weld`](/reference/hoon/stdlib/2b#weld) takes two lists of the same type and concatenates them:
 
     ```hoon
     > (weld "Happy " "Birthday!")
@@ -214,7 +214,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     It does not inject a separator character like a space.
 
-- [`++snag`](https://urbit.org/docs/hoon/reference/stdlib/2b#snag) takes an atom `n` and a list, and returns the `n`th item of the list, where 0 is the first item:
+- [`++snag`](/reference/hoon/stdlib/2b#snag) takes an atom `n` and a list, and returns the `n`th item of the list, where 0 is the first item:
 
     ```hoon
     > (snag 3 "Hello!")
@@ -231,7 +231,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     - Without using `++snag`, write a gate that returns the `n`th item of a list.  There is a solution at the bottom of the page.
 
-- [`++oust`](https://urbit.org/docs/hoon/reference/stdlib/2b#oust) takes a pair of atoms [a=@ b=@] and a list, and returns the list with b items removed, starting at item a:
+- [`++oust`](/reference/hoon/stdlib/2b#oust) takes a pair of atoms [a=@ b=@] and a list, and returns the list with b items removed, starting at item a:
 
     ```hoon
     > (oust [0 1] `(list @)`~[11 22 33 44])
@@ -247,7 +247,7 @@ Applicable `list` operations—some of which you've seen before—include:
     "Heo!"
     ```
 
-- [`++lent`](https://urbit.org/docs/hoon/reference/stdlib/2b#lent) takes a list and returns the number of items in it:
+- [`++lent`](/reference/hoon/stdlib/2b#lent) takes a list and returns the number of items in it:
 
     ```hoon
     > (lent ~[11 22 33 44])
@@ -261,32 +261,32 @@ Applicable `list` operations—some of which you've seen before—include:
 
     - There is a built-in `++lent` function that counts the number of characters in a `tape`.  Build your own `tape`-length character counting function without using `++lent`.
 
-    You may find the [`?~` wutsig](https://urbit.org/docs/hoon/reference/rune/wut#-wutsig) rune to be helpful.  It tells you whether a value is `~` or not.  (How would you do this with a regular `?:` wutcol?)
+    You may find the [`?~` wutsig](/reference/hoon/rune/wut#wutsig) rune to be helpful.  It tells you whether a value is `~` or not.  (How would you do this with a regular `?:` wutcol?)
 
 The foregoing are `list` operations.  The following, in contrast, are `tape`-specific operations:
 
-- [`++crip`](https://urbit.org/docs/hoon/reference/stdlib/4b#crip) converts a `tape` to a `cord` (`tape`→`cord`).
+- [`++crip`](/reference/hoon/stdlib/4b#crip) converts a `tape` to a `cord` (`tape`→`cord`).
 
     ```hoon
     > (crip "Mars")
     'Mars'
     ```
 
-- [`++trip`](https://urbit.org/docs/hoon/reference/stdlib/4b#trip) converts a `cord` to a `tape` (`cord`→`tape`).
+- [`++trip`](/reference/hoon/stdlib/4b#trip) converts a `cord` to a `tape` (`cord`→`tape`).
 
     ```hoon
     > (trip 'Earth')
     "Earth"
     ```
 
-- [`++cass`](https://urbit.org/docs/hoon/reference/stdlib/4b#cass): convert upper-case text to lower-case (`tape`→`tape`)
+- [`++cass`](/reference/hoon/stdlib/4b#cass): convert upper-case text to lower-case (`tape`→`tape`)
 
     ```hoon
     > (cass "Hello Mars")
     "hello mars"
     ```
 
-- [`++cuss`](https://urbit.org/docs/hoon/reference/stdlib/4b#cuss): convert lower-case text to upper-case (`tape`→`tape`)
+- [`++cuss`](/reference/hoon/stdlib/4b#cuss): convert lower-case text to upper-case (`tape`→`tape`)
 
     ```hoon
     > (cuss "Hello Mars")
@@ -303,7 +303,7 @@ Given a string of text, what can you do with it?
 
 #### Search
 
-- [`++find`](https://urbit.org/docs/hoon/reference/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack).  (`++find` starts counting from zero.)
+- [`++find`](/reference/hoon/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack).  (`++find` starts counting from zero.)
 
     ```hoon
     > (find "brillig" "'Twas brillig and the slithy toves")
@@ -339,7 +339,7 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself.  How
     ~["the" "sky" "above" "the" ...]
     ```
     
-    To complete this, you'll need [`++scag`](https://urbit.org/docs/hoon/reference/stdlib/2b#scag) and [`++slag`](https://urbit.org/docs/hoon/reference/stdlib/2b#slag) (who sound like villainous henchmen from a children's cartoon).
+    To complete this, you'll need [`++scag`](/reference/hoon/stdlib/2b#scag) and [`++slag`](/reference/hoon/stdlib/2b#slag) (who sound like villainous henchmen from a children's cartoon).
 
     ```hoon
     |=  ex=tape
@@ -375,7 +375,7 @@ If you have a Hoon value and you want to convert it into text as such, use `++sc
 
 - [`++scow`](https://urbit.org/docs/reference/library/4m/#scow) renders a `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to `++scot`.
 
-- [`++sane`](https://urbit.org/docs/hoon/reference/stdlib/4b#sane) checks the validity of a possible text string as a `knot` or `term`.  The usage of `++sane` will feel a bit strange to you:  it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`).  (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.)  `++sane` is also not infallible yet.
+- [`++sane`](/reference/hoon/stdlib/4b#sane) checks the validity of a possible text string as a `knot` or `term`.  The usage of `++sane` will feel a bit strange to you:  it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`).  (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.)  `++sane` is also not infallible yet.
 
     ```hoon
     > ((sane %ta) 'ångstrom')  
@@ -500,7 +500,7 @@ The expression above creates a cell with `%say` as the head. The tail is the `|=
 (add 40 2)
 ```
 
-`|= *` constructs a [gate](https://urbit.org/docs/glossary/gate/) that takes a noun. This [gate](https://urbit.org/docs/glossary/gate/) will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
+`|= *` constructs a [gate](/reference/glossary/gate/) that takes a noun. This [gate](/reference/glossary/gate/) will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
 
 A `%say` generator has access to values besides those passed into it and the Hoon standard subject.  Namely, a `%say` generator knows about `our`, `eny`, and `now`:
 
@@ -565,7 +565,7 @@ Most of the work is being done by these two lines:
 =/  val  (rad:rng (lent answers))
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy.  A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed).  Here we pull the subject of [`++og`](https://urbit.org/docs/hoon/reference/stdlib/3d#og), the randomness core in Hoon, to start the RNG.  This is an uncommon turn of phrase, but will become more clear in the next lesson, on doors.
+`~(. og eny)` starts a random number generator with a seed from the current entropy.  A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed).  Here we pull the subject of [`++og`](/reference/hoon/stdlib/3d#og), the randomness core in Hoon, to start the RNG.  This is an uncommon turn of phrase, but will become more clear in the next lesson, on doors.
 
 Then we slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
 

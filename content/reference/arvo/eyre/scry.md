@@ -12,7 +12,7 @@ All examples are run from the dojo.
 
 ## `/cors`
 
-An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. The type returned is a [cors-registry](/docs/arvo/eyre/data-types#cors-registry) which contains the `set`s of approved, rejected and requested origins.
+An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. The type returned is a [cors-registry](/reference/arvo/eyre/data-types#cors-registry) which contains the `set`s of approved, rejected and requested origins.
 
 ### Example {% #example-1 %}
 
@@ -113,7 +113,7 @@ The cookie must be the full cookie including the `urbauth-{SHIP}=` part. The coo
 
 ## `%bindings`
 
-A scry with `bindings` in place of the `desk` in the `beak` will return Eyre's URL path bindings. The type returned is a `(list [binding:eyre duct action:eyre])` (see the [$binding](/docs/arvo/eyre/data-types#binding) & [$action](/docs/arvo/eyre/data-types#action) sections of the Data Types document for details).
+A scry with `bindings` in place of the `desk` in the `beak` will return Eyre's URL path bindings. The type returned is a `(list [binding:eyre duct action:eyre])` (see the [$binding](/reference/arvo/eyre/data-types#binding) & [$action](/reference/arvo/eyre/data-types#action) sections of the Data Types document for details).
 
 ### Example {% #example-5 %}
 
@@ -134,7 +134,7 @@ A scry with `bindings` in place of the `desk` in the `beak` will return Eyre's U
 
 ## `%connections`
 
-A scry with `bindings` in place of the `desk` in the `beak` will return all open HTTP connections that aren't fully complete. The type returned is a `(map duct outstanding-connection:eyre)` (see the [$outstanding-connection](/docs/arvo/eyre/data-types#outstanding-connection) section of the Data Types document for details).
+A scry with `bindings` in place of the `desk` in the `beak` will return all open HTTP connections that aren't fully complete. The type returned is a `(map duct outstanding-connection:eyre)` (see the [$outstanding-connection](/reference/arvo/eyre/data-types#outstanding-connection) section of the Data Types document for details).
 
 ### Example {% #example-6 %}
 
@@ -145,7 +145,7 @@ A scry with `bindings` in place of the `desk` in the `beak` will return all open
 
 ## `%authentication-state`
 
-A scry with `authentication-state` in place of the `desk` in the `beak` will return authentication details of all current sessions. The type returned is a [$authentication-state](/docs/arvo/eyre/data-types#authentication-state). The `p` field is the cookie sans the `urbauth-{SHIP}=` part.
+A scry with `authentication-state` in place of the `desk` in the `beak` will return authentication details of all current sessions. The type returned is a [$authentication-state](/reference/arvo/eyre/data-types#authentication-state). The `p` field is the cookie sans the `urbauth-{SHIP}=` part.
 
 ### Example {% #example-7 %}
 
@@ -160,7 +160,7 @@ A scry with `authentication-state` in place of the `desk` in the `beak` will ret
 
 ## `%channel-state`
 
-A scry with `channel-state` in place of the `desk` in the `beak` will return details of the state of each channel. The type returned is a [channel-state](/docs/arvo/eyre/data-types#channel-state).
+A scry with `channel-state` in place of the `desk` in the `beak` will return details of the state of each channel. The type returned is a [channel-state](/reference/arvo/eyre/data-types#channel-state).
 
 ### Example {% #example-8 %}
 

@@ -44,7 +44,7 @@ Hoon supports trees of any type that can be constructed in Hoon, e.g.: `(tree @)
 {4 8 12 14 16}
 ```
 
-Notice that we don't have to insert the faces manually; by casting the [noun](/docs/glossary/noun/) above to a `(tree @)` Hoon inserts the faces for us.  Let's put this noun in the dojo subject with the face `b` and pull out the tree at the left child of the `12` node:
+Notice that we don't have to insert the faces manually; by casting the [noun](/reference/glossary/noun/) above to a `(tree @)` Hoon inserts the faces for us.  Let's put this noun in the dojo subject with the face `b` and pull out the tree at the left child of the `12` node:
 
 ```
 > =b `(tree @)`[12 [8 [4 ~ ~] ~] [14 ~ [16 ~ ~]]]
@@ -104,7 +104,7 @@ A `set` is rather like a `list` except that each entry can only be represented o
 
 `set` operations are provided by `++in`.  Most names are similar to `map`/`++by` operations when applicable.
 
-[`++silt`](https://urbit.org/docs/hoon/reference/stdlib/2l#silt) produces a `set` from a `list`:
+[`++silt`](/reference/hoon/stdlib/2l#silt) produces a `set` from a `list`:
 
 ```hoon
 > =primes (silt ~[2 3 5 7 11 13])
@@ -191,7 +191,7 @@ Save this as `cartesian.hoon` in your urbit's pier and run in the dojo:
 
 We encountered the `unit` briefly as a tool for distinguishing null results from actual zeroes:  using a `unit` allows you to specify something that may not be there.  For this reason, `unit`s are commonly used for operations that sometimes fail, such as search functions, database lookups, remote data requests, etc.
 
-You can build a `unit` using the tic special notation or [`++some`](https://urbit.org/docs/hoon/reference/stdlib/2a#some):
+You can build a `unit` using the tic special notation or [`++some`](/reference/hoon/stdlib/2a#some):
 
 ```hoon
 > `%mars
@@ -201,9 +201,9 @@ You can build a `unit` using the tic special notation or [`++some`](https://urbi
 [~ u=%mars]
 ```
 
-While `++got:by` is one way to get a value back without wrapping it in a `unit`, it's better practice to use the [`unit` logic](https://urbit.org/docs/hoon/reference/stdlib/2a) gates to manipulate gates to work correctly with `unit`s.
+While `++got:by` is one way to get a value back without wrapping it in a `unit`, it's better practice to use the [`unit` logic](/reference/hoon/stdlib/2a) gates to manipulate gates to work correctly with `unit`s.
 
-For example, use [`++need`](https://urbit.org/docs/hoon/reference/stdlib/2a#need) to unwrap a `unit`, or crash if the `unit` is `~` null.
+For example, use [`++need`](/reference/hoon/stdlib/2a#need) to unwrap a `unit`, or crash if the `unit` is `~` null.
 
 ```hoon
 > =colors (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870] [%green 0x1.a638] [%blue 0x66ff]])
@@ -221,7 +221,7 @@ For example, use [`++need`](https://urbit.org/docs/hoon/reference/stdlib/2a#need
 dojo: hoon expression failed
 ```
 
-Rather than unwrap a `unit`, one can modify gates to work with `unit`s directly even if they're not natively set up that way.  For instance, one cannot decrement a `unit` because `++dec` doesn't accept a `unit`.  [`++bind`](https://urbit.org/docs/hoon/reference/stdlib/2a#bind) can bind a non-`unit` function—another gate-building gate!.
+Rather than unwrap a `unit`, one can modify gates to work with `unit`s directly even if they're not natively set up that way.  For instance, one cannot decrement a `unit` because `++dec` doesn't accept a `unit`.  [`++bind`](/reference/hoon/stdlib/2a#bind) can bind a non-`unit` function—another gate-building gate!.
 
 ```hoon
 > (bind ((unit @ud) [~ 2]) dec)  
@@ -231,7 +231,7 @@ Rather than unwrap a `unit`, one can modify gates to work with `unit`s directly 
 [~ 0xff]
 ```
 
-(There are several others tools listed [on that page](https://urbit.org/docs/hoon/reference/stdlib/2a) which may be potentially useful to you.)
+(There are several others tools listed [on that page](/reference/hoon/stdlib/2a) which may be potentially useful to you.)
 
 A `+$vase` is a pair of type and value, such as that returned by `!>` zapgar.  A `vase` is useful when transmitting data in a way that may lose its type information.
 
@@ -239,9 +239,9 @@ A `+$vase` is a pair of type and value, such as that returned by `!>` zapgar.  A
 
 `map`s and `set`s are frequently used in the standard library and in the extended ecosystem (such as in `graph-store`).  There are a some other common patterns which recur often enough that they have their own names:
 
-- [`++jar`](https://urbit.org/docs/hoon/reference/stdlib/2o#jar) is a mold for a `map` of `list`s.  `++jar` uses the [`++ja`](https://urbit.org/docs/hoon/reference/stdlib/2j#ja) core.  (Mnemonic:  jars hold solid ordered things, like a `list`.)
+- [`++jar`](/reference/hoon/stdlib/2o#jar) is a mold for a `map` of `list`s.  `++jar` uses the [`++ja`](/reference/hoon/stdlib/2j#ja) core.  (Mnemonic:  jars hold solid ordered things, like a `list`.)
 
-- [`++jug`](https://urbit.org/docs/hoon/reference/stdlib/2o#jug) is a mold for a `map` of `set`s.  `++jug` uses the  [`++ju`](https://urbit.org/docs/hoon/reference/stdlib/2j#ju) core.  (Mnemonic:  jugs hold liquids, evoking the unordered nature of a `set`.)
+- [`++jug`](/reference/hoon/stdlib/2o#jug) is a mold for a `map` of `set`s.  `++jug` uses the  [`++ju`](/reference/hoon/stdlib/2j#ju) core.  (Mnemonic:  jugs hold liquids, evoking the unordered nature of a `set`.)
 
 - `++mip` is a mold for a map of maps.  `++mip` lives in the `%garden` desk in the Urbit repo in `/lib/mip.hoon`.  Affordances are still few and there are not currently docs on how to use `++mip`, but a short example follows:
 
@@ -338,13 +338,13 @@ For our earlier example with `++roll`, if we wanted to set the default sample to
 
 ### Named Tuples
 
-A named tuple is a structured collection of values with faces.  The [`$:` buccol](https://urbit.org/docs/hoon/reference/rune/buc#-buccol) rune forms a named tuple.  We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` buccol expression for `[a=@ b=@]`.  Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
+A named tuple is a structured collection of values with faces.  The [`$:` buccol](/reference/hoon/rune/buc#buccol) rune forms a named tuple.  We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` buccol expression for `[a=@ b=@]`.  Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
 
 ### Structure Mode
 
 Most Hoon expressions evaluate normally (that's what “normal” means), what we'll call _noun mode_ (or _normal mode_).  However, sample definitions and `+$` lusbuc mold specification arms evaluate in what is called _structure mode_.  (You may occasionally see this the older term “spec mode”.)  Structure mode expressions use a similar syntax to regular Hoon expressions but create structure definitions instead.
 
-For instance, in eval mode if you use the irregular form `p=1` this is an irregular form of the [`^=` kettis](https://urbit.org/docs/hoon/reference/rune/ket#-kettis) rune.  This is one way to define a variable using a [`=+` tislus](https://urbit.org/docs/hoon/reference/rune/tis#-tislus); these are equivalent statements:
+For instance, in eval mode if you use the irregular form `p=1` this is an irregular form of the [`^=` kettis](/reference/hoon/rune/ket#kettis) rune.  This is one way to define a variable using a [`=+` tislus](/reference/hoon/rune/tis#tislus); these are equivalent statements:
 
 ```hoon
 > =+(hello=1 hello)
@@ -354,7 +354,7 @@ For instance, in eval mode if you use the irregular form `p=1` this is an irregu
 1
 ```
 
-(Normally we have preferred [`=/` tisfas](https://urbit.org/docs/hoon/reference/rune/tis#-tisfas) in the Hoon School docs, but that is just for consistency.)
+(Normally we have preferred [`=/` tisfas](/reference/hoon/rune/tis#tisfas) in the Hoon School docs, but that is just for consistency.)
 
 In a sample definition, such as in a gate, the statement is evaluated in structure mode; these are equivalent statements:
 
@@ -364,4 +364,4 @@ In a sample definition, such as in a gate, the statement is evaluated in structu
 |=($=(hello @) hello)
 ```
 
-There are several other subtle cases where normal mode and structure mode diverge, but most of the time structure mode is invisible to you.  The [`$` buc runes](https://urbit.org/docs/hoon/reference/rune/buc) are typically invoked in structure mode.
+There are several other subtle cases where normal mode and structure mode diverge, but most of the time structure mode is invisible to you.  The [`$` buc runes](/reference/hoon/rune/buc) are typically invoked in structure mode.

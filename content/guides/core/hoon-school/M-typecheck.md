@@ -93,7 +93,7 @@ The most obvious case is when there is a casting `^` ket rune in your code.  The
 
 #### `^-` kethep Cast with a Type
 
-You've already seen one rune that calls for a type check:  [`^-` kethep](https://urbit.org/docs/hoon/reference/rune/ket#--kethep):
+You've already seen one rune that calls for a type check:  [`^-` kethep](/reference/hoon/rune/ket#kethep):
 
 ```hoon
 > ^-(@ 12)
@@ -123,7 +123,7 @@ nest-fail
 
 #### `^+` ketlus Cast with an Example Value
 
-The rune [`^+` ketlus](https://urbit.org/docs/hoon/reference/rune/ket#-ketlus) is like `^-` kethep, except that instead of using a type name for the cast, it uses an example value of the type in question.  E.g.:
+The rune [`^+` ketlus](/reference/hoon/rune/ket#ketlus) is like `^-` kethep, except that instead of using a type name for the cast, it uses an example value of the type in question.  E.g.:
 
 ```hoon
 > ^+(7 12)
@@ -155,7 +155,7 @@ nest-fail
 
 ### Nock Checks (`.` dot Runes)
 
-You saw earlier how a type check is performed when [`.=` dottis](https://urbit.org/docs/hoon/reference/rune/dot#dottis)—or more commonly its irregular variant `=( )`—is used.  For any expression of the form `=(a b)`, either the type of `a` must be a subset of the type of `b` or the type of `b` must be a subset of the type of `a`.  Otherwise, the type check fails and you'll get a `nest-fail`.
+You saw earlier how a type check is performed when [`.=` dottis](/reference/hoon/rune/dot#dottis)—or more commonly its irregular variant `=( )`—is used.  For any expression of the form `=(a b)`, either the type of `a` must be a subset of the type of `b` or the type of `b` must be a subset of the type of `a`.  Otherwise, the type check fails and you'll get a `nest-fail`.
 
 ```hoon
 > =(12 [33 44])
@@ -174,7 +174,7 @@ You can evade the `.=` dottis type-check by casting one of its subexpressions to
 
 (It isn't recommended that you evade the rules in this way, however!)
 
-The [`.+` dotlus](https://urbit.org/docs/hoon/reference/rune/dot#-dotlus) increment rune—including its `+( )` irregular form—does a type check to ensure that its subexpression must evaluate to an atom.
+The [`.+` dotlus](/reference/hoon/rune/dot#dotlus) increment rune—including its `+( )` irregular form—does a type check to ensure that its subexpression must evaluate to an atom.
 
 ```hoon
 > +(12)
@@ -209,7 +209,7 @@ nest-fail
 
 We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation [when we discuss type polymorphism](./R-metals.md).
 
-This isn't a comprehensive list of the type checks in Hoon:  for instance, some other runes that include a type check are [`=.`](https://urbit.org/docs/hoon/reference/rune/tis#-tisdot) and [`%_` cencab](https://urbit.org/docs/hoon/reference/rune/cen#_-cencab).
+This isn't a comprehensive list of the type checks in Hoon:  for instance, some other runes that include a type check are [`=.`](/reference/hoon/rune/tis#tisdot) and [`%_` cencab](/reference/hoon/rune/cen#_-cencab).
 
 
 ##  Type Inference
@@ -282,13 +282,13 @@ If you try to call this gate with the wrong kind of argument, you get a `nest-fa
 
 #### Using Conditionals for Inference by Branch
 
-You have learned about a few conditional runes (e.g., `?:` wutcol and `?.` wutdot), but other runes of the `?` family are used for branch-specialized type inference.  The [`?@` wutpat](https://urbit.org/docs/hoon/reference/rune/wut#-wutpat), [`?^` wutket](https://urbit.org/docs/hoon/reference/rune/wut#-wutket), and [`?~` wutsig](https://urbit.org/docs/hoon/reference/rune/wut#-wutket) conditionals each take three subexpressions, which play the same basic role as the corresponding subexpressions of `?:` wutcol—the first is the test condition, which evaluates to a flag `?`.  If the test condition is true, the second subexpression is evaluated; otherwise the third.  These second and third subexpressions are the ‘branches’ of the conditional.
+You have learned about a few conditional runes (e.g., `?:` wutcol and `?.` wutdot), but other runes of the `?` family are used for branch-specialized type inference.  The [`?@` wutpat](/reference/hoon/rune/wut#wutpat), [`?^` wutket](/reference/hoon/rune/wut#wutket), and [`?~` wutsig](/reference/hoon/rune/wut#wutket) conditionals each take three subexpressions, which play the same basic role as the corresponding subexpressions of `?:` wutcol—the first is the test condition, which evaluates to a flag `?`.  If the test condition is true, the second subexpression is evaluated; otherwise the third.  These second and third subexpressions are the ‘branches’ of the conditional.
 
-There is also a [`?=` wuttis](https://urbit.org/docs/hoon/reference/rune/wut#-wuttis) rune for pattern-matching expressions by type, returning `%.y` for a match and `%.n` otherwise.
+There is also a [`?=` wuttis](/reference/hoon/rune/wut#wuttis) rune for pattern-matching expressions by type, returning `%.y` for a match and `%.n` otherwise.
 
 ##### `?=` wuttis Non-recursive Type Match Test
 
-The [`?=` wuttis](https://urbit.org/docs/hoon/reference/rune/wut#-wuttis) rune takes two subexpressions.  The first subexpression should be a type.  The second subexpression is evaluated and the resulting value is compared to the first type.  If the value is an instance of the type, `%.y` is produced.  Otherwise, `%.n`.  Examples:
+The [`?=` wuttis](/reference/hoon/rune/wut#wuttis) rune takes two subexpressions.  The first subexpression should be a type.  The second subexpression is evaluated and the resulting value is compared to the first type.  If the value is an instance of the type, `%.y` is produced.  Otherwise, `%.n`.  Examples:
 
 ```hoon
 > ?=(@ 12)
@@ -364,7 +364,7 @@ You can't see it here either, but the inferred type of `b` in `[| b]` is `^`.  T
 
 ##### The Type Spear
 
-What if you want to see the inferred type of `b` for yourself for each conditional branch?  One way to do this is with the _type spear_.  The [`!>` zapgar](https://urbit.org/docs/hoon/reference/rune/zap#-zapgar) rune takes one subexpression and constructs a cell from it.  The subexpression is evaluated and becomes the tail of the product cell, with a `q` face attached.  The head of the product cell is the inferred type of the subexpression.
+What if you want to see the inferred type of `b` for yourself for each conditional branch?  One way to do this is with the _type spear_.  The [`!>` zapgar](/reference/hoon/rune/zap#zapgar) rune takes one subexpression and constructs a cell from it.  The subexpression is evaluated and becomes the tail of the product cell, with a `q` face attached.  The head of the product cell is the inferred type of the subexpression.
 
 ```hoon
 > !>(15)
@@ -426,7 +426,7 @@ In the first case it's already known that `b` is an atom.  In the second case it
 
 #### `?@` wutpat Atom Match Tests
 
-The [`?@` wutpat](https://urbit.org/docs/hoon/reference/rune/wut#-wutpat) rune takes three subexpressions.  The first is evaluated, and if its value is an instance of `@`, the second subexpression is evaluated.  Otherwise, the third subexpression is evaluated.
+The [`?@` wutpat](/reference/hoon/rune/wut#wutpat) rune takes three subexpressions.  The first is evaluated, and if its value is an instance of `@`, the second subexpression is evaluated.  Otherwise, the third subexpression is evaluated.
 
 ```hoon
 > =/(b=* 12 ?@(b %atom %cell))
@@ -466,7 +466,7 @@ mint-vain
 
 #### `?^` wutket Cell Match Tests
 
-The [`?^` wutket](https://urbit.org/docs/hoon/reference/rune/wut#-wutket) rune is just like `?@` wutpat except it tests for a cell match instead of for an atom match.  The first subexpression is evaluated, and if the resulting value is an instance of `^` the second subexpression is evaluated.  Otherwise, the third is run.
+The [`?^` wutket](/reference/hoon/rune/wut#wutket) rune is just like `?@` wutpat except it tests for a cell match instead of for an atom match.  The first subexpression is evaluated, and if the resulting value is an instance of `^` the second subexpression is evaluated.  Otherwise, the third is run.
 
 ```hoon
 > =/(b=* 12 ?^(b %cell %atom))
@@ -630,7 +630,7 @@ We called this program `gulf.hoon` because it replicates the `gulf` function in 
 
 #### `?~` wutsig Null Match Test
 
-The [`?~` wutsig](https://urbit.org/docs/hoon/reference/rune/wut#-wutsig) rune is a lot like `?@` wutpat and `?^` wutket.  It takes three subexpressions, the first of which is evaluated to see whether the result is `~` null.  If so, the second subexpression is evaluated.  Otherwise, the third one is evaluated.
+The [`?~` wutsig](/reference/hoon/rune/wut#wutsig) rune is a lot like `?@` wutpat and `?^` wutket.  It takes three subexpressions, the first of which is evaluated to see whether the result is `~` null.  If so, the second subexpression is evaluated.  Otherwise, the third one is evaluated.
 
 ```hoon
 > =/(b=* ~ ?~(b %null %not-null))
@@ -720,9 +720,9 @@ So far you've learned about four kinds of type inference:
 3.  gate sample definitions
 4.  branch specialization using runes in the `?` family
 
-There are several other ways that Hoon infers type.  Any rune expression that evaluates to a `?` flag, e.g., `.=` dottis, will be inferred from accordingly.  The `.+` dotlus rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, [`:-` colhep](https://urbit.org/docs/hoon/reference/rune/col#--colhep), [`:+` collus](https://urbit.org/docs/hoon/reference/rune/col#--collus), [`:^` colket](https://urbit.org/docs/hoon/reference/rune/col#--colket), and [`:*` coltar](https://urbit.org/docs/hoon/reference/rune/col#--coltar) are all known to produce cells.
+There are several other ways that Hoon infers type.  Any rune expression that evaluates to a `?` flag, e.g., `.=` dottis, will be inferred from accordingly.  The `.+` dotlus rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, [`:-` colhep](/reference/hoon/rune/col#colhep), [`:+` collus](/reference/hoon/rune/col#collus), [`:^` colket](/reference/hoon/rune/col#colket), and [`:*` coltar](/reference/hoon/rune/col#coltar) are all known to produce cells.
 
-More subtly, the [`=+` tislus](https://urbit.org/docs/hoon/reference/rune/tis#-tislus), [`=/` tisfas](https://urbit.org/docs/hoon/reference/rune/tis#-tisfas), and [`=|` tisbar](https://urbit.org/docs/hoon/reference/rune/tis#-tisbar) runes modify the subject by pinning values to the head.  Hoon infers from this that the subject has a new type:  a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
+More subtly, the [`=+` tislus](/reference/hoon/rune/tis#tislus), [`=/` tisfas](/reference/hoon/rune/tis#tisfas), and [`=|` tisbar](/reference/hoon/rune/tis#tisbar) runes modify the subject by pinning values to the head.  Hoon infers from this that the subject has a new type:  a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
 
 In general, anything that modifies the subject modifies the type of the subject.  Type inference can work in subtle ways for various expressions.  However, we have covered enough that it should be relatively clear how to anticipate how type inference works for the vast majority of ordinary use cases.
 
@@ -842,14 +842,14 @@ You can cast `b` back to `(list)` to work around this:
 
 To summarize, as values get passed around and checked at various points, the Hoon compiler tracks what the possible data structure or mold looks like.  The following runes are particularly helpful when inducing the compiler to infer what it needs to know:
 
-- [`?~` wutsig](https://urbit.org/docs/hoon/reference/rune/wut#-wutsig) asserts non-null.
-- [`?^` wutket](https://urbit.org/docs/hoon/reference/rune/wut#-wutket) asserts cell.
-- [`?@` wutpat](https://urbit.org/docs/hoon/reference/rune/wut#-wutpat) asserts atom.
-- [`?=` wuttis](https://urbit.org/docs/hoon/reference/rune/wut#-wuttis) tests for a pattern match in type.
+- [`?~` wutsig](/reference/hoon/rune/wut#wutsig) asserts non-null.
+- [`?^` wutket](/reference/hoon/rune/wut#wutket) asserts cell.
+- [`?@` wutpat](/reference/hoon/rune/wut#wutpat) asserts atom.
+- [`?=` wuttis](/reference/hoon/rune/wut#wuttis) tests for a pattern match in type.
 
 There are two additional assertions which can be used with the type system:
 
-- [`?>` wutgar](https://urbit.org/docs/hoon/reference/rune/wut#-wutgar) is a positive assertion (`%.y%` or crash).
-- [`?<` wutgal](https://urbit.org/docs/hoon/reference/rune/wut#-wutgal) is a negative assertion (`%.n` or crash).
+- [`?>` wutgar](/reference/hoon/rune/wut#wutgar) is a positive assertion (`%.y%` or crash).
+- [`?<` wutgal](/reference/hoon/rune/wut#wutgal) is a negative assertion (`%.n` or crash).
 
 If you are running into `find-fork` errors in more complicated data structures (like marks or JSONs), consider using these assertions to guide the typechecker.

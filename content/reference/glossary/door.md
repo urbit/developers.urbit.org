@@ -6,7 +6,7 @@ template = "doc.html"
 category = "hoon-nock"
 +++
 
-A **door** is a [core](/docs/glossary/core) the `payload` of which is a cell of `sample` and `context`.
+A **door** is a [core](/reference/glossary/core) the `payload` of which is a cell of `sample` and `context`.
 
 ### Further Reading
 

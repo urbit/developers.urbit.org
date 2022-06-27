@@ -16,7 +16,7 @@ Jael's section in `lull.hoon` contains three ancillary cores with their own type
   ==
 ```
 
-This is what Jael gives (in a [%public-keys](/docs/arvo/jael/tasks#public-keys) `gift`) to subcribers who are tracking public key information for a `set` of `ship`s.
+This is what Jael gives (in a [%public-keys](/reference/arvo/jael/tasks#public-keys) `gift`) to subcribers who are tracking public key information for a `set` of `ship`s.
 
 Typically the `%full` kind with a `map` of `ship`s to [$point:point](#pointpoint)s is given immediately upon subscription and contains all public key records for the ships in question. After the `%full`, a `%diff` (including a [$diff:point](#diffpoint)) will be given whenever a change (such as the sponsor or pubkey) has occurred for one of the ships being tracked, and a `%breach` will be given whenever a continuity breach for a tracked ship occurs.
 

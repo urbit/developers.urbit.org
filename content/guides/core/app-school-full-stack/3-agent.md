@@ -288,7 +288,7 @@ into two parts: querying the update `$log` and retrieving entries from the
   front-end will format numbers without dot separators, so the path will look
   like `/x/entries/before/1648051573109/10`. We therefore have to use the
   [`++dem`](docs/hoon/reference/stdlib/4i#dem) parsing `rule` in a
-  [`++rash`](/docs/hoon/reference/stdlib/4g#rash) parser to convert it to an
+  [`++rash`](/reference/hoon/stdlib/4g#rash) parser to convert it to an
   ordinary atom. We then use the `++tap:log-orm` `mop` function to retrieve the
   requested range as a list and return it as an `$update` with a
   `%journal-update` mark.
@@ -325,7 +325,7 @@ The full agent source can be viewed
 
 ## Resources
 
-- [The Gall Guide](/docs/userspace/gall-guide/intro) - The Gall Guide covers all
+- [The Gall Guide](/guides/core/app-school/intro) - The Gall Guide covers all
   aspects of writing Gall agents in detail.
 
 - [Ordered map functions in

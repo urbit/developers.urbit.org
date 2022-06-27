@@ -36,7 +36,7 @@ It's hard to write a purely functional operating system on hardware which doesn'
 
 Hoon School introduces and explains the fundamental concepts you need in order to understand Hoon's semantics.  It then introduces a number of key examples and higher-order abstractions which will make you a more fluent Hoon programmer.
 
-Once you have completed Hoon School, you should work through the [Gall Guide](https://urbit.org/docs/userspace/gall-guide/intro) to learn how to build full applications on Urbit.
+Once you have completed Hoon School, you should work through the [Gall Guide](https://urbit.org/guides/core/app-school/intro) to learn how to build full applications on Urbit.
 
 
 ##  Environment Setup
@@ -66,7 +66,7 @@ http: live (insecure, loopback) on 12321
 ~zod:dojo>
 ```
 
-You just used a function from the Hoon standard library, `add`, which for reasons that will become clear later is frequently written [`++add`](https://urbit.org/docs/hoon/reference/stdlib/1a#add).  Next, quit Urbit by entering `|exit`:
+You just used a function from the Hoon standard library, `add`, which for reasons that will become clear later is frequently written [`++add`](/reference/hoon/stdlib/1a#add).  Next, quit Urbit by entering `|exit`:
 
 ```hoon
 > %-  add  [2 2]

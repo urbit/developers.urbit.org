@@ -5,7 +5,7 @@ template = "doc.html"
 category = "hoon-nock"
 +++
 
-An **atom** is any non-negative integer of any size. The atom is the most basic data type in [Nock](/docs/glossary/nock) and [Hoon](/docs/glossary/hoon).
+An **atom** is any non-negative integer of any size. The atom is the most basic data type in [Nock](/reference/glossary/nock) and [Hoon](/reference/glossary/hoon).
 
 A Hoon atom type consists of a Nock atom with two additional pieces of metadata:
 an _aura_, which is a soft type that declares if an atom is a date, a ship name, a

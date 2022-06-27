@@ -17,7 +17,7 @@ agent's `on-init` arm is called. This is the _only_ time `on-init` is ever
 called - its purpose is just to initialize the agent. The `on-init` arm might be
 very simple and just set an initial value for the state, or even do nothing at
 all and return the agent core exactly as-is. It may also be more complicated,
-and perform some [scries](/docs/arvo/concepts/scry) to obtain extra data or
+and perform some [scries](/reference/arvo/concepts/scry) to obtain extra data or
 check that another agent is also installed. It might send off some `card`s to
 other agents or vanes to do things like load data in to the `%settings-store`
 agent, bind an Eyre endpoint, or anything else. It all depends on the needs of
@@ -39,11 +39,11 @@ so you commit a modified version of the file to Clay. When the commit completes,
 
 A `vase` is just a cell of `[type-of-the-noun the-noun]`. Most data an agent
 sends or receives will be encapsulated in a vase. A vase is made with the
-[zapgar](/docs/hoon/reference/rune/zap#-zapgar) (`!>`) rune like
+[zapgar](/reference/hoon/rune/zap#zapgar) (`!>`) rune like
 `!>(some-data)`, and unpacked with the
-[zapgal](/docs/hoon/reference/rune/zap#-zapgal) (`!<`) rune like
+[zapgal](/reference/hoon/rune/zap#zapgal) (`!<`) rune like
 `!<(type-to-extract vase)`. Have a read through the [`vase` section of the type
-reference for details](/docs/userspace/gall-guide/types#vase).
+reference for details](/guides/core/app-school/types#vase).
 
 We'll look at the three arms described here in a little more detail, but first
 we need to touch on the state itself.
@@ -91,7 +91,7 @@ In addition to each of those individual state versions, you'd also define a
 structure called `versioned-state`, which just contains a union of all the
 possible states. This way, the vase `on-load` receives can be unpacked to a
 `versioned-state` type, and then a
-[wuthep](/docs/hoon/reference/rune/wut#--wuthep) (`?-`) expression can switch on
+[wuthep](/reference/hoon/rune/wut#wuthep) (`?-`) expression can switch on
 the head (`%0`, `%1`, `%2`, etc) and process each one appropriately.
 
 For example, your state definition core might initially look like:
@@ -135,7 +135,7 @@ it to the subject of the core. The conventional way to do this is by adding the 
 
 The first line bunts (produces the default value) of the state type we defined
 in the previous core, and adds it to the head of the subject _without a face_.
-The next line uses [tistar](/docs/hoon/reference/rune/tis#-tistar) to give it
+The next line uses [tistar](/reference/hoon/rune/tis#tistar) to give it
 the name of `state`. You might wonder why we don't just give it a face when we
 bunt it and skip the tistar part. If we did that, we'd have to refer to `tasks`
 as `tasks.state`. With tistar, we can just reference `tasks` while also being
@@ -156,14 +156,14 @@ exactly once, when the agent is first installed. Its purpose is to initialize
 the agent.
 
 `(quip a b)` is equivalent to `[(list a) b]`, see the [types
-reference](/docs/userspace/gall-guide/types#quip) for details.
+reference](/guides/core/app-school/types#quip) for details.
 
 A `card` is a message to another agent or vane. We'll discuss `card`s in detail
 later.
 
 `this` is our agent core, which we give the `this` alias in the virtual arm
 described in the previous lesson. The underscore at the beginning is the
-irregular syntax for the [buccab](/docs/hoon/reference/rune/buc#_-buccab) (`$_`)
+irregular syntax for the [buccab](/reference/hoon/rune/buc#_-buccab) (`$_`)
 rune. Buccab is like an inverted bunt - instead of producing the default value
 of a type, instead it produces the type of some value. So `_this` means "the
 type of `this`" - the type of our agent core.
@@ -185,7 +185,7 @@ suspended or an app is uninstalled, so that the state can be restored when it's
 resumed or reinstalled.
 
 The state is packed in a vase with the
-[zapgar](/docs/hoon/reference/rune/zap#-zapgar) (`!>`) rune, like `!>(state)`.
+[zapgar](/reference/hoon/rune/zap#zapgar) (`!>`) rune, like `!>(state)`.
 
 ### `on-load`
 
@@ -197,8 +197,8 @@ from an old version to the new version if necessary, and load it into the
 `state` wing of the subject.
 
 The vase would be unpacked with a
-[zapgal](/docs/hoon/reference/rune/zap#-zapgal) (`!<`) rune, and then typically
-you'd test its version with a [wuthep](/docs/hoon/reference/rune/wut#--wuthep)
+[zapgal](/reference/hoon/rune/zap#zapgal) (`!<`) rune, and then typically
+you'd test its version with a [wuthep](/reference/hoon/rune/wut#wuthep)
 (`?-`) expression.
 
 ## Example
@@ -277,7 +277,7 @@ After that core, we have the usual `agent:dbug` call, and then we have this:
 
 We've just bunted the `state-0` type, which will produce `[%0 val=0]`, pinning
 it to the head of the subject. Then, we've use
-[tistar](/docs/hoon/reference/rune/tis#-tistar) (`=*`) to give it a name of
+[tistar](/reference/hoon/rune/tis#tistar) (`=*`) to give it a name of
 `state`.
 
 Inside our agent core, we have `on-init`:
@@ -289,7 +289,7 @@ Inside our agent core, we have `on-init`:
 ```
 
 The `a(b c)` syntax is the irregular form of the
-[centis](/docs/hoon/reference/rune/cen#-centis) (`%=`) rune. You'll likely be
+[centis](/reference/hoon/rune/cen#centis) (`%=`) rune. You'll likely be
 familiar with this from recursive functions, where you'll typically call the buc
 arm of a trap like `$(a b, c d, ...)`. It's the same concept here - we're saying
 `this` (our agent core) with `val` replaced by `42`. Since `on-init` is only
@@ -491,9 +491,9 @@ type:
 - Run through the [example](#example) yourself on a fake ship if you've not done
   so already.
 - Have a look at the [`vase` entry in the type
-  reference](/docs/userspace/gall-guide/types#vase).
+  reference](/guides/core/app-school/types#vase).
 - Have a look at the [`quip` entry in the type
-  reference](/docs/userspace/gall-guide/types#quip).
+  reference](/guides/core/app-school/types#quip).
 - Try modifying the second version of the agent in the [example](#example)
   section, adding a third state version. Include functions in the wuthep
   expression in `on-load` to convert old versions to your new state type.

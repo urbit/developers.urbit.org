@@ -5,7 +5,7 @@ template = "doc.html"
 category = "azimuth"
 +++
 
-**Bridge** is a client made for interacting with [Azimuth](/docs/glossary/azimuth). It's the recommended way to receive, send, and manage your Urbit identity, and it's by far the easiest way to generate the [keyfile](/docs/glossary/keyfile) required to get your [ship](/docs/glossary/ship) onto the [Arvo](/docs/glossary/arvo) network. Most Bridge functions are accessed by "logging in" to an identity's ownership address or one of its [proxy addresses](/docs/glossary/proxies). It's accessed at [bridge.urbit.org](https://bridge.urbit.org/).
+**Bridge** is a client made for interacting with [Azimuth](/reference/glossary/azimuth). It's the recommended way to receive, send, and manage your Urbit identity, and it's by far the easiest way to generate the [keyfile](/reference/glossary/keyfile) required to get your [ship](/reference/glossary/ship) onto the [Arvo](/reference/glossary/arvo) network. Most Bridge functions are accessed by "logging in" to an identity's ownership address or one of its [proxy addresses](/reference/glossary/proxies). It's accessed at [bridge.urbit.org](https://bridge.urbit.org/).
 
 Below are some important functions of Bridge.
 
@@ -15,7 +15,7 @@ This function allows you to view the public information of any Urbit identity, s
 
 #### Actions
 
-- **Issue child:** Spawn a child from a [galaxy](/docs/glossary/galaxy) or a [star](/docs/glossary/star).
+- **Issue child:** Spawn a child from a [galaxy](/reference/glossary/galaxy) or a [star](/reference/glossary/star).
 - **Transfer:** Send the Urbit identity to another Ethereum address.
 - **Accept incoming transfer:** If someone is trying to send you an Urbit identity, you must use this action to receive it.
 - **Cancel outgoing transfer:** Cancel a transfer that you initiated before the recipient has accepted it.

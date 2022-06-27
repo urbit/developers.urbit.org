@@ -32,7 +32,7 @@ Different kinds of cores can expose or conceal functionality (such as their samp
 
 Usually the subject of a Hoon expression isn't shown explicitly.  In fact, only when using `:`/`.` wing lookup expressions have we made the subject explicit.
 
-An arm is always evaluated with its parent core as its subject.  We've briefly mentioned that one can use helper cores (e.g. for generators) by composing the cores side-by-side using [`=<` tisgal](https://urbit.org/docs/hoon/reference/rune/tis#-tisgal) and [`=>` tisgar](https://urbit.org/docs/hoon/reference/rune/tis#-tisgar).  This way we can make sure that the arms fall within each other's subject horizon.
+An arm is always evaluated with its parent core as its subject.  We've briefly mentioned that one can use helper cores (e.g. for generators) by composing the cores side-by-side using [`=<` tisgal](/reference/hoon/rune/tis#tisgal) and [`=>` tisgar](/reference/hoon/rune/tis#tisgar).  This way we can make sure that the arms fall within each other's subject horizon.
 
 Why must an arm have its parent core as the subject, when it's computed?  As stated previously, the payload of a core contains all the data needed for computing the arms of that core.  Arms can only access data in the subject.  By requiring that the parent core be the subject we guarantee that each arm has the appropriate data available to it.  The tail of its subject contains the `payload` and thus all the values therein.  The head of the subject is the `battery`, which allows for making reference to sibling arms of that same core.
 
@@ -149,7 +149,7 @@ and so on, down to
 --
 ```
 
-This core contains the arms in [sections 1a–1c of the standard library documentation](/docs/hoon/reference/stdlib/1a).  If you count them, there are 46 arms in the core from `++  add` down to `++  unit`.  We again can see this fact reflected in the dojo by looking at the subject of `add`.
+This core contains the arms in [sections 1a–1c of the standard library documentation](/reference/hoon/stdlib/1a).  If you count them, there are 46 arms in the core from `++  add` down to `++  unit`.  We again can see this fact reflected in the dojo by looking at the subject of `add`.
 
 ```hoon
 > ..add
@@ -158,7 +158,7 @@ This core contains the arms in [sections 1a–1c of the standard library documen
 
 Here we see that core containing `hoon-version` is in the subject of the section 1 core.
 
-Next, [section 2](/docs/hoon/reference/stdlib/2a) starts:
+Next, [section 2](/reference/hoon/stdlib/2a) starts:
 
 ```hoon
 =>
@@ -258,8 +258,8 @@ We will use `%say` generators as a bridge concept.  We will produce some short a
 
 Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` cenhep which you've already seen:
 
-- [`=.` tisdot](https://urbit.org/docs/hoon/reference/rune/tis#-tisdot) is used to change a leg in the subject.
-- [`=~` tissig](https://urbit.org/docs/hoon/reference/rune/tis#-tissig) composes many expressions together serially.
+- [`=.` tisdot](/reference/hoon/rune/tis#tisdot) is used to change a leg in the subject.
+- [`=~` tissig](/reference/hoon/rune/tis#tissig) composes many expressions together serially.
 
 #### Tutorial:  Bank Account
 
@@ -309,7 +309,7 @@ In the above code chunk, we're creating a cell.  The head of this cell is `%say`
 
 In this code above, we're going to compose two runes using `=<`, which has inverted arguments. We use this rune to keep the heaviest twig to the bottom of the code.
 
-The [`=~` tissig](https://urbit.org/docs/hoon/reference/rune/tis#-tissig) rune composes multiple expressions together; we use it here to make the code more readable.  We take `new-account` and use that as the subject for the call to `deposit`.  `deposit` and `withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion.  The final reference is to `balance`, which is the account balance contained in the [core](/docs/glossary/core/) that we examine below.
+The [`=~` tissig](/reference/hoon/rune/tis#tissig) rune composes multiple expressions together; we use it here to make the code more readable.  We take `new-account` and use that as the subject for the call to `deposit`.  `deposit` and `withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion.  The final reference is to `balance`, which is the account balance contained in the [core](/reference/glossary/core/) that we examine below.
 
 ```hoon
 |%
@@ -349,10 +349,10 @@ For instance, a network service call may take a while or may fail.  How should t
 
 We have some more tools available for managing deferred or chained computations, in addition to `=~` tissig and `=*` tistar:
 
-- [`=^` tisket](https://urbit.org/docs/hoon/reference/rune/tis#-tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` cenhep.  (Used in Gall agents frequently.)
-- [`=*` tistar](https://urbit.org/docs/hoon/reference/rune/tis#tistar) defers an expression (rather like a macro).
-- [`;<` micgal](https://urbit.org/docs/hoon/reference/rune/mic#-micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](https://urbit.org/docs/userspace/threads/overview).)
-- [`;~` micsig](https://urbit.org/docs/hoon/reference/rune/mic#-micsig) produces a pipeline, a way of piping the output of one gate into another in a chain.  (This is particularly helpful when parsing text.)
+- [`=^` tisket](/reference/hoon/rune/tis#tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` cenhep.  (Used in Gall agents frequently.)
+- [`=*` tistar](/reference/hoon/rune/tis#tistar) defers an expression (rather like a macro).
+- [`;<` micgal](/reference/hoon/rune/mic#micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](https://urbit.org/docs/userspace/threads/overview).)
+- [`;~` micsig](/reference/hoon/rune/mic#micsig) produces a pipeline, a way of piping the output of one gate into another in a chain.  (This is particularly helpful when parsing text.)
 
 ### `++og` Randomness
 
@@ -368,7 +368,7 @@ Every time you start this “random” number generator with a given seed, it wi
 
 While RNGs don't work like our _π_-based example, a given seed will reliably produce the same result every time it is run.
 
-The basic RNG core in Hoon is [`++og`](https://urbit.org/docs/hoon/reference/stdlib/3d#og).  `++og` is a door whose sample is its seed.  We need to use `eny` to seed it non-deterministically, but we can also pin the state using `=^` tisket.  [`++rads:rng`](https://urbit.org/docs/hoon/reference/stdlib/3d#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
+The basic RNG core in Hoon is [`++og`](/reference/hoon/stdlib/3d#og).  `++og` is a door whose sample is its seed.  We need to use `eny` to seed it non-deterministically, but we can also pin the state using `=^` tisket.  [`++rads:rng`](/reference/hoon/stdlib/3d#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
 
 ```hoon
 > =+  rng=~(. og eny)
@@ -430,7 +430,7 @@ Most of the “work” is being done by these two lines:
 =/  val  (rad:rng (lent answers))
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy.  A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed).  Here we pull the subject of [`++og`](https://urbit.org/docs/hoon/reference/stdlib/3d#og), the randomness core in Hoon, to start the RNG.
+`~(. og eny)` starts a random number generator with a seed from the current entropy.  A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed).  Here we pull the subject of [`++og`](/reference/hoon/stdlib/3d#og), the randomness core in Hoon, to start the RNG.
 
 Then we slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
 
@@ -477,7 +477,7 @@ We get a different value from the same generator between runs, something that is
 
 ##  Scrying (In Brief)
 
-A _peek_ or a _scry_ is a request to Arvo to tell you something about the state of part of the Urbit OS.  Scries are used to determine the state of an agent or a vane.  The [`.^` dotket](https://urbit.org/docs/hoon/reference/rune/dot#-dotket) rune sends the scry request to a particular vane with a certain _care_ or type of scry.  The request is then routed to a particular path in that vane.  Scries are discused in detail in [the App Guide](https://urbit.org/docs/userspace/gall-guide/10-scry).  We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and agent state.
+A _peek_ or a _scry_ is a request to Arvo to tell you something about the state of part of the Urbit OS.  Scries are used to determine the state of an agent or a vane.  The [`.^` dotket](/reference/hoon/rune/dot#dotket) rune sends the scry request to a particular vane with a certain _care_ or type of scry.  The request is then routed to a particular path in that vane.  Scries are discused in detail in [the App Guide](https://urbit.org/guides/core/app-school/10-scry).  We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and agent state.
 
 ### `%c` Clay
 

@@ -194,7 +194,7 @@ limb, we just search the type depth-first.
 If a name is in the `p.p` `map`, it's an alias.  (An alias is defined using the
 `=*` rune.) The map contains a `(unit hoon)`; if the unit is full, the name
 resolves to that hoon (compiled against the `q` type).  If the unit is empty,
-the name is blocked / skipped (see [limb](/docs/hoon/reference/limbs/limb) for what
+the name is blocked / skipped (see [limb](/reference/hoon/limbs/limb) for what
 this means).
 
 If a name is the `q.p` `term`, it's a bridge.  (A bridge is defined using the

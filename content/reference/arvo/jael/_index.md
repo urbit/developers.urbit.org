@@ -6,22 +6,22 @@ template = "sections/docs/chapters.html"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/docs/arvo/jael/jael)
+## [Overview](/reference/arvo/jael/jael)
 
 An overview of Jael, Urbit's security and encryption vane.
 
-## [API Reference](/docs/arvo/jael/tasks)
+## [API Reference](/reference/arvo/jael/tasks)
 
 The `task`s Jael takes and the `gift`s it returns.
 
-## [Scry Reference](/docs/arvo/jael/scry)
+## [Scry Reference](/reference/arvo/jael/scry)
 
 The scry endpoints of Jael.
 
-## [Data Types](/docs/arvo/jael/data-types)
+## [Data Types](/reference/arvo/jael/data-types)
 
 Reference documentation of the various data types used by Jael.
 
-## [Examples](/docs/arvo/jael/examples)
+## [Examples](/reference/arvo/jael/examples)
 
 Practical examples of using Jael's `task`s.

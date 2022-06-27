@@ -183,7 +183,7 @@ True `list`s have `i` and `t` faces which allow the head and tail of the data to
 #t/it(@ud)
 ```
 
-A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists.  This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`.  See also [`++limo`](https://urbit.org/docs/hoon/reference/stdlib/2b#limo) which explicitly marks a null-terminated tuple as a `list`.)
+A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists.  This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`.  See also [`++limo`](/reference/hoon/stdlib/2b#limo) which explicitly marks a null-terminated tuple as a `list`.)
 
 
 ##  Addressing Limbs
@@ -505,7 +505,7 @@ n
 $(n (dec n))
 ```
 
-The `$()` syntax is the commonly-used irregular form of the [`%=` centis](https://urbit.org/docs/hoon/reference/rune/cen#centis) rune.
+The `$()` syntax is the commonly-used irregular form of the [`%=` centis](/reference/hoon/rune/cen#centis) rune.
 
 Now, we noted that `$` buc is the default arm for the trap.  It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
@@ -590,7 +590,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 (Notice that we apply `@t` as a mold gate rather than using the tic notation.  This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-- Extend the above generator so that it accepts a cell of type and value (a `vase` as produced by the [`!>` zapgar](https://urbit.org/docs/hoon/reference/rune/zap#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+- Extend the above generator so that it accepts a cell of type and value (a `vase` as produced by the [`!>` zapgar](/reference/hoon/rune/zap#zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 #### Exercise:  Resolving Wings
 
@@ -670,14 +670,14 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
 There are a couple of sometimes-useful `list` builders:
 
-- [`++gulf`](https://urbit.org/docs/hoon/reference/stdlib/2b#gulf) spans between two numeric values (inclusive of both):
+- [`++gulf`](/reference/hoon/stdlib/2b#gulf) spans between two numeric values (inclusive of both):
 
     ```hoon
     > (gulf 5 10)  
     ~[5 6 7 8 9 10]
     ```
 
-- [`++reap`](https://urbit.org/docs/hoon/reference/stdlib/2b#reap) repeats a value many times in a `list`:
+- [`++reap`](/reference/hoon/stdlib/2b#reap) repeats a value many times in a `list`:
 
     ```hoon
     > (reap 5 0x0)  
@@ -690,7 +690,7 @@ There are a couple of sometimes-useful `list` builders:
     ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]  
     ```
 
-- [`++roll`](https://urbit.org/docs/hoon/reference/stdlib/2b#roll) takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
+- [`++roll`](/reference/hoon/stdlib/2b#roll) takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
 
     ```hoon
     > (roll `(list @)`~[11 22 33 44 55] add)
@@ -702,8 +702,8 @@ There are a couple of sometimes-useful `list` builders:
 
 Once you have a `list` (including a `tape`), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
-- [`++find`](https://urbit.org/docs/hoon/reference/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
-- [`++snag`](https://urbit.org/docs/hoon/reference/stdlib/2b#snag) `[a=@ b=(list)]` produces the element at an index in the list (zero-indexed)
+- [`++find`](/reference/hoon/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
+- [`++snag`](/reference/hoon/stdlib/2b#snag) `[a=@ b=(list)]` produces the element at an index in the list (zero-indexed)
 
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
@@ -716,10 +716,10 @@ Once you have a `list` (including a `tape`), there are a lot of manipulation too
     44
     ```
 
-- [`++snap`](https://urbit.org/docs/hoon/reference/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
-- [`++scag`](https://urbit.org/docs/hoon/reference/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
-- [`++slag`](https://urbit.org/docs/hoon/reference/stdlib/2b#slag) `[a=@ b=(list)]` produces the last _a_ elements from the end of the list
-- [`++weld`](https://urbit.org/docs/hoon/reference/stdlib/2b#weld) `[a=(list) b=(list)]` glues two `list`s together (_not_ a single item to the end)
+- [`++snap`](/reference/hoon/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
+- [`++scag`](/reference/hoon/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
+- [`++slag`](/reference/hoon/stdlib/2b#slag) `[a=@ b=(list)]` produces the last _a_ elements from the end of the list
+- [`++weld`](/reference/hoon/stdlib/2b#weld) `[a=(list) b=(list)]` glues two `list`s together (_not_ a single item to the end)
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 

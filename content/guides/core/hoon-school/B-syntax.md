@@ -92,7 +92,7 @@ Hearkening back to our discussion of interchangeable representations in Lesson -
 
 There's a special value that recurs in many contexts in Hoon:  `~` sig is the null or zero value.
 
-The [`^-` kethep](https://urbit.org/docs/hoon/reference/rune/ket#--kethep) rune is useful for ensuring that everything in the second child matches the type (aura) of the first, e.g.
+The [`^-` kethep](/reference/hoon/rune/ket#kethep) rune is useful for ensuring that everything in the second child matches the type (aura) of the first, e.g.
 
 ```
 ^-  @ux  0x1ab4
@@ -120,7 +120,7 @@ A cell is a pair of two nouns.  Cells are traditionally written using square bra
 [[1 2] [3 4]]
 ```
 
-This is actually a shorthand for a rune as well, [`:-` colhep](https://urbit.org/docs/hoon/reference/rune/col#--colhep):
+This is actually a shorthand for a rune as well, [`:-` colhep](/reference/hoon/rune/col#colhep):
 
 ```
 :-  1  2
@@ -150,7 +150,7 @@ The backbone of any Hoon expression is a scaffolding of _runes_, which are essen
 
 A rune is just a pair of ASCII characters (a digraph).  We usually pronounce runes by combining their characters’ names, e.g.: “kethep” for `^-`, “bartis” for `|=`, and “barcen” for `|%`.
 
-For instance, when we called a function earlier (in Hoon parlance, we _slammed a gate_), we needed to provide the [`%-` cenhep](https://urbit.org/docs/hoon/reference/rune/cen#-cenhep) rune with two bits of information, a function name and the values to associate with it:
+For instance, when we called a function earlier (in Hoon parlance, we _slammed a gate_), we needed to provide the [`%-` cenhep](/reference/hoon/rune/cen#cenhep) rune with two bits of information, a function name and the values to associate with it:
 
 ```hoon
 %-
@@ -160,7 +160,7 @@ add
 
 The operation you just completed is straightforward enough:  `1 + 2`, in many languages, or `(+ 1 2)` in a [Lisp dialect](https://en.wikipedia.org/wiki/Lisp_%28programming_language%29) like [Clojure](https://en.wikipedia.org/wiki/Clojure).  Literally, we can interpret `%-  add  [1 2]` as “evaluate the `add` core on the input values `[1 2]`”.
 
-[`++add`](https://urbit.org/docs/hoon/reference/stdlib/1a#add) expects precisely two values (or _arguments_), which are provided by `%-` in the neighboring child expression as a cell.  There's really no limit to the complexity of Hoon expressions:  they can track deep and wide.  They also don't care much about layout, which leaves you a lot of latitude.  The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
+[`++add`](/reference/hoon/stdlib/1a#add) expects precisely two values (or _arguments_), which are provided by `%-` in the neighboring child expression as a cell.  There's really no limit to the complexity of Hoon expressions:  they can track deep and wide.  They also don't care much about layout, which leaves you a lot of latitude.  The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
 
 ```hoon
 %-
@@ -172,15 +172,15 @@ add
 
 For instance, here are some of the standard library functions which have a similar architecture in common:
 
-- [`++add`](https://urbit.org/docs/hoon/reference/stdlib/1a#add) (addition)
-- [`++sub`](https://urbit.org/docs/hoon/reference/stdlib/1a#sub) (subtraction, positive results only—what happens if you subtract past zero?)
-- [`++mul`](https://urbit.org/docs/hoon/reference/stdlib/1a#mul) (multiplication)
-- [`++div`](https://urbit.org/docs/hoon/reference/stdlib/1a#div) (integer division, no remainder)
-- [`++pow`](https://urbit.org/docs/hoon/reference/stdlib/1a#pow) (power or exponentiation)
-- [`++mod`](https://urbit.org/docs/hoon/reference/stdlib/1a#add) (modulus, remainder after integer division)
-- [`++dvr`](https://urbit.org/docs/hoon/reference/stdlib/1a#dvr) (integer division with remainder)
-- [`++max`](https://urbit.org/docs/hoon/reference/stdlib/1a#max) (maximum of two numbers)
-- [`++min`](https://urbit.org/docs/hoon/reference/stdlib/1a#min) (minimum of two numbers)
+- [`++add`](/reference/hoon/stdlib/1a#add) (addition)
+- [`++sub`](/reference/hoon/stdlib/1a#sub) (subtraction, positive results only—what happens if you subtract past zero?)
+- [`++mul`](/reference/hoon/stdlib/1a#mul) (multiplication)
+- [`++div`](/reference/hoon/stdlib/1a#div) (integer division, no remainder)
+- [`++pow`](/reference/hoon/stdlib/1a#pow) (power or exponentiation)
+- [`++mod`](/reference/hoon/stdlib/1a#add) (modulus, remainder after integer division)
+- [`++dvr`](/reference/hoon/stdlib/1a#dvr) (integer division with remainder)
+- [`++max`](/reference/hoon/stdlib/1a#max) (maximum of two numbers)
+- [`++min`](/reference/hoon/stdlib/1a#min) (minimum of two numbers)
 
 ### Rune Expressions
 
@@ -230,9 +230,9 @@ Here is a snippet of Hoon code:
 ==
 ```
  
-Without looking it up first, what does the [`==` tistis](https://urbit.org/docs/hoon/reference/rune/terminators#-tistis) do for the [`:~` colsig](https://urbit.org/docs/hoon/reference/rune/col#-colsig) rune?  Hint:  some runes can take any number of arguments.
+Without looking it up first, what does the [`==` tistis](/reference/hoon/rune/terminators#tistis) do for the [`:~` colsig](/reference/hoon/rune/col#colsig) rune?  Hint:  some runes can take any number of arguments.
 
-> Most runes are used at the beginning of a complex expression, but there are exceptions. For example, the runes [`--` hephep](https://urbit.org/docs/hoon/reference/rune/terminators#-hephep) and [`==` tistis](https://urbit.org/docs/hoon/reference/rune/terminators#-tistis) are used at the end of certain expressions.
+> Most runes are used at the beginning of a complex expression, but there are exceptions. For example, the runes [`--` hephep](/reference/hoon/rune/terminators#hephep) and [`==` tistis](/reference/hoon/rune/terminators#tistis) are used at the end of certain expressions.
 
 #### Aside:  Writing Incorrect Code
 
@@ -486,10 +486,10 @@ The final rune we introduce in this lesson will allow us to select between two d
 
 Essentially, we have to be able to decide whether or not some value or expression evaluates as `%.y` _true_ (in which case we will do one thing) or `%.n` _false_ (in which case we do another).  At this point, our basic expressions are always mathematical; later on we will check for existence, for equality of two values, etc.
 
-- [`++gth`](https://urbit.org/docs/hoon/reference/stdlib/1a#gth) (greater than `>`)
-- [`++lth`](https://urbit.org/docs/hoon/reference/stdlib/1a#lth) (less than `<`)
-- [`++gte`](https://urbit.org/docs/hoon/reference/stdlib/1a#gte) (greater than or equal to `≥`)
-- [`++lte`](https://urbit.org/docs/hoon/reference/stdlib/1a#lte) (less than or equal to `≤`)
+- [`++gth`](/reference/hoon/stdlib/1a#gth) (greater than `>`)
+- [`++lth`](/reference/hoon/stdlib/1a#lth) (less than `<`)
+- [`++gte`](/reference/hoon/stdlib/1a#gte) (greater than or equal to `≥`)
+- [`++lte`](/reference/hoon/stdlib/1a#lte) (less than or equal to `≤`)
 
 If we supply these with a pair of numbers to a `%-` cenhep call, we can see if the expression is considered `%.y` true or `%.n` false.
 

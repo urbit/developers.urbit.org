@@ -5,5 +5,5 @@ template = "doc.html"
 category = "arvo"
 +++
 
-**Khan** is the [vane](/docs/glossary/vane) that offers thread control
+**Khan** is the [vane](/reference/glossary/vane) that offers thread control
 affordances for external devices.

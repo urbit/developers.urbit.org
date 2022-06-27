@@ -205,7 +205,7 @@ When we put each of these parts together, we have our complete
 
 ## Resources
 
-- [Gall Guide /sur section](/docs/userspace/gall-guide/7-sur-and-marks#sur) -
+- [Gall Guide /sur section](/guides/core/app-school/7-sur-and-marks#sur) -
   This section of the Gall Guide covers writing a `/sur` structure library for
   an agent.
 

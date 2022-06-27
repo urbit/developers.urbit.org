@@ -9,21 +9,21 @@ to start writing your own agent.
 
 The things haven't touched on yet are front-end development and integration,
 Eyre's HTTP API for communicating with agents from the web, and dealing with
-JSON data. The [Full-stack Walkthrough](/docs/userspace/full-stack/1-intro)
+JSON data. The [Full-stack Walkthrough](/guides/core/app-school-full-stack/1-intro)
 covers these aspects of Urbit app development, and it also puts into practice
 many of the concepts we've discussed in this guide, so you might like to work
 through that next. In addition to that walkthrough, you can refer to the
 following documents for help writing a web front-end for your app:
 
-- [Eyre's external API reference](/docs/arvo/eyre/external-api-ref) - This
+- [Eyre's external API reference](/reference/arvo/eyre/external-api-ref) - This
   explains Eyre's HTTP API, through which a browser or other HTTP client can
   interact with a Gall agent.
-- [Eyre's usage guide](/docs/arvo/eyre/guide) - This walks through examples of
+- [Eyre's usage guide](/reference/arvo/eyre/guide) - This walks through examples of
   using Eyre's HTTP API.
-- [JSON guide](/docs/hoon/guides/json-guide) - This walks through the basics of
+- [JSON guide](/guides/additional/hoon/json-guide) - This walks through the basics of
   converting Hoon data structures to JSON, for use with a web client. It also
   covers JSON conversion methods in `mark` files.
-- [Zuse reference](/docs/hoon/reference/zuse/table-of-contents) - This contains
+- [Zuse reference](/reference/hoon/zuse/table-of-contents) - This contains
   documentation of all JSON encoding and decoding functions included in the
   `zuse.hoon` utility library.
 - [The software distribution guide](/docs/userspace/dist/dist) - This covers
@@ -31,7 +31,7 @@ following documents for help writing a web front-end for your app:
   details of bundling a web front-end and serving it to the user in the browser.
 - [The HTTP API guide](/docs/userspace/http-api-guide) - This is a reference
   and guide to using the `@urbit/http-api` NPM module.
-- [The Sail guide](/docs/hoon/guides/sail) - Sail is a domain-specific language
+- [The Sail guide](/guides/additional/hoon/sail) - Sail is a domain-specific language
   for composing XML structure in Hoon. It can be used to compose front-ends for
   Urbit apps directly in agents, as an alternative approach to having a
   separate Javascript app.

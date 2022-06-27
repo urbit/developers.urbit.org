@@ -2,7 +2,7 @@
 title = "Glossary"
 sort_by = "none"
 weight = 900
-template = "sections/docs/glossary.html"
+template = "sections/reference/glossary.html"
 [extra]
 nav = "link"
 +++

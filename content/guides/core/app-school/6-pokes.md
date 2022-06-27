@@ -26,7 +26,7 @@ The sample of the gate is usually specified as a cell of `mark` and `vase`
 rather than just `cage`, simply because it's easier to work with.
 
 Typically, you'd first test the `mark` with something like a
-[wutlus](/docs/hoon/reference/rune/wut#-wutlus) `?+` expression, passing
+[wutlus](/reference/hoon/rune/wut#wutlus) `?+` expression, passing
 unexpected `mark`s to `default-agent`, which just crashes. We'll look at custom
 `mark`s in a subsequent lesson, but the basic patten looks like:
 
@@ -92,7 +92,7 @@ try to pass actual data by encoding it in the nack `tang`.
 ## Sending a poke
 
 An agent can send pokes to other agents by producing [`%poke`
-`card`s](/docs/userspace/gall-guide/5-cards#pokes). Any agent arm apart from
+`card`s](/guides/core/app-school/5-cards#pokes). Any agent arm apart from
 `on-peek` and `on-save` can produce such `card`s. The arms would typically
 produce the `(quip card _this)` like so:
 
@@ -102,7 +102,7 @@ produce the `(quip card _this)` like so:
 ==
 ```
 
-The [colcab](/docs/hoon/reference/rune/col#_-colcab) (`:_`) rune makes an
+The [colcab](/reference/hoon/rune/col#_-colcab) (`:_`) rune makes an
 inverted cell, it's just `:-` but with the head and tail swapped. We use colcab
 to produce the `(quip card _this)` because the list of cards is "heavier"
 here than the new agent core expression (`this`), so it makes it more
@@ -135,7 +135,7 @@ A `sign:agent:gall` (henceforth just `sign`) is defined in `lull.hoon` as:
   ==
 ```
 
-It's basically the same as a [`gift`](/docs/userspace/gall-guide/5-cards#give),
+It's basically the same as a [`gift`](/guides/core/app-school/5-cards#give),
 but incoming instead of outgoing.
 
 The simplest way to handle a `%poke-ack` by passing it to `default-agent`'s

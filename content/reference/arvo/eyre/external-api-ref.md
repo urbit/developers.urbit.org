@@ -4,7 +4,7 @@ weight = 2
 template = "doc.html"
 +++
 
-This document contains reference information about Eyre's external APIs including [the channel system](#channels) and [scries](#scry). Each section will also have practical examples in the [Guide](/docs/arvo/eyre/guide) document.
+This document contains reference information about Eyre's external APIs including [the channel system](#channels) and [scries](#scry). Each section will also have practical examples in the [Guide](/reference/arvo/eyre/guide) document.
 
 ## Authentication
 
@@ -14,7 +14,7 @@ To use Eyre's channel system, run threads or perform scries you must first obtai
 | ----------- | -------------------------------------- | ---------- | ----------------------------------------------------------------------------------- |
 | `POST`      | `password=lidlut-tabwed-pillex-ridrup` | `/~/login` | The password is your web login code which can be obtained with `+code` in the dojo. |
 
-See the [Guide](/docs/arvo/eyre/guide#authenticating) for an example of how to do this using the curl.
+See the [Guide](/reference/arvo/eyre/guide#authenticating) for an example of how to do this using the curl.
 
 Eyre's response will include a `set-cookie` header like:
 
@@ -51,7 +51,7 @@ All the events that Eyre sends you on a channel must be [ack](#ack)ed so that Ey
 
 When you're finished with a channel, you can send Eyre a [delete action](#delete-channel) to close it.
 
-See the [Using the Channel System](/docs/arvo/eyre/guide#using-channels) section of the [Guide](/docs/arvo/eyre/guide) document for a practical example.
+See the [Using the Channel System](/reference/arvo/eyre/guide#using-channels) section of the [Guide](/reference/arvo/eyre/guide) document for a practical example.
 
 ### HTTP Requests
 
@@ -352,7 +352,7 @@ The `{mark}` is the type you want returned. It needn't just be `json` as with th
 
 If your session cookie is invalid or missing, Eyre will respond with a 403 Forbidden status. If the scry endpoint cannot be found, Eyre will respond with a 404 Missing status. If the `mark` conversions can't be done, Eyre will respond with a 500 Internal Server Error status. Otherwise, Eyre will respond with a 200 OK status with the requested data in the body of the HTTP response.
 
-See the [Scrying](/docs/arvo/eyre/guide#scrying) section of the [Guide](/docs/arvo/eyre/guide) document for a practical example.
+See the [Scrying](/reference/arvo/eyre/guide#scrying) section of the [Guide](/reference/arvo/eyre/guide) document for a practical example.
 
 ## Spider
 

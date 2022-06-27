@@ -170,7 +170,7 @@ We remark that you can switch binds in the middle of a sequence of `;<`.
 
 #### Examples
 
-[`+biff`](/docs/hoon/reference/stdlib/2a/#biff) is the unit monad's
+[`+biff`](/reference/hoon/stdlib/2a/#biff) is the unit monad's
 implementation of monadic bind. That is to say, it takes a unit `a` and a gate
 `b` that accepts a noun that produces a unit, and extracts the value from `a` to
 pass as a sample to `b`.
@@ -240,8 +240,8 @@ One argument, fixed.
 
 #### Produces
 
-A [`marl`](/docs/hoon/reference/stdlib/5e#marl), i.e., a list of
-[`manx`](/docs/hoon/reference/stdlib/5e#manx). A `manx` is a noun that
+A [`marl`](/reference/hoon/stdlib/5e#marl), i.e., a list of
+[`manx`](/reference/hoon/stdlib/5e#manx). A `manx` is a noun that
 represents a single XML node.
 
 #### Discussion
@@ -607,8 +607,8 @@ One argument, fixed.
 
 #### Produces
 
-A [`marl`](/docs/hoon/reference/stdlib/5e#marl), i.e., a list of
-[`manx`](/docs/hoon/reference/stdlib/5e#manx). A `manx` is a noun that
+A [`marl`](/reference/hoon/stdlib/5e#marl), i.e., a list of
+[`manx`](/reference/hoon/stdlib/5e#manx). A `manx` is a noun that
 represents a single XML node.
 
 #### Discussion
@@ -692,13 +692,13 @@ A variable number of arguments.
 
 #### Produces
 
-A [`marl`](/docs/hoon/reference/stdlib/5e#marl), i.e., a list of
-[`manx`](/docs/hoon/reference/stdlib/5e#manx). A `manx` is a noun that
+A [`marl`](/reference/hoon/stdlib/5e#marl), i.e., a list of
+[`manx`](/reference/hoon/stdlib/5e#manx). A `manx` is a noun that
 represents a single XML node.
 
 #### Discussion
 
-`;=` is a [Sail](/docs/hoon/guides/sail) rune. Sail is a part of Hoon used for
+`;=` is a [Sail](/guides/additional/hoon/sail) rune. Sail is a part of Hoon used for
 creating and operating on nouns that represent XML nodes. With the appropriate
 rendering pipeline, a Sail document can be used to generate a static website.
 

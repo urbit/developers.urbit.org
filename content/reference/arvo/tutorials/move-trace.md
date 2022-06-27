@@ -7,7 +7,7 @@ template = "doc.html"
 In this tutorial we will run a simple "move trace" and use the output to get a
 picture of what the Arvo kernel proper does during the routine task of setting a
 timer. Some level of familiarity with the kernel is required for this section,
-which can be obtained in our [Arvo kernel tutorial](/docs/arvo/overview#the-kernel).
+which can be obtained in our [Arvo kernel tutorial](/reference/arvo/overview#the-kernel).
 
 ## Running a move trace
 
@@ -20,7 +20,7 @@ has elapsed.
 To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
 and press Enter to enable verbose mode (this is tracked by the laconic bit
 introduced in the section on [the
-state](/docs/arvo/overview#the-state)) in the kernel documentation, followed by `-time ~s1`
+state](/reference/arvo/overview#the-state)) in the kernel documentation, followed by `-time ~s1`
 followed by Enter. Your terminal should pretty print a series of `move`s that looks something like this:
 
 ```
@@ -96,7 +96,7 @@ move trace in as much detail as you desire.
 Let's put the first part of the move trace into a diagram to make following
 along a little easier.
 
-![](https://media.urbit.org/docs/arvo/move-trace-with-key.png)
+![](https://media.urbit.orgreference/arvo/move-trace-with-key.png)
 
 Here, each arrow represents the passing of some information, with most of it
 being from vane to vane. Here, when Vane A has an arrow to a card and then an
@@ -104,7 +104,7 @@ arrow to Vane B, this represents either a `%pass` `note/task` sequence or a
 `%give` `gift/sign` sequence that actually has the Arvo kernel in the middle.
 That is to say, Vane A `%pass`es a `note` to the Arvo kernel addressed to Vane
 B, and the Arvo kernel then `%pass`es a `task` to Vane B. For more information,
-see the [Arvo kernel tutorial](/docs/arvo/overview#the-kernel).
+see the [Arvo kernel tutorial](/reference/arvo/overview#the-kernel).
 
 This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -
 as well as four applications - hood, spider, dojo, and time.
@@ -119,7 +119,7 @@ This tells us that Unix has sent a `%belt` `card`, which corresponds to
 terminal input (the Enter keystroke) at time `~2020.1.14..19.01.25..7556`
 
 Here is the line of code in `arvo.hoon`, found in the [section
-3bE core](/docs/arvo/overview#section-3be-core), that generated the output:
+3bE core](/reference/arvo/overview#section-3be-core), that generated the output:
 
 ```hoon
     ~?  !lac  ["" %unix -.q.ovo p.ovo now]
@@ -173,7 +173,7 @@ Here, Dill `%pass`es a `task` `card` saying to `%poke` Gall's hood app (with the
 Enter keystroke).
 
 Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE
-core](/docs/arvo/overview#section-3be-core). This arm is what the Arvo kernel uses to send `card`s,
+core](/reference/arvo/overview#section-3be-core). This arm is what the Arvo kernel uses to send `card`s,
 and here we look at the segment that includes `%pass` `move`s.
 
 ```hoon

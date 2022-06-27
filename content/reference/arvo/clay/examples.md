@@ -4,7 +4,7 @@ weight = 7
 template = "doc.html"
 +++
 
-This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](/docs/arvo/clay/tasks) document.
+This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](/reference/arvo/clay/tasks) document.
 
 Most examples will either use `|pass` to just send a `task` or the following thread to send a `task` and take the resulting `gift`. You can save the following thread to the `ted` directory of the `%base` `desk` on a fake ship:
 
@@ -31,7 +31,7 @@ Most examples will either use `|pass` to just send a `task` or the following thr
 
 ## `%warp`
 
-See the [Read and Subscribe](/docs/arvo/clay/tasks#warp---read-and-track) section of the [API Reference](/docs/arvo/clay/tasks) document for general details.
+See the [Read and Subscribe](/reference/arvo/clay/tasks#warp---read-and-track) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
 
 ### `%sing`
 
@@ -81,7 +81,7 @@ The `cage` in the `riot` of the `%writ` contains the file's data due to our use 
 
 Here's a breakdown of the `task` we sent:
 
-![%sing diagram](https://media.urbit.org/docs/arvo/clay/sing.png "%sing diagram")
+![%sing diagram](https://media.urbit.orgreference/arvo/clay/sing.png "%sing diagram")
 
 ### `%next`
 
@@ -117,7 +117,7 @@ You can see the `riot` is just `~` due to the file being deleted.
 
 Here's a breakdown of the task we sent:
 
-![%next diagram](https://media.urbit.org/docs/arvo/clay/next.png "%next diagram")
+![%next diagram](https://media.urbit.orgreference/arvo/clay/next.png "%next diagram")
 
 ### `%mult`
 
@@ -176,7 +176,7 @@ As you can see, a relevant change to any of the subscribed files will trigger a 
 
 Here's a breakdown of the `task` we sent:
 
-![subscribe mult diagram](https://media.urbit.org/docs/arvo/clay/sub-mult.png "subscribe mult diagram")
+![subscribe mult diagram](https://media.urbit.orgreference/arvo/clay/sub-mult.png "subscribe mult diagram")
 
 ### `%many`
 
@@ -270,7 +270,7 @@ Run `:spider|kill` to stop the thread.
 
 Here's a breakdown of the `task` we sent:
 
-![subscribe many diagram](https://media.urbit.org/docs/arvo/clay/sub-many.png "subscribe many diagram")
+![subscribe many diagram](https://media.urbit.orgreference/arvo/clay/sub-many.png "subscribe many diagram")
 
 ### Cancel Subscription
 
@@ -314,11 +314,11 @@ Run `:spider|kill` to stop the thread.
 
 Here's a breakdown of the `task` we sent:
 
-![cancel subscription diagram](https://media.urbit.org/docs/arvo/clay/stop-sub.png "cancel subscription diagram")
+![cancel subscription diagram](https://media.urbit.orgreference/arvo/clay/stop-sub.png "cancel subscription diagram")
 
 ## `%info`
 
-See the [Write and Modify](/docs/arvo/clay/tasks#write-and-modify) section of the [API Reference](/docs/arvo/clay/tasks) document for general details.
+See the [Write and Modify](/reference/arvo/clay/tasks#write-and-modify) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
 
 ### `%ins`
 
@@ -337,7 +337,7 @@ We've created the `cage` of the content like `[%txt !>(~['foo'])]`, if you want 
 
 Here's a breakdown of the `task` we sent:
 
-![%ins diagram](https://media.urbit.org/docs/arvo/clay/ins.png)
+![%ins diagram](https://media.urbit.orgreference/arvo/clay/ins.png)
 
 ### `%del`
 
@@ -354,7 +354,7 @@ If you have a look in the base of your pier you'll see the `foo.txt` file is now
 
 Here's a breakdown of the `task` we sent:
 
-![%del diagram](https://media.urbit.org/docs/arvo/clay/del.png)
+![%del diagram](https://media.urbit.orgreference/arvo/clay/del.png)
 
 ### `%mut`
 
@@ -403,7 +403,7 @@ Save to `ted/multi-change.hoon`, `|commit %base`, and run:
 
 ## Manage Mounts
 
-See the [Manage Mounts](/docs/arvo/clay/tasks#manage-mounts) section of the [API Reference](/docs/arvo/clay/tasks) document for general details.
+See the [Manage Mounts](/reference/arvo/clay/tasks#manage-mounts) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
 
 ### `%boat`
 
@@ -502,7 +502,7 @@ If you have the same `desk` mounted to multiple points, a committed change in on
 
 ## Merge Desks
 
-See the [Merge Desks](/docs/arvo/clay/tasks#merge-desks) section of the [API Reference](/docs/arvo/clay/tasks) document for general details.
+See the [Merge Desks](/reference/arvo/clay/tasks#merge-desks) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
 
 ### `%merg`
 
@@ -578,7 +578,7 @@ You can also specify it by revision number or label.
 
 ## Permissions
 
-See the [Permissions](/docs/arvo/clay/tasks#permissions) section of the [API Reference](/docs/arvo/clay/tasks) document for general details.
+See the [Permissions](/reference/arvo/clay/tasks#permissions) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
 
 ### `%perm`
 
@@ -658,7 +658,7 @@ As you can see it's back to the default inherited from `/`.
 
 Here's a breakdown of a `%perm` task:
 
-![perm diagram](https://media.urbit.org/docs/arvo/clay/perm-diagram.png)
+![perm diagram](https://media.urbit.orgreference/arvo/clay/perm-diagram.png)
 
 ### `%cred`
 
@@ -717,7 +717,7 @@ Now we'll use the `send-task-take-gift.hoon` thread to try `%crow`:
 
 ## Foreign Ships
 
-See the [Foreign Ships](/docs/arvo/clay/tasks#foreign-ships) section of the [API Reference](/docs/arvo/clay/tasks) document for general details.
+See the [Foreign Ships](/reference/arvo/clay/tasks#foreign-ships) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
 
 ### `%warp` - Remote
 

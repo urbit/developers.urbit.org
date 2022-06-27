@@ -4,7 +4,7 @@ weight = 70
 template = "doc.html"
 +++
 
-Auras are system of nested "soft types" on [atoms](/docs/glossary/atom) that
+Auras are system of nested "soft types" on [atoms](/reference/glossary/atom) that
 are used to track metadata about how a particular atom is to be interpreted.
 This is used for type checking as well as pretty printing.
 

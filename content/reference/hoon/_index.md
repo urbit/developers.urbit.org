@@ -8,46 +8,46 @@ insert_anchor_links = "right"
 
 This is where you look for answers to specific technical questions.
 
-## [Syntax Cheat Sheet](/docs/hoon/reference/cheat-sheet)
+## [Syntax Cheat Sheet](/reference/hoon/cheat-sheet)
 
 A quick reference guide to Hoon's syntax.
 
-## [Irregular Forms](/docs/hoon/reference/irregular)
+## [Irregular Forms](/reference/hoon/irregular)
 
 Irregular syntax.
 
-## [Troubleshooting](/docs/hoon/reference/hoon-errors)
+## [Troubleshooting](/reference/hoon/hoon-errors)
 
 Strategies for debugging and understanding what your Hoon code is doing.
 
-## [Style Guide](/docs/hoon/reference/style)
+## [Style Guide](/reference/hoon/style)
 
 Best practices for writing Hoon code.
 
-## [Basic Types](/docs/hoon/reference/basic)
+## [Basic Types](/reference/hoon/basic)
 
 A simplified explanation of Hoon's type system.
 
-## [Advanced Types](/docs/hoon/reference/advanced)
+## [Advanced Types](/reference/hoon/advanced)
 
 The full story on Hoon's type system.
 
-## [Auras](/docs/hoon/reference/auras)
+## [Auras](/reference/hoon/auras)
 
 A list of aura types for atoms.
 
-## [Runes](/docs/hoon/reference/rune/)
+## [Runes](/reference/hoon/rune/)
 
 Syntax and semantics for Hoon's rune system.
 
-## [Limbs and Wings](/docs/hoon/reference/limbs/)
+## [Limbs and Wings](/reference/hoon/limbs/)
 
 How to find data inside Hoon subjects.
 
-## [Standard Library](/docs/hoon/reference/stdlib/)
+## [Standard Library](/reference/hoon/stdlib/)
 
 Reference material for the Hoon standard library.
 
-## [Zuse](/docs/hoon/reference/zuse/)
+## [Zuse](/reference/hoon/zuse/)
 
 Reference material for the Zuse library.

@@ -6,7 +6,7 @@ template = "doc.html"
 
 [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business
 logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy
-vote](/docs/glossary/upgrade). This determines things such as what the various
+vote](/reference/glossary/upgrade). This determines things such as what the various
 proxies are capable of, how keys are changed, or verifying that a request is
 valid.
 
@@ -266,7 +266,7 @@ Corresponds to the layer 2 `%set-transfer-proxy` action.
 ### Poll actions
 
 Most of these are functions only available to galaxies. They are related to
-[voting](/docs/glossary/voting). As voting does not occur on layer 2, there are
+[voting](/reference/glossary/voting). As voting does not occur on layer 2, there are
 no corresponding layer 2 actions for poll actions.
 
 Upgrade and document polls last for 30 days, or once a majority is achieved,

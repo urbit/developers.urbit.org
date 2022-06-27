@@ -28,7 +28,7 @@ This `task` only ever originates from Unix. It does the initial processing of a 
 
 There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to `+on-hear:event-core`, as that is the one called by a `%hear` `task`. The other ones are used primarily for ack and nack processing, or receiving message fragments.
 
-`%hear` takes in a [$blob](/docs/arvo/ames/data-types#blob), which is essentially a large atom (around 1kB or less) that is the raw data of the message, and a [$lane](/docs/arvo/ames/data-types#lane), which is the origin of the message (typically an IP address).
+`%hear` takes in a [$blob](/reference/arvo/ames/data-types#blob), which is essentially a large atom (around 1kB or less) that is the raw data of the message, and a [$lane](/reference/arvo/ames/data-types#lane), which is the origin of the message (typically an IP address).
 
 #### Returns
 
@@ -88,7 +88,7 @@ Unix to send packets. In terms of `%pass`/`%give` semantics, this is in
 response to the `%born` `task`, which came along the Unix `duct`, rather than a
 response to the `%plea`.
 
-A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](/docs/arvo/ames/data-types.md#plea).
+A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](/reference/arvo/ames/data-types.md#plea).
 
 #### Returns
 
@@ -119,7 +119,7 @@ response to `%born`.
 ```
 
 `%init` is called a single time during the very first boot process, immediately
-after the [larval stage](/docs/arvo/overview#larval-stage-core)
+after the [larval stage](/reference/arvo/overview#larval-stage-core)
 is completed. This initializes the vane. Jael is initialized first, followed by
 other vanes such as Ames.
 
@@ -157,7 +157,7 @@ This `task` returns no `gift`s.
 
 Sets verbosity toggles on debug output. This `task` is used internally when the `|ames-verb` `hood` generator is run from the dojo.
 
-`%spew` takes in a `list` of [$verb](/docs/arvo/ames/data-types#verb), which are verbosity flags for Ames.
+`%spew` takes in a `list` of [$verb](/reference/arvo/ames/data-types#verb), which are verbosity flags for Ames.
 
 `%spew` flips each toggle given in `veb`.
 

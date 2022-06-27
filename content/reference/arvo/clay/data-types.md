@@ -52,7 +52,7 @@ where all the "real" data we know is stored; the rest is "just
 bookkeeping".
 
 `rom` is the state for all local desks. It consists of a `duct` to
-[Dill](/docs/arvo/dill/dill) and a collection of `desk`s.
+[Dill](/reference/arvo/dill/dill) and a collection of `desk`s.
 
 `hoy` is the state for all foreign desks.
 
@@ -79,7 +79,7 @@ to th pier) and `beam` is a domestic Clay directory.
 
 This is the representation of the filesystem of a ship on our pier.
 
-`hun` is the duct we use to send messages to [Dill](/docs/arvo/dill/dill) to
+`hun` is the duct we use to send messages to [Dill](/reference/arvo/dill/dill) to
 display notifications of filesystem changes. Only `%note` `%gift`s should be
 produced along this `duct`. This is set by the `%init` `move`.
 
@@ -94,7 +94,7 @@ set of `desk`s on this ship, mapped to their `desk` state.
 
 This is the name of a branch of the filesystem. The default `desk`s are `%base`, `%garden`, `%landscape`, `%webterm` and `%bitcoin`. Desks have
 independent histories and states, and they may be
-[merged](/docs/arvo/clay/using#merging) into each other.
+[merged](/reference/arvo/clay/using#merging) into each other.
 
 ### `$dojo`, domestic desk state
 

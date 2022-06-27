@@ -82,7 +82,7 @@ Text string with interpolation.
 
 #### Syntax
 
-A [$tape](/docs/hoon/reference/stdlib/2q#tape)
+A [$tape](/reference/hoon/stdlib/2q#tape)
 
 `"abcdefg"`
 

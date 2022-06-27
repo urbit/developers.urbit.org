@@ -38,7 +38,7 @@ Behn does not return any `gift` in response to a `%rest` `task`.
 
 #### Example
 
-See the [%rest](/docs/arvo/behn/examples#rest) section of the Examples document.
+See the [%rest](/reference/arvo/behn/examples#rest) section of the Examples document.
 
 ## `%drip`
 
@@ -138,7 +138,7 @@ The `error` `unit` will be `~` if successful, or contain a traceback in the `tan
 
 #### Example
 
-See the [%wait](/docs/arvo/behn/tasks#wait) section of the Examples document.
+See the [%wait](/reference/arvo/behn/tasks#wait) section of the Examples document.
 
 ## `%wake`
 

@@ -120,11 +120,11 @@ Rather than just a `path` to a file, the head of the `path` is tagged with one o
 
 ### %yaki - Commit.
 
-This will return the [yaki:clay](/docs/arvo/clay/data-types#yaki-clay-commit) of the specified commit. It takes a [tako:clay](/docs/arvo/clay/data-types#tako-clay-commit-reference).
+This will return the [yaki:clay](/reference/arvo/clay/data-types#yaki-clay-commit) of the specified commit. It takes a [tako:clay](/reference/arvo/clay/data-types#tako-clay-commit-reference).
 
 Example:
 
-Here we scry the [dome:clay](/docs/arvo/clay/data-types#dome-desk-data) for `/===`, get the latest `tako:clay` and the do a `%s` scry for the `yaki:clay` in question.
+Here we scry the [dome:clay](/reference/arvo/clay/data-types#dome-desk-data) for `/===`, get the latest `tako:clay` and the do a `%s` scry for the `yaki:clay` in question.
 
 ```
 > =/  =dome:clay  .^(dome:clay %cv /===)
@@ -145,7 +145,7 @@ Here we scry the [dome:clay](/docs/arvo/clay/data-types#dome-desk-data) for `/==
 
 ### %blob - File blob.
 
-This will return the [blob:clay](/docs/arvo/clay/data-types#blob-clay-data) of some file. It takes a [lobe:clay](/docs/arvo/clay/data-types#lobe-clay-data-reference).
+This will return the [blob:clay](/reference/arvo/clay/data-types#blob-clay-data) of some file. It takes a [lobe:clay](/reference/arvo/clay/data-types#lobe-clay-data-reference).
 
 Example:
 

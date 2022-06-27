@@ -11,8 +11,8 @@ these runes are used to produce `spec`s, which we call 'structures'.
 ## Overview
 
 Structures are abstract syntax trees for `type`s (see the documentation on
-[basic](/docs/hoon/reference/basic) and
-[advanced](/docs/hoon/reference/advanced) types for the
+[basic](/reference/hoon/basic) and
+[advanced](/reference/hoon/advanced) types for the
 precise definition of `type`). Structures are compile-time values of `type` which
 at runtime may be used to produce a 'mold'.
 
@@ -146,7 +146,7 @@ The definition of `+set` in `hoon.hoon` is the following:
   |=(a=(tree) ?:(=(~ a) & ~(apt in a)))
 ```
 
-Here [`|$`](/docs/hoon/reference/rune/bar#barbuc) is used to define a mold
+Here [`|$`](/reference/hoon/rune/bar#barbuc) is used to define a mold
 builder that takes in a mold (given the face `item`) and creates a structure
 consisting of a `tree` of `item`s with `$|` that is validated with the gate
 `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with
@@ -787,7 +787,7 @@ The product of `p`.
 
 You should make sure that the product type of `p` nests under `q`. You can check
 the default value of some structure (custom type) `r` with `*r`. (See the [`^*`
-rune](/docs/hoon/reference/rune/ket#kettar).)
+rune](/reference/hoon/rune/ket#kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter
 uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)

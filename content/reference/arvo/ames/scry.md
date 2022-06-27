@@ -30,7 +30,7 @@ A scry with a `%x` `care` and a `path` of `/peers` will return all ships that Am
 
 ## /peers/[ship]
 
-A scry with a `%x` `care` and a `path` of `/peers/[ship]` where `[ship]` is a ship name like `~dopzod` will return everything Ames knows about that ship, or crash if the ship is unknown to Ames. The type returned is a [$ship-state](/docs/arvo/ames/data-types#ship-state).
+A scry with a `%x` `care` and a `path` of `/peers/[ship]` where `[ship]` is a ship name like `~dopzod` will return everything Ames knows about that ship, or crash if the ship is unknown to Ames. The type returned is a [$ship-state](/reference/arvo/ames/data-types#ship-state).
 
 #### Example
 
@@ -73,7 +73,7 @@ A scry with a `%x` `care` and a `path` of `/peers/[ship]` where `[ship]` is a sh
 
 ## /peers/[ship]/forward-lane
 
-A scry with a `%x` `care` and a `path` of `/peers/[ship]/forward-lane` where `[ship]` is a ship name like `~dopzod` will return outbound routes to the given ship, or `~` if there are none. The type returned is a `(list lane:ames)`, see [$lane](/docs/arvo/ames/data-types#lane) for type details.
+A scry with a `%x` `care` and a `path` of `/peers/[ship]/forward-lane` where `[ship]` is a ship name like `~dopzod` will return outbound routes to the given ship, or `~` if there are none. The type returned is a `(list lane:ames)`, see [$lane](/reference/arvo/ames/data-types#lane) for type details.
 
 #### Examples
 
@@ -89,7 +89,7 @@ A scry with a `%x` `care` and a `path` of `/peers/[ship]/forward-lane` where `[s
 
 ## /bones/[ship]
 
-A scry with a `%x` `care` and a `path` of `/bones/[ship]` where `[ship]` is a ship name like `~dopzod` will return inbound and outbound [$bone](/docs/arvo/ames/data-types#bone)s, which index message flows. If the ship in question is unknown to Ames, the scry will fail. The type returned is `[snd=(set bone) rcv=(set bone)]`.
+A scry with a `%x` `care` and a `path` of `/bones/[ship]` where `[ship]` is a ship name like `~dopzod` will return inbound and outbound [$bone](/reference/arvo/ames/data-types#bone)s, which index message flows. If the ship in question is unknown to Ames, the scry will fail. The type returned is `[snd=(set bone) rcv=(set bone)]`.
 
 #### Example
 
@@ -100,7 +100,7 @@ A scry with a `%x` `care` and a `path` of `/bones/[ship]` where `[ship]` is a sh
 
 ## /snd-bones/[ship]/[bone]
 
-A scry with a `%x` `care` and a `path` of `/snd-bones/[ship]/[bone]`, where `[ship]` is a ship name like `~dopzod` and `[bone]` is an outbound [$bone](/docs/arvo/ames/data-types#bone), will return message flow details for that `bone`. If the ship in question is unknown to Ames or the `bone` does not exist, the scry will fail. The type returned is a [$message-pump-state](/docs/arvo/ames/data-types#message-pump-state) wrapped in a `vase`.
+A scry with a `%x` `care` and a `path` of `/snd-bones/[ship]/[bone]`, where `[ship]` is a ship name like `~dopzod` and `[bone]` is an outbound [$bone](/reference/arvo/ames/data-types#bone), will return message flow details for that `bone`. If the ship in question is unknown to Ames or the `bone` does not exist, the scry will fail. The type returned is a [$message-pump-state](/reference/arvo/ames/data-types#message-pump-state) wrapped in a `vase`.
 
 #### Example
 

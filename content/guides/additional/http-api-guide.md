@@ -683,16 +683,16 @@ as a reference:
 - [Web Terminal](https://github.com/urbit/urbit/tree/master/pkg/interface/webterm)
 - [UrChatFM](https://github.com/urbit/urbit-webrtc/tree/master/urchatfm)
 
-[eyre-ext-ref]: /docs/arvo/eyre/external-api-ref
-[eyre-guide]: /docs/arvo/eyre/guide
+[eyre-ext-ref]: reference/arvo/eyre/external-api-ref
+[eyre-guide]: reference/arvo/eyre/guide
 [http-api-src]: https://github.com/urbit/urbit/tree/master/pkg/npm/http-api
-[eyre]: /docs/glossary/eyre
-[vane]: /docs/glossary/vane
-[arvo]: /docs/glossary/arvo
-[hoon]: /docs/glossary/hoon
-[gall]: /docs/glossary/gall
-[clay]: /docs/glossary/clay
-[desk]: /docs/glossary/desk
-[mark]: /docs/glossary/mark
+[eyre]: /reference/glossary/eyre
+[vane]: /reference/glossary/vane
+[arvo]: /reference/glossary/arvo
+[hoon]: /reference/glossary/hoon
+[gall]: /reference/glossary/gall
+[clay]: /reference/glossary/clay
+[desk]: /reference/glossary/desk
+[mark]: /reference/glossary/mark
 [sse]: https://html.spec.whatwg.org/#server-sent-events
 [@urbit/http-api]: https://github.com/urbit/urbit/tree/master/pkg/npm/http-api

@@ -23,7 +23,7 @@ for expressions which expand to `?:`.
 The test does not have to be a single `?=`; the compiler can
 analyze arbitrary boolean logic ([`?&` ("wutpam")](#wutpam),
 [`?|` ("wutbar")](#wutbar), [`?!` ("wutzap")](#wutzap)) with full
-short-circuiting. Equality tests ([`.=` ("dottis")](/docs/hoon/reference/rune/dot#dottis)) are **not**
+short-circuiting. Equality tests ([`.=` ("dottis")](/reference/hoon/rune/dot#dottis)) are **not**
 analyzed.
 
 If the compiler detects that the branch is degenerate (only one

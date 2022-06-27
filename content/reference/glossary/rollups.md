@@ -6,14 +6,14 @@ category = "azimuth"
 +++
 
 **Naive rollups**, also referred to as **layer 2**, is an upgrade to
-[Azimuth](/docs/glossary/azimuth) implemented in 2021 that reduces Ethereum gas
+[Azimuth](/reference/glossary/azimuth) implemented in 2021 that reduces Ethereum gas
 costs associated with Urbit ID transactions and friction associated with using
 cryptocurrency in general.
 
 This system allows batches of Urbit ID transactions to be submitted together as
 a single transaction using an urbit node known as a "roller". The PKI state
 transitions resulting from these transactions are computed locally by your
-[ship](/docs/glossary/ship) rather than by the [Ethereum Virtual
+[ship](/reference/glossary/ship) rather than by the [Ethereum Virtual
 Machine](https://ethereum.org/en/developers/docs/evm/).
 
 Due to the dramatically reduced cost, Tlon offers their own roller that is free

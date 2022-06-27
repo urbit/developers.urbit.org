@@ -16,9 +16,9 @@ Terminal input.
 
 The runtime sends a `%belt` `task` to Dill whenever there is input in the terminal, such as a keystroke.
 
-The [$belt](/docs/arvo/dill/data-types#belt) in `p` contains the input such as which key was pressed.
+The [$belt](/reference/arvo/dill/data-types#belt) in `p` contains the input such as which key was pressed.
 
-Dill will convert the `$belt` into a [$dill-belt](/docs/arvo/dill/data-types#dill-belt) and `%poke` the session handler (typically `drum`) with it.
+Dill will convert the `$belt` into a [$dill-belt](/reference/arvo/dill/data-types#dill-belt) and `%poke` the session handler (typically `drum`) with it.
 
 This `task` would not typically be used from userspace.
 
@@ -36,9 +36,9 @@ Terminal resized.
 
 The runtime passes Dill a `%blew` `task` whenever the terminal is resized.
 
-The [$blew](/docs/arvo/dill/data-types#blew) specifies the new dimensions.
+The [$blew](/reference/arvo/dill/data-types#blew) specifies the new dimensions.
 
-Dill will convert the `$blew` into a `%rez` [$dill-belt](/docs/arvo/dill/data-types#dill-belt) and `%poke`s the session handler (typically `drum`) with it.
+Dill will convert the `$blew` into a `%rez` [$dill-belt](/reference/arvo/dill/data-types#dill-belt) and `%poke`s the session handler (typically `drum`) with it.
 
 This `task` would not typically be used from userspace.
 
@@ -52,9 +52,9 @@ Dill returns no `gift` in response to a `%blew` `task`.
 [%boot lit=? p=*]
 ```
 
-This `task` is used only once, when Arvo first enters the [adult stage](/docs/arvo/overview#structural-interface-core). Dill is technically the first vane to be activated, via the `%boot` `task`, which then sends Jael (considered the "true" first vane) the `%dawn` or `%fake` `task` wrapped in the `%boot` `task`. Jael then goes on to call `%init` `task`s for other vanes (including Dill).
+This `task` is used only once, when Arvo first enters the [adult stage](/reference/arvo/overview#structural-interface-core). Dill is technically the first vane to be activated, via the `%boot` `task`, which then sends Jael (considered the "true" first vane) the `%dawn` or `%fake` `task` wrapped in the `%boot` `task`. Jael then goes on to call `%init` `task`s for other vanes (including Dill).
 
-`lit` specifies whether to boot in lite mode. `p` is either a [%dawn](/docs/arvo/jael/data-types#dawn) or [%fake](/docs/arvo/jael/tasks#fake) `task:jael`. `%dawn` is for an ordinary boot and `%fake` is for booting a fake ship.
+`lit` specifies whether to boot in lite mode. `p` is either a [%dawn](/reference/arvo/jael/data-types#dawn) or [%fake](/reference/arvo/jael/tasks#fake) `task:jael`. `%dawn` is for an ordinary boot and `%fake` is for booting a fake ship.
 
 This `task` would not be used from userspace.
 
@@ -112,7 +112,7 @@ Dill does not return a `gift` in response to a `%flee` `task`.
 
 A `%flog` `task` is a wrapper over a `task` sent by another vane. Dill removes the wrapper and sends the bare `task` to itself over the default `duct`.
 
-A `%flog` `task` takes a [$flog](/docs/arvo/dill/data-types#flog) as its argument. A `$flog` is a subset of Dill's `task`s.
+A `%flog` `task` takes a [$flog](/reference/arvo/dill/data-types#flog) as its argument. A `$flog` is a subset of Dill's `task`s.
 
 #### Returns
 
@@ -136,7 +136,7 @@ This `task` is not used.
 
 Refresh.
 
-Dill converts a `%hail` `task` into a `%hey` [$dill-belt](/docs/arvo/dill/data-types#dill-belt) and `%poke`s the session handler (typically `drum`) with it to handle the refresh.
+Dill converts a `%hail` `task` into a `%hey` [$dill-belt](/reference/arvo/dill/data-types#dill-belt) and `%poke`s the session handler (typically `drum`) with it to handle the refresh.
 
 This `task` would not be used from userspace.
 
@@ -184,7 +184,7 @@ This `task` is not used.
 [%init ~]
 ```
 
-This `task` is called only once, when Arvo first enters the [adult stage](/docs/arvo/overview#structural-interface-core). It performs initial setup for Dill, such as setting the width of the console.
+This `task` is called only once, when Arvo first enters the [adult stage](/reference/arvo/overview#structural-interface-core). It performs initial setup for Dill, such as setting the width of the console.
 
 Note that this is not actually the first `task` passed to Dill - see [%boot](#%boot).
 
@@ -252,7 +252,7 @@ This `task` is not used.
 
 Print `tape` to terminal.
 
-Upon receiving a `%text` `task`, Dill will convert the `tape` given in `p` to a `(list @c)` and give it to the runtime in a `%blit` `gift` including a `%lin` [$blit](/docs/arvo/dill/data-types#blit).
+Upon receiving a `%text` `task`, Dill will convert the `tape` given in `p` to a `(list @c)` and give it to the runtime in a `%blit` `gift` including a `%lin` [$blit](/reference/arvo/dill/data-types#blit).
 
 #### Returns
 
@@ -317,7 +317,7 @@ Dill returns no `gift` in response to a `%vega` `task`.
 
 This `task` toggles verbose mode for all of Arvo, which is located here since
 Dill is the vane that prints errors. To be precise, `%verb` toggles the laconic
-bit `lac` in the [Arvo state](/docs/arvo/overview#the-state) by passing a `%verb` `waif` to Arvo.
+bit `lac` in the [Arvo state](/reference/arvo/overview#the-state) by passing a `%verb` `waif` to Arvo.
 
 #### Returns
 

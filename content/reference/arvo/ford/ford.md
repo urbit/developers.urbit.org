@@ -7,7 +7,7 @@ aliases = ["/docs/learn/arvo/ford/"]
 
 *The Ford vane was refactored so drastically in 2020 that it was completely
  removed as a standalone vane, with its functionality merged into
- [clay](/docs/arvo/clay/clay). The following is a reproduced [blog
+ [clay](/reference/arvo/clay/clay). The following is a reproduced [blog
  post](https://urbit.org/blog/ford-fusion/) that documents this transformation,
  which we called "Ford Fusion".*
 
@@ -219,5 +219,3 @@ The first time I rewrote Ford, it took me six months, with help from `~littel-po
 It has taken me two or three years to understand this problem as well as I do, and I expect there are parts of it I still don’t understand. The code itself isn’t the issue; it’s finding the right answer to ontological and teleological questions. What *is* Ford? What will it be in a hundred years? I’m confident Ford Fusion is more similar than its predecessor to the Ford of 2120, because it’s smaller, more functional, and easier to understand and administer.
 
 As an engineering discipline and organizational practice, working on a system intended to be frozen yields surprising simplifications like this every so often. Urbit is now reaching the point where we’re starting to see more of the obsidian edges of the frozen future system emerge from the lava.
-
-

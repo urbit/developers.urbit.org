@@ -5,9 +5,9 @@ template = "doc.html"
 category = "arvo"
 +++
 
-A **moon** is a kind of [ship](/docs/glossary/ship) on the [Arvo](/docs/glossary/arvo) network. Moons
-are child identities issued by [planets](/docs/glossary/planet), [stars](/docs/glossary/stars), and
-[galaxies](/docs/glossary/galaxy). A moon is not independent; it is always subordinate to
+A **moon** is a kind of [ship](/reference/glossary/ship) on the [Arvo](/reference/glossary/arvo) network. Moons
+are child identities issued by [planets](/reference/glossary/planet), [stars](/reference/glossary/stars), and
+[galaxies](/reference/glossary/galaxy). A moon is not independent; it is always subordinate to
 the ship that issued it. By this we mean that the networking keys for the moon
 are controlled by the parent, and may be altered or revoked at any time by that parent.
 
@@ -22,7 +22,7 @@ Looking towards the future, we expect moons to also be utilized as identities
 for devices, such as such as phones, desktops, smart TVs, and digital thermostats
 
 Unlike planets, stars, and galaxies, moons have no presence on
-[Azimuth](/docs/glossary/azimuth). Moons are representable with 64 bits and have long names
+[Azimuth](/reference/glossary/azimuth). Moons are representable with 64 bits and have long names
 like `~doznec-salfun-naptul-habrys`, the latter half of which is inherited from
 their parent planet.
 

@@ -65,7 +65,7 @@ Let's try one in the Dojo.
 15
 ```
 
-Because `@ud` is the inferred type of `15`, the cast succeeds.  Notice that the `^-` kethep expression never does anything to modify the underlying [noun](https://urbit.org/docs/glossary/noun/) of the second subexpression.  It's used simply to mandate a type-check on that expression.  This check occurs at compile-time (when the expression is compiled to Nock).
+Because `@ud` is the inferred type of `15`, the cast succeeds.  Notice that the `^-` kethep expression never does anything to modify the underlying [noun](/reference/glossary/noun/) of the second subexpression.  It's used simply to mandate a type-check on that expression.  This check occurs at compile-time (when the expression is compiled to Nock).
 
 What if the inferred type doesn't fit under the cast type?  You will see a `nest-fail` crash at compile-time:
 
@@ -118,7 +118,7 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@ux`  | unsigned hexadecimal         | `0x5f5.e138` |
 ```
 
-Some of these auras nest under others.  For example, `@u` is for all unsigned auras.  But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc.  (For a more complete list of auras, see [Auras](https://urbit.org/docs/hoon/reference/auras).)
+Some of these auras nest under others.  For example, `@u` is for all unsigned auras.  But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc.  (For a more complete list of auras, see [Auras](/reference/hoon/auras).)
 
 ### Aura Inference in Hoon
 
@@ -336,7 +336,7 @@ We commonly need to do one of two things with a mold:
 
 We often use bunts to clam; for example ``@ud` implicitly uses the `@ud` default value (`0`) as the type specimen which the computation must match.
 
-To _actually_ get the bunt value, use the [`^*` kettar](https://urbit.org/docs/hoon/reference/rune/ket#kettar) rune, almost always used in its irregular form `*` tar:
+To _actually_ get the bunt value, use the [`^*` kettar](/reference/hoon/rune/ket#kettar) rune, almost always used in its irregular form `*` tar:
 
 ```hoon
 > ^*  @ud
@@ -352,7 +352,7 @@ To _actually_ get the bunt value, use the [`^*` kettar](https://urbit.org/docs/h
 [0 0x0 0b0]
 ```
 
-One more way to validate against type is to use an example instead of the extracted mold.  This uses the [`^+` ketlus](https://urbit.org/docs/hoon/reference/rune/ket#ketlus) rune similarly to how we used `^-` ketlus previously:
+One more way to validate against type is to use an example instead of the extracted mold.  This uses the [`^+` ketlus](/reference/hoon/rune/ket#ketlus) rune similarly to how we used `^-` ketlus previously:
 
 ```hoon
 ^+(1.000 100)
@@ -391,7 +391,7 @@ Most of the time, we will define such complex types using specific runes and “
 
 ### Identifying Molds
 
-Besides `?` (which is a Dojo-specific tool), the programmatic way to figure out which mold the Hoon compiler thinks something is to use the [`!>` zapgar](https://urbit.org/docs/hoon/reference/rune/zap#-zapgar) rune.
+Besides `?` (which is a Dojo-specific tool), the programmatic way to figure out which mold the Hoon compiler thinks something is to use the [`!>` zapgar](/reference/hoon/rune/zap#zapgar) rune.
 
 ```
 > !>(0xace2.bead)
@@ -407,7 +407,7 @@ For reasons which will be elaborated in Trees, this is often employed as the so-
 
 ### Type Unions
 
-[`$?` bucwut](https://urbit.org/docs/hoon/reference/rune/buc#-bucwut) forms a type union.
+[`$?` bucwut](/reference/hoon/rune/buc#bucwut) forms a type union.
 
 For instance, if you wanted a gate to return one of an unsigned aura type, but no other type, you could define a type union thus:
 

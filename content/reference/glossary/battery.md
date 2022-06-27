@@ -6,7 +6,7 @@ template = "doc.html"
 category = "hoon-nock"
 +++
 
-A **battery** is a collection of Hoon expressions and the head of a [core](/docs/glossary/core).
+A **battery** is a collection of Hoon expressions and the head of a [core](/reference/glossary/core).
 
 ### Further Reading
 

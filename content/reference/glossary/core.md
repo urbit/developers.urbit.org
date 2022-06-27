@@ -6,8 +6,8 @@ template = "doc.html"
 category = "hoon-nock"
 +++
 
-A **core** is a cell of a [`battery`](/docs/glossary/battery) and a
-[`payload`](/docs/glossary/payload). It is a Hoon construct similar
+A **core** is a cell of a [`battery`](/reference/glossary/battery) and a
+[`payload`](/reference/glossary/payload). It is a Hoon construct similar
 in use to objects in object-oriented programming languages.
 
 ### Further Reading

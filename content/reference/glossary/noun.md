@@ -6,7 +6,7 @@ template = "doc.html"
 category = "hoon-nock"
 +++
 
-A **noun** is an [atom](/docs/glossary/atom) or a cell, which is an ordered pair of nouns. This definition is recursive and ultimately means that a noun is a finite size binary tree whose leaves are atoms. A noun is the basic data structure in [Nock](/docs/glossary/nock).
+A **noun** is an [atom](/reference/glossary/atom) or a cell, which is an ordered pair of nouns. This definition is recursive and ultimately means that a noun is a finite size binary tree whose leaves are atoms. A noun is the basic data structure in [Nock](/reference/glossary/nock).
 
 ### Further Reading
 

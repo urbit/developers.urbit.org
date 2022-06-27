@@ -146,7 +146,7 @@ names occur in blocks of five to eight syllable pairs, separated by a double hyp
 
 A comet is sponsored by a star.  Currently star sponsors are determined
 randomly from a list supplied to `u3_dawn_come` in
-`pkg/urbit/vere/dawn.c` from a [jamfile](https://urbit.org/docs/hoon/reference/stdlib/2p#jam) provided by urbit.org at
+`pkg/urbit/vere/dawn.c` from a [jamfile](/reference/hoon/stdlib/2p#jam) provided by urbit.org at
 `https://bootstrap.urbit.org/comet-stars.jam`.
 
 Comets cannot be breached or rekeyed:  possession of the comet is *ipso

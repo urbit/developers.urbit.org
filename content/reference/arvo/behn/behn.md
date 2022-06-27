@@ -12,8 +12,8 @@ Additional information about Behn is included in [Lesson 2.6 - Behn](/docs/hoon/
 
 ## Sections
 
-[API Reference](/docs/arvo/behn/tasks) - The `task`s Behn takes and the `gift`s it returns.
+[API Reference](/reference/arvo/behn/tasks) - The `task`s Behn takes and the `gift`s it returns.
 
-[Scry Reference](/docs/arvo/behn/scry) - The scry endpoints of Behn.
+[Scry Reference](/reference/arvo/behn/scry) - The scry endpoints of Behn.
 
-[Examples](/docs/arvo/behn/examples) - Practical examples of using Behn's `task`s.
+[Examples](/reference/arvo/behn/examples) - Practical examples of using Behn's `task`s.

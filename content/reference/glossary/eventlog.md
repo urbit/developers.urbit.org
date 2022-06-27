@@ -6,9 +6,9 @@ template = "doc.html"
 category = "arvo"
 +++
 
-The **event log** of a [ship](/docs/glossary/ship) is a totally ordered list of every single [Arvo](/docs/glossary/arvo) event that ship has undergone. The state of a ship is a pure function of the event log.
+The **event log** of a [ship](/reference/glossary/ship) is a totally ordered list of every single [Arvo](/reference/glossary/arvo) event that ship has undergone. The state of a ship is a pure function of the event log.
 
-The event log is maintained by [Vere](/docs/glossary/vere).
+The event log is maintained by [Vere](/reference/glossary/vere).
 
 If the physical machine loses power and your urbit's state is 'lost' from memory, when your urbit restarts it will replay its entire event log and recover its last valid state from scratch.
 
@@ -16,8 +16,8 @@ In practice, event logs become large and unwieldy over time. Periodically a snap
 
 Persistence, in the context of storing data in a computer system, means that data is stored in a non-volatile manner and that input must be recorded before the output result is performed. Thus, every event must be written to disk - or must be _persisted_ - before the event effects actually take place.
 
-The initial entries of the event log are created during the bootstrap sequence contained in a [Pill](/docs/glossary/pill).
+The initial entries of the event log are created during the bootstrap sequence contained in a [Pill](/reference/glossary/pill).
 
 ### Further Reading
 
-- [Pier](/docs/glossary/pier): The directory on disk which contains the ship's state.
+- [Pier](/reference/glossary/pier): The directory on disk which contains the ship's state.

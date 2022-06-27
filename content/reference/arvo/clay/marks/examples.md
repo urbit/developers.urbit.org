@@ -4,7 +4,7 @@ weight = 4
 template = "doc.html"
 +++
 
-These are the files used in the [Writing Marks](/docs/arvo/clay/marks/writing-marks) guide.
+These are the files used in the [Writing Marks](/reference/arvo/clay/marks/writing-marks) guide.
 
 ## `/lib/csv/hoon`
 

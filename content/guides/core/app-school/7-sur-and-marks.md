@@ -12,7 +12,7 @@ fully functioning Gall agent, we'll get to that in the next lesson.
 
 ## `/sur`
 
-In the [previous lesson on pokes](/docs/userspace/gall-guide/6-pokes), we used a
+In the [previous lesson on pokes](/guides/core/app-school/6-pokes), we used a
 very simple union in the `vase` for incoming pokes:
 
 ```hoon
@@ -64,7 +64,7 @@ occur. If our agent were named `%todo`, it might have the following structure in
 ```
 
 Our `%todo` agent could then import this structure file with a [fashep ford
-rune](/docs/arvo/ford/ford#ford-runes) (`/-`) at the beginning of the agent like
+rune](/reference/arvo/ford/ford#ford-runes) (`/-`) at the beginning of the agent like
 so:
 
 ```hoon
@@ -151,7 +151,7 @@ manner:
 ```
 
 Let's break this down a bit. Firstly, our `on-poke` arm includes a
-[barket](/docs/hoon/reference/rune/bar#-barket) (`|^`) rune. Barket creates a
+[barket](/reference/hoon/rune/bar#barket) (`|^`) rune. Barket creates a
 core with a `$` arm that's computed immediately. We extract the `vase` to the
 `action:todo` type and immediately pass it to the `handle-poke` arm of the core
 created with the barket. This `handle-poke` arm tests what kind of `action` it's
@@ -169,7 +169,7 @@ expression:
 [cards this]
 ```
 
-The [tisket](/docs/hoon/reference/rune/tis#-tisket) (`=^`) expression takes two
+The [tisket](/reference/hoon/rune/tis#tisket) (`=^`) expression takes two
 arguments: A new named noun to pin to the subject (`cards` in this case), and an
 existing wing of the subject to modify (`state` in this case). Since
 `handle-poke` produces `(quip card _state)`, we're saving the `card`s it
@@ -225,7 +225,7 @@ receiving data, and not for actually storing files in Clay. Therefore, it's
 unlikely you'll need to write custom revision control functions in the `grad`
 arm. Instead, you can simply delegate `grad` functions to another mark -
 typically `%noun`. If you want to learn more about writing such `grad`
-functions, you can refer to the [Marks Guide](/docs/arvo/clay/marks/marks) in
+functions, you can refer to the [Marks Guide](/reference/arvo/clay/marks/marks) in
 the Clay vane documentation, which is much more comprehensive, but it's not
 necessary for our purposes here.
 
@@ -286,7 +286,7 @@ This simple mark file isn't all that useful. Typically, you'd add `json` arms
 to `grow` and `grab`, which allow your data to be converted to and from JSON,
 and therefore allow your agent to communicate with a web front-end. Front-ends,
 JSON, and Eyre's APIs which facilitate such communications will be covered in
-the separate [Full-Stack Walkthrough](/docs/userspace/full-stack/1-intro),
+the separate [Full-Stack Walkthrough](/guides/core/app-school-full-stack/1-intro),
 which you might like to work through after completing this guide. For now
 though, it's still useful to use marks and understand how they work.
 
@@ -304,14 +304,14 @@ pokes are actually coming from - our example agents would accept data from
 anywhere, including random foreign ships. We'll now have a look at how to handle
 such permission checks.
 
-Back in [lesson 2](/docs/userspace/gall-guide/2-agent#bowl) we discussed the
-[bowl](/docs/arvo/gall/data-types#bowl). The `bowl` includes a couple of useful
+Back in [lesson 2](/guides/core/app-school/2-agent#bowl) we discussed the
+[bowl](/reference/arvo/gall/data-types#bowl). The `bowl` includes a couple of useful
 fields: `our` and `src`. The `our` field just contains the `@p` of the local
 ship. The `src` field contains the `@p` of the ship from which the event
 originated, and is updated for every new event.
 
 When messages come in over Ames from other ships on the network, they're
-[encrypted](/docs/arvo/ames/cryptography) with our ship's public keys and signed by the ship which sent them.
+[encrypted](/reference/arvo/ames/cryptography) with our ship's public keys and signed by the ship which sent them.
 The Ames vane decrypts and verifies the messages using keys in the Jael vane,
 which are obtained from the [Azimuth Ethereum contract](/docs/azimuth/azimuth-eth) and [Layer 2 data](/docs/azimuth/l2/layer2) where Urbit ID ownership
 and keys are recorded. This means the originating `@p` of all messages are
@@ -320,8 +320,8 @@ specified in the `src` field of the `bowl` can be trusted to be correct, which
 makes checking permissions very simple.
 
 You're free to use whatever logic you want for this, but the most common way is
-to use [wutgar](/docs/hoon/reference/rune/wut#-wutgar) (`?>`) and
-[wutgal](/docs/hoon/reference/rune/wut#-wutgal) (`?<`) runes, which are
+to use [wutgar](/reference/hoon/rune/wut#wutgar) (`?>`) and
+[wutgal](/reference/hoon/rune/wut#wutgal) (`?<`) runes, which are
 respectively True and False assertions that crash if they don't evaluate to the
 expected truth value. To only allow messages from the local ship, you can just
 do the following in the relevant agent arm:
@@ -402,7 +402,7 @@ Permissions:
 ## Exercises
 
 - Have a quick look at the [tisket
-  documentation](/docs/hoon/reference/rune/tis#-tisket).
+  documentation](/reference/hoon/rune/tis#tisket).
 - Try writing a mark file for the `update:todo` type, in a similar fashion to
   the `action:todo` one in the [mark file section](#mark-files). You can compare
   yours to the one we'll use in the next lesson.

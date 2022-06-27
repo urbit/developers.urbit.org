@@ -14,16 +14,16 @@ _This module will elaborate on text representation in Hoon, including formatted 
 We frequently need to convert from text to data, and between different text-based representations.  Let's examine some specific arms:
 
 - How do we convert text into all upper-case?
-    - [`++cass`](https://urbit.org/docs/hoon/reference/stdlib/4b#cass)
+    - [`++cass`](/reference/hoon/stdlib/4b#cass)
 
 - How do we turn a `cord` into a `tape`?
-    - [`++trip`](https://urbit.org/docs/hoon/reference/stdlib/4b#trip)
+    - [`++trip`](/reference/hoon/stdlib/4b#trip)
 
 - How can we make a list of a null-terminated tuple?
-    - [`++le:nl`](https://urbit.org/docs/hoon/reference/stdlib/2m#lenl)
+    - [`++le:nl`](/reference/hoon/stdlib/2m#lenl)
 
 - How can we evaluate Nock expressions?
-    - [`++mink`](https://urbit.org/docs/hoon/reference/stdlib/4n#mink)
+    - [`++mink`](/reference/hoon/stdlib/4n#mink)
 
 (If you see a `|*` bartar rune in the code, it's similar to a `|=` bartis, but produces what's called a [_wet gate_](./R-metals.md).)
 
@@ -75,7 +75,7 @@ Hoon produces messages at the Dojo (or otherwise) using an internal formatted te
 +$ tang (list tank) :: bottom-first error
 ```
 
-The [`++ram:re`](https://urbit.org/docs/hoon/reference/stdlib/4c#ramre) arm is used to convert these to actual formatted output as a `tape`, e.g.
+The [`++ram:re`](/reference/hoon/stdlib/4c#ramre) arm is used to convert these to actual formatted output as a `tape`, e.g.
 
 ```hoon
 > ~(ram re leaf+"foo")
@@ -156,7 +156,7 @@ This generator requires a path argument in its sample and optionally accepts a v
 =+  lon=.^(arch (cat 3 vane %y) arg)
 ```
 
-We saw [`.^` dotket](https://urbit.org/docs/hoon/reference/rune/dot#-dotket) for the first time in [the previous module](./O-subject.md), where we learned that it performs a _peek_ or _scry_ into the state of an Arvo vane.  Most of the time this functionality is used to ask `%c` Clay or `%g` Gall for information about a path, desk, agent, etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
+We saw [`.^` dotket](/reference/hoon/rune/dot#dotket) for the first time in [the previous module](./O-subject.md), where we learned that it performs a _peek_ or _scry_ into the state of an Arvo vane.  Most of the time this functionality is used to ask `%c` Clay or `%g` Gall for information about a path, desk, agent, etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
 
 ```hoon
 tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~
@@ -208,9 +208,9 @@ For instance, how does `+cat` work?  Let's look at the structure of `/gen/cat/ho
 
 - Some points of interest include:
   - `/?` faswut pins the expected Arvo kelvin version; right now it doesn't do anything.
-  - [`.^` dotket](https://urbit.org/docs/hoon/reference/rune/dot#-dotket) loads a value from Arvo (called a “scry”).
-  - [`++smyt`](https://urbit.org/docs/hoon/reference/stdlib/4m#smyt) pretty-prints a path.
-  - [`=-` tishep](https://urbit.org/docs/hoon/reference/rune/tis#--tishep) combines a faced noun with the subject, inverted relative to `=+` tislus/`=/` tisfas.
+  - [`.^` dotket](/reference/hoon/rune/dot#dotket) loads a value from Arvo (called a “scry”).
+  - [`++smyt`](/reference/hoon/stdlib/4m#smyt) pretty-prints a path.
+  - [`=-` tishep](/reference/hoon/rune/tis#tishep) combines a faced noun with the subject, inverted relative to `=+` tislus/`=/` tisfas.
 
 You can see how much of the generator is concerned with formatting the content of the file into a formatted text `tank` by prepending `%rose` tags and so forth.
 
@@ -220,7 +220,7 @@ You can see how much of the generator is concerned with formatting the content o
                            
 Formal error messages in Urbit are built of tanks.  “A `tang` is a list of `tank`s, and a `tank` is a structure for printing data.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
           
-One way to include an error message in your code is the [`~_` sigcab](https://urbit.org/docs/reference/hoon-expressions/rune/sig/#sigcab) rune, described as a “user-formatted tracing printf”, or the [`~|` sigbar](https://urbit.org/docs/reference/hoon-expressions/rune/sig/#sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:                                                         
+One way to include an error message in your code is the [`~_` sigcab](/reference/hoon/rune/sig/#sigcab) rune, described as a “user-formatted tracing printf”, or the [`~|` sigbar](/reference/hoon/rune/sig/#sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:                                                         
 
 ```hoon
 |=  [a=@ud]
@@ -237,7 +237,7 @@ Previously, we introduced the concept of a `%say` generator to produce a more ve
 
 We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than expecting arguments to be passed in at the time of initiation.
 
-This section will briefly walk through an `%ask` generator to give you a taste of how they work.  The [CLI app guide](https://urbit.org/docs/hoon/guides/cli-tutorial) walks through the libraries necessary for working with `%ask` generators in greater detail.  We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
+This section will briefly walk through an `%ask` generator to give you a taste of how they work.  The [CLI app guide](https://urbit.org/guides/additional/hoon/cli-tutorial) walks through the libraries necessary for working with `%ask` generators in greater detail.  We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
 
 ##### Tutorial:  `%ask` Generator
 

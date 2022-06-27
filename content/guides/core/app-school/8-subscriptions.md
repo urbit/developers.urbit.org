@@ -28,7 +28,7 @@ however, it's nearly always appropriate to define them explicitly and crash on
 unrecognized paths.
 
 For a deeper explanation of subscription mechanics in Arvo, you can refer to
-Arvo's [Subscriptions](/docs/arvo/concepts/subscriptions) section.
+Arvo's [Subscriptions](/reference/arvo/concepts/subscriptions) section.
 
 ## Incoming subscriptions
 
@@ -73,7 +73,7 @@ atom of a particular aura encoded in an element of the `path`, as in the `[%foo 
 such variable elements as `@`, and then decode them with something like `(slav %da i.t.path)` (for a `@da`), as in the example. The incoming `path` in this
 example would look like `/foo/~2021.11.14..13.30.39..6b17`. For more information
 on decoding atoms in strings, see the [Strings
-Guide](/docs/hoon/guides/strings#decoding-from-text).
+Guide](/guides/additional/hoon/strings#decoding-from-text).
 
 In the last case of `[%bar baz *]`, we're allowing a variable number of elements
 in the path. First we check it's `/foo/bar/...something...`, and then we check
@@ -899,13 +899,13 @@ was rejected because `~nut` is no longer in `friends`:
 
 ## Exercises
 
-- Have a look at the [Strings Guide](/docs/hoon/guides/strings) if you're not
+- Have a look at the [Strings Guide](/guides/additional/hoon/strings) if you're not
   already familiar with decoding/encoding atoms in strings.
 - Try running through the [example](#example) yourself, if you've not done so
   already.
 - Try modifying `%todo-watcher` to recording the data it receives in its state,
   rather than simply printing it to the terminal.
 - If you'd like, try going back to [lesson
-  6](/docs/userspace/gall-guide/6-pokes) (on pokes) and modifying the agents
+  6](/guides/core/app-school/6-pokes) (on pokes) and modifying the agents
   with an appropriate permission system, and also try running them on separate
   ships.

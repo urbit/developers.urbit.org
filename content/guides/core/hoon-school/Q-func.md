@@ -15,7 +15,7 @@ Functional programming, as a paradigm, tends to prefer rather mathematical expre
 
 ##  Changing Arity
 
-If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the [`;:` miccol](https://urbit.org/docs/hoon/reference/rune/mic#-miccol) rune.
+If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the [`;:` miccol](/reference/hoon/rune/mic#miccol) rune.
 
 ```hoon
 > (add 3 (add 4 5))
@@ -38,7 +38,7 @@ This is called changing the [_arity_](https://en.wikipedia.org/wiki/Arity) of th
 
 [_Currying_](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument.  _Binding_, an allied process, is used to set the value of some of those arguments permanently.
 
-If you have a gate which accepts multiple values in the sample, you can fix one of these.  To fix the head of the sample (the first argument), use [`++cury`](https://urbit.org/docs/hoon/reference/stdlib/2n#cury); to bind the tail, use [`++curr`](https://urbit.org/docs/hoon/reference/stdlib/2n#curr).
+If you have a gate which accepts multiple values in the sample, you can fix one of these.  To fix the head of the sample (the first argument), use [`++cury`](/reference/hoon/stdlib/2n#cury); to bind the tail, use [`++curr`](/reference/hoon/stdlib/2n#curr).
 
 Consider calculating _a x² + b x + c_, a situation we earlier resolved using a door.  We can resolve the situation differently using currying:
 
@@ -54,7 +54,7 @@ Consider calculating _a x² + b x + c_, a situation we earlier resolved using a 
 117
 ```
 
-One can also [`++cork`](https://urbit.org/docs/hoon/reference/stdlib/2n#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` miccol.  (There is also [`++corl`](https://urbit.org/docs/hoon/reference/stdlib/2n#corl), which composes backwards rather than forwards.)  This example converts a value to `@ux` then decrements it by corking two molds:
+One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` miccol.  (There is also [`++corl`](/reference/hoon/stdlib/2n#corl), which composes backwards rather than forwards.)  This example converts a value to `@ux` then decrements it by corking two molds:
 
 ```hoon
 > ((cork dec @ux) 20)  
@@ -101,7 +101,7 @@ We can rewrite the Caesar cipher program using turn:
 c
 
 
-[`++roll`](https://urbit.org/docs/hoon/reference/stdlib/2b#roll) and [`++reel`](https://urbit.org/docs/hoon/reference/stdlib/2b#reel) are used to left-fold and right-fold a list, respectively.  To fold a list is similar to [`++turn`](https://urbit.org/docs/hoon/reference/stdlib/2b#turn), except that instead of yielding a `list` with the values having had each applied, `++roll` and `++reel` produce an accumulated value.
+[`++roll`](/reference/hoon/stdlib/2b#roll) and [`++reel`](/reference/hoon/stdlib/2b#reel) are used to left-fold and right-fold a list, respectively.  To fold a list is similar to [`++turn`](/reference/hoon/stdlib/2b#turn), except that instead of yielding a `list` with the values having had each applied, `++roll` and `++reel` produce an accumulated value.
 
 ```hoon
 > (roll `(list @)`[1 2 3 4 5 ~] add)
@@ -140,11 +140,11 @@ Basically, one uses a `rule` on `[hair tape]` to yield an `edge`.
 
 A substantial swath of the standard library is built around parsing for various scenarios, and there's a lot to know to effectively use these tools.  **If you can parse arbitrary input using Hoon after this lesson, you're in fantastic shape for building things later.**  It's worth spending extra effort to understand how these programs work.
 
-There is a [full guide on parsing](https://urbit.org/docs/hoon/guides/parsing) which goes into more detail than this quick overview.
+There is a [full guide on parsing](https://urbit.org/guides/additional/hoon/parsing) which goes into more detail than this quick overview.
 
 ### Scanning Through a `tape`
 
-[`++scan`](https://urbit.org/docs/hoon/reference/stdlib/4g#scan) parses a `tape` or crashes, simple enough.  It will be our workhorse.  All we really need to know in order to use it is how to build a `rule`.
+[`++scan`](/reference/hoon/stdlib/4g#scan) parses a `tape` or crashes, simple enough.  It will be our workhorse.  All we really need to know in order to use it is how to build a `rule`.
 
 Here we will preview using `++shim` to match characters with in a given range, here lower-case.  If you change the character range, e.g. putting `' '` in the `++shim` will span from ASCII `32`, `' '` to ASCII `122`, `'z'`.
 
@@ -164,14 +164,14 @@ The `rule`-building system is vast and often requires various components togethe
 
 #### `rule`s to parse fixed strings
 
-- [`++just`](https://urbit.org/docs/hoon/reference/stdlib/4f/#just) takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `tape` of the input `nail`.
+- [`++just`](/reference/hoon/stdlib/4f/#just) takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `tape` of the input `nail`.
 
     ```hoon
     > ((just 'a') [[1 1] "abc"])
     [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-- [`++jest`](https://urbit.org/docs/hoon/reference/stdlib/4f/#jest) matches a `cord`.  It takes an input `cord` and produces a `rule` that attempts to match that `cord` against the beginning of the input.
+- [`++jest`](/reference/hoon/stdlib/4f/#jest) matches a `cord`.  It takes an input `cord` and produces a `rule` that attempts to match that `cord` against the beginning of the input.
 
     ```hoon
     > ((jest 'abc') [[1 1] "abc"])
@@ -186,14 +186,14 @@ The `rule`-building system is vast and often requires various components togethe
 
     (Keep an eye on the structure of the return `edge` there.)
 
-- [`++shim`](https://urbit.org/docs/hoon/reference/stdlib/4f/#shim) parses characters within a given range. It takes in two atoms and returns a `rule`.
+- [`++shim`](/reference/hoon/stdlib/4f/#shim) parses characters within a given range. It takes in two atoms and returns a `rule`.
 
     ```hoon
     > ((shim 'a' 'z') [[1 1] "abc"])
     [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-- [`++next`](https://urbit.org/docs/hoon/reference/stdlib/4f/#next) is a simple `rule` that takes in the next character and returns it as the parsing result.
+- [`++next`](/reference/hoon/stdlib/4f/#next) is a simple `rule` that takes in the next character and returns it as the parsing result.
 
     ```hoon
     > (next [[1 1] "abc"])
@@ -216,7 +216,7 @@ dojo: hoon expression failed
 
 How do we parse multiple characters in order to break things up sensibly?
 
-- [`++star`](https://urbit.org/docs/hoon/reference/stdlib/4f#star) will match a multi-character list of values.
+- [`++star`](/reference/hoon/stdlib/4f#star) will match a multi-character list of values.
 
     ```hoon
     > (scan "a" (just 'a'))
@@ -231,14 +231,14 @@ How do we parse multiple characters in order to break things up sensibly?
     "aaaaa"
     ```
 
-- [`++plug`](https://urbit.org/docs/hoon/reference/stdlib/4e/#plug) takes the `nail` in the `edge` produced by one rule and passes it to the next `rule`, forming a cell of the results as it proceeds.
+- [`++plug`](/reference/hoon/stdlib/4e/#plug) takes the `nail` in the `edge` produced by one rule and passes it to the next `rule`, forming a cell of the results as it proceeds.
 
     ```hoon
     > (scan "starship" ;~(plug (jest 'star') (jest 'ship')))
     ['star' 'ship']
     ```
 
-- [`++pose`](https://urbit.org/docs/hoon/reference/stdlib/4e/#pose) tries each `rule` you hand it successively until it finds one that works.
+- [`++pose`](/reference/hoon/stdlib/4e/#pose) tries each `rule` you hand it successively until it finds one that works.
 
     ```hoon
     > (scan "a" ;~(pose (just 'a') (just 'b')))
@@ -251,7 +251,7 @@ How do we parse multiple characters in order to break things up sensibly?
     [p=[p=1 q=2] q=[~ u=[p='a' q=[p=[p=1 q=2] q=[i='b' t=""]]]]]
     ```
 
-- [`++glue`](https://urbit.org/docs/hoon/reference/stdlib/4e/#glue) parses a delimiter in between each `rule` and forms a cell of the results of each `rule`.  Delimiter names hew to the aural ASCII pronunciation of symbols, plus `prn` for printable characters and
+- [`++glue`](/reference/hoon/stdlib/4e/#glue) parses a delimiter in between each `rule` and forms a cell of the results of each `rule`.  Delimiter names hew to the aural ASCII pronunciation of symbols, plus `prn` for printable characters and
 
     ```hoon
     > (scan "a b" ;~((glue ace) (just 'a') (just 'b')))  
@@ -268,7 +268,7 @@ How do we parse multiple characters in order to break things up sensibly?
     ['a' 'b' 'a']
     ```
 
-- The [`;~` micsig](https://urbit.org/docs/hoon/reference/rune/mic/#-micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
+- The [`;~` micsig](/reference/hoon/rune/mic/#micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
 
     ```hoon
     > (scan "after the" ;~((glue ace) (star (shim 'a' 'z')) (star (shim 'a' 'z'))))  
@@ -288,7 +288,7 @@ How do we parse multiple characters in order to break things up sensibly?
 
 At this point we have two problems:  we are just getting raw `@t` atoms back, and we can't iteratively process arbitrarily long strings.  `++cook` will help us with the first of these:
 
-- [`++cook`](https://urbit.org/docs/hoon/reference/stdlib/4f/#cook) will take a `rule` and a gate to apply to the successful parse.
+- [`++cook`](/reference/hoon/stdlib/4f/#cook) will take a `rule` and a gate to apply to the successful parse.
 
     ```hoon
     > ((cook ,@ud (just 'a')) [[1 1] "abc"])
@@ -310,7 +310,7 @@ However, to parse iteratively, we need to use the [`++knee`]() function, which t
 |-(;~(plug prn ;~(pose (knee *tape |.(^$)) (easy ~))))
 ```
 
-There is an example of a calculator [in the docs](https://urbit.org/docs/hoon/guides/parsing#recursive-parsers) that's worth a read.  It uses `++knee` to scan in a set of numbers at a time.
+There is an example of a calculator [in the docs](https://urbit.org/guides/additional/hoon/parsing#recursive-parsers) that's worth a read.  It uses `++knee` to scan in a set of numbers at a time.
 
 ```hoon
 |=  math=tape

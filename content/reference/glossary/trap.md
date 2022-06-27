@@ -6,7 +6,7 @@ template = "doc.html"
 category = "hoon-nock"
 +++
 
-A **trap** is a [core](/docs/glossary/core) with one arm named $ and no sample. They are often used in similar ways to looping structures in other programming languages.
+A **trap** is a [core](/reference/glossary/core) with one arm named $ and no sample. They are often used in similar ways to looping structures in other programming languages.
 
 ### Further Reading
 

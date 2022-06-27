@@ -38,7 +38,7 @@ how they affect the end user. Later sections elaborate on this summary.
 
 ### Layer 1
 
-We briefly review how "Layer 1", i.e. the [Azimuth](/docs/glossary/azimuth) smart
+We briefly review how "Layer 1", i.e. the [Azimuth](/reference/glossary/azimuth) smart
 contract suite, functions. An update to the Azimuth PKI data stored on your urbit
 occurs with four steps:
 
@@ -294,7 +294,7 @@ invalid transaction. The worst an aggregator can do is not submit your transacti
 ## Multi-keyfiles
 
 As part of the layer 2 upgrade, Tlon has expanded the role of
-[keyfiles](/docs/glossary/keyfile). One of our goals with layer 2 was to reduce
+[keyfiles](/reference/glossary/keyfile). One of our goals with layer 2 was to reduce
 the amount of friction experienced when getting onto Urbit. The enormous
 reduction in fees has made a new boot method which allows instantaneous sale of
 layer 2 planets or stars to be cost effective.
@@ -347,7 +347,7 @@ guaranteed as the Azimuth Ethereum smart contracts.
 Crucial to the functionality of Ethereum smart contracts is that they work the
 same way every time since the Ethereum Virtual Machine is deterministic.
 Similarly, as the state of Arvo is evolved via [a single pure
-function](/docs/arvo/overview#an-operating-function), Arvo is deterministic as
+function](/reference/arvo/overview#an-operating-function), Arvo is deterministic as
 well. This property makes it well-suited for cases where side effects are
 unacceptable such as smart contracts, and thus `naive.hoon` is worthy of the
 name "Hoon smart contract".

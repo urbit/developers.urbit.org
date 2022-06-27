@@ -6,21 +6,21 @@ template = "doc.html"
 category = "arvo"
 +++
 
-A **ship** is an instance of an Urbit computer that is a peer on the [Arvo](/docs/glossary/arvo) network.
+A **ship** is an instance of an Urbit computer that is a peer on the [Arvo](/reference/glossary/arvo) network.
 
 A ship can be one of five classes:
 
-- [comets](/docs/glossary/comet), disposable identities.
-- [moons](/docs/glossary/moon), connected devices subordinated to a ship.
-- [planets](/docs/glossary/planet), individual users.
-- [stars](/docs/glossary/star), network infrastructure nodes.
-- [galaxy](/docs/glossary/galaxy), also network infrastructure nodes.
+- [comets](/reference/glossary/comet), disposable identities.
+- [moons](/reference/glossary/moon), connected devices subordinated to a ship.
+- [planets](/reference/glossary/planet), individual users.
+- [stars](/reference/glossary/star), network infrastructure nodes.
+- [galaxy](/reference/glossary/galaxy), also network infrastructure nodes.
 
-To be able to use the Arvo network, planets, stars, and galaxies must be combined with an [Azimuth](/docs/glossary/azimuth)-based Urbit identity in the form of a [keyfile](/docs/glossary/keyfile).
+To be able to use the Arvo network, planets, stars, and galaxies must be combined with an [Azimuth](/reference/glossary/azimuth)-based Urbit identity in the form of a [keyfile](/reference/glossary/keyfile).
 
 ### Further Reading
 
 - [Using Bridge](/getting-started/): A guide to installing Urbit and booting a ship.
 - [Ship Troubleshooting](/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
 - [Understanding Urbit ID](/understanding-urbit/urbit-id)
-- [Pier](/docs/glossary/pier): The directory containing a ship's state.
+- [Pier](/reference/glossary/pier): The directory containing a ship's state.

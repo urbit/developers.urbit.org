@@ -13,7 +13,7 @@ contribute to. At a high level, you can:
 - [Build clients](#clients), which use Urbit as their back-end to store data and
   interact with the network
 - [Develop agents](#agents), or more precisely [_gall_
-  agents](/docs/arvo/gall/gall), which are written in [Hoon](/docs/hoon/)
+  agents](/reference/arvo/gall/gall), which are written in [Hoon](/docs/hoon/)
   and can best be thought of as microservices
 - [Contribute to Urbit's core](#core), which involves contributing to Urbit
   itself &mdash; either the operating system
@@ -27,7 +27,7 @@ throughout the docs.
 
 ### Build Clients {% #clients %}
 
-Urbit ships with [Landscape](/docs/glossary/landscape), which can be thought
+Urbit ships with [Landscape](/reference/glossary/landscape), which can be thought
 of as its flagship client. Landscape can be broken into two different technical
 components: there's the collection of [agents](#agents) that utilize the
 Urbit for networking and data persistence, and the JavaScript client, which is
@@ -49,26 +49,26 @@ To get started quickly with the language of your choice, see the list
 libraries that provide HTTP interfaces to Urbit [here](https://github.com/urbit/awesome-urbit#http-apis-airlock).
 
 To learn more about how to work with Urbit's HTTP interface, follow [this
-guide](/docs/arvo/eyre/external-api-ref).
+guide](/reference/arvo/eyre/external-api-ref).
 
 Alternatively, command-line interface (CLI) applications can be built using a
 library called `shoe`, which you can learn more about
-[here](/docs/hoon/guides/cli-tutorial). This does require Hoon knowledge.
+[here](/guides/additional/hoon/cli-tutorial). This does require Hoon knowledge.
 
 ### Develop Agents {% #agents %}
 
 Gall agents can be best thought of as individual services with a
 statically-typed interface and built-in database. They're written in
 [Hoon](/docs/hoon/overview) and all conform to a specific
-[interface](/docs/arvo/gall/gall-api) that's defined by the kernel vane
-called [Gall](/docs/arvo/gall/gall).
+[interface](/reference/arvo/gall/gall-api) that's defined by the kernel vane
+called [Gall](/reference/arvo/gall/gall).
 
 Applications built on Urbit utilize a collection of different agents, each of
 which handle specific functionality.
 
 If you want to learn how to build gall agents, your best bet is to first [learn
 the Hoon programming language](/docs/hoon/hoon-school/), and then follow that
-up with the [Gall guide](/docs/userspace/gall-guide/intro).
+up with the [Gall guide](/guides/core/app-school/intro).
 
 ### Contribute to Urbit Core {% #core %}
 

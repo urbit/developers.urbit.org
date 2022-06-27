@@ -11,68 +11,68 @@ Runes are a way to form expressions in Hoon.
 
 ## Non-Rune Expressions
 
-### [Constants](/docs/hoon/reference/rune/constants)
+### [Constants](/reference/hoon/rune/constants)
 
 Hoon uses runes to form expressions, but not all expressions have runes in them. First, we have constant expressions (and also expressions that would be constant, but that they allow for interpolations).
 
-### [Limbs and Wings](/docs/hoon/reference/limbs/)
+### [Limbs and Wings](/reference/hoon/limbs/)
 
 Limb and wing expressions also lack runes.
 
 ## Runes Proper
 
-### [`. dot` (Nock)](/docs/hoon/reference/rune/dot)
+### [`. dot` (Nock)](/reference/hoon/rune/dot)
 
 Runes used for carrying out Nock operations in Hoon.
 
-### [`! zap` (wild)](/docs/hoon/reference/rune/zap)
+### [`! zap` (wild)](/reference/hoon/rune/zap)
 
 Wildcard category. Expressions that don't fit anywhere else go here.
 
-### [`= tis` (Subject Modification)](/docs/hoon/reference/rune/tis)
+### [`= tis` (Subject Modification)](/reference/hoon/rune/tis)
 
 Runes used to modify the subject.
 
-### [`? wut` (Conditionals)](/docs/hoon/reference/rune/wut)
+### [`? wut` (Conditionals)](/reference/hoon/rune/wut)
 
 Runes used for branching on conditionals.
 
-### [`| bar` (Cores)](/docs/hoon/reference/rune/bar)
+### [`| bar` (Cores)](/reference/hoon/rune/bar)
 
 Runes used to produce cores.
 
-### [`+ lus` (Arms)](/docs/hoon/reference/rune/lus)
+### [`+ lus` (Arms)](/reference/hoon/rune/lus)
 
 Runes used to define arms in a core.
 
-### [`: col` (Cells)](/docs/hoon/reference/rune/col)
+### [`: col` (Cells)](/reference/hoon/rune/col)
 
 Runes used to produce cells, which are pairs of nouns.
 
-### [`% cen` (Calls)](/docs/hoon/reference/rune/cen)
+### [`% cen` (Calls)](/reference/hoon/rune/cen)
 
 Runes used for making function calls in Hoon.
 
-### [`^ ket` (Casts)](/docs/hoon/reference/rune/ket)
+### [`^ ket` (Casts)](/reference/hoon/rune/ket)
 
 Runes that let us adjust types without violating type constraints.
 
-### [`$ buc` (Structures)](/docs/hoon/reference/rune/buc)
+### [`$ buc` (Structures)](/reference/hoon/rune/buc)
 
 Runes used for defining custom types.
 
-### [`; mic` (Make)](/docs/hoon/reference/rune/mic)
+### [`; mic` (Make)](/reference/hoon/rune/mic)
 
 Miscellaneous useful macros.
 
-### [`~ sig` (Hints)](/docs/hoon/reference/rune/sig)
+### [`~ sig` (Hints)](/reference/hoon/rune/sig)
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter.
 
-### [`/ fas` (Imports)](/docs/hoon/reference/rune/fas)
+### [`/ fas` (Imports)](/reference/hoon/rune/fas)
 
 Ford runes which import files.
 
-### [`--`, `==` (Terminators)](/docs/hoon/reference/rune/terminators)
+### [`--`, `==` (Terminators)](/reference/hoon/rune/terminators)
 
 Runes used to terminate expressions.
