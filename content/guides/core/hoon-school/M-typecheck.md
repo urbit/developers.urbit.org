@@ -1,7 +1,7 @@
 +++
-title: Type Checking
-nodes: [183]
-objectives: ["Use assertions to enforce type constraints."]
+title = Type Checking
+nodes = [183]
+objectives = ["Use assertions to enforce type constraints."]
 +++
 
 #   Type Checking

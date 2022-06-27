@@ -27,7 +27,7 @@ It’s easy to see how Sail can directly translate to HTML:
 - ```
   ;html
     ;head
-      ;title: My page
+      ;title = My page
       ;meta(charset "utf-8");
     ==
     ;body

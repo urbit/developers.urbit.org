@@ -1,7 +1,7 @@
 +++
-title: Conditional Logic
-nodes: [184]
-objectives: ["Produce loobean expressions.", "Reorder conditional arms.", "Switch against a union with or without default."]
+title = Conditional Logic
+nodes = [184]
+objectives = ["Produce loobean expressions.", "Reorder conditional arms.", "Switch against a union with or without default."]
 +++
 
 #   Conditional Logic

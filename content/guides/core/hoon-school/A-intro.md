@@ -1,8 +1,8 @@
 +++
 title = "Introduction to Hoon"
 weight = 10
-nodes: [100, 103]
-objectives: ["Explain what an Urbit ship is.", "Distinguish a fakeship from a liveship.", "Pronounce ASCII characters per standard Hoon developer practice."
+nodes = [100, 103]
+objectives = ["Explain what an Urbit ship is.", "Distinguish a fakeship from a liveship.", "Pronounce ASCII characters per standard Hoon developer practice."
 +++
 
 #   Introduction to Hoon

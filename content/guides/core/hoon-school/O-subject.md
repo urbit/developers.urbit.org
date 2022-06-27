@@ -1,7 +1,7 @@
 +++
-title: Subject-Oriented Programming
-nodes: [165, 180]
-objectives: ["Review subject-oriented programming as a design paradigm.", "Discuss stateful v. stateless applications and path dependence.", "Enumerate Hoon's tools for dealing with state:  `=.` tisdot, `=^` tisket, `;<` micgal, `;~` micsig.", "Defer a computation."]
+title = Subject-Oriented Programming
+nodes = [165, 180]
+objectives = ["Review subject-oriented programming as a design paradigm.", "Discuss stateful v. stateless applications and path dependence.", "Enumerate Hoon's tools for dealing with state:  `=.` tisdot, `=^` tisket, `;<` micgal, `;~` micsig.", "Defer a computation."]
 +++
 
 #   Subject-Oriented Programming

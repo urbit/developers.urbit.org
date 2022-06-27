@@ -1,7 +1,7 @@
 +++
-title: Hoon Syntax
-nodes: [110, 113]
-objectives: ["Distinguish nouns, cells, and atoms.", "Apply auras to transform an atom.", "Identify common Hoon molds, such as cells, lists, and tapes.", "Pin a face to the subject.", "Make a decision at a branch point.", "Distinguish loobean from boolean operations.", "Slam a gate (call a function)."]
+title = Hoon Syntax
+nodes = [110, 113]
+objectives = ["Distinguish nouns, cells, and atoms.", "Apply auras to transform an atom.", "Identify common Hoon molds, such as cells, lists, and tapes.", "Pin a face to the subject.", "Make a decision at a branch point.", "Distinguish loobean from boolean operations.", "Slam a gate (call a function)."]
 +++
 
 #   Hoon Syntax

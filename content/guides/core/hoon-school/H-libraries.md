@@ -1,7 +1,7 @@
 +++
-title: Libraries
-nodes: [145, 153, 175]
-objectives: ["Import a library using `/+` faslus.", "Create a new library in `/lib`.", "Identify the role of a desk in the Clay filesystem.", "Identify the components of a beak.", "Identify filesystem locations (including desks).", "Identify the components of a path.", "Build code samples with `-build-file` thread.", "Discuss Ford import runes."]
+title = Libraries
+nodes = [145, 153, 175]
+objectives = ["Import a library using `/+` faslus.", "Create a new library in `/lib`.", "Identify the role of a desk in the Clay filesystem.", "Identify the components of a beak.", "Identify filesystem locations (including desks).", "Identify the components of a path.", "Build code samples with `-build-file` thread.", "Discuss Ford import runes."]
 +++
 
 #   Libraries
