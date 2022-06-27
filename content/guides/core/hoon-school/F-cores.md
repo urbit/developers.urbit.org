@@ -1,5 +1,5 @@
 +++
-title = Cores
+title = "Cores"
 nodes = [130, 133]
 objectives = ["Employ a trap to produce a reentrant block of code.", "Produce a recursive gate.", "Distinguish head and tail recursion.", "Consider Hoon structures as cores.", "Identify the special role of the `$` buc arm in many cores.", "Order neighboring cores within the subject for addressibility.", "Produce a type arm."]
 +++

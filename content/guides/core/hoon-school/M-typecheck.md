@@ -1,5 +1,5 @@
 +++
-title = Type Checking
+title = "Type Checking"
 nodes = [183]
 objectives = ["Use assertions to enforce type constraints."]
 +++

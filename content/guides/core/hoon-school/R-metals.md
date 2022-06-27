@@ -1,10 +1,10 @@
 +++
-title = Generic and Variant Cores
+title = "Generic and Variant Cores"
 nodes = [288, 299]
 objectives = ["Distinguish dry and wet cores.", "Describe use cases for wet gates (using genericity).", "Enumerate and distinguish use cases for dry cores (using variance):", "- Covariant (`%zinc`)", "- Contravariant (`%iron`)", "- Bivariant (`%lead`)", "- Invariant (`%gold`)"]
 +++
 
-#   Adaptive Cores
+#   Generic and Variant Cores
 
 _This module introduces how cores can be extended for different behavioral patterns.  It may be considered optional and skipped if you are speedrunning Hoon School._
 

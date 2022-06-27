@@ -1,5 +1,5 @@
 +++
-title = Trees, Addressing, and Lists
+title = "Trees, Addressing, and Lists"
 nodes = [135, 140, 156]
 objectives = ["Address nodes in a tree using numeric notation.", "Address nodes in a tree using lark notation.", "Address data in a tree using faces.", "Distinguish `.` and `:` notation.", "Diagram Hoon structures such as gates into the corresponding abstract syntax tree.", "Use lists to organize data.", "Convert between kinds of lists (e.g. tapes).", "Diagram lists as binary trees.", "Operate on list elements using `snag`, `find`, `weld`, etc.", "Explain how Hoon manages the subject and wing search paths.", "Explain how to skip to particular matches in a wing search path through the subject.", "Identify common Hoon patterns: batteries, and doors, arms, wings, and legs."]
 +++

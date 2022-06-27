@@ -1,5 +1,5 @@
 +++
-title = Cores and Doors
+title = "Cores and Doors"
 nodes = [150, 155]
 objectives = ["Identify the structure of a door and relate it to a core.", "Pull an arm in a door.", "Build cores for later use and with custom samples.", "Identify the `$` buc arm in several structures and its role."]
 +++
