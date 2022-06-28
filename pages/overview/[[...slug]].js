@@ -308,7 +308,7 @@ function Landing({ search }) {
               title="Nock"
               text="A low-level homoiconic combinator language"
               className="h-full"
-              href="/overview/Nock"
+              href="/overview/nock"
             />
             <Card
               icon={<Vere />}
@@ -331,7 +331,7 @@ function Landing({ search }) {
               title="Cryptography"
               text="There are two categories of keys and five components of the system involved with cryptography on Urbit"
               className="h-full"
-              href="/overview/cryptography"
+              href="/reference/additional/cryptography"
             />
           </TwoUp>
         </Section>

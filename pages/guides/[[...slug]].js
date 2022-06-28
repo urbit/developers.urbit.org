@@ -216,6 +216,7 @@ function Landing({ search }) {
               title="Encrypted Chat Application"
               text="Build your own secure comms tool"
               className="basis-1/2"
+              href="/guides/quickstart/chat-guide"
             />
             <Card
               icon={<MintFiller />}
@@ -263,6 +264,45 @@ function Landing({ search }) {
               description="Learn how to create Gall agents and integrate them into a React front-end"
               callout="View Guide"
               href="/guides/core/app-school-full-stack"
+              image="/images/fullstack.svg"
+              className="h-full"
+            />
+          </TwoUp>
+        </Section>
+        <Section short className="space-y-6">
+          <h3>Additional Guides</h3>
+          <TwoUp>
+            <TallCard
+              title="Development"
+              description="General overview on Urbit development principles and practical information like environment setup."
+              callout="View Guide"
+              href="/guides/additional/development"
+              image="/images/development.svg"
+              className="h-full"
+            />
+            <TallCard
+              title="Threads"
+              description="Lorem ipsum"
+              callout="View Guide"
+              href="/guides/additional/threads"
+              image="/images/threads.svg"
+              className="h-full"
+            />
+          </TwoUp>
+          <TwoUp className="!mt-0">
+            <TallCard
+              title="Distribution"
+              description="A guide to the  architecture of Urbit's app distribution system."
+              callout="View Guide"
+              href="/guides/additional/dist"
+              image="/images/distribution.svg"
+              className="h-full"
+            />
+            <TallCard
+              title="Assorted Tutorials"
+              description="Guides for the CLI, Parsing, JSON, Strings, Sail, Unit, and Aqua tests."
+              callout="View Guide"
+              href="/guides/additional/hoon"
               image="/images/fullstack.svg"
               className="h-full"
             />

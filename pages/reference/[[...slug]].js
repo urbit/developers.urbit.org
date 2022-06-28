@@ -4,22 +4,11 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import classnames from "classnames";
 import Meta from "../../components/Meta";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import Card from "../../components/Card";
 import ContentArea from "../../components/ContentArea";
 import Sidebar from "../../components/Sidebar";
-import TallCard from "../../components/TallCard";
 import Pagination from "../../components/Pagination";
 import BasicPage from "../../components/BasicPage";
-import {
-  Container,
-  Section,
-  SingleColumn,
-  TwoUp,
-  Markdown,
-} from "foundation-design-system";
-import { Comms, MintFiller } from "../../components/icons";
+import { Markdown } from "foundation-design-system";
 import referenceTree from "../../cache/reference.json";
 import { join } from "path";
 import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";

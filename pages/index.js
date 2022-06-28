@@ -104,6 +104,7 @@ export default function Home({ search, whatsNew }) {
                 title="Encrypted Chat Application"
                 text="Build your own secure comms tool"
                 className="basis-1/2"
+                href="/guides/quickstart/chat-guide"
               />
               <Card
                 icon={<MintFiller />}
@@ -124,7 +125,7 @@ export default function Home({ search, whatsNew }) {
                 title="Hoon School"
                 description="Learn the fundamentals of the Hoon programming language"
                 callout="View Guide"
-                href="/guides/hoon-school"
+                href="/guides/core/hoon-school"
                 image="/images/hoon.svg"
                 className="h-full"
               />
@@ -132,7 +133,7 @@ export default function Home({ search, whatsNew }) {
                 title="App School"
                 description="Learn how to build Urbit userspace applications by writing your own Gall agents"
                 callout="View Guide"
-                href="/guides/app-school"
+                href="/guides/core/app-school"
                 image="/images/app.svg"
                 className="h-full"
               />
