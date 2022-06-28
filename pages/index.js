@@ -42,7 +42,7 @@ export default function Home({ search, whatsNew }) {
                 Discover the creative possibilities of a unified operating
                 system
               </h1>
-              <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+              <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 pt-4">
                 <Link href="/guides/quickstart" passHref>
                   <a className="button-lg bg-green-400 text-white">
                     Quickstart

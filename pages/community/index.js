@@ -27,7 +27,9 @@ export default function Community({ search }) {
       <SingleColumn>
         <Section>
           <h1>Community</h1>
-          <div className="md:columns-2 mt-8">
+        </Section>
+          <Section>
+          <div className="md:columns-2 mt-10">
             <p>
               The developer community is a combination of top-down stewardship
               from the Urbit Foundation and Tlon, as well as organic, bottom-up

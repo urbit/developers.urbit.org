@@ -37,13 +37,11 @@ export default function Directory({ search, directory }) {
         <Section>
           <h1>Directory</h1>
         </Section>
-        <Section>
           <p>
             Our community is comprised of individuals, all of whom happen to be
             pretty friendly. Here’s a list of prominent figures you’ll likely
             encounter that are open to being contacted:
           </p>
-        </Section>
         <Section>
           <h3>Urbit Foundation</h3>
           <div className="mt-4">

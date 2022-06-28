@@ -31,7 +31,7 @@ export default function Courses({ search, courses }) {
           <TwoUp>
             {courses.map((course) => {
               return (
-                <div className="flex flex-col space-y-4 bg-wall-100 rounded-xl p-6 h-full">
+                <div className="flex flex-col space-y-4 h-full">
                   <h3>{course.title}</h3>
                   <div className="markdown">
                     <Markdown.render content={JSON.parse(course.content)} />
