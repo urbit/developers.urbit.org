@@ -1,5 +1,5 @@
 +++
 title = "Additional Guides"
-weight = 3
+weight = 30
 type = "tab"
 +++

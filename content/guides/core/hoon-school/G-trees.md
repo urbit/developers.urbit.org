@@ -87,15 +87,15 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
     ```
       [1 [2 [3 [4 ~]]]]
 
-              .
+             .
             / \
-            1   .
+           1   .
               / \
-              2   .
+             2   .
                 / \
-                3   .
+               3   .
                   / \
-                  4   ~
+                 4   ~
     ```
 
 ### Tuples as Trees
@@ -223,7 +223,7 @@ A `tape` is actually a `(list @t)`, a binary tree of single characters which onl
 
 Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree.  These are written using `-` (left) and `+` (right) alternating with `<` (left) and `<` (right).
 
-![](binary-tree-lark.png)
+![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
 Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](./M-typecheck.md)):
 
@@ -258,18 +258,18 @@ There is a solution at the bottom of the page.
 - Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
 
     ```
-            .
-            /\
-            /  \
-          /    \
-          .      .
-        / \    / \
-        /   .  10  .
-      /   / \    / \
-      .   8   9  11  .
-    / \            / \
-    5   .          12  13
-      / \
+              .
+             / \
+            /   \
+           /     \
+          .       .
+         / \     / \
+        /   .   10  .
+       /   / \     / \
+      .   8   9   11  .
+     / \             / \
+    5   .           12  13
+       / \
       6   7
     ```
 
