@@ -34,11 +34,11 @@ export default function Header({ search }) {
     <>
       {" "}
       <IntraNav ourSite="https://developers.urbit.org" search={search} />
-      <header className="layout max-w-screen-lg px-4 md:px-8 flex justify-between items-center pt-8 md:pt-10 lg:pt-12 pb-10 md:pb-12 lg:pb-24">
+      <header className="layout max-w-screen-lg px-4 md:px-8 flex justify-between items-end  pt-8 md:pt-10 lg:pt-12 pb-10 md:pb-12 lg:pb-24">
         <div>
           <Link href="/" passHref>
-            <a className="text-lg font-semibold">
-              <span className="hidden xl:inline">Urbit </span>Developers
+            <a className="text-lg font-semibold leading-3 mr-5">
+              <span className="">Urbit </span>Developers
             </a>
           </Link>
           {routeDepth > 2 ? (
