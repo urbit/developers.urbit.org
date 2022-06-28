@@ -163,13 +163,6 @@ function Landing({ search }) {
           <h3>How to use this site</h3>
           <div className="md:columns-2 space-y-4 mt-4">
             <p>
-              Hoon is a powerful and expressive language which builds on the
-              Urbit platform to promote complete app interoperability and user
-              control. We believe you'll find it to be a pleasantly innovative
-              approach to thinking about how computation works and what a
-              development experience should be.
-            </p>
-            <p>
               This site is intended for developers who want to learn how Urbit
               works from the inside out and how to build and deploy apps. If you
               are new to the platform, start with{" "}
@@ -193,6 +186,13 @@ function Landing({ search }) {
                 <a>standard library</a>
               </Link>{" "}
               are included.
+            </p>
+            <p>
+              Hoon is a powerful and expressive language which builds on the
+              Urbit platform to promote complete app interoperability and user
+              control. We believe you'll find it to be a pleasantly innovative
+              approach to thinking about how computation works and what a
+              development experience should be.
             </p>
             <p>
               If you are a regular Urbit user (rather than a developer), you
