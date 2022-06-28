@@ -8,7 +8,7 @@ export default (req, res) => {
       e?.slug.includes(req.query.q.toLowerCase()) ||
       e?.parent.toLowerCase().includes(req.query.q.toLowerCase())
   );
-  const sorted = levenSort(results, req.q, ["title", "slug", "parent"]);
+  const sorted = levenSort(results, req.query.q, ["title", "slug", "parent"]);
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify({ results: sorted }));

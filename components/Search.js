@@ -16,7 +16,7 @@ class Search extends Component {
     this.searchEndpoint = this.searchEndpoint.bind(this);
     this.onInputValueChange = this.onInputValueChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    // this.glossarySearch = this.glossarySearch.bind(this);
+    this.glossarySearch = this.glossarySearch.bind(this);
     this.patpSearch = this.patpSearch.bind(this);
     this.urbitOrgSearch = this.urbitOrgSearch.bind(this);
   }
@@ -25,14 +25,9 @@ class Search extends Component {
     return `/api/search?q=${query}`;
   }
 
-  //   glossarySearch(query) {
-  //     const entries = glossary.filter((entry) => {
-  //       return (
-  //         entry.name.includes(query.toLowerCase()) || entry.symbol.includes(query)
-  //       );
-  //     });
-  //     return levenSort(entries, query, ["symbol"]);
-  //   }
+  glossarySearch(query) {
+    return `/api/glossary?q=${encodeURIComponent(query)}`;
+  }
 
   patpSearch(query) {
     return (
@@ -97,13 +92,21 @@ class Search extends Component {
               }));
             });
 
-          //   const glossaryResults = this.glossarySearch(query).map((item) => ({
-          //     type: "GLOSSARY_RESULT",
-          //     content: item,
-          //   }));
+          const glossaryResults = await fetch(this.glossarySearch(query))
+            .then((res) => res.json())
+            .then((res) => {
+              return res.results.map((item) => ({
+                type: "GLOSSARY_RESULT",
+                content: item,
+              }));
+            });
 
-          //   const list = [...glossaryResults, ...patpResult, ...results];
-          const list = [...patpResult, ...results, ...urbitOrgResults];
+          const list = [
+            ...glossaryResults,
+            ...patpResult,
+            ...results,
+            ...urbitOrgResults,
+          ];
           this.setState({ results: list });
         });
     } else {
@@ -188,50 +191,50 @@ class Search extends Component {
                             </li>
                           );
                         }
-                        // if (item.type === "GLOSSARY_RESULT") {
-                        //   return (
-                        //     <li
-                        //       className={`cursor-pointer flex text-left w-full ${
-                        //         selected ? "bg-green-400" : ""
-                        //       }`}
-                        //       {...getItemProps({
-                        //         key: item.content.slug + "-" + index,
-                        //         index,
-                        //         item: item.content,
-                        //         selected: highlightedIndex === index,
-                        //       })}
-                        //     >
-                        //       <div className="font-semibold p-3">
-                        //         <p
-                        //           className={`text-base ${
-                        //             selected ? "text-white" : "text-wall-600"
-                        //           }`}
-                        //         >
-                        //           {item.content.symbol.length > 0 && (
-                        //             <code
-                        //               className={`mr-1 rounded px-1 py-0.5 ${
-                        //                 selected
-                        //                   ? "bg-washedWhite"
-                        //                   : "bg-wall-100"
-                        //               }`}
-                        //             >
-                        //               {item.content.symbol}
-                        //             </code>
-                        //           )}
-                        //           {item.content.name}
-                        //         </p>
-                        //         <p
-                        //           className={`font-normal text-base mt-1 ${
-                        //             selected ? "text-white" : "text-wall-600"
-                        //           }`}
-                        //           dangerouslySetInnerHTML={{
-                        //             __html: item.content.desc,
-                        //           }}
-                        //         ></p>
-                        //       </div>
-                        //     </li>
-                        //   );
-                        // }
+                        if (item.type === "GLOSSARY_RESULT") {
+                          return (
+                            <li
+                              className={`cursor-pointer flex text-left w-full ${
+                                selected ? "bg-green-400" : ""
+                              }`}
+                              {...getItemProps({
+                                key: item.content.slug + "-" + index,
+                                index,
+                                item: item.content,
+                                selected: highlightedIndex === index,
+                              })}
+                            >
+                              <div className="font-semibold p-3">
+                                <p
+                                  className={`text-base ${
+                                    selected ? "text-white" : "text-wall-600"
+                                  }`}
+                                >
+                                  {item.content.symbol.length > 0 && (
+                                    <code
+                                      className={`mr-1 rounded px-1 py-0.5 ${
+                                        selected
+                                          ? "bg-washedWhite"
+                                          : "bg-wall-100"
+                                      }`}
+                                    >
+                                      {item.content.symbol}
+                                    </code>
+                                  )}
+                                  {item.content.name}
+                                </p>
+                                <p
+                                  className={`font-normal text-base mt-1 ${
+                                    selected ? "text-white" : "text-wall-600"
+                                  }`}
+                                  dangerouslySetInnerHTML={{
+                                    __html: item.content.desc,
+                                  }}
+                                ></p>
+                              </div>
+                            </li>
+                          );
+                        }
                         if (item.type === "RESULT") {
                           return (
                             <li
