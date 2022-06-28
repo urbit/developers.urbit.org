@@ -204,8 +204,8 @@ When we put each of these parts together, we have our complete
 
 ## Resources
 
-- [Gall Guide /sur section](/guides/core/app-school/7-sur-and-marks#sur) -
-  This section of the Gall Guide covers writing a `/sur` structure library for
+- [App School I /sur section](/guides/core/app-school/7-sur-and-marks#sur) -
+  This section of App School covers writing a `/sur` structure library for
   an agent.
 
 - [Ordered map functions in

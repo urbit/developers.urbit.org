@@ -90,7 +90,7 @@ mark in the same manner as our `%journal-action` mark above.
   This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall
   Guide](/guides/core/app-school/7-sur-and-marks#mark-files) - This part of
-  the Gall Guide goes through the basics of mark files.
+  App School goes through the basics of mark files.
 
 - [The JSON Guide](/guides/additional/hoon/json-guide) - This also covers writing mark
   files to convert to/from JSON.

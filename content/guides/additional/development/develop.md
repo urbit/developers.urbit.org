@@ -65,8 +65,8 @@ Applications built on Urbit utilize a collection of different agents, each of
 which handle specific functionality.
 
 If you want to learn how to build gall agents, your best bet is to first [learn
-the Hoon programming language](/guides/core/hoon-school/), and then follow that
-up with the [Gall guide](/guides/core/app-school/intro).
+the Hoon programming language with Hoon School](/guides/core/hoon-school/), and then [follow that
+up with the App School guides](/guides/core/app-school/intro).
 
 ### Contribute to Urbit Core {% #core %}
 

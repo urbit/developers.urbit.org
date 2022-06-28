@@ -73,4 +73,4 @@ The webserver vane Eyre has a system which allows clients like web browsers to p
 
 [Eyre's External API Reference](/reference/arvo/eyre/external-api-ref#scry) - Documentation of Eyre's scry system which allows web clients to perform scries over HTTP.
 
-[The Gall Guide](/guides/core/app-school/intro) - The Gall tutorial includes a section about `+on-peek` and writing scry endpoints.
+[App School I](/guides/core/app-school/intro) - The App School Gall tutorial includes a section about `+on-peek` and writing scry endpoints.

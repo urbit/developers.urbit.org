@@ -29,8 +29,8 @@ Here is the reference material for each section of this walkthrough.
 
 #### Types
 
-- [Gall Guide /sur section](/guides/core/app-school/7-sur-and-marks#sur) -
-  This section of the Gall Guide covers writing a `/sur` structure library for
+- [App School /sur section](/guides/core/app-school/7-sur-and-marks#sur) -
+  This section of App School covers writing a `/sur` structure library for
   an agent.
 
 - [Ordered map functions in
@@ -40,7 +40,7 @@ Here is the reference material for each section of this walkthrough.
 
 #### Agent
 
-- [The Gall Guide](/guides/core/app-school/intro) - The Gall Guide covers all
+- [App School I](/guides/core/app-school/intro) - App School I covers all
   aspects of writing Gall agents in detail.
 
 - [Ordered map functions in
@@ -75,7 +75,7 @@ Here is the reference material for each section of this walkthrough.
   This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall
   Guide](/guides/core/app-school/7-sur-and-marks#mark-files) - This part of
-  the Gall Guide goes through the basics of mark files.
+  App School goes through the basics of mark files.
 
 - [The JSON Guide](/guides/additional/hoon/json-guide) - This also covers writing mark
   files to convert to/from JSON.

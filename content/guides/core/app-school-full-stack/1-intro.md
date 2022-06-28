@@ -4,8 +4,7 @@ weight = 1
 +++
 
 This series walks through the writing of a full Gall agent, and then the process
-of integrating it with a React front-end. This series follows on from the
-previous [Gall Guide](/guides/core/app-school/intro). If you haven't
+of integrating it with a React front-end. This series follows on from [App School I](/guides/core/app-school/intro). If you haven't
 completed that, or otherwise aren't familiar with the basics of writing Gall
 agents, it's strongly recommended to work through that guide first.
 

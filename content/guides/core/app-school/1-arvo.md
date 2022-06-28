@@ -3,7 +3,7 @@ title = "1. Arvo"
 weight = 5
 +++
 
-This document is a prologue to the Gall guide. If you've worked though [Hoon
+This document is a prologue to App School I. If you've worked though [Hoon
 School](/guides/core/hoon-school/A-intro) (or have otherwise learned the basics of
 Hoon), you'll likely be familiar with generators, but not with all the other
 parts of the Arvo operating system or the way it fits together. We'll go over
@@ -107,7 +107,7 @@ there's also:
   agent only has to deal with the two conditions of success or failure. Writing
   threads is covered in a [separate
   guide](/guides/additional/threads/basics/fundamentals), which you might like to
-  work through after completing the Gall Guide.
+  work through after completing App School I.
 
 - **Front-end**: Web UIs. It's possible for Gall agents to handle HTTP requests
   directly and dynamically produce responses, but it's also possible to have a
@@ -115,7 +115,7 @@ there's also:
   etc, which are served to the client like an ordinary web app. Such front-end
   files are typically managed by the `%docket` agent which serves them via Eyre.
   The [software distribution guide](/guides/additional/dist/guide) covers this in
-  detail, and you might like to work through it after completing the Gall Guide.
+  detail, and you might like to work through it after completing App School I.
 
 ## The Filesystem
 
@@ -295,7 +295,7 @@ described here cover the majority of cases.
 
 ## Environment Setup
 
-Before proceeding with the Gall Guide, you'll need to have an appropriate text
+Before proceeding with App School, you'll need to have an appropriate text
 editor installed and configured, and know how to work with a fake ship for
 development. Best practices are described in the [environment setup
 guide](/guides/additional/development/environment). Example agents and other code throughout

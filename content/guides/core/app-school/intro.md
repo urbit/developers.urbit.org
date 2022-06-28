@@ -6,7 +6,7 @@ weight = 1
 This guide will walk through everything you need to know to write your own Gall
 agents.
 
-The Gall Guide is suitable for anyone with an intermediate knowledge of Hoon. If
+App School I is suitable for anyone with an intermediate knowledge of Hoon. If
 you've worked through [Hoon School](/guides/core/hoon-school/) or something
 equivalent, you should be fine.
 
@@ -73,10 +73,10 @@ function of the previous state and the input event.
     of scrying Gall agents, and how scry endpoints are defined in agents.
 11. [Failure](/guides/core/app-school/11-fail) - This lesson covers how Gall
     handles certain errors and crashes, as well as the concept of a helper core.
-12. [Next Steps](/guides/core/app-school/12-next-steps) - The Gall Guide is
+12. [Next Steps](/guides/core/app-school/12-next-steps) - App School I is
     now complete - here are some things you can look at next.
 
 #### Appendix
 
 - [Types](/guides/core/app-school/types) - A reference for a few of
-  the types used in the Gall Guide.
+  the types used in App School.

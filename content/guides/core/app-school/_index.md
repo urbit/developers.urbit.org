@@ -35,7 +35,7 @@ insert_anchor_links = "right"
     of scrying Gall agents, and how scry endpoints are defined in agents.
 11. [Failure](guides/core/app-school/11-fail) - This lesson covers how Gall
     handles certain errors and crashes, as well as the concept of a helper core.
-12. [Next Steps](guides/core/app-school/12-next-steps) - The Gall Guide is
+12. [Next Steps](guides/core/app-school/12-next-steps) - App School I is
     now complete - here are some things you can look at next.
 
 #### Appendix
