@@ -115,8 +115,7 @@ const childPages = (thisLink, children, level = 0) => (
 
 const pageTree = (thisLink, tree, level = 0) => {
   const router = useRouter();
-  const firstCrumb = "/" + router.asPath.split("/").slice(1, -1).join("/");
-
+  const firstCrumb = "/" + router.asPath.split("/").slice(1).join("/");
   const includesThisPage = firstCrumb.includes(thisLink);
   const isThisPage = router.asPath === thisLink;
   const [isOpen, toggleTree] = useState(includesThisPage);
