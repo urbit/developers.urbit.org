@@ -37,13 +37,13 @@ Essentially, we have to be able to decide whether or not some value or expressio
 - [`++lth`](/reference/hoon/stdlib/1a#lth) (less than `<`)  
 - [`++gte`](/reference/hoon/stdlib/1a#gte) (greater than or equal to `≥`)
 - [`++lte`](/reference/hoon/stdlib/1a#lte) (less than or equal to `≤`)
-- [`.=` dottis](/reference/hoon/rune/dot#dottis), irregularly `=()` (check for equality)
+- [`.=` dottis](/reference/hoon/rune/dot#-dottis), irregularly `=()` (check for equality)
 
-The key conditional decision-making rune is [`?:` wutcol](/reference/hoon/rune/wut#wutcol), which lets you branch between an `expression-if-true` and an `expression-if-false`.  [`?.` wutdot](/reference/hoon/rune/wut#wutdot) inverts the order of `?:`.  Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
+The key conditional decision-making rune is [`?:` wutcol](/reference/hoon/rune/wut#-wutcol), which lets you branch between an `expression-if-true` and an `expression-if-false`.  [`?.` wutdot](/reference/hoon/rune/wut#-wutdot) inverts the order of `?:`.  Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
 
 There are also two long-form decision-making runes, which we will call [_switch statements_](https://en.wikipedia.org/wiki/Switch_statement) by analogy with languages like C.
 
-- [`?-` wuthep](/reference/hoon/rune/wut#wuthep) lets you choose between several possibilities, as with a type union.  Every case must be handled and no case can be unreachable.
+- [`?-` wuthep](/reference/hoon/rune/wut#-wuthep) lets you choose between several possibilities, as with a type union.  Every case must be handled and no case can be unreachable.
 
     Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` wuthep switches over term unions can make it look like the expression is branching on the value.  It's actually branching on the _type_.  These are almost exclusively used with term type unions.
 
@@ -56,7 +56,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
     ==
     ```
 
-- [`?+` wutlus](/reference/hoon/rune/wut#wutlus) is similar to `?-` but allows a default value in case no branch is taken.  Otherwise these are similar to `?-` wuthep switch statements.
+- [`?+` wutlus](/reference/hoon/rune/wut#-wutlus) is similar to `?-` but allows a default value in case no branch is taken.  Otherwise these are similar to `?-` wuthep switch statements.
 
     ```hoon
     |=  p=?(%0 %1 %2 %3 %4)
@@ -84,7 +84,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
     %.y
     ```
 
-- [`?|` wutbar](/reference/hoon/rune/wut#wutbar), irregularly `|()`, is a logical `OR` _p_ ∨ _q_  over loobean values, e.g. either term may be true.
+- [`?|` wutbar](/reference/hoon/rune/wut#-wutbar), irregularly `|()`, is a logical `OR` _p_ ∨ _q_  over loobean values, e.g. either term may be true.
 
     | `OR`  | `%.y` | `%.n` |
     |-------|-------|-------|
@@ -97,7 +97,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
     %.y
     ```
 
-- [`?!` wutzap](/reference/hoon/rune/wut#wutzap), irregularly `!`, is a logical `NOT` ¬_p_.  Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
+- [`?!` wutzap](/reference/hoon/rune/wut#-wutzap), irregularly `!`, is a logical `NOT` ¬_p_.  Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
 
     |       | `NOT` |
     |-------|-------|

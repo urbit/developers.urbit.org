@@ -156,7 +156,7 @@ like to run such that each past the first depends on the output of the previous
 one. The output of the previous one may not be of the correct type to use as an
 input to the next one, and so an adapter such as `+biff` is needed.
 
-`;<` differs from [`;~`](#micsig) in that it takes a gate which takes a mold
+`;<` differs from [`;~`](#-micsig) in that it takes a gate which takes a mold
 that produces an implementation of monadic bind, rather than taking an
 implementation of monadic bind directly.
 
@@ -619,7 +619,7 @@ If you need a complex Hoon expression to produce a `marl`, use the `;*` rune.
 Often this rune is used with an expression, `p`, that includes one or more `;=`
 subexpressions.
 
-(See also [`;=`](#mictis).)
+(See also [`;=`](#-mictis).)
 
 #### Examples
 
@@ -711,7 +711,7 @@ can be produced in the following way:
 Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a
 series of `manx` nodes to a `marl`, use the `;=` rune.
 
-(See also [`;*`](#mictar).)
+(See also [`;*`](#-mictar).)
 
 #### Examples
 

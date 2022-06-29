@@ -357,7 +357,7 @@ Three arguments, fixed.
 
 Technically the `=.` rune doesn't change the subject. It creates a new subject
 just like the old one except for a changed value at `p`. Note that the mutation
-uses [`%_` ("cencab")](/reference/hoon/rune/cen#cencab), so the type at `p`
+uses [`%_` ("cencab")](/reference/hoon/rune/cen#-cencab), so the type at `p`
 doesn't change. Trying to change the value type results in a `nest-fail`.
 
 #### Examples
@@ -903,7 +903,7 @@ The product of the chain composition.
 
 ---
 
-## `=*` "tistar" {% #tistar %}
+## `=*` "tistar" {% #-tistar %}
 
 Define a deferred expression.
 

@@ -13,7 +13,7 @@ _This module will teach you how to produce deferred computations for later use, 
 
 Until this point in Hoon School, we have rigorously adhered to the regular syntax of runes so that you could get used to using them.  In fact, the only two irregular forms we used were these:
 
-- Cell definition `[a b]` which represents the [`:-` colhep](/reference/hoon/rune/col#colhep) rune, `:-  a  b`.
+- Cell definition `[a b]` which represents the [`:-` colhep](/reference/hoon/rune/col#-colhep) rune, `:-  a  b`.
 
     That is, these expressions are all the same for Hoon:
 
@@ -30,7 +30,7 @@ Until this point in Hoon School, we have rigorously adhered to the regular synta
     [1 2]
     ```
 
-- Aura application ``@ux`500`` which represents a double [`^-` kethep](/reference/hoon/rune/ket#kethep), `^-  @ux  ^-  @  500`.
+- Aura application ``@ux`500`` which represents a double [`^-` kethep](/reference/hoon/rune/ket#-kethep), `^-  @ux  ^-  @  500`.
 
     These are equivalent in Hoon:
 
@@ -44,7 +44,7 @@ Until this point in Hoon School, we have rigorously adhered to the regular synta
 
     (Why two `^-`s?  We have to clear the type information in general to be able to apply new type information.)
 
-Hoon developers often employ irregular forms, sometimes called “sugar syntax”.  Besides the `:-` colhep and `^-` kethep forms, we will commonly use a new form for [`%-` cenhep](/reference/hoon/rune/cen#cenhep) “function calls”:
+Hoon developers often employ irregular forms, sometimes called “sugar syntax”.  Besides the `:-` colhep and `^-` kethep forms, we will commonly use a new form for [`%-` cenhep](/reference/hoon/rune/cen#-cenhep) “function calls”:
 
 ```hoon
 > %-  add  [1 2]
@@ -86,7 +86,7 @@ So far, every time we have calculated something, we have had to build it from sc
 
 This has no flexibility:  if we want to change `a` we have to rewrite the whole thing every time!
 
-(Note also our introduction of the [`::` colcol](/reference/hoon/rune/col#colcol) digraph in the above code block.  This marks anything following it as a _comment_, meaning that it is meant for the developer and reader, and ignored by the computer.)
+(Note also our introduction of the [`::` colcol](/reference/hoon/rune/col#-colcol) digraph in the above code block.  This marks anything following it as a _comment_, meaning that it is meant for the developer and reader, and ignored by the computer.)
 
 Hoon uses _gates_ as deferred computations.  What this means is that we can build a Hoon expression now and use it at need later on, perhaps many times.  More than that, we can also use it on different data values.  A gate is the Hoon analogue of a [function or subroutine](https://en.wikipedia.org/wiki/Subroutine) in other programming languages.
 
@@ -98,7 +98,7 @@ Functions are implemented in Hoon with a special kind of [core](/reference/gloss
 
 ### Building a Gate
 
-Syntactically, a gate is a [`|=` bartis](/reference/hoon/rune/bar#bartis) rune with two children:  a [`spec`](/reference/hoon/stdlib/4o#spec) (specification of input) and a [`hoon`](/reference/hoon/stdlib/4o#hoon) (body).  Think of just replacing the `=/` tisfas with the `|=` bartis:
+Syntactically, a gate is a [`|=` bartis](/reference/hoon/rune/bar#-bartis) rune with two children:  a [`spec`](/reference/hoon/stdlib/4o#spec) (specification of input) and a [`hoon`](/reference/hoon/stdlib/4o#hoon) (body).  Think of just replacing the `=/` tisfas with the `|=` bartis:
 
 ```hoon
 ::  Confirm whether a value is greater than one.
@@ -116,7 +116,7 @@ Beyond those, what is the purpose of each line?
 
 The [`spec`](/reference/hoon/stdlib/4o#spec) gives the type as a mold and attaches a face to it for use in the gate.
 
-The [`hoon`](/reference/hoon/stdlib/4o#hoon) body expression evaluates and yields a result, ultimately sent back to the call site.  Frequently it is wise to explicitly require a particular type for the return value using the [`^-` kethep](/reference/hoon/rune/ket#kethep) rune:
+The [`hoon`](/reference/hoon/stdlib/4o#hoon) body expression evaluates and yields a result, ultimately sent back to the call site.  Frequently it is wise to explicitly require a particular type for the return value using the [`^-` kethep](/reference/hoon/rune/ket#-kethep) rune:
 
 ```hoon
 ::  Confirm whether a value is greater than one.
@@ -361,7 +361,7 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 
 ### Coding Piecemeal
 
-If you need to test code without completing it, you can stub out as-yet-undefined arms with the [`!!` zapzap](/reference/hoon/rune/zap#zapzap) crash rune.  `!!` is the only rune which has no children, and it's helpful when you need something to satisfy Hoon syntax but aren't ready to flesh out the program yet.
+If you need to test code without completing it, you can stub out as-yet-undefined arms with the [`!!` zapzap](/reference/hoon/rune/zap#-zapzap) crash rune.  `!!` is the only rune which has no children, and it's helpful when you need something to satisfy Hoon syntax but aren't ready to flesh out the program yet.
 
 ### Building Code Generally
 

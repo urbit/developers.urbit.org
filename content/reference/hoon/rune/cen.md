@@ -261,7 +261,7 @@ first, and then the gate.
 
 ---
 
-## `%-` "cenhep" {% #cenhep %}
+## `%-` "cenhep" {% #-cenhep %}
 
 Call a gate (function).
 
@@ -316,9 +316,9 @@ value) for the gate.
 #### Discussion
 
 `%-` is used to call a function; `a` is the function
-([`gate`](/reference/hoon/rune/bar#bartis), `q` the argument. `%-` is a
-special case of [`%~` ("censig")](#censig), and a gate is a special case of a
-[door](/reference/hoon/rune/bar#barcab).
+([`gate`](/reference/hoon/rune/bar#-bartis), `q` the argument. `%-` is a
+special case of [`%~` ("censig")](#-censig), and a gate is a special case of a
+[door](/reference/hoon/rune/bar#-barcab).
 
 #### Examples
 
@@ -509,7 +509,7 @@ door itself. `c` is the sample of the door.
 
 `%~` is the general case of a function call, `%-`. In both, we replace the sample (`+6`) of a core. In `%-` the core is a gate and the `$` arm is evaluated. In `%~` the core is a door and any arm may be evaluated. You must identify the arm to be run: `%~(arm door arg)`.
 
-See also [`|_`](/reference/hoon/rune/bar#barcab).
+See also [`|_`](/reference/hoon/rune/bar#-barcab).
 
 #### Examples
 

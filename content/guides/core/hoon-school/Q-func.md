@@ -16,7 +16,7 @@ Functional programming, as a paradigm, tends to prefer rather mathematical expre
 
 ##  Changing Arity
 
-If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the [`;:` miccol](/reference/hoon/rune/mic#miccol) rune.
+If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the [`;:` miccol](/reference/hoon/rune/mic#-miccol) rune.
 
 ```hoon
 > (add 3 (add 4 5))
@@ -269,7 +269,7 @@ How do we parse multiple characters in order to break things up sensibly?
     ['a' 'b' 'a']
     ```
 
-- The [`;~` micsig](/reference/hoon/rune/mic/#micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
+- The [`;~` micsig](/reference/hoon/rune/mic/#-micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
 
     ```hoon
     > (scan "after the" ;~((glue ace) (star (shim 'a' 'z')) (star (shim 'a' 'z'))))  

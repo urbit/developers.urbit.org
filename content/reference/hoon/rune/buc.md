@@ -38,7 +38,7 @@ mold. Molds and mold builders are generally described together.
 `spec`s contain more information and draw finer distinctions than `type`s,
 which is to say that a given type may have more than one valid `spec` defining
 it, and thus downconversion from `spec` to `type` is lossy. Thus structure
-validation (done with [`$|`](#bucbar), which is a more restrictive validation
+validation (done with [`$|`](#-bucbar), which is a more restrictive validation
 than that performed by molds, is a rare use case. Except for direct raw input,
 it's generally a faux pas to validate structure at runtime -- or even in userspace.
 Nonetheless they are sometimes utilized for types that will be more performant
@@ -144,7 +144,7 @@ The definition of `+set` in `hoon.hoon` is the following:
   |=(a=(tree) ?:(=(~ a) & ~(apt in a)))
 ```
 
-Here [`|$`](/reference/hoon/rune/bar#barbuc) is used to define a mold
+Here [`|$`](/reference/hoon/rune/bar#-barbuc) is used to define a mold
 builder that takes in a mold (given the face `item`) and creates a structure
 consisting of a `tree` of `item`s with `$|` that is validated with the gate
 `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with
@@ -573,7 +573,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-Since a `$-` reduces to a [`$_`](#buccab), it is not useful for normalizing, just for typechecking. In particular, the existence of `$-`s does **not** let us send gates or other cores over the network!
+Since a `$-` reduces to a [`$_`](#-buccab), it is not useful for normalizing, just for typechecking. In particular, the existence of `$-`s does **not** let us send gates or other cores over the network!
 
 #### Examples
 
@@ -785,7 +785,7 @@ The product of `p`.
 
 You should make sure that the product type of `p` nests under `q`. You can check
 the default value of some structure (custom type) `r` with `*r`. (See the [`^*`
-rune](/reference/hoon/rune/ket#kettar).)
+rune](/reference/hoon/rune/ket#-kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter
 uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)
@@ -1025,7 +1025,7 @@ The last item in `p`.
 #### Discussion
 
 For a union of atoms, a `$?` is fine. For more complex nouns, always try to use
-a [`$%`](#buccen), [`$@`](#bucpat) or [`$^`](#bucket), at least if you expect
+a [`$%`](#-buccen), [`$@`](#-bucpat) or [`$^`](#-bucket), at least if you expect
 your structure to be used as a normalizer.
 
 #### Examples

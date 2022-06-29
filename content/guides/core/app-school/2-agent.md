@@ -9,7 +9,7 @@ A Gall agent is a [door](/reference/glossary/door) with exactly ten [arms](/refe
 handling certain kinds of events that Gall feeds in to the agent. A door is
 just a [core](/reference/glossary/core) with a sample - it's made with the
 [barcab](/reference/hoon/rune/bar#_-barcab) rune (`|_`) instead of the
-usual [barcen](/reference/hoon/rune/bar#barcen) rune (`|%`).
+usual [barcen](/reference/hoon/rune/bar#-barcen) rune (`|%`).
 
 ## The ten arms
 

@@ -85,7 +85,7 @@ is a hint that `|$` is closely related to buc runes, and thus `|$` should be
 used to make mold builders, while `|*` should be used for any other sort of wet
 gate. Unlike `|*`, the body of `|$` is parsed in pattern mode to a `$spec`.
 Thus, the second argument of `|$` is frequently a buc rune. For further
-discussion of wet gates, see the entry for [`|*`](#bartar).
+discussion of wet gates, see the entry for [`|*`](#-bartar).
 
 Like other single-arm cores, the arm for `|$` is named `$` and this can be used to
 define recursive structures. Note however that Hoon is evaluated eagerly, and so
@@ -192,7 +192,7 @@ contains some arm `arm`, and you want to pass some argument (i.e., input value
 Because gates are also doors, you can call them the same way. To call the gate
 `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is
 an irregular form for `%~($ foo baz)`,
-[%~](/reference/hoon/rune/cen#censig).
+[%~](/reference/hoon/rune/cen#-censig).
 
 #### Examples
 
@@ -286,7 +286,7 @@ Two arguments, fixed.
 #### Discussion
 
 Pick your own default value for the sample. Note that `a` is an ordinary
-expression, not a type; `|:` doesn't bunt a sample as [`|=`](#bartis) does.
+expression, not a type; `|:` doesn't bunt a sample as [`|=`](#-bartis) does.
 
 This is useful if you want a gate to have a sample of a particular type, but you don't want the default value of the gate to be the default value of that type.
 
@@ -487,7 +487,7 @@ A more interesting trap:
 Note that we can use `$()` to recurse back into the
 trap, since it's a core with an `$` arm.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#-centis)).
 
 ---
 
@@ -630,10 +630,10 @@ evaluates `$`. `a` is a Hoon expression that determines what `$` evaluates to.
 #### Discussion
 
 The `|-` rune can be thought of as a 'recursion point' or a 'loop starting
-point'. Since `|-` makes a `|.` (["bardot"](#bardot), a core with one arm named
+point'. Since `|-` makes a `|.` (["bardot"](#-bardot), a core with one arm named
 `$`, we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#-centis)).
 
 #### Examples
 
@@ -788,10 +788,10 @@ is still only one copy of the code, however).
 Genericity is a powerful and dangerous tool. Use wet gates only if
 you know what you're doing.
 
-Just as with a [gate](#bartis), we can recurse back into a wet gate
+Just as with a [gate](#-bartis), we can recurse back into a wet gate
 with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#-centis)).
 
 `|*` can be used to make wet gates that produce structures, but this usage is
 discouraged in favor of `|$`.
@@ -879,7 +879,7 @@ Dry gates are used for the vast majority of ordinary functions in Hoon.
 
 A gate is a core with one arm named `$`, so we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#-centis)).
 
 #### Examples
 

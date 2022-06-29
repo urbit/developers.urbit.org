@@ -17,7 +17,7 @@ The subject available in something like a Gall agent or thread contains a great 
 
 Scries are performed exclusively with the dotket rune: `.^`
 
-For details of its usage, see the [dotket](/reference/hoon/rune/dot#dotket) section of the Nock rune documentation. In addition to the dotket documentation, below is a colour-coded diagram breaking down the structure of a dotket scry expression with some additional notes.
+For details of its usage, see the [dotket](/reference/hoon/rune/dot#-dotket) section of the Nock rune documentation. In addition to the dotket documentation, below is a colour-coded diagram breaking down the structure of a dotket scry expression with some additional notes.
 
 ![Scry diagram](https://media.urbit.orgreference/arvo/scry-diagram-v2.svg)
 
@@ -67,7 +67,7 @@ The webserver vane Eyre has a system which allows clients like web browsers to p
 
 ### Further reading
 
-[dotket](/reference/hoon/rune/dot#dotket) - Documentation of the `.^` rune which performs scries.
+[dotket](/reference/hoon/rune/dot#-dotket) - Documentation of the `.^` rune which performs scries.
 
 [Arvo](/reference/arvo/overview) - Each vane has a Scry Reference section with details of their endpoints as well as examples.
 

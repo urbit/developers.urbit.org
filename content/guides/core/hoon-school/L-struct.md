@@ -339,13 +339,13 @@ For our earlier example with `++roll`, if we wanted to set the default sample to
 
 ### Named Tuples
 
-A named tuple is a structured collection of values with faces.  The [`$:` buccol](/reference/hoon/rune/buc#buccol) rune forms a named tuple.  We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` buccol expression for `[a=@ b=@]`.  Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
+A named tuple is a structured collection of values with faces.  The [`$:` buccol](/reference/hoon/rune/buc#-buccol) rune forms a named tuple.  We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` buccol expression for `[a=@ b=@]`.  Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
 
 ### Structure Mode
 
 Most Hoon expressions evaluate normally (that's what “normal” means), what we'll call _noun mode_ (or _normal mode_).  However, sample definitions and `+$` lusbuc mold specification arms evaluate in what is called _structure mode_.  (You may occasionally see this the older term “spec mode”.)  Structure mode expressions use a similar syntax to regular Hoon expressions but create structure definitions instead.
 
-For instance, in eval mode if you use the irregular form `p=1` this is an irregular form of the [`^=` kettis](/reference/hoon/rune/ket#kettis) rune.  This is one way to define a variable using a [`=+` tislus](/reference/hoon/rune/tis#tislus); these are equivalent statements:
+For instance, in eval mode if you use the irregular form `p=1` this is an irregular form of the [`^=` kettis](/reference/hoon/rune/ket#-kettis) rune.  This is one way to define a variable using a [`=+` tislus](/reference/hoon/rune/tis#-tislus); these are equivalent statements:
 
 ```hoon
 > =+(hello=1 hello)
@@ -355,7 +355,7 @@ For instance, in eval mode if you use the irregular form `p=1` this is an irregu
 1
 ```
 
-(Normally we have preferred [`=/` tisfas](/reference/hoon/rune/tis#tisfas) in the Hoon School docs, but that is just for consistency.)
+(Normally we have preferred [`=/` tisfas](/reference/hoon/rune/tis#-tisfas) in the Hoon School docs, but that is just for consistency.)
 
 In a sample definition, such as in a gate, the statement is evaluated in structure mode; these are equivalent statements:
 

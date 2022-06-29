@@ -28,8 +28,8 @@ terminal, and in others it succeeds but does nothing. It has two primary uses:
   function in `default-agent`, rather than having to manually handle events on
   those arms.
 - A common pattern in an agent is to switch on the input of an arm with
-  [wutlus](/reference/hoon/rune/wut#wutlus) (`?+`) runes or maybe
-  [wutcol](/reference/hoon/rune/wut#wutcol) (`?:`) runes. For any
+  [wutlus](/reference/hoon/rune/wut#-wutlus) (`?+`) runes or maybe
+  [wutcol](/reference/hoon/rune/wut#-wutcol) (`?:`) runes. For any
   unexpected input, you can just pass it to the relevant arm of `default-agent`
   rather than handling it manually.
 
@@ -100,11 +100,11 @@ later.
 An agent core must have exactly ten arms. However, there's a special kind of
 "virtual arm" that can be added without actually increasing the core's arm
 count, since it really just adds code to the other arms in the core. A virtual arm is created with the
-[lustar](/reference/hoon/rune/lus#lustar) (`+*`) rune, and its purpose is
+[lustar](/reference/hoon/rune/lus#-lustar) (`+*`) rune, and its purpose is
 to define _deferred expressions_. It takes a list of pairs of names and Hoon
 expressions. When compiled, the deferred expressions defined in the virtual arm are
 implicitly inserted at the beginning of every other arm of the core, so they all
-have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the [tistar](/reference/hoon/rune/tis#tistar) reference for more information on deferred expressions.
+have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the [tistar](/reference/hoon/rune/tis#-tistar) reference for more information on deferred expressions.
 
 A virtual arm in an agent often looks something like this:
 
@@ -141,9 +141,9 @@ additional cores by composing them into the subject of the agent core itself.
 The contents of these cores will then be available to arms of the agent core.
 
 Usually to compose cores in this way, you'd have to do something like insert
-[tisgar](/reference/hoon/rune/tis#tisgar) (`=>`) runes in between them.
+[tisgar](/reference/hoon/rune/tis#-tisgar) (`=>`) runes in between them.
 However, Clay's build system implicitly composes everything in a file by
-wrapping it in a [tissig](/reference/hoon/rune/tis#tissig) (`=~`)
+wrapping it in a [tissig](/reference/hoon/rune/tis#-tissig) (`=~`)
 expression, which means you can just butt separate cores up against one another
 and they'll all still get composed.
 
@@ -260,7 +260,7 @@ The key takeaways are:
 - `dbug` is a library that lets you inspect the state and `bowl` of an agent
   from the dojo, with the `+dbug` generator.
 - Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with
-  the [lustar](/reference/hoon/rune/lus#lustar) (`+*`) rune.
+  the [lustar](/reference/hoon/rune/lus#-lustar) (`+*`) rune.
 - `this` is a conventional deferred expression name for the agent core itself.
 - `def` is a conventional deferred expression name for accessing arms in the `default-agent`
   library.

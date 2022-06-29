@@ -254,8 +254,8 @@ The `++equ:rs` arm checks for complete equality of two values.  The downside of 
 This program shows several interesting aspects, which we've covered before but highlight here:
 
 - Meters form the standard unit of length.
-- [`~|` sigbar](/reference/hoon/rune/sig#sigbar) produces an error message in case of a bad input.
-- [`+$` lusbuc](/reference/hoon/rune/lus#lusbuc) is a type constructor arm, here for a type union over units of length.
+- [`~|` sigbar](/reference/hoon/rune/sig#-sigbar) produces an error message in case of a bad input.
+- [`+$` lusbuc](/reference/hoon/rune/lus#-lusbuc) is a type constructor arm, here for a type union over units of length.
 
 #### Exercise:  Measurement Converter
 

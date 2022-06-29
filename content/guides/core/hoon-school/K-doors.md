@@ -154,7 +154,7 @@ As before with `++double`, Hoon can't find an `a` to modify in a gate that doesn
 
 ### Slamming a Gate
 
-If you check the docs on our now-familiar [`%-` cenhep](/reference/hoon/rune/cen#cenhep), you'll find that it is actually sugar syntax for another rune:
+If you check the docs on our now-familiar [`%-` cenhep](/reference/hoon/rune/cen#-cenhep), you'll find that it is actually sugar syntax for another rune:
 
 > This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a function. `a` is the gate, and `b` is the desired sample value (i.e., input value) for the gate.
 >
@@ -162,9 +162,9 @@ If you check the docs on our now-familiar [`%-` cenhep](/reference/hoon/rune/cen
 > %~($ a b)
 > ```
 
-So all gate calls actually pass back through [`%~` censig](/reference/hoon/rune/cen#censig).  What's the difference?
+So all gate calls actually pass back through [`%~` censig](/reference/hoon/rune/cen#-censig).  What's the difference?
 
-The [`%~` censig](/reference/hoon/rune/cen#censig) rune accepts three children, a wing which resolves to an arm in a _door_; the aforesaid door; and a `sample` for the door.
+The [`%~` censig](/reference/hoon/rune/cen#-censig) rune accepts three children, a wing which resolves to an arm in a _door_; the aforesaid door; and a `sample` for the door.
 
 Basically, whenever you use `%-` cenhep, it actually looks up a wing in a door using `%~` censig, which is a more general type of core than a gate.  Whatever that wing resolves to is then provided a `sample`.  The resulting Hoon expression is evaluated and the value is returned.
 
@@ -227,7 +227,7 @@ If we built this as a door instead, we could push the parameters out to a differ
 
 This will be used in two steps:  a gate-building step then a gate usage step.
 
-We produce a gate from a door's arm using the [`%~` censig](/reference/hoon/rune/cen#censig) rune, almost always used in its irregular form, `~()`.  Here we prime the door with `[5 4 3]`, which yields a gate:
+We produce a gate from a door's arm using the [`%~` censig](/reference/hoon/rune/cen#-censig) rune, almost always used in its irregular form, `~()`.  Here we prime the door with `[5 4 3]`, which yields a gate:
 
 ```hoon
 ~(quad poly [5 4 3])
@@ -807,7 +807,7 @@ If the two `tape`s are of the same length, we continue on to create a trap. `|-`
 
 `?: |(?=(~ key-position) ?=(~ value-result))` checks if either `tape` is empty. If this is true, the `map-maker` arm is finished and can return `chart`, the `map` that we have been creating.
 
-If the above test finds that the `tape`s are not empty, we trigger a recursion that constructs our `map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`. This code recursively adds an entry in our `map` where the head of the `tape` `a` maps to the value of the head of `tape` `b` with `~(put by chart)`, our calling of the `put` arm of the `by` map-engine core (note that `~(<wing> <door> <sample>`) is a shorthand for `%~ <wing> <door> <sample>` (see the [Calls % ('cen')](/reference/hoon/rune/cen#censig) documentation for more information). The recursion also "consumes" those heads with every iteration by changing `a` and `b` to their tails using `a t.a, b t.b`.
+If the above test finds that the `tape`s are not empty, we trigger a recursion that constructs our `map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`. This code recursively adds an entry in our `map` where the head of the `tape` `a` maps to the value of the head of `tape` `b` with `~(put by chart)`, our calling of the `put` arm of the `by` map-engine core (note that `~(<wing> <door> <sample>`) is a shorthand for `%~ <wing> <door> <sample>` (see the [Calls % ('cen')](/reference/hoon/rune/cen#-censig) documentation for more information). The recursion also "consumes" those heads with every iteration by changing `a` and `b` to their tails using `a t.a, b t.b`.
 
 We have three related arms to look at next, `++decoder`, `++encoder`, and `++space-adder`. `++space-adder` is required for the other two, so we'll look at it first.
 
@@ -904,7 +904,7 @@ Now, to decode, we can put either of our ciphers in with the appropriate key and
 
 ##  A Bit More on Cores
 
-The [`|^` barket](/reference/hoon/rune/bar#barket) rune is an example of what we can call a _convenience rune_, similar to the idea of sugar syntax (irregular syntax to make writing certain things out in a more expressive manner).  `|^` barket produces a core with _at least_ a `$` buc arm and computes it immediately, called a _cork_.  (So a cork is like a trap in the regard of computing immediately, but it has more arms than just `$` buc.)
+The [`|^` barket](/reference/hoon/rune/bar#-barket) rune is an example of what we can call a _convenience rune_, similar to the idea of sugar syntax (irregular syntax to make writing certain things out in a more expressive manner).  `|^` barket produces a core with _at least_ a `$` buc arm and computes it immediately, called a _cork_.  (So a cork is like a trap in the regard of computing immediately, but it has more arms than just `$` buc.)
 
 This code calculates the volume of a cylinder, _A=πr²h_.
 
@@ -921,7 +921,7 @@ This code calculates the volume of a cylinder, _A=πr²h_.
 
 Since all of the values either have to be pinned ahead of time or made available as arms, a `|^` barket would probably be used inside of a gate.  Of course, since it is a core with a `$` buc arm, one could also use it recursively to calculate values like the factorial.
 
-If you read the docs, you'll find that a [`|-` barhep](/reference/hoon/rune/bar#barhep) rune “produces a trap (a core with one arm `$`) and evaluates it.”  So a trap actually evaluates to a `|%` barcen core with an arm `$`:
+If you read the docs, you'll find that a [`|-` barhep](/reference/hoon/rune/bar#-barhep) rune “produces a trap (a core with one arm `$`) and evaluates it.”  So a trap actually evaluates to a `|%` barcen core with an arm `$`:
 
 ```hoon
 :: count to five
@@ -946,7 +946,7 @@ actually translates to
 --
 ```
 
-You can also create a trap for later use with the [`|.` bardot](/reference/hoon/rune/bar#bardot) rune.  It's quite similar, but without the `=<($...` part then it doesn't get evaluated immediately.
+You can also create a trap for later use with the [`|.` bardot](/reference/hoon/rune/bar#-bardot) rune.  It's quite similar, but without the `=<($...` part then it doesn't get evaluated immediately.
 
 ```hoon
 > =forty-two |.(42)
@@ -958,4 +958,4 @@ You can also create a trap for later use with the [`|.` bardot](/reference/hoon/
 
 What is a gate?  It is a door with only one arm `$` buc, and whenever you invoke it then that default arm's expression is referred to and evaluated.
 
-A _gate_ and a _trap_ are actually very similar:  a [gate](/reference/hoon/rune/bar#bartis) simply has a sample (and can actively change when evaluated or via a `%=` cenhep), whereas a trap does not (and can _only_ be passively changed via something like `%=` cenhep).
+A _gate_ and a _trap_ are actually very similar:  a [gate](/reference/hoon/rune/bar#-bartis) simply has a sample (and can actively change when evaluated or via a `%=` cenhep), whereas a trap does not (and can _only_ be passively changed via something like `%=` cenhep).

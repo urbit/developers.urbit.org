@@ -3,8 +3,8 @@ title = "Casts ^ ('ket')"
 weight = 11
 +++
 
-[`^-` ("kethep")](#kethep), [`^+` ("ketlus")](#ketlus), and [`^=`
-("kettis")](#kettis) let us adjust types without violating type constraints.
+[`^-` ("kethep")](#-kethep), [`^+` ("ketlus")](#-ketlus), and [`^=`
+("kettis")](#-kettis) let us adjust types without violating type constraints.
 
 The `nest` algorithm which tests subtyping is conservative; it never allows
 invalid nests, it sometimes rejects valid nests.

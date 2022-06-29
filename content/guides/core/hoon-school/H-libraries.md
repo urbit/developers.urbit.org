@@ -63,14 +63,14 @@ For simplicity, everything we do will take place on the `%base` desk for now.  W
 
 Another common design pattern besides creating a library is to sequester core-specific behavior in a helper core, which sits next to the interface operations.  Two runes are used to compose expressions together so that the subject has everything it needs to carry out the desired calculations.
 
-- [`=>` tisgar](/reference/hoon/rune/tis#tisgar) composes two expressions so that the first is included in the second's subject (and thus can see it).
-- [`=<` tisgal](/reference/hoon/rune/tis#tisgal) inverts the order of composition, allowing heavier helper cores to be composed after the core's logic but still be available for use.
+- [`=>` tisgar](/reference/hoon/rune/tis#-tisgar) composes two expressions so that the first is included in the second's subject (and thus can see it).
+- [`=<` tisgal](/reference/hoon/rune/tis#-tisgal) inverts the order of composition, allowing heavier helper cores to be composed after the core's logic but still be available for use.
 
 Watch for these being used in generators and libraries over the next few modules.
 
 #### Exercise:  A Playing Card Library
 
-In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](./K-doors.md) to produce [randomness](./O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](/reference/hoon/rune/wut#wutdot), which inverts the order of the true/false arms, as well as other new constructions.
+In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](./K-doors.md) to produce [randomness](./O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](/reference/hoon/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
 
 ```hoon
 |%
@@ -149,7 +149,7 @@ One way to get a feel for how a library works is to skim the `++` luslus arm-nam
   ==
 ```
 
-`++num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `suit`.  The [`?+` wutlus](/reference/hoon/rune/wut#wutlus) rune creates a structure to switch against a value with a default in case there are no matches.  (Here the default is to crash with [`!!` zapzap](/reference/hoon/rune/zap#zapzap).)  We then have options 1–4 which each resulting in a different suit.
+`++num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `suit`.  The [`?+` wutlus](/reference/hoon/rune/wut#-wutlus) rune creates a structure to switch against a value with a default in case there are no matches.  (Here the default is to crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap).)  We then have options 1–4 which each resulting in a different suit.
 
 ```hoon
 ++  make-deck
@@ -171,7 +171,7 @@ One way to get a feel for how a library works is to skim the `++` luslus arm-nam
 
 `++make-deck` assembles a deck of 52 cards by cycling through every possible suit and number and combining them.  It uses `++num-to-suit` and a couple of loops to go through the counters.  It has an interesting `^$` loop skip where when `j` is greater than 14 it jumps instead to the outer loop, incrementing `i`.
 
-[`?.` wutdot](/reference/hoon/rune/wut#wutdot) may be an unfamiliar rune; it is simply the inverted version of `?:` wutcol, so the first branch is actually the if-false branch and the second is the if-true branch.  This is done to keep the “heaviest” branch at the bottom, which makes for more idiomatic and readable Hoon code.
+[`?.` wutdot](/reference/hoon/rune/wut#-wutdot) may be an unfamiliar rune; it is simply the inverted version of `?:` wutcol, so the first branch is actually the if-false branch and the second is the if-true branch.  This is done to keep the “heaviest” branch at the bottom, which makes for more idiomatic and readable Hoon code.
 
 ```hoon
 ++  draw
@@ -204,13 +204,13 @@ One way to get a feel for how a library works is to skim the `++` luslus arm-nam
 
 Finally we come to `++shuffle-deck`.  This gate takes two arguments:  a `deck`, and a `@` as a bit of `entropy` to seed the `og` random-number core.  It will produce a `deck`.
 
-We add a bunted `deck`, then encounter a very interesting statement that you haven't run into yet.  This is the irregular form of [`%~` censig](/reference/hoon/rune/cen#censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `++rads:random`.
+We add a bunted `deck`, then encounter a very interesting statement that you haven't run into yet.  This is the irregular form of [`%~` censig](/reference/hoon/rune/cen#-censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `++rads:random`.
 
 With `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with [`++lent`](/reference/hoon/stdlib/2b#lent).
 
-`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a cell of `shuffled` and the one card left in `unshuffled`. We use the [`:_` colcab](/reference/hoon/rune/col#colcab) rune here, so that the “heavier” expression is at the bottom.
+`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a cell of `shuffled` and the one card left in `unshuffled`. We use the [`:_` colcab](/reference/hoon/rune/col#-colcab) rune here, so that the “heavier” expression is at the bottom.
 
-If the above conditional evaluates to `%.n` false, we need to do a little work. [`=^` tisket](/reference/hoon/rune/tis#tisket) is a rune that pins the head of a pair and changes a leg in the subject with the tail.  It's useful for interacting with the `og` core arms, as many of them produce a pair of a random numbers and the next state of the core.  We're going to put the random number in the subject with the face `index` and change `random` to be the next core.
+If the above conditional evaluates to `%.n` false, we need to do a little work. [`=^` tisket](/reference/hoon/rune/tis#-tisket) is a rune that pins the head of a pair and changes a leg in the subject with the tail.  It's useful for interacting with the `og` core arms, as many of them produce a pair of a random numbers and the next state of the core.  We're going to put the random number in the subject with the face `index` and change `random` to be the next core.
 
 With that completed, we use `%=` centis to call `$` buc to recurse back up to `|-` barhep with a few changes:
 

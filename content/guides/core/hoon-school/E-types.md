@@ -337,7 +337,7 @@ We commonly need to do one of two things with a mold:
 
 We often use bunts to clam; for example ``@ud` implicitly uses the `@ud` default value (`0`) as the type specimen which the computation must match.
 
-To _actually_ get the bunt value, use the [`^*` kettar](/reference/hoon/rune/ket#kettar) rune, almost always used in its irregular form `*` tar:
+To _actually_ get the bunt value, use the [`^*` kettar](/reference/hoon/rune/ket#-kettar) rune, almost always used in its irregular form `*` tar:
 
 ```hoon
 > ^*  @ud
@@ -353,7 +353,7 @@ To _actually_ get the bunt value, use the [`^*` kettar](/reference/hoon/rune/ket
 [0 0x0 0b0]
 ```
 
-One more way to validate against type is to use an example instead of the extracted mold.  This uses the [`^+` ketlus](/reference/hoon/rune/ket#ketlus) rune similarly to how we used `^-` ketlus previously:
+One more way to validate against type is to use an example instead of the extracted mold.  This uses the [`^+` ketlus](/reference/hoon/rune/ket#-ketlus) rune similarly to how we used `^-` ketlus previously:
 
 ```hoon
 ^+(1.000 100)
@@ -392,7 +392,7 @@ Most of the time, we will define such complex types using specific runes and “
 
 ### Identifying Molds
 
-Besides `?` (which is a Dojo-specific tool), the programmatic way to figure out which mold the Hoon compiler thinks something is to use the [`!>` zapgar](/reference/hoon/rune/zap#zapgar) rune.
+Besides `?` (which is a Dojo-specific tool), the programmatic way to figure out which mold the Hoon compiler thinks something is to use the [`!>` zapgar](/reference/hoon/rune/zap#-zapgar) rune.
 
 ```
 > !>(0xace2.bead)
@@ -408,7 +408,7 @@ For reasons which will be elaborated in Trees, this is often employed as the so-
 
 ### Type Unions
 
-[`$?` bucwut](/reference/hoon/rune/buc#bucwut) forms a type union.
+[`$?` bucwut](/reference/hoon/rune/buc#-bucwut) forms a type union.
 
 For instance, if you wanted a gate to return one of an unsigned aura type, but no other type, you could define a type union thus:
 

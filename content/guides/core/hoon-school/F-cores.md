@@ -22,7 +22,7 @@ Computers were built and designed to carry out tasks which were too dainty and t
 
 In programming, we call this behavior a “loop”.  A loop describes the situation in which we set up some condition, and repeat a process over and over until something we do meets that condition.  _Most_ of the time, this means counting once for each item in a collection, like a list.
 
-Hoon effects the concept of a loop using recursion, return to a particular point in an expression (presumably with some different values).  One way to do this is using the [`|-` barhep](/reference/hoon/rune/bar#barhep) rune, which creates a structure called a _trap_.  (Think of the “trap” in the bottom of your sink.)  It means a point to which you can return again, perhaps with some key values (like a counter) changed.  Then you can repeat the calculation inside the trap again.  This continues until some single value, some noun, results, thereby handing a value back out of the expression.  (Remember that every Hoon expression results in a value.)
+Hoon effects the concept of a loop using recursion, return to a particular point in an expression (presumably with some different values).  One way to do this is using the [`|-` barhep](/reference/hoon/rune/bar#-barhep) rune, which creates a structure called a _trap_.  (Think of the “trap” in the bottom of your sink.)  It means a point to which you can return again, perhaps with some key values (like a counter) changed.  Then you can repeat the calculation inside the trap again.  This continues until some single value, some noun, results, thereby handing a value back out of the expression.  (Remember that every Hoon expression results in a value.)
 
 This program adds 1+2+3+4+5 and returns the sum:
 
@@ -120,9 +120,9 @@ You can do even better using _interpolation_:
     ==
     ```
 
-    - We are using the `=` irregular syntax for the [`.=` dottis](/reference/hoon/rune/dot#dottis) rune, which tests for the equality of two expressions.
+    - We are using the `=` irregular syntax for the [`.=` dottis](/reference/hoon/rune/dot#-dottis) rune, which tests for the equality of two expressions.
 
-    - We are using the `+` irregular syntax for the [`.+` dotlus](/reference/hoon/rune/dot#dotlus) rune, which increments a value (adds one).
+    - We are using the `+` irregular syntax for the [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) rune, which increments a value (adds one).
 
     ```hoon
     > +factorial 5
@@ -176,7 +176,7 @@ As we write more complicated programs, it is helpful to learn to read the runes 
 
 Recall that the `::` digraph tells the compiler to ignore the rest of the text on the line.  Such text is referred to as a "comment" because, instead of performing a computation, it exists to explain things to human readers of the source code.  Here, we have also explicitly marked the expansion of the irregular forms.
 
-We will revert to the irregular form more and more.  If you would like to see exactly how an expression is structured, you can use the [`!,` zapcom](/reference/hoon/rune/zap#zapcom) rune.  `!,` zapcom produces an annotated _abstract syntax tree_ (AST) which labels every value and expands any irregular syntax into the regular runic form.
+We will revert to the irregular form more and more.  If you would like to see exactly how an expression is structured, you can use the [`!,` zapcom](/reference/hoon/rune/zap#-zapcom) rune.  `!,` zapcom produces an annotated _abstract syntax tree_ (AST) which labels every value and expands any irregular syntax into the regular runic form.
 
 ```hoon
 > !,  *hoon  (add 5 6)
@@ -298,7 +298,7 @@ Every expression of Hoon is evaluated relative to a subject.  An [_arm_](/refere
 
 #### Arms for Gates
 
-Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) using the [`++` luslus](/reference/hoon/rune/lus#luslus) digraph.  (`++` isn't formally a rune because it doesn't actually change the structure of a Hoon expression, it simply marks a name for an expression or value.  The `--` hephep limiter digraph is used because `|%` barcen can have any number of arms attached.  Like `++`, it is not formally a rune.)
+Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) using the [`++` luslus](/reference/hoon/rune/lus#-luslus) digraph.  (`++` isn't formally a rune because it doesn't actually change the structure of a Hoon expression, it simply marks a name for an expression or value.  The `--` hephep limiter digraph is used because `|%` barcen can have any number of arms attached.  Like `++`, it is not formally a rune.)
 
 ```hoon
 |%
@@ -331,7 +331,7 @@ Notice here that we read the arm resolution from right-to-left.  This isn't the 
 
 #### Arms for Types
 
-We can define custom types for a core using [`+$` lusbuc](/reference/hoon/rune/lus#lusbuc) digraphs.  We won't do much with these yet but they will come in handy for custom types later on.
+We can define custom types for a core using [`+$` lusbuc](/reference/hoon/rune/lus#-lusbuc) digraphs.  We won't do much with these yet but they will come in handy for custom types later on.
 
 This core defines a set of types intended to work with playing cards:
 
@@ -469,7 +469,7 @@ n
 ==
 ```
 
-Even more compactly, `(add counter 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/reference/hoon/rune/dot#dotlus), for the equivalent version:
+Even more compactly, `(add counter 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/reference/hoon/rune/dot#-dotlus), for the equivalent version:
 
 ```hoon
 |=  n=@ud

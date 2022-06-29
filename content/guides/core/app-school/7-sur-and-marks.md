@@ -150,7 +150,7 @@ manner:
 ```
 
 Let's break this down a bit. Firstly, our `on-poke` arm includes a
-[barket](/reference/hoon/rune/bar#barket) (`|^`) rune. Barket creates a
+[barket](/reference/hoon/rune/bar#-barket) (`|^`) rune. Barket creates a
 core with a `$` arm that's computed immediately. We extract the `vase` to the
 `action:todo` type and immediately pass it to the `handle-poke` arm of the core
 created with the barket. This `handle-poke` arm tests what kind of `action` it's
@@ -168,7 +168,7 @@ expression:
 [cards this]
 ```
 
-The [tisket](/reference/hoon/rune/tis#tisket) (`=^`) expression takes two
+The [tisket](/reference/hoon/rune/tis#-tisket) (`=^`) expression takes two
 arguments: A new named noun to pin to the subject (`cards` in this case), and an
 existing wing of the subject to modify (`state` in this case). Since
 `handle-poke` produces `(quip card _state)`, we're saving the `card`s it
@@ -319,8 +319,8 @@ specified in the `src` field of the `bowl` can be trusted to be correct, which
 makes checking permissions very simple.
 
 You're free to use whatever logic you want for this, but the most common way is
-to use [wutgar](/reference/hoon/rune/wut#wutgar) (`?>`) and
-[wutgal](/reference/hoon/rune/wut#wutgal) (`?<`) runes, which are
+to use [wutgar](/reference/hoon/rune/wut#-wutgar) (`?>`) and
+[wutgal](/reference/hoon/rune/wut#-wutgal) (`?<`) runes, which are
 respectively True and False assertions that crash if they don't evaluate to the
 expected truth value. To only allow messages from the local ship, you can just
 do the following in the relevant agent arm:
@@ -401,7 +401,7 @@ Permissions:
 ## Exercises
 
 - Have a quick look at the [tisket
-  documentation](/reference/hoon/rune/tis#tisket).
+  documentation](/reference/hoon/rune/tis#-tisket).
 - Try writing a mark file for the `update:todo` type, in a similar fashion to
   the `action:todo` one in the [mark file section](#mark-files). You can compare
   yours to the one we'll use in the next lesson.

@@ -262,7 +262,7 @@ and thus are also called "virtual arms", which can be important for things like
 Gall agent cores that require a fixed number of arms.
 
 Under the hood, `+*` gets compiled as
-[`=*`'s](/reference/hoon/rune/tis#tistar) (see here for more discussion on
+[`=*`'s](/reference/hoon/rune/tis#-tistar) (see here for more discussion on
 deferred expressions). `+* foo bar` rewrites each `++` arm beneath it in the
 core to include `=* foo bar`. For example, the interpreter sees the Nock
 compiled from this Hoon expression

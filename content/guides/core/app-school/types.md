@@ -39,7 +39,7 @@ of these next.
 
 ### Create a `vase`
 
-The [zapgar](/reference/hoon/rune/zap#zapgar) rune (`!>`)
+The [zapgar](/reference/hoon/rune/zap#-zapgar) rune (`!>`)
 takes a single argument of any noun, and wraps it in a vase. For example, in the
 dojo:
 
@@ -62,7 +62,7 @@ constructing a `card` like a poke or a `%fact` `gift` to be sent off.
 
 ### Extract data from `vase`
 
-The [zapgal](/reference/hoon/rune/zap#zapgal) rune (`!<`)
+The [zapgal](/reference/hoon/rune/zap#-zapgal) rune (`!<`)
 takes two arguments: A mold specifying the type to try and extract the data as,
 and the vase to be extracted.
 

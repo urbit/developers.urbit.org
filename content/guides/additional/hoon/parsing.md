@@ -399,7 +399,7 @@ it returns the following letter `b` as the result.
 
 Building complex parsers from simpler parsers is accomplished in Hoon with the
 use of two tools: the monadic applicator rune
-[`;~`](/reference/hoon/rune/mic/#micsig) and [parsing
+[`;~`](/reference/hoon/rune/mic/#-micsig) and [parsing
 combinators](/reference/hoon/stdlib/4e). First we introduce a few
 combinators, then we examine more closely how `;~` is used to chain them together.
 
@@ -412,7 +412,7 @@ The syntax to combine `rule`s is
 The `rule`s are composed together using the combinator as an
 intermediate function, which takes the product of a `rule` (an `edge`) and a `rule` and turns
 it into a sample (a `nail`) for the next `rule` to handle. We elaborate on this
-behavior [below](#micsig).
+behavior [below](#-micsig).
 
 ### [`+plug`](/reference/hoon/stdlib/4e/#plug)
 
@@ -451,7 +451,7 @@ syntax error
 ['a' 'b' 'a']
 ```
 
-### [`;~`](/reference/hoon/rune/mic/#micsig) {% #micsig %}
+### [`;~`](/reference/hoon/rune/mic/#-micsig) {% #-micsig %}
 
 Understanding the rune `;~` is essential to building parsers with Hoon. Let's
 take this opportunity to think about it carefully.

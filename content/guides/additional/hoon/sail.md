@@ -334,7 +334,7 @@ And then your style tag might look like:
 ```
 
 A cord is used rather than a tape so you don't need to escape braces. The
-[ketsig](/reference/hoon/rune/ket#ketsig) (`^~`) rune means `++trip` will
+[ketsig](/reference/hoon/rune/ket#-ketsig) (`^~`) rune means `++trip` will
 be run at compile time rather than call time.
 
 ## Types and marks
@@ -440,7 +440,7 @@ runes:
 
 ### `;+` Miclus
 
-The [miclus rune](/reference/hoon/rune/mic#miclus) makes a `$marl` from a
+The [miclus rune](/reference/hoon/rune/mic#-miclus) makes a `$marl` from a
 complex hoon expression that produces a single `$manx`. Its main use is nesting
 tall-form hoon logic in another Sail element. For example:
 
@@ -467,7 +467,7 @@ Produces one of these depending on the value of `number`:
 
 ### `;*` Mictar
 
-The [mictar rune](/reference/hoon/rune/mic#mictar) makes a `$marl` (a list
+The [mictar rune](/reference/hoon/rune/mic#-mictar) makes a `$marl` (a list
 of XML nodes) from a complex hoon expression. This rune lets you add many
 elements inside another Sail element. For example:
 
@@ -501,7 +501,7 @@ elements inside another Sail element. For example:
 
 ### `;=` Mictis
 
-The [mictis rune](/reference/hoon/rune/mic#mictis) makes a `$marl` (a list
+The [mictis rune](/reference/hoon/rune/mic#-mictis) makes a `$marl` (a list
 of XML nodes) from a series of `$manx`es. This is mostly useful if you want to
 make the list outside of an element and then be able to insert it afterwards.
 For example:
@@ -534,7 +534,7 @@ For example:
 
 ### `;/` Micfas
 
-The [micfas rune](/reference/hoon/rune/mic#micfas) turns an ordinary tape
+The [micfas rune](/reference/hoon/rune/mic#-micfas) turns an ordinary tape
 into a `$manx`. For example:
 
 ```

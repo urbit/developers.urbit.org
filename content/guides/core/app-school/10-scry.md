@@ -6,7 +6,7 @@ weight = 50
 In this lesson we'll look at scrying agents, as well as how agents handle such
 scries. If you're not at all familiar with performing scries in general, have a
 read through the [Scry Guide](/reference/arvo/concepts/scry), as well as the [dotket
-rune documentation](/reference/hoon/rune/dot#dotket).
+rune documentation](/reference/hoon/rune/dot#-dotket).
 
 ## Scrying
 
@@ -19,7 +19,7 @@ Most of the time, scry requests are handled by Arvo, which routes the request to
 the appropriate vane. When you scry a Gall agent you actually scry Gall itself.
 Gall interprets the request, runs it on the specified agent, and then returns
 the result. Scries are performed with the
-[dotket](/reference/hoon/rune/dot#dotket) (`.^`) rune. Here's a summary of
+[dotket](/reference/hoon/rune/dot#-dotket) (`.^`) rune. Here's a summary of
 their format:
 
 ![scry summary diagram](https://media.urbit.orgreference/arvo/scry-diagram-v2.svg)
@@ -353,7 +353,7 @@ crash!
 
 - Have a read through the [Scry Guide](/reference/arvo/concepts/scry).
 - Have a read through the [dotket rune
-  documentation](/reference/hoon/rune/dot#dotket).
+  documentation](/reference/hoon/rune/dot#-dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
 - Try adding another scry endpoint to the `peeker.hoon` agent, which uses a
   [`wyt:by`](/reference/hoon/stdlib/2i#wytby) map function to produce the

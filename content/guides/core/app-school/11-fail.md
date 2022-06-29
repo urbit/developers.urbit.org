@@ -89,7 +89,7 @@ Recall that the build system will implicitly compose any discrete expressions.
 If we simply added the helper core below the agent core, the agent core would be
 composed into the subject of the helper core, which is the opposite of what we
 want. Instead, we must inversely compose the two cores with a
-[tisgal](/reference/hoon/rune/tis#tisgal) (`=<`) rune. We add the tisgal
+[tisgal](/reference/hoon/rune/tis#-tisgal) (`=<`) rune. We add the tisgal
 rune directly above the agent core like:
 
 ```hoon
@@ -124,7 +124,7 @@ hc  ~(. +>  bowl)
 ```
 
 To get to the helper core we composed from within the door, we use a
-[censig](/reference/hoon/rune/cen#censig) expression to call `+>` of the
+[censig](/reference/hoon/rune/cen#-censig) expression to call `+>` of the
 subject (`.`) with the `bowl` as its sample. After that, any agent arms can make
 use of helper core functions by calling them like `(some-function:hc ....)`.
 

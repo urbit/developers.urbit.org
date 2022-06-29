@@ -146,7 +146,7 @@ In `/lib/test.hoon` we find a core with a few gates:  `++expect`, `++expect-eq`,
   result
 ```
 
-Test code deals in `vase`s, which are produced by [`!>` zapgar](/reference/hoon/rune/zap#zapgar) as a cell of the type of a value and the value.
+Test code deals in `vase`s, which are produced by [`!>` zapgar](/reference/hoon/rune/zap#-zapgar) as a cell of the type of a value and the value.
 
 `++expect-fail` by contrast take a `|.` bardot trap (a trap that has the `$` buc arm but hasn't been called yet) and verifies that the code within fails.
 
@@ -176,8 +176,8 @@ Formal error messages in Urbit are built of tanks.
 
 As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of the evaluations and expressions that got the program to its notional point of computation.  When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
-- The [`~_` sigcab](/reference/hoon/rune/sig/#sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `tank`.  (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
-- The [`~|` sigbar](/reference/hoon/rune/sig/#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` cord.
+- The [`~_` sigcab](/reference/hoon/rune/sig/#-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `tank`.  (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
+- The [`~|` sigbar](/reference/hoon/rune/sig/#-sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` cord.
 
     What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
@@ -187,7 +187,7 @@ As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of t
       !!
     ```
 
-- The [`!:` zapcol`](/reference/hoon/rune/zap/#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs.  Drop it in on the first Hoon line (after `/` fas imports) of a generator or library while developing.
+- The [`!:` zapcol`](/reference/hoon/rune/zap/#-zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs.  Drop it in on the first Hoon line (after `/` fas imports) of a generator or library while developing.
 
     ```hoon
     > (sub 0 1)

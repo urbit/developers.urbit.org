@@ -262,7 +262,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     - There is a built-in `++lent` function that counts the number of characters in a `tape`.  Build your own `tape`-length character counting function without using `++lent`.
 
-    You may find the [`?~` wutsig](/reference/hoon/rune/wut#wutsig) rune to be helpful.  It tells you whether a value is `~` or not.  (How would you do this with a regular `?:` wutcol?)
+    You may find the [`?~` wutsig](/reference/hoon/rune/wut#-wutsig) rune to be helpful.  It tells you whether a value is `~` or not.  (How would you do this with a regular `?:` wutcol?)
 
 The foregoing are `list` operations.  The following, in contrast, are `tape`-specific operations:
 
