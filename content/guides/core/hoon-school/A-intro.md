@@ -1,11 +1,9 @@
 +++
-title = "Introduction to Hoon"
+title = "1. Introduction to Hoon"
 weight = 10
 nodes = [100, 103]
 objectives = ["Explain what an Urbit ship is.", "Distinguish a fakeship from a liveship.", "Pronounce ASCII characters per standard Hoon developer practice."]
 +++
-
-#   Introduction to Hoon
 
 Hoon School is designed to teach you Hoon without assuming you have an extensive programming background.  You should be able to following most of it even if you have no programming experience at all yet, though of course experience helps.  We strongly encourage you to try out all the examples of each lesson.  Hoon School is meant for the beginner, but it's not meant to be skimmed.  Each lesson consists of:
 

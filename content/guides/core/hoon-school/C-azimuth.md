@@ -1,11 +1,9 @@
 +++
-title = "Azimuth (Urbit ID)"
+title = "3. Azimuth (Urbit ID)"
 weight = 10
 nodes = [102, 112]
 objectives = ["Understand the role of the public-key infrastructure in Urbit.", "Describe the high-level architecture of the Urbit ID address space and distinguish types of points.", "Interpret and apply the Azimuth point naming scheme.", "Identify point features such as activity.", "List at least two services/roles provided by a galaxy for the network.", "List at least two services provided by a star for its planets.", "Use Hoon to map the Azimuth address space domains and boundaries.", "Identify points, sponsors, neighbors, etc. from `@p` identifiers and simple operations."]
 +++
-
-#   Azimuth (Urbit ID)
 
 _This module introduces how Urbit ID is structured and provides practice in converting and working with `@p` identity points.  It may be considered optional and skipped if you are speedrunning Hoon School._
 

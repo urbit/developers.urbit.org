@@ -1,11 +1,9 @@
 +++
-title = "Functional Programming"
+title = "17. Functional Programming"
 weight = 10
 nodes = [233, 283, 383]
 objectives = ["Reel, roll, turn a list.", "Curry, cork functions.", "Change arity of a gate.", "Tokenize text simply using `find` and `trim`.", "Identify elements of parsing:  `nail`, `rule`, etc.", "Use `++scan` to parse `tape` into atoms.", "Construct new rules and parse arbitrary text fields."]
 +++
-
-#   Functional Programming
 
 _This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.  It will also cover text parsing._
 

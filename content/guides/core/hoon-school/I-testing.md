@@ -1,11 +1,9 @@
 +++
-title = "Testing Code"
+title = "9. Testing Code"
 weight = 10
 nodes = [170, 190]
 objectives = ["Run existing unit tests.", "Produce a unit test.", "Employ a debugging strategy to identify and correct errors in Hoon code."]
 +++
-
-#   Testing Code
 
 _This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies._
 

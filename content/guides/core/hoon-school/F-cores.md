@@ -1,11 +1,9 @@
 +++
-title = "Cores"
+title = "6. Cores"
 weight = 10
 nodes = [130, 133]
 objectives = ["Employ a trap to produce a reentrant block of code.", "Produce a recursive gate.", "Distinguish head and tail recursion.", "Consider Hoon structures as cores.", "Identify the special role of the `$` buc arm in many cores.", "Order neighboring cores within the subject for addressibility.", "Produce a type arm."]
 +++
-
-#   Cores
 
 _This module will introduce the key Hoon data structure known as the **core**, as well as ramifications._
 

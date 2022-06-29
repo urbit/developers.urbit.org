@@ -1,11 +1,9 @@
 +++
-title = "Subject-Oriented Programming"
+title = "15. Subject-Oriented Programming"
 weight = 10
 nodes = [165, 180]
 objectives = ["Review subject-oriented programming as a design paradigm.", "Discuss stateful v. stateless applications and path dependence.", "Enumerate Hoon's tools for dealing with state:  `=.` tisdot, `=^` tisket, `;<` micgal, `;~` micsig.", "Defer a computation."]
 +++
-
-#   Subject-Oriented Programming
 
 _This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.  This module does not cover core genericity and variance, which will be explained in [a later module](./R-metals.md)._
 

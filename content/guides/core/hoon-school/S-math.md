@@ -1,11 +1,9 @@
 +++
-title = "Mathematics"
+title = "19. Mathematics"
 weight = 10
 nodes = [234, 236, 284]
 objectives = ["Review floating-point mathematics including IEEE-754.", "Examine `@r` atomic representation of floating-point values.", "Manipulate and convert floating-point values using the `@r` operations.", "Examine `@s` atomic representation of signed integer values.", "Use `+si` to manipulate `@s` signed integer values.", "Define entropy and its source.", "Utilize `eny` in a random number generator (`og`).", "Distinguish insecure hashing (`mug`) from secure hashing (`shax` and friends)."]
 +++
-
-#   Mathematics
 
 _This module introduces how non-`@ud` mathematics are instrumented in Hoon.  It may be considered optional and skipped if you are speedrunning Hoon School._
 

@@ -1,11 +1,9 @@
 +++
-title = "Conditional Logic"
+title = "14. Conditional Logic"
 weight = 10
 nodes = [184]
 objectives = ["Produce loobean expressions.", "Reorder conditional arms.", "Switch against a union with or without default."]
 +++
-
-#   Conditional Logic
 
 _Although you've been using various of the `?` wut runes for a while now, let's wrap up some loose ends.  This module will cover the nature of loobean logic and the rest of the `?` wut runes._
 
