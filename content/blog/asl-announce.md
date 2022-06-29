@@ -1,12 +1,14 @@
 +++
 title = "App School Live"
-date = "2022-07-01"
+date = "2022-06-29"
 description = "We’re running a cohort class of App School to teach you how to terraform Mars."
 [extra]
 author = "N E Davis"
 ship = "~lagrev-nocfep"
-image = "TODO"
+image = "https://media.urbit.org/site/posts/essays/blog-asl-header-iron-hot.png"
 +++
+
+![](https://media.urbit.org/site/posts/essays/blog-asl-header-iron-hot.png)
 
 What should you do after Hoon School?  Well, presumably you've become interested
 in building apps on Urbit, and certainly knowing the language is a prerequisite.

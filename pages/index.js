@@ -106,12 +106,12 @@ export default function Home({ search, whatsNew }) {
                 className="basis-1/2"
                 href="/guides/quickstart/chat-guide"
               />
-              <Card
+              {/* <Card
                 icon={<MintFiller />}
                 title="Lorem Ipsum Dolorem"
                 text="Roll your own encrypted chat application in minutes"
                 className="basis-1/2"
-              />
+              /> */}
             </div>
           </Section>
           <Section className="flex flex-col space-y-12">
