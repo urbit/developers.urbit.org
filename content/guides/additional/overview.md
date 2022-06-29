@@ -9,43 +9,45 @@ application development topics like thread management, or take a look at how
 the runtime implements jet-accelerated code.
 
 Other material, like documentation for the Graph Store collection of social
-media primitives, are hosted directly in the `%docs` app on Urbit.
-
-## [Graph Store](/docs/userspace/graph-store)
-
-Graph Store is the graph database utilized for Landscape applications and social
-media primitives and common factors.  The docs for Graph Store have been moved
-to the Urbit-native `%docs` app.
+media primitives, are hosted directly in the `%docs` app on Urbit.  To access such internal documentation, install the app from ~pocwet in the Grid interface or at the Dojo command line:
 
 ```hoon
 |install ~pocwet %docs
 ```
 
-## [Threads](reference/arvo/threads/)
+## [Aqua](/guides/additional/aqua)
 
-Resources on threads - monadic functions useful for complex IO.
+Aqua serves as a testbed for ships.
+
+## [CLI apps](/guides/additional/cli-tutorial)
+
+Text user interfaces are built using the `%shoe` and `%sole` libraries.
 
 ## [Distribution](/guides/additional/dist/dist)
 
 Learn how to distribute apps on Urbit.
+
+## [JSON](/guides/additional/json-guide)
+
+JSON parsing and production is a key part of many web-based Urbit apps.
 
 ## [HTTP API](/guides/additional/http-api-guide)
 
 The HTTP API guide explores how an external interface can interact with an agent
 using the `@urbit/http-api` Javascript module.
 
-## [Hoon Topics](/guides/additional/hoon)
+## [Sail](/guides/additional/sail)
 
-- [Aqua](/guides/additional/hoon/aqua) serves as a testbed for ships.
-- [CLI apps](/guides/additional/hoon/cli-tutorial) are be built using the
-  `%shoe` and `%sole` libraries.
-- [JSON parsing and production](/guides/additional/hoon/json-guide) is a key
-  part of many web-based Urbit apps.
-- [Text parsing](/guides/additional/hoon/parsing) allows you to flexibly ingest
-  and validate text.
-- [Sail](/guides/additional/hoon/sail) is an Urbit-native HTML/XML
-  representation used to serve static web-pages entirely from your Urbit ship.
-- [Strings](/guides/additional/hoon/strings) encompass the several ways Hoon
-  uses to represent text.
-- [Unit tests](/guides/additional/hoon/unit-tests) afford the developer
-  confidence in designing code and avoiding certain categories of bugs.
+Sail is an Urbit-native HTML/XML representation used to serve static web-pages entirely from your Urbit ship.
+
+## [Strings](/guides/additional/strings)
+
+Hoon represents text in several ways internally.
+
+## [Text parsing](/guides/additional/parsing)
+
+Text parsing allows you to flexibly ingest and validate text.
+
+## [Unit tests](/guides/additional/unit-tests)
+
+Robust testing affords the developer confidence in designing code and avoiding certain categories of bugs.
