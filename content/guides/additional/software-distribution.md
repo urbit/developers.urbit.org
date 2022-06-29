@@ -1,5 +1,5 @@
 +++
-title = "Guide"
+title = "Software Distribution"
 weight = 2
 +++
 
