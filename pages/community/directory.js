@@ -20,10 +20,20 @@ export default function Directory({ search, directory }) {
       "Our community is comprised of individuals, all of whom happen to be pretty friendly.",
   };
 
-  const tlon = pair(directory.filter((e) => e.org === "Tlon"));
-  const uf = pair(directory.filter((e) => e.org === "Urbit Foundation"));
+  const tlon = pair(
+    directory
+      .filter((e) => e.org === "Tlon")
+      .sort((a, b) => a.name.localeCompare(b.name))
+  );
+  const uf = pair(
+    directory
+      .filter((e) => e.org === "Urbit Foundation")
+      .sort((a, b) => a.name.localeCompare(b.name))
+  );
   const additional = pair(
-    directory.filter((e) => e.org === "Additional Community Members")
+    directory
+      .filter((e) => e.org === "Additional Community Members")
+      .sort((a, b) => a.name.localeCompare(b.name))
   );
 
   return (
