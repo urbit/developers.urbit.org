@@ -5,10 +5,10 @@ description = "We’re running a cohort class of App School to teach you how to 
 [extra]
 author = "N E Davis"
 ship = "~lagrev-nocfep"
-image = "https://media.urbit.org/site/posts/essays/blog-relaunching-header-margaret-bourke-white.png"
+image = "https://media.urbit.org/site/posts/essays/blog-asl-header-iron-hot.png"
 +++
 
-![](https://media.urbit.org/site/posts/essays/blog-relaunching-header-margaret-bourke-white.png)
+![](https://media.urbit.org/site/posts/essays/blog-asl-header-iron-hot.png)
 
 What should you do after Hoon School?  Well, presumably you've become interested
 in building apps on Urbit, and certainly knowing the language is a prerequisite.

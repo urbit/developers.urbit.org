@@ -5,10 +5,10 @@ description = "We’ve revamped the documentation and guides."
 [extra]
 author = "N E Davis"
 ship = "~lagrev-nocfep"
-image = "https://media.urbit.org/site/posts/essays/blog-asl-header-iron-hot.png"
+image = "https://media.urbit.org/site/posts/essays/blog-relaunching-header-margaret-bourke-white.png"
 +++
 
-![](https://media.urbit.org/site/posts/essays/blog-asl-header-iron-hot.png)
+![](https://media.urbit.org/site/posts/essays/blog-relaunching-header-margaret-bourke-white.png)
 
 The Urbit docs have evolved a lot over the years.  Some of this has been due to changes in the audience—for instance, early docs were voiced towards core kernel developers.  Other changes have been made as we've rolled out new features, such as the 2020 Ford Fusion project or the more recent Azimuth L2 implementation.  As the docs have continued to evolve, we've worked hard on putting out quality tutorials and curriculum that make Urbit easier for new developers and old alike to figure out what they need to take their projects forward.  We've also seen a growing fractionation of the Urbit userbase into regular users, power users, and developers, all of whom have slightly different requirements.
 
