@@ -4,7 +4,7 @@ weight = 6
 +++
 
 All cryptographic primitives utilized by Arvo are
-[jetted](/reference/vere/jetting). This is done for performance-related reasons
+[jetted](/reference/runtime/jetting). This is done for performance-related reasons
 in other parts of the system, but for cryptography this is also extremely
 important because it allows us to utilize standard reference implementations for
 the primitives written in C.

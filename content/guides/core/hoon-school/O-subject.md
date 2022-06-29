@@ -50,7 +50,7 @@ In the Dojo, if you use `+1` by itself, you can see the current subject.
 
 `.` does the same thing:  it always refers to the current subject.
 
-If `.` is the subject, then `..arm` is the subject of a given `arm` (the second `.` dot being the wing resolution operator).  You can check the details of the parent core using something like `..add`.  This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](/reference/vere/jetting#edit-the-hoon-source-code), for instance.
+If `.` is the subject, then `..arm` is the subject of a given `arm` (the second `.` dot being the wing resolution operator).  You can check the details of the parent core using something like `..add`.  This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](/reference/runtime/jetting#edit-the-hoon-source-code), for instance.
 
 Another use case for the `..arm` syntax is when there is a core in the subject without a face bound to it; i.e., the core might be nameless.  In that case you can use an arm name in that core to refer to the whole core.
 

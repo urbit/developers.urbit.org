@@ -425,7 +425,7 @@ message.
 
 Urbit's functionality is split between the two binaries `urbit-worker` (sometimes
 called the Serf) and `urbit-king` (sometimes called the King). This division of
-labor is currently not well-documented outside of the [Vere documents](/reference/vere/), but we summarize it here.
+labor is currently not well-documented outside of the [Vere documents](/reference/runtime/), but we summarize it here.
 
 In short, the Serf is the Nock runtime and so keeps track of the current state
 of Arvo as a Nock noun and updates the state by `%poke`ing it with nouns, and

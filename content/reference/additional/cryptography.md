@@ -100,12 +100,12 @@ distributing the public keys of their moons (ultimately via Ames).
 
 `zuse` is part of the standard library. It contains cryptographic functions
 which are utilized by Ames. All cryptographic primitives are
-[jetted](/reference/vere/jetting) in Vere with standard vetted implementations of
+[jetted](/reference/runtime/jetting) in Vere with standard vetted implementations of
 cryptographic libraries.
 
-[Vere](/reference/vere/) is Urbit's Nock runtime system, written in C. All
+[Vere](/reference/runtime/) is Urbit's Nock runtime system, written in C. All
 cryptographic functions implemented in Hoon are hinted to the interpreter,
-causing it to utilize the [jet system](/reference/vere/jetting) to run standard vetted cryptographic
+causing it to utilize the [jet system](/reference/runtime/jetting) to run standard vetted cryptographic
 libraries.
 
 [Azimuth](/reference/azimuth/) is an Ethereum-based public key
@@ -120,4 +120,4 @@ utilized by each of the system components.
 
 - [Ames](/reference/arvo/ames/cryptography)
 - [Zuse](/reference/arvo/reference/cryptography)
-- [Vere](/reference/vere/cryptography)
+- [Vere](/reference/runtime/cryptography)

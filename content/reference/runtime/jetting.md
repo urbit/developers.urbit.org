@@ -1233,7 +1233,7 @@ You have received a bunch of `u3_nouns` or `u3_atoms`, but you presumably want t
 
 A `u3_noun` will want to be further disassembled into atoms.
 
-A `u3_atom` represents a simple number, but the implementation may or may not be simple.  If the value held in the atom is 31 bits or less, it's stored directly in the atom.  If the value is 32 bits the atom holds a pointer into the loom where the actual value is stored. ( see [Nouns](/reference/vere/nouns) )
+A `u3_atom` represents a simple number, but the implementation may or may not be simple.  If the value held in the atom is 31 bits or less, it's stored directly in the atom.  If the value is 32 bits the atom holds a pointer into the loom where the actual value is stored. ( see [Nouns](/reference/runtime/nouns) )
 
 You don't want to get bogged down in the details of this—you just want to get data out of your atoms.
 

@@ -15,7 +15,7 @@ Detailed documentation on Hoon’s nuances{% class="!mt-2" %}
 
 Definition, explanation, example, and implementations of Nock{% class="!mt-2" %}
 
-## [Vere](/reference/vere){% class="!mb-0 !mt-12" %}
+## [Vere](/reference/runtime){% class="!mb-0 !mt-12" %}
 
 Details on Urbit’s runtime, Vere{% class="!mt-2" %}
 

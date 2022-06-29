@@ -51,7 +51,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
 - `hoon.hoon` contains the Hoon compiler and the [Hoon standard
   library](/reference/hoon/stdlib/table-of-contents). The Hoon
   compiler is self-hosted. This is the first file loaded by the Nock virtual
-  machine, [Vere](/reference/vere/runtime), in order for it to learn how to
+  machine, [Vere](/reference/runtime/runtime), in order for it to learn how to
   interpret Hoon. The kelvin version number is the subject of `hoon.hoon`,
   currently at 140. One may see this from dojo by inspecting the subject with
   `.` and noting that `%140` is the final entry of the subject.
