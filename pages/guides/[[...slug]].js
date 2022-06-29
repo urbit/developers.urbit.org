@@ -118,7 +118,7 @@ const childPages = (thisLink, children, level = 0) => (
 
 const pageTree = (thisLink, tree, level = 0) => {
   const router = useRouter();
-  const firstCrumb = "/" + router.asPath.split("/").slice(1, -1).join("/");
+  const firstCrumb = "/" + router.asPath.split("/").slice(1).join("/");
 
   const includesThisPage = firstCrumb.includes(thisLink);
   const isThisPage = router.asPath === thisLink;
@@ -175,9 +175,11 @@ const pageTree = (thisLink, tree, level = 0) => {
 
   return (
     <>
-      <span onClick={() => toggleTree(!isOpen)}>
-        <p className={`${headingItemClasses} cursor-pointer`}>{tree.title}</p>
-      </span>
+      <Link href={thisLink} passHref>
+        <a onClick={() => toggleTree(!isOpen)}>
+          <p className={`${headingItemClasses} cursor-pointer`}>{tree.title}</p>
+        </a>
+      </Link>
       <div className={activeClasses}>
         <ul className={""}>
           {tree.pages.map(({ title, slug }) => {
@@ -192,7 +194,7 @@ const pageTree = (thisLink, tree, level = 0) => {
               <li>
                 <Link href={href} passHref>
                   <a
-                    className={`relative font-semibold inline-block ${selectedClasses} ${pageItemClasses} `}
+                    className={`relative inline-block ${selectedClasses} ${pageItemClasses} `}
                   >
                     {title}
                   </a>
