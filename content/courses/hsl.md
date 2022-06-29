@@ -19,7 +19,7 @@ Until then, feel free to work through the [Hoon School
 docs](/guides/core/hoon-school).
 
 
-##  What will you learn?
+###  What will you learn?
 
 - `basics-1`.  Introduction to Computing (optional)
 - `basics0`.  Setting Up Urbit (optional)

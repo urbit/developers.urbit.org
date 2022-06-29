@@ -25,7 +25,7 @@ Until then, feel free to work through the [App School
 docs](/guides/core/app-school).
 
 
-##  What will you learn?
+###  What will you learn?
 
 - `lesson0`.  A Simple Agent
 - `lesson1`.  Arvo Services
