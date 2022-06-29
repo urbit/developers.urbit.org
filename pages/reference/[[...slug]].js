@@ -145,6 +145,24 @@ const pageTree = (thisLink, tree, level = 0) => {
           {tree.title}
         </p>
         {childPages(thisLink, tree.children, level)}
+        {tree.pages.map(({ title, slug }) => {
+          const href = join(thisLink, slug);
+          const isSelected = router.asPath === href;
+          const selectedClasses = classnames({
+            dot: isSelected,
+            "text-green-400": isSelected,
+            "text-wall-600": !isSelected,
+          });
+          return (
+            <li className="ml-0">
+              <Link href={href} passHref>
+                <a className={`relative inline-block ${selectedClasses} `}>
+                  {title}
+                </a>
+              </Link>
+            </li>
+          );
+        })}
       </>
     );
   }
