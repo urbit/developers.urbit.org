@@ -1,0 +1,9 @@
+#card::after {
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    background-image: url('/images/chevron.svg');
+    background-size: cover;
+    position: absolute;
+    right: 1rem;
+}
