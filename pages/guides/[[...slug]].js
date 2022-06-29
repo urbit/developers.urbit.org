@@ -259,7 +259,7 @@ function Landing({ search }) {
               title="Environment Setup"
               description="Learn how to get your urbit development environment configured"
               callout="View Guide"
-              href="/guides/additional/development/environment"
+              href="/guides/core/environment"
               image="/images/environment.svg"
               className="h-full"
             />
