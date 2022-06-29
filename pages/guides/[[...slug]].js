@@ -291,27 +291,6 @@ function Landing({ search }) {
             />
           </TwoUp>
         </Section>
-        <Section short className="space-y-6">
-          <h3>Additional Guides</h3>
-          <TwoUp>
-            <TallCard
-              title="Development"
-              description="General overview on Urbit development principles and practical information like environment setup."
-              callout="View Guide"
-              href="/guides/additional/development"
-              image="/images/development.svg"
-              className="h-full"
-            />
-            <TallCard
-              title="Distribution"
-              description="A guide to the  architecture of Urbit's app distribution system."
-              callout="View Guide"
-              href="/guides/additional/dist"
-              image="/images/distribution.svg"
-              className="h-full"
-            />
-          </TwoUp>
-        </Section>
       </SingleColumn>
       <Footer />
     </Container>
