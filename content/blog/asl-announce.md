@@ -48,5 +48,3 @@ form](https://docs.google.com/forms/d/e/1FAIpQLSfxAEdcdaLG_yK3RCOCLLScslcyjhBmAN
 or join us on Mars at ~hiddev-dannut/new-hooniverse.  We'll start on Tuesday,
 July 12 and run through August 23.
 
-_Header image by Margaret Bourke-White._
-

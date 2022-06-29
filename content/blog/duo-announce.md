@@ -23,3 +23,6 @@ This site now contains:
 5. [Community](/community) includes developer events and support.
 
 There are often growing pains with new websites, so if you find a dead link or are certain there was a reference for something and you just can't put your finger on it anymore, drop us a line on Github or Urbit.
+
+_Header image by Margaret Bourke-White._
+
