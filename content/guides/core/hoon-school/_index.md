@@ -2,7 +2,6 @@
 title = "Hoon School"
 weight = 5
 sort_by = "weight"
-template = "sections/docs/chapters.html"
 insert_anchor_links = "right"
 +++
 
@@ -22,12 +21,12 @@ insert_anchor_links = "right"
 8. [Testing Code](/guides/core/hoon-school/I-testing) - This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.
 9. [Text Processing I](/guides/core/hoon-school/J-stdlib-text) - This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type.
 10. [Cores & Doors](/guides/core/hoon-school/K-doors) - This module will start by introducing the concept of gate-building gates; then it will expand our notion of cores to include doors; finally it will introduce a common door, the `++map`, to illustrate how doors work.
-11. [Type Checking](/guides/core/hoon-school/L-struct) - This module will cover how the Hoon compiler infers type, as well as various cases in which a type check is performed.
-12. [Data Structures](/guides/core/hoon-school/L2-struct) - This module will introduce you to several useful data structures built on the door, then discuss how the compiler handles types and the sample.
-13. [Conditional Logic](/guides/core/hoon-school/M-logic) - This module will cover the nature of loobean logic and the rest of the `?` wut runes.
-14. [Subject-Oriented Programming](/guides/core/hoon-school/N-subject) - This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.
-15. [Text Processing II](/guides/core/hoon-school/O-stdlib-io) - This module will elaborate on text representation in Hoon, including formatted text, and `%ask` generators.
-16. [Functional Programming](/guides/core/hoon-school/P-func) - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.  It will also cover text parsing.
-17. [Adaptive Cores](/guides/core/hoon-school/Q-metals) - This module introduces how cores can be extended for different behavioral patterns.
-18. [Mathematics](/guides/core/hoon-school/R-math) - This module introduces how non-`@ud` mathematics are instrumented in Hoon.
+11. [Data Structures](/guides/core/hoon-school/L-struct) - This module will introduce you to several useful data structures built on the door, then discuss how the compiler handles types and the sample.
+12. [Type Checking](/guides/core/hoon-school/M-typecheck) - This module will cover how the Hoon compiler infers type, as well as various cases in which a type check is performed.
+13. [Conditional Logic](/guides/core/hoon-school/N-logic) - This module will cover the nature of loobean logic and the rest of the `?` wut runes.
+14. [Subject-Oriented Programming](/guides/core/hoon-school/O-subject) - This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.
+15. [Text Processing II](/guides/core/hoon-school/P-stdlib-io) - This module will elaborate on text representation in Hoon, including formatted text, and `%ask` generators.
+16. [Functional Programming](/guides/core/hoon-school/Q-func) - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.  It will also cover text parsing.
+17. [Adaptive Cores](/guides/core/hoon-school/R-metals) - This module introduces how cores can be extended for different behavioral patterns.
+18. [Mathematics](/guides/core/hoon-school/S-math) - This module introduces how non-`@ud` mathematics are instrumented in Hoon.
 

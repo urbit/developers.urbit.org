@@ -1,7 +1,6 @@
 +++
 title = "API Reference"
 weight = 2
-template = "doc.html"
 +++
 
 In this document we describe the public interface for Behn. Namely, we describe each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in return.
@@ -38,7 +37,7 @@ Behn does not return any `gift` in response to a `%rest` `task`.
 
 #### Example
 
-See the [%rest](/docs/arvo/behn/examples#rest) section of the Examples document.
+See the [%rest](/reference/arvo/behn/examples#rest) section of the Examples document.
 
 ## `%drip`
 
@@ -138,7 +137,7 @@ The `error` `unit` will be `~` if successful, or contain a traceback in the `tan
 
 #### Example
 
-See the [%wait](/docs/arvo/behn/tasks#wait) section of the Examples document.
+See the [%wait](/reference/arvo/behn/tasks#wait) section of the Examples document.
 
 ## `%wake`
 

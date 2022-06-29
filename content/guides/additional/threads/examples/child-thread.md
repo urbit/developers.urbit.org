@@ -1,7 +1,6 @@
 +++
 title = "Child Thread"
 weight = 2
-template = "doc.html"
 +++
 
 Here's a simple example of a thread that starts another thread:

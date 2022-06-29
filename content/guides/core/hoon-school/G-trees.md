@@ -1,20 +1,9 @@
----
-title: Trees, Addressing, and Lists
-nodes: 135, 140, 156
-objectives:
-  - "Address nodes in a tree using numeric notation."
-  - "Address nodes in a tree using lark notation."
-  - "Address data in a tree using faces."
-  - "Distinguish `.` and `:` notation."
-  - "Diagram Hoon structures such as gates into the corresponding abstract syntax tree."
-  - "Use lists to organize data."
-  - "Convert between kinds of lists (e.g. tapes)."
-  - "Diagram lists as binary trees."
-  - "Operate on list elements using `snag`, `find`, `weld`, etc."
-  - "Explain how Hoon manages the subject and wing search paths."
-  - "Explain how to skip to particular matches in a wing search path through the subject."
-  - "Identify common Hoon patterns: batteries, and doors, arms, wings, and legs."
----
++++
+title = "Trees, Addressing, and Lists"
+weight = 10
+nodes = [135, 140, 156]
+objectives = ["Address nodes in a tree using numeric notation.", "Address nodes in a tree using lark notation.", "Address data in a tree using faces.", "Distinguish `.` and `:` notation.", "Diagram Hoon structures such as gates into the corresponding abstract syntax tree.", "Use lists to organize data.", "Convert between kinds of lists (e.g. tapes).", "Diagram lists as binary trees.", "Operate on list elements using `snag`, `find`, `weld`, etc.", "Explain how Hoon manages the subject and wing search paths.", "Explain how to skip to particular matches in a wing search path through the subject.", "Identify common Hoon patterns: batteries, and doors, arms, wings, and legs."]
++++
 
 #   Trees, Addressing, and Lists
 
@@ -24,7 +13,7 @@ _Every noun in Urbit is an atom or a cell.  This module will elaborate how we ca
 
 Every noun in Urbit is a either an atom or a cell.  Since a cell has only two elements, a head and a tail, we can derive that everything is representable as a [_binary tree_](https://en.wikipedia.org/wiki/Binary_tree).  We can draw this layout naturally:
 
-![Binary tree with labeled nodes](./binary-tree.png)
+![Binary tree with labeled nodes](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
 
 A binary tree has a single base node, and each node of the tree may have up to two child nodes (but it need not have any).  A node without children is a “leaf”.  You can think of a noun as a binary tree whose leaves are atoms, i.e., unsigned integers.  All non-leaf nodes are cells.  An atom is a trivial tree of just one node; e.g., `17`.
 
@@ -36,11 +25,11 @@ For instance, if we produce a cell in the Dojo
 
 it can be represented as a tree with the contents
 
-![Binary tree with bottom row only populated](./binary-tree-bottom-row.png)
+![Binary tree with bottom row only populated](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row.png)
 
 We will use the convention in these graphics that black-text-on-white-circle represents an address, and that green-text-on-black-circle represents the content at that address.  So another way to represent the same data would be this:
 
-![Binary tree with bottom row only populated](./binary-tree-bottom-row-full.png)
+![Binary tree with bottom row only populated](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row-full.png)
 
 When we input the above cell representation into the Dojo, the pretty-printer hides the rightwards-branching `[]` sel/ser brackets.
 
@@ -59,9 +48,9 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
 
     | Noun | Tree Diagram |
     | ---- | ------------ |
-    | `[[[1 2] 3] 4]` | ![](./binary-tree-exercise-1.png) | 
-    | `[[1 2] 3 4]` | ![](./binary-tree-exercise-2.png) | 
-    | `[1 2 3 4]` | ![](./binary-tree-exercise-3.png) | 
+    | `[[[1 2] 3] 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-1.png) | 
+    | `[[1 2] 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
+    | `[1 2 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
 
 #### Exercise:  Produce a List of Numbers
 
@@ -98,15 +87,15 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
     ```
       [1 [2 [3 [4 ~]]]]
 
-              .
+             .
             / \
-            1   .
+           1   .
               / \
-              2   .
+             2   .
                 / \
-                3   .
+               3   .
                   / \
-                  4   ~
+                 4   ~
     ```
 
 ### Tuples as Trees
@@ -115,7 +104,7 @@ What we've been calling a running cell would more conventionally be named a _tup
 
 Given the cell `[1 2 3 4 ~]` (or equivalently `~[1 2 3 4]`, an irregular form for a null-terminated tuple or list), what tree address does each value occupy?
 
-![A binary tree of the cell [1 2 3 4 ~].](./binary-tree-1234.png)
+![A binary tree of the cell [1 2 3 4 ~].](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-1234.png)
 
 At this point, you should start to be able to work this out in your head, at least for the first few rows.  The `+` lus operator can be used to return the limb of the subject at a given numeric address.  If there is no such limb, the result is a crash.
 
@@ -195,12 +184,12 @@ True `list`s have `i` and `t` faces which allow the head and tail of the data to
 #t/it(@ud)
 ```
 
-A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists.  This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`.  See also [`++limo`](https://urbit.org/docs/hoon/reference/stdlib/2b#limo) which explicitly marks a null-terminated tuple as a `list`.)
+A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists.  This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`.  See also [`++limo`](/reference/hoon/stdlib/2b#limo) which explicitly marks a null-terminated tuple as a `list`.)
 
 
 ##  Addressing Limbs
 
-Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](./Q-metals.md) work.)
+Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](./R-metals.md) work.)
 
 There are three different ways to access values:
 
@@ -212,7 +201,7 @@ There are three different ways to access values:
 
 We have already seen numeric addressing used to refer to parts of a binary tree.
 
-![Binary tree with labeled nodes](./binary-tree.png)
+![Binary tree with labeled nodes](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
 
 Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to decide if the contents of a node is a direct value or a tree:  it just happens.
 
@@ -226,7 +215,7 @@ A `tape` is one way of representing a text message in Hoon.  It is written with 
 
 A `tape` is actually a `(list @t)`, a binary tree of single characters which only branches rightwards and ends in a `~`:
  
-![](./binary-tree-tape.png)
+![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
 - What are the addresses of each letter in the tree for the Gilbert & Sullivan quote above?  Can you see the pattern?  Can you get the address of EVERY letter through `l`?
 
@@ -234,9 +223,9 @@ A `tape` is actually a `(list @t)`, a binary tree of single characters which onl
 
 Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree.  These are written using `-` (left) and `+` (right) alternating with `<` (left) and `<` (right).
 
-![](binary-tree-lark.png)
+![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
-Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](./L2-struct.md)):
+Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](./M-typecheck.md)):
 
 ```hoon
 -:!>('hello Mars')
@@ -250,7 +239,7 @@ When lark expressions resolve to the part of the subject containing an arm, they
 
 Produce the numeric and lark-notated equivalent addresses for each of the following nodes in the binary fruit tree:
 
-![A fruit tree](./binary-tree-fruit.png)
+![A fruit tree](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-fruit.png)
 
 - 🍇
 - 🍌
@@ -269,18 +258,18 @@ There is a solution at the bottom of the page.
 - Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
 
     ```
-            .
-            /\
-            /  \
-          /    \
-          .      .
-        / \    / \
-        /   .  10  .
-      /   / \    / \
-      .   8   9  11  .
-    / \            / \
-    5   .          12  13
-      / \
+              .
+             / \
+            /   \
+           /     \
+          .       .
+         / \     / \
+        /   .   10  .
+       /   / \     / \
+      .   8   9   11  .
+     / \             / \
+    5   .           12  13
+       / \
       6   7
     ```
 
@@ -517,7 +506,7 @@ n
 $(n (dec n))
 ```
 
-The `$()` syntax is the commonly-used irregular form of the [`%=` centis](https://urbit.org/docs/hoon/reference/rune/cen#centis) rune.
+The `$()` syntax is the commonly-used irregular form of the [`%=` centis](/reference/hoon/rune/cen#-centis) rune.
 
 Now, we noted that `$` buc is the default arm for the trap.  It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
@@ -602,7 +591,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 (Notice that we apply `@t` as a mold gate rather than using the tic notation.  This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-- Extend the above generator so that it accepts a cell of type and value (a `vase` as produced by the [`!>` zapgar](https://urbit.org/docs/hoon/reference/rune/zap#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+- Extend the above generator so that it accepts a cell of type and value (a `vase` as produced by the [`!>` zapgar](/reference/hoon/rune/zap#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 #### Exercise:  Resolving Wings
 
@@ -631,7 +620,7 @@ Enter the following into dojo:
 
 Once you have your data in the form of a `list`, there are a lot of tools available to manipulate and analyze the data:
 
-- [`++flop`](https://urbit.org/docs/hoon/hoon-school/lists#flop) reverses the order of the elements (exclusive of the `~`):
+- [`++flop`](reference/stdlib/2b#flop) reverses the order of the elements (exclusive of the `~`):
   
     ```hoon
     > (flop ~[1 2 3 4 5])
@@ -642,14 +631,14 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
     - Without using flop, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of the page.
 
-- [`++sort`](https://urbit.org/docs/hoon/hoon-school/lists#sort) uses a `list` and a comparison function (like `++lth`) to order things:
+- [`++sort`](reference/stdlib/2b#sort) uses a `list` and a comparison function (like `++lth`) to order things:
 
     ```hoon
     > (sort ~[1 3 5 2 4] lth)
     ~[1 2 3 4 5]
     ```
 
-- [`++snag`](https://urbit.org/docs/hoon/hoon-school/lists#snag) takes a index and a `list` to grab out a particular element (note that it starts counting at zero):
+- [`++snag`](reference/stdlib/2b#snag) takes a index and a `list` to grab out a particular element (note that it starts counting at zero):
 
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
@@ -666,7 +655,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     '!'
     ```
 
-- [`++weld`](https://urbit.org/docs/hoon/hoon-school/lists#weld) takes two lists of the same type and concatenates them:
+- [`++weld`](reference/stdlib/2b#weld) takes two lists of the same type and concatenates them:
 
     ```hoon
     > (weld ~[1 2 3] ~[4 5 6])
@@ -682,14 +671,14 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
 There are a couple of sometimes-useful `list` builders:
 
-- [`++gulf`](https://urbit.org/docs/hoon/reference/stdlib/2b#gulf) spans between two numeric values (inclusive of both):
+- [`++gulf`](/reference/hoon/stdlib/2b#gulf) spans between two numeric values (inclusive of both):
 
     ```hoon
     > (gulf 5 10)  
     ~[5 6 7 8 9 10]
     ```
 
-- [`++reap`](https://urbit.org/docs/hoon/reference/stdlib/2b#reap) repeats a value many times in a `list`:
+- [`++reap`](/reference/hoon/stdlib/2b#reap) repeats a value many times in a `list`:
 
     ```hoon
     > (reap 5 0x0)  
@@ -702,7 +691,7 @@ There are a couple of sometimes-useful `list` builders:
     ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]  
     ```
 
-- [`++roll`](https://urbit.org/docs/hoon/reference/stdlib/2b#roll) takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
+- [`++roll`](/reference/hoon/stdlib/2b#roll) takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
 
     ```hoon
     > (roll `(list @)`~[11 22 33 44 55] add)
@@ -714,8 +703,8 @@ There are a couple of sometimes-useful `list` builders:
 
 Once you have a `list` (including a `tape`), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
-- [`++find`](https://urbit.org/docs/hoon/reference/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
-- [`++snag`](https://urbit.org/docs/hoon/reference/stdlib/2b#snag) `[a=@ b=(list)]` produces the element at an index in the list (zero-indexed)
+- [`++find`](/reference/hoon/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
+- [`++snag`](/reference/hoon/stdlib/2b#snag) `[a=@ b=(list)]` produces the element at an index in the list (zero-indexed)
 
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
@@ -728,10 +717,10 @@ Once you have a `list` (including a `tape`), there are a lot of manipulation too
     44
     ```
 
-- [`++snap`](https://urbit.org/docs/hoon/reference/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
-- [`++scag`](https://urbit.org/docs/hoon/reference/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
-- [`++slag`](https://urbit.org/docs/hoon/reference/stdlib/2b#slag) `[a=@ b=(list)]` produces the last _a_ elements from the end of the list
-- [`++weld`](https://urbit.org/docs/hoon/reference/stdlib/2b#weld) `[a=(list) b=(list)]` glues two `list`s together (_not_ a single item to the end)
+- [`++snap`](/reference/hoon/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
+- [`++scag`](/reference/hoon/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
+- [`++slag`](/reference/hoon/stdlib/2b#slag) `[a=@ b=(list)]` produces the last _a_ elements from the end of the list
+- [`++weld`](/reference/hoon/stdlib/2b#weld) `[a=(list) b=(list)]` glues two `list`s together (_not_ a single item to the end)
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 
@@ -771,8 +760,6 @@ First, bind these faces.
 #### Exercise:  Palindrome
 
 - Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise.  You may use the `++flop` function.
-
----
 
 #### Solutions to Exercises
 

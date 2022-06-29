@@ -1,7 +1,6 @@
 +++
 title = "Scry Reference"
 weight = 3
-template = "doc.html"
 +++
 
 Here are the scry endpoints of Dill. They take a `%x` `care` and require the `desk` in the path prefix be empty, so the general format is `.^([type] %dx /=//=/[some-path])`.
@@ -10,7 +9,7 @@ Dill only has a couple of scry endpoints, both of which begin with `/session//`.
 
 ## /sessions//line
 
-A scry with a `care` of `%x` and a `path` of `/sessions//line` returns the current text of the prompt line of the default session. The type returned is a [$blit](/docs/arvo/dill/data-types#blit).
+A scry with a `care` of `%x` and a `path` of `/sessions//line` returns the current text of the prompt line of the default session. The type returned is a [$blit](/reference/arvo/dill/data-types#blit).
 
 #### Example
 

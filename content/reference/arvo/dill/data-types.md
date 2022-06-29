@@ -1,7 +1,6 @@
 +++
 title = "Data Types"
 weight = 4
-template = "doc.html"
 +++
 
 Here are the data types used by Dill, as defined in `/sys/lull.hoon`.
@@ -12,7 +11,7 @@ Here are the data types used by Dill, as defined in `/sys/lull.hoon`.
   +$  blew  [p=@ud q=@ud]
 ```
 
-Terminal dimension; `p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [%blew](/docs/arvo/dill/tasks#blew) `task` whenever the dimensions of the terminal changes.
+Terminal dimension; `p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [%blew](/reference/arvo/dill/tasks#blew) `task` whenever the dimensions of the terminal changes.
 
 ## `$belt`
 
@@ -28,7 +27,7 @@ Terminal dimension; `p` is columns, `q` is rows. This structure is passed to Dil
 
 Terminal client input.
 
-A `$belt` is passed to Dill in a [%belt](/docs/arvo/dill/tasks#belt) `task` by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [$dill-belt](#dill-belt) is used between Dill and Arvo.
+A `$belt` is passed to Dill in a [%belt](/reference/arvo/dill/tasks#belt) `task` by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [$dill-belt](#dill-belt) is used between Dill and Arvo.
 
 May either be a [$bolt](#bolt) or one of:
 
@@ -184,4 +183,4 @@ A `$dill-blit` is one of:
 
 Wrapped Dill `task`s.
 
-These are a subset of Dill's `task`s which can be wrapped in a `%flog` `task`. See the [API Reference](/docs/arvo/dill/tasks) document for details of each of these `task`s.
+These are a subset of Dill's `task`s which can be wrapped in a `%flog` `task`. See the [API Reference](/reference/arvo/dill/tasks) document for details of each of these `task`s.

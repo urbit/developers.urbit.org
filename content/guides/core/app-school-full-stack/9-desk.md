@@ -1,7 +1,6 @@
 +++
 title = "9. Desk and glob"
 weight = 9
-template = "doc.html"
 +++
 
 With our React app now complete, we can put together the final desk and publish
@@ -79,7 +78,7 @@ The fields are as follows:
   hash of those files automatically. Note that it's also possible to distribute
   front-end files from a separate web server. In that case, you'd use
   `glob-http` rather than `glob-ames`. The [Glob section of the distribution
-  guide](/docs/userspace/dist/glob) covers this alternative approach in more
+  guide](/guides/additional/dist/glob) covers this alternative approach in more
   detail.
 
 Our files should now look like this:
@@ -215,12 +214,12 @@ from our ship. To do that, we just run the following command in the dojo:
 
 ## Resources
 
-- [App publishing/distribution documentation](/docs/userspace/dist/dist) -
+- [App publishing/distribution documentation](/guides/additional/dist/dist) -
   Documentation covering third party desk composition, publishing and
   distribution.
 
-- [Glob documentation](/docs/userspace/dist/glob) - Comprehensive documentation
+- [Glob documentation](/guides/additional/dist/glob) - Comprehensive documentation
   of handling front-end files.
 
-- [Desk publishing guide](/docs/userspace/dist/guide) - A step-by-step guide to
+- [Desk publishing guide](/guides/additional/dist/guide) - A step-by-step guide to
   creating and publishing a desk.

@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import BlogPreview from "../components/BlogPreview";
+import EventPreview from "../components/EventPreview";
 import {
   Container,
   SingleColumn,
@@ -12,16 +14,19 @@ import {
   Comms,
   Database,
   Distribution,
+  Functional,
   Identity,
   Interface,
   MintFiller,
   Peer,
-  State,
 } from "../components/icons";
 import Card from "../components/Card";
 import TallCard from "../components/TallCard";
+import { getAllPosts, getAllEvents } from "../lib/lib";
+import { eventKeys } from "../lib/constants";
+import { DateTime } from "luxon";
 
-export default function Home({ search }) {
+export default function Home({ search, whatsNew }) {
   return (
     <div>
       <Head>
@@ -34,32 +39,37 @@ export default function Home({ search }) {
             {/* Hero statement */}
             <div className="flex flex-col space-y-4">
               <h1 className="max-w-prose">
-                Discover the creative possibility of a unified operating system
+                Discover the creative possibilities of a unified operating
+                system
               </h1>
-              <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+              <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 pt-4">
+                <Link href="/guides/quickstart" passHref>
+                  <a className="button-lg bg-green-400 text-white">
+                    Quickstart
+                  </a>
+                </Link>
                 <Link href="/overview" passHref>
-                  <a className="button-lg bg-white border-wall-500 border-2">
+                  <a className="button-lg bg-blue-400 text-white">
                     Read the Overview
                   </a>
                 </Link>
                 <Link href="/reference" passHref>
-                  <a className="button-lg bg-blue-400 text-white">
+                  <a className="button-lg bg-white border-wall-500 border-2">
                     Learn the Stack
-                  </a>
-                </Link>
-                <Link href="/guides" passHref>
-                  <a className="button-lg bg-green-400 text-white">
-                    Quickstart
                   </a>
                 </Link>
               </div>
             </div>
           </Section>
           <Section short>
-            <h2>
-              Urbit provides foundational primitives at the operating system
-              layer, serving as a better platform for building networked,
-              decentralized applications.
+            <h2 className="font-normal">
+              Urbit provides{" "}
+              <span className="font-bold">foundational primitives</span> at the
+              operating system layer, serving as a better platform for building{" "}
+              <span className="font-bold">
+                networked, decentralized applications
+              </span>
+              .
             </h2>
             <div className="flex flex-wrap pt-12">
               {pitch.map((each) => {
@@ -94,6 +104,7 @@ export default function Home({ search }) {
                 title="Encrypted Chat Application"
                 text="Build your own secure comms tool"
                 className="basis-1/2"
+                href="/guides/quickstart/chat-guide"
               />
               <Card
                 icon={<MintFiller />}
@@ -114,7 +125,7 @@ export default function Home({ search }) {
                 title="Hoon School"
                 description="Learn the fundamentals of the Hoon programming language"
                 callout="View Guide"
-                href="/guides/hoon-school"
+                href="/guides/core/hoon-school"
                 image="/images/hoon.svg"
                 className="h-full"
               />
@@ -122,7 +133,7 @@ export default function Home({ search }) {
                 title="App School"
                 description="Learn how to build Urbit userspace applications by writing your own Gall agents"
                 callout="View Guide"
-                href="/guides/app-school"
+                href="/guides/core/app-school"
                 image="/images/app.svg"
                 className="h-full"
               />
@@ -171,6 +182,38 @@ export default function Home({ search }) {
           </Section>
           <Section className="flex flex-col space-y-8">
             <h2>What's New</h2>
+            <TwoUp>
+              {whatsNew.slice(0, 2).map((e) => {
+                if (e.type === "event") {
+                  return (
+                    <EventPreview event={e} className="basis-1/2 h-full" />
+                  );
+                } else if (e.type === "blog") {
+                  return (
+                    <Link href={`/blog/${e.slug}`}>
+                      <div className="cursor-pointer bg-wall-100 rounded-xl basis-1/2 h-full">
+                        <div className="flex flex-col p-6 justify-between items-between h-full relative">
+                          <img
+                            className="rounded-xl w-full flex-1 object-cover"
+                            src={e.extra.image}
+                            style={{ aspectRatio: "16 / 9" }}
+                          />
+                          <div className="grow-1 shrink-0 flex flex-col h-full min-h-0 pt-4">
+                            <h3 className="mb-2">{e.title}</h3>
+                            <div className="flex flex-col xl:flex-row justify-between">
+                              <p className="truncate text-sm">
+                                {e.description}
+                              </p>
+                              <p className="text-sm">{e.date}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                }
+              })}
+            </TwoUp>
           </Section>
         </SingleColumn>
         <Footer />
@@ -183,32 +226,58 @@ const pitch = [
   {
     icon: <Identity className="shrink-0" />,
     title: "Identity",
-    content: "Urbit ID works for individuals and organizations alike",
+    content:
+      "Identity is built-in at the lowest level of the stack. Say goodbye to auth systems.",
   },
   {
-    icon: <State className="shrink-0" />,
-    title: "State",
+    icon: <Functional className="shrink-0" />,
+    title: "Functional Network",
     content:
-      "Every action is cryptographically secured and tied to an identity",
+      "Immutable, functional programming across the entire OS and network",
   },
   {
     icon: <Database className="shrink-0" />,
-    title: "Persistent Database",
-    content: "Lorem ipsum dolorem sin atmet ad piscing",
+    title: "Built-in Database",
+    content: "Every piece of state in your application is persistent, always.",
   },
   {
     icon: <Peer className="shrink-0" />,
     title: "Peer-to-Peer Applications",
-    content: "Urbit is end-to-end encrypted and multiplayer by default",
+    content: "Urbit makes robust peer-to-peer applications easy to build",
   },
   {
     icon: <Distribution className="shrink-0" />,
     title: "Open Distribution",
-    content: "Distribute software without corporate oversight",
+    content:
+      "Distribute software directly to users — you are your own app store",
   },
   {
     icon: <Interface className="shrink-0" />,
     title: "Web Interfaces",
-    content: "Natural integration with front-end web frameworks",
+    content:
+      "Urbit applications can be built on any interface framework, including the web",
   },
 ];
+
+export async function getStaticProps() {
+  const posts = getAllPosts(
+    ["title", "slug", "date", "description", "extra"],
+    "blog",
+    "date"
+  ).map((e) => ({ ...e, type: "blog" }));
+  const events = getAllEvents(eventKeys, "community/events").map((e) => ({
+    ...e,
+    type: "event",
+  }));
+  const whatsNew = [...posts, ...events].sort((a, b) => {
+    return DateTime.fromISO(a.date || a.ends) >
+      DateTime.fromISO(b.date || b.ends)
+      ? -1
+      : 1;
+  });
+  return {
+    props: {
+      whatsNew,
+    },
+  };
+}

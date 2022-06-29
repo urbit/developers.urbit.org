@@ -1,11 +1,10 @@
 +++
 title = "Cryptography"
 weight = 6
-template = "doc.html"
 +++
 
 All cryptographic primitives utilized by Arvo are
-[jetted](/docs/vere/jetting). This is done for performance-related reasons
+[jetted](/reference/vere/jetting). This is done for performance-related reasons
 in other parts of the system, but for cryptography this is also extremely
 important because it allows us to utilize standard reference implementations for
 the primitives written in C.
@@ -15,7 +14,7 @@ All jets related to encryption may be found in `pkg/urbit/jets/e/`.
 In this section we review what specific implementations are utilized. At the
 moment, only libraries directly related to Ames are documented here, though we
 note that there are jets for other cryptographic functions such as the [SHA
-Hash Family](/docs/hoon/reference/stdlib/3d) as well.
+Hash Family](/reference/hoon/stdlib/3d) as well.
 
 ### Ed25519 {% #ed %}
 

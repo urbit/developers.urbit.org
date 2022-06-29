@@ -1,8 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
-aliases = ["/docs/learn/arvo/ames/"]
 +++
 
 Our networking protocol.
@@ -12,7 +10,7 @@ over it. When Unix receives a packet over the correct UDP port, it pipes
 it straight into Ames for handling. Also, all packets sent over the
 Ames network are sent by the Ames vane. Apps and vanes may use
 Ames to directly send messages to other ships. In general, apps use
-[Gall](/docs/arvo/gall/gall) and [Clay](/docs/arvo/clay/clay)
+[Gall](/reference/arvo/gall/gall) and [Clay](/reference/arvo/clay/clay)
 to communicate with other ships rather than using Ames
 directly, but this isn't a requirement. Of course, Gall and Clay use
 Ames behind the scenes to communicate across the network. Jael is the only other
@@ -30,7 +28,7 @@ vane or app, is defined in Ames.
 This section summarizes the design of Ames. Beyond this section are deeper
 elaborations on the concepts presented here.
 
-Ames extends [Arvo's](/docs/arvo/overview) `%pass`/`%give` `move` semantics across the network.
+Ames extends [Arvo's](/reference/arvo/overview) `%pass`/`%give` `move` semantics across the network.
 
 Ames receives packets as Arvo events and emits packets as Arvo
 effects. The runtime is responsible for transferring the bytes in
@@ -137,7 +135,7 @@ The 32-bit header is given by the following data, presented in order:
 - 2 bits: sender address size
 - 2 bits: receiver address size
 - 20 bits: checksum (truncated insecure hash of the body, done with
-  [`+mug`](/docs/hoon/reference/stdlib/2e#mug)
+  [`+mug`](/reference/hoon/stdlib/2e#mug)
 - 1 bit: is this relayed? (if set, `origin` will be present in the body)
 
 Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
@@ -161,15 +159,15 @@ through a relay.
 
 `SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption
 algorithm utilized to encrypt Ames packets (see the page on [Ames
-cryptography](/docs/arvo/ames/cryptography)). It is formed from the
+cryptography](/reference/arvo/ames/cryptography)). It is formed from the
 following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see
-[Life and Rift](/docs/azimuth/life-and-rift) for information on what `life`
+[Life and Rift](/reference/azimuth/life-and-rift) for information on what `life`
 is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus
 the mod 16 sender and receiver life in the first 8 bits are only for quick
 filtering of honest packets sent to or from a stale life.
 
 The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting
-using [`+en:sivc:aes:crypto`](/docs/arvo/reference/cryptography#en).
+using [`+en:sivc:aes:crypto`](/reference/arvo/reference/cryptography#en).
 
 ### Packeting
 
@@ -257,7 +255,7 @@ This means all re-sends of an ack packet will be bitwise identical to each other
 Each datum in this noun is an atom with the aura `@ud` or an aura that nests
 under `@ud`.
 
-Here, `our-life` refers to the [`life`](/docs/glossary/breach), or revision
+Here, `our-life` refers to the [`life`](/reference/glossary/breach), or revision
 number, of the acking ship's networking keys, and `her-life` is the `life` of
 the ack-receiving ship's networking keys. `bone` is an opaque number identifying
 the flow. `message-num` denotes the number of the
@@ -363,7 +361,7 @@ discovery, analagous to the role that galaxies currently play for stars and plan
 
 The following diagram summarizes the packet creation and forwarding process.
 
-![](https://media.urbit.org/docs/arvo/datagram-updated-2021-06-09.png)
+![](https://media.urbit.orgreference/arvo/datagram-updated-2021-06-09.png)
 
 We elaborate on the above diagram.
 
@@ -427,7 +425,7 @@ message.
 
 Urbit's functionality is split between the two binaries `urbit-worker` (sometimes
 called the Serf) and `urbit-king` (sometimes called the King). This division of
-labor is currently not well-documented outside of the [Vere documents](/docs/vere/), but we summarize it here.
+labor is currently not well-documented outside of the [Vere documents](/reference/vere/), but we summarize it here.
 
 In short, the Serf is the Nock runtime and so keeps track of the current state
 of Arvo as a Nock noun and updates the state by `%poke`ing it with nouns, and
@@ -446,7 +444,7 @@ This division is summarized in the following diagram, describing how
 `~bacbel-tagfeb` requests a subscription to the `recipes` notebook of
 `~worwel-sipnum` in the Publish app.
 
-![](https://media.urbit.org/docs/arvo/packet.png)
+![](https://media.urbit.orgreference/arvo/packet.png)
 
 Ames, as a part of Arvo, handles `+jam`ming, packetizing, encryption, and
 forming Ames packets. Once it is ready to send an Ames packet, it `%give`s to

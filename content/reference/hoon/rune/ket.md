@@ -1,12 +1,10 @@
 +++
 title = "Casts ^ ('ket')"
 weight = 11
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/ket/"]
 +++
 
-[`^-` ("kethep")](#kethep), [`^+` ("ketlus")](#ketlus), and [`^=`
-("kettis")](#kettis) let us adjust types without violating type constraints.
+[`^-` ("kethep")](#-kethep), [`^+` ("ketlus")](#-ketlus), and [`^=`
+("kettis")](#-kettis) let us adjust types without violating type constraints.
 
 The `nest` algorithm which tests subtyping is conservative; it never allows
 invalid nests, it sometimes rejects valid nests.
@@ -406,7 +404,7 @@ One argument, fixed.
 
 #### Discussion
 
-A zinc core has a read-only sample and an opaque context. See [Advanced types](/docs/hoon/reference/advanced).
+A zinc core has a read-only sample and an opaque context. See [Advanced types](/reference/hoon/advanced).
 
 #### Examples
 

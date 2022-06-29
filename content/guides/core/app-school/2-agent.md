@@ -1,16 +1,15 @@
 +++
 title = "2. The Agent Core"
 weight = 10
-template = "doc.html"
 +++
 
 In this lesson we'll look at the basic type and structure of a Gall agent.
 
-A Gall agent is a [door](/docs/glossary/door) with exactly ten [arms](/docs/glossary/arm). Each arm is responsible for
+A Gall agent is a [door](/reference/glossary/door) with exactly ten [arms](/reference/glossary/arm). Each arm is responsible for
 handling certain kinds of events that Gall feeds in to the agent. A door is
-just a [core](/docs/glossary/core) with a sample - it's made with the
-[barcab](/docs/hoon/reference/rune/bar#_-barcab) rune (`|_`) instead of the
-usual [barcen](/docs/hoon/reference/rune/bar#-barcen) rune (`|%`).
+just a [core](/reference/glossary/core) with a sample - it's made with the
+[barcab](/reference/hoon/rune/bar#_-barcab) rune (`|_`) instead of the
+usual [barcen](/reference/hoon/rune/bar#-barcen) rune (`|%`).
 
 ## The ten arms
 
@@ -60,7 +59,7 @@ agent, Gall populates the bowl with things like the current date-time, fresh ent
 subscription information, which ship the request came from, etc, so that all the
 arms of the agent have access to that data. For the exact structure and contents
 of the bowl, have a read through [its entry in the Gall vane types
-documentation](/docs/arvo/gall/data-types#bowl).
+documentation](/reference/arvo/gall/data-types#bowl).
 
 One important thing to note is that the bowl is only repopulated when there's a
 new Arvo event. If a local agent or web client were to send multiple
@@ -71,7 +70,7 @@ for this possibility.
 
 ## State
 
-If you've worked through [Hoon School](/docs/hoon/hoon-school/intro), you may
+If you've worked through [Hoon School](/guides/core/hoon-school/), you may
 recall that a core is a cell of `[battery payload]`. The battery is the core
 itself compiled to Nock, and the payload is the subject which it operates on.
 
@@ -302,4 +301,4 @@ If we again examine our agent core's payload by looking at the tail of
 - Run through the [Example](#example) yourself on a fake ship if you've not done
   so already.
 - Have a look at the [`bowl` entry in the Gall data types
-  documentation](/docs/arvo/gall/data-types#bowl) if you've not done so already.
+  documentation](/reference/arvo/gall/data-types#bowl) if you've not done so already.

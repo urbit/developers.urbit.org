@@ -1,8 +1,7 @@
 +++
 title = "Additional Guides"
-weight = 20
+weight = 100
 sort_by = "weight"
-template = "sections/docs/chapters.html"
 insert_anchor_links = "right"
 +++
 

@@ -1,14 +1,13 @@
 +++
 title = "6. Eyre"
 weight = 6
-template = "doc.html"
 +++
 
 Now that we have our structure file, agent, `$json` conversion library and mark
 file, our back-end is complete. Before we start writing our front-end, though,
 we should give a brief overview of how Eyre works.
 
-[Eyre](/docs/arvo/eyre/eyre) is the HTTP server [vane](/docs/glossary/vane) of
+[Eyre](/reference/arvo/eyre/eyre) is the HTTP server [vane](/reference/glossary/vane) of
 Arvo. Eyre has a handful of different subsystems, but the main two are the
 channel system and the scry interface. These two are what we'll focus on here.
 
@@ -69,11 +68,11 @@ scries, so we'll not need to manually send GET requests to the ship.
 
 ## Resources
 
-- [The Eyre vane documentation](/docs/arvo/eyre/eyre) - This section of the vane
+- [The Eyre vane documentation](/reference/arvo/eyre/eyre) - This section of the vane
   docs covers all aspects of Eyre.
-- [Eyre External API Reference](/docs/arvo/eyre/external-api-ref) - This section
+- [Eyre External API Reference](/reference/arvo/eyre/external-api-ref) - This section
   of the Eyre documentation contains reference material for Eyre's external API.
 
-- [The Eyre Guide](/docs/arvo/eyre/guide) - This section of the Eyre
+- [The Eyre Guide](/reference/arvo/eyre/guide) - This section of the Eyre
   documentation walks through using Eyre's external API at a low level (using
   `curl`).

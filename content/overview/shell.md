@@ -1,6 +1,5 @@
 +++
 title = "Shell"
-template = "doc.html"
 weight = 2
 +++
 
@@ -31,7 +30,7 @@ Tall-form Hoon may require multiple lines:
 ~your-urbit:dojo< 2
 ```
 
-Hoon uses something called [the subject](/docs/hoon/hoon-school/the-subject-and-its-legs).
+Hoon uses something called [the subject](/guides/core/hoon-school/O-subject).
 The Dojo has its own subject and that's where Hoon's equivalent of variables,
 called faces, are stored.
 
@@ -98,7 +97,7 @@ arguments.
 ~your-urbit:dojo> +code
 ```
 
-You can change your code to a new randomly generated one by entering `|code %reset`. Please note that this will prevent [Bridge](/docs/glossary/bridge)
+You can change your code to a new randomly generated one by entering `|code %reset`. Please note that this will prevent [Bridge](/reference/glossary/bridge)
 from being able to derive your code in the future.
 
 #### `+ls`

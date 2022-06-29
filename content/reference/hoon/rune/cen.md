@@ -1,8 +1,6 @@
 +++
 title = "Calls % ('cen')"
 weight = 10
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/cen/"]
 +++
 
 The `%` family of runes is used for making 'function calls' in Hoon. To be more
@@ -89,7 +87,7 @@ ensure that the resulting value is of the same type as `a`.
 `%_` is different from `%=` because `%=` can change the type of a wing with
 mutations. `%_` preserves the wing type.
 
-See [how wings are resolved](/docs/hoon/reference/limbs/).
+See [how wings are resolved](/reference/hoon/limbs/).
 
 #### Examples
 
@@ -263,7 +261,7 @@ first, and then the gate.
 
 ---
 
-## `%-` "cenhep" {% #cenhep %}
+## `%-` "cenhep" {% #-cenhep %}
 
 Call a gate (function).
 
@@ -318,9 +316,9 @@ value) for the gate.
 #### Discussion
 
 `%-` is used to call a function; `a` is the function
-([`gate`](/docs/hoon/reference/rune/bar#bartis), `q` the argument. `%-` is a
-special case of [`%~` ("censig")](#censig), and a gate is a special case of a
-[door](/docs/hoon/reference/rune/bar#barcab).
+([`gate`](/reference/hoon/rune/bar#-bartis), `q` the argument. `%-` is a
+special case of [`%~` ("censig")](#-censig), and a gate is a special case of a
+[door](/reference/hoon/rune/bar#-barcab).
 
 #### Examples
 
@@ -511,7 +509,7 @@ door itself. `c` is the sample of the door.
 
 `%~` is the general case of a function call, `%-`. In both, we replace the sample (`+6`) of a core. In `%-` the core is a gate and the `$` arm is evaluated. In `%~` the core is a door and any arm may be evaluated. You must identify the arm to be run: `%~(arm door arg)`.
 
-See also [`|_`](/docs/hoon/reference/rune/bar#barcab).
+See also [`|_`](/reference/hoon/rune/bar#-barcab).
 
 #### Examples
 

@@ -1,10 +1,9 @@
 +++
 title = "HTTP API"
 weight = 2
-template = "doc.html"
 +++
 
-Spider has an Eyre binding which allows threads to be run externally via [authenticated](/docs/arvo/eyre/external-api-ref#authentication) HTTP POST requests.
+Spider has an Eyre binding which allows threads to be run externally via [authenticated](/reference/arvo/eyre/external-api-ref#authentication) HTTP POST requests.
 
 Spider is bound to the `/spider` URL path, and expects the requested URL to look like:
 
@@ -46,7 +45,7 @@ Here's an extremely simple thread that takes a `vase` of `(unit json)` and just 
 (pure:m !>(json))
 ```
 
-First we must obtain a session cookie by [authenticating](/docs/arvo/eyre/guide#authenticating).
+First we must obtain a session cookie by [authenticating](/reference/arvo/eyre/guide#authenticating).
 
 Now we can try and run our thread. Spider is bound to the `/spider` URL path, and expects the rest of the path to be `/{desk}/{inputMark}/{thread}/{outputMark}`. Our `{thread}` is called `eyre-thread` and is in the `%base` `{desk}`. Both its `{inputMark}` and `{outputMark}` are `json`. Therefore, our URL path will be `/spider/base/json/eyre-agent/json`. Our request will be an HTTP POST request and the body will be some `json`, in this case `[{"foo": "bar"}]`:
 

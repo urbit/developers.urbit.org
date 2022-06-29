@@ -1,7 +1,6 @@
 +++
 title = "Poke Agent"
 weight = 4
-template = "doc.html"
 +++
 
 Here's a thread that lets you post a message to a chat in graph-store:

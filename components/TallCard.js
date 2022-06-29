@@ -21,7 +21,7 @@ export default function TallCard({
             />
             <div className={`grow-1 flex flex-col h-full w-full`}>
               <h3 className="mb-2">{title}</h3>
-              <p className="text-sm">{description}</p>
+              <p>{description}</p>
             </div>
             <div className="self-start">
               <Link href={href} passHref>

@@ -1,7 +1,6 @@
 +++
 title = "7. React app setup"
 weight = 7
-template = "doc.html"
 +++
 
 Now that we have a basic idea of how Eyre works, we can begin working on our
@@ -202,7 +201,7 @@ at it in the next section.
 
 ## Resources
 
-- [HTTP API Guide](/docs/userspace/http-api-guide) - Reference documentation for
+- [HTTP API Guide](/guides/additional/http-api-guide) - Reference documentation for
   `@urbit/http-api`.
 
 - [React app source

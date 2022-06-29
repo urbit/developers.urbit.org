@@ -1,7 +1,6 @@
 +++
 title = "Writing Aqua Tests"
 weight = 37
-template = "doc.html"
 +++
 
 # Concepts

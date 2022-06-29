@@ -1,7 +1,6 @@
 +++
 title = "Terminators -- and =="
 weight = 16
-template = "doc.html"
 +++
 
 The `--` and `==` are used as terminators: `--` for core expressions, and `==`

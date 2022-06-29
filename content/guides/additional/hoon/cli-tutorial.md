@@ -1,7 +1,6 @@
 +++
 title = "CLI apps"
 weight = 2
-template = "doc.html"
 +++
 
 ## Introduction
@@ -23,7 +22,7 @@ the functionality of the `%shoe` app and then go through the code line-by-line.
 
 This tutorial can be
 considered to be an application equivalent of the [Hoon school
-lesson](/docs/hoon/hoon-school/generators#ask) on `sole` and `%ask`
+lesson](/guides/core/hoon-school/P-stdlib#ask-generators) on `sole` and `%ask`
 generators, which only covers the bare minimum necessary to write generators
 that take user input.
 
@@ -348,7 +347,7 @@ Here begins the implementation of the additional arms required by the
 `+command-parser` is of central importance - it is what is used to parse user
 input and transform it into `command`s for the app to execute. Writing a proper
 command parser requires understanding of the Hoon parsing functions found in the
-standard library. How to do so may be found in the [parsing tutorial](/docs/hoon/guides/parsing). For now, it is sufficient to know that this arm matches the text "demo" and
+standard library. How to do so may be found in the [parsing tutorial](/guides/additional/hoon/parsing). For now, it is sufficient to know that this arm matches the text "demo" and
 produces a `[? command]`-shaped noun in response. Note how the `&` signifies that the command will be run as soon as it has been entered, without waiting for the user to press return.
 
 ```hoon

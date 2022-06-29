@@ -1,7 +1,6 @@
 +++
 title = "Hints ~ ('sig')"
 weight = 14
-template = "doc.html"
 +++
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter. A
@@ -460,7 +459,7 @@ may optionally be written as `%foo.some-hoon`.
 
 #### Discussion
 
-`~<` is only used for jet hints ([`~/`](#sigfas) and [`~%`](#sigcen)) at the
+`~<` is only used for jet hints ([`~/`](#-sigfas) and [`~%`](#-sigcen)) at the
 moment; we are not telling the interpreter something about the computation we're
 about to perform, but rather about its product.
 

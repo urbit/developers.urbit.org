@@ -1,11 +1,10 @@
 +++
 title = "1. Arvo"
 weight = 5
-template = "doc.html"
 +++
 
-This document is a prologue to the Gall guide. If you've worked though [Hoon
-School](/docs/hoon/hoon-school/intro) (or have otherwise learned the basics of
+This document is a prologue to App School I. If you've worked though [Hoon
+School](/guides/core/hoon-school/A-intro) (or have otherwise learned the basics of
 Hoon), you'll likely be familiar with generators, but not with all the other
 parts of the Arvo operating system or the way it fits together. We'll go over
 the basic details here so you're better oriented to learn Gall agent
@@ -14,19 +13,19 @@ just what is necessary to understand it from the perspective of userspace.
 
 ## Arvo and its Vanes
 
-[Arvo](/docs/arvo/overview) is the Urbit OS and kernel which is written in
-[Hoon](/docs/glossary/hoon), compiled to [Nock](/docs/gossary/nock), and
+[Arvo](/reference/arvo/overview) is the Urbit OS and kernel which is written in
+[Hoon](/reference/glossary/hoon), compiled to [Nock](/reference/glossary/nock), and
 executed by the runtime environment and virtual machine
-[Vere](/docs/glossary/vere). Arvo has eight kernel modules called vanes:
-[Ames](/docs/arvo/ames/ames), [Behn](/docs/arvo/behn/behn),
-[Clay](/docs/arvo/clay/clay), [Dill](/docs/arvo/dill/dill),
-[Eyre](/docs/arvo/eyre/eyre), [Gall](/docs/arvo/gall/gall),
-[Iris](/docs/arvo/iris/iris), and [Jael](/docs/arvo/jael/jael).
+[Vere](/reference/glossary/vere). Arvo has eight kernel modules called vanes:
+[Ames](/reference/arvo/ames/ames), [Behn](/reference/arvo/behn/behn),
+[Clay](/reference/arvo/clay/clay), [Dill](/reference/arvo/dill/dill),
+[Eyre](/reference/arvo/eyre/eyre), [Gall](/reference/arvo/gall/gall),
+[Iris](/reference/arvo/iris/iris), and [Jael](/reference/arvo/jael/jael).
 
 Arvo itself has its own small codebase in `/sys/arvo.hoon` which primarily
-implements the [transition function](/docs/arvo/overview#operating-function) `(State, Event) -> (State, Effects)` for
+implements the [transition function](/reference/arvo/overview#operating-function) `(State, Event) -> (State, Effects)` for
 events injected by the runtime. It also handles inter-vane messaging, the
-[scry](/docs/arvo/concepts/scry) system, and a couple of other things. Most of
+[scry](/reference/arvo/concepts/scry) system, and a couple of other things. Most of
 the heavy lifting is done by the vanes themselves - Arvo itself typically just
 routes events to the relevant vanes.
 
@@ -54,19 +53,19 @@ Here's a brief summary of each of the vanes:
   and functions rather than tasks to Dill, and CLI apps are mediated by a
   sub-module of the `%hood` system agent called `%drum`. CLI apps will not be touched
   on in this guide, but there's a separate [CLI
-  Apps](/docs/hoon/guides/cli-tutorial) guide which covers them if you're
+  Apps](/guides/additional/hoon/cli-tutorial) guide which covers them if you're
   interested.
 - **Eyre**: Webserver vane. App web front-ends are served via Eyre. It's possible to
   handle HTTP requests directly in a Gall agent (see the [Eyre
-  Guide](/docs/arvo/eyre/guide) for details), but usually you'd just serve a
-  front-end [glob](/docs/userspace/dist/glob) via the `%docket` agent, so you'd
+  Guide](/reference/arvo/eyre/guide) for details), but usually you'd just serve a
+  front-end [glob](/guides/additional/dist/glob) via the `%docket` agent, so you'd
   not typically have your agent deal with Eyre directly.
 
 - **Gall**: App management vane; this is where your agent lives.
 
 - **Iris**: Web client vane. If you want your agent to query external web APIs and
   the like, it's done via Iris. Oftentimes web API interactions are
-  spun out into [threads](/docs/userspace/threads/overview) to avoid
+  spun out into [threads](/guides/additional/threads/overview) to avoid
   complicating the Gall agent itself, so a Gall agent would not necessary deal
   with Iris directly, even if it made use of external APIs.
 - **Jael**: Key infrastructure vane. Jael keeps track of PKI data for your ship and
@@ -82,7 +81,7 @@ and its eight vanes. Userspace is primarily Gall agents, generators, threads,
 front-ends, and all of their related files in Clay. The distinction looks
 something like this:
 
-[![kernelspace/userspace diagram](https://media.urbit.org/docs/userspace/gall-guide/kernelspace-userspace-diagram.svg)](https://media.urbit.org/docs/userspace/gall-guide/kernelspace-userspace-diagram.svg)
+[![kernelspace/userspace diagram](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram.svg)](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram.svg)
 
 By and large, Gall _is_ the userspace vane - the majority of userspace is either
 Gall agents, or things used by Gall agents. Apart from the agents themselves,
@@ -107,16 +106,16 @@ there's also:
   IO logic in a separate thread which is completely atomic. That way the Gall
   agent only has to deal with the two conditions of success or failure. Writing
   threads is covered in a [separate
-  guide](/docs/userspace/threads/basics/fundamentals), which you might like to
-  work through after completing the Gall Guide.
+  guide](/guides/additional/threads/basics/fundamentals), which you might like to
+  work through after completing App School I.
 
 - **Front-end**: Web UIs. It's possible for Gall agents to handle HTTP requests
   directly and dynamically produce responses, but it's also possible to have a
-  static [glob](/docs/userspace/dist/glob) of HTML, CSS, Javascript, images,
+  static [glob](/guides/additional/dist/glob) of HTML, CSS, Javascript, images,
   etc, which are served to the client like an ordinary web app. Such front-end
   files are typically managed by the `%docket` agent which serves them via Eyre.
-  The [software distribution guide](/docs/userspace/dist/guide) covers this in
-  detail, and you might like to work through it after completing the Gall Guide.
+  The [software distribution guide](/guides/additional/dist/guide) covers this in
+  detail, and you might like to work through it after completing App School I.
 
 ## The Filesystem
 
@@ -144,8 +143,8 @@ agents and vanes. For example, none of the chat messages, notebooks, etc, in the
 Groups app exist in Clay - they're all in the state of the `%graph-store` agent.
 For the most part, Clay just stores source code.
 
-Clay has a few unique features - it's a typed filesystem, with all file types
-defined in `mark` files. It's revision controlled, in a similar way to git. It
+Clay has a few unique features—it's a typed filesystem, with all file types
+defined in `mark` files. It's revision controlled, in a similar way to Git. It
 also has a built-in build system (formerly a separate vane called Ford, but was
 merged with Clay in 2020 to make atomicity of upgrades easier). We'll look at
 some of these features in more detail later in the guide.
@@ -227,7 +226,7 @@ sys
 
 The chain of dependency for the core kernel files is `hoon.hoon` -> `arvo.hoon`
 -> `lull.hoon` -> `zuse.hoon`. For more information, see the [Filesystem
-Hierarchy](/docs/arvo/reference/filesystem) documentation.
+Hierarchy](/reference/arvo/reference/filesystem) documentation.
 
 In addition to the directories discussed, there's a handful of special files a
 desk might contain. All of them live in the root of the desk, and all are
@@ -258,11 +257,11 @@ There are also two basic things to interact with: vanes, and other agents.
   vanes in a read-only fashion. Scries can be performed from any context with
   the dotket (`.^`) rune. Each vane has "scry endpoints" which define what you
   can read, and these are comprehensively documented in the Scry Reference of
-  each vane's section of the [Arvo documentation](/docs/arvo/overview). Agents
+  each vane's section of the [Arvo documentation](/reference/arvo/overview). Agents
   define scry endpoints in the `+on-peek` arm of their agent core.
   Scries can only be done on the local ship; it is not yet possible to perform
   scries over the network (but this functionality is planned for the future). There is a separate [guide to
-  scries](/docs/arvo/concepts/scry) which you might like to read through for
+  scries](/reference/arvo/concepts/scry) which you might like to read through for
   more details.
 - Messages:
   - Vanes: Each vane has a number of `task`s it can be passed and `gift`s it can
@@ -271,7 +270,7 @@ There are also two basic things to interact with: vanes, and other agents.
     external HTTP resource for you, Clay might read or build a specified file,
     etc. The `task`s and `gift`s of each vane are comprehensively documented in the
     API Reference of each vane's section of the [Arvo
-    documentation](/docs/arvo/overview).
+    documentation](/reference/arvo/overview).
   - Agents: These can be `%poke`d with some data, which is a request to perform a single action. They can also be `%watch`ed,
     which means to subscribe for updates. We'll discuss these in detail later in
     the guide.
@@ -279,7 +278,7 @@ There are also two basic things to interact with: vanes, and other agents.
 Here's a simplified diagram of the ways an agent can interact with other parts
 of the system:
 
-![api diagram](https://media.urbit.org/docs/userspace/gall-guide/api-diagram.svg)
+![api diagram](https://media.urbit.org/guides/core/app-school/api-diagram.svg)
 
 Things like `on-poke` are arms of the agent core. Don't worry about their
 meaning for now, we'll discuss them in detail later in the guide.
@@ -296,10 +295,10 @@ described here cover the majority of cases.
 
 ## Environment Setup
 
-Before proceeding with the Gall Guide, you'll need to have an appropriate text
+Before proceeding with App School, you'll need to have an appropriate text
 editor installed and configured, and know how to work with a fake ship for
 development. Best practices are described in the [environment setup
-guide](/docs/development/environment). Example agents and other code throughout
+guide](/guides/additional/development/environment). Example agents and other code throughout
 this guide will just be committed to the `%base` desk of a fake ship, but it's a
 good idea to have a read through that guide for when you begin work on your own
 apps.

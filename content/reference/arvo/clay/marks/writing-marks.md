@@ -1,7 +1,6 @@
 +++
 title = "Writing Marks"
 weight = 2
-template = "doc.html"
 +++
 
 Here we'll walk through a practical example of writing a `mark` file.
@@ -70,7 +69,7 @@ The `%mime` `mark` is used by Clay to store and convert `$mime` data. It's an im
 
 So with the nature of the `%mime` `mark` hopefully now clear, the reason we want conversion methods to and from `%mime` in our `%csv` `mark` is so we can import CSV files from Unix and vice versa.
 
-Since a CSV file on Unix will just be a long string with ASCII or UTF-8 encoding, we can treat `q.q` in the `$mime` as a `cord`, and thus write a parser to convert it to a `(list (list @t))`. For this purpose, here's a library: `csv.hoon`, which you can view in full on the [Examples](/docs/arvo/clay/marks/examples#libcsvhoon) page.
+Since a CSV file on Unix will just be a long string with ASCII or UTF-8 encoding, we can treat `q.q` in the `$mime` as a `cord`, and thus write a parser to convert it to a `(list (list @t))`. For this purpose, here's a library: `csv.hoon`, which you can view in full on the [Examples](/reference/arvo/clay/marks/examples#libcsvhoon) page.
 
 The library contains four functions:
 
@@ -79,7 +78,7 @@ The library contains four functions:
 - `+validate` - Check all rows of `(list (list @t))` are the same length.
 - `+csv-join` - Ignore this for now, we'll use it later on.
 
-The decoding and encoding arms use parsing functions from the Hoon standard library. It's not important to be familiar with parsing in Hoon for our purposes here, but you can have a look at the [Parsing Guide](/docs/hoon/guides/parsing) in the Hoon documentation if you're interested. The important thing to note is that `+de-csv` takes a valid CSV-format `@t` and returns a `(list (list @t))`, and `+en-csv` does the reverse - it takes a `(list (list @t))` and returns a CSV-format `@t`.
+The decoding and encoding arms use parsing functions from the Hoon standard library. It's not important to be familiar with parsing in Hoon for our purposes here, but you can have a look at the [Parsing Guide](/guides/additional/hoon/parsing) in the Hoon documentation if you're interested. The important thing to note is that `+de-csv` takes a valid CSV-format `@t` and returns a `(list (list @t))`, and `+en-csv` does the reverse - it takes a `(list (list @t))` and returns a CSV-format `@t`.
 
 Let's try the library in the dojo. After we've added it to `/lib` and run `|commit`, we can build the file:
 
@@ -185,7 +184,7 @@ For demonstrative purposes, we can just poach the algorithms used in the `+grad`
 
 Our diff format will be a `(urge:clay (list @t))`, and we'll use some `differ` functions from `zuse.hoon` like `+loss`, `+lusk` and `+lurk` to produce diffs and apply patches.
 
-The [csv.hoon library](/docs/arvo/clay/marks/examples#libcsvhoon) we imported also contains a `+csv-join` function which we'll use in the `+join` arm, just to save space here.
+The [csv.hoon library](/reference/arvo/clay/marks/examples#libcsvhoon) we imported also contains a `+csv-join` function which we'll use in the `+join` arm, just to save space here.
 
 Here's the new `%csv` `mark` defintion:
 

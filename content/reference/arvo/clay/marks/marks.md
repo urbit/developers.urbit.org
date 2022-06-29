@@ -1,7 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
 +++
 
 Clay is a typed filesystem, and we call these file types `mark`s. When talking about Hoon and Arvo we'll often talk of types like `@ud`, `(list @t)`, etc. A `mark` will specify such a type for its files, but it does more than just that - it also defines conversion routines to and from other `mark`s, as well as diff, patch, and merge routines.
@@ -52,8 +51,8 @@ The second case of interest is the `+json` arm for converting to and from a `%js
 
 ## Sections
 
-[Writing Marks](/docs/arvo/clay/marks/writing-marks) - A practical walkthrough of writing a `mark` file.
+[Writing Marks](/reference/arvo/clay/marks/writing-marks) - A practical walkthrough of writing a `mark` file.
 
-[Using Marks](/docs/arvo/clay/marks/using-marks) - Details of using `mark` conversion gates and `mark` cores in your own code.
+[Using Marks](/reference/arvo/clay/marks/using-marks) - Details of using `mark` conversion gates and `mark` cores in your own code.
 
-[Examples](/docs/arvo/clay/marks/examples) - The example code used in the Writing Marks guide.
+[Examples](/reference/arvo/clay/marks/examples) - The example code used in the Writing Marks guide.

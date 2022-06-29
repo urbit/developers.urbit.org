@@ -34,11 +34,11 @@ export default function Header({ search }) {
     <>
       {" "}
       <IntraNav ourSite="https://developers.urbit.org" search={search} />
-      <header className="layout max-w-screen-lg px-4 md:px-8 flex justify-between items-center pt-8 md:pt-10 lg:pt-12 pb-10 md:pb-12 lg:pb-24">
+      <header className="layout max-w-screen-lg px-4 md:px-8 flex justify-between items-end  pt-8 md:pt-10 lg:pt-12 pb-10 md:pb-12 lg:pb-24">
         <div>
           <Link href="/" passHref>
-            <a className="text-lg font-semibold">
-              <span className="hidden xl:inline">Urbit </span>Developers
+            <a className="text-lg font-semibold leading-3 mr-5">
+              <span className="">Urbit </span>Developers
             </a>
           </Link>
           {routeDepth > 2 ? (
@@ -102,11 +102,21 @@ export default function Header({ search }) {
         }
         <MenuTray isOpen={isOpen} setTray={setTray} search={search}>
           <Link href="/" passHref>
-            <a className="type-ui mb-12">Urbit</a>
+            <a className="font-semibold mb-4">Urbit Developers</a>
           </Link>
+          <Link href="https://urbit.org" passHref>
+            <a className="mt-2">Urbit.org</a>
+          </Link>
+          <Link href="https://operators.urbit.org" passHref>
+            <a className="mt-2">Operators</a>
+          </Link>
+          <Link href="/" passHref>
+            <a className="font-semibold mt-2 mb-4">Developers</a>
+          </Link>
+          <hr className="border-wall-200" />
           <ActiveLink
             currentPath={currentPath}
-            className="mr-5 mb-3 type-ui"
+            className="mt-4 mr-5 mb-3 type-ui"
             href="/overview"
           >
             Overview

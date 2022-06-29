@@ -1,8 +1,6 @@
 +++
 title = "Atoms and strings"
 weight = 1
-template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/constants/"]
 +++
 
 The simplest expressions in every language are constants:
@@ -82,7 +80,7 @@ Text string with interpolation.
 
 #### Syntax
 
-A [$tape](/docs/hoon/reference/stdlib/2q#tape)
+A [$tape](/reference/hoon/stdlib/2q#tape)
 
 `"abcdefg"`
 

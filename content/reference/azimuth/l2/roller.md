@@ -1,7 +1,6 @@
 +++
 title = "Rollers"
 weight = 9
-template = "doc.html"
 +++
 
 Here we outline how the naive rollup rollers work. This page is only a quick
@@ -28,14 +27,14 @@ for detailed information on the API.
 
 `%roller` is the Gall agent which collects layer 2 Azimuth **transactions**, which
 are a concatenation of an
-[action](/docs/azimuth/l2/bytestrings#actions) and a
-[signature](/docs/azimuth/l2/bytestrings#signatures) and forms them into
-[batches](/docs/azimuth/l2/bytestrings#batch) to be submitted periodically to the
+[action](/reference/azimuth/l2/bytestrings#actions) and a
+[signature](/reference/azimuth/l2/bytestrings#signatures) and forms them into
+[batches](/reference/azimuth/l2/bytestrings#batch) to be submitted periodically to the
 Ethereum blockchain.
 
 ### Transaction format
 
-See [Bytestring Format](/docs/azimuth/l2/bytestring) for a technical description of
+See [Bytestring Format](/reference/azimuth/l2/bytestring) for a technical description of
 how layer 2 transactions are formatted.
 
 ### Pending transactions

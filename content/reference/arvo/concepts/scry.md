@@ -1,7 +1,6 @@
 +++
 title = "Scries"
 weight = 40
-template = "doc.html"
 +++
 
 ### What is a scry?
@@ -18,11 +17,11 @@ The subject available in something like a Gall agent or thread contains a great 
 
 Scries are performed exclusively with the dotket rune: `.^`
 
-For details of its usage, see the [dotket](/docs/hoon/reference/rune/dot#-dotket) section of the Nock rune documentation. In addition to the dotket documentation, below is a colour-coded diagram breaking down the structure of a dotket scry expression with some additional notes.
+For details of its usage, see the [dotket](/reference/hoon/rune/dot#-dotket) section of the Nock rune documentation. In addition to the dotket documentation, below is a colour-coded diagram breaking down the structure of a dotket scry expression with some additional notes.
 
-![Scry diagram](https://media.urbit.org/docs/arvo/scry-diagram-v2.svg)
+![Scry diagram](https://media.urbit.orgreference/arvo/scry-diagram-v2.svg)
 
-One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](/docs/arvo/clay/scry).
+One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](/reference/arvo/clay/scry).
 
 Most other vanes also make use of `care`s in their scry endpoints. While such vanes don't have corresponding submodules with strictly defined behaviour like Clay, the `care`s still confer the general nature of the endpoint. The most widely used `care` is `%x`, which implies reading data in a general sense. Gall has special handling of `%x` scries as described in the [Gall agents](#gall-agents) section below, but otherwise `care`s have no special behaviour for non-Clay vanes (though they must still be included if the endpoint specifies it).
 
@@ -34,7 +33,7 @@ There are two places where scry endpoints are defined:
 
 Each of Arvo's eight vanes (kernel modules) include a `+scry` arm which defines that vane's scry endpoints. The number of endpoints and extent of data available varies between vanes. For example, Clay has a very extensive set of scry endpoints which provide read access to all files in all desks across all revisions, as well as the ability to build files, perform `mark` conversions, and various other functions. Jael provides access to a great deal of PKI data. On the other hand, Dill has only a couple of endpoints which are mostly useful for debugging, and Iris has none at all (apart from standard memory reporting endpoints you'd not typically use in your applications).
 
-To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/docs/arvo/overview) section of the documents.
+To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/reference/arvo/overview) section of the documents.
 
 #### Gall agents
 
@@ -64,14 +63,14 @@ The case in the beginning says it takes a `%x` `care` and has a `path` of `/keys
 
 ### Web scries
 
-The webserver vane Eyre has a system which allows clients like web browsers to perform scries over HTTP. For details, refer to the [Scry section of Eyre's External API Reference](/docs/arvo/eyre/external-api-ref#scry).
+The webserver vane Eyre has a system which allows clients like web browsers to perform scries over HTTP. For details, refer to the [Scry section of Eyre's External API Reference](/reference/arvo/eyre/external-api-ref#scry).
 
 ### Further reading
 
-[dotket](/docs/hoon/reference/rune/dot#-dotket) - Documentation of the `.^` rune which performs scries.
+[dotket](/reference/hoon/rune/dot#-dotket) - Documentation of the `.^` rune which performs scries.
 
-[Arvo](/docs/arvo/overview) - Each vane has a Scry Reference section with details of their endpoints as well as examples.
+[Arvo](/reference/arvo/overview) - Each vane has a Scry Reference section with details of their endpoints as well as examples.
 
-[Eyre's External API Reference](/docs/arvo/eyre/external-api-ref#scry) - Documentation of Eyre's scry system which allows web clients to perform scries over HTTP.
+[Eyre's External API Reference](/reference/arvo/eyre/external-api-ref#scry) - Documentation of Eyre's scry system which allows web clients to perform scries over HTTP.
 
-[The Gall Guide](/docs/userspace/gall-guide/intro) - The Gall tutorial includes a section about `+on-peek` and writing scry endpoints.
+[App School I](/guides/core/app-school/intro) - The App School Gall tutorial includes a section about `+on-peek` and writing scry endpoints.

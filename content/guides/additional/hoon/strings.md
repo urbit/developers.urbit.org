@@ -1,7 +1,6 @@
 +++
 title = "Strings"
 weight = 4
-template = "doc.html"
 +++
 
 This document discusses hoon's two main string types: `cord`s (as well as its
@@ -11,7 +10,7 @@ functions you'll regularly encounter. In particular, it discusses conversions
 and the encoding/decoding of atom auras in strings.
 
 Hoon has a system for writing more elaborate functional parsers, but that is not
-touched on here. Instead, see the [Parsing](/docs/hoon/guides/parsing) guide.
+touched on here. Instead, see the [Parsing](/guides/additional/hoon/parsing) guide.
 Hoon also has a type for UTF-32 strings, but those are rarely used and not
 discussed in this document.
 
@@ -49,7 +48,7 @@ Next we'll look at these different types of strings in more detail.
 
 ### `cord`
 
-A [`cord`](/docs/hoon/reference/stdlib/2q#cord) has an aura of `@t`. It denotes
+A [`cord`](/reference/hoon/stdlib/2q#cord) has an aura of `@t`. It denotes
 UTF-8 text encoded in an atom, little-endian. That is, the first character in
 the text is the least-significant byte. A cord may contain any UTF-8 characters,
 there are no restrictions.
@@ -104,7 +103,7 @@ This will be parsed to:
 
 ### `knot`
 
-A [`knot`](/docs/hoon/reference/stdlib/2q#knot) has an aura of `@ta`, and is a
+A [`knot`](/reference/hoon/stdlib/2q#knot) has an aura of `@ta`, and is a
 subset of a [`cord`](#cord). It allows lower-case letters, numbers, and four
 special characters: Hyphen, tilde, underscore and period. Its restricted set of
 characters is intended to be URL-safe.
@@ -118,7 +117,7 @@ characters prepended with `~.` like:
 
 ### `term`
 
-A [`term`](/docs/hoon/reference/stdlib/2q#term) has an aura of `@tas`, and is a
+A [`term`](/reference/hoon/stdlib/2q#term) has an aura of `@tas`, and is a
 subset of a [`knot`](#knot). It only allows lower-case letters, numbers, and
 hyphens. Additionally, the first character cannot be a hyphen or number. This is
 a very restricted text atom, and is intended for naming data structures and the
@@ -203,8 +202,8 @@ For example, you can do this:
 This means you cannot rely on mere aura-casting if you need the text to conform
 to the specified aura's restrictions. Instead, there are a couple of function in
 the standard library to check text aura validity:
-[`+sane`](/docs/hoon/reference/stdlib/4b#sane) and
-[`+sand`](/docs/hoon/reference/stdlib/4b#sane).
+[`+sane`](/reference/hoon/stdlib/4b#sane) and
+[`+sand`](/reference/hoon/stdlib/4b#sane).
 
 The `+sane` function takes an argument of either `%ta` or `%tas` to validate
 `@ta` and `@tas` respectively (you can technically give it `%t` for `@t` too but
@@ -230,10 +229,10 @@ returns a `unit` of the given atom, or `~` if validation failed. For example:
 
 ## `tape`
 
-A [`tape`](/docs/hoon/reference/stdlib/2q#tape) is the other
+A [`tape`](/reference/hoon/stdlib/2q#tape) is the other
 main string type in hoon. Rather than a single atom, it's instead a list of
 individual `@tD` characters (the `D` specifies a bit-length of 8, see the
-[Auras](/docs/hoon/reference/auras#bitwidth) documentation for
+[Auras](/reference/hoon/auras#bitwidth) documentation for
 details). The head of the list is the first character in the string.
 
 The `hoon` syntax for a tape is some text wrapped in double-quotes like:
@@ -296,7 +295,7 @@ In the first case, the code to be evaluated is enclosed in braces. The type of
 the product of the code must itself be a tape. For example, if the `@p` of our
 ship is stored in `our`, simply doing `"{our}"` will fail because its type will
 be `@p` rather than `tape`. Instead, we must explicitly use the
-[`+scow`](/docs/hoon/reference/stdlib/4m#scow) function to
+[`+scow`](/reference/hoon/stdlib/4m#scow) function to
 render `our` as a tape:
 
 ```
@@ -340,8 +339,8 @@ And another:
 ## Conversions
 
 Tapes can easily be converted to cords and vice versa. There are two stdlib
-functions for this purpose: [`+crip`](/docs/hoon/reference/stdlib/4b#crip) and
-[`+trip`](/docs/hoon/reference/stdlib/4b#trip). The former converts a `tape` to
+functions for this purpose: [`+crip`](/reference/hoon/stdlib/4b#crip) and
+[`+trip`](/reference/hoon/stdlib/4b#trip). The former converts a `tape` to
 a `cord` and the latter does the opposite. For example:
 
 ```
@@ -374,14 +373,14 @@ Likewise, the output of `+crip` can be cast to a knot or term:
 ## Encoding in text
 
 It's common to encode atoms in cords or knots, particularly when constructing a
-[scry](/docs/arvo/concepts/scry) [`path`](/docs/hoon/reference/stdlib/2q#path)
+[scry](/reference/arvo/concepts/scry) [`path`](/reference/hoon/stdlib/2q#path)
 or just a `path` in general. There are two main functions for this purpose:
-[`+scot`](/docs/hoon/reference/stdlib/4m#scot) and
-[`+scow`](/docs/hoon/reference/stdlib/4m#scow). The former produces a `knot`,
+[`+scot`](/reference/hoon/stdlib/4m#scot) and
+[`+scow`](/reference/hoon/stdlib/4m#scow). The former produces a `knot`,
 and the latter produces a `tape`. Additionally, there are two more functions for
 encoding `path`s in cords and tapes respectively:
-[`+spat`](/docs/hoon/reference/stdlib/4m#spat) and
-[`+spud`](/docs/hoon/reference/stdlib/4m#spud).
+[`+spat`](/reference/hoon/stdlib/4m#spat) and
+[`+spud`](/reference/hoon/stdlib/4m#spud).
 
 ### `+scot` and `+spat`
 
@@ -457,10 +456,10 @@ rather than a knot. For example:
 ## Decoding from text
 
 For decoding atoms of particular auras encoded in cords, there are three
-functions: [`+slat`](/docs/hoon/reference/stdlib/4m#slat),
-[`+slav`](/docs/hoon/reference/stdlib/4m#slav), and
-[`+slaw`](/docs/hoon/reference/stdlib/4m#slaw). Additionally, there is
-[`+stab`](/docs/hoon/reference/stdlib/4m#stab) for decoding a cord to a path.
+functions: [`+slat`](/reference/hoon/stdlib/4m#slat),
+[`+slav`](/reference/hoon/stdlib/4m#slav), and
+[`+slaw`](/reference/hoon/stdlib/4m#slaw). Additionally, there is
+[`+stab`](/reference/hoon/stdlib/4m#stab) for decoding a cord to a path.
 
 `+slav` parses the given cord with the aura specified as a `@tas`, crashing if
 the parsing failed. For example:
@@ -513,19 +512,19 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 
 ## Futher reading
 
-- [Parsing](/docs/hoon/guides/parsing) - A guide to writing fully-fledged
+- [Parsing](/guides/additional/hoon/parsing) - A guide to writing fully-fledged
   functional parsers in hoon.
 
-- [Auras](/docs/hoon/reference/auras) - Details of auras in hoon.
+- [Auras](/reference/hoon/auras) - Details of auras in hoon.
 
-- [stdlib 2b: List logic](/docs/hoon/reference/stdlib/2b) - Standard library
+- [stdlib 2b: List logic](/reference/hoon/stdlib/2b) - Standard library
   functions for manipulating lists, which are useful for dealing with tapes.
 
-- [stdlib 2q: Molds and Mold-builders](/docs/hoon/reference/stdlib/2q) - Several
+- [stdlib 2q: Molds and Mold-builders](/reference/hoon/stdlib/2q) - Several
   text types are defined in this section of the standard library.
 
-- [stdlib 4b: Text processing](/docs/hoon/reference/stdlib/4b) - Standard
+- [stdlib 4b: Text processing](/reference/hoon/stdlib/4b) - Standard
   library functions for manipulating and converting tapes and strings.
 
-- [stdlib 4m: Formatting functions](/docs/hoon/reference/stdlib/4m) - Standard
+- [stdlib 4m: Formatting functions](/reference/hoon/stdlib/4m) - Standard
   library functions for encoding and decoding atom auras in strings.

@@ -1,12 +1,10 @@
 +++
 title = "Nock Definition"
 weight = 1
-template = "doc.html"
-aliases = ["docs/learn/nock/definition/"]
 +++
 
 Nock is a Turing-complete function that maps a cell
-`[subject formula]` to a [noun](/docs/glossary/noun/) `product`, where `subject` is the
+`[subject formula]` to a [noun](/reference/glossary/noun/) `product`, where `subject` is the
 data, `formula` is the code, and `product` is the result.
 
 To program in Hoon, this is all you need to know about Nock.

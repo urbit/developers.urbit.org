@@ -1,8 +1,6 @@
 +++
 title = "Overview"
 weight = 1
-template = "doc.html"
-aliases = ["/docs/learn/arvo/clay/"]
 +++
 
 Our filesystem.
@@ -31,31 +29,31 @@ mounting to Unix, changing directory, merging, and listing files.
 
 ### Developer Documentation
 
-[Architecture](/docs/arvo/clay/architecture)
+[Architecture](/reference/arvo/clay/architecture)
 
 A conceptual overview of how Clay was designed.
 
-[Using Clay](/docs/arvo/clay/using)
+[Using Clay](/reference/arvo/clay/using)
 
 A quick overview of how the most common tasks involving Clay are performed:
 reading and subscribing, syncing to Unix, and merging.
 
-[Data Types](/docs/arvo/clay/data-types)
+[Data Types](/reference/arvo/clay/data-types)
 
 Explanations of the many data types found throughout Clay.
 
-[Scry Reference](/docs/arvo/clay/scry)
+[Scry Reference](/reference/arvo/clay/scry)
 
 Reference for Clay's various scry endpoints.
 
-[API Reference](/docs/arvo/clay/tasks)
+[API Reference](/reference/arvo/clay/tasks)
 
 Details of the various `task`s you can use to interact with Clay.
 
-[Examples](/docs/arvo/clay/examples)
+[Examples](/reference/arvo/clay/examples)
 
 Example usage of the various Clay `task`s.
 
-[Marks](/docs/arvo/clay/marks/marks)
+[Marks](/reference/arvo/clay/marks/marks)
 
 Details of `mark`s as well as a guide to writing them and their usage.

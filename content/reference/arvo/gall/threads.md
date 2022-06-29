@@ -1,7 +1,6 @@
 +++
 title = "Threads Reference"
 weight = 50
-template = "doc.html"
 +++
 
 ## Start thread

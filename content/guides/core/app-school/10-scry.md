@@ -1,13 +1,12 @@
 +++
 title = "10. Scries"
 weight = 50
-template = "doc.html"
 +++
 
 In this lesson we'll look at scrying agents, as well as how agents handle such
 scries. If you're not at all familiar with performing scries in general, have a
-read through the [Scry Guide](/docs/arvo/concepts/scry), as well as the [dotket
-rune documentation](/docs/hoon/reference/rune/dot#-dotket).
+read through the [Scry Guide](/reference/arvo/concepts/scry), as well as the [dotket
+rune documentation](/reference/hoon/rune/dot#-dotket).
 
 ## Scrying
 
@@ -20,10 +19,10 @@ Most of the time, scry requests are handled by Arvo, which routes the request to
 the appropriate vane. When you scry a Gall agent you actually scry Gall itself.
 Gall interprets the request, runs it on the specified agent, and then returns
 the result. Scries are performed with the
-[dotket](/docs/hoon/reference/rune/dot#-dotket) (`.^`) rune. Here's a summary of
+[dotket](/reference/hoon/rune/dot#-dotket) (`.^`) rune. Here's a summary of
 their format:
 
-![scry summary diagram](https://media.urbit.org/docs/arvo/scry-diagram-v2.svg)
+![scry summary diagram](https://media.urbit.orgreference/arvo/scry-diagram-v2.svg)
 
 A note on `care`s: Cares are most carefully implemented by Clay, where they specify
 submodules and have tightly defined behaviors. For Gall agents, most of these
@@ -155,7 +154,7 @@ can do something like:
 Previously we discussed custom `mark` files. Such mark files are most commonly
 used when the data might be accessed through Eyre's HTTP API, and therefore
 required JSON conversion methods. We cover such things separately in the
-[Full-Stack Walkthrough](/docs/userspace/full-stack/1-intro), but note that if
+[Full-Stack Walkthrough](/guides/core/app-school-full-stack/1-intro), but note that if
 that's the case for your agent, you may wish to also have your scry endpoints
 return data with your custom `mark` so it can easily be converted to JSON when
 accessed from the web.
@@ -352,12 +351,12 @@ crash!
 
 ## Exercises
 
-- Have a read through the [Scry Guide](/docs/arvo/concepts/scry).
+- Have a read through the [Scry Guide](/reference/arvo/concepts/scry).
 - Have a read through the [dotket rune
-  documentation](/docs/hoon/reference/rune/dot#-dotket).
+  documentation](/reference/hoon/rune/dot#-dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
 - Try adding another scry endpoint to the `peeker.hoon` agent, which uses a
-  [`wyt:by`](/docs/hoon/reference/stdlib/2i#wytby) map function to produce the
+  [`wyt:by`](/reference/hoon/stdlib/2i#wytby) map function to produce the
   number of items in the `data` map.
 - Have a look through the `on-peek` arms of some other agents on your ship, and
   try performing some scries to some of the endpoints.

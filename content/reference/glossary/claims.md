@@ -1,12 +1,11 @@
 +++
 title = "Claims"
 
-template = "doc.html"
 [extra]
 category = "azimuth"
 +++
 
-The **Claims** [Azimuth](/docs/glossary/azimuth) contract allows Urbit identities to make publicly visible assertions about their owner. Such assertions are most commonly about the owner's identity, real-world or otherwise. A claim has three fields: the claim itself, the _protocol_, and the _dossier_.
+The **Claims** [Azimuth](/reference/glossary/azimuth) contract allows Urbit identities to make publicly visible assertions about their owner. Such assertions are most commonly about the owner's identity, real-world or otherwise. A claim has three fields: the claim itself, the _protocol_, and the _dossier_.
 
 The claim itself is what you're attempting to assert the identity of, as in `@JohnDoe` for a Twitter account, or `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`
 

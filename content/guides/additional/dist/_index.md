@@ -1,25 +1,25 @@
 +++
 title = "Distribution"
-weight = 900
+weight = 20
 sort_by = "weight"
-template = "sections/docs/chapters.html"
 insert_anchor_links = "right"
 +++
 
 Developer documentation for desk/app distribution and management.
 
-## [Overview](/docs/userspace/dist/dist)
+## [Overview](/guides/additional/dist/dist)
 
 An overview of desk/app distribution and management.
 
-## [Docket Files](/docs/userspace/dist/docket)
+## [Docket Files](/guides/additional/dist/docket)
 
 Documentation of `desk.docket` files.
 
-## [Glob](/docs/userspace/dist/glob)
+## [Glob](/guides/additional/dist/glob)
 
 Documentation of `glob`s (client bundles).
 
-## [Guide](/docs/userspace/dist/guide)
+## [Guide](/guides/additional/dist/guide)
 
 A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
+

@@ -1,7 +1,6 @@
 +++
 title = "Examples"
 weight = 4
-template = "doc.html"
 +++
 
 Here are a couple of practical examples of using Behn's `%wait` and `%rest` `task`s.

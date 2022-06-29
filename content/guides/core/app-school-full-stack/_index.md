@@ -1,8 +1,7 @@
 +++
-title = "App School II (Full-Stack Walkthrough)"
-weight = 10
+title = "App School II (Full-Stack)"
+weight = 7
 sort_by = "weight"
-template = "sections/docs/chapters.html"
 insert_anchor_links = "right"
 +++
 

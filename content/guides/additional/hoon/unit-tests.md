@@ -1,7 +1,6 @@
 +++
 title = "Unit tests"
 weight = 10
-template = "doc.html"
 +++
 
 ## Structure

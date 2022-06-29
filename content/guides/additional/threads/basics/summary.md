@@ -1,17 +1,16 @@
 +++
 title = "Summary"
 weight = 5
-template = "doc.html"
 +++
 
-That's basically all you need to know to write threads. The best way to get a good handle on them is just to experiment with some `strandio` functions. For information on running threads from gall agents, see [here](/docs/userspace/threads/gall) and for some examples see [here](/docs/userspace/threads/examples).
+That's basically all you need to know to write threads. The best way to get a good handle on them is just to experiment with some `strandio` functions. For information on running threads from gall agents, see [here](/guides/additional/threads/gall) and for some examples see [here](/guides/additional/threads/examples).
 
 Now here's a quick recap of the main points covered:
 
 ## Spider
 
 - is the gall agent that manages threads.
-- Details of interacting with threads via spider can be seen [here](/docs/userspace/threads/reference).
+- Details of interacting with threads via spider can be seen [here](/guides/additional/threads/reference).
 
 ## Threads
 

@@ -1,14 +1,13 @@
 +++
 title = "Arm"
 
-template = "doc.html"
 [extra]
 category = "hoon-nock"
 +++
 
-An **arm** is a Hoon expression encoded as a noun. You can find them as part of a [core](/docs/glossary/core)
+An **arm** is a Hoon expression encoded as a noun. You can find them as part of a [core](/reference/glossary/core)
 
 ### Further Reading
 
-- [The Hoon Tutorial](/docs/hoon/hoon-school/): Our guide to learning the Hoon programming language.
-  - [Lesson 1.7: Arms and Cores](/docs/hoon/hoon-school/arms-and-cores): A Hoon Tutorial lesson that discusses cores.
+- [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon programming language.
+  - [“Cores”](/guides/core/hoon-school/F-cores#cores): A Hoon Tutorial lesson that discusses cores.

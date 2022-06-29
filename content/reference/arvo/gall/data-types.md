@@ -1,7 +1,6 @@
 +++
 title = "Data Types"
 weight = 5
-template = "doc.html"
 +++
 
 This document describes the data types for Gall defined in `lull.hoon`.
@@ -69,7 +68,7 @@ as follows:
   See the [`boat`](#boat) section for details of the type.
 - `sup`: Incoming subscriptions. That is, subscriptions others have made to our
   agent. See the [`bitt`](#bitt) section for details of the type.
-- `act`: The total number of [`move`](/docs/arvo/overview#move)s our agent has
+- `act`: The total number of [`move`](/reference/arvo/overview#move)s our agent has
   processed so far.
 - `eny`: 512 bits of entropy.
 - `now`: The current date-time.
@@ -248,7 +247,7 @@ vanes, or for sending out updates to subscribers. The three cases are:
   ```
   You can refer to the `/sys/lull.hoon` source code for all the possible vane
   tasks, or see each vane's API Reference section in the [Arvo
-  documentation](/docs/arvo/overview)
+  documentation](/reference/arvo/overview)
 - `%pyre`: This is for aborting side-effects initiated during agent
   installation. The `tang` is an error message.
 
@@ -442,7 +441,7 @@ our agent.
 - Accepts: `path`
 - Produces: `(unit (unit cage))`
 
-This arm is called when a [scry](/docs/arvo/concepts/scry) is performed on our
+This arm is called when a [scry](/reference/arvo/concepts/scry) is performed on our
 agent.
 
 #### `on-agent`
@@ -481,7 +480,7 @@ This arm is called when a vane gives our agent a `gift`. A `sign-arvo` is:
 ```
 
 You can refer to the `/sys/lull.hoon` source code, or the API Reference of each
-vane in the [Arvo documentation](/docs/arvo/overview).
+vane in the [Arvo documentation](/reference/arvo/overview).
 
 #### `on-fail`
 

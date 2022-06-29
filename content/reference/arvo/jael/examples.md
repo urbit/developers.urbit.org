@@ -1,12 +1,11 @@
 +++
 title = "Examples"
 weight = 5
-template = "doc.html"
 +++
 
 This documents contains practical examples of a number of Jael's `task`s.
 
-General documentation of the `task`s demonstrated here can be found in the [API Reference](/docs/arvo/jael/tasks) document, and details of the data types mentioned can be found in the [Data Types](/docs/arvo/jael/data-types) document.
+General documentation of the `task`s demonstrated here can be found in the [API Reference](/reference/arvo/jael/tasks) document, and details of the data types mentioned can be found in the [Data Types](/reference/arvo/jael/data-types) document.
 
 ## `%private-keys`
 
@@ -112,7 +111,7 @@ Save the above thread in the `/ted` directory and `|commit %base`. The thread ta
 > -sub-pub ~dopzod
 ```
 
-It first passes a `%public-keys` `task` to Jael that looks like `[%public-keys (silt ~[~dopzod])]` in order to subscribe. Jael will immediately respond with a `%public-keys` `gift` that contains a `%full` [$public-keys-result](/docs/arvo/jael/data-types#public-keys-result). The `(map ship point)` contained will (for each ship specified in the `task`) include the current pubkeys for the ship's current life as well as previous keys for previous `life`s. It thus contains a complete record of keys up to the present for each ship. Our thread will print these out to the terminal like so:
+It first passes a `%public-keys` `task` to Jael that looks like `[%public-keys (silt ~[~dopzod])]` in order to subscribe. Jael will immediately respond with a `%public-keys` `gift` that contains a `%full` [$public-keys-result](/reference/arvo/jael/data-types#public-keys-result). The `(map ship point)` contained will (for each ship specified in the `task`) include the current pubkeys for the ship's current life as well as previous keys for previous `life`s. It thus contains a complete record of keys up to the present for each ship. Our thread will print these out to the terminal like so:
 
 ```
 [ %public-keys
@@ -154,9 +153,9 @@ It first passes a `%public-keys` `task` to Jael that looks like `[%public-keys (
 ]
 ```
 
-Along with giving us the current information, Jael will also subscribe us to any future updates for the ships in question. Such updates will come as additional `%public-keys` `gift`s, but rather than a `%full` `public-keys-result`, they'll instead contain either a `%diff` or `%breach` `public-keys-result`, depending on what's happened to the ship in question. It's difficult to simulate such events for demonstrative purposes so an example is not included, but you can look at the [$public-keys-result](/docs/arvo/jael/data-types#public-keys-result) to get an idea.
+Along with giving us the current information, Jael will also subscribe us to any future updates for the ships in question. Such updates will come as additional `%public-keys` `gift`s, but rather than a `%full` `public-keys-result`, they'll instead contain either a `%diff` or `%breach` `public-keys-result`, depending on what's happened to the ship in question. It's difficult to simulate such events for demonstrative purposes so an example is not included, but you can look at the [$public-keys-result](/reference/arvo/jael/data-types#public-keys-result) to get an idea.
 
-Jael maintains a `(jug duct ship)` and its reverse `(jug ship duct)` in its state to track subscriptions. If we do a [subscriptions](/docs/arvo/jael/scry#subscriptions) scry and filter the result for `~dopzod`, we can see the duct of our thread has now been added to the `~dopzod` `set`. Our thread does this, and will output something like:
+Jael maintains a `(jug duct ship)` and its reverse `(jug ship duct)` in its state to track subscriptions. If we do a [subscriptions](/reference/arvo/jael/scry#subscriptions) scry and filter the result for `~dopzod`, we can see the duct of our thread has now been added to the `~dopzod` `set`. Our thread does this, and will output something like:
 
 ```
 {~[/gall/use/spider/0w1.vGVi-/~sampel-palnet/thread/~.dojo_0v6.0hlak.dam1b.bcdou.ai7gq.19fi8/sub-pubkeys /dill //term/1]}

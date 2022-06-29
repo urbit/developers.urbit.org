@@ -1,7 +1,6 @@
 +++
 title = "Fundamentals"
 weight = 1
-template = "doc.html"
 +++
 
 ## Introduction

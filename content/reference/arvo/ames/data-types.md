@@ -1,7 +1,6 @@
 +++
 title = "Data Types"
 weight = 5
-template = "doc.html"
 +++
 
 Here are the data types used by Ames, as defined in `lull.hoon`.

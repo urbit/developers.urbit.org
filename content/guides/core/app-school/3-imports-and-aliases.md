@@ -1,7 +1,6 @@
 +++
 title = "3. Imports and Aliases"
 weight = 15
-template = "doc.html"
 +++
 
 In the last lesson we looked at the most basic aspects of a Gall agent's
@@ -29,15 +28,15 @@ terminal, and in others it succeeds but does nothing. It has two primary uses:
   function in `default-agent`, rather than having to manually handle events on
   those arms.
 - A common pattern in an agent is to switch on the input of an arm with
-  [wutlus](/docs/hoon/reference/rune/wut#-wutlus) (`?+`) runes or maybe
-  [wutcol](/docs/hoon/reference/rune/wut#wutcol) (`?:`) runes. For any
+  [wutlus](/reference/hoon/rune/wut#-wutlus) (`?+`) runes or maybe
+  [wutcol](/reference/hoon/rune/wut#-wutcol) (`?:`) runes. For any
   unexpected input, you can just pass it to the relevant arm of `default-agent`
   rather than handling it manually.
 
 The `default-agent` library lives in `/lib/default-agent/hoon` of the `%base`
 desk, and you would typically include a copy in any new desk you created. It's
 imported at the beginning of an agent with the
-[faslus](/docs/arvo/ford/ford#ford-runes) (`/+`) rune.
+[faslus](/reference/arvo/ford/ford#ford-runes) (`/+`) rune.
 
 The library is a wet gate which takes two arguments: `agent` and `help`. The
 first is your agent core itself, and the second is a `?`. If `help` is `%.y` (equivalently, `%&`), it
@@ -56,7 +55,7 @@ door, adding its extra debugging functionality while transparently passing
 events to your agent for handling like usual.
 
 To use it, you just import `dbug` with a
-[faslus](/docs/arvo/ford/ford#ford-runes) (`/+`) rune at the beginning, then add
+[faslus](/reference/arvo/ford/ford#ford-runes) (`/+`) rune at the beginning, then add
 the following line directly before the door of your agent:
 
 ```hoon
@@ -101,11 +100,11 @@ later.
 An agent core must have exactly ten arms. However, there's a special kind of
 "virtual arm" that can be added without actually increasing the core's arm
 count, since it really just adds code to the other arms in the core. A virtual arm is created with the
-[lustar](/docs/hoon/reference/rune/lus#-lustar) (`+*`) rune, and its purpose is
+[lustar](/reference/hoon/rune/lus#-lustar) (`+*`) rune, and its purpose is
 to define _deferred expressions_. It takes a list of pairs of names and Hoon
 expressions. When compiled, the deferred expressions defined in the virtual arm are
 implicitly inserted at the beginning of every other arm of the core, so they all
-have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the [tistar](/docs/hoon/reference/rune/tis#-tistar) reference for more information on deferred expressions.
+have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the [tistar](/reference/hoon/rune/tis#-tistar) reference for more information on deferred expressions.
 
 A virtual arm in an agent often looks something like this:
 
@@ -142,9 +141,9 @@ additional cores by composing them into the subject of the agent core itself.
 The contents of these cores will then be available to arms of the agent core.
 
 Usually to compose cores in this way, you'd have to do something like insert
-[tisgar](/docs/hoon/reference/rune/tis#-tisgar) (`=>`) runes in between them.
+[tisgar](/reference/hoon/rune/tis#-tisgar) (`=>`) runes in between them.
 However, Clay's build system implicitly composes everything in a file by
-wrapping it in a [tissig](/docs/hoon/reference/rune/tis#-tissig) (`=~`)
+wrapping it in a [tissig](/reference/hoon/rune/tis#-tissig) (`=~`)
 expression, which means you can just butt separate cores up against one another
 and they'll all still get composed.
 
@@ -187,7 +186,7 @@ The first line uses the faslus (`/+`) Ford rune to import
 `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them
 into the subject of our agent so they're available for use. You can read more
 about Ford runes in the [Ford section of the vane
-documenation](/docs/arvo/ford/ford#ford-runes).
+documenation](/reference/arvo/ford/ford#ford-runes).
 
 Next, we've added an extra core. Notice how it's not explicitly composed, since
 the build system will do that for us. In this case we've just added a single
@@ -260,7 +259,7 @@ The key takeaways are:
 - `dbug` is a library that lets you inspect the state and `bowl` of an agent
   from the dojo, with the `+dbug` generator.
 - Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with
-  the [lustar](/docs/hoon/reference/rune/lus#-lustar) (`+*`) rune.
+  the [lustar](/reference/hoon/rune/lus#-lustar) (`+*`) rune.
 - `this` is a conventional deferred expression name for the agent core itself.
 - `def` is a conventional deferred expression name for accessing arms in the `default-agent`
   library.
@@ -274,7 +273,7 @@ The key takeaways are:
 - Run through the [example](#example) yourself on a fake ship if you've not done
   so already.
 - Have a read through the [Ford rune
-  documentation](/docs/arvo/ford/ford#ford-runes) for details about importing
+  documentation](/reference/arvo/ford/ford#ford-runes) for details about importing
   libraries, structures and other things.
 - Try the `+dbug` generator out on some other agents, like `:settings-store +dbug`, `:btc-wallet +dbug`, etc, and try some of its options [described
   above](#dbug).

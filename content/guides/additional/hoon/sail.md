@@ -1,7 +1,6 @@
 +++
 title = "Sail (HTML)"
 weight = 6
-template = "doc.html"
 +++
 
 Sail is a domain-specific language for composing HTML (and XML) structures in
@@ -28,7 +27,7 @@ It’s easy to see how Sail can directly translate to HTML:
 - ```
   ;html
     ;head
-      ;title: My page
+      ;title = My page
       ;meta(charset "utf-8");
     ==
     ;body
@@ -335,14 +334,14 @@ And then your style tag might look like:
 ```
 
 A cord is used rather than a tape so you don't need to escape braces. The
-[ketsig](/docs/hoon/reference/rune/ket#-ketsig) (`^~`) rune means `++trip` will
+[ketsig](/reference/hoon/rune/ket#-ketsig) (`^~`) rune means `++trip` will
 be run at compile time rather than call time.
 
 ## Types and marks
 
 So far we've shown rendered HTML for demonstrative purposes, but Sail syntax
 doesn't directly produce HTML text. Instead, it produces a
-[$manx](/docs/hoon/reference/stdlib/5e#manx). This is a Hoon type used to
+[$manx](/reference/hoon/stdlib/5e#manx). This is a Hoon type used to
 represent an XML hierarchical structure with a single root node. There are six
 XML-related types defined in the standard library:
 
@@ -356,11 +355,11 @@ XML-related types defined in the standard library:
 ```
 
 More information about these can be found in [section 5e of the standard library
-reference](/docs/hoon/reference/stdlib/5e).
+reference](/reference/hoon/stdlib/5e).
 
 You don't need to understand these types in order to write Sail. The main thing
 to note is that a `$manx` is a node (a single tag) and its contents is a
-[$marl](/docs/hoon/reference/stdlib/5e#marl), which is just a `(list manx)`.
+[$marl](/reference/hoon/stdlib/5e#marl), which is just a `(list manx)`.
 
 ### Rendering
 
@@ -441,7 +440,7 @@ runes:
 
 ### `;+` Miclus
 
-The [miclus rune](/docs/hoon/reference/rune/mic#-miclus) makes a `$marl` from a
+The [miclus rune](/reference/hoon/rune/mic#-miclus) makes a `$marl` from a
 complex hoon expression that produces a single `$manx`. Its main use is nesting
 tall-form hoon logic in another Sail element. For example:
 
@@ -468,7 +467,7 @@ Produces one of these depending on the value of `number`:
 
 ### `;*` Mictar
 
-The [mictar rune](/docs/hoon/reference/rune/mic#-mictar) makes a `$marl` (a list
+The [mictar rune](/reference/hoon/rune/mic#-mictar) makes a `$marl` (a list
 of XML nodes) from a complex hoon expression. This rune lets you add many
 elements inside another Sail element. For example:
 
@@ -502,7 +501,7 @@ elements inside another Sail element. For example:
 
 ### `;=` Mictis
 
-The [mictis rune](/docs/hoon/reference/rune/mic#-mictis) makes a `$marl` (a list
+The [mictis rune](/reference/hoon/rune/mic#-mictis) makes a `$marl` (a list
 of XML nodes) from a series of `$manx`es. This is mostly useful if you want to
 make the list outside of an element and then be able to insert it afterwards.
 For example:
@@ -535,7 +534,7 @@ For example:
 
 ### `;/` Micfas
 
-The [micfas rune](/docs/hoon/reference/rune/mic#-micfas) turns an ordinary tape
+The [micfas rune](/reference/hoon/rune/mic#-micfas) turns an ordinary tape
 into a `$manx`. For example:
 
 ```

@@ -1,15 +1,14 @@
 +++
 title = "Azimuth.eth"
 weight = 5
-template = "doc.html"
 +++
 
 [Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all
 data related to Azimuth points and their ownership, and should be considered to
 be the ledger for Azimuth. This contract is just a data store - it only contains
-the bare minimum of business logic. See [Ecliptic.eth](/docs/azimuth/ecliptic)
+the bare minimum of business logic. See [Ecliptic.eth](/reference/azimuth/ecliptic)
 for the contract containing the business logic for this ledger. `Azimuth.eth`
-cannot be modified directly by [galaxy vote](/docs/glossary/upgrade) - they are
+cannot be modified directly by [galaxy vote](/reference/glossary/upgrade) - they are
 only eligible to modify the Ecliptic.
 
 ## Global state {% #global %}
@@ -104,7 +103,7 @@ in the following `struct`:
 ## `Deed`s {% #deeds %}
 
 A `Deed` says which Ethereum address owns a given `Point` as well as several
-[proxies](/docs/using/id/proxies) for that `Point`.
+[proxies](/using/id/proxies) for that `Point`.
 
 ```solidity
 struct Deed
@@ -151,7 +150,7 @@ able to set its own domain name and so we do not expect this to remain the case
 forever.
 
 All data in this ledger is stored and processed locally on your ship by the
-[`%azimuth` Gall agent](/docs/azimuth/flow#azimuth), including [layer
-2](/docs/azimuth/l2/layer2) data. Because state transitions resulting from layer 2
+[`%azimuth` Gall agent](/reference/azimuth/flow#azimuth), including [layer
+2](/reference/azimuth/l2/layer2) data. Because state transitions resulting from layer 2
 transactions are not included in this ledger, in general the local store will
 differ from what is kept in `Azimuth.eth`.

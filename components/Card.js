@@ -8,10 +8,11 @@ export default function Card({
   text,
   callout = "",
   className = "",
+  disableArrow = false,
 }) {
   return callout ? (
     <div
-      id={callout === "" ? "card" : ""}
+      id={callout === "" && !disableArrow ? "card" : ""}
       className={classNames(
         "bg-wall-100 rounded-xl p-7 items-stretch relative flex",
         { "space-x-4": icon },
@@ -30,7 +31,7 @@ export default function Card({
   ) : (
     <Link href={href}>
       <div
-        id={callout === "" ? "card" : ""}
+        id={callout === "" && !disableArrow ? "card" : ""}
         className={
           "bg-wall-100 rounded-xl flex space-x-4 p-7 items-center relative cursor-pointer " +
           className

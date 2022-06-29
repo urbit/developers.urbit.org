@@ -1,12 +1,11 @@
 +++
 title = "Glob"
 weight = 4
-template = "doc.html"
 +++
 
 A `glob` contains the client bundle—client-side resources like HTML, JS, and CSS files—for a landscape app distributed in a desk. Globs are managed separately from other files in desks because they often contain large files that frequently change, and would therefore bloat a ship's state if they were subject to Clay's revision control mechanisms.
 
-The hash and source of an app's glob is defined in a desk's [docket file](/docs/userspace/dist/docket). The `%docket` agent reads the docket file, obtains the glob from the specified source, and makes its contents available to the browser client. On a desk publisher's ship, if the glob is to be distributed over Ames, the glob is also made available to desk subscribers.
+The hash and source of an app's glob is defined in a desk's [docket file](/guides/additional/dist/docket). The `%docket` agent reads the docket file, obtains the glob from the specified source, and makes its contents available to the browser client. On a desk publisher's ship, if the glob is to be distributed over Ames, the glob is also made available to desk subscribers.
 
 ## The `glob` type
 
@@ -47,7 +46,7 @@ Note: The mime byte-length and data are 0 in this example because it was made wi
 
 A glob may contain any number of files and folders in any kind of heirarchy. The one important thing is that an `index.html` file is present in its root. The `index.html` file is automatically served when the app is opened in the browser and will fail if it is missing.
 
-In addition to the `$glob` type, a glob can also be output to Unix with a `.glob` file extension for distribution over HTTP. This file simply contains a [`jam`](/docs/hoon/reference/stdlib/2p#jam)med `$glob` structure.
+In addition to the `$glob` type, a glob can also be output to Unix with a `.glob` file extension for distribution over HTTP. This file simply contains a [`jam`](/reference/hoon/stdlib/2p#jam)med `$glob` structure.
 
 ## Docket file clause
 
@@ -55,7 +54,7 @@ The `desk.docket-0` file must include exactly one of the following clauses:
 
 #### `site+/some/path`
 
-If an app binds an Eyre endpoint and handles HTTP directly, for example with a [`%connect` task:eyre](/docs/arvo/eyre/tasks#connect), the `%site` clause is used, specifying the Eyre binding. In this case a glob is omitted entirely.
+If an app binds an Eyre endpoint and handles HTTP directly, for example with a [`%connect` task:eyre](/reference/arvo/eyre/tasks#connect), the `%site` clause is used, specifying the Eyre binding. In this case a glob is omitted entirely.
 
 #### `glob-ames+[~zod 0vs0me.h4sh]`
 
@@ -73,7 +72,7 @@ There are a couple of different methods depending on whether the glob will be di
 
 For globs distributed over Ames from our ship, the client bundle can be uploaded directly with `%docket`'s Globulator tool, which is available in the browser at `http[s]://[host]/docket/upload`. It looks like this:
 
-![Globulator](https://media.urbit.org/docs/userspace/dist/globulator.png)
+![Globulator](https://media.urbit.org/guides/additional/dist/globulator.png)
 
 Simply select the target desk, select the folder to be globulated, and hit `glob!`.
 
@@ -81,7 +80,7 @@ Note the target desk must have been `|install`ed before uploading its glob. When
 
 ### `-make-glob`
 
-There's a different process for globs to be distributed over HTTP from a webserver rather than over Ames from a ship. For this purpose, the `%garden` desk includes a `%make-glob` thread. The thread takes a folder in a desk and produces a glob of the files it contains, which it then saves to Unix in a [`jam`](/docs/hoon/reference/stdlib/2p#jam)file with a `.glob` extension.
+There's a different process for globs to be distributed over HTTP from a webserver rather than over Ames from a ship. For this purpose, the `%garden` desk includes a `%make-glob` thread. The thread takes a folder in a desk and produces a glob of the files it contains, which it then saves to Unix in a [`jam`](/reference/hoon/stdlib/2p#jam)file with a `.glob` extension.
 
 To begin, you'll need to spin up a ship (typically a fake ship) and `|mount` a desk for which to add the files. In order for Clay to add the files, the desk must contain `mark` files in its `/mar` directory for all file extensions your folder contains. The `%garden` desk is a good bet because it includes `mark` files for `.js`, `.html`, `.png`, `.svg`, `.woff2` and a couple of others. If there's no desk with a mark for a particular file type you want included in your glob, you may need to add a new mark file. A very rudimentary mark file like the `png.hoon` mark will suffice.
 

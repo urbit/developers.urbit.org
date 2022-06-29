@@ -1,17 +1,16 @@
 +++
 title = "Ecliptic.eth"
 weight = 6
-template = "doc.html"
 +++
 
 [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business
 logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy
-vote](/docs/glossary/upgrade). This determines things such as what the various
+vote](/reference/glossary/upgrade). This determines things such as what the various
 proxies are capable of, how keys are changed, or verifying that a request is
 valid.
 
 `Ecliptic.eth` uses external contracts such as
-[Azimuth.eth](/docs/azimuth/azimuth-eth) and
+[Azimuth.eth](/reference/azimuth/azimuth-eth) and
 [Polls](https://github.com/urbit/azimuth/blob/master/contracts/Polls.sol) for
 data storage so that it can easily be replaced in case the logic needs to be
 changed without affecting the data. These data contracts are owned by
@@ -27,7 +26,7 @@ upgrade](https://github.com/urbit/azimuth/pull/35) to Ecliptic, which occurred
 in the summer of 2021, [here](https://urbit.org/blog/first-contract). The
 [second](https://github.com/urbit/azimuth/pull/43) occurred later in the year
 and consisted of several small modifications to ready the PKI for the
-introduction of [naive rollups](/docs/azimuth/l2/layer2).
+introduction of [naive rollups](/reference/azimuth/l2/layer2).
 
 `Ecliptic.eth` implements the [ERC-721](https://eips.ethereum.org/EIPS/eip-721)
 interface for non-fungible tokens, as well as the
@@ -36,7 +35,7 @@ detection.
 
 There are currently [28 functions](#write) which may be called to write to
 the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these
-have a corresponding [layer 2 action](/docs/azimuth/l2/l2-actions), and/or can be
+have a corresponding [layer 2 action](/reference/azimuth/l2/l2-actions), and/or can be
 performed using [Bridge](/using/id/using-bridge). We note these facts where
 applicable.
 
@@ -53,7 +52,7 @@ standard functions that are part of the ERC-721 or ERC-165 interfaces.
 ### `Point`s interface
 
 These functions are available to each owner of a
-[`Point`](/docs/azimuth/azimuth-eth#points), and a subset of them are available
+[`Point`](/reference/azimuth/azimuth-eth#points), and a subset of them are available
 to its [proxies](#proxies). All of these actions may be performed from Bridge.
 
 #### `configureKeys`
@@ -68,9 +67,9 @@ to its [proxies](#proxies). All of these actions may be performed from Bridge.
 
 Configure `_point` with network public keys `_encryptionKey`,
 `_authenticationKey`, and corresponding `_cryptoSuiteVersion`, incrementing the
-`Point`'s [`keyRevisionNumber`](/docs/azimuth/azimuth-eth#points) if the keys
+`Point`'s [`keyRevisionNumber`](/reference/azimuth/azimuth-eth#points) if the keys
 have changed and `continuityNumber` number if `_discontinuous` is set to true
-(see [Life and Rift](/docs/azimuth/life-and-rift)).
+(see [Life and Rift](/reference/azimuth/life-and-rift)).
 
 Corresponds to the layer 2 `%configure-keys` action.
 
@@ -103,15 +102,15 @@ Corresponds to the layer 2 `%spawn` action.
 Transfer `_point` to `_target`, clearing all permissions data and keys if
 `_reset` is true. `_reset` set to makes this transaction a
 [breach](/using/id/guide-to-resets), and thus this action increments the
-[`continuityNumber`](/docs/azimuth/azimuth-eth#points) of `_point`, and usually
+[`continuityNumber`](/reference/azimuth/azimuth-eth#points) of `_point`, and usually
 the `keyRevisionNumber` as well (see [Life and
-Rift](/docs/azimuth/life-and-rift)).
+Rift](/reference/azimuth/life-and-rift)).
 
 Requirements:
 
 - `:msg.sender` must be either `_point`'s current owner, authorized to transfer
   `_point`, or authorized to transfer the current owner's points (i.e. is
-  listed as an ERC-721 operator in [`operators`](/docs/azimuth/azimuth-eth#other)).
+  listed as an ERC-721 operator in [`operators`](/reference/azimuth/azimuth-eth#other)).
 - `_target` must not be the zero address.
 
 Corresponds to the layer 2 `%transfer-point` action.
@@ -189,7 +188,7 @@ Requirements:
 Corresponds to the layer 2 `%detach` action.
 
 Unlike all other layer 1 actions, layer 1 sponsors may use a layer 1 `%detach` on
-a layer 2 sponsee. See the [Layer 2](/docs/azimuth/l2/layer2#sponsorship)
+a layer 2 sponsee. See the [Layer 2](/reference/azimuth/l2/layer2#sponsorship)
 section for more detail. The detach action available in Bridge is a layer 2
 action, so a layer 1 detach must be done
 [manually](https://etherscan.io/address/ecliptic.eth#writeContract).
@@ -197,7 +196,7 @@ action, so a layer 1 detach must be done
 ### Proxy management {% #proxies %}
 
 These functions are used to manage the various
-[proxies](/docs/using/id/proxies). All of these actions may be performed from Bridge.
+[proxies](/using/id/proxies). All of these actions may be performed from Bridge.
 
 #### `setManagementProxy`
 
@@ -266,7 +265,7 @@ Corresponds to the layer 2 `%set-transfer-proxy` action.
 ### Poll actions
 
 Most of these are functions only available to galaxies. They are related to
-[voting](/docs/glossary/voting). As voting does not occur on layer 2, there are
+[voting](/reference/glossary/voting). As voting does not occur on layer 2, there are
 no corresponding layer 2 actions for poll actions.
 
 Upgrade and document polls last for 30 days, or once a majority is achieved,
@@ -394,7 +393,7 @@ standard functions that are part of the ERC-721 or ERC-165 interfaces.
 
 #### `depositAddress`
 
-This returns the deposit address for [layer 2](/docs/azimuth/l2/layer2), which is
+This returns the deposit address for [layer 2](/reference/azimuth/l2/layer2), which is
 `0x1111111111111111111111111111111111111111`. Ships sent to this address are
 controlled on layer 2 instead of via Ecliptic.
 
@@ -408,7 +407,7 @@ Returns a `bool` that is true if `_point` could try to escape to `_sponsor`.
 
 #### `azimuth`
 
-Returns the address of the [Azimuth.eth](/docs/azimuth/azimuth-eth) contract: `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`.
+Returns the address of the [Azimuth.eth](/reference/azimuth/azimuth-eth) contract: `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`.
 
 #### `claims`
 
@@ -443,4 +442,4 @@ Release](https://etherscan.io/address/0x8c241098c3d3498fe1261421633fd57986d74aea
 
 Beginning in 2019, stars may spawn at most 1024 planets. This limit doubles
 every subsequent year until the maximum is reached. However, this limit is not
-currently implemented on [Layer 2](/docs/azimuth/l2/layer2).
+currently implemented on [Layer 2](/reference/azimuth/l2/layer2).

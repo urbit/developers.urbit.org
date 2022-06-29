@@ -1,21 +1,20 @@
 +++
 title = "Life and Rift"
 weight = 8
-template = "doc.html"
 +++
 
 Associated to every Azimuth point are two non-negative integers known as _life_
 and _rift_. This numbering system partition messages according to the quantity
 of networking key changes and quantity of
 [breaches](/using/id/guide-to-resets), respectively. This is explained in
-more detail below. These values are utilized by [Ames](/docs/arvo/ames/ames)
-and [Jael](/docs/arvo/jael/jael-api) to ensure that communication between
+more detail below. These values are utilized by [Ames](/reference/arvo/ames/ames)
+and [Jael](/reference/arvo/jael/jael-api) to ensure that communication between
 ships is always done with the most recent set of networking keys, and that
 networking state is appropriately reset when a breach has occurred.
 
 Every ship begins with a `life` and `rift` of 0. For galaxies, stars, and
 planets, these values are stored in the [Azimuth
-PKI](/docs/azimuth/azimuth-eth#points) as `keyRevisionNumber` and
+PKI](/reference/azimuth/azimuth-eth#points) as `keyRevisionNumber` and
 `continuityNumber`, while for moons, these values are stored by their parent.
 Comets cannot change their networking keys, nor can they breach, and so their
 `life` and `rift` are always 0.

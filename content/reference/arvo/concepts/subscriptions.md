@@ -1,7 +1,6 @@
 +++
 title = "Subscriptions"
 weight = 50
-template = "doc.html"
 +++
 
 Urbit relies heavily on subscriptions throughout the stack. We strongly
