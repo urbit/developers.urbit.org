@@ -1,11 +1,11 @@
 +++
 title = "App School Live"
-date = "2022-07-01"
+date = "2022-06-29"
 description = "We’re running a cohort class of App School to teach you how to terraform Mars."
 [extra]
 author = "N E Davis"
 ship = "~lagrev-nocfep"
-image = "TODO"
+image = "https://media.urbit.org/site/posts/essays/blog-relaunching-header-margaret-bourke-white.png"
 +++
 
 What should you do after Hoon School?  Well, presumably you've become interested
@@ -45,4 +45,6 @@ If you are interested in participating in App School Live, drop us a line at
 form](https://docs.google.com/forms/d/e/1FAIpQLSfxAEdcdaLG_yK3RCOCLLScslcyjhBmAN2qUqHLajwSMgT-lw/viewform)
 or join us on Mars at ~hiddev-dannut/new-hooniverse.  We'll start on Tuesday,
 July 12 and run through August 23.
+
+_Header image by Margaret Bourke-White._
 
