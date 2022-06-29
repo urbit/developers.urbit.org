@@ -1,6 +1,6 @@
 +++
 title = "CLI apps"
-weight = 2
+weight = 10
 +++
 
 ## Introduction

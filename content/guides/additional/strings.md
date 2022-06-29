@@ -1,6 +1,6 @@
 +++
 title = "Strings"
-weight = 4
+weight = 40
 +++
 
 This document discusses hoon's two main string types: `cord`s (as well as its
