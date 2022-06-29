@@ -1,5 +1,5 @@
 +++
-title = "Writing Aqua Tests"
+title = "Aqua Tests"
 weight = 37
 +++
 
