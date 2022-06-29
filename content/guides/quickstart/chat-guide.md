@@ -1,5 +1,5 @@
 +++
-title = "Chat App Guide"
+title = "Build a Chat App"
 weight = 1
 +++
 

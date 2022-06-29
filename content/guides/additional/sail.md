@@ -1,6 +1,11 @@
 +++
+<<<<<<< HEAD
 title = "Sail (HTML)"
 weight = 30
+=======
+title = "Sail: HTML in Hoon"
+weight = 6
+>>>>>>> ec0cd4244e48b39bcfe335386709db6fe009e049
 +++
 
 Sail is a domain-specific language for composing HTML (and XML) structures in
