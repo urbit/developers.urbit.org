@@ -1,5 +1,5 @@
 +++
-title = "Sail (HTML)"
+title = "Sail: HTML in Hoon"
 weight = 6
 +++
 

@@ -1,5 +1,5 @@
 +++
-title = "Strings"
+title = "Working with Strings"
 weight = 4
 +++
 
