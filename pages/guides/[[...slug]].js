@@ -148,7 +148,6 @@ const pageTree = (thisLink, tree, level = 0) => {
         <p className="text-xs uppercase font-semibold text-wall-400 mt-4">
           {tree.title}
         </p>
-        {childPages(thisLink, tree.children, level)}
         {tree.pages.map(({ title, slug }) => {
           const href = join(thisLink, slug);
           const isSelected = router.asPath === href;
@@ -167,6 +166,7 @@ const pageTree = (thisLink, tree, level = 0) => {
             </li>
           );
         })}
+        {childPages(thisLink, tree.children, level)}
       </>
     );
   }
