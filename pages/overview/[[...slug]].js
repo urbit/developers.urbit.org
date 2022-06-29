@@ -137,7 +137,9 @@ const pageTree = (thisLink, tree, level = 0) => {
   return (
     <>
       <Link href={thisLink} passHref>
-        <a className={`${pageItemClasses} cursor-pointer`}>{tree.title}</a>
+        <a className={`${pageItemClasses} font-semibold cursor-pointer`}>
+          {tree.title}
+        </a>
       </Link>
     </>
   );

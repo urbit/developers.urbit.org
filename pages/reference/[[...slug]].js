@@ -156,7 +156,9 @@ const pageTree = (thisLink, tree, level = 0) => {
           return (
             <li className="ml-0">
               <Link href={href} passHref>
-                <a className={`relative inline-block ${selectedClasses} `}>
+                <a
+                  className={`relative font-semibold inline-block ${selectedClasses} `}
+                >
                   {title}
                 </a>
               </Link>
@@ -186,7 +188,7 @@ const pageTree = (thisLink, tree, level = 0) => {
               <li>
                 <Link href={href} passHref>
                   <a
-                    className={`relative inline-block ${selectedClasses} ${pageItemClasses} `}
+                    className={`relative font-semibold inline-block ${selectedClasses} ${pageItemClasses} `}
                   >
                     {title}
                   </a>
