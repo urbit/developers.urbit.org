@@ -3,7 +3,7 @@ title = "Build a Chat App"
 weight = 1
 +++
 
-In this lightning guide, we're going to build a simple chat app named Hut. It'll
+In this lightning tutorial, we're going to build a simple chat app named Hut. It'll
 look like this:
 
 ![hut screenshot](https://m.tinnus-napbus.xyz/pub/hut/hut-screenshot.png)
