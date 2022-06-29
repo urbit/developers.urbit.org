@@ -1,6 +1,6 @@
 +++
-title = "How to Unit Test"
-weight = 10
+title = "Unit tests"
+weight = 45
 +++
 
 ## Structure

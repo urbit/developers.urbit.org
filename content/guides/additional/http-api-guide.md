@@ -1,6 +1,6 @@
 +++
-title = "Using the HTTP API"
-weight = 4
+title = "HTTP API"
+weight = 15
 +++
 
 [Eyre] is the web-server [vane] (kernel module) of [Arvo], an Urbit ship's

@@ -1,6 +1,6 @@
 +++
 title = "Software Distribution"
-weight = 2
+weight = 35
 +++
 
 In this document we'll walk through an example of creating and publishing a desk that others can install. We'll create a simple "Hello World!" front-end with a "Hello" tile to launch it. For simplicity, the desk won't include an actual Gall agent, but we'll note everything necessary if there were one.
