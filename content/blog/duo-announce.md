@@ -8,6 +8,8 @@ ship = "~lagrev-nocfep"
 image = "https://media.urbit.org/site/posts/essays/blog-asl-header-iron-hot.png"
 +++
 
+![](https://media.urbit.org/site/posts/essays/blog-asl-header-iron-hot.png)
+
 The Urbit docs have evolved a lot over the years.  Some of this has been due to changes in the audience—for instance, early docs were voiced towards core kernel developers.  Other changes have been made as we've rolled out new features, such as the 2020 Ford Fusion project or the more recent Azimuth L2 implementation.  As the docs have continued to evolve, we've worked hard on putting out quality tutorials and curriculum that make Urbit easier for new developers and old alike to figure out what they need to take their projects forward.  We've also seen a growing fractionation of the Urbit userbase into regular users, power users, and developers, all of whom have slightly different requirements.
 
 We have migrated and reorganized our coursework, our reference documentation, and our developer site to better reflect the needs of these communities.  The upgraded `developers.urbit.org` now houses the one-stop-shop for programmers, allowing `urbit.org` and `operators.urbit.org` to better speak to particular user groups besides Hoon programmers.

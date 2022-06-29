@@ -8,6 +8,8 @@ ship = "~lagrev-nocfep"
 image = "https://media.urbit.org/site/posts/essays/blog-relaunching-header-margaret-bourke-white.png"
 +++
 
+![](https://media.urbit.org/site/posts/essays/blog-relaunching-header-margaret-bourke-white.png)
+
 What should you do after Hoon School?  Well, presumably you've become interested
 in building apps on Urbit, and certainly knowing the language is a prerequisite.
 But apps require knowing the platform as a platform—what system services and
