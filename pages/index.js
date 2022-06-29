@@ -204,7 +204,7 @@ export default function Home({ search, whatsNew }) {
                               <p className="truncate text-sm">
                                 {e.description}
                               </p>
-                              <p className="text-sm">{e.date}</p>
+                              <p className="text-sm shrink-0">{e.date}</p>
                             </div>
                           </div>
                         </div>
