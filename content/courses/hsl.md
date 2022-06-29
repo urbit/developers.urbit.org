@@ -18,3 +18,17 @@ current time, we anticipate that we will next offer it in the fall after
 Until then, feel free to work through the [Hoon School
 docs](/guides/core/hoon-school).
 
+
+##  What will you learn?
+
+- `basics-1`.  Introduction to Computing (optional)
+- `basics0`.  Setting Up Urbit (optional)
+- `lesson1`.  Hoon Syntax
+- `lesson2`.  Hoon Conventions
+- `lesson3`.  Making Decisions
+- `lesson4`.  Repeating Yourself
+- `lesson5`.  Subject-Oriented Programming
+- `lesson6`.  Molding Values
+- `lesson7`.  The Standard Library
+- `lesson8`.  Managing State
+- `lesson9`.  Production Code
