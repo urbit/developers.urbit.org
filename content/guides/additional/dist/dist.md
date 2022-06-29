@@ -72,7 +72,7 @@ Suspending a desk turns off all its agents, saving their states in Gall. If ther
 
 Turning agents on and off is managed declaratively, rather than imperatively. Kiln maintains state for each desk about which agents should be forced on and which should be forced off. The set of running agents is now a function of the desk's `/desk/bill` manifest file and that user configuration state in Kiln. This means starting or stopping an agent is idempotent, both in Kiln and Gall.
 
-For details of the generators for managing desks and agents in Kiln, see the [`Dojo Tools`](/guides/additional/dist/tools) document.
+For details of the generators for managing desks and agents in Kiln, see the [`Dojo Tools`](/using/os/dojo-tools) document.
 
 ### Landscape apps
 
@@ -100,5 +100,3 @@ For further details of globs, see the [Glob](/guides/additional/dist/glob) docum
 - [Docket Files](/guides/additional/dist/docket) - Documentation of docket files.
 
 - [Guide](/guides/additional/dist/guide) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
-
-- [Dojo Tools](/guides/additional/dist/tools) - Documentation of useful generators for managing and distributing desks.

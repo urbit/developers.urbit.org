@@ -23,6 +23,3 @@ Documentation of `glob`s (client bundles).
 
 A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
 
-## [Dojo Tools](/guides/additional/dist/tools)
-
-Documentation of useful generators for managing and distributing desks.
