@@ -1,5 +1,5 @@
 +++
-title = "4. Gates (Functions)"
+title = "3. Gates (Functions)"
 weight = 10
 nodes = [111, 115, 120]
 objectives = ["Use the `+ls` generator to show a directory's contents.", "`|mount` and `|commit` a desk.", "Identify current known irregular syntax.", "Convert between regular and irregular forms of runes to date.", "Employ a gate to defer a computation.", "Produce a gate as a generator.", "Annotate Hoon code with comments.", "Produce a generator to convert a value between auras."]

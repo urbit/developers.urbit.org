@@ -1,5 +1,5 @@
 +++
-title = "14. Conditional Logic"
+title = "13. Conditional Logic"
 weight = 10
 nodes = [184]
 objectives = ["Produce loobean expressions.", "Reorder conditional arms.", "Switch against a union with or without default."]

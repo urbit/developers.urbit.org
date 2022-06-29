@@ -1,5 +1,5 @@
 +++
-title = "15. Subject-Oriented Programming"
+title = "14. Subject-Oriented Programming"
 weight = 10
 nodes = [165, 180]
 objectives = ["Review subject-oriented programming as a design paradigm.", "Discuss stateful v. stateless applications and path dependence.", "Enumerate Hoon's tools for dealing with state:  `=.` tisdot, `=^` tisket, `;<` micgal, `;~` micsig.", "Defer a computation."]

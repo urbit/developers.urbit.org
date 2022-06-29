@@ -1,5 +1,5 @@
 +++
-title = "17. Functional Programming"
+title = "16. Functional Programming"
 weight = 10
 nodes = [233, 283, 383]
 objectives = ["Reel, roll, turn a list.", "Curry, cork functions.", "Change arity of a gate.", "Tokenize text simply using `find` and `trim`.", "Identify elements of parsing:  `nail`, `rule`, etc.", "Use `++scan` to parse `tape` into atoms.", "Construct new rules and parse arbitrary text fields."]
