@@ -236,12 +236,12 @@ function Landing({ search }) {
               className="basis-1/2"
               href="/guides/quickstart/chat-guide"
             />
-            <Card
+            {/* <Card
               icon={<MintFiller />}
               title="Lorem Ipsum Dolorem"
               text="Roll your own encrypted chat application in minutes"
               className="basis-1/2"
-            />
+            /> */}
           </div>
         </Section>
         <Section short className="space-y-6">
@@ -299,29 +299,11 @@ function Landing({ search }) {
               className="h-full"
             />
             <TallCard
-              title="Threads"
-              description="Lorem ipsum"
-              callout="View Guide"
-              href="reference/arvo/threads"
-              image="/images/threads.svg"
-              className="h-full"
-            />
-          </TwoUp>
-          <TwoUp className="!mt-0">
-            <TallCard
               title="Distribution"
               description="A guide to the  architecture of Urbit's app distribution system."
               callout="View Guide"
               href="/guides/additional/dist"
               image="/images/distribution.svg"
-              className="h-full"
-            />
-            <TallCard
-              title="Assorted Tutorials"
-              description="Guides for the CLI, Parsing, JSON, Strings, Sail, Unit, and Aqua tests."
-              callout="View Guide"
-              href="/guides/additional/hoon"
-              image="/images/fullstack.svg"
               className="h-full"
             />
           </TwoUp>
