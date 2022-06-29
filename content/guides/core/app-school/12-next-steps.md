@@ -38,7 +38,7 @@ following documents for help writing a web front-end for your app:
 In addition to these documents about creating a web-based user interface for
 your app, there are some other guides you might like to have a look at:
 
-- [Threads guide](/guides/additional/threads/overview) - Threads are like transient
+- [Threads guide](reference/arvo/threads/overview) - Threads are like transient
   agents, typically used for handling complex I/O functionality for Gall
   agents - like interacting with an external HTTP API.
 - [The software distribution guide](/guides/additional/dist/dist) - This explains

@@ -284,7 +284,7 @@ function Landing({ search }) {
               title="Threads"
               description="Lorem ipsum"
               callout="View Guide"
-              href="/guides/additional/threads"
+              href="reference/arvo/threads"
               image="/images/threads.svg"
               className="h-full"
             />

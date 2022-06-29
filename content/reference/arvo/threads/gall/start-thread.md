@@ -124,7 +124,7 @@ We can ignore the input logic, here's the important part:
 
 You can generate a tid any way you like, just make sure it's unique. Here we just use the hash of some entropy prefixed with `thread_`.
 
-Then it's just a poke to `%spider` with the mark `%spider-start` and a vase containing [start-args](/guides/additional/threads/reference#start-thread). Spider will then respond with a `%poke-ack` with a `(unit tang)` which will be `~` if it started successfully or else contain an error and a traceback if it failed. Here we test for this and print the result:
+Then it's just a poke to `%spider` with the mark `%spider-start` and a vase containing [start-args](reference/arvo/threads/reference#start-thread). Spider will then respond with a `%poke-ack` with a `(unit tang)` which will be `~` if it started successfully or else contain an error and a traceback if it failed. Here we test for this and print the result:
 
 ```hoon
 ++  on-agent

@@ -21,7 +21,7 @@ to the Urbit-native `%docs` app.
 |install ~pocwet %docs
 ```
 
-## [Threads](/guides/additional/threads/)
+## [Threads](reference/arvo/threads/)
 
 Resources on threads - monadic functions useful for complex IO.
 

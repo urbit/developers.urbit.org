@@ -32,7 +32,7 @@ is not perfectly adhered to - sometimes you may find structure definitions in
   rule - structures and functions that are central to Hoon, Arvo, and its vanes,
   are all located within this folder rather than in `/lib` and `/sur`. See
   [below](#sys) for more information on `/sys`.
-- `/ted` contains [threads](/guides/additional/threads/overview). These may be run
+- `/ted` contains [threads](reference/arvo/threads/overview). These may be run
   from dojo using `-`. For example, `/ted/foo/hoon` on the `%base` desk is run
   with `-foo`. Threads on desks other than the `%base` desk can be run with
   `-desk!thread` like `-garden!foo`.
