@@ -163,7 +163,7 @@ function Landing({ search }) {
         </Section>
         <Section className="space-y-4">
           <h3>How to use this site</h3>
-          <div className="md:columns-2 space-y-4 mt-4">
+          <div className="md:columns-2 space-y-4 mt-4 gap-x-8">
             <p>
               This site is intended for developers who want to learn how Urbit
               works from the inside out and how to build and deploy apps. If you
@@ -216,7 +216,7 @@ function Landing({ search }) {
         </Section>
         <Section short>
           <h3>Primer</h3>
-          <div className="md:columns-2 space-y-4 mt-4">
+          <div className="md:columns-2 space-y-4 mt-4 gap-x-8">
             <p>
               Urbit development involves a fairly typical client/server/database
               stack. Urbit is both a server, database, and an entire operating

@@ -29,13 +29,14 @@ export default function Community({ search }) {
           <h1>Community</h1>
         </Section>
           <Section>
-          <div className="md:columns-2 mt-10">
-            <p>
+            <p class="text-xl">
               The developer community is a combination of top-down stewardship
               from the Urbit Foundation and Tlon, as well as organic, bottom-up
               coordination from unaffiliated enthusiasts.
             </p>
-            <p className="mt-2">
+
+          <div className="md:columns-2 mt-10 gap-x-8 pb-16">
+            <p className="">
               The Urbit Foundation makes direct investments of address space
               into the community as a means of improving the network. The
               Foundation also maintains developer documentation, runs Developer
@@ -49,7 +50,7 @@ export default function Community({ search }) {
               </Link>{" "}
               group.
             </p>
-            <p className="mt-4">
+            <p className="">
               <a href="https://tlon.io">Tlon</a> is the primary developer of
               Urbit itself and the foremost product developer within the Urbit
               ecosystem. They’ve been developing Urbit since 2013 and are
@@ -71,8 +72,7 @@ export default function Community({ search }) {
               .
             </p>
           </div>
-        </Section>
-        <Section>
+
           <TwoUp>
             <Card
               title="Directory"
