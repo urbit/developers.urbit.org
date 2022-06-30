@@ -7,7 +7,7 @@ insert_anchor_links = "right"
 
 ## Table of Contents
 
-- [Introduction](guides/core/app-school/intro)
+- [Introduction](/guides/core/app-school/intro)
 
 #### Lessons
 
