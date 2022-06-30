@@ -1,7 +1,7 @@
 +++
 title = "App School Live"
 date = "2022-06-29"
-description = "We’re running a cohort class of App School to teach you how to (metaphorically) terraform Mars."
+description = "We’re running a cohort class of App School to teach you how to build Urbit applications."
 [extra]
 author = "N E Davis"
 ship = "~lagrev-nocfep"
@@ -14,7 +14,8 @@ What should you do after Hoon School?  Well, presumably you've become interested
 in building apps on Urbit, and certainly knowing the language is a prerequisite.
 But apps require knowing the platform as a platform—what system services and
 affordances exist, how to hook up a front-end user interface, and how to build
-apps that interoperate with each other.
+apps that interoperate with each other.  What will it take to (metaphorically)
+terraform Mars?
 
 The Urbit Foundation offered Hoon School Live as a reboot of previous live Hoon
 educational efforts, including Hooniversity and Hoon 101.  HSL consisted of
