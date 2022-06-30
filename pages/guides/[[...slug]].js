@@ -83,7 +83,7 @@ export default function GuidePage({
           <a
             className="font-semibold rounded-xl block p-2 text-wall-400 hover:text-green-400 mt-16"
             target="_blank"
-            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/docs/${
+            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/guides/${
               params.slug?.join("/") || "_index"
             }.md`}
           >
