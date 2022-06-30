@@ -1,5 +1,5 @@
 +++
-title = "HTTP API"
+title = "Using the HTTP API"
 weight = 15
 +++
 
