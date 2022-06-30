@@ -1,6 +1,6 @@
 +++
 title = "17. Generic and Variant Cores"
-weight = 10
+weight = 27
 nodes = [288, 299]
 objectives = ["Distinguish dry and wet cores.", "Describe use cases for wet gates (using genericity).", "Enumerate and distinguish use cases for dry cores (using variance):", "- Covariant (`%zinc`)", "- Contravariant (`%iron`)", "- Bivariant (`%lead`)", "- Invariant (`%gold`)"]
 +++

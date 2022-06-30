@@ -1,6 +1,6 @@
 +++
 title = "11. Data Structures"
-weight = 10
+weight = 21
 nodes = [183]
 objectives = ["Identify units, sets, maps, and compound structures like jars and jugs.", "Explain why units and vases are necessary.", "Use helper arms and syntax:  `` ` ``, `biff`, `some`, etc."]
 +++
