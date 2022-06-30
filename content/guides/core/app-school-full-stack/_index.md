@@ -28,4 +28,4 @@ insert_anchor_links = "right"
 
 - [8. Desk and Glob](/guides/core/app-school-full-stack/8-desk) - This lesson shows how to build and “glob” our front-end, as well as put together a desk for distribution.
 
-#### [9. Summary](/guides/core/app-school-full-stack/10-final) - App School II is now complete.  Here are some final comments and additional resources.
+- [9. Summary](/guides/core/app-school-full-stack/9-final) - App School II is now complete.  Here are some final comments and additional resources.
