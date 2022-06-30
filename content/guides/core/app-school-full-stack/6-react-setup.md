@@ -1,5 +1,5 @@
 +++
-title = "7. React app setup"
+title = "6. React app setup"
 weight = 7
 +++
 

@@ -5,47 +5,27 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-#### [1. Introduction](/guides/core/app-school-full-stack/1-intro)
 
-An overview of the guide and table of contents.
+## Table of Contents
 
-#### [2. Types](/guides/core/app-school-full-stack/2-types)
+- [Introduction](/guides/core/app-school-full-stack/intro)
 
-Creating the `/sur` structure file for our `%journal` agent.
+#### Lessons
 
-#### [3. Agent](/guides/core/app-school-full-stack/3-agent)
+- [1. Types](/guides/core/app-school-full-stack/1-types) - This lesson creates the `/sur` structure file for our `%journal` agent.
 
-Creating the `%journal` agent itself.
+- [2. Agent](/guides/core/app-school-full-stack/2-agent) - This lesson creates the `%journal` agent itself.
 
-#### [4. JSON](/guides/core/app-school-full-stack/5-json)
+- [3. JSON](/guides/core/app-school-full-stack/3-json) - This lesson shows writing a library to convert between our agent's marks and JSON. This lets our React front-end poke our agent, and our agent send updates back to it.
 
-Writing a library to convert between our agent's marks and JSON. This lets our
-React front-end poke our agent, and our agent send updates back to it.
+- [4. Marks](/guides/core/app-school-full-stack/4-marks) - This lessons creates the mark files for the pokes our agent takes and updates it sends out.
 
-#### [5. Marks](/guides/core/app-school-full-stack/4-marks)
+- [5. Eyre](/guides/core/app-school-full-stack/5-eyre) - This is a brief overview of how the webserver vane Eyre works.
 
-Creating the mark files for the pokes our agent takes and updates it sends out.
+- [6. React App Setup](/guides/core/app-school-full-stack/7-react-setup) - This lesson shows how to create a new React app, install the required packages, and set up some basic things for our front-end.
 
-#### [6. Eyre](/guides/core/app-school-full-stack/6-eyre)
+- [7. React App Logic](/guides/core/app-school-full-stack/7-http-api) - This lesson analyzes the core logic of our React app, with particular focus on using methods of the `Urbit` class from `@urbit/http-api` to communicate with our agent.
 
-A brief overview of how the webserver vane Eyre works.
+- [8. Desk and Glob](/guides/core/app-school-full-stack/8-desk) - This lesson shows how to build and “glob” our front-end, as well as put together a desk for distribution.
 
-#### [7. React App Setup](/guides/core/app-school-full-stack/7-react-setup)
-
-Creating a new React app, installing the required packages, and setting up some
-basic things for our front-end.
-
-#### [8. React App Logic](/guides/core/app-school-full-stack/8-http-api)
-
-Analysing the core logic of our React app, with particular focus on using
-methods of the `Urbit` class from `@urbit/http-api` to communicate with our
-agent.
-
-#### [9. Desk and Glob](/guides/core/app-school-full-stack/9-web-scries)
-
-Building and "globbing" our front-end, and putting together a desk for
-distribution.
-
-#### [10. Summary](/guides/core/app-school-full-stack/10-final)
-
-Some final comments and additional resources.
+- [9. Summary](/guides/core/app-school-full-stack/9-final) - App School II is now complete.  Here are some final comments and additional resources.
