@@ -26,6 +26,6 @@ insert_anchor_links = "right"
 
 - [7. React App Logic](/guides/core/app-school-full-stack/7-http-api) - This lesson analyzes the core logic of our React app, with particular focus on using methods of the `Urbit` class from `@urbit/http-api` to communicate with our agent.
 
-- [8. Desk and Glob](/guides/core/app-school-full-stack/8-web-scries) - This lesson shows how to build and “glob” our front-end, as well as put together a desk for distribution.
+- [8. Desk and Glob](/guides/core/app-school-full-stack/8-desk) - This lesson shows how to build and “glob” our front-end, as well as put together a desk for distribution.
 
 #### [9. Summary](/guides/core/app-school-full-stack/10-final) - App School II is now complete.  Here are some final comments and additional resources.
