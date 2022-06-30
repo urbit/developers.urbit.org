@@ -1,6 +1,6 @@
 +++
 title = "1. Hoon Syntax"
-weight = 10
+weight = 11
 nodes = [110, 113]
 objectives = ["Distinguish nouns, cells, and atoms.", "Apply auras to transform an atom.", "Identify common Hoon molds, such as cells, lists, and tapes.", "Pin a face to the subject.", "Make a decision at a branch point.", "Distinguish loobean from boolean operations.", "Slam a gate (call a function)."]
 +++
@@ -111,7 +111,7 @@ Convert between some of the given auras at the Dojo prompt, e.g.:
 
 ### Cells
 
-A cell is a pair of two nouns.  Cells are traditionally written using square brackets:  `[]`.  For now, just recall the square brackets and that cells are always _pairs_ of values.
+A cell is a pair of nouns.  Cells are traditionally written using square brackets:  `[]`.  For now, just recall the square brackets and that cells are always _pairs_ of values.
 
 ```
 [1 2]

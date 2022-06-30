@@ -1,5 +1,5 @@
 +++
-title = "2. Types"
+title = "1. Types"
 weight = 2
 +++
 

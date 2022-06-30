@@ -1,6 +1,6 @@
 +++
 title = "4. Molds (Types)"
-weight = 10
+weight = 14
 nodes = [125]
 objectives = ["Identify a mold in the hierarchy of Urbit types (nouns, molds, marks).", "Understand how type inference and type checking takes place.", "Bunt a mold.", "Produce a type union.", "Produce a named tuple.", "Identify type using `!>`."]
 +++

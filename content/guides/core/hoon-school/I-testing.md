@@ -1,6 +1,6 @@
 +++
 title = "8. Testing Code"
-weight = 10
+weight = 18
 nodes = [170, 190]
 objectives = ["Run existing unit tests.", "Produce a unit test.", "Employ a debugging strategy to identify and correct errors in Hoon code."]
 +++

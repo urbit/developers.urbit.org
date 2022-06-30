@@ -1,7 +1,7 @@
 +++
 title = "App School Live"
 date = "2022-06-29"
-description = "We’re running a cohort class of App School to teach you how to terraform Mars."
+description = "We’re running a cohort class of App School to teach you how to build Urbit applications."
 [extra]
 author = "N E Davis"
 ship = "~lagrev-nocfep"
@@ -14,13 +14,14 @@ What should you do after Hoon School?  Well, presumably you've become interested
 in building apps on Urbit, and certainly knowing the language is a prerequisite.
 But apps require knowing the platform as a platform—what system services and
 affordances exist, how to hook up a front-end user interface, and how to build
-apps that interoperate with each other.
+apps that interoperate with each other.  What will it take to (metaphorically)
+terraform Mars?
 
 The Urbit Foundation offered Hoon School Live as a reboot of previous live Hoon
 educational efforts, including Hooniversity and Hoon 101.  HSL consisted of
 synchronous livestream sessions, homework, and office hours, and concluded with
 a competition (on the results of which more soon).  61 participants completed
-HSL and received finisher `%gorae`.
+HSL and received finisher [`%gorae`](https://github.com/dalten-collective/gora).
 
 In July, the Urbit Foundation will follow up HSL with App School Live, another
 synchronous cohort class based on the App School guides (formerly known as the
@@ -30,12 +31,13 @@ and more.
 
 Most—but not all—Urbit app development has focused thus far on social media and
 cryptocurrency applications.  This makes sense, and it's a strength of the
-current Urbit platform primitives.  But so much more can be done:  games, of
+current Urbit platform primitives.  But so much more is possible:  games, of
 course, but also life management, instrumentation, CLIs, data visualization, and
-so much more.  With Urbit's peer-to-peer distribution system, there are no
+so forth.  With Urbit's peer-to-peer distribution system, there are no
 gatekeepers, and anyone can start their own app store.
 
-At the same time as ASL, the Urbit Foundation is holding a hackathon with prizes
+At the same time as ASL, the Urbit Foundation is holding a
+[hackathon](https://airtable.com/shr2tYQ0dDjt97Gn4) with prizes
 to be unveiled at [Assembly Miami](https://assembly.urbit.org).  We're excited
 to see what you're going to build.  If you're not sure how to produce your
 vision yet, start with App School Live and then peruse the submissions for
