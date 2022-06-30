@@ -36,7 +36,7 @@ detection.
 There are currently [28 functions](#write) which may be called to write to
 the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these
 have a corresponding [layer 2 action](/reference/azimuth/l2/l2-actions), and/or can be
-performed using [Bridge](/using/id/using-bridge). We note these facts where
+performed using [Bridge](https://urbit.org/using/id/using-bridge). We note these facts where
 applicable.
 
 ## Write functions {% #write %}
@@ -101,7 +101,7 @@ Corresponds to the layer 2 `%spawn` action.
 
 Transfer `_point` to `_target`, clearing all permissions data and keys if
 `_reset` is true. `_reset` set to makes this transaction a
-[breach](/using/id/guide-to-resets), and thus this action increments the
+[breach](https://urbit.org/using/id/guide-to-resets), and thus this action increments the
 [`continuityNumber`](/reference/azimuth/azimuth-eth#points) of `_point`, and usually
 the `keyRevisionNumber` as well (see [Life and
 Rift](/reference/azimuth/life-and-rift)).
@@ -196,7 +196,7 @@ action, so a layer 1 detach must be done
 ### Proxy management {% #proxies %}
 
 These functions are used to manage the various
-[proxies](/using/id/proxies). All of these actions may be performed from Bridge.
+[proxies](https://urbit.org/using/id/proxies). All of these actions may be performed from Bridge.
 
 #### `setManagementProxy`
 

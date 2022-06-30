@@ -22,7 +22,7 @@ foreign ships.
 
 ### User documentation
 
-[Filesystem](/using/os/filesystem)
+[Filesystem](https://urbit.org/using/os/filesystem)
 
 How to interact with the Clay filesystem via Dojo. This includes basics such as
 mounting to Unix, changing directory, merging, and listing files.

@@ -98,7 +98,7 @@ blockchains. However, anybody can run a roller, and even using your own ship as
 a roller to submit single transactions results in significant savings.
 
 A casual overview of the naive rollups system can be found on the
-[blog](/blog/rollups). Developers are encouraged to read our Layer 2
+[blog](https://urbit.org/blog/rollups). Developers are encouraged to read our Layer 2
 documentation, starting with the [Layer 2 Overview](/reference/azimuth/l2/layer2).
 
 ## Other resources {% #other %}

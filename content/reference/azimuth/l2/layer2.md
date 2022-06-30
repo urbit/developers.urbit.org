@@ -17,7 +17,7 @@ to either transfer their ship to layer 2 or perform layer 2 actions. This is a
 functionality of [Bridge](https://bridge.urbit.org) for which documentation will
 soon be available. For a casual overview of the
 rationale and functionality of layer 2, please see this [blog
-post](/blog/rollups). For more information on how Azimuth works more generally,
+post](https://urbit.org/blog/rollups). For more information on how Azimuth works more generally,
 including interactions with Bridge and Ethereum, see the page on [Azimuth data flow](/reference/azimuth/flow).
 
 This page is also not where to find instruction on how to run your own

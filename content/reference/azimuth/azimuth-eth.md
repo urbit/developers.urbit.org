@@ -103,7 +103,7 @@ in the following `struct`:
 ## `Deed`s {% #deeds %}
 
 A `Deed` says which Ethereum address owns a given `Point` as well as several
-[proxies](/using/id/proxies) for that `Point`.
+[proxies](https://urbit.org/using/id/proxies) for that `Point`.
 
 ```solidity
 struct Deed
