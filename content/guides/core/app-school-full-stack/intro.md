@@ -1,5 +1,5 @@
 +++
-title = "1. Introduction"
+title = "Introduction"
 weight = 1
 +++
 
