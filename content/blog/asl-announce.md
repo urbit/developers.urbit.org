@@ -1,7 +1,7 @@
 +++
 title = "App School Live"
 date = "2022-06-29"
-description = "We’re running a cohort class of App School to teach you how to terraform Mars."
+description = "We’re running a cohort class of App School to teach you how to (metaphorically) terraform Mars."
 [extra]
 author = "N E Davis"
 ship = "~lagrev-nocfep"
