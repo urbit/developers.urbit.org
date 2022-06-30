@@ -121,7 +121,7 @@ It is highly advisable for you to learn these pronunciations, as the documentati
 - `␣`
 - `gap`
 - `␣␣`, `\n` 
-- pat 
+- `pat` 
 - `@`
 ---
 - `bar`
