@@ -14,8 +14,8 @@ possible values it could produce.  If the inferred type 'nests' under the
 desired type then the program compiles; otherwise the compile fails with a
 `nest-fail` crash.
 
-(For an introduction on how to use Hoon's type system, see Chapter 2 of the Hoon
-tutorial.)
+(For an introduction on how to use Hoon's type system, see
+[Chapter 4](/guides/core/hoon-school/E-types) of the Hoon tutorial.)
 
 In this document we discuss the recursive data structure Hoon uses for type
 inference.  Because the Hoon compiler is written in Hoon this structure is
