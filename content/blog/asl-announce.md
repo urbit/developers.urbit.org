@@ -36,7 +36,8 @@ course, but also life management, instrumentation, CLIs, data visualization, and
 so forth.  With Urbit's peer-to-peer distribution system, there are no
 gatekeepers, and anyone can start their own app store.
 
-At the same time as ASL, the Urbit Foundation is holding a hackathon with prizes
+At the same time as ASL, the Urbit Foundation is holding a
+[hackathon](https://airtable.com/shr2tYQ0dDjt97Gn4) with prizes
 to be unveiled at [Assembly Miami](https://assembly.urbit.org).  We're excited
 to see what you're going to build.  If you're not sure how to produce your
 vision yet, start with App School Live and then peruse the submissions for
