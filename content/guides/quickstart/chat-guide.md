@@ -6,7 +6,7 @@ weight = 1
 In this lightning tutorial, we're going to build a simple chat app named Hut. It'll
 look like this:
 
-![hut screenshot](https://m.tinnus-napbus.xyz/pub/hut/hut-screenshot.png)
+![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-screenshot.png)
 
 We'll be able to create private chat rooms with the friends we specify, and
 communicate instantly and securely. Hut will be quite simple, it'll have a very
