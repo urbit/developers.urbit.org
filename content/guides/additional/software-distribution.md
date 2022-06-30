@@ -1,5 +1,5 @@
 +++
-title = "Software Distribution"
+title = "Distributing Software"
 weight = 35
 +++
 
