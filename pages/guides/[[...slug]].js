@@ -188,7 +188,6 @@ const pageTree = (thisLink, tree, level = 0) => {
           {tree.pages.map(({ title, slug }) => {
             const href = join(thisLink, slug);
             const isSelected = router.asPath === href;
-            console.log(href);
             const selectedClasses = classnames({
               dot: isSelected,
               "text-green-400": isSelected,
