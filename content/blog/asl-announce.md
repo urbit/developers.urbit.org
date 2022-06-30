@@ -21,7 +21,7 @@ The Urbit Foundation offered Hoon School Live as a reboot of previous live Hoon
 educational efforts, including Hooniversity and Hoon 101.  HSL consisted of
 synchronous livestream sessions, homework, and office hours, and concluded with
 a competition (on the results of which more soon).  61 participants completed
-HSL and received finisher `%gorae`.
+HSL and received finisher [`%gorae`](https://github.com/dalten-collective/gora).
 
 In July, the Urbit Foundation will follow up HSL with App School Live, another
 synchronous cohort class based on the App School guides (formerly known as the
