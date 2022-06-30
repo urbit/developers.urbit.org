@@ -286,7 +286,7 @@ function Landing({ search }) {
               className="h-full"
             />
             <TallCard
-              title="Full Stack Integration"
+              title="App School II (Full Stack)"
               description="Learn how to create Gall agents and integrate them into a React front-end"
               callout="View Guide"
               href="/guides/core/app-school-full-stack"
