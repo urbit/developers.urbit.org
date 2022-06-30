@@ -22,6 +22,6 @@ possible.
 ### Further Reading
 
 - [Event Log](/reference/glossary/eventlog): The main important content of the pier directory.
-- [Guide to Factory Resets](/using/id/guide-to-resets): Instructions on
+- [Guide to Factory Resets](https://urbit.org/using/id/guide-to-resets): Instructions on
   performing a factory reset.
-- [Ship Troubleshooting](/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
+- [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.

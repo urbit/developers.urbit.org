@@ -27,5 +27,5 @@ There are two "kinds" of chats:
 ### Further Reading
 
 - [Landscape](/reference/glossary/landscape) includes a web interface for using Chat.
-- [Messaging guide](/using/os/messaging): A guide to
+- [Messaging guide](https://urbit.org/using/os/messaging): A guide to
   using Chat from the command line.
