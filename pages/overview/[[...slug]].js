@@ -328,13 +328,7 @@ function Landing({ search }) {
               className="h-full"
               href="/overview/azimuth"
             />
-            <Card
-              icon={<Cryptography />}
-              title="Cryptography"
-              text="There are two categories of keys and five components of the system involved with cryptography on Urbit"
-              className="h-full"
-              href="/reference/additional/cryptography"
-            />
+            <div />
           </TwoUp>
         </Section>
       </SingleColumn>
