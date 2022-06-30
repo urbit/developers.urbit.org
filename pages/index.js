@@ -53,7 +53,7 @@ export default function Home({ search, whatsNew }) {
                     Read the Overview
                   </a>
                 </Link>
-                <Link href="/reference" passHref>
+                <Link href="/guides" passHref>
                   <a className="button-lg bg-white border-wall-500 border-2">
                     Learn the Stack
                   </a>
@@ -163,11 +163,11 @@ export default function Home({ search, whatsNew }) {
               The developer community is friendly, helpful, and organized from
               within Urbit itself.
             </p>
-            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4 pb-4">
               <Card
-                title="Developer Calls"
+                title="Developer Events"
                 text="We regularly host livestreams, meetups, and hackathons"
-                href="/events"
+                href="/community/events"
                 callout="View Events"
                 className="basis-1/2"
               />
@@ -179,6 +179,12 @@ export default function Home({ search, whatsNew }) {
                 className="basis-1/2"
               />
             </div>
+
+            <Link href="/community" passHref>
+              <a className="button-lg bg-wall-600 text-white w-fit">
+                Community Pages
+              </a>
+            </Link>
           </Section>
           <Section className="flex flex-col space-y-8">
             <h2>What's New</h2>
@@ -227,7 +233,7 @@ const pitch = [
     icon: <Identity className="shrink-0" />,
     title: "Identity",
     content:
-      "Identity is built-in at the lowest level of the stack. Say goodbye to auth systems.",
+      "Identity is built-in at the lowest level of the stack – say goodbye to auth systems.",
   },
   {
     icon: <Functional className="shrink-0" />,
@@ -238,7 +244,7 @@ const pitch = [
   {
     icon: <Database className="shrink-0" />,
     title: "Built-in Database",
-    content: "Every piece of state in your application is persistent, always.",
+    content: "Every piece of state in your application is persistent, always",
   },
   {
     icon: <Peer className="shrink-0" />,
