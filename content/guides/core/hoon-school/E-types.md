@@ -333,7 +333,7 @@ We commonly need to do one of two things with a mold:
 
 2.  Produce an example value (_bunt_).
 
-We often use bunts to clam; for example ``@ud` implicitly uses the `@ud` default value (`0`) as the type specimen which the computation must match.
+We often use bunts to clam; for example `@ud` implicitly uses the `@ud` default value (`0`) as the type specimen which the computation must match.
 
 To _actually_ get the bunt value, use the [`^*` kettar](/reference/hoon/rune/ket#-kettar) rune, almost always used in its irregular form `*` tar:
 
