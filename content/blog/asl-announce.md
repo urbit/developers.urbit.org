@@ -30,9 +30,9 @@ and more.
 
 Most—but not all—Urbit app development has focused thus far on social media and
 cryptocurrency applications.  This makes sense, and it's a strength of the
-current Urbit platform primitives.  But so much more can be done:  games, of
+current Urbit platform primitives.  But so much more is possible:  games, of
 course, but also life management, instrumentation, CLIs, data visualization, and
-so much more.  With Urbit's peer-to-peer distribution system, there are no
+so forth.  With Urbit's peer-to-peer distribution system, there are no
 gatekeepers, and anyone can start their own app store.
 
 At the same time as ASL, the Urbit Foundation is holding a hackathon with prizes
