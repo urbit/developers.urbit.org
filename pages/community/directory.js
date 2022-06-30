@@ -48,10 +48,10 @@ export default function Directory({ search, directory }) {
           <h1>Directory</h1>
         </Section>
         <Section>
-          <p>
+          <p class="text-xl">
             Our community is comprised of individuals, all of whom happen to be
-            pretty friendly. Here’s a list of prominent figures you’ll likely
-            encounter that are open to being contacted:
+            pretty friendly. Here’s a list of prominent groups and figures you’ll likely
+            encounter that are open to being contacted.
           </p>
         </Section>
         <Section>
