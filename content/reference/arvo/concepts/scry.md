@@ -19,7 +19,7 @@ Scries are performed exclusively with the dotket rune: `.^`
 
 For details of its usage, see the [dotket](/reference/hoon/rune/dot#-dotket) section of the Nock rune documentation. In addition to the dotket documentation, below is a colour-coded diagram breaking down the structure of a dotket scry expression with some additional notes.
 
-![Scry diagram](https://media.urbit.orgreference/arvo/scry-diagram-v2.svg)
+![Scry diagram](https://storage.googleapis.com/media.urbit.org/docs/arvo/scry-diagram-v2.svg)
 
 One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](/reference/arvo/clay/scry).
 
