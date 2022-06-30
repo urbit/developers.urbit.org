@@ -21,7 +21,7 @@ The app source is available in the [`docs-examples` repo on
 Github](https://github.com/urbit/docs-examples), in the `chat-app` folder. It
 has three folders inside:
 
-1. `bare-desk`: just the hoon files created here with dependencies
+1. `bare-desk`: just the hoon files created here without any dependencies.
 2. `full-desk`: `bare-desk` plus all dependencies. Note some files are
    symlinked, so if you're copying them you'll need to do `cp -rL`.
 3. `react-frontend`: the React front-end files.
