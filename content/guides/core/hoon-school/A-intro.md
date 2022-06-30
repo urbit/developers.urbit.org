@@ -109,19 +109,93 @@ Hoon uses _runes_, or two-character ASCII symbols, to describe its structure.  (
 
 It is highly advisable for you to learn these pronunciations, as the documentation and other developers employ them frequently.  For instance, a rune like `|=` is called a “bartis”, and you will find it designated as such in the docs, in the source code, and among the developers.
 
-| Name | Character | Name | Character | Name | Character |
-| ]---- | ----- | ---- | ----- | ---- | ----- |
-| `ace` | `␣` | `gap` | `␣␣`, `\n` | pat | `@` |
-| `bar` | `|` | `gar` | `>` | `sel` | `[` |
-| `bas` | `\` | `hax` | `#` | `ser` | `]` |
-| `buc` | `$` | `hep` | `-` | `sig` | `~` |
-| `cab` | `_` | `kel` | `{` | `soq` | `'` |
-| `cen` | `%` | `ker` | `}` | `tar` | `*` |
-| `col` | `:` | `ket` | `^` | `tic` | `\`` |
-| `com` | `,` | `lus` | `+` | `tis` | `=` |
-| `doq` | `"` | `mic` | `;` | `wut` | `?` |
-| `dot` | `.` | `pal` | `(` | `zap` | `!` |
-| `fas` | `/` | `pam` | `&` |  |
-| `gal` | `<` | `par` | `)` |  |
+{% table %}
+- Name
+- Character
+- Name
+- Character
+- Name
+- Character
+---
+- `ace`
+- `␣`
+- `gap`
+- `␣␣`, `\n` 
+- pat 
+- `@`
+---
+- `bar`
+- `|`
+- `gar`
+- `>`
+- `sel`
+- `[`
+---
+- `bas`
+- `\`
+- `hax`
+- `#`
+- `ser`
+- `]`
+---
+- `buc`
+- `$`
+- `hep`
+- `-`
+- `sig`
+- `~`
+---
+- `cab`
+- `_`
+- `kel`
+- `{`
+- `soq`
+- `'`
+---
+- `cen`
+- `%`
+- `ker`
+- `}`
+- `tar`
+- `*`
+---
+- `col`
+- `:`
+- `ket`
+- `^`
+- `tic`
+- `\`
+---
+- `com`
+- `,`
+- `lus`
+- `+`
+- `tis`
+- `=`
+---
+- `doq`
+- `"`
+- `mic`
+- `;`
+- `wut`
+- `?`
+---
+- `dot`
+- `.`
+- `pal`
+- `(`
+- `zap`
+- `!`
+---
+- `fas`
+- `/`
+- `pam`
+- `&`
+- `gal`
+- `<`
+---
+- `par`
+- `)`
+{% /table %}
 
 Note that the list includes two separate whitespace forms: `ace` for a single space `␣`; `gap` is either two or more spaces `␣␣` or a line break `\n`.  In Hoon, the only whitespace significance is the distinction between `ace` and `gap`—i.e., the distinction between one space and more than one.
