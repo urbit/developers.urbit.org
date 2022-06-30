@@ -7,6 +7,7 @@ import Meta from "../../components/Meta";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Card from "../../components/Card";
+import CardText from "../../components/CardText";
 import ContentArea from "../../components/ContentArea";
 import Sidebar from "../../components/Sidebar";
 import TallCard from "../../components/TallCard";
@@ -18,7 +19,7 @@ import {
   TwoUp,
   Markdown,
 } from "foundation-design-system";
-import { Comms, MintFiller } from "../../components/icons";
+import { Comms, MintFiller, guideDefault } from "../../components/icons";
 import guidesTree from "../../cache/guides.json";
 import { join } from "path";
 import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";
@@ -294,6 +295,87 @@ function Landing({ search }) {
             />
           </TwoUp>
         </Section>
+
+        <Section short>
+          <h3 className="pt-12">Additional Guides</h3>
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
+            <CardText
+              title="Writing Aqua Tests"
+              text="Learn to write tests with Aqua"
+              className="basis-1/2"
+              href="/guides/additional/aqua"
+            />
+            <CardText
+              title="CLI Apps"
+              text="Learn to build command line applications"
+              className="basis-1/2"
+              href="/guides/additional/cli-tutorial"
+            />
+          </div>
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
+            <CardText
+              title="Using the HTTP API"
+              text="Learn how to interact with ships through Eyre’s web API"
+              className="basis-1/2"
+              href="/guides/additional/http-api-guide"
+            />
+            <CardText
+              title="Working with JSON"
+              text="Learn how to handle this common data standard in Urbit"
+              className="basis-1/2"
+              href="/guides/additional/json-guide"
+            />
+          </div>
+
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
+            <CardText
+              title="Parsing"
+              text="Learn to parse text with Hoon"
+              className="basis-1/2"
+              href="/guides/additional/parsing"
+            />
+            <CardText
+              title="Sail: HTML in Hoon"
+              text="Learn the basics of Sail"
+              className="basis-1/2"
+              href="/guides/additional/sail"
+            />
+          </div>
+
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
+            <CardText
+              title="Distributing Software"
+              text="Learn to publish a desk that others can install"
+              className="basis-1/2"
+              href="/guides/additional/software-distribution"
+            />
+            <CardText
+              title="Working with Strings"
+              text="Learn about Hoon’s two main string types"
+              className="basis-1/2"
+              href="/guides/additional/strings"
+            />
+          </div>
+
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
+            <CardText
+              title="Writing Unit Tests"
+              text="Learn to write unit tests in Hoon"
+              className="basis-1/2"
+              href="/guides/additional/unit-tests"
+            />
+            {/* <CardText
+              icon={<MintFiller />}
+              title="Lorem Ipsum Dolorem"
+              text="Roll your own encrypted chat application in minutes"
+              className="basis-1/2"
+            /> */}
+          </div>
+
+
+        </Section>
+
+
       </SingleColumn>
       <Footer />
     </Container>
