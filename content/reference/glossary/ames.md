@@ -15,6 +15,6 @@ what OTA updates are capable of doing. These events are called [factory resets](
 ### Further Reading
 
 - [The Ames tutorial](/reference/arvo/ames/ames): An in-depth technical guide to the Ames protocol.
-- [A Guide to Factory Reset](/using/id/guide-to-resets): Instructions on
+- [A Guide to Factory Reset](https://urbit.org/using/id/guide-to-resets): Instructions on
   performing factory resets.
-- [Ship Troubleshooting](/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
+- [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.

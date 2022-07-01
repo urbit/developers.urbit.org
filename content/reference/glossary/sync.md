@@ -12,4 +12,4 @@ By default, in the [galaxy](/reference/glossary/galaxy)/[star](/reference/glossa
 
 ### Further Reading
 
-- [Using Your Ship](/using/os/filesystem): A user guide that includes instructions on using Clay commands, including `|sync`.
+- [Using Your Ship](https://urbit.org/using/os/filesystem): A user guide that includes instructions on using Clay commands, including `|sync`.

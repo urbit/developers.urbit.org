@@ -26,6 +26,6 @@ used in some places. The notion is identical, only the name differs.
 
 ### Further Reading
 
-- [Guide to Factory Resets](/using/id/guide-to-resets): A more in-depth
+- [Guide to Factory Resets](https://urbit.org/using/id/guide-to-resets): A more in-depth
   explanation of factory resets, including how to perform one.
-- [Ship Troubleshooting](/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
+- [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.

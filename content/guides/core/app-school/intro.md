@@ -35,7 +35,7 @@ interface.
 
 On the other hand, an agent is also a lot like what many systems call a
 "service". An agent is permanent and addressable -- a running program can talk
-to an agent just by naming it. An agent can perform [IO](/blog/io-in-hoon), unlike most databases.
+to an agent just by naming it. An agent can perform [IO](https://urbit.org/blog/io-in-hoon), unlike most databases.
 This is a critical part of an agent: it performs IO along the same transaction
 boundaries as changes to its state, so if an effect happens, you know that the
 associated state change has happened.
