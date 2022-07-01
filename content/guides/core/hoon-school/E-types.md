@@ -115,7 +115,6 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@uv`  | unsigned base32              | `0v1df64.49beg` |
 | `@uw`  | unsigned base64              | `0wbnC.8haTg` |
 | `@ux`  | unsigned hexadecimal         | `0x5f5.e138` |
-```
 
 Some of these auras nest under others.  For example, `@u` is for all unsigned auras.  But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc.  (For a more complete list of auras, see [Auras](/reference/hoon/auras).)
 
