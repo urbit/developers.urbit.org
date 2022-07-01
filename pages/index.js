@@ -206,12 +206,13 @@ export default function Home({ search, whatsNew }) {
                           />
                           <div className="grow-1 shrink-0 flex flex-col h-full min-h-0 pt-4">
                             <h3 className="mb-2">{e.title}</h3>
-                            <div className="flex flex-col xl:flex-row justify-between">
-                              <p className="truncate text-sm">
-                                {e.description}
+                              <p className="text-sm">
+                                {e.extra.author} {e.extra.ship}
                               </p>
                               <p className="text-sm shrink-0">{e.date}</p>
-                            </div>
+                              <p className="text-sm">
+                                {e.description}
+                              </p>
                           </div>
                         </div>
                       </div>
