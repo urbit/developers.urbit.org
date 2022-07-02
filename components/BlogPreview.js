@@ -7,35 +7,43 @@ export default function BlogPreview({ post }) {
   return (
     <div key={post.slug} className="mb-20 cursor-pointer">
       <Link href={`/blog/${post.slug}`}>
-        <div>
+        <div class="flex items-center md:flex-row flex-col">
+
+          <div class="flex w-full">
           {
             // Not all blog posts have images
             post.extra.image ? (
               <BackgroundImage
                 src={post.extra.image}
-                className="rounded-lg aspect-w-5 aspect-h-4"
+                className="rounded-lg aspect-w-5 aspect-h-4 w-full"
               />
             ) : null
           }
-          <h3 className="mt-10">{post.title}</h3>
-          {post?.description && <p className="mt-3">{post.description}</p>}
-          <div className="flex items-center justify-between mt-4">
-            <div className="flex items-baseline">
-              {post.extra.author ? (
-                <div className="type-sub-bold mr-2">{post.extra.author}</div>
-              ) : null}
-              {post.extra.ship ? (
-                <Link
-                  href={`https://urbit.org/ids/${post.extra.ship}`}
-                  passHref
-                >
-                  <a className="type-sub-bold text-wall-500 font-mono">
-                    {post.extra.ship}
-                  </a>
-                </Link>
-              ) : null}
+          </div>
+
+          <div class="w-full md:pl-6 ">
+            <h3 className="mt-6 md:mt-0">{post.title}</h3>
+            <div className="flex items-center justify-between mt-2">
+              <div className="flex items-baseline">
+                {post.extra.author ? (
+                  <div className="type-sub-bold mr-2">{post.extra.author}</div>
+                ) : null}
+                {post.extra.ship ? (
+                  <Link
+                    href={`https://urbit.org/ids/${post.extra.ship}`}
+                    passHref
+                  >
+                    <a className="type-sub-bold text-wall-500 font-mono">
+                      {post.extra.ship}
+                    </a>
+                  </Link>
+                ) : null}
+              </div>
             </div>
-            <div className="text-wall-500 type-sub">{formatDate(date)}</div>
+            <div className="text-wall-500 type-sub mt-1">{formatDate(date)}</div>
+
+            {post?.description && <p className="mt-6">{post.description}</p>}
+
           </div>
         </div>
       </Link>
