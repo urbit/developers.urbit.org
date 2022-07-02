@@ -17,7 +17,7 @@ export default function BlogPreview({ post }) {
                 src={post.extra.image}
                 className="rounded-lg aspect-w-5 aspect-h-4 w-full"
               />
-            ) : null
+            ) : <div className="rounded-lg aspect-w-5 aspect-h-4 w-full bg-wall-100"/>
           }
           </div>
 
