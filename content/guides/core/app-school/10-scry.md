@@ -22,7 +22,7 @@ the result. Scries are performed with the
 [dotket](/reference/hoon/rune/dot#-dotket) (`.^`) rune. Here's a summary of
 their format:
 
-![scry summary diagram](https://media.urbit.orgreference/arvo/scry-diagram-v2.svg)
+![scry summary diagram](https://storage.googleapis.com/media.urbit.org/docs/arvo/scry-diagram-v2.svg)
 
 A note on `care`s: Cares are most carefully implemented by Clay, where they specify
 submodules and have tightly defined behaviors. For Gall agents, most of these
