@@ -510,7 +510,7 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 /foo/bar/baz
 ```
 
-## Futher reading
+## Further reading
 
 - [Parsing](/guides/additional/hoon/parsing) - A guide to writing fully-fledged
   functional parsers in hoon.
