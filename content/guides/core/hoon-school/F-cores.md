@@ -120,8 +120,6 @@ You can do even better using _interpolation_:
 
     - We are using the `=` irregular syntax for the [`.=` dottis](/reference/hoon/rune/dot#-dottis) rune, which tests for the equality of two expressions.
 
-    - We are using the `+` irregular syntax for the [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) rune, which increments a value (adds one).
-
     ```hoon
     > +factorial 5
     120
@@ -366,7 +364,7 @@ A _leg_ is a data value.  They tend to be trivial but useful ways to pin constan
 
 ```hoon
 > =/  a  1
-  +(a)
+  (add a 1)
 2
 ```
 
@@ -467,7 +465,7 @@ n
 ==
 ```
 
-Even more compactly, `(add counter 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/reference/hoon/rune/dot#-dotlus), for the equivalent version:
+This can be collapsed into a shorter equivalent form by employing the irregular form of `%=` cenhep:
 
 ```hoon
 |=  n=@ud
@@ -476,7 +474,7 @@ Even more compactly, `(add counter 1)` can be replaced by the Nock increment run
 (mul n $(n (dec n)))
 ```
 
-(Remember that sugar syntax like `$()` does not affect code efficiency, merely visual layout.)
+(Sugar syntax like `$()` does not affect code efficiency, merely visual layout.)
 
 #### The `$` Buc Arm
 
@@ -661,6 +659,8 @@ In the following code, the `|-` barhep trap serves as the point of recursion, an
 %=($ index +(index))
 ```
 
+We are using the `+` irregular syntax for the [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) rune, which increments a value (adds one).
+
 In a formal sense, we have to make sure that there is always a base case, a way of actually ending the recursion—if there isn't, we end up with an [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop)!  Some children's songs like [“Yon Yonson”](https://en.wikipedia.org/wiki/Yon_Yonson) or [“The Song That Never Ends”](https://en.wikipedia.org/wiki/The_Song_That_Never_Ends) rely on such recursive humor.
 
 > This is the song that never ends
@@ -750,6 +750,8 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
       r      (snoc r q)
     ==
     ```
+
+    (As in an earlier code example, `(add index 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/reference/hoon/rune/dot#-dotlus).)
 
     This version is a little more complicated to compare using a diagram because of the trap, but yields something like this:
 
