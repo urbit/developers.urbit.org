@@ -1,5 +1,5 @@
 +++
-title = "Distribution"
+title = "Software Distribution"
 weight = 900
 sort_by = "weight"
 insert_anchor_links = "right"
@@ -18,8 +18,3 @@ Documentation of `desk.docket` files.
 ## [Glob](/reference/additional/dist/glob)
 
 Documentation of `glob`s (client bundles).
-
-## [Guide](/reference/additional/dist/guide)
-
-A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
-
