@@ -102,4 +102,3 @@ For further details of globs, see the [Glob](/reference/additional/dist/glob) do
 
 - [Guide](/reference/additional/dist/guide) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
 
-- [Dojo Tools](/reference/additional/dist/tools) - Documentation of useful generators for managing and distributing desks.
