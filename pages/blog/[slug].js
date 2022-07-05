@@ -43,7 +43,7 @@ export default function BlogPost({
       </Head>
       <Header search={search} />
       <SingleColumn>
-        <Section short narrow>
+        <Section narrow className="pb-10">
           <h1>{post.title}</h1>
           <h3 className=" mt-6">{post.description}</h3>
           <div className="flex items-baseline mt-6">
@@ -60,7 +60,7 @@ export default function BlogPost({
           </div>
           <div className="text-wall-500 type-sub">{formatDate(date)}</div>
         </Section>
-        <Section short narrow className="markdown">
+        <Section short narrow className="markdown py-0 pb-20">
           <Markdown.render content={JSON.parse(markdown)} />
         </Section>
         <Section wide className="flex">

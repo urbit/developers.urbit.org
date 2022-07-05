@@ -20,10 +20,10 @@ export default function Blog({ posts, search }) {
       </Head>
       <Header search={search} />
       <SingleColumn>
-        <Section narrow short>
-          <h1 className="pb-16">Developer Blog</h1>
+        <Section>
+          <h1 className="">Developer Blog</h1>
         </Section>
-        <Section narrow>
+        <Section>
           {posts.map((post) => (
             <BlogPreview post={post} />
           ))}
