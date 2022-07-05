@@ -19,7 +19,7 @@ following documents for help writing a web front-end for your app:
   interact with a Gall agent.
 - [Eyre's usage guide](/reference/arvo/eyre/guide) - This walks through examples of
   using Eyre's HTTP API.
-- [JSON guide](/guides/additional/hoon/json-guide) - This walks through the basics of
+- [JSON guide](/guides/additional/json-guide) - This walks through the basics of
   converting Hoon data structures to JSON, for use with a web client. It also
   covers JSON conversion methods in `mark` files.
 - [Zuse reference](/reference/hoon/zuse/table-of-contents) - This contains
@@ -30,7 +30,7 @@ following documents for help writing a web front-end for your app:
   details of bundling a web front-end and serving it to the user in the browser.
 - [The HTTP API guide](/guides/additional/http-api-guide) - This is a reference
   and guide to using the `@urbit/http-api` NPM module.
-- [The Sail guide](/guides/additional/hoon/sail) - Sail is a domain-specific language
+- [The Sail guide](/guides/additional/sail) - Sail is a domain-specific language
   for composing XML structure in Hoon. It can be used to compose front-ends for
   Urbit apps directly in agents, as an alternative approach to having a
   separate Javascript app.
@@ -38,12 +38,8 @@ following documents for help writing a web front-end for your app:
 In addition to these documents about creating a web-based user interface for
 your app, there are some other guides you might like to have a look at:
 
-- [Threads guide](reference/arvo/threads/overview) - Threads are like transient
+- [Threads guide](/reference/arvo/threads/overview) - Threads are like transient
   agents, typically used for handling complex I/O functionality for Gall
   agents - like interacting with an external HTTP API.
 - [The software distribution guide](/guides/additional/dist/dist) - This explains
   how to set up a desk for distribution, so other people can install your app.
-
-For more development resources, and for ways to get involved with the Urbit
-development community, see the [Urbit Developers
-site](https://developers.urbit.org/).

@@ -53,19 +53,19 @@ Here's a brief summary of each of the vanes:
   and functions rather than tasks to Dill, and CLI apps are mediated by a
   sub-module of the `%hood` system agent called `%drum`. CLI apps will not be touched
   on in this guide, but there's a separate [CLI
-  Apps](/guides/additional/hoon/cli-tutorial) guide which covers them if you're
+  Apps](/guides/additional/cli-tutorial) guide which covers them if you're
   interested.
 - **Eyre**: Webserver vane. App web front-ends are served via Eyre. It's possible to
   handle HTTP requests directly in a Gall agent (see the [Eyre
   Guide](/reference/arvo/eyre/guide) for details), but usually you'd just serve a
-  front-end [glob](/guides/additional/dist/glob) via the `%docket` agent, so you'd
+  front-end [glob](/reference/additional/dist/glob) via the `%docket` agent, so you'd
   not typically have your agent deal with Eyre directly.
 
 - **Gall**: App management vane; this is where your agent lives.
 
 - **Iris**: Web client vane. If you want your agent to query external web APIs and
   the like, it's done via Iris. Oftentimes web API interactions are
-  spun out into [threads](reference/arvo/threads/overview) to avoid
+  spun out into [threads](/reference/arvo/threads/overview) to avoid
   complicating the Gall agent itself, so a Gall agent would not necessary deal
   with Iris directly, even if it made use of external APIs.
 - **Jael**: Key infrastructure vane. Jael keeps track of PKI data for your ship and
@@ -106,15 +106,15 @@ there's also:
   IO logic in a separate thread which is completely atomic. That way the Gall
   agent only has to deal with the two conditions of success or failure. Writing
   threads is covered in a [separate
-  guide](reference/arvo/threads/basics/fundamentals), which you might like to
+  guide](/reference/arvo/threads/basics/fundamentals), which you might like to
   work through after completing App School I.
 
 - **Front-end**: Web UIs. It's possible for Gall agents to handle HTTP requests
   directly and dynamically produce responses, but it's also possible to have a
-  static [glob](/guides/additional/dist/glob) of HTML, CSS, Javascript, images,
+  static [glob](/reference/additional/dist/glob) of HTML, CSS, Javascript, images,
   etc, which are served to the client like an ordinary web app. Such front-end
   files are typically managed by the `%docket` agent which serves them via Eyre.
-  The [software distribution guide](/guides/additional/dist/guide) covers this in
+  The [software distribution guide](/guides/additional/software-distribution) covers this in
   detail, and you might like to work through it after completing App School I.
 
 ## The Filesystem
@@ -298,7 +298,7 @@ described here cover the majority of cases.
 Before proceeding with App School, you'll need to have an appropriate text
 editor installed and configured, and know how to work with a fake ship for
 development. Best practices are described in the [environment setup
-guide](/guides/additional/development/environment). Example agents and other code throughout
+guide](/guides/core/environment). Example agents and other code throughout
 this guide will just be committed to the `%base` desk of a fake ship, but it's a
 good idea to have a read through that guide for when you begin work on your own
 apps.
