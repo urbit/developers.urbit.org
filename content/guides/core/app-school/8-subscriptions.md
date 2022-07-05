@@ -72,7 +72,7 @@ atom of a particular aura encoded in an element of the `path`, as in the `[%foo 
 such variable elements as `@`, and then decode them with something like `(slav %da i.t.path)` (for a `@da`), as in the example. The incoming `path` in this
 example would look like `/foo/~2021.11.14..13.30.39..6b17`. For more information
 on decoding atoms in strings, see the [Strings
-Guide](/guides/additional/hoon/strings#decoding-from-text).
+Guide](/guides/additional/strings#decoding-from-text).
 
 In the last case of `[%bar baz *]`, we're allowing a variable number of elements
 in the path. First we check it's `/foo/bar/...something...`, and then we check
@@ -244,7 +244,8 @@ the initial `%watch-ack`. The `%fact` `sign` will have the following format:
 
 You would typically handle such `%fact`s in the following manner: Test the
 `wire`, test whether the `sign` is a `%fact`, test the `mark` in the `cage`,
-extract the data from the `vase` in the `cage`, and apply your logic. Again, routing on `wire` before `sign` is one of the [Precepts](/guides/additional/development/precepts#specifics). For example:
+extract the data from the `vase` in the `cage`, and apply your logic. For
+example:
 
 ```hoon
 ++  on-agent
@@ -898,7 +899,7 @@ was rejected because `~nut` is no longer in `friends`:
 
 ## Exercises
 
-- Have a look at the [Strings Guide](/guides/additional/hoon/strings) if you're not
+- Have a look at the [Strings Guide](/guides/additional/strings) if you're not
   already familiar with decoding/encoding atoms in strings.
 - Try running through the [example](#example) yourself, if you've not done so
   already.
