@@ -73,7 +73,7 @@ mkdir -p hut/{app,sur,mar,lib}
 cp zod/base/sys.kelvin hut/sys.kelvin
 cp zod/base/mar/{bill*,hoon*,json.hoon,kelvin*,mime*,noun*,ship*,txt*} hut/mar/
 cp zod/base/lib/{agentio*,dbug*,default-agent*,skeleton*} hut/lib/
-cp zod/garden/docket-0* hut/mar/
+cp zod/garden/mar/docket-0* hut/mar/
 cp zod/garden/lib/{docket*,mip*} hut/lib/
 cp zod/garden/sur/docket* hut/sur/
 ```
