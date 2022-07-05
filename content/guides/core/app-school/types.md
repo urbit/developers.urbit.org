@@ -140,7 +140,7 @@ The `path` type is formally defined as:
 +$  path  (list knot)
 ```
 
-A knot is a `@ta` text atom (see the [Strings guide](/guides/additional/hoon/strings)
+A knot is a `@ta` text atom (see the [Strings guide](/guides/additional/strings)
 for details), so a `path` is just a list of text. Rather than having to write
 `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like
 `/foo/bar/baz`.
@@ -172,8 +172,8 @@ Then, when you get a subscription request, you might do something like:
   ...(rest of code)...
 ```
 
-See the [Encoding in text](/guides/additional/hoon/strings#encoding-in-text) and
-[Decoding from text](/guides/additional/hoon/strings#decoding-from-text) sections of
+See the [Encoding in text](/guides/additional/strings#encoding-in-text) and
+[Decoding from text](/guides/additional/strings#decoding-from-text) sections of
 the Strings guide for more information on dealing with atoms encoded in strings.
 
 Aside from using function calls when constructing a `path` as demonstrated
