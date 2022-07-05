@@ -6,8 +6,8 @@ export default function Meta(post, disableImage) {
   const image =
     post?.extra?.image || "https://media.urbit.org/logo/urbit-logo-card.png";
   return (
+      
     <>
-      <link rel="icon" type="image/png" href="/images/favicon.ico" />
       <meta
         name="twitter:card"
         content="summary_large_image"
@@ -26,6 +26,7 @@ export default function Meta(post, disableImage) {
       {!disableImage && (
         <meta name="twitter:image" content={image} key="image" />
       )}
+
     </>
   );
 }

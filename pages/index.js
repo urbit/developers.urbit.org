@@ -25,10 +25,7 @@ import TallCard from "../components/TallCard";
 import { getAllPosts, getAllEvents } from "../lib/lib";
 import { eventKeys } from "../lib/constants";
 import { DateTime } from "luxon";
-import {
-  formatDate,
-  generateDisplayDate,
-} from "../lib/lib";
+import { formatDate, generateDisplayDate } from "../lib/lib";
 
 export default function Home({ search, whatsNew }) {
   return (
@@ -211,19 +208,26 @@ export default function Home({ search, whatsNew }) {
                           />
                           <div className="grow-1 shrink-0 flex flex-col h-full min-h-0 pt-4">
                             <h3 className="mb-2">{e.title}</h3>
-                              <p className="text-sm">
-                                {e.extra.author ? (
-                                  <span className="type-sub-bold mr-2">{e.extra.author}</span>
-                                ) : null}
-                                {e.extra.ship ? (
-                                  <Link href={`https://urbit.org/ids/${e.extra.ship}`} passHref>
-                                    <a className="type-sub-bold text-wall-500 font-mono">
-                                      {e.extra.ship}
-                                    </a>
-                                  </Link>
-                                ) : null}
-                              </p>
-                              <p className="text-wall-500 type-sub shrink-0">{formatDate(date)}</p>
+                            <p className="text-sm">
+                              {e.extra.author ? (
+                                <span className="type-sub-bold mr-2">
+                                  {e.extra.author}
+                                </span>
+                              ) : null}
+                              {e.extra.ship ? (
+                                <Link
+                                  href={`https://urbit.org/ids/${e.extra.ship}`}
+                                  passHref
+                                >
+                                  <a className="type-sub-bold text-wall-500 font-mono">
+                                    {e.extra.ship}
+                                  </a>
+                                </Link>
+                              ) : null}
+                            </p>
+                            <p className="text-wall-500 type-sub shrink-0">
+                              {formatDate(date)}
+                            </p>
                           </div>
                         </div>
                       </div>
