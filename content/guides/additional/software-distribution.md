@@ -93,13 +93,13 @@ In the text editor, we'll add the following:
 ==
 ```
 
-You can refer to the [Docket File](/guides/additional/dist/docket) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](/guides/additional/dist/docket) which configure the appearance of the app tile, the source of the [glob](/guides/additional/dist/glob), and some other metadata.
+You can refer to the [Docket File](/reference/additional/dist/docket) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](/reference/additional/dist/docket) which configure the appearance of the app tile, the source of the [glob](/reference/additional/dist/glob), and some other metadata.
 
-We've given the app a [`%title`](/guides/additional/dist/docket#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](/guides/additional/dist/docket#color) of `#8188C9`, and also specified the URL of an [`%image`](/guides/additional/dist/docket#image) to display on the tile.
+We've given the app a [`%title`](/reference/additional/dist/docket#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](/reference/additional/dist/docket#color) of `#8188C9`, and also specified the URL of an [`%image`](/reference/additional/dist/docket#image) to display on the tile.
 
-The [`%base`](/guides/additional/dist/docket#base) clause specifies the base URL path for the app. We've specified "hello" so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](/guides/additional/dist/glob), we've used a clause of [`%glob-ames`](/guides/additional/dist/docket#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](/guides/additional/dist/docket#glob-http) clause or having an Eyre binding with a [`%site`](/guides/additional/dist/docket#site) clause. You can refer to the [glob](/guides/additional/dist/glob) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since `~zod` is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the `glob`, so we can just specify `0v0` here as it'll get overwritten later.
+The [`%base`](/reference/additional/dist/docket#base) clause specifies the base URL path for the app. We've specified "hello" so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](/reference/additional/dist/glob), we've used a clause of [`%glob-ames`](/reference/additional/dist/docket#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](/reference/additional/dist/docket#glob-http) clause or having an Eyre binding with a [`%site`](/reference/additional/dist/docket#site) clause. You can refer to the [glob](/reference/additional/dist/glob) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since `~zod` is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the `glob`, so we can just specify `0v0` here as it'll get overwritten later.
 
-The [`%version`](/guides/additional/dist/docket#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
+The [`%version`](/reference/additional/dist/docket#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
 
 So let's save that to the `desk.docket-0` file and have a look at our desk:
 
@@ -160,7 +160,7 @@ kiln: installing %hello locally
 docket: awaiting manual glob for %hello desk
 ```
 
-The `docket: awaiting manual glob for %hello desk` message is because our `desk.docket-0` file includes a [`%glob-ames`](/guides/additional/dist/docket#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob.
+The `docket: awaiting manual glob for %hello desk` message is because our `desk.docket-0` file includes a [`%glob-ames`](/reference/additional/dist/docket#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob.
 
 If we open a browser now, navigate to `http://localhost:8080` and login with the default fakezod code `lidlut-tabwed-pillex-ridrup`, we'll see our tile's appeared but it says "installing" with a spinner due to the missing glob:
 
@@ -226,7 +226,7 @@ Our `hello-glob` folder should now look like this:
 
 ## Upload to glob
 
-We can now create a glob from the directory. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](/guides/additional/dist/glob#globulator) tool:
+We can now create a glob from the directory. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](/reference/additional/dist/glob#globulator) tool:
 
 ![Globulator](https://media.urbit.org/guides/additional/dist/globulator.png)
 
