@@ -9,7 +9,7 @@ insert_anchor_links = "right"
 
 Overview of threads.
 
-## [Basics](/reference/arvo/threads/basics/)
+## [Threads Guide](/guides/additional/threads/)
 
 Tutorial and explanation of the basics of writing threads.
 
