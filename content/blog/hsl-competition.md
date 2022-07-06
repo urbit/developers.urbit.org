@@ -20,7 +20,7 @@ At the conclusion of Hoon School Live, the Urbit Foundation sponsored a short co
 2. Parsing and producing Roman numerals
 3. Making tools for titling CLI/terminal applications
 
-The challenges were largely based on the [Rosetta Code](https://rosettacode.com/) code illustration examples, enabling us to give more exemplary instances of Hoon code to the broader development community.
+The challenges were largely based on the [Rosetta Code](https://rosettacode.org/) code illustration examples, enabling us to give more exemplary instances of Hoon code to the broader development community.
 
 Two prizes were recognized for each:  one for the first over the finish line, and another for the most stylistically expressive Hoon, as judged blindly by Hoon School Live's graders, ~tinnus-napbus, ~hodzod-walrus, and ~dinleb-rambep.
 
