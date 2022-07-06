@@ -47,6 +47,6 @@ successfully building apps.
 If you are interested in participating in App School Live, drop us a line at
 [this registration
 form](https://docs.google.com/forms/d/e/1FAIpQLSfxAEdcdaLG_yK3RCOCLLScslcyjhBmAN2qUqHLajwSMgT-lw/viewform)
-or join us on Mars at ~hiddev-dannut/new-hooniverse.  We'll start on Tuesday,
+or join us on Mars at [~hiddev-dannut/new-hooniverse](https://urbit.org/groups/~hiddev-dannut/new-hooniverse).  We'll start on Tuesday,
 July 12 and run through August 23.
 
