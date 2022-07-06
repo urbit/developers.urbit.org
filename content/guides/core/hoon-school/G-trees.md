@@ -480,6 +480,8 @@ We say that the outer face has been _shadowed_ when an inner name obscures it.
 
 If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` cenhep loop/recursion of multiple cores with a `|-` barket trap nested inside of a `|=` bartis gate, for instance.
 
+Solution #1 in the [Rhonda Numbers](/guides/additional/workbook/rhonda) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
+
 ### Limb Resolution Operators
 
 There are two symbols we use to search for a face or limb:

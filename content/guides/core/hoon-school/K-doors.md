@@ -957,3 +957,7 @@ You can also create a trap for later use with the [`|.` bardot](/reference/hoon/
 What is a gate?  It is a door with only one arm `$` buc, and whenever you invoke it then that default arm's expression is referred to and evaluated.
 
 A _gate_ and a _trap_ are actually very similar:  a [gate](/reference/hoon/rune/bar#-bartis) simply has a sample (and can actively change when evaluated or via a `%=` cenhep), whereas a trap does not (and can _only_ be passively changed via something like `%=` cenhep).
+
+#### Example:  Hoon Workbook
+
+Other examples demonstrating `++map` are available in the [Hoon Workbook](/guides/additional/workbook), such as Solution #2 in the [Rhonda Numbers](/guides/additional/workbook/rhonda) tutorial.

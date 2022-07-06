@@ -356,3 +356,7 @@ A refined `++cook`/`++cury`/`++jest` parser:
 > ((cook (cury slaw %ud) (jest '12')) [[1 1] "123"])
 [p=[p=1 q=3] q=[~ u=[p=[~ 12] q=[p=[p=1 q=3] q="3"]]]]
 ```
+
+#### Example:  Hoon Workbook
+
+More examples demonstrating parser usage are available in the [Hoon Workbook](/guides/additional/workbook), such as the [Roman Numeral](/guides/additional/workbook/roman) tutorial.
