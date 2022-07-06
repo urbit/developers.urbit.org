@@ -1,5 +1,5 @@
 +++
 title = "Hoon Workbook"
 weight = 30
-type = "tab"
+insert_anchor_links = "right"
 +++
