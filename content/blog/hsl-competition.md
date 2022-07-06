@@ -612,8 +612,6 @@ You should produce a library which converts to and from Roman numeral representa
 | `d` | 500 |
 | `m` | 1,000 |
 
-![](https://img-9gag-fun.9cache.com/photo/aGzNz27_460swp.webp)
-
 There are many incorrect formulations, as `iix` → 8 or `id` → 499, and your code is not expected to parse these “correctly”.  (It should not produce them!)  However, both `iv` and `iiii` are frequently used to represent 4 (e.g. look at a clock face), so you should support this variation.
 
 For this task, you will produce two files:
