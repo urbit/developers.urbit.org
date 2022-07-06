@@ -172,13 +172,11 @@ const pageTree = (thisLink, tree, level = 0) => {
 
   return (
     <>
-      <Link href={thisLink} passHref>
-        <a onClick={() => toggleTree(!isOpen)}>
-          <p className={`${headingItemClasses} relative cursor-pointer`}>
-            {tree.title}
-          </p>
-        </a>
-      </Link>
+      <span onClick={() => toggleTree(!isOpen)}>
+        <p className={`${headingItemClasses} relative cursor-pointer`}>
+          {tree.title}
+        </p>
+      </span>
       <div className={activeClasses}>
         <ul className={""}>
           {tree.pages.map(({ title, slug }) => {
