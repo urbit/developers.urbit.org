@@ -60,11 +60,11 @@ One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it su
 0x13
 ```
 
-#### Exercise:  Bind Gate Arguments
+##  Exercise:  Bind Gate Arguments
 
 - Create a gate `++inc` which increments a value in one step, analogous to `++dec`.
 
-#### Exercise:  Chain Gate Values
+##  Exercise:  Chain Gate Values
 
 - Write an expression which yields the parent galaxy of a planet's sponsoring star by composing two gates.
 
@@ -110,7 +110,7 @@ q=15
 120
 ```
 
-#### Exercise:  
+##  Exercise:  Calculate a Factorial
 
 - Use `++reel` to produce a gate which calculates the factorial of a number.
 

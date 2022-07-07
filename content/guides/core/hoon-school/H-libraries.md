@@ -66,7 +66,7 @@ Another common design pattern besides creating a library is to sequester core-sp
 
 Watch for these being used in generators and libraries over the next few modules.
 
-#### Exercise:  A Playing Card Library
+##  Exercise:  A Playing Card Library
 
 In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](./K-doors.md) to produce [randomness](./O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](/reference/hoon/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
 

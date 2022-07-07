@@ -64,7 +64,7 @@ Wet gates are therefore used when incoming type information is not well known an
 
 - [~timluc-miptev, “Wet Gates”](https://blog.timlucmiptev.space/wetgates.html)
 
-#### Exercise:  The Trapezoid Rule
+##  Exercise:  The Trapezoid Rule
 
 The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a definite integral.  It approximates the area under the curve by a trapezoid or (commonly) a series of trapezoids.  The rule requires a function as one of the inputs, i.e. it applies _for a specific function_.  We will use wet gates to accomplish this without stripping type information of the input gate core.
 
@@ -679,6 +679,6 @@ Finally, the first line of our program will take the first 10 elements of `fib` 
 
 This example is a bit overkill for simply calculating the Fibonacci series, but it illustrates how you could use `%lead` cores.  Instead of `++fib`, you can supply any infinite sequence and `++stream` will correctly handle it.
 
-#### Exercise:  `%lead` Bivariant Polymorphism
+##  Exercise:  `%lead` Bivariant Polymorphism
 
 - Produce a `%say` generator that yields another self-referential sequence, like the [Lucas numbers](https://en.wikipedia.org/wiki/Lucas_number) or the [Thue–Morse sequence](https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).

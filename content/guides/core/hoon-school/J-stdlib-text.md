@@ -322,7 +322,7 @@ To _tokenize_ text is to break it into pieces according to some rule.  For insta
 
 Hoon has a sophisticated parser built into it that [we'll use later](./P-stdlib-io.md).  There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other.  We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
 
-#### Exercise: Break Text at a Space
+##  Exercise: Break Text at a Space
 
 Hoon has a very powerful text parsing engine, built to compile Hoon itself.  However, it tends to be quite obscure to new learners.  We can build a simple one using `list` tools.
 
@@ -414,7 +414,7 @@ If you have a Hoon value and you want to convert it into text as such, use `++sc
     %.n
     ```
 
-#### Exercise:  Building Your Own Library
+##  Exercise:  Building Your Own Library
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
@@ -520,7 +520,7 @@ Naked generators are limited because they have no way of accessing data that exi
 
 This entire structure is a noun, which is why `*` is a valid sample if we wish to not use any of the information here in a generator. But let's look at each of these three elements, piece by piece.
 
-#### Exercise:  The Magic 8-Ball
+##  Exercise:  The Magic 8-Ball
 
 This Magic 8-Ball generator returns one of a variety of answers in response to a call.  In its entirety:
 
@@ -575,7 +575,7 @@ Since this is a `%say` generator, we can run it without arguments:
 "Ask again later."
 ```
 
-#### Exercise:  Dice Roll
+##  Exercise:  Dice Roll
 
 Let's look at an example that uses all three parts. Save the code below in a file called `dice.hoon` in the `/gen` directory of your `%base` desk.
 
@@ -609,7 +609,7 @@ nest-fail
 
 We get a different value from the same generator between runs, something that isn't possible with a naked generator. Another novelty is the ability to choose to not use the second argument.
 
-#### Exercise:  Using the Playing Card Library
+##  Exercise:  Using the Playing Card Library
 
 Recall the playing card library `/lib/playing-cards.hoon` in `/lib`.  Let's use it with a `%say` generator.
 
