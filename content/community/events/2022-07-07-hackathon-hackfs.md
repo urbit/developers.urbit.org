@@ -14,5 +14,5 @@ The Urbit Foundation is sponsoring a prize in the [HackFS](https://fs.ethglobal.
 
 IPFS and Filecoin are distributed data storage and access solutions for a decentralized Web.  Building Urbit compatibility tools will lead to new ways of decentralizing file storage and distribution.
 
-- [Application](https://ethglobal.com/auth?use_redirect=events/hackfs2022/apply)
-
+- [Urbit challenge](https://ethglobal.com/events/hackfs2022/prizes#urbit)
+- [Apply for Hack FS](https://ethglobal.com/auth?use_redirect=events/hackfs2022/apply)
