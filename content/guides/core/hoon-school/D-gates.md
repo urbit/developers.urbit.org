@@ -383,7 +383,7 @@ There are also a number of other import runes which make library, structure, and
 
 For simplicity, everything we do will take place on the `%base` desk for now.  We will learn how to create a library in a subsequent lesson.
 
-####  Exercise:  Loading a Library
+##  Exercise:  Loading a Library
 
 In a generator, load the `number-to-words` library using the `/+` tislus rune.  (This must take place at the very top of your file.)
  

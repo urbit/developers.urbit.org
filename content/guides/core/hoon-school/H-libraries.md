@@ -221,7 +221,7 @@ With that completed, we use `%=` centis to call `$` buc to recurse back up to `|
 This is a very naive shuffling algorithm.  We leave the implementation of a better shuffling algorithm as an exercise for the reader.
 
 
-####  Exercise:  Using the Playing Card Library
+##  Exercise:  Using the Playing Card Library
 
 Unfortunately `/` fas runes don't work in the Dojo right now, so we need to build code using the `-build-file` thread if we want to use the library directly.
 

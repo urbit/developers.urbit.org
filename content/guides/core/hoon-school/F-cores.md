@@ -216,7 +216,7 @@ We will revert to the irregular form more and more.  If you would like to see ex
 
 (_There's a lot going on in there._  Focus on the four-letter runic identifiers:  `%sgpm` for `~&` sigpam, for instance.)
 
-####  Exercise:  Calculate a sequence of numbers
+##  Exercise:  Calculate a sequence of numbers
 
 Produce a gate (generator) which accepts a `@ud` value and calculates the series where the *i*th term in the series is given by the equation
 
@@ -233,7 +233,7 @@ that is, the first numbers are 0, 1, 4, 9, 16, 25, etc.
 
 For this exercise, you do not need to store these values in a list.  Calculate each one but only return the final value.
 
-####  Exercise:  Output each letter in a `tape`
+##  Exercise:  Output each letter in a `tape`
 
 Produce a gate (generator) which accepts a `tape` value and returns a `(list @ud)` containing the ASCII value of each character.  Use a `|-` barhep trap.
 
