@@ -362,12 +362,12 @@ function Landing({ search }) {
               className="basis-1/2"
               href="/guides/additional/unit-tests"
             />
-            {/* <CardText
-              icon={<MintFiller />}
-              title="Lorem Ipsum Dolorem"
-              text="Roll your own encrypted chat application in minutes"
+            <CardText
+              title="Threads"
+              text="Learn to write asynchronous I/O functions"
               className="basis-1/2"
-            /> */}
+              href="/guides/additional/threads/fundamentals"
+            />
           </div>
         </Section>
       </SingleColumn>
