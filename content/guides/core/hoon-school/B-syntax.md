@@ -319,7 +319,7 @@ Thinking in terms of such “LEGO brick” diagrams can be a helpful learning an
 
 ##  Preserving Values with Faces
 
-A Hoon expression is evaluated against a particular subject, which includes Hoon definitions and the standard library, as well as any cuser-specified values which have been made available.  Unlike many procedural programming languages, a Hoon expression only knows what it has been told explicitly.  This means that as soon as we calculate a value, it returns and falls back into the ether.
+A Hoon expression is evaluated against a particular subject, which includes Hoon definitions and the standard library, as well as any user-specified values which have been made available.  Unlike many procedural programming languages, a Hoon expression only knows what it has been told explicitly.  This means that as soon as we calculate a value, it returns and falls back into the ether.
 
 ```
 %-  sub  [5 1]
