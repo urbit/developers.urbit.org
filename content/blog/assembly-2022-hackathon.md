@@ -1,6 +1,6 @@
 +++
 title = "Assembly 2022 Hackathon Announcement"
-date = "2022-07-7"
+date = "2022-07-07"
 description = "A summertime hackaton culminating at the annual conference in Miami."
 [extra]
 ship = "~sarlev-sarsen"
