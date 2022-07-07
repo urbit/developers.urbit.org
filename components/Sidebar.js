@@ -21,13 +21,13 @@ export default function Sidebar(props) {
       </div>
 
       <MenuTray isOpen={isOpen} setTray={setTray} search={props.search}>
-        <header className="flex shrink-0 justify-between items-center pb-8">
+        <header className="flex shrink-0 justify-between items-center pb-4">
           <Link href="/" passHref>
-            <a className="type-ui text-wall-500">Urbit</a>
+            <a className="font-semibold">Urbit Developers</a>
           </Link>
         </header>
         {props.children}
-        <div className="pt-64" />
+        <div className="pt-32" />
       </MenuTray>
     </>
   );
