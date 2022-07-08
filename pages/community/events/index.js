@@ -40,10 +40,7 @@ export default function Events({ events, search }) {
   const happeningNow = events.filter((event) => {
     const starts = generateRealtimeDate(event.starts);
     const ends = generateRealtimeDate(event.ends);
-    return (
-      (starts > DateTime.now() && ends < now) ||
-      (starts < DateTime.now() && ends > now)
-    );
+    return starts < DateTime.now() && ends > now;
   });
 
   return (
