@@ -365,7 +365,7 @@ If you need to test code without completing it, you can stub out as-yet-undefine
 
 A generator gives us on-demand access to code, but it is helpful to load and use code from files while we work in the Dojo.
 
-A conventional library import with [`/+` faslus](https://urbit.orgreference/arvo/ford/ford#ford-runes) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.
+A conventional library import with [`/+` faslus](/reference/hoon/rune/fas#-faslus) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.
 
 Instead, you need to use the `-build-file` thread to load the code.  Most commonly, you will do this with library code when you need a particular core's functionality.
 
