@@ -123,7 +123,7 @@ In this exercise, we examine a library that can be used to represent a deck of 5
 --
 ```
 
-The `|%` barcen core created at the top of the file contains the entire library's code, and is closed by `--` tistis on the last line.
+The `|%` barcen core created at the top of the file contains the entire library's code, and is closed by `--` hephep on the last line.
 
 To create three types we're going to need, we use `+$` lusbuc, which is an arm used to define a type.
 
