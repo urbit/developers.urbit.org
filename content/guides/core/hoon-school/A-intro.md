@@ -164,7 +164,7 @@ It is highly advisable for you to learn these pronunciations, as the documentati
 - `ket`
 - `^`
 - `tic`
-- `\`
+- `` ` ``
 ---
 - `com`
 - `,`
