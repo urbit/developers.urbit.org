@@ -479,7 +479,7 @@ Run it with:
 ```hoon
 > |commit %base
 
-> +say
+> +add
 42
 ```
 
