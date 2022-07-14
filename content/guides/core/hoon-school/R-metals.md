@@ -165,6 +165,21 @@ Conversely, a `(list *)` should not nest under `(list @)`, because `*` does not 
 nest-fail
 ```
 
+### Drying Out a Gate
+
+Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](https://developers.urbit.org/reference/hoon/stdlib/2b#bake):
+
+```hoon
+> ((curr reel add) `(list @)`[1 2 3 4 ~])
+mull-grow
+-find.i.a
+
+> ((curr (bake reel ,[(list @) _add]) add) `(list @)`[1 2 3 4 ~])
+10
+```
+
+Typically it's better to find another way to express your problem than to `++bake` a wet gate, however.  As we said before, wet gates are powerful and for that reason not apt for every purpose.
+
 
 ##  Variance
 
