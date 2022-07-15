@@ -107,12 +107,13 @@ export default function Home({ search, whatsNew }) {
                 className="basis-1/2"
                 href="/guides/quickstart/chat-guide"
               />
-              {/* <Card
-                icon={<MintFiller />}
-                title="Lorem Ipsum Dolorem"
-                text="Roll your own encrypted chat application in minutes"
+              <Card
+                icon={<Comms />}
+                title="Ring Signature Voting App"
+                text="Build an anonymous voting app for groups"
                 className="basis-1/2"
-              /> */}
+                href="/guides/quickstart/voting-guide"
+              />
             </div>
           </Section>
           <Section className="flex flex-col space-y-12">
