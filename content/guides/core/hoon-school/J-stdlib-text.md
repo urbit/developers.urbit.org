@@ -532,7 +532,7 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 ^-  tape
 =/  answers=(list tape)
   :~  "It is certain."
-      "It is decidedly so."****
+      "It is decidedly so."
       "Without a doubt."
       "Yes - definitely."
       "You may rely on it."
