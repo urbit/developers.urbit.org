@@ -59,7 +59,7 @@ You should get used to reading and interpreting these forms.  We will start to u
 Convert each of the following irregular forms into the correct regular runic syntax.
 
 1. `(add 1 2)`
-2. ``@ub`16`
+2. `` `@ub`16 ``
 3. `[%lorem %ipsum]`
 4. `[%lorem %ipsum %dolor]` (can do two ways)
 
