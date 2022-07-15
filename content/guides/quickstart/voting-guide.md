@@ -587,10 +587,10 @@ directory of a desk, so save this code in `hut/app/hut.hoon`:
 
 ### Marks
 
-Marks are typed filetypes/MIME types. We need to define a mark for the `action`s
-we'll send or receive, and the `update`s we'll send to subscribers or receive
-for subscriptions. These will be very simple since we don't need to do any
-conversions to things like JSON.
+Marks are Urbit's version of filetypes/MIME types. We need to define a mark for
+the `action`s we'll send or receive, and the `update`s we'll send to
+subscribers or receive for subscriptions. These will be very simple since we
+don't need to do any conversions to things like JSON.
 
 Mark files are stored in the `/mar` directory of a desk. Save the
 `%tally-action` mark in `tally/mar/tally/action.hoon`, and the `%tally-update`
@@ -1080,7 +1080,10 @@ A poll is the following structure:
   ==
 ```
 
-The `ring-group` is a structure from `/sur/ring.hoon`, and contains the set of all participants, their key revisions, and a "linkage scope", which is used to associate votes with a particular poll and detect duplicates. We just set the linkage scope to the poll ID (`pid`).
+The `ring-group` is a structure from `/sur/ring.hoon`, and contains the set of
+all participants, their key revisions, and a "linkage scope", which is used to
+associate votes with a particular poll and detect duplicates. We just set the
+linkage scope to the poll ID (`pid`).
 
 The `action` structure defines what requests/actions can be sent or received in *pokes* (one-off messages):
 
@@ -1107,9 +1110,12 @@ The `update` structure defines what updates/events can be sent out to subscriber
 
 ### Agent
 
-Our agent imports the structure file we create, some structures for dealing with
-groups and their metadata, some utility libraries including the ring signature
-library, and our `index.hoon` front-end file.
+Gall is the userspace application management vane (kernel module). Userspace
+applications are called *agents*.
+
+Our agent imports the structure file we create, some structures for dealing
+with groups and their metadata, some utility libraries including the ring
+signature library, and our `index.hoon` front-end file.
 
 The agent's state is defined as:
 
@@ -1123,11 +1129,17 @@ and associated votes. We additionally have `voted` and `withdrawn` to keep track
 of actions we've taken so the front-end will update instantly rather than having
 to wait for a remote ship to acknowledge the request.
 
-A Gall agent has ten *arms* (event handlers), we'll look at some of the significant ones.
+A Gall agent has ten event handler *arms*. Most agent arms produce the same two
+things: a list of effects to be emitted, and a new version of the agent itself,
+typically with an updated state. It thus behaves much like a state machine,
+performing the function `(events, old-state) => (effects, new-state)`. We'll
+look at some of our agent's significant arms:
 
 #### `on-init`
 
-This arm is called exactly once, when the agent is first installed. We just pass a `task` to Eyre, the web-server vane (kernel module) to bind the `/tally` URL path so visiting that will load our front-end:
+This arm is called exactly once, when the agent is first installed. We just
+pass a `task` to Eyre, the web-server vane, to bind the `/tally`
+URL path so visiting that will load our front-end:
 
 ```hoon
 [%pass /bind %arvo %e %connect `/'tally' %tally]~
@@ -1139,9 +1151,10 @@ This arm handles *pokes*, which will either contain `action`s or HTTP requests
 from the web interface. Our `on-poke` tests the mark to see which it is, and
 then calls either `handle-http` or `handle-action` as the case may be.
 
-`handle-action` tests what kind of request it is (new poll, vote, etc) and handles
-it appropriately. If it's a vote, it makes sure the ring signature is valid by
-calling the `validate` function in the `ring.hoon` library.
+`handle-action` tests what kind of request it is (new poll, vote, etc) and
+handles it appropriately (check permissions, update state, send out updates to
+subscribers, etc). If it's a vote, it makes sure the ring signature is valid by
+calling the `verify` function in the `ring.hoon` library.
 
 For `handle-http`, if it's a GET request, it calls `index.hoon` to produce the
 web page and returns it to Eyre on the subscription path specified by the
@@ -1173,7 +1186,8 @@ responses.
 ### Front-end
 
 As mentioned previously, our front-end is written in *Sail*, and contained in a
-separate `index.hoon` file which our agent imports. Sail lets us easily build XML structures inside hoon, and looks like this:
+separate `index.hoon` file which our agent imports. Sail lets us easily build
+XML structures inside hoon, and looks like this:
 
 ```hoon
 ;html
