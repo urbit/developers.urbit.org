@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import {
   Comms,
+  Ringsig,
   Database,
   Distribution,
   Functional,
@@ -108,7 +109,7 @@ export default function Home({ search, whatsNew }) {
                 href="/guides/quickstart/chat-guide"
               />
               <Card
-                icon={<Comms />}
+                icon={<Ringsig />}
                 title="Ring Signature Voting App"
                 text="Build an anonymous voting app for groups"
                 className="basis-1/2"
