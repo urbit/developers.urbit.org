@@ -169,7 +169,7 @@ where ~marzod is the point in question; or more succinctly:
 
 (This previews the irregular syntax of `%-` cenhep; it is equivalent to `%-  sein:title  [our now ~marzod]`.)
 
-#### Exercise:  Finding neighbors
+##  Exercise:  Finding neighbors
 
 A neighbor of a point is a point which occupies the point immediately above or below that point's `@ud` number.
 
@@ -192,7 +192,7 @@ The previous neighbor of ~sampel-palnet is thus:
 
 - Find the next neighbor of ~sampel-palnet.
 
-#### Exercise:  Finding the sponsor of a neighbor
+##  Exercise:  Finding the sponsor of a neighbor
 
 The sponsor of ~sampel-palnet may be found by:
 
@@ -216,7 +216,7 @@ The sponsor of the previous neighbor of ~sampel-palnet is thus:
 
 - Find the sponsor of the next neighbor of ~sampel-palnet.
 
-#### Exercise:  Finding the child of a point
+##  Exercise:  Finding the child of a point
 
 A point has many children, but the first moon of a planet is located at that point plus 2³² = `4.294.967.296`.
 

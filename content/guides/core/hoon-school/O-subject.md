@@ -211,7 +211,7 @@ Lastly, let's check the subject of the last arm in `hoon.hoon` (as of June 2022)
 
 This confirms for us, then, that `hoon.hoon` consists of six nested cores, with one inside the payload of the next, with the `hoon-version` core most deeply nested.
 
-#### Exercise:  Explore `hoon.hoon`
+##  Exercise:  Explore `hoon.hoon`
 
 - Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in its parent core or core(s) that have the parent core put in its context via the `=>` or `=<` runes.
 
@@ -336,7 +336,7 @@ Each of these arms produces a gate which takes an `@ud` argument.  Each of these
 
 It's important to notice that the sample, `balance`, is stored as part of the door rather than existing outside of it.
 
-#### Exercise:  Bank Account
+##  Exercise:  Bank Account
 
 - Modify the `%say` generator above to accept a `@ud` unsigned decimal dollar amount and a `?(%deposit %withdraw)` term and returns the result of only that operation on the starting balance of the bank account.  (Note that this will only work once on the door, and the state will not persist between generator calls.)
 
@@ -397,7 +397,7 @@ The Magic 8-Ball returns one of a variety of answers in response to a call.  In 
 ^-  tape
 =/  answers=(list tape)
   :~  "It is certain."
-      "It is decidedly so."****
+      "It is decidedly so."
       "Without a doubt."
       "Yes - definitely."
       "You may rely on it."

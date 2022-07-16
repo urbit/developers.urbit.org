@@ -22,9 +22,9 @@ insert_anchor_links = "right"
 
 - [5. Eyre](/guides/core/app-school-full-stack/5-eyre) - This is a brief overview of how the webserver vane Eyre works.
 
-- [6. React App Setup](/guides/core/app-school-full-stack/7-react-setup) - This lesson shows how to create a new React app, install the required packages, and set up some basic things for our front-end.
+- [6. React App Setup](/guides/core/app-school-full-stack/6-react-setup) - This lesson shows how to create a new React app, install the required packages, and set up some basic things for our front-end.
 
-- [7. React App Logic](/guides/core/app-school-full-stack/7-http-api) - This lesson analyzes the core logic of our React app, with particular focus on using methods of the `Urbit` class from `@urbit/http-api` to communicate with our agent.
+- [7. React App Logic](/guides/core/app-school-full-stack/7-app-logic) - This lesson analyzes the core logic of our React app, with particular focus on using methods of the `Urbit` class from `@urbit/http-api` to communicate with our agent.
 
 - [8. Desk and Glob](/guides/core/app-school-full-stack/8-desk) - This lesson shows how to build and “glob” our front-end, as well as put together a desk for distribution.
 

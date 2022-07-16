@@ -66,7 +66,7 @@ Another common design pattern besides creating a library is to sequester core-sp
 
 Watch for these being used in generators and libraries over the next few modules.
 
-#### Exercise:  A Playing Card Library
+##  Exercise:  A Playing Card Library
 
 In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](./K-doors.md) to produce [randomness](./O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](/reference/hoon/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
 
@@ -123,7 +123,7 @@ In this exercise, we examine a library that can be used to represent a deck of 5
 --
 ```
 
-The `|%` barcen core created at the top of the file contains the entire library's code, and is closed by `--` tistis on the last line.
+The `|%` barcen core created at the top of the file contains the entire library's code, and is closed by `--` hephep on the last line.
 
 To create three types we're going to need, we use `+$` lusbuc, which is an arm used to define a type.
 
@@ -221,7 +221,7 @@ With that completed, we use `%=` centis to call `$` buc to recurse back up to `|
 This is a very naive shuffling algorithm.  We leave the implementation of a better shuffling algorithm as an exercise for the reader.
 
 
-####  Exercise:  Using the Playing Card Library
+##  Exercise:  Using the Playing Card Library
 
 Unfortunately `/` fas runes don't work in the Dojo right now, so we need to build code using the `-build-file` thread if we want to use the library directly.
 

@@ -38,7 +38,7 @@ export default function Header({ search }) {
         <div>
           <Link href="/" passHref>
             <a className="text-lg font-semibold leading-3 mr-5">
-              <span className="">Urbit </span>Developers
+              Urbit Developers
             </a>
           </Link>
           {routeDepth > 2 ? (

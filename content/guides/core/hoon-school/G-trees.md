@@ -40,7 +40,7 @@ We can refer to any data stored anywhere in this tree.  The numbers in the label
 
 Most of any possible tree will be unoccupied for any actual data structure.  For instance, `list`s (and thus `tape`s) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation.  (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself—that's a function of the algorithms working with the data.)
 
-#### Exercise:  Map Nouns to Tree Diagrams
+##  Exercise:  Map Nouns to Tree Diagrams
 
 - Consider each of the following nouns.  Which tree diagram do they correspond to?
 
@@ -50,7 +50,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
     | `[[1 2] 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
     | `[1 2 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
 
-#### Exercise:  Produce a List of Numbers
+##  Exercise:  Produce a List of Numbers
 
 - Produce a generator called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`.  For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
@@ -203,7 +203,7 @@ We have already seen numeric addressing used to refer to parts of a binary tree.
 
 Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to decide if the contents of a node is a direct value or a tree:  it just happens.
 
-#### Exercise:  Tapes for Text
+##  Exercise:  Tapes for Text
  
 A `tape` is one way of representing a text message in Hoon.  It is written with double quotes:
  
@@ -233,7 +233,7 @@ Lark notation is not preferred in modern Hoon for more than one or two elements 
 
 When lark expressions resolve to the part of the subject containing an arm, they don't evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
 
-#### Exercise:  Address the Fruit Tree
+##  Exercise:  Address the Fruit Tree
 
 Produce the numeric and lark-notated equivalent addresses for each of the following nodes in the binary fruit tree:
 
@@ -251,7 +251,7 @@ Produce the numeric and lark-notated equivalent addresses for each of the follow
 
 There is a solution at the bottom of the page.
 
-#### Exercise:  Lark Notation
+##  Exercise:  Lark Notation
 
 - Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
 
@@ -593,7 +593,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 - Extend the above generator so that it accepts a cell of type and value (a `vase` as produced by the [`!>` zapgar](/reference/hoon/rune/zap#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
-#### Exercise:  Resolving Wings
+##  Exercise:  Resolving Wings
 
 Enter the following into dojo:
 
@@ -726,7 +726,7 @@ There are a few more that you should pick up eventually, but these are enough to
 
 Using what we know to date, most operations that we would do on a collection of data require a trap.
 
-#### Exercise:  Evaluating Expressions
+##  Exercise:  Evaluating Expressions
 
 - Without entering these expressions into the Dojo, what are the products of the following expressions?
 
@@ -736,7 +736,7 @@ Using what we know to date, most operations that we would do on a collection of 
     > (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
     ```
 
-#### Exercise:  Welding Nouns
+##  Exercise:  Welding Nouns
 
 First, bind these faces.
 
@@ -757,7 +757,7 @@ First, bind these faces.
     > (add (lent b) (lent c))
     ```
 
-#### Exercise:  Palindrome
+##  Exercise:  Palindrome
 
 - Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise.  You may use the `++flop` function.
 
