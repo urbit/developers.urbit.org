@@ -83,9 +83,9 @@ the `|mount` command:
 |mount %landscape
 ```
 
-With those mounted, switch back to a normal shell. We'll create a folder to
-develop our app in, and then we'll copy a few files across that our app will
-depend on:
+With those mounted, switch back to a normal shell in another terminal window.
+We'll create a folder to develop our app in, and then we'll copy a few files
+across that our app will depend on:
 
 ```bash
 mkdir -p tally/{app,sur,mar,lib}
