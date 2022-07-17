@@ -236,14 +236,14 @@ function Landing({ search }) {
           </p>
           <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
             <Card
-              icon={<Ringsig />}
+              icon={<Comms />}
               title="Encrypted Chat Application"
               text="Build your own secure comms tool"
               className="basis-1/2"
               href="/guides/quickstart/chat-guide"
             />
             <Card
-              icon={<Comms />}
+              icon={<Ringsig />}
               title="Ring Signature Voting App"
               text="Build an anonymous voting app for groups"
               className="basis-1/2"
