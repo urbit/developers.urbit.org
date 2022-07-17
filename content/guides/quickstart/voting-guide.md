@@ -638,7 +638,8 @@ mark in `tally/mar/tally/update.hoon`.
 
 We could have put the front-end code directly in our Gall agent, but it tends to
 be quite large so it's convenient to have it in a separate file and just import
-it.
+it. Most of this file consists of Sail code, which is the internal HTML
+representation, similar to other server-side renderings like Clojure's Hiccup.
 
 Save the code below in `tally/app/tally/index.hoon`.
 
