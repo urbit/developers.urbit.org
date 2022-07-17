@@ -48,13 +48,13 @@ fetch the binary and save it in the current directory.
 
 #### Linux
 
-```bash
+```shell {% copy=true %}
 curl -L https://urbit.org/install/linux64/latest | tar xzk --strip=1
 ```
 
 #### Mac
 
-```bash
+```shell {% copy=true %}
 curl -L https://urbit.org/install/mac/latest | tar xzk --strip=1
 ```
 
@@ -65,7 +65,7 @@ networking keys and don't connect to the real network. They can only communicate
 with other fake ships running on the local machine. Let's spin up a fake ~zod
 galaxy. We can do this with the `-F` option:
 
-```bash
+```shell {% copy=true %}
 ./urbit -F zod
 ```
 
@@ -87,7 +87,7 @@ With those mounted, switch back to a normal shell in another terminal window.
 We'll create a folder to develop our app in, and then we'll copy a few files
 across that our app will depend on:
 
-```bash
+```shell {% copy=true %}
 mkdir -p tally/{app,sur,mar,lib}
 cp zod/base/sys.kelvin tally/sys.kelvin
 cp zod/base/sur/ring.hoon tally/sur/
@@ -990,7 +990,7 @@ need are some desk configuration files.
 Firstly, we need to specify the kernel version our app is compatible with. We do
 this by adding a `sys.kelvin` file to the root of our `tally` directory:
 
-```shell
+```shell {% copy=true %}
 cd tally
 echo "[%zuse 418]" > sys.kelvin
 ```
@@ -998,7 +998,7 @@ echo "[%zuse 418]" > sys.kelvin
 We also need to specify which agents to start when our desk is installed. We do
 this in a `desk.bill` file:
 
-```shell
+```shell {% copy=true %}
 echo "~[%tally]" > desk.bill
 ```
 
@@ -1007,7 +1007,7 @@ front-ends - it fetches & serves them, and it also configures the app tile and
 other metadata. Create a `desk.docket-0` file in the `tally` directory and add the
 following:
 
-```shell
+```shell {% copy=true %}
 :~
   title+'Tally'
   info+'Ring signature voting for groups.'
@@ -1039,7 +1039,7 @@ Currently its contents are the same as the `%webterm` desk, so we'll need to
 delete those files and copy in our own instead. In the normal shell, do the
 following:
 
-```bash
+```shell {% copy=true %}
 rm -r zod/tally/*
 cp -r tally/* zod/tally/*
 ```
