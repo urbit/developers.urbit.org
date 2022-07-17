@@ -590,10 +590,11 @@ directory of a desk, so save this code in `hut/app/hut.hoon`:
 
 ### Marks
 
-Marks are Urbit's version of filetypes/MIME types. We need to define a mark for
-the `action`s we'll send or receive, and the `update`s we'll send to
-subscribers or receive for subscriptions. These will be very simple since we
-don't need to do any conversions to things like JSON.
+Marks are Urbit's version of filetypes/MIME types (but strongly typed and with
+inter-mark conversion methods). We need to define a mark for the `action`s we'll
+send or receive, and the `update`s we'll send to subscribers or receive for
+subscriptions. These will be very simple since we don't need to do any
+conversions to things like JSON.
 
 Mark files are stored in the `/mar` directory of a desk. Save the
 `%tally-action` mark in `tally/mar/tally/action.hoon`, and the `%tally-update`
