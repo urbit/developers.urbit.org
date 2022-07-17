@@ -80,7 +80,7 @@ The `cage` in the `riot` of the `%writ` contains the file's data due to our use 
 
 Here's a breakdown of the `task` we sent:
 
-![%sing diagram](https://media.urbit.orgreference/arvo/clay/sing.png "%sing diagram")
+![%sing diagram](https://media.urbit.org/docs/arvo/clay/sing.png "%sing diagram")
 
 ### `%next`
 
@@ -116,7 +116,7 @@ You can see the `riot` is just `~` due to the file being deleted.
 
 Here's a breakdown of the task we sent:
 
-![%next diagram](https://media.urbit.orgreference/arvo/clay/next.png "%next diagram")
+![%next diagram](https://media.urbit.org/docs/arvo/clay/next.png "%next diagram")
 
 ### `%mult`
 
@@ -175,7 +175,7 @@ As you can see, a relevant change to any of the subscribed files will trigger a 
 
 Here's a breakdown of the `task` we sent:
 
-![subscribe mult diagram](https://media.urbit.orgreference/arvo/clay/sub-mult.png "subscribe mult diagram")
+![subscribe mult diagram](https://media.urbit.org/docs/arvo/clay/sub-mult.png "subscribe mult diagram")
 
 ### `%many`
 
@@ -269,7 +269,7 @@ Run `:spider|kill` to stop the thread.
 
 Here's a breakdown of the `task` we sent:
 
-![subscribe many diagram](https://media.urbit.orgreference/arvo/clay/sub-many.png "subscribe many diagram")
+![subscribe many diagram](https://media.urbit.org/docs/arvo/clay/sub-many.png "subscribe many diagram")
 
 ### Cancel Subscription
 
@@ -313,7 +313,7 @@ Run `:spider|kill` to stop the thread.
 
 Here's a breakdown of the `task` we sent:
 
-![cancel subscription diagram](https://media.urbit.orgreference/arvo/clay/stop-sub.png "cancel subscription diagram")
+![cancel subscription diagram](https://media.urbit.org/docs/arvo/clay/stop-sub.png "cancel subscription diagram")
 
 ## `%info`
 
@@ -336,7 +336,7 @@ We've created the `cage` of the content like `[%txt !>(~['foo'])]`, if you want 
 
 Here's a breakdown of the `task` we sent:
 
-![%ins diagram](https://media.urbit.orgreference/arvo/clay/ins.png)
+![%ins diagram](https://media.urbit.org/docs/arvo/clay/ins.png)
 
 ### `%del`
 
@@ -353,7 +353,7 @@ If you have a look in the base of your pier you'll see the `foo.txt` file is now
 
 Here's a breakdown of the `task` we sent:
 
-![%del diagram](https://media.urbit.orgreference/arvo/clay/del.png)
+![%del diagram](https://media.urbit.org/docs/arvo/clay/del.png)
 
 ### `%mut`
 
@@ -656,7 +656,7 @@ As you can see it's back to the default inherited from `/`.
 
 Here's a breakdown of a `%perm` task:
 
-![perm diagram](https://media.urbit.orgreference/arvo/clay/perm-diagram.png)
+![perm diagram](https://media.urbit.org/docs/arvo/clay/perm-diagram.png)
 
 ### `%cred`
 
