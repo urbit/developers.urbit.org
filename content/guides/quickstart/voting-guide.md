@@ -17,7 +17,9 @@ look like this:
 The front-end of the app will be written in
 [Sail](/reference/glossary/sailudon), Urbit's XML language built into the Hoon
 compiler. Using Sail means we don't need to create a separate React front-end,
-and can instead serve pages directly from our back-end.
+and can instead serve pages directly from our back-end. This works well for
+static pages but a full JS-enabled front-end would be preferred for a dynamic
+page.
 
 If you'd like to check out the finished app, you can install it from
 `~pocwet/tally` with the `|install ~pocwet %tally` command in your ship's Dojo,
