@@ -73,8 +73,9 @@ It'll take a couple of minutes to boot up, and then it'll take us to the Dojo.
 
 ### Dependencies
 
-Once in the Dojo, let's mount a couple of desks so their files can be accessed
-from the host OS. We can do this with the `|mount` command:
+Once in the Dojo (as indicated by the `~zod:dojo>` prompt), let's mount a couple
+of desks so their files can be accessed from the host OS. We can do this with
+the `|mount` command:
 
 ```
 |mount %base
