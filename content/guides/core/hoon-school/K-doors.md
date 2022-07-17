@@ -509,7 +509,7 @@ You can apply a gate to each value, rather like `++turn` in Lesson 4, using `++r
       (~(got by card-table) c)
     ++  card-table
       %-  malt
-      ^-  (list [darc:playing-cards @t])
+      ^-  (list [darc @t])
       :~  :-  [sut=%clubs val=1]  '🃑'
           :-  [sut=%clubs val=2]  '🃒'
           :-  [sut=%clubs val=3]  '🃓'
