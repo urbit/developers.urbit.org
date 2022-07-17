@@ -397,7 +397,7 @@ The Magic 8-Ball returns one of a variety of answers in response to a call.  In 
 ^-  tape
 =/  answers=(list tape)
   :~  "It is certain."
-      "It is decidedly so."****
+      "It is decidedly so."
       "Without a doubt."
       "Yes - definitely."
       "You may rely on it."
