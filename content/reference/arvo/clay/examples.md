@@ -516,11 +516,10 @@ First, using the `send-task-take-gift.hoon` thread, let's try creating a new `de
 
 Now if we scry for our `desk`s we'll see `%foo` is there:
 
-{% customFence %}
-
+```hoon
 > .^((set desk) %cd /===)
 > &#x7B;&#x25;bitcoin %base %landscape %webterm %garden %foo}
-> {% /customFence %}
+```
 
 Next, we'll create a merge conflict and try a couple of things. Mount `%foo` with `|mount /=foo=`, then add a `foo.txt` to both `desk`s but with different text in each and `|commit` them.
 
