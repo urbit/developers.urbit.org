@@ -1025,7 +1025,7 @@ following:
 ### Put it together
 
 Our app is now complete, so let's try it out. In the Dojo of our fake ~zod,
-we'll create a new desk by forking from an existing one:
+we'll create a new desk (filesystem repo) by forking from an existing one:
 
 ```
 |merge %tally our %webterm
