@@ -1057,10 +1057,11 @@ If we open a web browser and go to `localhost:8080`, we should see a tile for
 the Tally app. If we click on it, it'll open our React front-end and we can start
 using it.
 
-Once we've confirmed it's working on our fake ~zod, we can try installing it on
-a real ship. To do that, we can just repeat the steps in this section with our
-actual ship. On the live network, we can also publish the app so others can
-install it from us. To do so, just run the following command:
+Once we've confirmed it's working on our fake ~zod, we can shut it down with
+`|exit` or CTRL-D and try installing it on a real ship instead. To do that, we
+can just repeat the steps in this section with our actual ship. On the live
+network, we can also publish the app so others can install it from us. To do so,
+just run the following command:
 
 ```
 :treaty|publish %tally
