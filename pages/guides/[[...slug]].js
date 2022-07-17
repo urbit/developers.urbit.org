@@ -19,7 +19,7 @@ import {
   TwoUp,
   Markdown,
 } from "foundation-design-system";
-import { Comms, MintFiller, guideDefault } from "../../components/icons";
+import { Comms, Ringsig, MintFiller, guideDefault } from "../../components/icons";
 import guidesTree from "../../cache/guides.json";
 import { join } from "path";
 import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";
@@ -236,7 +236,7 @@ function Landing({ search }) {
           </p>
           <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
             <Card
-              icon={<Comms />}
+              icon={<Ringsig />}
               title="Encrypted Chat Application"
               text="Build your own secure comms tool"
               className="basis-1/2"
