@@ -307,7 +307,7 @@ $ cp -r base zod
 ```sh
 > |commit %base
 
-> -test /===/tests/lib/trig ~
+> -test %/tests/lib/trig ~
 built   /tests/lib/trig/hoon
 OK      /lib/trig/test-factorial
 ```

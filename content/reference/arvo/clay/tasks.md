@@ -330,7 +330,7 @@ The `src` path is where the permissions were inherited from and the `real` is th
 So if we scry for permissions with a `%p` `care`, it'll look like:
 
 ```hoon
-> .^([r=dict:clay w=dict:clay] %cp /===/lib/strandio/hoon)
+> .^([r=dict:clay w=dict:clay] %cp %/lib/strandio/hoon)
 [r=[src=/ rul=[mod=%white who=[p={} q={}]]] w=[src=/ rul=[mod=%white who=[p={} q={}]]]]
 ```
 
