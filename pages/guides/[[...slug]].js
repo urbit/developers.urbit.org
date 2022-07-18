@@ -19,7 +19,7 @@ import {
   TwoUp,
   Markdown,
 } from "foundation-design-system";
-import { Comms, MintFiller, guideDefault } from "../../components/icons";
+import { Comms, Ringsig, MintFiller, guideDefault } from "../../components/icons";
 import guidesTree from "../../cache/guides.json";
 import { join } from "path";
 import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";
@@ -242,12 +242,13 @@ function Landing({ search }) {
               className="basis-1/2"
               href="/guides/quickstart/chat-guide"
             />
-            {/* <Card
-              icon={<MintFiller />}
-              title="Lorem Ipsum Dolorem"
-              text="Roll your own encrypted chat application in minutes"
+            <Card
+              icon={<Ringsig />}
+              title="Ring Signature Voting App"
+              text="Build an anonymous voting app for groups"
               className="basis-1/2"
-            /> */}
+              href="/guides/quickstart/voting-guide"
+            />
           </div>
         </Section>
         <Section short className="space-y-6">

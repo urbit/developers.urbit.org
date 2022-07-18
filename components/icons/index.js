@@ -11,4 +11,5 @@ export { default as Interface } from "./interface";
 export { default as MintFiller } from "./mintfiller";
 export { default as Nock } from "./nock";
 export { default as Peer } from "./peer";
+export { default as Ringsig } from "./ringsig";
 export { default as Vere } from "./vere";
