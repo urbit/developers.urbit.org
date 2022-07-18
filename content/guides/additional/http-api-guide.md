@@ -682,8 +682,8 @@ as a reference:
 - [Web Terminal](https://github.com/urbit/urbit/tree/master/pkg/interface/webterm)
 - [UrChatFM](https://github.com/urbit/urbit-webrtc/tree/master/urchatfm)
 
-[eyre-ext-ref]: reference/arvo/eyre/external-api-ref
-[eyre-guide]: reference/arvo/eyre/guide
+[eyre-ext-ref]: /reference/arvo/eyre/external-api-ref
+[eyre-guide]: /reference/arvo/eyre/guide
 [http-api-src]: https://github.com/urbit/urbit/tree/master/pkg/npm/http-api
 [eyre]: /reference/glossary/eyre
 [vane]: /reference/glossary/vane
