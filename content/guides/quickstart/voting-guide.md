@@ -160,7 +160,7 @@ Save that file in the `tally/lib/` directory.
 ### Agent
 
 Next, we'll add our agent (the app itself). Gall agents live in the `/app`
-directory of a desk, so save this code in `hut/app/hut.hoon`:
+directory of a desk, so save this code in `tally/app/tally.hoon`:
 
 ```hoon {% copy=true mode="collapse" %}
 /-  *tally, *ring, ms=metadata-store, g=group
