@@ -148,7 +148,7 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 ### Ring Library
 
 The `%base` desk of ship includes a `ring.hoon` library for ring signatures.
-This implementation verifies signatures again a ship's most recent keys, which
+This implementation verifies signatures against a ship's most recent keys, which
 may cause problems verifying old polls if group members rotate their keys. To
 solve this, here is a slightly modified version that takes a ship's `life` (key
 revision) as an additional argument:
