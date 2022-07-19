@@ -218,10 +218,11 @@ function Landing({ search }) {
           <h3>Primer</h3>
           <div className="md:columns-2 space-y-4 mt-4">
             <p>
-              Urbit development involves a fairly typical client/server/database
-              stack. Urbit is both a server, database, and an entire operating
-              system—this means exposes a filesystem, HTTP server, timer, and
-              much more to the programmer. These different parts of the
+              Urbit application development involves the use of the familiar client/server
+              stack, where Urbit is the server and the client is any typical client stack.
+              It gets more interesting though: Urbit is also an entire operating
+              system and ACID datastore. That OS includes a filesystem, HTTP server,
+              typed P2P network, and much more to the programmer. These different parts of the
               operating system are called <b>vanes</b>.
             </p>
             <p>
