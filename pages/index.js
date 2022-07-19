@@ -228,7 +228,10 @@ export default function Home({ search, posts, events }) {
                   <IndexCard
                     slug={`/events/${e.slug}`}
                     title={e.title}
-                    image={e?.image}
+                    image={
+                      e?.image ||
+                      "https://storage.googleapis.com/media.urbit.org/developers/event-default.png"
+                    }
                     author={e?.extra?.author || ""}
                     ship={e?.extra?.ship || ""}
                     content={
