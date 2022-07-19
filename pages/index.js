@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BlogPreview from "../components/BlogPreview";
 import EventPreview from "../components/EventPreview";
+import NewsletterSignup from "../components/NewsletterSignup";
+
 import {
   Container,
   SingleColumn,
@@ -239,6 +241,19 @@ export default function Home({ search, whatsNew }) {
               })}
             </TwoUp>
           </Section>
+
+          <Section narrow>
+            <div className="measure">
+              <h3 className="pb-2">
+                [battery payload]
+              </h3>
+              <p class="pb-6">The Urbit Developer Newsletter</p>
+
+            </div>
+            <NewsletterSignup/>
+              <p class="pt-6">Get monthly developer news on releases, applications, events, and more.</p>
+          </Section>
+
         </SingleColumn>
         <Footer />
       </Container>
