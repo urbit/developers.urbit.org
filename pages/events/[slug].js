@@ -6,9 +6,9 @@ import {
   getPreviousPost,
   generateDisplayDate,
   generateRealtimeDate,
-} from "../../../lib/lib";
+} from "../../lib/lib";
 import Head from "next/head";
-import Meta from "../../../components/Meta";
+import Meta from "../../components/Meta";
 import {
   Container,
   Markdown,
@@ -16,17 +16,17 @@ import {
   Section,
   TwoUp,
 } from "foundation-design-system";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
-import EventPreview from "../../../components/EventPreview";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import EventPreview from "../../components/EventPreview";
 
 import {
   Person,
   ReadableList,
   ShowOrHide,
   DateRange,
-} from "../../../components/Snippets";
-import { eventKeys } from "../../../lib/constants";
+} from "../../components/Snippets";
+import { eventKeys } from "../../lib/constants";
 
 export default function Event({
   event,

@@ -26,7 +26,7 @@ export default function EventPreview({ event, className, big }) {
         className={`bg-wall-100 rounded-xl bg-cover bg-center bg-no-repeat `}
         style={{ backgroundImage: `url(${event.image})` || "" }}
       >
-        <Link href={`/community/events/${event.slug}`}>
+        <Link href={`/events/${event.slug}`}>
           <div
             className={classNames(
               "flex flex-col p-6 justify-between items-between h-full relative",

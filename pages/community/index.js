@@ -82,10 +82,10 @@ export default function Community({ search }) {
               className="h-full"
             />
             <Card
-              title="Developer Events"
-              text="We regularly host livestreams, meetups, and hackathons"
-              href="/community/events"
-              callout="View Events"
+              title="Opportunities"
+              text="Urbit is growing and there are many opportunities to find a job, grant, or funding for your great idea"
+              href="/community/opportunities"
+              callout="Explore Opportunities"
               className="h-full"
             />
           </TwoUp>
@@ -98,11 +98,11 @@ export default function Community({ search }) {
               className="h-full"
             />
             <Card
-              title="Opportunities"
-              text="Urbit is growing and there are many opportunities to find a job, grant, or funding for your great idea"
-              href="/community/opportunities"
-              callout="Explore Opportunities"
-              className="h-full"
+              title=""
+              text=""
+              href=""
+              callout=""
+              className="hidden"
             />
           </TwoUp>
         </Section>

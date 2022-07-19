@@ -168,15 +168,15 @@ export default function Home({ search, whatsNew }) {
             </p>
             <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4 pb-4">
               <Card
-                title="Developer Events"
-                text="We regularly host livestreams, meetups, and hackathons"
-                href="/community/events"
+                title="Directory"
+                text="There are many bright minds happy to answer your questions."
+                href="/community/directory"
                 callout="View Events"
                 className="basis-1/2"
               />
               <Card
                 title="Opportunities"
-                text="Urbit is growing and there are many opportunities to find a job, grant, or funding for your great idea"
+                text="Urbit is growing and there are many opportunities to find a job, grant, or funding for your great idea."
                 href="/community/opportunities"
                 callout="Explore Opportunities"
                 className="basis-1/2"
@@ -185,7 +185,7 @@ export default function Home({ search, whatsNew }) {
 
             <Link href="/community" passHref>
               <a className="button-lg bg-wall-600 text-white w-fit">
-                Community Pages
+                Explore the Community
               </a>
             </Link>
           </Section>

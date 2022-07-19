@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { DateTime } from "luxon";
-import Meta from "../../../components/Meta";
+import Meta from "../components/Meta";
 import { Container, SingleColumn, Section } from "foundation-design-system";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
-import EventPreview from "../../../components/EventPreview";
-import { eventKeys } from "../../../lib/constants";
-import { getAllEvents, generateRealtimeDate } from "../../../lib/lib";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import EventPreview from "../components/EventPreview";
+import { eventKeys } from "../lib/constants";
+import { getAllEvents, generateRealtimeDate } from "../lib/lib";
 
 export default function Events({ events, search }) {
   const post = {
