@@ -171,7 +171,7 @@ export default function Home({ search, whatsNew }) {
                 title="Directory"
                 text="There are many bright minds happy to answer your questions."
                 href="/community/directory"
-                callout="View Events"
+                callout="View Directory"
                 className="basis-1/2"
               />
               <Card
