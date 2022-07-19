@@ -84,9 +84,9 @@ export default function Header({ search }) {
           <ActiveLink
             currentPath={currentPath}
             className="mr-5 type-ui"
-            href="/events"
+            href="/community"
           >
-            Events
+            Community
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}
@@ -145,9 +145,9 @@ export default function Header({ search }) {
           <ActiveLink
             currentPath={currentPath}
             className="mr-5 mb-3 type-ui"
-            href="/events"
+            href="/community"
           >
-            Events
+            Community
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}
