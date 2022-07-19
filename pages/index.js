@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import BlogPreview from "../components/BlogPreview";
-import EventPreview from "../components/EventPreview";
+import IndexCard from "../components/IndexCard";
 import NewsletterSignup from "../components/NewsletterSignup";
 
 import {
@@ -28,9 +27,14 @@ import TallCard from "../components/TallCard";
 import { getAllPosts, getAllEvents } from "../lib/lib";
 import { eventKeys } from "../lib/constants";
 import { DateTime } from "luxon";
-import { formatDate, generateDisplayDate } from "../lib/lib";
+import { DateRange } from "../components/Snippets";
+import {
+  formatDate,
+  generateDisplayDate,
+  generateRealtimeDate,
+} from "../lib/lib";
 
-export default function Home({ search, whatsNew }) {
+export default function Home({ search, posts, events }) {
   return (
     <div>
       <Head>
@@ -192,68 +196,99 @@ export default function Home({ search, whatsNew }) {
             </Link>
           </Section>
           <Section className="flex flex-col space-y-8">
-            <h2>What's New</h2>
+            <h2>Blog</h2>
             <TwoUp>
-              {whatsNew.slice(0, 2).map((e) => {
-                if (e.type === "event") {
-                  return (
-                    <EventPreview event={e} className="basis-1/2 h-full" />
-                  );
-                } else if (e.type === "blog") {
-                  const date = generateDisplayDate(e.date);
-                  return (
-                    <Link href={`/blog/${e.slug}`}>
-                      <div className="cursor-pointer bg-wall-100 rounded-xl basis-1/2 h-full">
-                        <div className="flex flex-col p-6 justify-between items-between h-full relative">
-                          <img
-                            className="rounded-xl w-full flex-1 object-cover"
-                            src={e.extra.image}
-                            style={{ aspectRatio: "4 / 3" }}
+              {posts.slice(0, 2).map((e) => {
+                const date = generateDisplayDate(e.date);
+                return (
+                  <IndexCard
+                    slug={`/blog/${e.slug}`}
+                    title={e.title}
+                    image={e.extra.image}
+                    author={e?.extra?.author || ""}
+                    ship={e?.extra?.ship || ""}
+                    content={
+                      <p className="text-wall-500 type-sub shrink-0">
+                        {formatDate(date)}
+                      </p>
+                    }
+                  />
+                );
+              })}
+            </TwoUp>
+          </Section>
+          <Section className="flex flex-col space-y-8">
+            <h2>Events</h2>
+            <TwoUp>
+              {events.slice(0, 2).map((e) => {
+                const starts = generateDisplayDate(e.starts, e.timezone);
+                const ends = generateDisplayDate(e.ends, e.timezone);
+
+                const inFuture = generateRealtimeDate(starts) > DateTime.now();
+
+                return (
+                  <IndexCard
+                    slug={`/events/${e.slug}`}
+                    title={e.title}
+                    image={
+                      e?.image ||
+                      "https://storage.googleapis.com/media.urbit.org/developers/event-default.png"
+                    }
+                    author={e?.extra?.author || ""}
+                    ship={e?.extra?.ship || ""}
+                    content={
+                      <>
+                        <div className="w-full pr-32">
+                          <p className="type-sub mb-1">{e.location}</p>
+                          <DateRange
+                            starts={starts}
+                            ends={ends}
+                            className={`type-sub text-wall-400`}
                           />
-                          <div className="grow-1 shrink-0 flex flex-col h-full min-h-0 pt-4">
-                            <h3 className="mb-2">{e.title}</h3>
-                            <p className="text-sm">
-                              {e.extra.author ? (
-                                <span className="type-sub-bold mr-2">
-                                  {e.extra.author}
-                                </span>
-                              ) : null}
-                              {e.extra.ship ? (
-                                <Link
-                                  href={`https://urbit.org/ids/${e.extra.ship}`}
-                                  passHref
-                                >
-                                  <a className="type-sub-bold text-wall-500 font-mono">
-                                    {e.extra.ship}
-                                  </a>
-                                </Link>
-                              ) : null}
-                            </p>
-                            <p className="text-wall-500 type-sub shrink-0">
-                              {formatDate(date)}
-                            </p>
-                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  );
-                }
+
+                        {inFuture && e.registration_url ? (
+                          <div className="absolute right-0 bottom-0 p-6">
+                            <a
+                              className="button-sm bg-green-400 text-white"
+                              href={e.registration_url}
+                              onClick={(e) => e.stopPropagation()}
+                              target="_blank"
+                            >
+                              RSVP
+                            </a>
+                          </div>
+                        ) : e.youtube ? (
+                          <div className="absolute right-0 bottom-0 p-6">
+                            <a
+                              className="button-sm bg-green-400 text-white"
+                              href={`https://www.youtube.com/watch?v=${e.youtube}`}
+                              onClick={(e) => e.stopPropagation()}
+                              target="_blank"
+                            >
+                              ▶ Watch
+                            </a>
+                          </div>
+                        ) : null}
+                      </>
+                    }
+                  />
+                );
               })}
             </TwoUp>
           </Section>
 
           <Section narrow>
             <div className="measure">
-              <h3 className="pb-2">
-                [battery payload]
-              </h3>
+              <h3 className="pb-2">[battery payload]</h3>
               <p class="pb-6">The Urbit Developer Newsletter</p>
-
             </div>
-            <NewsletterSignup/>
-              <p class="pt-6">Get monthly developer news on releases, applications, events, and more.</p>
+            <NewsletterSignup />
+            <p class="pt-6">
+              Get monthly developer news on releases, applications, events, and
+              more.
+            </p>
           </Section>
-
         </SingleColumn>
         <Footer />
       </Container>
@@ -303,20 +338,12 @@ export async function getStaticProps() {
     ["title", "slug", "date", "description", "extra"],
     "blog",
     "date"
-  ).map((e) => ({ ...e, type: "blog" }));
-  const events = getAllEvents(eventKeys, "community/events").map((e) => ({
-    ...e,
-    type: "event",
-  }));
-  const whatsNew = [...posts, ...events].sort((a, b) => {
-    return DateTime.fromISO(a.date || a.ends) >
-      DateTime.fromISO(b.date || b.ends)
-      ? -1
-      : 1;
-  });
+  );
+  const events = getAllEvents(eventKeys, "community/events");
   return {
     props: {
-      whatsNew,
+      posts,
+      events,
     },
   };
 }
