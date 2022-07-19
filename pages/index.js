@@ -238,7 +238,7 @@ export default function Home({ search, posts, events }) {
                           <DateRange
                             starts={starts}
                             ends={ends}
-                            className={`type-sub`}
+                            className={`type-sub text-wall-400`}
                           />
                         </div>
 
@@ -256,7 +256,7 @@ export default function Home({ search, posts, events }) {
                         ) : e.youtube ? (
                           <div className="absolute right-0 bottom-0 p-6">
                             <a
-                              className="button-sm bg-wall-600 text-white"
+                              className="button-sm bg-green-400 text-white"
                               href={`https://www.youtube.com/watch?v=${e.youtube}`}
                               onClick={(e) => e.stopPropagation()}
                               target="_blank"
