@@ -100,5 +100,5 @@ For further details of globs, see the [Glob](/reference/additional/dist/glob) do
 
 - [Docket Files](/reference/additional/dist/docket) - Documentation of docket files.
 
-- [Guide](/reference/additional/dist/guide) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
+- [Guide](/guides/additional/software-distribution) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
 
