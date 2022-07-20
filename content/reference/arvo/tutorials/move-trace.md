@@ -95,7 +95,7 @@ move trace in as much detail as you desire.
 Let's put the first part of the move trace into a diagram to make following
 along a little easier.
 
-![](https://media.urbit.orgreference/arvo/move-trace-with-key.png)
+![](https://media.urbit.org/docs/arvo/move-trace-with-key.png)
 
 Here, each arrow represents the passing of some information, with most of it
 being from vane to vane. Here, when Vane A has an arrow to a card and then an

@@ -15,7 +15,7 @@ If you have only built generators, you will soon or later become frustrated with
 
 A generator gives us on-demand access to code, but it is helpful to load and use code from files while we work in the Dojo.
 
-A conventional library import with [`/+` faslus](https://urbit.orgreference/arvo/ford/ford#ford-runes) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.  The first line of many generators will include an import line like this:
+A conventional library import with [`/+` faslus](https://developers.urbit.org/reference/hoon/rune/fas#-faslus) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.  The first line of many generators will include an import line like this:
 
 ```hoon
 /+  number-to-words
@@ -435,7 +435,7 @@ In brief, each mark has a `++grab` arm to convert from other types to it; a `++g
 
 ##  Other Ford Runes
 
-The `++ford` arm of Clay builds Hoon code.  It provides [a number of runes](https://urbit.orgreference/arvo/ford/ford#ford-runes) which allow fine-grained control over building and importing files.  These must be in the specific order at the top of any file.  (They also don't work in Dojo; see `-build-file` for a workaround.)  The runes include:
+The `++ford` arm of Clay builds Hoon code.  It provides [a number of runes](https://developers.urbit.org/reference/hoon/rune/fas) which allow fine-grained control over building and importing files.  These must be in the specific order at the top of any file.  (They also don't work in Dojo; see `-build-file` for a workaround.)  The runes include:
 
 - `/-` fashep imports a structure file from `/sur`.  Structure files are a way to share common data structures (across agents, for instance).
 - `/+` faslus imports a library file from `/lib`.
