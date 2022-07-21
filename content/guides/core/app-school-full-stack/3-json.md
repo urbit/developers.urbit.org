@@ -340,7 +340,7 @@ when you write `$json` encoding functions, and is the reason there are far fewer
 
 ## Resources
 
-- [The JSON Guide](/guides/additional/hoon/json-guide) - The stand-alone JSON guide
+- [The JSON Guide](/guides/additional/json-guide) - The stand-alone JSON guide
   covers JSON encoding/decoding in great detail.
 - [The Zuse reference](/reference/hoon/zuse/table-of-contents) - The
   `zuse.hoon` reference documents all JSON-related functions in detail.
