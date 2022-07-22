@@ -27,7 +27,7 @@ their parent planet.
 
 ### Further Reading
 
-- [Using Your Ship](https://urbit.org/using/os/getting-started#moons): The "Moons" section contains instructions for creating and managing moons.
+- [Using Your Ship](https://operators.urbit.org/manual/os/basics#moons): The "Moons" section contains instructions for creating and managing moons.
 
 - [Lunar Urbit and the Internet of Things](https://urbit.org/blog/iot): Blog post on the
   past, present, and future of moons
