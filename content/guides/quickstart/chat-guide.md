@@ -630,7 +630,7 @@ following:
 
 ```shell {% copy=true %}
 rm -r zod/hut/*
-cp -r hut/* zod/hut/*
+cp -r hut/* zod/hut/
 ```
 
 Back in the Dojo again, we can now commit those files and install the app:
