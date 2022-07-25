@@ -136,7 +136,7 @@ roller you set up above instead of Tlon's roller.
 First you'll need to make the urbit running `%roller` accessible to the web.
 This is outside the scope of the tutorial, but we suggest using a tool like
 `caddy` or `nginx`. You'll want to set up a URL such as
-`https://myroller.sampel-pal.net` and use the port you'd ordinarily use to
+`https://myroller.sampel-pal.net/v1/roller` and use the port you'd ordinarily use to
 access Landscape, probably `80` or `8080`. To be clear, this is the same process
 you'd use if you set up a custom URL to access your urbit hosted in the cloud.
 
@@ -146,11 +146,11 @@ custom command that modifies an environment variable called
 `REACT_APP_ROLLER_HOST`:
 
 ```
-REACT_APP_ROLLER_HOST=https://myroller.sampel-pal.net npm run pilot-mainnet
+REACT_APP_ROLLER_HOST=https://myroller.sampel-pal.net/v1/roller npm run pilot-mainnet
 ```
 
 This will launch a server running Bridge that utilizes the mainnet roller you
-set up at `https://myroller.sampel-pal.net`.
+set up at `https://myroller.sampel-pal.net/v1/roller`.
 
 ### Additional `%roller` commmands
 
