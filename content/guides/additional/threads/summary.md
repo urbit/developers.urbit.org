@@ -36,7 +36,7 @@ Now here's a quick recap of the main points covered:
 ## Strands
 
 - are the building blocks of threads
-- take [this](https://github.com/urbit/urbit/blob/master/pkg/arvo/lib/strand.hoon#L2-L21) input and produce [this](https://github.com/urbit/urbit/blob/master/pkg/arvo/lib/strand.hoon#L23-L48) output.
+- take [this](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/strand.hoon#L2-L21) input and produce [this](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/strand.hoon#L23-L48) output.
 - must be specialised to produce a particular type like `(strand ,@ud)`.
 - are conventionally given the face `m`.
 - are a core that has three main arms - `form`, `pure` and `bind`:
