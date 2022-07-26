@@ -8,7 +8,28 @@ export default (req, res) => {
       e?.slug.includes(req.query.q.toLowerCase()) ||
       e?.parent.toLowerCase().includes(req.query.q.toLowerCase())
   );
-  const sorted = levenSort(results, req.query.q, ["title", "slug", "parent"]);
+
+  results.push(
+    ...index
+      .filter((e) => !results.includes(e))
+      .filter((e) => {
+        let found = false;
+        e.headings.forEach((heading) => {
+          if (heading.toLowerCase().includes(req.query.q.toLowerCase())) {
+            found = true;
+          }
+        });
+        return found;
+      })
+      .map((e) => ({ ...e, foundOnPage: true }))
+  );
+
+  const sorted = levenSort(results, req.q, [
+    "title",
+    "slug",
+    "parent",
+    "headings",
+  ]);
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify({ results: sorted }));
