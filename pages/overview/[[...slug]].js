@@ -218,11 +218,14 @@ function Landing({ search }) {
           <h3>Primer</h3>
           <div className="md:columns-2 space-y-4 mt-4 gap-x-8">
             <p>
-              Urbit development involves a fairly typical client/server/database
-              stack. Urbit is both a server, database, and an entire operating
-              system—this means exposes a filesystem, HTTP server, timer, and
-              much more to the programmer. These different parts of the
-              operating system are called <b>vanes</b>.
+              Urbit application development involves a client/server stack,
+              where Urbit is the server and the client can be any normal interface.
+              Unlike other servers, Urbit is also an entire operating system and ACID
+              datastore. The Urbit OS includes a filesystem, encrypted P2P network, timer,
+              application sandbox, software distribution mechanism, built-in identity
+              layer (Urbit ID), and HTTP server. This means that you can build and distribute
+              production-grade applications without dealing Linux, databases,
+              authentication systems, devops, or proprietary app stores.
             </p>
             <p>
               Clients that interact with Urbit can be web browsers, mobile or
@@ -282,7 +285,7 @@ function Landing({ search }) {
               It’s possible to develop for Urbit without learning Hoon by
               learning its client-side HTTP interface; however, investing the
               time to learn Hoon will make you a far more capable Urbit
-              developer, so we definitely recommend it.
+              developer.
             </p>
           </div>
         </Section>
