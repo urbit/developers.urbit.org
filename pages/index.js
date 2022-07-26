@@ -19,22 +19,14 @@ import {
   Functional,
   Identity,
   Interface,
-  MintFiller,
   Peer,
 } from "../components/icons";
 import Card from "../components/Card";
 import TallCard from "../components/TallCard";
-import { getAllPosts, getAllEvents } from "../lib/lib";
-import { eventKeys } from "../lib/constants";
-import { DateTime } from "luxon";
-import { DateRange } from "../components/Snippets";
-import {
-  formatDate,
-  generateDisplayDate,
-  generateRealtimeDate,
-} from "../lib/lib";
+import { getAllPosts } from "../lib/lib";
+import { formatDate, generateDisplayDate } from "../lib/lib";
 
-export default function Home({ search, posts, events }) {
+export default function Home({ search, posts }) {
   return (
     <div>
       <Head>
@@ -217,66 +209,6 @@ export default function Home({ search, posts, events }) {
               })}
             </TwoUp>
           </Section>
-          <Section className="flex flex-col space-y-8">
-            <h2>Events</h2>
-            <TwoUp>
-              {events.slice(0, 2).map((e) => {
-                const starts = generateDisplayDate(e.starts, e.timezone);
-                const ends = generateDisplayDate(e.ends, e.timezone);
-
-                const inFuture = generateRealtimeDate(starts) > DateTime.now();
-
-                return (
-                  <IndexCard
-                    slug={`/events/${e.slug}`}
-                    title={e.title}
-                    image={
-                      e?.image ||
-                      "https://storage.googleapis.com/media.urbit.org/developers/event-default.png"
-                    }
-                    author={e?.extra?.author || ""}
-                    ship={e?.extra?.ship || ""}
-                    content={
-                      <>
-                        <div className="w-full pr-32">
-                          <p className="type-sub mb-1">{e.location}</p>
-                          <DateRange
-                            starts={starts}
-                            ends={ends}
-                            className={`type-sub text-wall-400`}
-                          />
-                        </div>
-
-                        {inFuture && e.registration_url ? (
-                          <div className="absolute right-0 bottom-0 p-6">
-                            <a
-                              className="button-sm bg-green-400 text-white"
-                              href={e.registration_url}
-                              onClick={(e) => e.stopPropagation()}
-                              target="_blank"
-                            >
-                              RSVP
-                            </a>
-                          </div>
-                        ) : e.youtube ? (
-                          <div className="absolute right-0 bottom-0 p-6">
-                            <a
-                              className="button-sm bg-green-400 text-white"
-                              href={`https://www.youtube.com/watch?v=${e.youtube}`}
-                              onClick={(e) => e.stopPropagation()}
-                              target="_blank"
-                            >
-                              ▶ Watch
-                            </a>
-                          </div>
-                        ) : null}
-                      </>
-                    }
-                  />
-                );
-              })}
-            </TwoUp>
-          </Section>
 
           <Section narrow>
             <div className="measure">
@@ -339,11 +271,9 @@ export async function getStaticProps() {
     "blog",
     "date"
   );
-  const events = getAllEvents(eventKeys, "community/events");
   return {
     props: {
       posts,
-      events,
     },
   };
 }
