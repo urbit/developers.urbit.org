@@ -21,7 +21,7 @@ The Urbit stack primarily comprises:
   virtual machine that mediates between each urbit and the Unix software layer.
 - [Azimuth](/overview/azimuth): the Urbit identity layer, built
   on the Ethereum blockchain as a public-key infrastructure.
-- [Dojo](/overview/shell): the
+- [Dojo](/overview/dojo): the
   [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)
   command-line interface to your Urbit instance.
 

@@ -1,6 +1,6 @@
 +++
 title = "Vere"
-weight = 40
+weight = 60
 +++
 
 

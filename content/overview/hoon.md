@@ -1,6 +1,6 @@
 +++
 title = "Hoon"
-weight = 20
+weight = 30
 +++
 
 Hoon is a strictly typed functional programming language that compiles itself
