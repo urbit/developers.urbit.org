@@ -7,7 +7,7 @@ import {
   Section,
   SingleColumn,
   TwoUp,
-} from "foundation-design-system";
+} from "@urbit/foundation-design-system";
 import Meta from "../../components/Meta";
 import Card from "../../components/Card";
 
@@ -28,12 +28,12 @@ export default function Community({ search }) {
         <Section>
           <h1>Community</h1>
         </Section>
-          <Section>
-            <p class="text-xl">
-              The developer community is a combination of top-down stewardship
-              from the Urbit Foundation and Tlon, as well as organic, bottom-up
-              coordination from unaffiliated enthusiasts.
-            </p>
+        <Section>
+          <p class="text-xl">
+            The developer community is a combination of top-down stewardship
+            from the Urbit Foundation and Tlon, as well as organic, bottom-up
+            coordination from unaffiliated enthusiasts.
+          </p>
 
           <div className="md:columns-2 mt-10 gap-x-8 pb-16">
             <p className="">
@@ -97,13 +97,7 @@ export default function Community({ search }) {
               callout="Get Support"
               className="h-full"
             />
-            <Card
-              title=""
-              text=""
-              href=""
-              callout=""
-              className="hidden"
-            />
+            <Card title="" text="" href="" callout="" className="hidden" />
           </TwoUp>
         </Section>
       </SingleColumn>

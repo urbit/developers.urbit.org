@@ -20,7 +20,7 @@ import {
   SingleColumn,
   Section,
   TwoUp,
-} from "foundation-design-system";
+} from "@urbit/foundation-design-system";
 
 export default function BlogPost({
   post,

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import { TableOfContents } from "foundation-design-system";
+import { TableOfContents } from "@urbit/foundation-design-system";
 
 export default function ContentArea(props) {
   const [shortcut, setShortcut] = useState("");

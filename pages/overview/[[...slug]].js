@@ -9,7 +9,7 @@ import {
   Section,
   SingleColumn,
   TwoUp,
-} from "foundation-design-system";
+} from "@urbit/foundation-design-system";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
 import Sidebar from "../../components/Sidebar";
@@ -219,11 +219,12 @@ function Landing({ search }) {
           <div className="md:columns-2 space-y-4 mt-4 gap-x-8">
             <p>
               Urbit application development involves a client/server stack,
-              where Urbit is the server and the client can be any normal interface.
-              Unlike other servers, Urbit is also an entire operating system and ACID
-              datastore. The Urbit OS includes a filesystem, encrypted P2P network, timer,
-              application sandbox, software distribution mechanism, built-in identity
-              layer (Urbit ID), and HTTP server. This means that you can build and distribute
+              where Urbit is the server and the client can be any normal
+              interface. Unlike other servers, Urbit is also an entire operating
+              system and ACID datastore. The Urbit OS includes a filesystem,
+              encrypted P2P network, timer, application sandbox, software
+              distribution mechanism, built-in identity layer (Urbit ID), and
+              HTTP server. This means that you can build and distribute
               production-grade applications without dealing Linux, databases,
               authentication systems, devops, or proprietary app stores.
             </p>

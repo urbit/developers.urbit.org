@@ -9,7 +9,7 @@ import {
   SingleColumn,
   Section,
   TwoUp,
-} from "foundation-design-system";
+} from "@urbit/foundation-design-system";
 import Link from "next/link";
 import {
   Comms,

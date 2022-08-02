@@ -1,5 +1,4 @@
-const withTM = require("next-transpile-modules")(["foundation-design-system"]);
-module.exports = withTM({
+module.exports = {
   reactStrictMode: false,
   // target: 'serverless',
   webpack: (config, { isServer }) => {
@@ -24,4 +23,4 @@ module.exports = withTM({
     // }
     return config;
   },
-});
+};

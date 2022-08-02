@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BackgroundImage } from "foundation-design-system";
+import { BackgroundImage } from "@urbit/foundation-design-system";
 import { formatDate, generateDisplayDate } from "../lib/lib";
 
 export default function PostPreview(props) {
