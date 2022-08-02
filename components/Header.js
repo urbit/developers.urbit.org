@@ -4,7 +4,7 @@ import { useState } from "react";
 import classnames from "classnames";
 import MenuTray from "../components/MenuTray";
 import { capitalize } from "../lib/lib";
-import { IntraNav } from "foundation-design-system";
+import { IntraNav } from "@urbit/foundation-design-system";
 
 function ActiveLink({ children, href, className, currentPath }) {
   const firstCrumb = currentPath.split("/")[1];

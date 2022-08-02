@@ -18,8 +18,13 @@ import {
   SingleColumn,
   TwoUp,
   Markdown,
-} from "foundation-design-system";
-import { Comms, Ringsig, MintFiller, guideDefault } from "../../components/icons";
+} from "@urbit/foundation-design-system";
+import {
+  Comms,
+  Ringsig,
+  MintFiller,
+  guideDefault,
+} from "../../components/icons";
 import guidesTree from "../../cache/guides.json";
 import { join } from "path";
 import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";

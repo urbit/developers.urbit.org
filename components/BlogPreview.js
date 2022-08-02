@@ -1,4 +1,4 @@
-import { BackgroundImage } from "foundation-design-system";
+import { BackgroundImage } from "@urbit/foundation-design-system";
 import Link from "next/link";
 import { generateDisplayDate, formatDate } from "../lib/lib";
 
@@ -8,17 +8,18 @@ export default function BlogPreview({ post }) {
     <div key={post.slug} className="mb-20 cursor-pointer">
       <Link href={`/blog/${post.slug}`}>
         <div class="flex items-center md:flex-row flex-col">
-
           <div class="flex w-full">
-          {
-            // Not all blog posts have images
-            post.extra.image ? (
-              <BackgroundImage
-                src={post.extra.image}
-                className="rounded-lg aspect-w-5 aspect-h-4 w-full"
-              />
-            ) : <div className="rounded-lg aspect-w-5 aspect-h-4 w-full bg-wall-100"/>
-          }
+            {
+              // Not all blog posts have images
+              post.extra.image ? (
+                <BackgroundImage
+                  src={post.extra.image}
+                  className="rounded-lg aspect-w-5 aspect-h-4 w-full"
+                />
+              ) : (
+                <div className="rounded-lg aspect-w-5 aspect-h-4 w-full bg-wall-100" />
+              )
+            }
           </div>
 
           <div class="w-full md:pl-6 ">
@@ -40,10 +41,11 @@ export default function BlogPreview({ post }) {
                 ) : null}
               </div>
             </div>
-            <div className="text-wall-500 type-sub mt-1">{formatDate(date)}</div>
+            <div className="text-wall-500 type-sub mt-1">
+              {formatDate(date)}
+            </div>
 
             {post?.description && <p className="mt-6">{post.description}</p>}
-
           </div>
         </div>
       </Link>

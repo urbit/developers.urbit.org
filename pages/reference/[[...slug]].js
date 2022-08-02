@@ -8,7 +8,7 @@ import ContentArea from "../../components/ContentArea";
 import Sidebar from "../../components/Sidebar";
 import Pagination from "../../components/Pagination";
 import BasicPage from "../../components/BasicPage";
-import { Markdown } from "foundation-design-system";
+import { Markdown } from "@urbit/foundation-design-system";
 import referenceTree from "../../cache/reference.json";
 import { join } from "path";
 import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";
