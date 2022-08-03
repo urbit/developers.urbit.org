@@ -385,6 +385,6 @@ For simplicity, everything we do will take place on the `%base` desk for now.  W
 
 ##  Exercise:  Loading a Library
 
-In a generator, load the `number-to-words` library using the `/+` tislus rune.  (This must take place at the very top of your file.)
+In a generator, load the `number-to-words` library using the `/+` faslus rune.  (This must take place at the very top of your file.)
  
 Use this to produce a gate which accepts an unsigned decimal integer and returns the text interpretation of its increment.
