@@ -14,7 +14,7 @@ export default function Peer({ className }) {
         width="15.6154"
         height="15.6154"
         rx="3.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
       />
       <rect
         x="6"
@@ -22,7 +22,7 @@ export default function Peer({ className }) {
         width="15.6154"
         height="15.6154"
         rx="3.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
       />
       <rect
         x="6"
@@ -30,7 +30,7 @@ export default function Peer({ className }) {
         width="15.6154"
         height="15.6154"
         rx="3.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
       />
       <rect
         x="24.6923"
@@ -38,7 +38,7 @@ export default function Peer({ className }) {
         width="15.6154"
         height="15.6154"
         rx="3.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
       />
       <rect
         x="24.6923"
@@ -46,7 +46,7 @@ export default function Peer({ className }) {
         width="15.6154"
         height="15.6154"
         rx="3.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
       />
       <rect
         x="24.6923"
@@ -54,7 +54,7 @@ export default function Peer({ className }) {
         width="15.6154"
         height="15.6154"
         rx="3.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
       />
       <rect
         x="43.3846"
@@ -62,7 +62,7 @@ export default function Peer({ className }) {
         width="15.6154"
         height="15.6154"
         rx="3.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
       />
       <rect
         x="43.3846"
@@ -70,7 +70,7 @@ export default function Peer({ className }) {
         width="15.6154"
         height="15.6154"
         rx="3.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
       />
     </svg>
   );
