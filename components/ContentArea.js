@@ -40,7 +40,7 @@ export default function ContentArea(props) {
   }, []);
 
   return (
-    <div className="w-full min-w-0 flex flex-col items-center">
+    <div className="w-full min-w-0 flex flex-col items-center bg-white">
       <div
         ref={scrollBox}
         className="px-4 md:px-12 lg:px-24 pt-8 md:pt-10 lg:pt-16 flex flex-col w-full max-w-screen-xl max-h-screen h-screen overflow-y-scroll"
