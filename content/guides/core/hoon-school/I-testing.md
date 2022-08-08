@@ -185,7 +185,7 @@ As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of t
       !!
     ```
 
-- The [`!:` zapcol`](/reference/hoon/rune/zap/#-zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs.  Drop it in on the first Hoon line (after `/` fas imports) of a generator or library while developing.
+- The [`!:` zapcol](/reference/hoon/rune/zap/#-zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs.  Drop it in on the first Hoon line (after `/` fas imports) of a generator or library while developing.
 
     ```hoon
     > (sub 0 1)
