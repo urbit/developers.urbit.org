@@ -29,7 +29,7 @@ Basically, one uses a `rule` on `[hair tape]` to yield an `edge`.
 
 A substantial swath of the standard library is built around parsing for various scenarios, and there's a lot to know to effectively use these tools.  **If you can parse arbitrary input using Hoon after this lesson, you're in fantastic shape for building things later.**  It's worth spending extra effort to understand how these programs work.
 
-There is a [full guide on parsing](/guides/additional/hoon/parsing) which goes into more detail than this quick overview.
+There is a [full guide on parsing](/guides/additional/parsing) which goes into more detail than this quick overview.
 
 ### Scanning Through a `tape`
 
