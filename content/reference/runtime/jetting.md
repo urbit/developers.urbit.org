@@ -1406,7 +1406,7 @@ The only way to run the new code is to follow the following process:
 
     ```sh
     $ cd ~/jetting
-    $ cp zod/.urb/put.pill  ./mypill.pill
+    $ cp zod/.urb/put/.pill  ./mypill.pill
     ```
 
 #### Run the Compiled C/Compiled Hoon Pill
