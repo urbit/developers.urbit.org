@@ -1423,11 +1423,13 @@ If booting takes more than about 90 seconds, you may have created a ‘poison pi
 
 Hoon bugs that disable booting can be as simple as the wrong number of spaces.  Many, but not all of them, will result in compile errors during the `.pill +solid` step.  If your booting takes >90 seconds, abort it, and debug at your Hoon code.
 
-- Inside the Dojo, `|reset`.
+- Inside the Dojo, `|commit` the changed `hoon.hoon` or other system file.  It should automatically recompile if correct.
 
-    You now have created a galaxy fakezod, on its own detached network, running your own strange variant of the OS.
+You now have created a galaxy fakezod, on its own detached network, running your own strange variant of the OS.
 
 - Run and test your jetting code `(ccc:bbb:aaa 1 2 3)`.
+
+(As an aside, should you see “biblical” names like `noah`, this means that you are using a feature of the kernel in a core before it is available.  You'll need to move things to a later point in the file or change your code if that happens.)
 
 
 ##  Testing Jets
