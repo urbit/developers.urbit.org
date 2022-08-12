@@ -93,7 +93,7 @@ A planet's sponsor can be calculated as modulo 2¹⁶.
 Galaxy planets occupy points beginning with `0x1.0000` ~dapnep-ronmyl
 (for ~zod); ~zod's last galaxy planet is `0xffff.ffff` - `0xffff` =
 `0xffff.0000` ~lodnyt-ranrud.  The last galaxy planet (of ~fes) is
-`0xffff.ffff` - `0xffff` + `0x100` = `0xffff.0100` ~hidwyt-mogbud.
+`0xffff.ffff` - `0xffff` + `0x00ff` = `0xffff.00ff` ~hidwyt-mogbud.
 
 Star planets span the remaining space.  The first star planet (of
 ~marzod) is `0x1.000` + `0x100` = `0x1.0100` ~wicdev-wisryt.  The last star
