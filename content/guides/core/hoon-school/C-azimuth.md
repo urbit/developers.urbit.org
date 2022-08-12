@@ -157,13 +157,13 @@ facto* attestation of ownership.
 
 Each point other than a galaxy has a sponsor.  To determine the sponsor of any point, use `++sein:title`:
 
-```hoon
+```hoon {% copy=true %}
 %-(sein:title [our now ~marzod])
 ```
 
 where ~marzod is the point in question; or more succinctly:
 
-```hoon
+```hoon {% copy=true %}
 (sein:title our now ~marzod)
 ```
 

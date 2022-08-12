@@ -18,7 +18,7 @@ A binary tree has a single base node, and each node of the tree may have up to t
 For instance, if we produce a cell in the Dojo
 
 ```hoon
->=a [[[8 9] [10 11]] [[12 13] [14 15]]]
+> =a [[[8 9] [10 11]] [[12 13] [14 15]]]
 ```
 
 it can be represented as a tree with the contents
@@ -54,7 +54,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
 
 - Produce a generator called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`.  For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  end=@
     =/  count=@  1
     |-
@@ -207,7 +207,7 @@ Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to d
  
 A `tape` is one way of representing a text message in Hoon.  It is written with double quotes:
  
-```hoon
+```hoon {% copy=true %}
 "I am the very model of a modern Major-General"
 ```
 
@@ -225,7 +225,7 @@ Much like relative directions, one can also state “left, left, right, left” 
 
 Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](./M-typecheck.md)):
 
-```hoon
+```hoon {% copy=true %}
 -:!>('hello Mars')
 ```
 
@@ -279,7 +279,7 @@ Solutions to these exercises may be found at the bottom of this lesson.
 
 One can also identify a resource by a label, called a _wing_.  A wing represents a depth-first search into the current subject (context).  A wing is a limb resolution path into the subject. A wing expression indicates the path as a series of limb expressions separated by the `.` character. E.g.,
 
-```hoon
+```hoon {% copy=true %}
 inner-limb.outer-limb.limb
 ```
 
@@ -328,6 +328,7 @@ To locate a value in a named tuple data structure:
 
 ```hoon
 > =data [a=[aa=[aaa=[1 2] bbb=[3 4]] bb=[5 6]] b=[7 8]]
+
 > -:aaa.aa.a.data
 1
 ```
@@ -495,7 +496,7 @@ Logically, `a:b` is two operations, while `a.b` is one operation.  The compiler 
 
 Now we're equipped to go back and examine the syntax of the `%=` centis rune we have been using for recursion:  it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the trap core, applies certain changes, and re-evaluates the expression.
 
-```hoon
+```hoon {% copy=true %}
 |=  n=@ud
 |-
 ~&  n
@@ -510,7 +511,7 @@ The `$()` syntax is the commonly-used irregular form of the [`%=` centis](/refer
 
 Now, we noted that `$` buc is the default arm for the trap.  It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
-```hoon
+```hoon {% copy=true %}
 |=  n=@ud
 ?:  =(n 1)
   1
@@ -523,7 +524,7 @@ It's far more common to just use a trap, but you will see `$` buc used to manipu
  
 `|=` bartis produces a gate.  It actually expands to
 
-```hoon
+```hoon {% copy=true %}
 =|  a=spec
 |%  ++  $  b=hoon
 --
@@ -539,7 +540,7 @@ Similarly, `|-` barhep produces a core with one arm `$`.  How could you write th
 
 One verbose Hoon program 
 
-```hoon
+```hoon {% copy=true %}
 !:
 |=  [n=@ud]
 =/  values  *(list @ud)
@@ -563,7 +564,7 @@ Save this as a file `/gen/num2digit.hoon`, `|commit %base`, and run it:
 
 A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first.  (This saves a call to `++weld`.)
 
-```hoon
+```hoon {% copy=true %}
 !:
 |=  [n=@ud]
 =/  values  *(list @ud)
@@ -577,7 +578,7 @@ A more idiomatic solution would use the `^` ket infix to compose a cell and buil
 
 A further tweak maps to `@t` ASCII characters instead of the digits.
 
-```hoon
+```hoon {% copy=true %}
 !:
 |=  [n=@ud]
 =/  values  *(list @t)
@@ -597,7 +598,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 Enter the following into dojo:
 
-```hoon
+```hoon {% copy=true %}
 =a [[[b=%bweh a=%.y c=8] b="no" c="false"] 9]
 ```
 
@@ -643,14 +644,19 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
     11
+
     > (snag 1 `(list @)`~[11 22 33 44])
     22
+    
     > (snag 3 `(list @)`~[11 22 33 44])
     44
+    
     > (snag 3 "Hello!")
     'l'
+    
     > (snag 1 "Hello!")
     'e'
+    
     > (snag 5 "Hello!")
     '!'
     ```
@@ -681,14 +687,17 @@ There are a couple of sometimes-useful `list` builders:
 - [`++reap`](/reference/hoon/stdlib/2b#reap) repeats a value many times in a `list`:
 
     ```hoon
-    > (reap 5 0x0)  
+    > (reap 5 0x0)
     ~[0x0 0x0 0x0 0x0 0x0]
-    > (reap 8 'a')  
-    <|a a a a a a a a|>  
-    > `tape`(reap 8 'a')  
+
+    > (reap 8 'a')
+    <|a a a a a a a a|>
+
+    > `tape`(reap 8 'a')
     "aaaaaaaa"
-    > (reap 5 (gulf 5 10))  
-    ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]  
+
+    > (reap 5 (gulf 5 10))
+    ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]
     ```
 
 - [`++roll`](/reference/hoon/stdlib/2b#roll) takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
@@ -730,19 +739,19 @@ Using what we know to date, most operations that we would do on a collection of 
 
 - Without entering these expressions into the Dojo, what are the products of the following expressions?
 
-    ```hoon
-    > (lent ~[1 2 3 4 5])
-    > (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
-    > (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
+    ```hoon {% copy=true %}
+    (lent ~[1 2 3 4 5])
+    (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
+    (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
     ```
 
 ##  Exercise:  Welding Nouns
 
 First, bind these faces.
 
-```hoon
-> =b ~['moon' 'planet' 'star' 'galaxy']
-> =c ~[1 2 3]
+```hoon {% copy=true %}
+=b ~['moon' 'planet' 'star' 'galaxy']
+=c ~[1 2 3]
 ```
 
 - Determine whether the following Dojo expressions are valid, and if so, what they evaluate to.
@@ -804,7 +813,7 @@ First, bind these faces.
 
 - Roll-Your-Own-`++flop`:
 
-    ```hoon
+    ```hoon {% copy=true %}
     ::  /gen/flop.hoon
     ::
     |=  a=(list @)
@@ -816,7 +825,7 @@ First, bind these faces.
 
 - Roll-Your-Own-`++weld`:
 
-    ```hoon
+    ```hoon {% copy=true %}
     ::  /gen/weld.hoon
     ::
     |=  [a=(list @) b=(list @)]

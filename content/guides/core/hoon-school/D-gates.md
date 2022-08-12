@@ -74,7 +74,7 @@ Convert each of the following regular forms into the correct irregular syntax.
 
 So far, every time we have calculated something, we have had to build it from scratch in Dojo.  This is completely untenable for nontrivial calculations, and clearly the Urbit OS itself is built on persistent code structures defining the behavior.
 
-```hoon
+```hoon {% copy=true %}
 ::  Confirm whether a value is greater than one.
 =/  a  5
 ?:  (gth a 1)
@@ -98,7 +98,7 @@ Functions are implemented in Hoon with a special kind of [core](/reference/gloss
 
 Syntactically, a gate is a [`|=` bartis](/reference/hoon/rune/bar#-bartis) rune with two children:  a [`spec`](/reference/hoon/stdlib/4o#spec) (specification of input) and a [`hoon`](/reference/hoon/stdlib/4o#hoon) (body).  Think of just replacing the `=/` tisfas with the `|=` bartis:
 
-```hoon
+```hoon {% copy=true %}
 ::  Confirm whether a value is greater than one.
 |=  a=@ud
 ?:  (gth a 1)
@@ -116,7 +116,7 @@ The [`spec`](/reference/hoon/stdlib/4o#spec) gives the type as a mold and attach
 
 The [`hoon`](/reference/hoon/stdlib/4o#hoon) body expression evaluates and yields a result, ultimately sent back to the call site.  Frequently it is wise to explicitly require a particular type for the return value using the [`^-` kethep](/reference/hoon/rune/ket#-kethep) rune:
 
-```hoon
+```hoon {% copy=true %}
 ::  Confirm whether a value is greater than one.
 |=  a=@ud
 ^-  @t
@@ -133,7 +133,7 @@ Gates enforce the type of incoming and outgoing values.  In other words, a `spec
 
 Gates can take multiple arguments as a cell:
 
-```hoon
+```hoon {% copy=true %}
 ::  Return which of two numbers is larger.
 |=  [a=@ud b=@ud]
 ?:  (gth a b)
@@ -143,7 +143,7 @@ b
 
 You can also call them different ways with raw [`%` cen](/reference/hoon/rune/cen) runes:
 
-```hoon
+```hoon {% copy=true %}
 %-  max  [100 200]
 %+  max  100  200
 ```
@@ -226,7 +226,7 @@ How can we control what kind of value a gate returns?  Many programming language
 
 Remember `^-` kethep?  We will use `^-` as a _fence_, a way of making sure only data matching the appropriate structure get passed on.
 
-```hoon
+```hoon {% copy=true %}
 ::  Confirm whether a value is greater than one.
 |=  a=@ud
 ^-  @ud
@@ -373,8 +373,10 @@ Instead, you need to use the `-build-file` thread to load the code.  Most common
 
 ```hoon
 > =ntw -build-file %/lib/number-to-words/hoon
+
 > one-hundred:numbers:ntw  
 100
+
 > (to-words:eng-us:numbers:ntw 19)
 [~ "nineteen"]
 ```

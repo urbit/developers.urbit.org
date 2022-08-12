@@ -58,7 +58,7 @@ To use it, you just import `dbug` with a
 [faslus](/reference/arvo/ford/ford#ford-runes) (`/+`) rune at the beginning, then add
 the following line directly before the door of your agent:
 
-```hoon
+```hoon {% copy=true %}
 %-  agent:dbug
 ```
 
@@ -108,7 +108,7 @@ have access to them. Each time a name in a `+*` is called, the associated Hoon i
 
 A virtual arm in an agent often looks something like this:
 
-```hoon
+```hoon {% copy=true %}
 +*  this  .
     def   ~(. (default-agent this %.n) bowl)
 ```
@@ -154,10 +154,10 @@ in the next lesson.
 
 ## Example
 
-Here's the `skeleton.hoon` dummy agent from the previous lesson, modified with
+Here's the `/app/skeleton.hoon` dummy agent from the previous lesson, modified with
 the concepts discussed here:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  card  card:agent:gall

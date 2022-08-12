@@ -119,7 +119,7 @@ all exceptions to avoid crashing.
 
 Here's about the simplest valid Gall agent:
 
-```hoon
+```hoon {% copy=true %}
 |_  =bowl:gall
 ++  on-init   `..on-init
 ++  on-save   !>(~)
@@ -241,7 +241,7 @@ Currently `skeleton` has no state, but of course in practice you'd want to store
 some actual data. We'll add `foo=42` as our state with the `=+` rune at the
 beginning of our agent:
 
-```hoon
+```hoon {% copy=true %}
 =+  foo=42
 |_  =bowl:gall
 ++  on-init   `..on-init

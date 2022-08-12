@@ -76,7 +76,7 @@ By convention any testing suite has the import line `/+  *test` at the top.
 
 **/tests/lib/absolute.hoon**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  *test, *absolute
 |%
 ++  test-absolute
@@ -100,7 +100,7 @@ Note that at this point we don’t care what the function looks like, only how i
 
 **/lib/absolute.hoon**
 
-```hoon
+```hoon {% copy=true %}
 |%
 ++  absolute
   |=  a=@rs
@@ -119,7 +119,7 @@ In `/lib/test.hoon` we find a core with a few gates:  `++expect`, `++expect-eq`,
 
 `++expect-eq` checks whether two vases are equal and pretty-prints the result of that test.  It is our workhorse.  The source for `++expect-eq` is:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 ++  expect-eq
   |=  [expected=vase actual=vase]
   ^-  tang
@@ -179,7 +179,7 @@ As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of t
 
     What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  [a=@ud]
       ~_  leaf+"This code failed"
       !!
@@ -209,7 +209,7 @@ For instance, one could publish a set of tests which characterize the behavior o
 
 **/tests/lib/roman.hoon**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  *test, *roman
 |%
 ++  test-output-one
@@ -267,12 +267,13 @@ Let’s enumerate the errors you are likely to have encountered by this point:
 `nest-fail` may be the most common.  Likely you are using an atom or a cell where the other is expected.
 
 ```hoon
-> (add 'a' 'b')  
-195  
-> (add "a" "b")  
--need.@  
--have.[i=@tD t=""]  
-nest-fail  
+> (add 'a' 'b')
+195
+
+> (add "a" "b")
+-need.@
+-have.[i=@tD t=""]
+nest-fail
 dojo: hoon expression failed
 ```
 

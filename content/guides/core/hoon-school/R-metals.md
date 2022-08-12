@@ -78,7 +78,7 @@ The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a de
 
 - Produce a trapezoid-rule integrator which accepts a wet gate (as a function of a single variable) and a list of _x_ values, and yields the integral as a `@rs` floating-point value.  (If you are not yet familiar with these, you may wish to skip ahead to the next lesson.)
 
-```hoon
+```hoon {% copy=true %}
 ++  trapezint
   |*  [a=(list @rs) b=gate]
   =/  n  (lent a)
@@ -99,7 +99,7 @@ Wet gates and wet cores are used in Hoon when type information isn't well-charac
 
 Let's take a look at a particular wet gate from the Hoon standard library, [`++need`](/reference/hoon/stdlib/2a#need).  `++need` works with a `unit` to produce the value of a successful `unit` call, or crash on `~`.  (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
 
-```hoon
+```hoon {% copy=true %}
 ++  need                                                ::  demand
   |*  a=(unit)
   ?~  a  ~>(%mean.'need' !!)
@@ -134,7 +134,7 @@ We encountered `|$` barbuc above as a wet gate that is a mold builder rune which
 
 For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each defined in `hoon.hoon` as wet gate mold builders. Take a moment to see for yourself. Each `++` arm is followed by `|$` and a list of labels for input types inside brackets `[ ]`. After that subexpression comes another that defines a type that is parametrically polymorphic with respect to the input values. For example, here is the definition of `list` from `hoon.hoon`:
 
-```hoon
+```hoon {% copy=true %}
 ++  list
   |$  [item]
   ::    null-terminated list
@@ -330,7 +330,7 @@ In these examples, the `=>` rune is used to give each core a simple context. The
 
 `%iron` gates are particularly useful when you want to pass gates (having various payload types) to other gates.  We can illustrate this use with a very simple example. Save the following as `/gen/gatepass.hoon` in your `%base` desk:
 
-```hoon
+```hoon {% copy=true %}
 |=  a=_^|(|=(@ 15))
 ^-  @
 =/  b=@  (a 10)
@@ -361,7 +361,7 @@ It still works.  You can't do that with a gold core sample!
 
 There's a simpler way to define an iron sample. Revise the first line of `/gen/gatepass.hoon` to the following:
 
-```hoon
+```hoon {% copy=true %}
 |=  a=$-(@ @)
 ^-  @
 =/  b=@  (a 10)
@@ -541,7 +541,7 @@ This program produces a list populated by the first ten elements of the `++fib` 
 
 **`/gen/fib.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 =<  (to-list (take fib 10))
 |%
 ++  stream

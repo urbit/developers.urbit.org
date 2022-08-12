@@ -176,9 +176,9 @@ Finally, you can produce the `(quip card _this)`.
 We're going to look at a couple of agents to demonstrate both sending and
 receiving pokes. Here's the first, an agent that receives pokes:
 
-### `pokeme.hoon`
+**`/app/pokeme.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -325,13 +325,13 @@ dojo will print the `tang` in the `%poke-ack` nack:
 dojo: app poke failed
 ```
 
-### `pokeit.hoon`
-
 Here's a second agent. It takes a poke of `%inc` or `%dec` like before, but
 rather than updating its own state, it sends two pokes to `%pokeme`, so
 `%pokeme`'s state will be incremented or decremented by two.
 
-```hoon
+**`/app/pokeit.hoon`**
+
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  versioned-state
