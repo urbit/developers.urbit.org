@@ -44,7 +44,7 @@ Since live network identities (_liveships_) are finite, scarce, and valuable, mo
 
 Two fakeships can communicate with each other on the same machine, but have no awareness of the broader Urbit network.  We won't need to use this capability in Hoon School Live, but it will be helpful later when you start developing networked apps.
 
-Before beginning, you'll need to get a development ship running and configure an appropriate editor.  See the [Environment Setup](/guides/additional/development/environment) guide for details.
+Before beginning, you'll need to get a development ship running and configure an appropriate editor.  See the [Environment Setup](/guides/core/environment) guide for details.
 
 Once you have a `dojo>` prompt, the system is ready to go and waiting on input.
 
