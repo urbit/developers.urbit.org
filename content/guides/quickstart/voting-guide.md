@@ -21,9 +21,13 @@ and can instead serve pages directly from our back-end. This works well for
 static pages but a full JS-enabled front-end would be preferred for a dynamic
 page.
 
-If you'd like to check out the finished app, you can install it from
-`~pocwet/tally` with the `|install ~pocwet %tally` command in your ship's Dojo,
-or else install it from your ship's homescreen.
+This app depends on the groups app
+[Squad](https://urbit.org/applications/~pocwet/docs), which we wrote in [another
+lightning tutorial](/guides/quickstart/groups-guide). If you'd like to check out
+the finished app, you can install it from `~pocwet/tally` with the `|install
+~pocwet %tally` command in your ship's Dojo, or else install it from your ship's
+homescreen. Before installing Tally, you should first install Squad from
+`~pocwet/squad`.
 
 The app source is available in the [`docs-examples` repo on
 Github](https://github.com/urbit/docs-examples), in the `voting-app` folder. It
@@ -60,27 +64,41 @@ curl -L https://urbit.org/install/mac/latest | tar xzk --strip=1
 
 ### Development ship
 
-App development is typically done on a "fake" ship. Fake ships don't have real
-networking keys and don't connect to the real network. They can only communicate
-with other fake ships running on the local machine. Let's spin up a fake ~zod
-galaxy. We can do this with the `-F` option:
+App development is typically done on a "fake" ship, which can be created with
+the `-F` flag. In this case, since our chat app will depend on the separate
+Squad app, we'll do it on a comet instead, so we can easily install that
+dependency. To create a comet, we can use the `-c` option, and specify a name
+for the *pier* (ship directory):
 
 ```shell {% copy=true %}
-./urbit -F zod
+./urbit -c dev-comet
 ```
 
-It'll take a couple of minutes to boot up, and then it'll take us to the Dojo.
+It might take a few minutes to boot up, and will fetch updates for the default
+apps. Once that's done it'll take us to the Dojo (Urbit's shell), as indicated
+by the `~sampel_samzod:dojo>` prompt.
+
+Note: we'll use `~sampel_samzod` throughout this guide, but this will be
+different for you as a comet's ID is randomly generated.
 
 ### Dependencies
 
-Once in the Dojo (as indicated by the `~zod:dojo>` prompt), let's mount a couple
-of desks so their files can be accessed from the host OS. We can do this with
-the `|mount` command:
+Once in the Dojo, let's first install the Squad app:
 
+```{% copy=true %}
+|install ~pocwet %squad
 ```
+
+It'll take a minute to retrieve the app, and will say `gall: installing %squad`
+once complete.
+
+Next, we'll mount a couple of desks so we can grab some of their files, which
+our new app will need. We can do this with the `|mount` command:
+
+```{% copy=true %}
+|mount %squad
 |mount %base
 |mount %garden
-|mount %landscape
 ```
 
 With those mounted, switch back to a normal shell in another terminal window.
@@ -89,22 +107,19 @@ across that our app will depend on:
 
 ```shell {% copy=true %}
 mkdir -p tally/{app,sur,mar,lib}
-cp zod/base/sys.kelvin tally/sys.kelvin
-cp zod/base/sur/ring.hoon tally/sur/
-cp zod/base/mar/{bill*,hoon*,json.hoon,kelvin*,mime*,noun*,ship*,txt*} tally/mar/
-cp zod/base/lib/{agentio*,dbug*,default-agent*,skeleton*} tally/lib/
-cp zod/garden/mar/docket-0* tally/mar/
-cp zod/garden/lib/{docket*,mip*} tally/lib/
-cp zod/garden/sur/docket* tally/sur/
-cp zod/landscape/sur/{group*,metadata-store*,resource*} tally/sur/
+cp dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} tally/mar/
+cp dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} tally/lib/
+cp dev-comet/squad/sur/{docket*, squad*} tally/sur/
+cp dev-comet/base/sur/ring.hoon tally/sur/
+cp dev-comet/garden/lib/mip.hoon tally/lib/
 ```
 Now we can start working on the app itself.
 
 ### Types
 
 The first thing we need to do is define the data types our app will use. We'll
-define the basic types for polls, group IDs, poll IDs, etc. We'll also define
-the types of actions/requests we might send or receive, and the types of
+define the basic types for polls, votes, poll IDs, etc. We'll also define the
+types of actions/requests we might send or receive, and the types of
 updates/events we might send to subscribers or receive from subscriptions.
 
 Type definitions are typically stored in a separate file in the `/sur` directory
@@ -112,11 +127,10 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 `tally/sur/tally.hoon`:
 
 ```hoon {% copy=true mode="collapse" %}
-/-  *ring
+/-  *ring, *squad
 /+  *mip
 |%
 +$  pid  @
-+$  gid  (pair @p @tas)
 +$  poll
   $:  creator=@p
       proposal=@t
@@ -163,7 +177,7 @@ Next, we'll add our agent (the app itself). Gall agents live in the `/app`
 directory of a desk, so save this code in `tally/app/tally.hoon`:
 
 ```hoon {% copy=true mode="collapse" %}
-/-  *tally, *ring, ms=metadata-store, g=group
+/-  *tally, *ring, *squad
 /+  *mip, ring, default-agent, dbug, agentio
 /=  index  /app/tally/index
 |%
@@ -187,7 +201,9 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
 ++  on-init
   ^-  (quip card _this)
   :_  this
-  [%pass /bind %arvo %e %connect `/'tally' %tally]~
+  :~  (~(arvo pass:io /bind) %e %connect `/'tally' %tally)
+      (~(watch-our pass:io /squad) %squad /local/all)
+  ==
 ++  on-save  !>(state)
 ++  on-load
   |=  old-vase=vase
@@ -224,81 +240,80 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
       [(make-index:hc rid) state]
     ::
         %'POST'
-      ?~  body.request.req  [(make-index:hc rid) state]
+      ?~  body.request.req  [(redirect:hc rid "/tally") state]
       =/  query=(unit (list [k=@t v=@t]))
         (rush q.u.body.request.req yquy:de-purl:html)
-      ?~  query
-        :_  state
-        (give-http:hc rid [302 ['Location' '/tally'] ~] ~)
+      ?~  query  [(redirect:hc rid "/tally") state]
       =/  kv-map  (~(gas by *(map @t @t)) u.query)
-      ?:  (~(has by kv-map) 's-gid')
+      ?.  (~(has by kv-map) 'gid')
+        [(redirect:hc rid "/tally") state]
+      =/  =path
+        %-  tail
+        %+  rash  url.request.req
+        ;~(sfix apat:de-purl:html yquy:de-purl:html)
+      ?+    path  [(redirect:hc rid "/tally") state]
+          [%tally %watch ~]
+        ?.  (~(has by kv-map) 'gid')
+          [(redirect:hc rid "/tally") state]
         =/  =gid
-          %+  rash  (~(got by kv-map) 's-gid')
+          %+  rash  (~(got by kv-map) 'gid')
           ;~(plug fed:ag ;~(pfix cab sym))
         =^  cards  state  (handle-action %watch gid)
-        :_  state
-        %+  weld  cards
-        (give-http:hc rid [302 ['Location' '/tally'] ~] ~)
-      ?:  (~(has by kv-map) 'u-gid')
+        [(weld cards (redirect:hc rid "/tally")) state]
+      ::
+          [%tally %leave ~]
         =/  =gid
-          %+  rash  (~(got by kv-map) 'u-gid')
+          %+  rash  (~(got by kv-map) 'gid')
           ;~(plug fed:ag ;~(pfix cab sym))
         =^  cards  state  (handle-action %leave gid)
-        :_  state
-        %+  weld  cards
-        (give-http:hc rid [302 ['Location' '/tally'] ~] ~)
-      ?:  (~(has by kv-map) 'n-gid')
+        [(weld cards (redirect:hc rid "/tally")) state]
+      ::
+          [%tally %new ~]
         =/  =gid
-          %+  rash  (~(got by kv-map) 'n-gid')
+          %+  rash  (~(got by kv-map) 'gid')
           ;~(plug fed:ag ;~(pfix cab sym))
-        =/  days=@ud  (rash (~(got by kv-map) 'n-days') dem)
-        =/  proposal=@t  (~(got by kv-map) 'n-proposal')
-        =/  location=@t
-          %-  crip
-          %+  weld  "/tally#"
-          "{=>(<p.gid> ?>(?=(^ .) t))}_{(trip q.gid)}"
+        =/  days=@ud  (rash (~(got by kv-map) 'days') dem)
+        =/  proposal=@t  (~(got by kv-map) 'proposal')
+        =/  location=tape
+          "/tally#{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
         =^  cards  state  (handle-action %new proposal days gid)
-        :_  state
-        %+  weld  cards
-        (give-http:hc rid [302 ['Location' location] ~] ~)
-      ?:  (~(has by kv-map) 'w-gid')
+        [(weld cards (redirect:hc rid location)) state]
+      ::
+          [%tally %withdraw ~]
         =/  =gid
-          %+  rash  (~(got by kv-map) 'w-gid')
+          %+  rash  (~(got by kv-map) 'gid')
           ;~(plug fed:ag ;~(pfix cab sym))
-        =/  =pid  (rash (~(got by kv-map) 'w-pid') dem)
+        =/  =pid  (rash (~(got by kv-map) 'pid') dem)
         =^  cards  state  (handle-action %withdraw gid pid)
-        =/  location=@t
-          %-  crip
-          %+  weld  "/tally#"
-          "{=>(<p.gid> ?>(?=(^ .) t))}_{(trip q.gid)}"
-        :_  state
-        %+  weld  cards
-        (give-http:hc rid [302 ['Location' location] ~] ~)
-      =/  =gid
-        %+  rash  (~(got by kv-map) 'v-gid')
-        ;~(plug fed:ag ;~(pfix cab sym))
-      =/  =pid  (rash (~(got by kv-map) 'v-pid') dem)
-      =/  choice=?
-        %+  rash  (~(got by kv-map) 'v-choice')
-        ;~  pose
-          (cold %.y (jest 'yea'))
-          (cold %.n (jest 'nay'))
-        ==
-      =/  [=poll =votes]  (~(got bi by-group) gid pid)
-      =/  raw=raw-ring-signature
-        =<  raw
-        %:  sign:ring
-          our.bol
-          now.bol
-          eny.bol
-          choice
-          `pid
-          participants.ring-group.poll
-        ==
-      =^  cards  state  (handle-action %vote gid pid choice raw)
-      :_  state
-      %+  weld  cards
-      (give-http:hc rid [302 ['Location' (crip "/tally#{(a-co:co pid)}")] ~] ~)
+        =/  location=tape
+          "/tally#{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
+        [(weld cards (redirect:hc rid location)) state]
+      ::
+          [%tally %vote ~]
+        =/  =gid
+          %+  rash  (~(got by kv-map) 'gid')
+          ;~(plug fed:ag ;~(pfix cab sym))
+        =/  =pid  (rash (~(got by kv-map) 'pid') dem)
+        =/  choice=?
+          %+  rash  (~(got by kv-map) 'choice')
+          ;~  pose
+            (cold %.y (jest 'yea'))
+            (cold %.n (jest 'nay'))
+          ==
+        =/  [=poll =votes]  (~(got bi by-group) gid pid)
+        =/  raw=raw-ring-signature
+          =<  raw
+          %:  sign:ring
+            our.bol
+            now.bol
+            eny.bol
+            choice
+            `pid
+            participants.ring-group.poll
+          ==
+        =^  cards  state  (handle-action %vote gid pid choice raw)
+        [(weld cards (redirect:hc rid "/tally#{(a-co:co pid)}")) state]
+      ==
     ==
   ::
   ++  handle-action
@@ -306,15 +321,15 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
     ^-  (quip card _state)
     ?-    -.act
         %new
-      =/  =path  /(scot %p p.gid.act)/[q.gid.act]
-      ?.  =(our.bol p.gid.act)
+      =/  =path  /(scot %p host.gid.act)/[name.gid.act]
+      ?.  =(our.bol host.gid.act)
         ?>  =(our.bol src.bol)
         :_  state
         :~  %+  ~(poke pass:io path)
-              [p.gid.act %tally]
+              [host.gid.act %tally]
             tally-action+!>(`action`[%new proposal.act days.act gid.act])
         ==
-      ?>  (~(has in (get-members:hc gid.act)) src.bol)
+      ?>  (is-allowed:hc gid.act src.bol)
       =/  members=(set [=ship =life])  (make-ring-members:hc gid.act)
       ?>  ?=(^ members)
       =/  expiry=@da  (add now.bol (yule days.act 0 0 0 ~))
@@ -338,12 +353,12 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
         %vote
       =/  [=poll =votes]  (~(got bi by-group) gid.act pid.act)
       ?>  (gte expiry.poll now.bol)
-      =/  =path  /(scot %p p.gid.act)/[q.gid.act]
-      ?.  =(our.bol p.gid.act)
+      =/  =path  /(scot %p host.gid.act)/[name.gid.act]
+      ?.  =(our.bol host.gid.act)
         ?>  =(our.bol src.bol)
         :_  state(voted (~(put in voted) pid.act))
         :~  %+  ~(poke pass:io path)
-              [p.gid.act %tally]
+              [host.gid.act %tally]
             tally-action+!>([%vote gid.act pid.act vote.act])
         ==
       ?>  %:  verify:ring
@@ -368,28 +383,28 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
     ::
         %watch
       ?>  =(our.bol src.bol)
-      ?>  !=(our.bol p.gid.act)
-      =/  =path  /(scot %p p.gid.act)/[q.gid.act]
+      ?>  !=(our.bol host.gid.act)
+      =/  =path  /(scot %p host.gid.act)/[name.gid.act]
       :_  state
-      :~  (~(watch pass:io path) [p.gid.act %tally] path)
+      :~  (~(watch pass:io path) [host.gid.act %tally] path)
       ==
     ::
         %leave
       ?>  =(our.bol src.bol)
-      ?<  =(our.bol p.gid.act)
-      =/  =path  /(scot %p p.gid.act)/[q.gid.act]
+      ?<  =(our.bol host.gid.act)
+      =/  =path  /(scot %p host.gid.act)/[name.gid.act]
       :_  state(by-group (~(del by by-group) gid.act))
-      :~  (~(leave-path pass:io path) [p.gid.act %tally] path)
+      :~  (~(leave-path pass:io path) [host.gid.act %tally] path)
       ==
     ::
         %withdraw
       =/  [=poll =votes]  (~(got bi by-group) gid.act pid.act)
-      =/  =path  /(scot %p p.gid.act)/[q.gid.act]
-      ?.  =(our.bol p.gid.poll)
+      =/  =path  /(scot %p host.gid.act)/[name.gid.act]
+      ?.  =(our.bol host.gid.poll)
         ?>  =(our.bol src.bol)
         :_  state(withdrawn (~(put in withdrawn) pid.act))
         :~  %+  ~(poke pass:io path)
-              [p.gid.act %tally]
+              [host.gid.act %tally]
             tally-action+!>(`action`[%withdraw gid.act pid.act])
         ==
       ?>  ?|  =(our.bol src.bol)
@@ -412,8 +427,8 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
     `this
   ?>  ?=([@ @ ~] path)
   =/  =gid  [(slav %p i.path) i.t.path]
-  ?>  =(our.bol p.gid)
-  ?>  (~(has in (get-members:hc gid)) src.bol)
+  ?>  =(our.bol host.gid)
+  ?>  (is-allowed:hc gid src.bol)
   :_  this
   :~  %+  fact-init:io  %tally-update
       !>  ^-  update
@@ -424,6 +439,86 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
 ++  on-agent
   |=  [=wire =sign:agent:gall]
   ^-  (quip card _this)
+  ?:  ?=([%squad ~] wire)
+    ?+    -.sign  (on-agent:def wire sign)
+        %kick
+      :_  this
+      :~  (~(watch-our pass:io /squad) %squad /local/all)
+      ==
+    ::
+        %watch-ack
+      ?~  p.sign  `this
+      :_  this
+      :~  (~(wait pass:io /behn) (add now.bol ~m15))
+      ==
+    ::
+        %fact
+      ?>  ?=(%squad-did p.cage.sign)
+      =/  =upd  !<(upd q.cage.sign)
+      ?+    -.upd  `this
+          %init-all
+        =/  to-rm=(list gid)
+          ~(tap in (~(dif in ~(key by by-group)) ~(key by squads.upd)))
+        =.  by-group
+          |-
+          ?~  to-rm  by-group
+          $(to-rm t.to-rm, by-group (~(del by by-group) i.to-rm))
+        =/  watchers=(list [=gid =ship])
+          %+  turn  ~(val by sup.bol)
+          |=  [=ship =path]
+          ^-  [gid @p]
+          ?>  ?=([@ @ ~] path)
+          [[(slav %p i.path) i.t.path] ship]
+        =/  cards=(list card)
+          %+  roll  watchers
+          |=  [[=gid =ship] cards=(list card)]
+          ?.  (~(has by squads.upd) gid)
+            :_  cards
+            (kick-only:io ship /(scot %p host.gid)/[name.gid] ~)
+          =/  =squad  (~(got by squads.upd) gid)
+          ?.  ?|  &(pub.squad (~(has ju acls.upd) gid ship))
+                  &(!pub.squad !(~(has ju acls.upd) gid ship))
+              ==
+            cards
+          :_  cards
+          (kick-only:io ship /(scot %p host.gid)/[name.gid] ~)
+        =.  cards
+          %+  weld  cards
+          %+  turn  to-rm
+          |=  =gid
+          ^-  card
+          =/  =path  /(scot %p host.gid)/[name.gid]
+          (~(leave-path pass:io path) [host.gid %tally] path)
+        [cards this(by-group by-group)]
+      ::
+          %del
+        =/  =path  /(scot %p host.gid.upd)/[name.gid.upd]
+        :_  this(by-group (~(del by by-group) gid.upd))
+        :~  (kick:io path ~)
+            (~(leave-path pass:io path) [host.gid.upd %tally] path)
+        ==
+      ::
+          %kick
+        =/  =path  /(scot %p host.gid.upd)/[name.gid.upd]
+        ?.  =(our.bol ship.upd)
+          :_  this
+          :~  (kick-only:io ship.upd path ~)
+          ==
+        :_  this(by-group (~(del by by-group) gid.upd))
+        :~  (kick:io path ~)
+            (~(leave-path pass:io path) [host.gid.upd %tally] path)
+        ==
+      ::
+          %leave
+        ?.  =(our.bol ship.upd)
+          `this
+        =/  =path  /(scot %p host.gid.upd)/[name.gid.upd]
+        :_  this(by-group (~(del by by-group) gid.upd))
+        :~  (kick:io path ~)
+            (~(leave-path pass:io path) [host.gid.upd %tally] path)
+        ==
+      ==
+    ==
   ?>  ?=([@ @ ~] wire)
   =/  =gid  [(slav %p i.wire) i.t.wire]
   ?+    -.sign  (on-agent:def wire sign)
@@ -433,7 +528,7 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
   ::
       %kick
     :_  this
-    :~  (~(watch pass:io wire) [p.gid %tally] wire)
+    :~  (~(watch pass:io wire) [host.gid %tally] wire)
     ==
   ::
       %fact
@@ -441,7 +536,7 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
     =/  upd  !<(update q.cage.sign)
     ?-    -.upd
         %init
-      =;  by-group  `this
+      =;  by-group  `this(by-group by-group)
       %+  ~(put by by-group)  gid
       %-  ~(rep by polls.upd)
       |=  [[=pid =poll =votes] acc=(map pid [=poll =votes])]
@@ -500,19 +595,32 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
 ++  on-arvo
   |=  [=wire =sign-arvo]
   ^-  (quip card _this)
-  ?.  ?=([%bind ~] wire)
+  ?:  ?=([%bind ~] wire)
+    ?.  ?=([%eyre %bound *] sign-arvo)
+      (on-arvo:def [wire sign-arvo])
+    ~?  !accepted.sign-arvo
+      %eyre-rejected-tally-binding
+    `this
+  ?.  ?=([%behn ~] wire)
     (on-arvo:def [wire sign-arvo])
-  ?.  ?=([%eyre %bound *] sign-arvo)
-    (on-arvo:def [wire sign-arvo])
-  ~?  !accepted.sign-arvo
-    %eyre-rejected-tally-binding
-  `this
+  ?>  ?=([%behn %wake *] sign-arvo)
+  ?~  error.sign-arvo
+    :_  this
+    :~  (~(watch-our pass:io /squad) %squad /local/all)
+    ==
+  :_  this
+  :~  (~(wait pass:io /behn) (add now.bol ~m15))
+  ==
 ::
 ++  on-leave  on-leave:def
 ++  on-peek   on-peek:def
 ++  on-fail   on-fail:def
 --
 |_  bol=bowl:gall
+++  redirect
+    |=  [rid=@ta path=tape]
+    (give-http rid [302 ['Location' (crip path)] ~] ~)
+::
 ++  make-index
   |=  rid=@ta
   ^-  (list card)
@@ -546,10 +654,10 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
   |=  =gid
   ^-  (set [=ship =life])
   =/  invited=(list @p)  ~(tap in (get-members gid))
-  =|  members=(set [=ship =life])
+  =|  participants=(set [=ship =life])
   |-
   ?~  invited
-    members
+    participants
   =/  lyfe
     .^  (unit @ud)
       %j
@@ -561,25 +669,43 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
   ?~  lyfe
     $(invited t.invited)
   %=  $
-    invited  t.invited
-    members  (~(put in members) [i.invited u.lyfe])
+    invited       t.invited
+    participants  (~(put in participants) [i.invited u.lyfe])
   ==
+::
+++  is-allowed
+  |=  [=gid =ship]
+  ^-  ?
+  =/  u-acl
+    .^  (unit [pub=? acl=ppl])
+      %gx
+      (scot %p our.bol)
+      %squad
+      (scot %da now.bol)
+      %acl
+      (scot %p host.gid)
+      /[name.gid]/noun
+    ==
+  ?~  u-acl  |
+  ?:  pub.u.u-acl
+    !(~(has in acl.u.u-acl) ship)
+  (~(has in acl.u.u-acl) ship)
 ::
 ++  get-members
   |=  =gid
-  ^-  (set ship)
-  %-  ~(gas in *(set ship))
+  ^-  ppl
+  %-  ~(gas in *ppl)
   %+  skim
     %~  tap  in
-    =<  members
-    %-  fall
-    :_  *group:g
-    .^  (unit group:g)
+    .^  ppl
       %gx
       (scot %p our.bol)
-      %group-store
+      %squad
       (scot %da now.bol)
-      /groups/ship/(scot %p p.gid)/[q.gid]/noun
+      %members
+      (scot %p host.gid)
+      name.gid
+      /noun
     ==
   |=  =ship
   ?|  =(our.bol ship)
@@ -644,13 +770,69 @@ representation, similar to other server-side renderings like Clojure's Hiccup.
 Save the code below in `tally/app/tally/index.hoon`.
 
 ```hoon {% copy=true mode="collapse" %}
-/-  *tally, ms=metadata-store, g=group
-/+  *mip
+/-  *tally, *squad
 |=  [bol=bowl:gall =by-group voted=(set pid) withdrawn=(set pid)]
-=<
-=/  all-group-names=(list (pair gid @t))  all-group-names
-=/  group-names  (get-group-names ~(tap in ~(key by by-group)))
-|^  ^-  manx
+^-  manx
+?.  .^(? %gu /(scot %p our.bol)/squad/(scot %da now.bol))
+  ;html
+    ;head
+      ;title: Tally
+      ;meta(charset "utf-8");
+      ;style
+        ;+  ;/
+            ^~
+            ^-  tape
+            %-  trip
+            '''
+            body {width: 100%; height: 100%; margin: 0;}
+            * {font-family: monospace}
+            div {
+              position: relative;
+              top: 50%;
+              left: 50%;
+              transform: translateX(-50%) translateY(-50%);
+              width: 40ch;
+            }
+            '''
+      ==
+    ==
+    ;body
+      ;div
+        ;h3: Squad app not installed
+        ;p
+          ;+  ;/  "Tally depends on the Squad app. ".
+                  "You can install it from "
+          ;a/"web+urbitgraph://~pocwet/squad": ~pocwet/squad
+        ==
+      ==
+    ==
+  ==
+=/  all-squads=(list (pair gid squad))
+  %+  sort
+    %~  tap  by
+    .^  (map gid squad)
+      %gx
+      (scot %p our.bol)
+      %squad
+      (scot %da now.bol)
+      %squads
+      /noun
+    ==
+  |=  [a=(pair gid squad) b=(pair gid squad)]
+  (aor title.q.a title.q.b)
+=/  has-polls
+  %+  skim  all-squads
+  |=  (pair gid squad)
+  (~(has by by-group) p)
+=/  our-life
+  .^  life
+    %j
+    (scot %p our.bol)
+    %life
+    (scot %da now.bol)
+    /(scot %p our.bol)
+  ==
+|^
 ;html
   ;head
     ;title: Tally
@@ -662,37 +844,37 @@ Save the code below in `tally/app/tally/index.hoon`.
   ;body
     ;h1: tally
     ;h2: subscriptions
-    ;form(method "post")
+    ;form(method "post", action "/tally/watch")
       ;select
-        =name      "s-gid"
+        =name      "gid"
         =required  ""
         ;*  (group-options-component %.n %.n)
       ==
       ;input(id "s", type "submit", value "watch");
     ==
-    ;form(method "post")
+    ;form(method "post", action "/tally/leave")
       ;select
-        =name      "u-gid"
+        =name      "gid"
         =required  ""
         ;*  (group-options-component %.n %.y)
       ==
       ;input(id "u", type "submit", value "leave");
     ==
     ;h2: new poll
-    ;form(method "post")
+    ;form(method "post", action "/tally/new")
       ;label(for "n-gid"): group:
       ;select
         =id        "n-gid"
-        =name      "n-gid"
+        =name      "gid"
         =required  ""
         ;*  (group-options-component %.y %.y)
       ==
       ;br;
-      ;label(for "n-days"): duration:
+      ;label(for "days"): duration:
       ;input
         =type         "number"
-        =id           "n-days"
-        =name         "n-days"
+        =id           "days"
+        =name         "days"
         =min          "1"
         =step         "1"
         =required     ""
@@ -700,11 +882,11 @@ Save the code below in `tally/app/tally/index.hoon`.
         ;+  ;/("")
       ==
       ;br;
-      ;label(for "n-proposal"): proposal:
+      ;label(for "proposal"): proposal:
       ;input
         =type      "text"
-        =id        "n-proposal"
-        =name      "n-proposal"
+        =id        "proposal"
+        =name      "proposal"
         =size      "50"
         =required  ""
         ;+  ;/("")
@@ -713,36 +895,38 @@ Save the code below in `tally/app/tally/index.hoon`.
       ;input(id "submit", type "submit", value "submit");
     ==
     ;h2: groups
-    ;*  ?~  group-names
+    ;*  ?~  has-polls
           ~[;/("")]
-        (turn group-names group-component)
+        (turn has-polls group-component)
   ==
 ==
 ::
 ++  group-options-component
   |=  [our=? in-subs=?]
   ^-  marl
-  =/  names=(list (pair gid @t))  all-group-names
   =/  subs=(set gid)
     %-  ~(gas in *(set gid))
-    %+  turn  ~(tap by wex.bol)
+    %+  turn
+      %+  skim  ~(tap by wex.bol)
+      |=  [[=wire *] *]
+      ?=([@ @ ~] wire)
     |=  [[=wire *] *]
     ^-  gid
     ?>  ?=([@ @ ~] wire)
     [(slav %p i.wire) i.t.wire]
-  =?  names  &(our in-subs)
-    (skim names |=((pair gid @t) |(=(our.bol p.p) (~(has in subs) p))))
-  =?  names  &(!our in-subs)
-    (skim names |=((pair gid @t) (~(has in subs) p)))
-  =?  names  &(!our !in-subs)
-    (skip names |=((pair gid @t) |(=(our.bol p.p) (~(has in subs) p))))
-  %+  turn  names
-  |=  (pair gid @t)
+  =?  all-squads  &(our in-subs)
+    (skim all-squads |=((pair gid squad) |(=(our.bol host.p) (~(has in subs) p))))
+  =?  all-squads  &(!our in-subs)
+    (skim all-squads |=((pair gid squad) (~(has in subs) p)))
+  =?  all-squads  &(!our !in-subs)
+    (skip all-squads |=((pair gid squad) |(=(our.bol host.p) (~(has in subs) p))))
+  %+  turn  all-squads
+  |=  (pair gid squad)
   ^-  manx
-  ;option(value "{=>(<p.p> ?>(?=(^ .) t))}_{(trip q.p)}"): {(trip q)}
+  ;option(value "{=>(<host.p> ?>(?=(^ .) t))}_{(trip name.p)}"): {(trip title.q)}
 ::
 ++  group-component
-  |=  (pair gid @t)
+  |=  (pair gid squad)
   ^-  manx
   =/  polls=(list [=pid =poll =votes])
     ~(tap by (~(got by by-group) p))
@@ -752,11 +936,11 @@ Save the code below in `tally/app/tally/index.hoon`.
     |=  [* =poll *]
     (gth expiry.poll now.bol)
   =/  title=tape
-    %+  weld  (trip q)
+    %+  weld  (trip title.q)
     ?:  =(0 open)
       ""
     " ({(a-co:co open)})"
-  ;details(id "{=>(<p.p> ?>(?=(^ .) t))}_{(trip q.p)}", open "open")
+  ;details(id "{=>(<host.p> ?>(?=(^ .) t))}_{(trip name.p)}", open "open")
     ;summary
       ;h3: {title}
     ==
@@ -780,7 +964,7 @@ Save the code below in `tally/app/tally/index.hoon`.
       ;th: proposal:
       ;td: {(trip proposal.poll)}
     ==
-    ;+  ?.  ?|  =(our.bol p.gid)
+    ;+  ?.  ?|  =(our.bol host.gid)
                 &(=(our.bol creator.poll) (gte expiry.poll now.bol))
             ==
           ;/("")
@@ -792,14 +976,14 @@ Save the code below in `tally/app/tally/index.hoon`.
         ;tr
           ;th: withdraw:
           ;td
-            ;form(method "post")
+            ;form(method "post", action "/tally/withdraw")
               ;input
                 =type  "hidden"
-                =name  "w-gid"
-                =value  "{=>(<p.gid> ?>(?=(^ .) t))}_{(trip q.gid)}"
+                =name  "gid"
+                =value  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
                 ;+  ;/("")
               ==
-              ;input(type "hidden", name "w-pid", value (a-co:co pid));
+              ;input(type "hidden", name "pid", value (a-co:co pid));
               ;input(type "submit", value "withdraw?");
             ==
           ==
@@ -825,16 +1009,16 @@ Save the code below in `tally/app/tally/index.hoon`.
         ;tr
           ;th: vote:
           ;td
-            ;form(method "post")
+            ;form(method "post", action "/tally/vote")
               ;input
                 =type   "hidden"
-                =name   "v-gid"
-                =value  "{=>(<p.gid> ?>(?=(^ .) t))}_{(trip q.gid)}"
+                =name   "gid"
+                =value  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
                 ;+  ;/("")
               ==
-              ;input(type "hidden", name "v-pid", value (a-co:co pid));
-              ;input(id "yea", type "submit", name "v-choice", value "yea");
-              ;input(id "nay", type "submit", name "v-choice", value "nay");
+              ;input(type "hidden", name "pid", value (a-co:co pid));
+              ;input(id "yea", type "submit", name "choice", value "yea");
+              ;input(id "nay", type "submit", name "choice", value "nay");
             ==
           ==
         ==
@@ -885,6 +1069,7 @@ Save the code below in `tally/app/tally/index.hoon`.
       (sun:fl 100)
     (div:fl (sun:fl p) (sun:fl q))
   --
+::
 ++  expiry-component
   |=  d=@da
   ^-  manx
@@ -903,6 +1088,7 @@ Save the code below in `tally/app/tally/index.hoon`.
           ;/  "{(a-co:co h.tarp)} hours"
         ;/  "{(a-co:co m.tarp)} minutes"
   ==
+::
 ++  style
   ^~
   ^-  tape
@@ -925,62 +1111,6 @@ Save the code below in `tally/app/tally/index.hoon`.
   #submit {margin-top: 1em}
   #yea {margin-right: 1ch}
   '''
---
-::
-|%
-++  our-groups
-  ^-  (set gid)
-  %-  ~(rep in get-groups)
-  |=  [a=gid b=(set gid)]
-  ?.  =(p.a our.bol)
-    b
-  (~(put in b) a)
-::
-++  get-group-names
-  |=  groups=(list gid)
-  ^-  (list (pair gid @t))
-  %+  sort
-    %+  turn  groups
-    |=  =gid
-    ^-  (pair ^gid @t)
-    =/  group-data
-      .^  (unit association:ms)
-        %gx
-        (scot %p our.bol)
-        %metadata-store
-        (scot %da now.bol)
-        /metadata/groups/ship/(scot %p p.gid)/[q.gid]/noun
-      ==
-    ?~  group-data
-      [gid q.gid]
-    [gid title.metadatum.u.group-data]
-  |=([[* a=@] [* b=@]] (aor a b))
-::
-++  all-group-names
-  ^-  (list (pair gid @t))
-  (get-group-names ~(tap in get-groups))
-::
-++  get-groups
-  ^-  (set gid)
-  %.  head
-  %~  run  in
-  %.  %groups
-  %~  get  ju
-  .^  (jug app-name:ms [gid *])
-    %gy
-    (scot %p our.bol)
-    %metadata-store
-    (scot %da now.bol)
-    /app-indices
-  ==
-++  our-life
-  .^  life
-    %j
-    (scot %p our.bol)
-    %life
-    (scot %da now.bol)
-    /(scot %p our.bol)
-  ==
 --
 ```
 
@@ -1024,16 +1154,16 @@ following:
 
 ### Put it together
 
-Our app is now complete, so let's try it out. In the Dojo of our fake ~zod,
-we'll create a new desk (filesystem repo) by forking from an existing one:
+Our app is now complete, so let's try it out. In the Dojo of our comet, we'll
+create a new desk (filesystem repo) by forking from an existing one:
 
-```
+```{% copy=true %}
 |merge %tally our %webterm
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
 
-```
+```{% copy=true %}
 |mount %tally
 ```
 
@@ -1042,33 +1172,30 @@ delete those files and copy in our own instead. In the normal shell, do the
 following:
 
 ```shell {% copy=true %}
-rm -r zod/tally/*
-cp -r tally/* zod/tally/*
+rm -r dev-comet/tally/*
+cp -r tally/* dev-comet/tally/*
 ```
 
 Back in the Dojo again, we can now commit those files and install the app:
 
-```
+```{% copy=true %}
 |commit %tally
 |install our %tally
 ```
 
-If we open a web browser and go to `localhost:8080`, we should see a tile for
-the Tally app. If we click on it, it'll open our React front-end and we can start
-using it.
+If we open a web browser, go to `localhost:8080`, and login with the password
+obtained by running `+code` in the Dojo, we should see a tile for the Tally app.
+If we click on it, it'll open our front-end and we can start using it.
 
-Once we've confirmed it's working on our fake ~zod, we can shut it down with
-`|exit` or CTRL-D and try installing it on a real ship instead. To do that, we
-can just repeat the steps in this section with our actual ship. On the live
-network, we can also publish the app so others can install it from us. To do so,
-just run the following command:
+One thing we can also do is publish the app so others can install it from us. To
+do so, just run the following command:
 
 ```
 :treaty|publish %tally
 ```
 
-Now our friends will be able to install it with `|install <our ship> %tally`
-or by searching for `<our ship>` on their ship's homescreen.
+Now our friends will be able to install it directly from us with `|install <our
+ship> %tally` or by searching for `<our ship>` on their ship's homescreen.
 
 ## Code commentary
 
@@ -1091,7 +1218,8 @@ all participants, their key revisions, and a "linkage scope", which is used to
 associate votes with a particular poll and detect duplicates. We just set the
 linkage scope to the poll ID (`pid`).
 
-The `action` structure defines what requests/actions can be sent or received in *pokes* (one-off messages):
+The `action` structure defines what requests/actions can be sent or received in
+*pokes* (one-off messages):
 
 ```hoon
 +$  action
@@ -1103,7 +1231,8 @@ The `action` structure defines what requests/actions can be sent or received in 
   ==
 ```
 
-The `update` structure defines what updates/events can be sent out to subscribers or received from people to who we've subscribed:
+The `update` structure defines what updates/events can be sent out to
+subscribers or received from people to whom we've subscribed:
 
 ```hoon
 +$  update
@@ -1119,9 +1248,9 @@ The `update` structure defines what updates/events can be sent out to subscriber
 Gall is the userspace application management vane (kernel module). Userspace
 applications are called *agents*.
 
-Our agent imports the structure file we create, some structures for dealing
-with groups and their metadata, some utility libraries including the ring
-signature library, and our `index.hoon` front-end file.
+Our agent imports the structure file we create, some structures for dealing with
+Squad groups, some utility libraries including the ring signature library, and
+our `index.hoon` front-end file.
 
 The agent's state is defined as:
 
@@ -1143,12 +1272,21 @@ look at some of our agent's significant arms:
 
 #### `on-init`
 
-This arm is called exactly once, when the agent is first installed. We just
-pass a `task` to Eyre, the web-server vane, to bind the `/tally`
-URL path so visiting that will load our front-end:
+This arm is called exactly once, when the agent is first installed. Our
+`on-init` does two things: 
+
+- Pass a `task` to Eyre, the web-server vane, to bind the `/tally` URL path so
+visiting that will load our front-end.
+- Send a subscription request to the `%squad` agent so we can keep up-to-date
+  with the state of our groups.
 
 ```hoon
-[%pass /bind %arvo %e %connect `/'tally' %tally]~
+++  on-init
+  ^-  (quip card _this)
+  :_  this
+  :~  (~(arvo pass:io /bind) %e %connect `/'tally' %tally)
+      (~(watch-our pass:io /squad) %squad /local/all)
+  ==
 ```
 
 #### `on-poke`
@@ -1164,10 +1302,14 @@ calling the `verify` function in the `ring.hoon` library.
 
 For `handle-http`, if it's a GET request, it calls `index.hoon` to produce the
 web page and returns it to Eyre on the subscription path specified by the
-request ID. If it's a POST request, it checks the key-value pairs to see what
-kind of request it is (vote, new poll, subscribe request, etc), converts the
-request into an `action`, calls `handle-action` to process it, and then sends a
-302 redirect back to the index to reload the page.
+request ID. If it's a POST request, it first checks the URL path to see which
+kind of request it is (`/tally/watch`, `/tally/vote`, `/tally/new`, etc). It
+then retrieves the key-value pairs of data from the body of the request and
+converts the request into an `action`, calls `handle-action` to process it, and
+then sends a 302 redirect back to the index to reload the page.
+
+Updates will also be sent out to our subscribers when the events occur to inform
+them of the changes.
 
 #### `on-watch`
 
@@ -1179,14 +1321,21 @@ a member and then send them out the current state of the polls for that group.
 #### `on-agent`
 
 This arm handles updates from people we've subscribed to, which will be other
-groups we're a member of. The messages we'll receive here will contain
+groups we're a member of. It additionally handles group updates from the
+`%squad` agent. In the former case, the events we'll receive will contain
 `update`s, which we'll process in a similar manner to the `action`s in
-`on-poke`. All incoming votes will be validated here also.
+`on-poke`. All incoming votes will be validated here also. In the latter case,
+we'll receive `%squad` `upd` updates, such as members joining or leave groups,
+and we'll handle them as appropriate.
+
+We differentiate between these two cases by testing the `wire`, which is a
+message tag we set when we initially subscribed. For `%squad` updates it will be
+`/squad`, and for the rest it'll be the group ID we've subscribe to.
 
 #### Helper core
 
 Below the agent proper, we have some additional useful functions, such as
-retrieving group members from the Groups app and putting together HTTP
+retrieving group members from the Squads app and putting together HTTP
 responses.
 
 ### Front-end
@@ -1207,9 +1356,9 @@ XML structures inside hoon, and looks like this:
   ;body
     ;h1: tally
     ;h2: subscriptions
-    ;form(method "post")
+    ;form(method "post", action "/tally/watch")
       ;select
-        =name      "s-gid"
+        =name      "gid"
         =required  ""
         ;*  (group-options-component %.n %.n)
       ==
@@ -1219,8 +1368,8 @@ XML structures inside hoon, and looks like this:
 ```
 
 Most of `index.hoon` contains the various front-end components like this. It
-also contains some functions to retrieve lists of groups, group metadata,
-current subscriptions, etc.
+also contains some functions to retrieve groups and members from the Squads app,
+and CSS stylesheets.
 
 ## Next steps
 
