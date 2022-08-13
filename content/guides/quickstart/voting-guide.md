@@ -68,7 +68,7 @@ App development is typically done on a "fake" ship, which can be created with
 the `-F` flag. In this case, since our chat app will depend on the separate
 Squad app, we'll do it on a comet instead, so we can easily install that
 dependency. To create a comet, we can use the `-c` option, and specify a name
-for the *pier* (ship directory):
+for the *pier* (ship folder):
 
 ```shell {% copy=true %}
 ./urbit -c dev-comet
@@ -113,6 +113,7 @@ cp dev-comet/squad/sur/{docket*, squad*} tally/sur/
 cp dev-comet/base/sur/ring.hoon tally/sur/
 cp dev-comet/garden/lib/mip.hoon tally/lib/
 ```
+
 Now we can start working on the app itself.
 
 ### Types
