@@ -350,7 +350,7 @@ To _actually_ get the bunt value, use the [`^*` kettar](/reference/hoon/rune/ket
 [0 0x0 0b0]
 ```
 
-One more way to validate against type is to use an example instead of the extracted mold.  This uses the [`^+` ketlus](/reference/hoon/rune/ket#-ketlus) rune similarly to how we used `^-` ketlus previously:
+One more way to validate against type is to use an example instead of the extracted mold.  This uses the [`^+` ketlus](/reference/hoon/rune/ket#-ketlus) rune similarly to how we used [`^-` kethep](/reference/hoon/rune/ket#--kethep) previously:
 
 ```hoon
 ^+(1.000 100)
