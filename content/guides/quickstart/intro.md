@@ -3,15 +3,14 @@ title = "Introduction"
 weight = 1
 +++
 
-This series of "quickstart" or "lightning" guides are designed to show you how
-decentralized, networked applications can be built and published on Urbit. These
-guides are intended for developers with limited knowledge of Urbit and who
-aren't fluent in Hoon (Urbit's programming language). They consequently do not
-delve deeply into the code, but instead focus on the broader process to give you
-a basic idea of the platform. If you're instead interested in learning Hoon and
-app development on Urbit, the best place to start is [Hoon
-School](/guides/core/hoon-school/A-intro), and then after that [App
-School](/guides/core/app-school/intro).
+This series of quickstart guides will show you how decentralized, networked
+applications can be quickly built and published on Urbit. These guides are
+intended for developers with limited knowledge of Urbit and who aren't fluent in
+Hoon (Urbit's programming language). They don't delve deeply into the code, but
+instead focus on the broader process, to give you a basic idea of the platform.
+If instead you want to learn Hoon and app development on Urbit, the best place
+to start is [Hoon School](/guides/core/hoon-school/A-intro), and then after that
+[App School](/guides/core/app-school/intro).
 
 There are so-far three guides in this series:
 
@@ -27,11 +26,11 @@ called Tally and lets group members create polls, which other members can vote
 on. Tally uses linked ring signatures so members of a group can verify votes but
 don't know who voted for what.
 
-These apps are quite basic and are intended as educational tools rather than
-fully-fledged production applications. For the front-ends, the chat app uses
-React, and the other two use Sail, which is Urbit's native XML syntax built into
-the Hoon compiler. Note these are not the only ways to build front-ends: you can
-also build CLI apps, desktop apps, mobile apps, or use any other browser-based
+These apps are quite basic and are intended as educational tools rather that
+full-featured apps for everyday use. For the front-ends, the chat app uses
+React, and the other two use Sail, which is Urbit's native server-side HTML
+language. Note these are not the only ways to build front-ends: you can also
+build CLI apps, desktop apps, mobile apps, or use any other browser-based
 front-end framework, and have them talk to Urbit ships.
 
 If you'd like to try out these apps immediately, you can search for `~pocwet` in
