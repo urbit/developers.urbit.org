@@ -1,6 +1,6 @@
 +++
 title = "Build a Voting App"
-weight = 1
+weight = 4
 +++
 
 In this lightning tutorial, we're going to build a voting app for groups called

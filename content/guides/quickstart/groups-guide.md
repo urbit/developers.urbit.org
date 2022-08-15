@@ -1,6 +1,6 @@
 +++
 title = "Build a Groups app"
-weight = 1
+weight = 2
 +++
 
 In this lightning tutorial, we're going to build an app to create groups called
