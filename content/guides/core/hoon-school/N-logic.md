@@ -45,7 +45,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
 
     Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` wuthep switches over term unions can make it look like the expression is branching on the value.  It's actually branching on the _type_.  These are almost exclusively used with term type unions.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  p=?(%1 %2 %3)
     ?-  p
       %1  1
@@ -56,7 +56,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
 
 - [`?+` wutlus](/reference/hoon/rune/wut#-wutlus) is similar to `?-` but allows a default value in case no branch is taken.  Otherwise these are similar to `?-` wuthep switch statements.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  p=?(%0 %1 %2 %3 %4)
     ?+  p  0
       %1  1
@@ -123,7 +123,7 @@ The logical operation `XOR` _p_⊕_q_ exclusive disjunction yields true if one b
 
 - Implement `XOR` as a gate in Hoon.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  [p=?(%.y %.n) q=?(%.y %.n)]
     ^-  ?(%.y %.n)
     |(&(p !q) &(!p q))

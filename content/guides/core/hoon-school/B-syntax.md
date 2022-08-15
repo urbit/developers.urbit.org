@@ -151,7 +151,7 @@ A rune is just a pair of ASCII characters (a digraph).  We usually pronounce run
 
 For instance, when we called a function earlier (in Hoon parlance, we _slammed a gate_), we needed to provide the [`%-` cenhep](/reference/hoon/rune/cen#-cenhep) rune with two bits of information, a function name and the values to associate with it:
 
-```hoon
+```hoon {% copy=true %}
 %-
 add  
 [1 2]
@@ -161,7 +161,7 @@ The operation you just completed is straightforward enough:  `1 + 2`, in many la
 
 [`++add`](/reference/hoon/stdlib/1a#add) expects precisely two values (or _arguments_), which are provided by `%-` in the neighboring child expression as a cell.  There's really no limit to the complexity of Hoon expressions:  they can track deep and wide.  They also don't care much about layout, which leaves you a lot of latitude.  The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
 
-```hoon
+```hoon {% copy=true %}
 %-
 add
 [%-(add [1 2]) 3]
@@ -191,7 +191,7 @@ We are only going to introduce a handful of runes in this lesson, but by the tim
 
 Here is a lightly-edited snippet of Hoon code.  Anything written after a `::` colcol is a _comment_ and is ignored by the computer.  (Comments are useful for human-language explanations.)
 
-```hoon
+```hoon {% copy=true %}
 %-  send
 ::  forwards compatibility with next-dill
 ?@  p.kyz  [%txt p.kyz ~]
@@ -219,7 +219,7 @@ One clue:  every rune in Hoon (except for one, not in the above code) has _at le
 
 Here is a snippet of Hoon code:
  
-```hoon
+```hoon {% copy=true %}
 ^-  list
 :~  [hen %lsip %e %init ~]
     [hen %lsip %d %init ~]
@@ -331,7 +331,7 @@ We are going to store the value as a variable, or in Hoon, “pin a face to the 
 
 When we used `++add` or `++sub` previously, we wanted an immediate answer.  There's not much more to say than `5 + 1`.  In contrast, pinning a face accepts three daughter expressions:  a name (or face), a value, and the rest of the expression.
 
-```hoon
+```hoon {% copy=true %}
 =/  perfect-number  28
 %-  add  [perfect-number 10]
 ```
@@ -342,6 +342,7 @@ This yields `38`, but if you attempt to refer to `perfect-number` again on the n
 > =/  perfect-number  28
   %-  add  [perfect-number 10]
 38
+
 > perfect-number
 -find.perfect-number
 dojo: hoon expression failed
@@ -349,17 +350,18 @@ dojo: hoon expression failed
 
 This syntax is a little bit strange in the Dojo because subsequent expressions, although it works quite well in long-form code.  The Dojo offers a workaround to retain named values:
 
-```
+```hoon
 > =perfect-number 28
 > %-  add  [perfect-number 10]
 38
+
 > perfect-number
 38
 ```
 
 The difference is that the Dojo “pin” is permanent until deleted:
 
-```
+```hoon {% copy=true %}
 =perfect-number
 ```
 
@@ -383,6 +385,7 @@ A cell is formally a pair of two objects, but as long as the second (right-hand)
 ```hoon
 > [1 [2 3]]
 [1 2 3]
+
 > [1 [2 [3 4]]]
 [1 2 3 4]
 ```
@@ -395,7 +398,7 @@ Since almost all cells branch rightwards, the pretty-printer (the printing routi
 
 Enter the following cells:
 
-```hoon
+```hoon {% copy=true %}
 [1 2 3]
 [1 [2 3]]
 [[1 2] 3]
@@ -527,7 +530,7 @@ $$-->
 
 Thus equipped, we can evaluate the Heaviside function for particular values of `x`:
 
-```hoon
+```hoon {% copy=true %}
 =/  x  10
 ?:  %-  gte  [x 10]
   1

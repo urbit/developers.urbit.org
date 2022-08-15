@@ -175,7 +175,9 @@ The `++equ:rs` arm checks for complete equality of two values.  The downside of 
 
 - Write a generator to take a `@tas` input measurement unit of length, a `@rs` value, and a `@tas` output unit to which we will convert the input measurement.  For instance, this generator could convert a number of imperial feet to metric decameters.
 
-```hoon
+**`/gen/convert-length.hoon`**
+
+```hoon {% copy=true mode="collapse" %}
 |=  [fr-meas=@tas num=@rs to-meas=@tas]
 =<
 ^-  @rs
@@ -407,7 +409,7 @@ The Hoon standard library at the current time omits many [transcendental functio
 
 - Produce an exponentiation function `++pow-n` which operates on integer `@rs` only.
 
-    ```hoon
+    ```hoon {% copy=true %}
     ++  pow-n
       ::  restricted power, based on integers only
       |=  [x=@rs n=@rs]
@@ -427,7 +429,7 @@ The Hoon standard library at the current time omits many [transcendental functio
     \sin(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
     -->
 
-    ```hoon
+    ```hoon {% copy=true %}
     ++  sine
       ::  sin x = x - x^3/3! + x^5/5! - x^7/7! + x^9/9! - ...
       |=  x=@rs
@@ -665,7 +667,7 @@ The linear congruential random number generator produces a stream of random bits
 
 **`/gen/lcg.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 |=  n=@ud                 :: n is the number of bits to return
 =/  z  20.220.524         :: z is the seed
 =/  a  742.938.285        :: a is the multiplier
@@ -692,7 +694,7 @@ We use the LCG defined above, then chop out 23-bit slices using [`++rip`](/refer
 
 **`/gen/uniform.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 !:
 =<
 |=  n=@ud  :: n is the number of values to return
@@ -757,7 +759,7 @@ To calculate an arbitrary power of a floating-point number, we require a few tra
 
 **`/gen/normal.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 !:
 =<
 |=  n=@ud  :: n is the number of values to return

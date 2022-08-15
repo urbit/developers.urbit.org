@@ -187,7 +187,6 @@ Let's move on to consider cells.  For now we'll limit ourselves to simple cell t
 The `^` ket symbol is used to indicate the type for cells (i.e., the set of all cells).  We can use it for casting as we did with atom auras, like `@ux` and `@t`:
 
 ```hoon
-
 > ^-(^ [12 13])
 [12 13]
 
@@ -352,7 +351,7 @@ To _actually_ get the bunt value, use the [`^*` kettar](/reference/hoon/rune/ket
 
 One more way to validate against type is to use an example instead of the extracted mold.  This uses the [`^+` ketlus](/reference/hoon/rune/ket#-ketlus) rune similarly to how we used [`^-` kethep](/reference/hoon/rune/ket#--kethep) previously:
 
-```hoon
+```hoon {% copy=true %}
 ^+(1.000 100)
 ```
 
@@ -360,7 +359,7 @@ One more way to validate against type is to use an example instead of the extrac
 
 We can use more complex structures for molds though, including built-in types like `list`s and `tape`s.  (A `tape` represents text.)
 
-```hoon
+```hoon {% copy=true %}
 `(list @)`[104 101 108 108 111 32 77 97 114 115 33 ~]
 `tape``(list @)`[104 101 108 108 111 32 77 97 114 115 33 ~]
 
@@ -372,7 +371,7 @@ We can use more complex structures for molds though, including built-in types li
 
 -   Why does this mold conversion fail?
 
-     ```hoon
+     ```hoon {% copy=true %}
      `(list @ux)`[1 2 3 ~]
      ```
 
@@ -380,7 +379,7 @@ We can use more complex structures for molds though, including built-in types li
 
 We can have more complex molds as well:
 
-```hoon
+```hoon {% copy=true %}
 ::  [[from-ship to-ship] points]
 [[@p @p] @ud]
 ```
@@ -409,13 +408,13 @@ For reasons which will be elaborated in Trees, this is often employed as the so-
 
 For instance, if you wanted a gate to return one of an unsigned aura type, but no other type, you could define a type union thus:
 
-```hoon
+```hoon {% copy=true %}
 $?  [@ud @ux @ub ~]
 ```
 
 and use it in a gate:
 
-```hoon
+```hoon {% copy=true %}
 |=  [n=$?(@ud @ux @ub)]
 (add n 1)
 ```
@@ -436,7 +435,7 @@ dojo: hoon expression failed
 
 The irregular form of `$?` bucwut looks like this:
 
-```hoon
+```hoon {% copy=true %}
 ?(@ud @ux @ub)
 ```
 

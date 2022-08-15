@@ -255,7 +255,7 @@ By now you've used the `|=` rune to define several gates.  This rune is used to 
 
 The first subexpression after the `|=` defines the sample type.  Any faces used in this definition have the type declared for it in this definition.  Consider an addition generator `/gen/add.hoon`:
 
-```hoon
+```hoon {% copy=true %}
 |=  [a=@ b=@]
 ^-  @
 ?:  =(b 0)
@@ -489,7 +489,7 @@ nest-fail
 
 Nouns can be understood as binary trees in which each 'leaf' of the tree is an atom.  Let's look at a program that takes a noun and returns the number of leaves in it, i.e., the number of atoms.
 
-```hoon
+```hoon {% copy=true %}
 |=  a=*
 ^-  @
 ?@  a
@@ -518,7 +518,7 @@ We have been careful to use `-.a` and `+.a` only on a branch for which `a` is pr
 
 Here's a program that counts the number of cells in a noun:
 
-```hoon
+```hoon {% copy=true %}
 |=  a=*
 =|  c=@
 |-  ^-  @
@@ -580,7 +580,7 @@ To illustrate: let's say that `b` is the list of the atoms `11`, `22`, and `33`.
 
 Here's a program that takes atoms `a` and `b` and returns a list of all atoms from `a` to `b`:
 
-```hoon
+```hoon {% copy=true %}
 |=  [a=@ b=@]
 ^-  (list @)
 ?:  (gth a b)
@@ -607,7 +607,7 @@ Where are all the `i`s and `t`s???  For the sake of neatness the Hoon pretty-pri
 
 In fact, we could have left out the `i` and `t` faces in the program itself:
 
-```hoon
+```hoon {% copy=true %}
 |=  [a=@ b=@]
 ^-  (list @)
 ?:  (gth a b)
@@ -658,7 +658,7 @@ Hoon will infer that `b` either is or isn't null based on which `?~` branch is e
 
 `?~` wutsig is especially useful for working with lists.  Is a list null, or not?  You probably want to do different things based on the answer to that question.  Above, we used a pattern of `?:` wutcol and `?=` wuttis to answer the question, but `?~` wutsig will let us know in one step.  Here's a program using `?~` wutsig to calculate the number of items in a list of atoms:
 
-```hoon
+```hoon {% copy=true %}
 |=  a=(list @)
 =|  c=@
 |-  ^-  @
@@ -690,7 +690,7 @@ Save the above code as `/gen/lent.hoon` and run it from the Dojo:
 
 Here's a program that takes a noun and returns a list of its 'leaves' (atoms) in order of their appearance:
 
-```hoon
+```hoon {% copy=true %}
 |=  a=*
 =/  lis=(list @)  ~
 |-  ^-  (list @)

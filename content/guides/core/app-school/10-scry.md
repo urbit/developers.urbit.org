@@ -171,9 +171,9 @@ needs of your particular application and its clients.
 
 Here's a simple example agent with three scry endpoints:
 
-#### `peeker.hoon`
+**`/app/peeker.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  versioned-state

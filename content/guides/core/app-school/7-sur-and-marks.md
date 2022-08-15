@@ -40,7 +40,7 @@ It might also be able to send `update`s out to subscribers when these events
 occur. If our agent were named `%todo`, it might have the following structure in
 `/sur/todo.hoon`:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 |%
 +$  id  @
 +$  name  @t
@@ -233,7 +233,7 @@ necessary for our purposes here.
 Here's a very simple mark file for the `action` structure we created in the
 [previous section](#sur):
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /-  todo
 |_  =action:todo
 ++  grab

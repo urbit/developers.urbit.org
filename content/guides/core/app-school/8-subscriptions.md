@@ -340,9 +340,9 @@ files, and each agent.
 
 ### Types and marks
 
-#### `/sur/todo.hoon`
+**`/sur/todo.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 |%
 +$  id  @
 +$  name  @t
@@ -374,9 +374,9 @@ subscribe will be stored in `friends`, a `(set @p)`, also in the publisher's
 state. After that, there are the head-tagged unions of accepted poke `action`s
 and `update`s for subscribers.
 
-#### `/mar/todo/action.hoon`
+**`/mar/todo/action.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /-  todo
 |_  =action:todo
 ++  grab
@@ -393,9 +393,9 @@ and `update`s for subscribers.
 
 This is a very simple mark file for the `action` type.
 
-#### `/mar/todo/update.hoon`
+**`/mar/todo/update.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /-  todo
 |_  =update:todo
 ++  grab
@@ -414,9 +414,9 @@ This is a very simple mark file for the `update` type.
 
 ### Publisher
 
-#### `/app/todo.hoon`
+**`/app/todo.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /-  todo
 /+  default-agent, dbug
 |%

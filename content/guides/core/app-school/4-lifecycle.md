@@ -204,7 +204,7 @@ you'd test its version with a [wuthep](/reference/hoon/rune/wut#-wuthep)
 
 Here's a new agent to demonstrate the concepts we've discussed here:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -344,7 +344,7 @@ Next, we're going to modify our agent and change the structure of the state so
 we can test out the upgrade process. Here's a modified version, which you can
 again save in `/app/lifecycle.hoon` and `|commit %base`:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  versioned-state

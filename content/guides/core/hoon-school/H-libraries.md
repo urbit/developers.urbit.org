@@ -17,7 +17,7 @@ A generator gives us on-demand access to code, but it is helpful to load and use
 
 A conventional library import with [`/+` faslus](https://developers.urbit.org/reference/hoon/rune/fas#-faslus) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.  The first line of many generators will include an import line like this:
 
-```hoon
+```hoon {% copy=true %}
 /+  number-to-words
 ```
 
@@ -25,7 +25,7 @@ Subsequent invocations of the core require you to refer to it by name:
 
 **/gen/n2w.hoon**
 
-```hoon
+```hoon {% copy=true %}
 /+  number-to-words
 |=  n=@ud
 (to-words:eng-us:numbers:number-to-words n)
@@ -37,8 +37,10 @@ Since `/` fas runes don't work in the Dojo, you need to instead use the `-build-
 
 ```hoon
 > =ntw -build-file %/lib/number-to-words/hoon
+
 > one-hundred:numbers:ntw  
 100
+
 > (to-words:eng-us:numbers:ntw 19)
 [~ "nineteen"]
 ```
@@ -70,7 +72,7 @@ Watch for these being used in generators and libraries over the next few modules
 
 In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](./K-doors.md) to produce [randomness](./O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](/reference/hoon/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 |%
 +$  suit  ?(%hearts %spades %clubs %diamonds)
 +$  darc  [sut=suit val=@ud]
@@ -135,7 +137,7 @@ To create three types we're going to need, we use `+$` lusbuc, which is an arm u
 
 One way to get a feel for how a library works is to skim the `++` luslus arm-names before diving into any specific arm.  In this library, the arms are `++make-deck`, `++num-to-suit`, `++shuffle-deck`, and `++draw`.  These names should be very clear, with the exception of `++num-to-suit` (although you could hazard a guess at what it does).  Let's take a closer look at it first:
 
-```hoon
+```hoon {% copy=true %}
 ++  num-to-suit
   |=  val=@ud
   ^-  suit
@@ -149,7 +151,7 @@ One way to get a feel for how a library works is to skim the `++` luslus arm-nam
 
 `++num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `suit`.  The [`?+` wutlus](/reference/hoon/rune/wut#-wutlus) rune creates a structure to switch against a value with a default in case there are no matches.  (Here the default is to crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap).)  We then have options 1–4 which each resulting in a different suit.
 
-```hoon
+```hoon {% copy=true %}
 ++  make-deck
   ^-  deck
   =/  mydeck  *deck
@@ -171,7 +173,7 @@ One way to get a feel for how a library works is to skim the `++` luslus arm-nam
 
 [`?.` wutdot](/reference/hoon/rune/wut#-wutdot) may be an unfamiliar rune; it is simply the inverted version of `?:` wutcol, so the first branch is actually the if-false branch and the second is the if-true branch.  This is done to keep the “heaviest” branch at the bottom, which makes for more idiomatic and readable Hoon code.
 
-```hoon
+```hoon {% copy=true %}
 ++  draw
   |=  [n=@ud d=deck]
   ^-  [hand=deck rest=deck]
@@ -181,7 +183,7 @@ One way to get a feel for how a library works is to skim the `++` luslus arm-nam
 
 `++draw` takes two arguments:  `n`, an unsigned integer, and `d`, a `deck`.  The gate will produce a cell of two `decks` using [`++scag`](/reference/hoon/stdlib/2b#scag) and [`++slag`](/reference/hoon/stdlib/2b#slag). [`++scag`](/reference/hoon/stdlib/2b#scag) is a standard library gate produces the first `n` elements from a list, while [`++slag`](/reference/hoon/stdlib/2b#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element.  So we use `++scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `++slag` to produce the remaining deck in the tail of the cell as `rest`.
 
-```hoon
+```hoon {% copy=true %}
 ++  shuffle-deck
   |=  [unshuffled=deck entropy=@]
   ^-  deck
@@ -229,14 +231,15 @@ Unfortunately `/` fas runes don't work in the Dojo right now, so we need to buil
 
     We first import the library:
 
-    ```hoon
-    > =playing-cards -build-file /===/lib/playing-cards/hoon
+    ```hoon {% copy=true %}
+    =playing-cards -build-file /===/lib/playing-cards/hoon
     ```
 
     We then invoke it using the _entropy_ or system randomness.  (This is an unpredictable value we will use when we want a process to be random.  We will discuss it in detail when we talk about [subject-oriented programming](./O-subject.md).)
 
     ```hoon
     > =deck (shuffle-deck:playing-cards make-deck:playing-cards eny)
+
     > deck
     ~[
       [sut=%spades val=12]
@@ -444,19 +447,19 @@ The `++ford` arm of Clay builds Hoon code.  It provides [a number of runes](http
     
     1.  With the default name:
 
-        ```hoon
+        ```hoon {% copy=true %}
         /+  apple
         ```
 
     2.  With no name:
 
-        ```hoon
+        ```hoon {% copy=true %}
         /-  *orange
         ```
 
     3.  With a new name:
 
-        ```hoon
+        ```hoon {% copy=true %}
         /+  pomme=apple
         ```
 

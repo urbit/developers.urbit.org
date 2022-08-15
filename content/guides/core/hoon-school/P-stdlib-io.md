@@ -87,13 +87,13 @@ The [`++ram:re`](/reference/hoon/stdlib/4c#ramre) arm is used to convert these t
 
 Many generators build sophisticated output using `tank`s and the short-format cell builder `+`, e.g. in `/gen/azimuth-block/hoon`:
 
-```hoon
+```hoon {% copy=true %}
 [leaf+(scow %ud block)]~
 ```
 
 which is equivalent to
 
-```hoon
+```hoon {% copy=true %}
 ~[[%leaf (scow %ud block)]]
 ```
 
@@ -167,7 +167,7 @@ The result of the lookup on the previous line is adapted into a formatted text b
 
 For instance, how does `+cat` work?  Let's look at the structure of `/gen/cat/hoon`:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 ::  ConCATenate file listings
 ::
 ::::  /hoon/cat/gen
@@ -217,11 +217,11 @@ You can see how much of the generator is concerned with formatting the content o
 
 ### Producing Error Messages
                            
-Formal error messages in Urbit are built of tanks.  “A `tang` is a list of `tank`s, and a `tank` is a structure for printing data.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
+Formal error messages in Urbit are built of tanks.  “A `tang` is a list of `tank`s, and a `tank` is a structure for printing data.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
           
-One way to include an error message in your code is the [`~_` sigcab](/reference/hoon/rune/sig/#-sigcab) rune, described as a “user-formatted tracing printf”, or the [`~|` sigbar](/reference/hoon/rune/sig/#-sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:                                                         
+One way to include an error message in your code is the [`~_` sigcab](/reference/hoon/rune/sig/#-sigcab) rune, described as a “user-formatted tracing printf”, or the [`~|` sigbar](/reference/hoon/rune/sig/#-sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:                                                         
 
-```hoon
+```hoon {% copy=true %}
 |=  [a=@ud]
   ~_  leaf+"This code failed"
   !!
@@ -242,7 +242,7 @@ This section will briefly walk through an `%ask` generator to give you a taste o
 
 The code below is an `%ask` generator that checks if the user inputs `"blue"` when prompted [per a classic Monty Python scene](https://www.youtube.com/watch?v=L0vlQHxJTp0).  Save it as `/gen/axe.hoon` in your `%base` desk.
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /-  sole
 /+  generators
 =,  [sole generators]

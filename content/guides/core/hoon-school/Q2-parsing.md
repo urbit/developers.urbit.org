@@ -195,7 +195,7 @@ At this point we have two problems:  we are just getting raw `@t` atoms back, an
 
 However, to parse iteratively, we need to use the [`++knee`]() function, which takes a noun as the bunt of the type the `rule` produces, and produces a `rule` that recurses properly.  (You'll probably want to treat this as a recipe for now and just copy it when necessary.)
 
-```hoon
+```hoon {% copy=true %}
 |-(;~(plug prn ;~(pose (knee *tape |.(^$)) (easy ~))))
 ```
 

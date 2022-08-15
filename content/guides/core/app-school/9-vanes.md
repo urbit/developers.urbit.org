@@ -151,9 +151,9 @@ value) and sends Behn a `%wait` `task:behn`, setting a timer to go off `@dr` in
 the future. When the timer goes off, `on-arvo` will take the `%wake` `gift:behn`
 and print "Ding!" to the terminal.
 
-#### `ding.hoon`
+**`/app/ding.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  card  card:agent:gall

@@ -16,7 +16,7 @@ but have it in `/mar/journal/action.hoon`
 
 ## `%journal-action`
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /-  *journal
 /+  *journal
 |_  act=action
@@ -58,7 +58,7 @@ proper set of `++grad` methods.
 
 ## `%journal-update`
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /-  *journal
 /+  *journal
 |_  upd=update
