@@ -434,7 +434,7 @@ nest-fail
 dojo: hoon expression failed
 ```
 
-The irregular form of `%?` bucwut looks like this:
+The irregular form of `$?` bucwut looks like this:
 
 ```hoon
 ?(@ud @ux @ub)
