@@ -6,7 +6,7 @@ weight = 2
 In this lightning tutorial, we're going to build an app to create groups called
 Squad. It'll look like this:
 
-![squad screenshot](https://storage.googleapis.com/media.urbit.org/guides/quickstart/groups-app/squad-screenshot.png)
+![squad screenshot](https://media.urbit.org/guides/quickstart/groups-app/squad-screenshot.png)
 
 We'll be able to create either public groups or private groups. Private groups
 will have a whitelist of allowed ships, and public groups will have a blacklist

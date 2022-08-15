@@ -6,7 +6,7 @@ weight = 3
 In this lightning tutorial, we're going to build a simple chat app named Hut. It'll
 look like this:
 
-![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-screenshot.png)
+![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-v2-screenshot.png)
 
 We'll be able to create private chat rooms with members of our
 [Squad](https://urbit.org/applications/~pocwet/squad) groups, and communicate
