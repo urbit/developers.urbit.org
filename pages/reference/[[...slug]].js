@@ -117,14 +117,17 @@ const SidebarContent = ({ root, posts }) => {
   );
 
   const pageTree = (thisLink, tree, level = 0) => {
-    const firstCrumb = "/" + router.asPath.split("/").slice(1).join("/");
+    const firstCrumb =
+      "/" + router.asPath.split("/").slice(1).join("/").split("#")[0];
     const includesThisPage = firstCrumb.includes(thisLink);
     const isThisPage = router.asPath === thisLink;
     const [isOpen, toggleTree] = useState(includesThisPage);
     useEffect(() => {
       const handleRouteChange = () => {
-        const firstCrumb = "/" + router.asPath.split("/").slice(1).join("/");
+        const firstCrumb =
+          "/" + router.asPath.split("/").slice(1).join("/").split("#")[0];
         const includesThisPage = firstCrumb.includes(thisLink);
+        console.log(firstCrumb);
         toggleTree(includesThisPage);
       };
 
