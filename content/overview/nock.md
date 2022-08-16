@@ -1,6 +1,6 @@
 +++
 title = "Nock"
-weight = 30
+weight = 40
 +++
 
 

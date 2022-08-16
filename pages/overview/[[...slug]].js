@@ -22,6 +22,7 @@ import {
   Vere,
   Azimuth,
   Cryptography,
+  Dojo,
 } from "../../components/icons";
 import Footer from "../../components/Footer";
 import overviewTree from "../../cache/overview.json";
@@ -301,20 +302,36 @@ function Landing({ search }) {
               href="/overview/arvo"
             />
             <Card
+              icon={<Azimuth />}
+              title="Azimuth"
+              text="A general-purpose public-key infrastructure (PKI) on the Ethereum blockchain"
+              className="h-full"
+              href="/overview/azimuth"
+            />
+          </TwoUp>
+          <TwoUp>
+            <Card
               icon={<Hoon />}
               title="Hoon"
               text="A strictly typed functional programming language that compiles itself to Nock"
               className="h-full"
               href="/overview/hoon"
             />
-          </TwoUp>
-          <TwoUp>
             <Card
               icon={<Nock />}
               title="Nock"
               text="A low-level homoiconic combinator language"
               className="h-full"
               href="/overview/nock"
+            />
+          </TwoUp>
+          <TwoUp>
+            <Card
+              icon={<Dojo />}
+              title="Dojo"
+              text="Dojo is a system for operating on and transforming data in Urbit"
+              className="h-full"
+              href="/overview/dojo"
             />
             <Card
               icon={<Vere />}
@@ -323,16 +340,6 @@ function Landing({ search }) {
               className="h-full"
               href="/overview/vere"
             />
-          </TwoUp>
-          <TwoUp>
-            <Card
-              icon={<Azimuth />}
-              title="Azimuth"
-              text="A general-purpose public-key infrastructure (PKI) on the Ethereum blockchain"
-              className="h-full"
-              href="/overview/azimuth"
-            />
-            <div />
           </TwoUp>
         </Section>
       </SingleColumn>
