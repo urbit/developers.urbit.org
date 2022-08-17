@@ -113,3 +113,24 @@ q=15
 ##  Exercise:  Calculate a Factorial
 
 - Use `++reel` to produce a gate which calculates the factorial of a number.
+
+
+##  Aside on Wet Gates
+
+If you've already encountered [wet gates](./R-metals) and how they handle their sample, you may eventually circle back around to attempting to write statements which curry a wet gate.  For instance, here is an attempt to curry `++reel` which itself takes a gate (in this case `++add`) as an argument:
+
+```hoon
+> (curr (reel add `(list @)`[1 2 3 4 ~]))
+mull-grow
+-find.,.+13.b
+dojo: hoon expression failed
+```
+
+Unfortunately, `++cury` and `++curr` don't work with wet gates, and you'll see a `mull-grow` error.
+
+One solution is to “dry out” the wet gate using [`++bake`](https://developers.urbit.org/reference/hoon/stdlib/2b#bake):
+
+```hoon
+> ((curr (bake reel ,[(list @) _add]) add) `(list @)`[1 2 3 4 ~])
+10
+```
