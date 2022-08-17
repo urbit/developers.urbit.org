@@ -11,7 +11,8 @@ data in Urbit.
 ### Quickstart
 
 You can use the Dojo to run arbitrary Hoon code, as well as non-Hoon system
-commands.
+commands (which begin with `:`, `|`, `+`, `-`, `*`, and so forth, as
+described below).
 
 #### Math
 
@@ -285,6 +286,16 @@ fintyr-haldet-fassev-solhex
 Generators on desks other than `%base` can be run with the syntax
 `+desk!generator`.
 
+#### `-` - Threads
+
+Threads are transient Hoon processes which are typically invoked by agents,
+but can also be used in the Dojo.  They are located in `ted/`.
+
+```
+~your-urbit:dojo> -time s3
+s3..00a1
+```
+
 ### Variables
 
 You can use `=` to set an environment variable in Dojo, but there are
@@ -335,7 +346,62 @@ The current urbit ship. Read-only.
 0v27k.n4atp.fovm6.f7ggm.jdkn5.elct5.11tna.4qtid.g4so7.a1h6g.grp7u.qml4i.0ed1v.sl0r0.97d4b.6aepr.6v6qm.ls5ve.60kgb.j6521.2fqcb
 ```
 
+#### Inspecting Values
+
+You can prefix a value in the Dojo with `?` to inspect its type in some
+way.
+
+- `?` gives the type as printed by `hoon.hoon`.
+- `??` shows the type noun as-is.
+- `???` shows the `hoon` of the expression.
+- `????` does nothing.
+- `?????` uses an “x-ray” pretty-printer.
+
+```hoon
+> ? `@da`(add ~2000.1.1 ~d366)
+  @da
+~2001.1.1
+
+> ?? `@da`(add ~2000.1.1 ~d366)
+  [%atom %da ~]
+~2001.1.1
+
+> ??? `@da`(add ~2000.1.1 ~d366)
+[ %ktls
+  p=[%sand p=%da q=0]
+    q
+  [ %ktls
+    p=[%sand p=%$ q=0]
+      q
+    [ %cncl
+      p=[%wing p=~[%add]]
+        q
+      ~[
+        [%sand p=%da q=170.141.184.492.615.420.181.573.981.275.213.004.800]
+        [%sand p=%dr q=583.330.319.796.472.925.021.798.400]
+      ]
+    ]
+  ]
+]
+
+> ???? `@da`(add ~2000.1.1 ~d366)
+~2001.1.1
+
+> ????? `@da`(add ~2000.1.1 ~d366)
+  @da
+~2001.1.1
+```
+
 ### Troubleshooting
+
+#### `%dojo-peer-replaced`/`%drum-coup-fail`
+
+If you carry out a command that crashes the Dojo session (such as a bad
+scry), Dojo will automatically restart itself with a clean new session.
+You will lose some Dojo state, such as variables pinned with `=` or
+files built with `-build-thread`.
+
+#### `%dy-edit-busy`
 
 If you encounter `%dy-edit-busy` while entering commands, it is
 because your Dojo is blocked on a timer or an HTTP request. Type backspace
