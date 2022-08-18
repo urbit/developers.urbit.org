@@ -27,5 +27,5 @@ Arvo modules are also called 'vanes'. Arvo's vanes are:
 - [Dill](/reference/arvo/dill/dill): terminal driver.
 - [Eyre](/reference/arvo/eyre/eyre): HTTP server.
 - [Gall](/reference/arvo/gall/gall): application sandbox and manager.
-- [Iris](/reference/arvo/iris/iris-api): HTTP client.
-- [Jael](/reference/arvo/jael/jael-api): Public and private key storage.
+- [Iris](/reference/arvo/iris/iris): HTTP client.
+- [Jael](/reference/arvo/jael/jael): Public and private key storage.
