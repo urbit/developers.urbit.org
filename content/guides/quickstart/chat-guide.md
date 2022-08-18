@@ -941,18 +941,20 @@ Back in the Dojo again, we can now commit those files and install the app:
 |install our %hut
 ```
 
-The last thing to do is upload our front-end resources. Open a browser and go to
-`localhost:8080`. Login with the comet's web code, which you can get by running
-`+code` in the Dojo. Next, go to `localhost:8080/docket/upload` and it'll bring
-up the Docket Globulator tool. Select the `hut` desk from the drop-down menu,
-then navigate to `hut-ui/build` and select the whole folder. Finally, hit
-`glob!` and it'll upload our React app.
+The last thing to do is upload our front-end resources. Open a browser and go
+to `localhost:8080` (or just `localhost` on a Mac). Login with the comet's web
+code, which you can get by running `+code` in the Dojo. Next, go to
+`localhost:8080/docket/upload` (or `localhost/docket/upload` on a Mac) and
+it'll bring up the Docket Globulator tool. Select the `hut` desk from the
+drop-down menu, then navigate to `hut-ui/build` and select the whole folder.
+Finally, hit `glob!` and it'll upload our React app.
 
-If we return to `localhost:8080`, we should see a tile for the Hut app. If we
-click on it, it'll open our React front-end and we can start using it.
+If we return to `localhost:8080` (or `localhost` on a Mac), we should see a
+tile for the Hut app. If we click on it, it'll open our React front-end and we
+can start using it.
 
-One thing we can also do is publish the app so others can install it from us. To
-do so, just run the following command:
+One thing we can also do is publish the app so others can install it from us.
+To do so, just run the following command:
 
 ``` {% copy=true %}
 :treaty|publish %hut

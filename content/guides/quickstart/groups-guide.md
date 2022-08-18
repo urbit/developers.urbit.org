@@ -1267,9 +1267,10 @@ Back in the Dojo again, we can now commit those files and install the app:
 |install our %squad
 ```
 
-If we open a web browser, go to `localhost:8080`, and login with the password
-obtained by running `+code` in the Dojo, we should see a tile for the Tally app.
-If we click on it, it'll open our front-end and we can start using it.
+If we open a web browser, go to `localhost:8080` (or `localhost` on a Mac), and
+login with the password obtained by running `+code` in the Dojo, we should see
+a tile for the Tally app.  If we click on it, it'll open our front-end and we
+can start using it.
 
 One thing we can also do is publish the app so others can install it from us. To
 do so, just run the following command:
