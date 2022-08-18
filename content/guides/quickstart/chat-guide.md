@@ -1041,11 +1041,13 @@ and a new version of the agent itself, typically with an updated state. It thus
 behaves much like a state machine, performing the function `(events, old-state)
 => (effects, new-state)`.
 
-Hut uses a pub/sub pattern. Remote ships are able to subscribe to the huts for a
-group on our ship and receive updates such as new messages. They're also able to
-post new messages to a hut by poking our agent with a `%post` action. Likewise,
-we'll be able to subscribe to huts for groups on other ships and poke them to
-post messages. Remember, all Urbit ships are both clients and servers.
+Hut uses a [pub/sub
+pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern).
+Remote ships are able to subscribe to the huts for a group on our ship and
+receive updates such as new messages. They're also able to post new messages to
+a hut by poking our agent with a `%post` action. Likewise, we'll be able to
+subscribe to huts for groups on other ships and poke them to post messages.
+Remember, all Urbit ships are both clients and servers.
 
 There's three main agent arms we use for this:
 
