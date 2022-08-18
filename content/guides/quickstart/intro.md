@@ -27,11 +27,15 @@ on. Tally uses linked ring signatures so members of a group can verify votes but
 don't know who voted for what.
 
 These apps are quite basic and are intended as educational tools rather that
-full-featured apps for everyday use. For the front-ends, the chat app uses
-React, and the other two use Sail, which is Urbit's native server-side HTML
-language. Note these are not the only ways to build front-ends: you can also
-build CLI apps, desktop apps, mobile apps, or use any other browser-based
-front-end framework, and have them talk to Urbit ships.
+full-featured apps for everyday use. However, once you have these, they are
+yours, and you can build or modify them however you (or your team, your DAO,
+etc) would like.
+
+For the front-ends, the chat app uses React, and the other two
+use Sail, which is Urbit's native server-side HTML language. Note these are not
+the only ways to build front-ends: you can also build CLI apps, desktop apps,
+mobile apps, or use any other browser-based front-end framework, and have them
+talk to Urbit ships.
 
 If you'd like to try out these apps immediately, you can search for `~pocwet` in
 the search bar of your ship's homescreen, and install them from there.
