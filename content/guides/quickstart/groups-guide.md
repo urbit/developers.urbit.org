@@ -881,346 +881,319 @@ representation, similar to other server-side renderings like Clojure's Hiccup.
 Save the code below in `squad/app/squad/index.hoon`.
 
 ```hoon {% copy=true mode="collapse" %}
-/-  *tally, *squad
-|=  [bol=bowl:gall =by-group voted=(set pid) withdrawn=(set pid)]
+/-  *squad
+|=  [bol=bowl:gall =squads =acls =members =page]
+|^  ^-  octs
+%-  as-octs:mimes:html
+%-  crip
+%-  en-xml:html
 ^-  manx
-?.  .^(? %gu /(scot %p our.bol)/squad/(scot %da now.bol))
-  ;html
-    ;head
-      ;title: Tally
-      ;meta(charset "utf-8");
-      ;style
-        ;+  ;/
-            ^~
-            ^-  tape
-            %-  trip
-            '''
-            body {width: 100%; height: 100%; margin: 0;}
-            * {font-family: monospace}
-            div {
-              position: relative;
-              top: 50%;
-              left: 50%;
-              transform: translateX(-50%) translateY(-50%);
-              width: 40ch;
-            }
-            '''
-      ==
-    ==
-    ;body
-      ;div
-        ;h3: Squad app not installed
-        ;p
-          ;+  ;/  "Tally depends on the Squad app. ".
-                  "You can install it from "
-          ;a/"web+urbitgraph://~pocwet/squad": ~pocwet/squad
-        ==
-      ==
-    ==
-  ==
-=/  all-squads=(list (pair gid squad))
-  %+  sort
-    %~  tap  by
-    .^  (map gid squad)
-      %gx
-      (scot %p our.bol)
-      %squad
-      (scot %da now.bol)
-      %squads
-      /noun
-    ==
-  |=  [a=(pair gid squad) b=(pair gid squad)]
-  (aor title.q.a title.q.b)
-=/  has-polls
-  %+  skim  all-squads
-  |=  (pair gid squad)
-  (~(has by by-group) p)
-=/  our-life
-  .^  life
-    %j
-    (scot %p our.bol)
-    %life
-    (scot %da now.bol)
-    /(scot %p our.bol)
-  ==
-|^
 ;html
   ;head
-    ;title: Tally
+    ;title: squad
     ;meta(charset "utf-8");
     ;style
       ;+  ;/  style
     ==
   ==
   ;body
-    ;h1: tally
-    ;h2: subscriptions
-    ;form(method "post", action "/tally/watch")
-      ;select
-        =name      "gid"
-        =required  ""
-        ;*  (group-options-component %.n %.n)
-      ==
-      ;input(id "s", type "submit", value "watch");
-    ==
-    ;form(method "post", action "/tally/leave")
-      ;select
-        =name      "gid"
-        =required  ""
-        ;*  (group-options-component %.n %.y)
-      ==
-      ;input(id "u", type "submit", value "leave");
-    ==
-    ;h2: new poll
-    ;form(method "post", action "/tally/new")
-      ;label(for "n-gid"): group:
-      ;select
-        =id        "n-gid"
-        =name      "gid"
-        =required  ""
-        ;*  (group-options-component %.y %.y)
-      ==
-      ;br;
-      ;label(for "days"): duration:
-      ;input
-        =type         "number"
-        =id           "days"
-        =name         "days"
-        =min          "1"
-        =step         "1"
-        =required     ""
-        =placeholder  "days"
-        ;+  ;/("")
-      ==
-      ;br;
-      ;label(for "proposal"): proposal:
-      ;input
-        =type      "text"
-        =id        "proposal"
-        =name      "proposal"
-        =size      "50"
-        =required  ""
-        ;+  ;/("")
-      ==
-      ;br;
-      ;input(id "submit", type "submit", value "submit");
-    ==
-    ;h2: groups
-    ;*  ?~  has-polls
-          ~[;/("")]
-        (turn has-polls group-component)
+    ;+  ?.  =('generic' sect.page)
+          ;/("")
+        %+  success-component
+          ?:(success.page "success" "failed")
+        success.page
+    ;h2: join
+    ;+  join-component
+    ;h2: create
+    ;+  new-component
+    ;+  ?~  squads
+          ;/("")
+        ;h2: squads
+    ;*  %+  turn
+          %+  sort  ~(tap by squads)
+          |=  [a=[* =title *] b=[* =title *]]
+          (aor title.a title.b)
+        squad-component
   ==
 ==
 ::
-++  group-options-component
-  |=  [our=? in-subs=?]
-  ^-  marl
-  =/  subs=(set gid)
-    %-  ~(gas in *(set gid))
-    %+  turn
-      %+  skim  ~(tap by wex.bol)
-      |=  [[=wire *] *]
-      ?=([@ @ ~] wire)
-    |=  [[=wire *] *]
-    ^-  gid
-    ?>  ?=([@ @ ~] wire)
-    [(slav %p i.wire) i.t.wire]
-  =?  all-squads  &(our in-subs)
-    (skim all-squads |=((pair gid squad) |(=(our.bol host.p) (~(has in subs) p))))
-  =?  all-squads  &(!our in-subs)
-    (skim all-squads |=((pair gid squad) (~(has in subs) p)))
-  =?  all-squads  &(!our !in-subs)
-    (skip all-squads |=((pair gid squad) |(=(our.bol host.p) (~(has in subs) p))))
-  %+  turn  all-squads
-  |=  (pair gid squad)
+++  success-component
+  |=  [txt=tape success=?]
   ^-  manx
-  ;option(value "{=>(<host.p> ?>(?=(^ .) t))}_{(trip name.p)}"): {(trip title.q)}
+  ;span(class ?:(success "success" "failure")): {txt}
 ::
-++  group-component
-  |=  (pair gid squad)
+++  join-component
   ^-  manx
-  =/  polls=(list [=pid =poll =votes])
-    ~(tap by (~(got by by-group) p))
-  =/  open=@ud
-    %-  lent
-    %+  skim  polls
-    |=  [* =poll *]
-    (gth expiry.poll now.bol)
-  =/  title=tape
-    %+  weld  (trip title.q)
-    ?:  =(0 open)
-      ""
-    " ({(a-co:co open)})"
-  ;details(id "{=>(<host.p> ?>(?=(^ .) t))}_{(trip name.p)}", open "open")
-    ;summary
-      ;h3: {title}
+  ;form(method "post", action "/squad/join")
+    ;input
+      =type         "text"
+      =id           "join"
+      =name         "target-squad"
+      =size         "30"
+      =required     ""
+      =placeholder  "~sampel-palnet/squad-name"
+      ;+  ;/("")
     ==
-    ;*  (group-polls-component p polls)
-  ==
-::
-++  group-polls-component
-  |=  [=gid =(list [=pid =poll =votes])]
-  ^-  marl
-  %+  turn
-    %+  sort  list
-    |=  [a=[* =poll *] b=[* =poll *]]
-    (gth expiry.poll.a expiry.poll.b)
-  (cury poll-component gid)
-::
-++  poll-component
-  |=  [=gid =pid =poll =votes]
-  ^-  manx
-  ;table(id (a-co:co pid))
-    ;tr
-      ;th: proposal:
-      ;td: {(trip proposal.poll)}
-    ==
-    ;+  ?.  ?|  =(our.bol host.gid)
-                &(=(our.bol creator.poll) (gte expiry.poll now.bol))
-            ==
+    ;input(type "submit", value "join");
+    ;+  ?.  =('join' sect.page)
           ;/("")
-        ?:  (~(has in withdrawn) pid)
-          ;tr
-            ;th: withdraw:
-            ;td: pending
-          ==
-        ;tr
-          ;th: withdraw:
-          ;td
-            ;form(method "post", action "/tally/withdraw")
-              ;input
-                =type  "hidden"
-                =name  "gid"
-                =value  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
-                ;+  ;/("")
-              ==
-              ;input(type "hidden", name "pid", value (a-co:co pid));
-              ;input(type "submit", value "withdraw?");
-            ==
-          ==
-        ==
-    ;tr
-      ;th: creator:
-      ;td: {<creator.poll>}
-    ==
-    ;tr
-      ;th
-        ;+  ?:  (lte expiry.poll now.bol)
-              ;/  "closed:"
-            ;/  "closes:"
-      ==
-      ;+  (expiry-component expiry.poll)
-    ==
-    ;*  (result-component votes expiry.poll)
-    ;+  ?:  ?|  (lte expiry.poll now.bol)
-                (~(has in voted) pid)
-                !(~(has in participants.ring-group.poll) [our.bol our-life])
-            ==
-          ;/  ""
-        ;tr
-          ;th: vote:
-          ;td
-            ;form(method "post", action "/tally/vote")
-              ;input
-                =type   "hidden"
-                =name   "gid"
-                =value  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
-                ;+  ;/("")
-              ==
-              ;input(type "hidden", name "pid", value (a-co:co pid));
-              ;input(id "yea", type "submit", name "choice", value "yea");
-              ;input(id "nay", type "submit", name "choice", value "nay");
-            ==
-          ==
-        ==
+        %+  success-component
+          ?:(success.page "request sent" "failed")
+        success.page
   ==
 ::
-++  result-component
-  |=  [=votes expiry=@da]
-  |^  ^-  marl
-  =/  [yea=@ud nay=@ud]
-    %+  roll  ~(val by votes)
-    |=  [(pair ? *) y=@ud n=@ud]
-    ?:  p  [+(y) n]  [y +(n)]
-  =/  [y-per=@ud n-per=@ud]
-    :-  (percent yea (add yea nay))
-    (percent nay (add yea nay))
-  :~  ^-  manx
-      ;tr
-        ;th: yea:
-        ;td: {(a-co:co yea)} ({(a-co:co y-per)}%)
-      ==
-      ^-  manx
-      ;tr
-        ;th: nay:
-        ;td: {(a-co:co nay)} ({(a-co:co n-per)}%)
-      ==
-      ^-  manx
-      ?:  (gth expiry now.bol)
-        ;/  ""
-      ;tr
-        ;th: passed:
-        ;td
-          ;+  ?:  (gth yea nay)
-                ;/  "yes"
-              ;/  "no"
-        ==
-      ==
-  ==
-  ++  percent
-    |=  (pair @ud @ud)
-    ^-  @ud
-    ?:  =(0 p)
-      0
-    %-  div
-    :_  2
-    %-  need
-    %-  toi:fl
-    %+  mul:fl
-      (sun:fl 100)
-    (div:fl (sun:fl p) (sun:fl q))
-  --
-::
-++  expiry-component
-  |=  d=@da
+++  new-component
   ^-  manx
-  ;td
-    ;+  ?:  (lte d now.bol)
-          =/  =tarp  (yell (sub now.bol d))
-          ?:  (gte d.tarp 1)
-            ;/  "{(a-co:co d.tarp)} days ago"
-          ?:  (gte h.tarp 1)
-            ;/  "{(a-co:co h.tarp)} hours ago"
-          ;/  "{(a-co:co m.tarp)} minutes ago"
-        =/  =tarp  (yell (sub d now.bol))
-        ?:  (gte d.tarp 1)
-          ;/  "{(a-co:co d.tarp)} days"
-        ?:  (gte h.tarp 1)
-          ;/  "{(a-co:co h.tarp)} hours"
-        ;/  "{(a-co:co m.tarp)} minutes"
+  ;form(class "new-form", method "post", action "/squad/new")
+    ;input
+      =type         "text"
+      =id           "new"
+      =name         "title"
+      =size         "30"
+      =required     ""
+      =placeholder  "My squad"
+      ;+  ;/("")
+    ==
+    ;br;
+    ;label(for "new-pub-checkbox"): Public:
+    ;input
+      =type   "checkbox"
+      =id     "new-pub-checkbox"
+      =name   "public"
+      =value  "true"
+      ;+  ;/("")
+    ==
+    ;br;
+    ;input(type "submit", value "create");
+    ;+  ?.  =('new' sect.page)
+          ;/("")
+        %+  success-component
+          ?:(success.page "success" "failed")
+        success.page
   ==
 ::
+++  squad-component
+  |=  [=gid =squad]
+  ^-  manx
+  =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
+  =/  summary=manx
+    ;summary
+      ;h3: {(trip title.squad)}
+    ==
+  =/  content=manx
+    ;div
+      ;p: id: {<host.gid>}/{(trip name.gid)}
+      ;+  ?.  =(our.bol host.gid)
+            ;/("")
+          (squad-title-component gid squad)
+      ;+  (squad-leave-component gid)
+      ;+  ?.  =(our.bol host.gid)
+            ;/("")
+          (squad-public-component gid squad)
+      ;+  (squad-acl-component gid squad)
+      ;+  (squad-members-component gid squad)
+    ==
+  ?:  &(?=(^ gid.page) =(gid u.gid.page))
+    ;details(id gid-str, open "open")
+      ;+  summary
+      ;+  content
+    ==
+  ;details(id gid-str)
+    ;+  summary
+    ;+  content
+  ==
+::
+++  squad-title-component
+  |=  [=gid =squad]
+  ^-  manx
+  =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
+  ;form(method "post", action "/squad/title")
+    ;input(type "hidden", name "gid", value gid-str);
+    ;label(for "title:{gid-str}"): title:
+    ;input
+      =type         "text"
+      =id           "title:{gid-str}"
+      =name         "title"
+      =size         "30"
+      =required     ""
+      =placeholder  "My Squad"
+      ;+  ;/("")
+    ==
+    ;input(type "submit", value "change");
+    ;+  ?.  &(=('title' sect.page) ?=(^ gid.page) =(gid u.gid.page))
+          ;/("")
+        %+  success-component
+          ?:(success.page "success" "failed")
+        success.page
+  ==
+::
+++  squad-public-component
+  |=  [=gid =squad]
+  ^-  manx
+  =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
+  ;form(method "post", action "/squad/{?:(pub.squad "private" "public")}")
+    ;input(type "hidden", name "gid", value gid-str);
+    ;input(type "submit", value ?:(pub.squad "make private" "make public"));
+    ;+  ?.  &(=('public' sect.page) ?=(^ gid.page) =(gid u.gid.page))
+          ;/("")
+        %+  success-component
+          ?:(success.page "success" "failed")
+        success.page
+  ==
+::
+++  squad-leave-component
+  |=  =gid
+  ^-  manx
+  =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
+  ;form
+    =class     ?:(=(our.bol host.gid) "delete-form" "leave-form")
+    =method    "post"
+    =action    ?:(=(our.bol host.gid) "/squad/delete" "/squad/leave")
+    =onsubmit  ?.(=(our.bol host.gid) "" "return confirm('Are you sure?');")
+    ;input(type "hidden", name "gid", value gid-str);
+    ;input(type "submit", value ?:(=(our.bol host.gid) "delete" "leave"));
+  ==
+::
+++  squad-acl-component
+  |=  [=gid =squad]
+  ^-  manx
+  =/  acl=(list @p)  ~(tap in (~(get ju acls) gid))
+  =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
+  =/  summary=manx
+    ;summary
+      ;h4: {?:(pub.squad "blacklist" "whitelist")} ({(a-co:co (lent acl))})
+    ==
+  =/  kick-allow-form=manx
+    ;form(method "post", action "/squad/{?:(pub.squad "kick" "allow")}")
+      ;input(type "hidden", name "gid", value gid-str);
+      ;input
+        =type         "text"
+        =id           "acl-diff:{gid-str}"
+        =name         "ship"
+        =size         "30"
+        =required     ""
+        =placeholder  "~sampel-palnet"
+        ;+  ;/("")
+      ==
+      ;input(type "submit", value ?:(pub.squad "blacklist" "whitelist"));
+      ;+  ?.  &(=('kick' sect.page) ?=(^ gid.page) =(gid u.gid.page))
+            ;/("")
+          %+  success-component
+            ?:(success.page "success" "failed")
+          success.page
+    ==
+  =/  ships=manx
+    ;div(id "acl:{gid-str}")
+      ;*  %+  turn
+            %+  sort  acl
+            |=([a=@p b=@p] (aor (cite:^title a) (cite:^title b)))
+          |=(=ship (ship-acl-item-component gid ship pub.squad))
+    ==
+  ?.  &(=('kick' sect.page) ?=(^ gid.page) =(gid u.gid.page))
+    ;details
+      ;+  summary
+      ;div
+        ;+  ?.  =(our.bol host.gid)
+              ;/("")
+            kick-allow-form
+        ;+  ships
+      ==
+    ==
+  ;details(open "open")
+    ;+  summary
+    ;div
+      ;+  ?.  =(our.bol host.gid)
+            ;/("")
+          kick-allow-form
+      ;+  ships
+    ==
+  ==
+::
+++  ship-acl-item-component
+  |=  [=gid =ship pub=?]
+  ^-  manx
+  ?.  =(our.bol host.gid)
+    ;span(class "ship-acl-span"): {(cite:^title ship)}
+  =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
+  ;form
+    =class   "ship-acl-form"
+    =method  "post"
+    =action  "/squad/{?:(pub "allow" "kick")}"
+    ;input(type "hidden", name "gid", value gid-str);
+    ;input(type "hidden", name "ship", value <ship>);
+    ;input(type "submit", value "{(cite:^title ship)} ×");
+  ==
+::
+++  squad-members-component
+  |=  [=gid =squad]
+  ^-  manx
+  =/  members=(list @p)  ~(tap in (~(get ju members) gid))
+  ;details
+    ;summary
+      ;h4: members ({(a-co:co (lent members))})
+    ==
+    ;div
+      ;*  %+  turn
+            %+  sort  members
+            |=([a=@p b=@p] (aor (cite:^title a) (cite:^title b)))
+          |=  =ship
+          ^-  manx
+          ;span(class "ship-members-span"): {(cite:^title ship)}
+    ==
+  ==
 ++  style
   ^~
-  ^-  tape
   %-  trip
   '''
-  * {font-family: monospace}
-  h3 {display: inline}
-  table {margin: 1em}
-  th {text-align: right; vertical-align: middle;}
-  td {padding-left: 1em; vertical-align: middle;}
-  td form {margin: 0}
-  label {
-    display: inline-block;
-    margin-right: 1em;
-    min-width: 9ch;
-    vertical-align: middle;
+  body {
+    background-color: white;
+    color: black;
   }
-  select {min-width: 8ch}
-  #s, #u {margin-left: 1ch}
-  #submit {margin-top: 1em}
-  #yea {margin-right: 1ch}
+  * {font-family: monospace}
+  summary > * {display: inline}
+  details > div {margin: 1em 2ch}
+  label {padding-right: 1ch}
+  .success {
+    background-color: #bfee90;
+    color: green;
+    padding: 3px;
+    border: 1px solid green;
+    border-radius: 2px;
+  }
+  .failure {
+    background-color: #ab4642;
+    padding: 3px;
+    color: white;
+    border: 1px solid darkred;
+    border-radius: 2px;
+
+  }
+  .success:not(:first-child), .failure:not(:first-child) {
+    margin-left: 1ch
+  }
+  .delete-form > input:hover {
+    background-color: #ab4642;
+    color: white;
+    border-color: #ab4642;
+  }
+  .ship-acl-form {display: inline}
+  .ship-acl-form > input {
+    background-color: white;
+    border: 1px solid lightgrey;
+  }
+  .ship-acl-form > input:hover {
+    background-color: #ab4642;
+    color: white;
+    border-color: #ab4642;
+  }
+  .ship-acl-form:not(:last-child) {
+    padding-right: 1ch;
+  }
+  .ship-members-span:not(:last-child), .ship-acl-span:not(:last-child) {
+    padding-right: 1ch;
+  }
+  .new-form {line-height: 300%}
+  input[type=text] + input[type=submit] {margin-left: 1ch}
   '''
 --
 ```
