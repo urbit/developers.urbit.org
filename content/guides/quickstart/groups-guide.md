@@ -1,5 +1,5 @@
 +++
-title = "Build a Groups app"
+title = "Build a Groups App"
 weight = 2
 +++
 
