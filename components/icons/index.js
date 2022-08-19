@@ -12,5 +12,6 @@ export { default as MintFiller } from "./mintfiller";
 export { default as Nock } from "./nock";
 export { default as Peer } from "./peer";
 export { default as Ringsig } from "./ringsig";
+export { default as Squad } from "./squad";
 export { default as Vere } from "./vere";
 export { default as Dojo } from "./dojo";
