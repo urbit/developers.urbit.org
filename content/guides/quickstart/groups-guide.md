@@ -1238,7 +1238,27 @@ and add the following:
 
 ### Put it together
 
-Our app is now complete, so let's try it out. In the Dojo of our comet,
+Our app is now complete. In the `squad` working directory, we should have the
+following files, as well as the dependencies we copied in at the beginning:
+
+```
+squad
+├── app
+│   ├── squad
+│   │   └── index.hoon
+│   └── squad.hoon
+├── desk.bill
+├── desk.docket-0
+├── mar
+│   └── squad
+│       ├── did.hoon
+│       └── do.hoon
+├── sur
+│   └── squad.hoon
+└── sys.kelvin
+```
+
+Let's now try it out. In the Dojo of our comet,
 we'll create a new desk by forking from an existing one:
 
 ``` {% copy=true %}
