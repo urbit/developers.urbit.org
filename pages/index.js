@@ -14,6 +14,7 @@ import Link from "next/link";
 import {
   Comms,
   Ringsig,
+  Squad,
   Database,
   Distribution,
   Functional,
@@ -100,12 +101,21 @@ export default function Home({ search, posts }) {
             <h2 className="pt-12">Quickstart: Lightning Tutorials</h2>
             <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
               <Card
+                icon={<Squad />}
+                title="Groups Application"
+                text="Build an app to create public or private groups"
+                className="basis-1/2"
+                href="/guides/quickstart/groups-guide"
+              />
+              <Card
                 icon={<Comms />}
                 title="Encrypted Chat Application"
                 text="Build your own secure comms tool"
                 className="basis-1/2"
                 href="/guides/quickstart/chat-guide"
               />
+            </div>
+            <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
               <Card
                 icon={<Ringsig />}
                 title="Ring Signature Voting App"
@@ -113,6 +123,7 @@ export default function Home({ search, posts }) {
                 className="basis-1/2"
                 href="/guides/quickstart/voting-guide"
               />
+              <div className="basis-1/2" />
             </div>
           </Section>
           <Section className="flex flex-col space-y-12">
