@@ -13,7 +13,7 @@ export default function Ringsig({ className }) {
         cy="40"
         r="24"
         className="stroke-white dark:stroke-black"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </svg>
   );

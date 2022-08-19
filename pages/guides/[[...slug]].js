@@ -22,6 +22,7 @@ import {
 import {
   Comms,
   Ringsig,
+  Squad,
   MintFiller,
   guideDefault,
 } from "../../components/icons";
@@ -241,12 +242,21 @@ function Landing({ search }) {
           </p>
           <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
             <Card
+              icon={<Squad />}
+              title="Groups Application"
+              text="Build an app to create public or private groups"
+              className="basis-1/2"
+              href="/guides/quickstart/groups-guide"
+            />
+            <Card
               icon={<Comms />}
               title="Encrypted Chat Application"
               text="Build your own secure comms tool"
               className="basis-1/2"
               href="/guides/quickstart/chat-guide"
             />
+          </div>
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
             <Card
               icon={<Ringsig />}
               title="Ring Signature Voting App"
@@ -254,6 +264,7 @@ function Landing({ search }) {
               className="basis-1/2"
               href="/guides/quickstart/voting-guide"
             />
+            <div className="basis-1/2" />
           </div>
         </Section>
         <Section short className="space-y-6">
