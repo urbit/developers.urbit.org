@@ -186,7 +186,7 @@ The first line uses the faslus (`/+`) Ford rune to import
 `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them
 into the subject of our agent so they're available for use. You can read more
 about Ford runes in the [Ford section of the vane
-documenation](/reference/arvo/ford/ford#ford-runes).
+documentation](/reference/hoon/rune/fas).
 
 Next, we've added an extra core. Notice how it's not explicitly composed, since
 the build system will do that for us. In this case we've just added a single
