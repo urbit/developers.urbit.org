@@ -1,3 +1,8 @@
++++
+title = "Solitaire Cipher"
+weight = 60
++++
+
 #   Solitaire Cipher
 
 ##  Challenge:  Solitaire Encryption Cipher
