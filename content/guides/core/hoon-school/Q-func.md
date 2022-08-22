@@ -70,19 +70,23 @@ One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it su
 
 ##  Working Across `list`s
 
-turn
-The turn function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of atoms:
+The `turn` function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of atoms:
 
+```hoon
 > (turn `(list @)`~[11 22 33 44] |=(a=@ +(a)))
 ~[12 23 34 45]
+```
 Or to double each item in a list of atoms:
 
+```hoon
 > (turn `(list @)`~[11 22 33 44] |=(a=@ (mul 2 a)))
 ~[22 44 66 88]
-turn is Hoon's version of Haskell's map.
+```
+`turn` is Hoon's version of Haskell's map.
 
 We can rewrite the Caesar cipher program using turn:
 
+```hoon
 |=  [a=@ b=tape]
 ^-  tape
 ?:  (gth a 25)
@@ -98,7 +102,7 @@ We can rewrite the Caesar cipher program using turn:
   ?.  (gth c 'z')  c
   (sub c 26)
 c
-
+```
 
 [`++roll`](/reference/hoon/stdlib/2b#roll) and [`++reel`](/reference/hoon/stdlib/2b#reel) are used to left-fold and right-fold a list, respectively.  To fold a list is similar to [`++turn`](/reference/hoon/stdlib/2b#turn), except that instead of yielding a `list` with the values having had each applied, `++roll` and `++reel` produce an accumulated value.
 
