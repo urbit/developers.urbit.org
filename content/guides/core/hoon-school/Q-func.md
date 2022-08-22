@@ -70,7 +70,7 @@ One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it su
 
 ##  Working Across `list`s
 
-The `turn` function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of atoms:
+The [`++turn`](/reference/hoon/stdlib/2b#turn) function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of atoms:
 
 ```hoon
 > (turn `(list @)`~[11 22 33 44] |=(a=@ +(a)))
