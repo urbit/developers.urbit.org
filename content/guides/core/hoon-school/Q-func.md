@@ -82,7 +82,7 @@ Or to double each item in a list of atoms:
 > (turn `(list @)`~[11 22 33 44] |=(a=@ (mul 2 a)))
 ~[22 44 66 88]
 ```
-`turn` is Hoon's version of Haskell's map.
+`++turn` is Hoon's version of Haskell's map.
 
 We can rewrite the Caesar cipher program using turn:
 
