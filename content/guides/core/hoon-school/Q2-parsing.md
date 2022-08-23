@@ -199,7 +199,7 @@ However, to parse iteratively, we need to use the [`++knee`](/reference/hoon/std
 |-(;~(plug prn ;~(pose (knee *tape |.(^$)) (easy ~))))
 ```
 
-There is an example of a calculator [in the parsing guide](/guides/additional/hoon/parsing#recursive-parsers) that's worth a read at this point.  It uses `++knee` to scan in a set of numbers at a time.
+There is an example of a calculator [in the parsing guide](/guides/additional/parsing#recursive-parsers) that's worth a read at this point.  It uses `++knee` to scan in a set of numbers at a time.
 
 #### Example:  Parse a String of Numbers
 
