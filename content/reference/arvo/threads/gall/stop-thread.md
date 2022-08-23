@@ -61,9 +61,9 @@ Here we've added one last card to `on-poke` to stop the thread and a little extr
          %-  (slog leaf+"Thread failed: {(trip p.err)}" q.err)
          `this
            %thread-done
-         ?:  =(q.cage.sign *vase)
+         ?:  =(*vase q.cage.sign)
            %-  (slog leaf+"Thread cancelled nicely" ~)
-         `this
+           `this
          =/  res  (trip !<(term q.cage.sign))
          %-  (slog leaf+"Result: {res}" ~)
          `this
