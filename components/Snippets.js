@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { formatDate, formatTime, formatTimeZone } from "../lib/lib";
+import {
+  formatDate,
+  formatTime,
+  formatTimeZone,
+} from "@urbit/foundation-design-system";
 
 export function Name({ children, className }) {
   return <b className={`font-normal ${className || ""}`}>{children}</b>;

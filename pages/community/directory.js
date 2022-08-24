@@ -6,13 +6,13 @@ import {
   SingleColumn,
   Section,
   TwoUp,
+  getAllPosts,
 } from "@urbit/foundation-design-system";
 import Sigil from "../../components/Sigil";
 import Card from "../../components/Card";
 import Meta from "../../components/Meta";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { getAllPosts } from "../../lib/lib";
 export default function Directory({ search, directory }) {
   const post = {
     title: "Directory",

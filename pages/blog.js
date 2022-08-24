@@ -7,7 +7,7 @@ import {
   SingleColumn,
   Section,
 } from "@urbit/foundation-design-system";
-import { getAllPosts } from "../lib/lib";
+import { getAllPosts } from "@urbit/foundation-design-system";
 import Footer from "../components/Footer";
 
 export default function Blog({ posts, search }) {

@@ -1,11 +1,9 @@
-import { Component, createRef } from "react";
-// import { glossary } from "../lib/glossary";
+import { Component } from "react";
 import { withRouter } from "next/router";
 import debounce from "lodash.debounce";
 import Downshift from "downshift";
 import ob from "urbit-ob";
 import Sigil from "./Sigil";
-// import levenSort from "leven-sort";
 
 class Search extends Component {
   constructor(props) {

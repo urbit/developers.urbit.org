@@ -1,6 +1,9 @@
-import { BackgroundImage } from "@urbit/foundation-design-system";
+import {
+  BackgroundImage,
+  generateDisplayDate,
+  formatDate,
+} from "@urbit/foundation-design-system";
 import Link from "next/link";
-import { generateDisplayDate, formatDate } from "../lib/lib";
 
 export default function BlogPreview({ post }) {
   const date = generateDisplayDate(post.date);

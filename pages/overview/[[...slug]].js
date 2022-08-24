@@ -9,25 +9,19 @@ import {
   Section,
   SingleColumn,
   TwoUp,
+  getPage,
+  getPreviousPost,
+  getNextPost,
 } from "@urbit/foundation-design-system";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import Card from "../../components/Card";
 import Sidebar from "../../components/Sidebar";
 import ContentArea from "../../components/ContentArea";
 import Pagination from "../../components/Pagination";
-import {
-  Arvo,
-  Hoon,
-  Nock,
-  Vere,
-  Azimuth,
-  Cryptography,
-  Dojo,
-} from "../../components/icons";
-import Footer from "../../components/Footer";
+import { Arvo, Hoon, Nock, Vere, Azimuth, Dojo } from "../../components/icons";
 import overviewTree from "../../cache/overview.json";
 import { join } from "path";
-import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";
 
 export default function Overview({
   posts,
