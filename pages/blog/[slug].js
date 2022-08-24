@@ -1,11 +1,3 @@
-import {
-  getPostBySlug,
-  getAllPosts,
-  getNextPost,
-  getPreviousPost,
-  formatDate,
-  generateDisplayDate,
-} from "../../lib/lib";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -20,6 +12,12 @@ import {
   SingleColumn,
   Section,
   TwoUp,
+  getPostBySlug,
+  getAllPosts,
+  getNextPost,
+  getPreviousPost,
+  formatDate,
+  generateDisplayDate,
 } from "@urbit/foundation-design-system";
 
 export default function BlogPost({

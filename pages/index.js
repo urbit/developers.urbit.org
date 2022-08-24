@@ -3,12 +3,14 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import IndexCard from "../components/IndexCard";
 import NewsletterSignup from "../components/NewsletterSignup";
-
 import {
   Container,
   SingleColumn,
   Section,
   TwoUp,
+  formatDate,
+  generateDisplayDate,
+  getAllPosts,
 } from "@urbit/foundation-design-system";
 import Link from "next/link";
 import {
@@ -24,8 +26,6 @@ import {
 } from "../components/icons";
 import Card from "../components/Card";
 import TallCard from "../components/TallCard";
-import { getAllPosts } from "../lib/lib";
-import { formatDate, generateDisplayDate } from "../lib/lib";
 
 export default function Home({ search, posts }) {
   return (
