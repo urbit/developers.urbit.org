@@ -220,7 +220,7 @@ function Landing({ search }) {
               encrypted P2P network, timer, application sandbox, software
               distribution mechanism, built-in identity layer (Urbit ID), and
               HTTP server. This means that you can build and distribute
-              production-grade applications without dealing Linux, databases,
+              production-grade applications without dealing with Linux, databases,
               authentication systems, devops, or proprietary app stores.
             </p>
             <p>
