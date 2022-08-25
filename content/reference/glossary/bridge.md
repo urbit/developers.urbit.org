@@ -21,7 +21,7 @@ Below are some important functions of Bridge.
   the planet through Bridge.
 - **Spawn Planets/Stars:** Spawn a child from a
   [galaxy](/reference/glossary/galaxy) or a [star](/reference/glossary/star). If
-  on [L2](/reference/glossary/l2), you can generate planet invite codes.
+  on [L2](/reference/glossary/rollups), you can generate planet invite codes.
 - **Accept sponsorship request:** - Accept a sponsorship request to a galaxy or star.
 - **Transfer:** Send the Urbit identity to another Ethereum address or a new
   [Master Ticket](/reference/glossary/master-ticket).
@@ -37,7 +37,7 @@ Below are some important functions of Bridge.
   address.
 - **Set network keys:** Set new authentication and encryption keys used on your
   Arvo ship. Will change your Arvo keyfile.
-- **Transfer to L2**: Transfer an [L1](/reference/glossary/l1) point to L2.
+- **Transfer to L2**: Transfer an [L1](/reference/glossary/azimuth) point to L2.
 
 ### Further Reading
 
