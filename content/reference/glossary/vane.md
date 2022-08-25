@@ -10,10 +10,10 @@ A **vane** is an [Arvo](/reference/glossary/arvo) kernel module that performs es
 
 - [Ames](/reference/glossary/ames), the peer-to-peer networking vane.
 - [Behn](/reference/glossary/behn), the timer vane.
-- [Clay](/reference/glossary/clay), the filesystem and revision-control vane.
+- [Clay](/reference/glossary/clay), the filesystem, revision-control and build
+  system vane.
 - [Dill](/reference/glossary/dill), the terminal-driver vane.
 - [Eyre](/reference/glossary/eyre), the HTTP vane.
-- [Ford](/reference/glossary/ford), the build-system vane.
 - [Gall](/reference/glossary/gall), the application vane.
 - [Iris](/reference/glossary/iris), the server HTTP vane.
 - [Jael](/reference/glossary/jael), the security vane.
