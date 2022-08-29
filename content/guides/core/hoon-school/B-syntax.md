@@ -543,7 +543,7 @@ Carefully map how the runes in that statement relate to each other, and notice h
 
 ##  Exercise:  “Absolute” Value (Around Ten)
 
-Implement a version of the absolute value function, _|x|_, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this $|x|_{10}$.)
+Implement a version of the absolute value function, _|x|_, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this $|x|_{10}$ .)
 
 <img src="https://latex.codecogs.com/svg.image?|x|_{10}=\begin{cases}&space;x-10,&space;&&space;x&space;>&space;10&space;\\&space;0,&space;&&space;10-x&space;\le&space;10&space;\end{cases}" title="https://latex.codecogs.com/svg.image?|x|_{10}=\begin{cases} x-10, & x > 10 \\ 0, & 10-x \le 10 \end{cases}" />
 
