@@ -52,7 +52,7 @@ The most general data category in Hoon is a _noun_.  This is just about as broad
 
 Progress?  We can say, in plain English, that
 
-- An _atom_ is a nonzero integer number (0–+∞), e.g. `42`.
+- An _atom_ is a non-negative integer number (0 to +∞), e.g. `42`.
 - A _cell_ is a pair of two nouns, written in square brackets, e.g. `[0 1]`.
 
 _Everything_ in Hoon (and Nock, and Urbit) is a noun.  The Urbit OS itself is a noun.  So given any noun, the Urbit VM simply applies the Nock rules to change the noun in well-defined mechanical ways.
