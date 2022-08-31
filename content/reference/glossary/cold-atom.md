@@ -12,6 +12,7 @@ atom](/reference/glossary/warm-atom), whose type is a general
 
 ### Further Reading
 
+- [Atoms and Strings](/reference/hoon/rune/constants): A guide to atoms.
 - [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon
   programming language.
   - [“Hoon Syntax”](/guides/core/hoon-school/B-syntax#nouns): A Hoon School
