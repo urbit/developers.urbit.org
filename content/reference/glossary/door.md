@@ -10,4 +10,4 @@ A **door** is a [core](/reference/glossary/core) the `payload` of which is a cel
 ### Further Reading
 
 - [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon programming language.
-  - [Lesson 1.8: Doors](/guides/core/hoon-school/K-doors): A Hoon School lesson that discusses doors.
+  - [Doors lesson](/guides/core/hoon-school/K-doors): A Hoon School lesson that discusses doors.

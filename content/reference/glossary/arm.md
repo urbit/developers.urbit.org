@@ -5,7 +5,13 @@ title = "Arm"
 category = "hoon-nock"
 +++
 
-An **arm** is a Hoon expression encoded as a noun. You can find them as part of a [core](/reference/glossary/core)
+An **arm** is a named Hoon expression in a [core](/reference/glossary/core). A
+core contains one or more arms. If a core is thought of as an object in an
+object-oriented language, its arms can be thought of as its methods.
+
+Arms are one of the two types of [wing](/reference/glossary/wing) in the
+[subject](/reference/glossary/subject), the other being a
+[leg](/reference/glossary/leg).
 
 ### Further Reading
 

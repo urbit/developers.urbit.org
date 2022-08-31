@@ -9,7 +9,7 @@ category = "hoon-nock"
 
 When you boot your [ship](/reference/glossary/ship), Vere passes your [Azimuth](/reference/glossary/azimuth) [keyfile](/reference/glossary/keyfile) into the Arvo state, allowing a connection to the [Ames](/reference/glossary/ames) network.
 
-Vere consists of two processes that communicate via a socket: a daemon process in charge of managing I/O channels, and a worker process that acts as a Nock interpreter that is instructed by the daemon process. Currently the worker is written in C, but a new worker written in Java, called [Jacque](/reference/glossary/jacque), is under development.
+Vere consists of two processes that communicate via a socket: a daemon process in charge of managing I/O channels, and a worker process that acts as a Nock interpreter that is instructed by the daemon process.
 
 ### Further Reading
 
