@@ -5,7 +5,7 @@ category = "arvo"
 +++
 
 A **moon** is a kind of [ship](/reference/glossary/ship) on the [Arvo](/reference/glossary/arvo) network. Moons
-are child identities issued by [planets](/reference/glossary/planet), [stars](/reference/glossary/stars), and
+are child identities issued by [planets](/reference/glossary/planet), [stars](/reference/glossary/star), and
 [galaxies](/reference/glossary/galaxy). A moon is not independent; it is always subordinate to
 the ship that issued it. By this we mean that the networking keys for the moon
 are controlled by the parent, and may be altered or revoked at any time by that parent.

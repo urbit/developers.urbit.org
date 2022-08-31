@@ -1,6 +1,6 @@
 +++
-title = "Shell"
-weight = 2
+title = "Dojo"
+weight = 50
 +++
 
 The Dojo is our shell; it processes system commands and returns output. It's a

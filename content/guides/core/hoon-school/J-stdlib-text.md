@@ -48,6 +48,7 @@ It's very helpful to use the `@ux` aura if you are trying to see the internal st
 ```hoon
 > `@ux`'HELLO'
 0x4f.4c4c.4548
+
 > `@ub`'HELLO'
 0b100.1111.0100.1100.0100.1100.0100.0101.0100.1000
 ```
@@ -124,7 +125,7 @@ dojo: hoon expression failed
 
 For instance, imagine creating a function to ensure that only a certain [classical element](https://en.wikipedia.org/wiki/Classical_element) can pass through a gate.  (This gate is superfluous given how molds work, but it shows off a point.)
 
-```hoon
+```hoon {% copy=true %}
 |=  input=@t
 =<
 (validate-element input)
@@ -159,7 +160,7 @@ String interpolation puts the result of an expression directly into a `tape`:
 "HelloMars!"
 ```
 
-```hoon
+```hoon {% copy=true %}
 |=  [t1=tape t2=tape]
 ^-  tape
 (weld t1 t2)
@@ -322,13 +323,13 @@ To _tokenize_ text is to break it into pieces according to some rule.  For insta
 
 Hoon has a sophisticated parser built into it that [we'll use later](./P-stdlib-io.md).  There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other.  We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
 
-#### Exercise: Break Text at a Space
+##  Exercise: Break Text at a Space
 
 Hoon has a very powerful text parsing engine, built to compile Hoon itself.  However, it tends to be quite obscure to new learners.  We can build a simple one using `list` tools.
 
 - Compose a gate which parses a long `tape` into smaller `tape`s by splitting the text at single spaces.  For example, given a `tape`
  
-    ```hoon
+    ```hoon {% copy=true %}
     "the sky above the port was the color of television tuned to a dead channel"
     ```
     
@@ -340,13 +341,13 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself.  How
     
     To complete this, you'll need [`++scag`](/reference/hoon/stdlib/2b#scag) and [`++slag`](/reference/hoon/stdlib/2b#slag) (who sound like villainous henchmen from a children's cartoon).
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  ex=tape
     =/  index  0  
     =/  result  *(list tape)  
     |-  ^-  (list tape)  
     ?:  =(index (lent ex))  
-      result  
+      (weld result ~[`tape`(scag index ex)])
     ?:  =((snag index ex) ' ')  
       $(index 0, ex `tape`(slag +(index) ex), result (weld result ~[`tape`(scag index ex)]))    
     $(index +(index))
@@ -361,6 +362,7 @@ If you have a Hoon value and you want to convert it into text as such, use `++sc
     ```hoon
     > `@t`(scot %ud 54.321)
     '54.321'
+
     > `@t`(scot %ux 54.000)  
     '0xd2f0'
     ```
@@ -368,6 +370,7 @@ If you have a Hoon value and you want to convert it into text as such, use `++sc
     ```hoon
     > (scot %p ~sampel-palnet)
     ~.~sampel-palnet
+
     > `@t`(scot %p ~sampel-palnet)
     '~sampel-palnet'
     ```
@@ -377,13 +380,16 @@ If you have a Hoon value and you want to convert it into text as such, use `++sc
 - [`++sane`](/reference/hoon/stdlib/4b#sane) checks the validity of a possible text string as a `knot` or `term`.  The usage of `++sane` will feel a bit strange to you:  it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`).  (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.)  `++sane` is also not infallible yet.
 
     ```hoon
-    > ((sane %ta) 'ångstrom')  
-    %.n  
-    > ((sane %ta) 'angstrom')  
-    %.y  
-    > ((sane %tas) 'ångstrom')  
-    %.n  
-    > ((sane %tas) 'angstrom')  
+    > ((sane %ta) 'ångstrom')
+    %.n
+
+    > ((sane %ta) 'angstrom')
+    %.y
+
+    > ((sane %tas) 'ångstrom')
+    %.n
+
+    > ((sane %tas) 'angstrom')
     %.y
     ```
 
@@ -393,8 +399,8 @@ If you have a Hoon value and you want to convert it into text as such, use `++sc
     2.  Not every sequence of bits has a conversion to a text representation.  That is, ASCII and Unicode have structural rules that limit the possible conversions which can be made.  If things don't work, you'll get a `%bad-text` response.
 
         ```hoon
-        > 0x1234.5678.90ab.cdef  
-        0x1234.5678.90ab.cdef  
+        > 0x1234.5678.90ab.cdef
+        0x1234.5678.90ab.cdef
         [%bad-text "[39 239 205 171 144 120 86 52 92 49 50 39 0]"]
         ```
 
@@ -410,11 +416,12 @@ If you have a Hoon value and you want to convert it into text as such, use `++sc
     ```hoon
     > ((sane %tas) 'hello')  
     %.y
+    
     > ((sane %tas) 'hello mars')
     %.n
     ```
 
-#### Exercise:  Building Your Own Library
+##  Exercise:  Building Your Own Library
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
@@ -442,15 +449,19 @@ You can use these to differentiate messages when debugging or otherwise auditing
 
 ```hoon
 > ~&  'Hello Mars!'  ~  
+'Hello Mars!'
 ~  
->   'Hello Mars!'  
+
 > ~&  >  'Hello Mars!'  ~  
+>   'Hello Mars!'  
 ~  
->>  'Hello Mars!'  
+
 > ~&  >>  'Hello Mars!'  ~  
+>>  'Hello Mars!'  
 ~  
->>> 'Hello Mars!'  
+
 > ~&  >>>  'Hello Mars!'  ~  
+>>> 'Hello Mars!'  
 ~
 ```
 
@@ -467,7 +478,7 @@ So, more formally, a `%say` generator is a `cell`. The head of that cell is the 
 
 Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
 
-```hoon
+```hoon {% copy=true %}
 :-  %say
 |=  *
 :-  %noun
@@ -479,13 +490,13 @@ Run it with:
 ```hoon
 > |commit %base
 
-> +say
+> +add
 42
 ```
 
 Notice that we used no argument, something that is possible with `%say` generators but impossible with naked generators. We'll explain that in a moment. For now, let's focus on the code that is necessary to make something a `%say` generator.
 
-```hoon
+```hoon {% copy=true %}
 :-  %say
 ```
 
@@ -493,7 +504,7 @@ Recall that the rune `:-` produces a cell, with the first following expression a
 
 The expression above creates a cell with `%say` as the head. The tail is the `|= *` expression on the line that follows.
 
-```hoon
+```hoon {% copy=true %}
 |=  *
 :-  %noun
 (add 40 2)
@@ -520,11 +531,11 @@ Naked generators are limited because they have no way of accessing data that exi
 
 This entire structure is a noun, which is why `*` is a valid sample if we wish to not use any of the information here in a generator. But let's look at each of these three elements, piece by piece.
 
-#### Exercise:  The Magic 8-Ball
+##  Exercise:  The Magic 8-Ball
 
 This Magic 8-Ball generator returns one of a variety of answers in response to a call.  In its entirety:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 !:
 :-  %say
 |=  [[* eny=@uvJ *] *]
@@ -532,7 +543,7 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 ^-  tape
 =/  answers=(list tape)
   :~  "It is certain."
-      "It is decidedly so."****
+      "It is decidedly so."
       "Without a doubt."
       "Yes - definitely."
       "You may rely on it."
@@ -557,16 +568,7 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 (snag val answers)
 ```
 
-Most of the work is being done by these two lines:
-
-```hoon
-=/  rng  ~(. og eny)
-=/  val  (rad:rng (lent answers))
-```
-
-`~(. og eny)` starts a random number generator with a seed from the current entropy.  A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed).  Here we pull the subject of [`++og`](/reference/hoon/stdlib/3d#og), the randomness core in Hoon, to start the RNG.  This is an uncommon turn of phrase, but will become more clear in the next lesson, on doors.
-
-Then we slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy.  Right now we don't know quite enough to interpret this line, but we'll revisit the `++og` aspect of this `%say` generator in [the lesson on subject-oriented-programming](./O-subject.md).  For now, just know that it allows us to produce a random (unpredictable) integer using `++rad:rng`.  We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
 
 Since this is a `%say` generator, we can run it without arguments:
 
@@ -575,47 +577,14 @@ Since this is a `%say` generator, we can run it without arguments:
 "Ask again later."
 ```
 
-#### Exercise:  Dice Roll
 
-Let's look at an example that uses all three parts. Save the code below in a file called `dice.hoon` in the `/gen` directory of your `%base` desk.
-
-```hoon
-:-  %say
-|=  [[now=@da eny=@uvJ bec=beak] [n=@ud ~] [bet=@ud ~]]
-:-  %noun
-[(~(rad og eny) n) bet]
-```
-
-This is a very simple dice program with an optional betting functionality. In the code, our sample specifies faces on all of the Arvo data, meaning that we can easily access them. We also require the argument `[n=@ud ~]`, and allow the _optional_ argument `[bet=@ud ~]`.
-
-We can run this generator like so:
-
-```unknown
-> +dice 6, =bet 2
-[4 2]
-
-> +dice 6
-[5 0]
-
-> +dice 6
-[2 0]
-
-> +dice 6, =bet 200
-[0 200]
-
-> +dice
-nest-fail
-```
-
-We get a different value from the same generator between runs, something that isn't possible with a naked generator. Another novelty is the ability to choose to not use the second argument.
-
-#### Exercise:  Using the Playing Card Library
+##  Exercise:  Using the Playing Card Library
 
 Recall the playing card library `/lib/playing-cards.hoon` in `/lib`.  Let's use it with a `%say` generator.
 
 **`/gen/cards.hoon`**
 
-```hoon
+```hoon {% copy=true %}
 /+  playing-cards
 :-  %say
 |=  [[* eny=@uv *] *]
@@ -631,7 +600,7 @@ Below `/+  playing-cards`, you have the standard `say` generator boilerplate tha
 
 - Roll-Your-Own-`++snag`:
 
-    ```hoon
+    ```hoon {% copy=true %}
     ::  snag.hoon
     ::
     |=  [a=@ b=(list @)]

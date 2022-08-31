@@ -1,32 +1,33 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import BlogPreview from "../components/BlogPreview";
-import EventPreview from "../components/EventPreview";
+import IndexCard from "../components/IndexCard";
+import NewsletterSignup from "../components/NewsletterSignup";
 import {
   Container,
   SingleColumn,
   Section,
   TwoUp,
-} from "foundation-design-system";
+  formatDate,
+  generateDisplayDate,
+  getAllPosts,
+} from "@urbit/foundation-design-system";
 import Link from "next/link";
 import {
   Comms,
+  Ringsig,
+  Squad,
   Database,
   Distribution,
   Functional,
   Identity,
   Interface,
-  MintFiller,
   Peer,
 } from "../components/icons";
 import Card from "../components/Card";
 import TallCard from "../components/TallCard";
-import { getAllPosts, getAllEvents } from "../lib/lib";
-import { eventKeys } from "../lib/constants";
-import { DateTime } from "luxon";
 
-export default function Home({ search, whatsNew }) {
+export default function Home({ search, posts }) {
   return (
     <div>
       <Head>
@@ -100,18 +101,29 @@ export default function Home({ search, whatsNew }) {
             <h2 className="pt-12">Quickstart: Lightning Tutorials</h2>
             <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
               <Card
+                icon={<Squad />}
+                title="Groups Application"
+                text="Build an app to create public or private groups"
+                className="basis-1/2"
+                href="/guides/quickstart/groups-guide"
+              />
+              <Card
                 icon={<Comms />}
                 title="Encrypted Chat Application"
                 text="Build your own secure comms tool"
                 className="basis-1/2"
                 href="/guides/quickstart/chat-guide"
               />
-              {/* <Card
-                icon={<MintFiller />}
-                title="Lorem Ipsum Dolorem"
-                text="Roll your own encrypted chat application in minutes"
+            </div>
+            <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
+              <Card
+                icon={<Ringsig />}
+                title="Ring Signature Voting App"
+                text="Build an anonymous voting app for groups"
                 className="basis-1/2"
-              /> */}
+                href="/guides/quickstart/voting-guide"
+              />
+              <div className="basis-1/2" />
             </div>
           </Section>
           <Section className="flex flex-col space-y-12">
@@ -165,15 +177,15 @@ export default function Home({ search, whatsNew }) {
             </p>
             <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4 pb-4">
               <Card
-                title="Developer Events"
-                text="We regularly host livestreams, meetups, and hackathons"
-                href="/community/events"
-                callout="View Events"
+                title="Directory"
+                text="There are many bright minds happy to answer your questions."
+                href="/community/directory"
+                callout="View Directory"
                 className="basis-1/2"
               />
               <Card
                 title="Opportunities"
-                text="Urbit is growing and there are many opportunities to find a job, grant, or funding for your great idea"
+                text="Urbit is growing and there are many opportunities to find a job, grant, or funding for your great idea."
                 href="/community/opportunities"
                 callout="Explore Opportunities"
                 className="basis-1/2"
@@ -182,44 +194,43 @@ export default function Home({ search, whatsNew }) {
 
             <Link href="/community" passHref>
               <a className="button-lg bg-wall-600 text-white w-fit">
-                Community Pages
+                Explore the Community
               </a>
             </Link>
           </Section>
           <Section className="flex flex-col space-y-8">
-            <h2>What's New</h2>
+            <h2>Blog</h2>
             <TwoUp>
-              {whatsNew.slice(0, 2).map((e) => {
-                if (e.type === "event") {
-                  return (
-                    <EventPreview event={e} className="basis-1/2 h-full" />
-                  );
-                } else if (e.type === "blog") {
-                  return (
-                    <Link href={`/blog/${e.slug}`}>
-                      <div className="cursor-pointer bg-wall-100 rounded-xl basis-1/2 h-full">
-                        <div className="flex flex-col p-6 justify-between items-between h-full relative">
-                          <img
-                            className="rounded-xl w-full flex-1 object-cover"
-                            src={e.extra.image}
-                            style={{ aspectRatio: "16 / 9" }}
-                          />
-                          <div className="grow-1 shrink-0 flex flex-col h-full min-h-0 pt-4">
-                            <h3 className="mb-2">{e.title}</h3>
-                            <div className="flex flex-col xl:flex-row justify-between">
-                              <p className="truncate text-sm">
-                                {e.description}
-                              </p>
-                              <p className="text-sm shrink-0">{e.date}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                }
+              {posts.slice(0, 2).map((e) => {
+                const date = generateDisplayDate(e.date);
+                return (
+                  <IndexCard
+                    slug={`/blog/${e.slug}`}
+                    title={e.title}
+                    image={e.extra.image}
+                    author={e?.extra?.author || ""}
+                    ship={e?.extra?.ship || ""}
+                    content={
+                      <p className="text-wall-500 type-sub shrink-0">
+                        {formatDate(date)}
+                      </p>
+                    }
+                  />
+                );
               })}
             </TwoUp>
+          </Section>
+
+          <Section narrow>
+            <div className="measure">
+              <h3 className="pb-2">[battery payload]</h3>
+              <p class="pb-6">The Urbit Developer Newsletter</p>
+            </div>
+            <NewsletterSignup />
+            <p class="pt-6">
+              Get monthly developer news on releases, applications, events, and
+              more.
+            </p>
           </Section>
         </SingleColumn>
         <Footer />
@@ -270,20 +281,10 @@ export async function getStaticProps() {
     ["title", "slug", "date", "description", "extra"],
     "blog",
     "date"
-  ).map((e) => ({ ...e, type: "blog" }));
-  const events = getAllEvents(eventKeys, "community/events").map((e) => ({
-    ...e,
-    type: "event",
-  }));
-  const whatsNew = [...posts, ...events].sort((a, b) => {
-    return DateTime.fromISO(a.date || a.ends) >
-      DateTime.fromISO(b.date || b.ends)
-      ? -1
-      : 1;
-  });
+  );
   return {
     props: {
-      whatsNew,
+      posts,
     },
   };
 }

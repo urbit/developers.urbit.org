@@ -3,8 +3,8 @@ export default function Functional({ className = "" }) {
     <svg
       width="64"
       height="65"
-      viewBox="0 0 64 65"
       fill="none"
+      viewBox="0 0 64 65"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
@@ -13,7 +13,7 @@ export default function Functional({ className = "" }) {
         y1="58.3634"
         x2="55.8175"
         y2="33.6907"
-        stroke="#24221E"
+        className="stroke-wall-600"
         stroke-dasharray="2 2"
       />
       <line
@@ -21,7 +21,7 @@ export default function Functional({ className = "" }) {
         y1="33.9482"
         x2="31.8594"
         y2="58.0905"
-        stroke="#24221E"
+        className="stroke-wall-600"
         stroke-dasharray="2 2"
       />
       <line
@@ -29,7 +29,7 @@ export default function Functional({ className = "" }) {
         y1="9.70914"
         x2="7.72494"
         y2="34.3819"
-        stroke="#24221E"
+        className="stroke-wall-600"
         stroke-dasharray="2 2"
       />
       <line
@@ -37,7 +37,7 @@ export default function Functional({ className = "" }) {
         y1="34.1245"
         x2="31.6828"
         y2="9.98223"
-        stroke="#24221E"
+        className="stroke-wall-600"
         stroke-dasharray="2 2"
       />
       <line
@@ -45,7 +45,7 @@ export default function Functional({ className = "" }) {
         y1="41"
         x2="31.5"
         y2="51"
-        stroke="#24221E"
+        className="stroke-wall-600"
         stroke-dasharray="2 2"
       />
       <line
@@ -53,7 +53,7 @@ export default function Functional({ className = "" }) {
         y1="16"
         x2="31.5"
         y2="25"
-        stroke="#24221E"
+        className="stroke-wall-600"
         stroke-dasharray="2 2"
       />
       <line
@@ -61,7 +61,7 @@ export default function Functional({ className = "" }) {
         y1="33.5"
         x2="14"
         y2="33.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
         stroke-dasharray="2 2"
       />
       <line
@@ -69,14 +69,24 @@ export default function Functional({ className = "" }) {
         y1="33.5"
         x2="40"
         y2="33.5"
-        stroke="#24221E"
+        className="stroke-wall-600"
         stroke-dasharray="2 2"
       />
-      <circle cx="7.5" cy="33.1001" r="5" fill="white" stroke="black" />
-      <circle cx="31.1001" cy="9.5" r="5" fill="white" stroke="black" />
-      <circle cx="54.7" cy="33.1001" r="5" fill="white" stroke="black" />
-      <circle cx="31.1001" cy="56.7" r="5" fill="white" stroke="black" />
-      <circle cx="31.5" cy="33.5" r="8" stroke="black" />
+      <circle cx="7.5" cy="33.1001" r="5" className="fill-white stroke-black" />
+      <circle cx="31.1001" cy="9.5" r="5" className="fill-white stroke-black" />
+      <circle
+        cx="54.7"
+        cy="33.1001"
+        r="5"
+        className="fill-white stroke-black"
+      />
+      <circle
+        cx="31.1001"
+        cy="56.7"
+        r="5"
+        className="fill-white stroke-black"
+      />
+      <circle cx="31.5" cy="33.5" r="8" className="stroke-black" />
     </svg>
   );
 }

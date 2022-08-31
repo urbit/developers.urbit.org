@@ -17,7 +17,7 @@ A **vane** is an [Arvo](/reference/glossary/arvo) kernel module that performs es
 - [Gall](/reference/glossary/gall), the application vane.
 - [Iris](/reference/glossary/iris), the server HTTP vane.
 - [Jael](/reference/glossary/jael), the security vane.
-- [Khan](/reference/glossary/kahn), the control vane.
+- [Khan](/reference/glossary/khan), the control vane.
 
 ### Further Reading
 

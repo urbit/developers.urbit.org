@@ -1,5 +1,5 @@
 +++
-title = "8. React app logic"
+title = "7. React app logic"
 weight = 8
 +++
 
@@ -12,7 +12,7 @@ object we previously setup, and ignore UI components and other helper functions.
 In the previous section we just mentioned the connection `status` field of our
 state. Here's the full state of our App:
 
-```js
+```js {% copy=true %}
 state = {
   entries: [], // list of journal entries for display
   drafts: {}, // edits which haven't been submitted yet

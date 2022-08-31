@@ -5,7 +5,7 @@ nodes = [165, 180]
 objectives = ["Review subject-oriented programming as a design paradigm.", "Discuss stateful v. stateless applications and path dependence.", "Enumerate Hoon's tools for dealing with state:  `=.` tisdot, `=^` tisket, `;<` micgal, `;~` micsig.", "Defer a computation."]
 +++
 
-_This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.  This module does not cover core genericity and variance, which will be explained in [a later module](./R-metals.md)._
+_This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.  This module does not cover core genericity and variance, which will be explained in [a later module](/guides/core/hoon-school/R-metals)._
 
 
 ##  The Subject
@@ -25,7 +25,7 @@ Generally speaking, the following rune families allow you to do certain things t
 - `%` cen runes pull arms in cores
 - `=` tis runes modify the subject by introducing or replacing values
 
-Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model.  We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](./R-metals.md) as well.
+Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model.  We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](/guides/core/hoon-school/R-metals) as well.
 
 ### Accessing the Subject
 
@@ -76,7 +76,7 @@ Here we have created a gate with `[1 2]` as its context that takes in an `@` and
 
 `=>` tisgar (and its reversed version `=<` tisgal) are used extensively to put cores into the context of other cores.
 
-```hoon
+```hoon {% copy=true %}
 =>
 |%
 ++  foo
@@ -211,7 +211,7 @@ Lastly, let's check the subject of the last arm in `hoon.hoon` (as of June 2022)
 
 This confirms for us, then, that `hoon.hoon` consists of six nested cores, with one inside the payload of the next, with the `hoon-version` core most deeply nested.
 
-#### Exercise:  Explore `hoon.hoon`
+##  Exercise:  Explore `hoon.hoon`
 
 - Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in its parent core or core(s) that have the parent core put in its context via the `=>` or `=<` runes.
 
@@ -264,7 +264,7 @@ Here are a couple of new runes for modifying the subject and chaining computatio
 
 In this section, we will write a door that can act as a bank account with the ability to withdraw, deposit, and check the account's balance.  This door replaces the sample of the door with the new values as each transaction proceeds.
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 :-  %say
 |=  *
 :-  %noun
@@ -289,7 +289,7 @@ In this section, we will write a door that can act as a bank account with the ab
 
 We start with the three boilerplate lines we have in every `%say` generator:
 
-```hoon
+```hoon {% copy=true %}
 :-  %say
 |=  *
 :-  %noun
@@ -297,7 +297,7 @@ We start with the three boilerplate lines we have in every `%say` generator:
 
 In the above code chunk, we're creating a cell.  The head of this cell is `%say`.  The tail is a gate (`|=  *`) that produces another cell (`:-  %noun`) with a head of the mark of a the kind of data we are going to produce, a `%noun`; the tail of the second cell is the rest of the program.
 
-```hoon
+```hoon {% copy=true %}
 =<  =~  new-account
       (deposit 100)
       (deposit 100)
@@ -310,7 +310,7 @@ In this code above, we're going to compose two runes using `=<`, which has inver
 
 The [`=~` tissig](/reference/hoon/rune/tis#-tissig) rune composes multiple expressions together; we use it here to make the code more readable.  We take `new-account` and use that as the subject for the call to `deposit`.  `deposit` and `withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion.  The final reference is to `balance`, which is the account balance contained in the [core](/reference/glossary/core/) that we examine below.
 
-```hoon
+```hoon {% copy=true %}
 |%
 ++  new-account
   |_  balance=@ud
@@ -328,7 +328,7 @@ We've chosen here to wrap our door in its own core to emulate the style of progr
 
 Each of these arms produces a gate which takes an `@ud` argument.  Each of these gates has a similar bit of code inside:
 
-```hoon
+```hoon {% copy=true %}
 +>.$(balance (add balance amount))
 ```
 
@@ -336,7 +336,7 @@ Each of these arms produces a gate which takes an `@ud` argument.  Each of these
 
 It's important to notice that the sample, `balance`, is stored as part of the door rather than existing outside of it.
 
-#### Exercise:  Bank Account
+##  Exercise:  Bank Account
 
 - Modify the `%say` generator above to accept a `@ud` unsigned decimal dollar amount and a `?(%deposit %withdraw)` term and returns the result of only that operation on the starting balance of the bank account.  (Note that this will only work once on the door, and the state will not persist between generator calls.)
 
@@ -355,7 +355,7 @@ We have some more tools available for managing deferred or chained computations,
 
 ### `++og` Randomness
 
-A _random number generator_ provides a stream of calculable but unpredictable values from some _distribution_.  In [a later lesson](./S-math.md), we explain how random numbers can be generated from entropy; for now, let's see what's necessary to use such a random-number generator.
+A _random number generator_ provides a stream of calculable but unpredictable values from some _distribution_.  In [a later lesson](/guides/core/hoon-school/S-math), we explain how random numbers can be generated from entropy; for now, let's see what's necessary to use such a random-number generator.
 
 An RNG emits a sequence of values given a starting _seed_.  For instance, a very simple RNG could emit digits of the number _π_ given a seed which is the number of digits to start from.
 
@@ -389,7 +389,7 @@ Since the `rng` starts from the same seed value every single time, both of the n
 
 The Magic 8-Ball returns one of a variety of answers in response to a call.  In its entirety:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 !:
 :-  %say
 |=  [[* eny=@uvJ *] *]
@@ -397,7 +397,7 @@ The Magic 8-Ball returns one of a variety of answers in response to a call.  In 
 ^-  tape
 =/  answers=(list tape)
   :~  "It is certain."
-      "It is decidedly so."****
+      "It is decidedly so."
       "Without a doubt."
       "Yes - definitely."
       "You may rely on it."
@@ -422,29 +422,27 @@ The Magic 8-Ball returns one of a variety of answers in response to a call.  In 
 (snag val answers)
 ```
 
-Most of the “work” is being done by these two lines:
+Zoom in on these lines:
 
 ```hoon
 =/  rng  ~(. og eny)
 =/  val  (rad:rng (lent answers))
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy.  A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed).  Here we pull the subject of [`++og`](/reference/hoon/stdlib/3d#og), the randomness core in Hoon, to start the RNG.
+`~(. og eny)` starts a random number generator with a seed from the current entropy.  A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed).  Here we pull the subject of [`++og`](/reference/hoon/stdlib/3d#og), the randomness core in Hoon, to start the RNG.  An RNG like `++og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
 
-Then we slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
-
-Since this is a `%say` generator, we can run it without arguments:
+We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
 
 ```hoon
 > +magic-8
 "Ask again later."
 ```
 
-#### Tutorial:  Dice Roll
+##  Tutorial:  Dice Roll
 
 Let's look at an example that uses all three parts. Save the code below in a file called `dice.hoon` in the `/gen` directory of your `%base` desk.
 
-```hoon
+```hoon {% copy=true %}
 :-  %say
 |=  [[now=@da eny=@uvJ bec=beak] [n=@ud ~] [bet=@ud ~]]
 :-  %noun
@@ -455,7 +453,7 @@ This is a very simple dice program with an optional betting functionality. In th
 
 We can run this generator like so:
 
-```unknown
+```hoon
 > +dice 6, =bet 2
 [4 2]
 

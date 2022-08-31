@@ -1,21 +1,25 @@
 +++
 title = "Build a Chat App"
-weight = 1
+weight = 3
 +++
 
 In this lightning tutorial, we're going to build a simple chat app named Hut. It'll
 look like this:
 
-![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-screenshot.png)
+![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-v2-screenshot.png)
 
-We'll be able to create private chat rooms with the friends we specify, and
-communicate instantly and securely. Hut will be quite simple, it'll have a very
-basic UI and only store the last 50 messages in each chat, but it's a good
-demonstration of app development, networking, and front-end integration on
-Urbit.
+We'll be able to create private chat rooms with members of our
+[Squad](https://urbit.org/applications/~pocwet/squad) groups, and communicate
+instantly and securely. Hut will be quite simple, it'll have a very basic UI and
+only store the last 50 messages in each chat, but it's a good demonstration of
+app development, networking, and front-end integration on Urbit.
 
 If you'd like to check out the finished app, you can install it from
-`~pocwet/hut`.
+`~pocwet/hut` by either searching for `~pocwet` in the search bar of your ship's
+homescreen, or by running `|install ~pocwet %hut`. Hut depends on the
+[Squad](https://urbit.org/applications/~pocwet/squad) app, which we wrote in
+[another lightning tutorial](/guides/quickstart/groups-guide), so you should
+install that first with `|install ~pocwet %squad`.
 
 The app source is available in the [`docs-examples` repo on
 Github](https://github.com/urbit/docs-examples), in the `chat-app` folder. It
@@ -26,7 +30,14 @@ has three folders inside:
    symlinked, so if you're copying them you'll need to do `cp -rL`.
 3. `react-frontend`: the React front-end files.
 
-## Install binary
+## Quick walk-through
+
+This section will walk through putting together and publishing the app from
+scratch, but will be light on commentary about how the app works. For more
+details on that, you can refer to the [Code commentary](#code-commentary)
+section below.
+
+### Install binary
 
 If you've already got the `urbit` CLI runtime installed, you can skip this step.
 Otherwise, run one of the commands below, depending on your platform. It will
@@ -34,53 +45,69 @@ fetch the binary and save it in the current directory.
 
 #### Linux
 
-```bash
+```shell {% copy=true %}
 curl -L https://urbit.org/install/linux64/latest | tar xzk --strip=1
 ```
 
 #### Mac
 
-```bash
+```shell {% copy=true %}
 curl -L https://urbit.org/install/mac/latest | tar xzk --strip=1
 ```
 
-## Development ship
+### Development ship
 
-App development is typically done on a "fake" ship. Fake ships don't have real
-networking keys and don't connect to the real network. They can only communicate
-with other fake ships running on the local machine. Let's spin up a fake ~zod
-galaxy. We can do this with the `-F` option:
+App development is typically done on a "fake" ship, which can be created with
+the `-F` flag. In this case, since our chat app will depend on the separate
+Squad app, we'll do it on a comet instead, so we can easily install that
+dependency. To create a comet, we can use the `-c` option, and specify a name
+for the *pier* (ship folder):
 
-```bash
-./urbit -F zod
+```shell {% copy=true %}
+./urbit -c dev-comet
 ```
 
-It'll take a couple of minutes to boot up, and then it'll take us to the Dojo.
-Once in the Dojo, let's mount a couple of desks so their files can be accessed
-from the host OS. We can do this with the `|mount` command:
+It might take a few minutes to boot up, and will fetch updates for the default
+apps. Once that's done it'll take us to the Dojo (Urbit's shell), as indicated
+by the `~sampel_samzod:dojo>` prompt.
 
+Note: we'll use `~sampel_samzod` throughout this guide, but this will be
+different for you as a comet's ID is randomly generated.
+
+### Dependencies
+
+Once in the Dojo, let's first install the Squad app:
+
+```{% copy=true %}
+|install ~pocwet %squad
 ```
-|mount %base
+
+It'll take a minute to retrieve the app, and will say `gall: installing %squad`
+once complete.
+
+Next, we'll mount a couple of desks so we can grab some of their files, which
+our new app will need. We can do this with the `|mount` command:
+
+```{% copy=true %}
+|mount %squad
 |mount %garden
 ```
 
-With those mounted, switch back to a normal shell. We'll create a folder to
-develop our app in, and then we'll copy a few files across that our app will
-depend on:
+With those mounted, switch back to a normal shell in another terminal window.
+We'll create a folder to develop our app in, and then we'll copy a few files
+across that our app will depend on:
 
-```bash
+```shell {% copy=true %}
 mkdir -p hut/{app,sur,mar,lib}
-cp zod/base/sys.kelvin hut/sys.kelvin
-cp zod/base/mar/{bill*,hoon*,json.hoon,kelvin*,mime*,noun*,ship*,txt*} hut/mar/
-cp zod/base/lib/{agentio*,dbug*,default-agent*,skeleton*} hut/lib/
-cp zod/garden/docket-0* hut/mar/
-cp zod/garden/lib/{docket*,mip*} hut/lib/
-cp zod/garden/sur/docket* hut/sur/
+cp dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} hut/mar/
+cp dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} hut/lib/
+cp dev-comet/squad/sur/{docket*, squad*} hut/sur/
+cp dev-comet/garden/lib/mip.hoon hut/lib/
 ```
 
 Now we can start working on the app itself.
 
-## Types
+### Types
 
 The first thing we typically do when developing an app is define:
 
@@ -88,756 +115,676 @@ The first thing we typically do when developing an app is define:
 2. The structure of our app's state.
 3. The app's interface - the types of requests it will accept and the types of
    updates it will send out to subscribers.
-   
-We're making a chat app, so a message needs to contain the author and the text.
-A chat room ("hut") will be identified by its host ship and a name, and will
-contain a simple list of messages.
-
-Our app state can therefore include a map from huts to lists of messages. We
-also need to keep track of member whitelists, so we'll add another map from huts
-to sets of ships. We'll also add a boolean to the members, representing whether
-a given ship has joined yet.
-
-For the actions/requests our app will accept, we'll need the following:
-
-1. Create a new hut.
-2. Post a message to a hut.
-3. Add a ship to the whitelist.
-4. Kick an ship and remove it from the whitelist.
-5. Join a hut.
-6. Leave a hut, or delete it if it's our own.
-
-Remote ships will only be able to do #2, while our own ship and front-end will
-be able to perform any of these actions.
-
-We also need to be able to send these events/updates out to subscribers:
-
-1. The initial state of a hut (when someone first subscribers).
-2. A new message has be posted.
-3. A new ship has been whitelisted.
-4. A ship has been kicked and removed from the whitelist.
-5. A ship has joined.
-6. A ship has left.
 
 Type definitions are typically stored in a separate file in the `/sur` directory
 (for "**sur**face"), and named the same as the app. We'll therefore save the
 following code in `hut/sur/hut.hoon`:
 
-```hoon
-:: We import the mip library. A mip is a map of maps.
-/+  *mip
+```hoon {% copy=true mode="collapse" %}
+/-  *squad
 |%
-:: A chat msg is a pair of author ship and a UTF-8 string.
-+$  msg    [who=@p what=@t]
++$  msg      [who=@p what=@t]
++$  msgs     (list msg)
++$  name     @tas
++$  hut      [=gid =name]
 ::
-:: The msgs in a hut are just a list of msg.
-+$  msgs   (list msg)
++$  huts     (jug gid name)
++$  msg-jar  (jar hut msg)
++$  joined   (jug gid @p)
 ::
-:: A hut is identified by host ship and a name like my-hut-42.
-+$  hut    [host=@p name=@tas]
-::
-:: All huts we've created or joined are stored
-:: in a map with the hut as key and msgs as value.
-+$  huts   (jar hut msg)
-::
-:: The whitelists for huts are stored in a mip, which is a map of maps.
-:: The first key is the hut, the second key is the ship,
-:: and the value is a boolean saying whether they've actually joined.
-+$  ppl    (mip hut @p ?)
-::
-:: These are the possible actions/requests the agent will accept. It's
-:: a tagged union, so each action is exactly one of these.
-+$  act
-  $%  [%make =hut]          :: create new hut
-      [%post =hut =msg]     :: post a new message
-      [%ship =hut who=@p]   :: whitelist a ship
-      [%kick =hut who=@p]   :: kick and remove from whitelist
-      [%join =hut]          :: join a hut
-      [%quit =hut]          :: leave a hut (delete if it's ours)
++$  hut-act
+  $%  [%new =hut =msgs]
+      [%post =hut =msg]
+      [%join =gid who=@p]
+      [%quit =gid who=@p]
+      [%del =hut]
   ==
-::
-:: These are the possible updates our agent can send out to subscribers.
-+$  upd
-  $%  [%init ppl=(map @p ?) =msgs]  :: initial state for new subscribers
-      [%post =msg]                  :: new message posted
-      [%ship who=@p]                :: new ship whitelisted
-      [%kick who=@p]                :: ship kicked & removed from whitelist
-      [%join who=@p]                :: a ship has joined the hut
-      [%quit who=@p]                :: a ship has left the hut
++$  hut-upd
+  $%  [%init =huts =msg-jar =joined]
+      [%init-all =huts =msg-jar =joined]
+      hut-act
   ==
 --
 ```
 
-## Agent
+### Agent
 
-With all the types now defined, we can write the app itself.
-
-The kernel module that manages userspace applications is named Gall. Each
-application is called an *agent*. An agent has a state, and it has a fixed set
-of event handling functions called *arms*. When Arvo (Urbit's operating system)
-receives an event destined for our agent (maybe a message from the network, a
-keystroke, an HTTP request, a timer expiry, etc), the event is given to the
-appropriate arm for handling.
-
-Most agent arms produce the same two things: a list of effects to be emitted,
-and a new version of the agent itself, typically with an updated state. It thus
-behaves much like a state machine, performing the function `(events, old-state)
-=> (effects, new-state)`.
-
-Hut is going to use a pub/sub pattern. Remote ships will be able to subscribe to
-a hut on our ship and receive updates such as new messages. They'll be able to
-post new messages to a hut by poking our agent with a `%post` action. Likewise,
-we'll be able to subscribe to huts on other ships and poke them to post
-messages. Remember, all Urbit ships are both clients and servers.
-
-There's three main agent arms we'll use for this:
-
-1. `on-poke`: This arm handles one-off actions/requests, such as posting a
-   message to a hut.
-2. `on-watch`: This arm handles incoming subscription requests.
-3. `on-agent`: This arm handles updates/events from people we've subscribed to.
-
-When you subscribe to an agent, you subscribe to a *path*. In our app's case,
-we'll use the hut as the path, like `/~sampel-palnet/my-hut-123`. A remote ship
-will send us a subscription request which will arrive in the `on-watch` arm.
-We'll check whether the remote ship is whitelisted for the requested hut, and
-then either accept or reject the subscription request. If accepted, we'll send
-them the initial state of the hut, and then continue to send them updates as
-they happen (such as new messages being posted).
-
-All network packets coming in from other ships are encrypted using our ship's
-public keys, and signed with the remote ship's keys. The networking keys of all
-ships are published on Azimuth, Urbit's identity system on the Ethereum
-blockchain. All ships listen for transactions on Azimuth, and keep their local
-PKI state up-to-date, so all ships know the keys of all other ships. When each
-packet arrives, it's decrypted and checked for a valid signature. This means we
-can be sure that all network traffic really comes from who it claims to come
-from. Ames, the inter-ship networking kernel module, handles this all
-automatically. When the message arrives at our agent, it'll just note the ship
-it came from. This means checking permissions can be as simple as `?> =(our
-src)` or `?> (~(has in src) allowed)`.
-
-Just as other ships will subscribe to paths via our `on-watch` and then start
-receiving updates we send out, we'll do the same to them. Once subscribed, the
-updates will start arriving in our `on-agent` arm. In order to know what
-subscription the updates relate to, we'll specify a *wire* when we first
-subscribe. A wire is like a tag for responses. All updates we receive for a
-given subscription will come in on the wire we specified when we opened the
-subscription. A wire has the same format as a subscription path, and in this
-case we'll make it the same - `/~sampel-palnet/my-hut-123`.
-
-The last thing to note here is communications with the front-end. The web-server
-kernel module Eyre exposes the same poke and subscription mechanics to the
-front-end as JSON over a SSE (server-sent event) stream. Our front-end will
-therefore interact with our agent just like any other ship would. When pokes and
-subscription requests come in from the front-end, they'll have our own ship as
-the source. This means differentiating the front-end from other ships is as
-simple as checking that the source is us, like `?: =(our src) ...`. On Urbit,
-interacting with a remote ship is just as easy as interacting with the local
-ship.
-
-With those things noted, here's the full agent, with extensive comments. Gall
-agents live in the `/app` directory of a desk, so you can save this code in
+With all the types now defined, we can create the app itself. Gall agents live
+in the `/app` directory of a desk, so you can save this code in
 `hut/app/hut.hoon`:
 
-```hoon
-:: These first two lines are imports.
-::
-:: We import the types we defined previously.
-/-  *hut
-:: We import the mip library, and also some useful utilities.
-/+  *mip, default-agent, dbug, agentio
-::
-:: This small core defines the type of our agent's state.
+```hoon {% copy=true mode="collapse" %}
+/-  *hut, *squad
+/+  default-agent, dbug, agentio
 |%
-::
-:: We version our state type so it's easy to change in the future.
 +$  versioned-state
   $%  state-0
   ==
-::
-:: This is our agent's state type.
-+$  state-0  [%0 =huts =ppl]
-::
-:: This is just for convenience.
++$  state-0  [%0 =huts =msg-jar =joined]
 +$  card  card:agent:gall
 --
 ::
-:: This is so we can debug our agent from the Dojo.
 %-  agent:dbug
-::
-:: We instantiate our agent's state.
 =|  state-0
 =*  state  -
 ^-  agent:gall
-::
-:: The proper agent core begins here. Its sample is a bowl.
-:: The bowl is populated every time an event is applied.
-:: It contains the current date, entropy, the source of the
-:: current event, our ship's name, etc.
+=<
 |_  bol=bowl:gall
-::
-:: These are some aliases for convenience.
-    :: "this" is our whole agent including state.
 +*  this  .
-    :: "def" is default-agent, a sane default handler.
     def   ~(. (default-agent this %.n) bol)
-    :: "io" is agentio, a library containing convenience function.
     io    ~(. agentio bol)
-::
-:: This arm is called when the agent is first started.
-:: We just leave it as the default.
-++  on-init  on-init:def
-::
-:: This arm exports our agent's state during upgrade.
-:: We just pack the current state in a vase.
+    hc    ~(. +> bol)
+++  on-init
+  ^-  (quip card _this)
+  :_  this
+  :~  (~(watch-our pass:io /squad) %squad /local/all)
+  ==
 ++  on-save  !>(state)
-::
-:: This arm is called when the exported state is re-imported
-:: after upgrading. We extract the state from the vase and put it
-:: back in our agent's state.
 ++  on-load
   |=  old-vase=vase
   ^-  (quip card _this)
   [~ this(state !<(state-0 old-vase))]
 ::
-:: on-poke handles actions / direct requests to our agent.
 ++  on-poke
   |=  [=mark =vase]
   |^  ^-  (quip card _this)
-  ::
-  :: We check the mark of the incoming poke is %hut-do, our action mark.
   ?>  ?=(%hut-do mark)
-  ::
-  :: If it's from us, we call ++local. If it's from a remote ship,
-  :: we call ++remote.
   ?:  =(our.bol src.bol)
-    (local !<(act vase))
-  (remote !<(act vase))
-  ::
-  :: This handles local requests (typically from our front-end).
+    (local !<(hut-act vase))
+  (remote !<(hut-act vase))
   ++  local
-    |=  =act
+    |=  act=hut-act
     ^-  (quip card _this)
-    ::
-    :: This ?- expression tests which action the poke contains,
-    :: and handles it appropriately.
     ?-    -.act
-    ::
-    :: This handles us posting a new message to a hut.
         %post
-      =/  =path  /(scot %p host.hut.act)/[name.hut.act]
-      ::
-      :: If it's a remote hut, send them our message.
-      ?.  =(our.bol host.hut.act)
+      =/  =path
+        /(scot %p host.gid.hut.act)/[name.gid.hut.act]
+      ?.  =(our.bol host.gid.hut.act)
         :_  this
-        :~  (~(poke pass:io path) [host.hut.act %hut] [mark vase])
+        :~  (~(poke pass:io path) [host.gid.hut.act %hut] [mark vase])
         ==
-      ::
-      :: If it's our hut, update messages and then send the new message
-      :: to our subscribers.
-      =/  =msgs  (~(got by huts) hut.act)
+      =/  =msgs  (~(get ja msg-jar) hut.act)
       =.  msgs
         ?.  (lte 50 (lent msgs))
           [msg.act msgs]
         [msg.act (snip msgs)]
-      :_  this(huts (~(put by huts) hut.act msgs))
-      :~  (fact:io hut-did+!>(`upd`[%post msg.act]) ~[path])
+      :_  this(msg-jar (~(put by msg-jar) hut.act msgs))
+      :~  (fact:io hut-did+vase path /all ~)
       ==
     ::
-    :: This handles us joining a new hut.
         %join
-      ::
-      :: Make sure we're joining a remote hut.
-      ?<  =(our.bol host.hut.act)
-      =/  =path  /(scot %p host.hut.act)/[name.hut.act]
-      ::
-      :: Send a subscription request to the remote ship.
+      ?<  =(our.bol host.gid.act)
+      =/  =path
+        /(scot %p host.gid.act)/[name.gid.act]
       :_  this
-      :~  (~(watch pass:io path) [host.hut.act %hut] path)
+      :~  (~(watch pass:io path) [host.gid.act %hut] path)
       ==
     ::
-    :: This handles us leaving a hut or deleting one of our huts.
         %quit
-      =/  =path  /(scot %p host.hut.act)/[name.hut.act]
-      ::
-      :: If it's our hut, kick everyone.
-      :-  ?:  =(our.bol host.hut.act)
-            :~  (kick:io ~[path])
-            ==
-          :: If it's a remote hut, kick frontend and leave.
-          :~  (kick:io ~[path])
-              (~(leave pass:io path) [host.hut.act %hut])
+      =/  =path
+        /(scot %p host.gid.act)/[name.gid.act]
+      =/  to-rm=(list hut)
+        %+  turn  ~(tap in (~(get ju huts) gid.act))
+        |=(=name `hut`[gid.act name])
+      =.  msg-jar
+        |-
+        ?~  to-rm  msg-jar
+        $(to-rm t.to-rm, msg-jar (~(del by msg-jar) i.to-rm))
+      :-  :-  (fact:io hut-did+vase /all ~)
+          ?:  =(our.bol host.gid.act)
+            ~
+          ~[(~(leave-path pass:io path) [host.gid.act %hut] path)]
+      %=  this
+        huts     (~(del by huts) gid.act)
+        msg-jar  msg-jar
+        joined   (~(del by joined) gid.act)
+      ==
+    ::
+        %new
+      ?>  =(our.bol host.gid.hut.act)
+      ?>  (has-squad:hc gid.hut.act)
+      ?<  (~(has ju huts) gid.hut.act name.hut.act)
+      =/  =path
+        /(scot %p host.gid.hut.act)/[name.gid.hut.act]
+      :-  :~  (fact:io hut-did+vase path /all ~)
           ==
-      :: Delete hut and whitelist from our state.
       %=  this
-        huts  (~(del by huts) hut.act)
-        ppl   (~(del by ppl) hut.act)
+        huts     (~(put ju huts) gid.hut.act name.hut.act)
+        msg-jar  (~(put by msg-jar) hut.act *msgs)
+        joined   (~(put ju joined) gid.hut.act our.bol)
       ==
     ::
-    :: This handles us whitelisting a ship in one of our huts.
-        %ship
-      =/  =path  /(scot %p host.hut.act)/[name.hut.act]
-      ::
-      :: Check it's our hut.
-      ?>  =(our.bol host.hut.act)
-      ::
-      :: Add ship to hut's whitelist and send update to subscribers
-      :: saying the new ship joined.
-      :_  this(ppl (~(put bi ppl) hut.act who.act %.n))
-      :~  (fact:io hut-did+!>(`upd`[%ship who.act]) ~[path])
-      ==
-    ::
-    :: This handles us kicking a ship from one of our huts.
-        %kick
-      =/  =path  /(scot %p host.hut.act)/[name.hut.act]
-      ::
-      :: Check it's our hut.
-      ?>  =(our.bol host.hut.act)
-      ::
-      :: Check we're not kicking ourselves.
-      ?<  =(our.bol who.act)
-      ::
-      :: Delete ship from hut's whitelist and send update to
-      :: to subscribers saying a ship was kicked.
-      :_  this(ppl (~(del bi ppl) hut.act who.act))
-      :~  (kick-only:io who.act ~[path])
-          (fact:io hut-did+!>(`upd`[%kick who.act]) ~[path])
-      ==
-    ::
-    :: This handles the creation of a new hut.
-        %make
-      ::
-      :: Check it doesn't already exist.
-      ?<  (~(has by huts) hut.act)
-      ::
-      :: Create the hut and add outselves as member.
-      :-  ~
+        %del
+      ?>  =(our.bol host.gid.hut.act)
+      =/  =path
+        /(scot %p host.gid.hut.act)/[name.gid.hut.act]
+      :-  :~  (fact:io hut-did+vase path /all ~)
+          ==
       %=  this
-        huts  (~(put by huts) hut.act ~)
-        ppl   (~(put bi ppl) hut.act our.bol %.y)
+        huts     (~(del ju huts) gid.hut.act name.hut.act)
+        msg-jar  (~(del by msg-jar) hut.act)
       ==
     ==
-  ::
-  :: This handles action requests from remote ships.
   ++  remote
-    |=  =act
-    ^-  (quip card _this)
-    ::
-    :: Only allow posting new messages, not other actions.
+    |=  act=hut-act
     ?>  ?=(%post -.act)
-    ::
-    :: Check they're posting to a hut we own.
-    ?>  =(our.bol host.hut.act)
-    ::
-    :: Check the hut exists.
-    ?>  (~(has by huts) hut.act)
-    ::
-    :: Check they're posting as themselves.
+    ^-  (quip card _this)
+    ?>  =(our.bol host.gid.hut.act)
+    ?>  (~(has by huts) gid.hut.act)
     ?>  =(src.bol who.msg.act)
-    ::
-    :: Check they're whitelisted.
-    ?>  (~(has bi ppl) hut.act src.bol)
-    =/  =path  /(scot %p host.hut.act)/[name.hut.act]
-    ::
-    :: Save the new message and send update to subscribers.
-    =/  =msgs  (~(got by huts) hut.act)
+    ?>  (~(has ju joined) gid.hut.act src.bol)
+    =/  =path  /(scot %p host.gid.hut.act)/[name.gid.hut.act]
+    =/  =msgs  (~(get ja msg-jar) hut.act)
     =.  msgs
       ?.  (lte 50 (lent msgs))
         [msg.act msgs]
       [msg.act (snip msgs)]
-    :_  this(huts (~(put by huts) hut.act msgs))
-    :~  (fact:io hut-did+!>(`upd`[%post msg.act]) ~[path])
+    :_  this(msg-jar (~(put by msg-jar) hut.act msgs))
+    :~  (fact:io hut-did+vase path /all ~)
     ==
   --
 ::
-:: on-agent handles events that come back as responses to requests
-:: we've sent other agents. This includes updates on paths which
-:: were subscribed to.
 ++  on-agent
-  ::
-  :: A wire is tag we defined when we sent the original request, so
-  :: we know what the response pertains to.
-  :: The sign is the response itself.
   |=  [=wire =sign:agent:gall]
   ^-  (quip card _this)
-  ::
-  :: Check the wire is the correct structure and then decode its
-  :: elements to find out which hut it pertains to.
-  ?>  ?=([@ @ ~] wire)
-  =/  =hut  [(slav %p i.wire) i.t.wire]
-  ::
-  :: This ?+ expression handles the different types of responses
-  :: we care about, and sends others to default-agent.
-  ?+    -.sign  (on-agent:def wire sign)
-  ::
-  :: This case is a response to a subscription request aka
-  :: when we've tried to join a hut.
-      %watch-ack
-    ::
-    :: If there's no error message, it succeeded.
-    ?~  p.sign
-      [~ this]
-    ::
-    :: If there's an error message, our request was rejected.
-    :: Tell our front-end and then close the front-end's subscription.
-    :-  :~  (fact:io hut-did+!>(`upd`[%kick our.bol]) ~[wire])
-            (kick:io ~[wire])
-        ==
-    ::
-    :: Either way, delete the hut and whitelist from our state.
-    %=  this
-      huts  (~(del by huts) hut)
-      ppl   (~(del by ppl) hut)
-    ==
-  ::
-  :: We get a kick when we're kicked from a subscription.
-  :: Kicks can be unintentional, so we automatically resubscribe.
-      %kick
-    :_  this
-    :~  (~(watch pass:io wire) [host.hut %hut] wire)
-    ==
-  ::
-  :: A fact is an update from something we're subscribed to.
-      %fact
-    :: The fact should have a %hut-did mark and contain an
-    :: "upd" update structure.
-    ?>  ?=(%hut-did p.cage.sign)
-    =/  upd  !<(upd q.cage.sign)
-    ::
-    :: This ?- expression handles the different update types.
-    ?-    -.upd
-    ::
-    :: An init message contains the initial state. We get it
-    :: when we first subscribe. We'll forward it on to the front-end
-    :: and save its contents in our state.
-        %init
-      :-  :~  (fact:io cage.sign ~[wire])
-          ==
-      %=  this
-        huts  (~(put by huts) hut msgs.upd)
-        ppl   (~(put by ppl) hut ppl.upd)
+  ?:  ?=([%squad ~] wire)
+    ?+    -.sign  (on-agent:def wire sign)
+        %kick
+      :_  this
+      :~  (~(watch-our pass:io /squad) %squad /local/all)
       ==
     ::
-    :: This case is a new message. We save the message in our
-    :: state and forward the message on to our front-end.
+        %watch-ack
+      ?~  p.sign  `this
+      :_  this
+      :~  (~(wait pass:io /behn) (add now.bol ~m1))
+      ==
+    ::
+        %fact
+      ?>  ?=(%squad-did p.cage.sign)
+      =/  =upd  !<(upd q.cage.sign)
+      ?+    -.upd  `this
+          %init-all
+        =/  gid-to-rm=(list gid)
+          ~(tap in (~(dif in ~(key by huts)) ~(key by squads.upd)))
+        =.  huts
+          |-
+          ?~  gid-to-rm  huts
+          $(gid-to-rm t.gid-to-rm, huts (~(del by huts) i.gid-to-rm))
+        =.  joined
+          |-
+          ?~  gid-to-rm  joined
+          $(gid-to-rm t.gid-to-rm, joined (~(del by joined) i.gid-to-rm))
+        =/  hut-to-rm=(list hut)
+          %-  zing
+          %+  turn  gid-to-rm
+          |=  =gid
+          (turn ~(tap in (~(get ju huts) gid)) |=(=name `hut`[gid name]))
+        =.  msg-jar
+          |-
+          ?~  hut-to-rm  msg-jar
+          $(hut-to-rm t.hut-to-rm, msg-jar (~(del by msg-jar) i.hut-to-rm))
+        =^  cards=(list card)  joined
+          %+  roll  ~(tap by joined)
+          |:  [[gid=*gid ppl=*ppl] cards=*(list card) n-joined=joined]
+          =/  =path  /(scot %p host.gid)/[name.gid]
+          =/  ppl-list=(list @p)  ~(tap in ppl)
+          =;  [n-cards=(list card) n-n-joined=^joined]
+            [(weld n-cards cards) n-n-joined]
+          %+  roll  ppl-list
+          |:  [ship=*@p n-cards=*(list card) n-n-joined=n-joined]
+          ?.  ?&  ?|  ?&  pub:(~(got by squads.upd) gid)
+                          (~(has ju acls.upd) gid ship)
+                      ==
+                      ?&  !pub:(~(got by squads.upd) gid)
+                          !(~(has ju acls.upd) gid ship)
+                      ==
+                  ==
+                  (~(has ju n-n-joined) gid ship)
+              ==
+            [n-cards n-n-joined]
+          :-  :+  (kick-only:io ship path ~)
+                (fact:io hut-did+!>(`hut-upd`[%quit gid ship]) path /all ~)
+              n-cards
+          (~(del ju n-n-joined) gid ship)
+        =/  kick-paths=(list path)
+          (turn gid-to-rm |=(=gid `path`/(scot %p host.gid)/[name.gid]))
+        =.  cards  ?~(kick-paths cards [(kick:io kick-paths) cards])
+        =.  cards
+          %+  weld
+            %+  turn  gid-to-rm
+            |=  =gid
+            ^-  card
+            (fact:io hut-did+!>(`hut-upd`[%quit gid our.bol]) /all ~)
+          cards
+        [cards this(huts huts, msg-jar msg-jar, joined joined)]
+      ::
+          %del
+        =/  =path  /(scot %p host.gid.upd)/[name.gid.upd]
+        =/  to-rm=(list hut)
+          %+  turn  ~(tap in (~(get ju huts) gid.upd))
+          |=(=name `hut`[gid.upd name])
+        =.  msg-jar
+          |-
+          ?~  to-rm  msg-jar
+          $(to-rm t.to-rm, msg-jar (~(del by msg-jar) i.to-rm))
+        :_  %=  this
+              huts     (~(del by huts) gid.upd)
+              msg-jar  msg-jar
+              joined   (~(del by joined) gid.upd)
+            ==
+        :+  (kick:io path ~)
+          (fact:io hut-did+!>(`hut-upd`[%quit gid.upd our.bol]) /all ~)
+        ?:  =(our.bol host.gid.upd)
+          ~
+        ~[(~(leave-path pass:io path) [host.gid.upd %tally] path)]
+      ::
+          %kick
+        =/  =path  /(scot %p host.gid.upd)/[name.gid.upd]
+        ?.  =(our.bol ship.upd)
+          :_  this(joined (~(del ju joined) gid.upd ship.upd))
+          :-  (kick-only:io ship.upd path ~)
+          ?.  (~(has ju joined) gid.upd ship.upd)
+            ~
+          ~[(fact:io hut-did+!>(`hut-upd`[%quit gid.upd ship.upd]) path /all ~)]
+        =/  hut-to-rm=(list hut)
+          (turn ~(tap in (~(get ju huts) gid.upd)) |=(=name `hut`[gid.upd name]))
+        =.  msg-jar
+          |-
+          ?~  hut-to-rm  msg-jar
+          $(hut-to-rm t.hut-to-rm, msg-jar (~(del by msg-jar) i.hut-to-rm))
+        :_  %=  this
+               huts     (~(del by huts) gid.upd)
+               msg-jar  msg-jar
+               joined   (~(del by joined) gid.upd)
+            ==
+        :+  (kick:io path ~)
+          (fact:io hut-did+!>(`hut-upd`[%quit gid.upd ship.upd]) /all ~)
+        ?:  =(our.bol host.gid.upd)
+          ~
+        ~[(~(leave-path pass:io path) [host.gid.upd %tally] path)]
+      ::
+          %leave
+        =/  =path  /(scot %p host.gid.upd)/[name.gid.upd]
+        ?.  =(our.bol ship.upd)
+          ?.  (~(has ju joined) gid.upd ship.upd)
+            `this
+          :_  this(joined (~(del ju joined) gid.upd ship.upd))
+          :~  (kick-only:io ship.upd path ~)
+              %+  fact:io
+                hut-did+!>(`hut-upd`[%quit gid.upd ship.upd])
+              ~[path /all]
+          ==
+        =/  hut-to-rm=(list hut)
+          (turn ~(tap in (~(get ju huts) gid.upd)) |=(=name `hut`[gid.upd name]))
+        =.  msg-jar
+          |-
+          ?~  hut-to-rm  msg-jar
+          $(hut-to-rm t.hut-to-rm, msg-jar (~(del by msg-jar) i.hut-to-rm))
+        :_  %=  this
+              huts     (~(del by huts) gid.upd)
+              msg-jar  msg-jar
+              joined   (~(del by joined) gid.upd)
+            ==
+        :+  (kick:io path ~)
+          (fact:io hut-did+!>(`hut-upd`[%quit gid.upd ship.upd]) /all ~)
+        ?:  =(our.bol host.gid.upd)
+          ~
+        ~[(~(leave-path pass:io path) [host.gid.upd %tally] path)]
+      ==
+    ==
+  ?>  ?=([@ @ ~] wire)
+  =/  =gid  [(slav %p i.wire) i.t.wire]
+  ?+    -.sign  (on-agent:def wire sign)
+      %watch-ack
+    ?~  p.sign  `this
+    =/  to-rm=(list hut)
+      %+  turn  ~(tap in (~(get ju huts) gid))
+      |=(=name `hut`[gid name])
+    =.  msg-jar
+      |-
+      ?~  to-rm  msg-jar
+      $(to-rm t.to-rm, msg-jar (~(del by msg-jar) i.to-rm))
+    :-  :~  (fact:io hut-did+!>(`hut-upd`[%quit gid our.bol]) /all ~)
+        ==
+    %=  this
+      huts     (~(del by huts) gid)
+      msg-jar  msg-jar
+      joined   (~(del by joined) gid)
+    ==
+  ::
+      %kick
+    :_  this
+    :~  (~(watch pass:io wire) [host.gid %hut] wire)
+    ==
+  ::
+      %fact
+    ?>  ?=(%hut-did p.cage.sign)
+    =/  upd  !<(hut-upd q.cage.sign)
+    ?+    -.upd  (on-agent:def wire sign)
+        %init
+      ?.  =([gid ~] ~(tap in ~(key by huts.upd)))
+        `this
+      ?.  =([gid ~] ~(tap in ~(key by joined.upd)))
+        `this
+      =.  msg-jar.upd
+        =/  to-rm=(list [=hut =msgs])
+          %+  skip  ~(tap by msg-jar.upd)
+          |=  [=hut =msgs]
+          ?&  =(gid gid.hut)
+              (~(has ju huts.upd) gid.hut name.hut)
+          ==
+        |-
+        ?~  to-rm
+          msg-jar.upd
+        $(to-rm t.to-rm, msg-jar.upd (~(del by msg-jar.upd) hut.i.to-rm))
+      :-  :~  %+  fact:io
+                hut-did+!>(`hut-upd`[%init huts.upd msg-jar.upd joined.upd])
+              ~[/all]
+          ==
+      %=  this
+        huts     (~(uni by huts) huts.upd)
+        msg-jar  (~(uni by msg-jar) msg-jar.upd)
+        joined   (~(uni by joined) joined.upd)
+      ==
+    ::
         %post
-      =/  msgs  (~(got by huts) hut)
+      ?.  =(gid gid.hut.upd)
+        `this
+      =/  msgs  (~(get ja msg-jar) hut.upd)
       =.  msgs
         ?.  (lte 50 (lent msgs))
           [msg.upd msgs]
         [msg.upd (snip msgs)]
-      :_  this(huts (~(put by huts) hut msgs))
-      :~  (fact:io cage.sign ~[wire])
+      :_  this(msg-jar (~(put by msg-jar) hut.upd msgs))
+      :~  (fact:io cage.sign /all ~)
       ==
     ::
-    :: This case means someone joined a hut. We mark that person
-    :: as joined in our state, and forward the update to our front-end.
         %join
-      :_  this(ppl (~(put bi ppl) hut who.upd %.y))
-      :~  (fact:io cage.sign ~[wire])
+      ?.  =(gid gid.upd)
+        `this
+      :_  this(joined (~(put ju joined) gid who.upd))
+      :~  (fact:io cage.sign /all ~)
       ==
     ::
-    :: This case means someone left a hut. We mark that person as not
-    :: joined in our state, and forward the update to our front-end.
         %quit
-      :_  this(ppl (~(put bi ppl) hut who.upd %.n))
-      :~  (fact:io cage.sign ~[wire])
+      ?.  =(gid gid.upd)
+        `this
+      :_  this(joined (~(del ju joined) gid who.upd))
+      :~  (fact:io cage.sign /all ~)
       ==
     ::
-    :: This case means someone was whitelisted. We add that person to
-    :: to the whitelist for that hut and forward the update to our front-end.
-        %ship
-      :_  this(ppl (~(put bi ppl) hut who.upd %.n))
-      :~  (fact:io cage.sign ~[wire])
-      ==
-    ::
-    :: Someone was kicked from a hut. We remove that person from that hut's
-    :: whitelist and forward the update to our front-end.
-        %kick
-      :_  this(ppl (~(del bi ppl) hut who.upd))
-      :~  (fact:io cage.sign ~[wire])
+        %del
+      ?.  =(gid gid.hut.upd)
+        `this
+      :-  :~  (fact:io cage.sign /all ~)
+          ==
+      %=  this
+        huts     (~(del ju huts) hut.upd)
+        msg-jar  (~(del by msg-jar) hut.upd)
       ==
     ==
   ==
 ::
-:: on-watch is where people subscribe to your agent, and where you define
-:: the paths they can subscribe to.
 ++  on-watch
   |=  =path
   |^  ^-  (quip card _this)
-  ::
-  :: Check the path is the correct structure and then decode its
-  :: elements to find out which hut they're subscribing to.
+  ?:  ?=([%all ~] path)
+    ?>  =(our.bol src.bol)
+    :_  this
+    :~  %-  fact-init:io
+        hut-did+!>(`hut-upd`[%init-all huts msg-jar joined])
+    ==
   ?>  ?=([@ @ ~] path)
-  =/  =hut  [(slav %p i.path) i.t.path]
+  =/  =gid  [(slav %p i.path) i.t.path]
+  ?>  =(our.bol host.gid)
+  ?>  (is-allowed:hc gid src.bol)
+  :_  this(joined (~(put ju joined) gid src.bol))
+  :-  (init gid)
+  ?:  (~(has ju joined) gid src.bol)
+    ~
+  ~[(fact:io hut-did+!>(`hut-upd`[%join gid src.bol]) /all path ~)]
   ::
-  :: Check if it's our own ship subscribing (our front-end).
-  ?:  =(our.bol src.bol)
-    ::
-    :: If it's our own hut, send out its initial state.
-    ?:  =(our.bol host.hut)
-      [[(init hut) ~] this]
-    ::
-    :: Otherwise, if we have the hut, send out initial state.
-    :: If we don't, accept the subscription but send nothing.
-    ?.  (~(has by huts) hut)
-      [~ this]
-    [[(init hut) ~] this]
-  ::
-  :: If it's a remote ship subscribing, check they're subscribing
-  :: to a hut we own.
-  ?>  =(our.bol host.hut)
-  ::
-  :: Check they are whitelisted for that hut.
-  ?>  (~(has bi ppl) hut src.bol)
-  ::
-  :: Update our state to say they've joined, send them the initial
-  :: state and update all other subscribers to let them know this
-  :: ship has joined.
-  :_  this(ppl (~(put bi ppl) hut src.bol %.y))
-  :~  (init hut)
-      (fact:io hut-did+!>(`upd`[%join src.bol]) ~[path])
-  ==
-  ::
-  :: This function just creates the initial state update.
   ++  init
-    |=  =hut
+    |=  =gid
     ^-  card
+    =/  hut-list=(list hut)
+      %+  turn  ~(tap in (~(get ju huts) gid))
+      |=(=name `hut`[gid name])
     %-  fact-init:io
     :-  %hut-did
-    !>  ^-  upd
-    :+  %init
-      (~(got by ppl) hut)
-    (~(got by huts) hut)
+    !>  ^-  hut-upd
+    :^    %init
+        (~(put by *^huts) gid (~(get ju huts) gid))
+      %-  ~(gas by *^msg-jar)
+      %+  turn  hut-list
+      |=(=hut `[^hut msgs]`[hut (~(get ja msg-jar) hut)])
+    (~(put by *^joined) gid (~(put in (~(get ju joined) gid)) src.bol))
   --
 ::
-:: on-leave is called when a subscriber unsubscribes.
 ++  on-leave
   |=  =path
   ^-  (quip card _this)
-  ::
-  :: Check the path they're unsubscribing from is valid and
-  :: decode hut from the path.
+  ?:  ?=([%all ~] path)
+    `this
   ?>  ?=([@ @ ~] path)
-  =/  =hut  [(slav %p i.path) i.t.path]
-  ::
-  :: If it's our ship (our front-end) unsubscribing, do nothing.
-  ?:  =(our.bol src.bol)
-    [~ this]
-  ::
-  :: Otherwise, mark the person as not joined and update other
-  :: subscribers to let them know this person has left.
-  :_  this(ppl (~(put bi ppl) hut src.bol %.n))
-  :~  (fact:io hut-did+!>(`upd`[%quit src.bol]) ~[path])
+  =/  =gid  [(slav %p i.path) i.t.path]
+  =/  last=?
+    %+  gte  1
+    (lent (skim ~(val by sup.bol) |=([=@p *] =(src.bol p))))
+  :_  this(joined (~(del ju joined) gid src.bol))
+  ?.  last
+    ~
+  :~  (fact:io hut-did+!>(`hut-upd`[%quit gid src.bol]) /all path ~)
   ==
 ::
-:: on-peek is an arm for local read-only queries. We use it here
-:: for the front-end to retrieve the initial list of huts. We have
-:: it return JSON directly since only the front-end uses it.
-++  on-peek
-  |=  =path
-  ^-  (unit (unit cage))
-  ::
-  :: Check the path is /x/huts.
-  ?>  ?=([%x %huts ~] path)
-  ::
-  :: Form the response with a %json mark and cage.
-  :^  ~  ~  %json
-  !>  ^-  json
-  ::
-  :: Create a JSON array.
-  :-  %a
-  ::
-  :: Get all huts and sort them alphabetically
-  %+  turn
-    %+  sort  ~(tap by ~(key by huts))
-    |=  [a=hut b=hut]
-    %+  aor
-      :((cury cat 3) (scot %p host.a) '/' name.a)
-    :((cury cat 3) (scot %p host.b) '/' name.b)
-  ::
-  :: Convert each to a JSON object.
-  |=  [host=@p name=@tas]
-  %-  pairs:enjs:format
-  :~  ['host' s+(scot %p host)]
-      ['name' s+name]
+++  on-peek  on-peek:def
+++  on-arvo
+  |=  [=wire =sign-arvo]
+  ^-  (quip card _this)
+  ?.  ?=([%behn ~] wire)
+    (on-arvo:def [wire sign-arvo])
+  ?>  ?=([%behn %wake *] sign-arvo)
+  ?~  error.sign-arvo
+    :_  this
+    :~  (~(watch-our pass:io /squad) %squad /local/all)
+    ==
+  :_  this
+  :~  (~(wait pass:io /behn) (add now.bol ~m1))
   ==
-::
-:: on-arvo handles kernel responses. We don't use this here.
-++  on-arvo  on-arvo:def
-::
-:: on-fail handles crashes. We just use the default crash handling.
 ++  on-fail  on-fail:def
+--
+::
+|_  bol=bowl:gall
+++  has-squad
+  |=  =gid
+  ^-  ?
+  =-  ?=(^ .)
+  .^  (unit)
+    %gx
+    (scot %p our.bol)
+    %squad
+    (scot %da now.bol)
+    %squad
+    (scot %p host.gid)
+    /[name.gid]/noun
+  ==
+++  is-allowed
+  |=  [=gid =ship]
+  ^-  ?
+  =/  u-acl
+    .^  (unit [pub=? acl=ppl])
+      %gx
+      (scot %p our.bol)
+      %squad
+      (scot %da now.bol)
+      %acl
+      (scot %p host.gid)
+      /[name.gid]/noun
+    ==
+  ?~  u-acl  |
+  ?:  pub.u.u-acl
+    !(~(has in acl.u.u-acl) ship)
+  (~(has in acl.u.u-acl) ship)
 --
 ```
 
-## Marks
+### Marks
 
-The last piece of our backend are the *marks*. The kernel module Clay is a typed
-filesystem, and marks are its filetypes. As well as defining the type, a mark
-also specifies methods for converting to and from other marks, as well as
-revision control functions. Our agent doesn't need to save files in Clay, but
-marks aren't just used for files - they're used for all data from the outside
-world like other ships or the front-end. Marks serve the same purpose as MIME
-types, but are much more powerful.
+The last piece of our backend are the *marks*. Marks are Urbit's version of
+filetypes/MIME types, but strongly typed and with inter-mark conversion methods.
 
 We'll create two marks: one for handling poke actions with the type of `act` we
 defined previously, and one for handling updates with the type of `upd`. We'll
-call the first one `%hut-do`, and the second one `%hut-did`.
-
-Our agent needs to talk to the front-end in JSON, but it takes and produces
-ordinary Hoon types. We therefore need a way to decode inbound JSON to an `act`,
-and encode an outbound `upd` as JSON when we send the front-end an update. This
-is the main thing our mark files are going to do. The utility library Zuse
-contains many ready-made functions for decoding and encoding JSON, so we'll use
-those to write our JSON functions.
+call the first one `%hut-do`, and the second one `%hut-did`. The `%hut-did` mark
+will include conversion methods to JSON for our front-end, and the `%hut-do`
+mark will include conversion methods in the other direction.
 
 Mark files live in the `/mar` directory of a desk. You can save the code below
 in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
 
 #### `%hut-do`
 
-```hoon
-:: First we import the type definitions we create earlier.
+```hoon {% copy=true mode="collapse" %}
 /-  *hut
-::
-:: The mark takes the action type (which we name "a" here).
-|_  a=act
-::
-:: grow defines methods to convert from our mark to other marks.
+|_  a=hut-act
 ++  grow
   |%
-  ::
-  :: We define a simple method to convert our mark to a noun
-  :: by just returning our sample "a".
   ++  noun  a
   --
-::
-:: grab defines methods to convert from other marks to our mark.
 ++  grab
   |%
-  ::
-  :: We convert from a noun by just molding the data with our act type.
-  ++  noun  act
-  ::
-  :: Here we define a function to convert JSON from our front-end back to
-  :: our mark and act data type.
+  ++  noun  hut-act
   ++  json
-    ::
-    :: zuse.hoon contains dejs:format, which has many ready-made JSON
-    :: decoding functions. We compose them together here to handle all
-    :: the different actions we might receive from the front-end.
     =,  dejs:format
     |=  jon=json
-    |^  ^-  act
+    |^  ^-  hut-act
     %.  jon
     %-  of
-    :~  join+de-hut
-        quit+de-hut
-        make+de-hut
-        ship+(ot ~[hut+de-hut who+(se %p)])
-        kick+(ot ~[hut+de-hut who+(se %p)])
-        post+(ot ~[hut+de-hut msg+(ot ~[who+(se %p) what+so])])
+    :~  new+(ot ~[hut+de-hut msgs+(ar de-msg)])
+        post+(ot ~[hut+de-hut msg+de-msg])
+        join+(ot ~[gid+de-gid who+(se %p)])
+        quit+(ot ~[gid+de-gid who+(se %p)])
+        del+(ot ~[hut+de-hut])
     ==
-    ++  de-hut  (ot ~[host+(se %p) name+(su sym)])
+    ++  de-msg  (ot ~[who+(se %p) what+so])
+    ++  de-hut  (ot ~[gid+de-gid name+(se %tas)])
+    ++  de-gid  (ot ~[host+(se %p) name+(se %tas)])
     --
   --
-:: grad defines revision control and merge functions. We'll not be storing data
-:: in Arvo's filesystem so this isn't important and we can just delegate it to
-:: the generic noun mark.
 ++  grad  %noun
 --
 ```
 
 #### `%hut-did`
 
-```hoon
-:: First we import the type definitions we create earlier.
+```hoon {% copy=true mode="collapse" %}
 /-  *hut
-::
-:: The mark takes the update type (which we name "u" here).
-|_  u=upd
-::
-:: grow defines methods to convert from our mark to other marks.
+|_  u=hut-upd
 ++  grow
   |%
-  ::
-  :: We define a simple method to convert our mark to a noun
-  :: by just returning our sample "u".
   ++  noun  u
-    ::
-    :: zuse.hoon contains enjs:format, which has many ready-made JSON
-    :: encoding functions. We compose them together here to handle all
-    :: the different updates we might send to the front-end.
   ++  json
     =,  enjs:format
     |^  ^-  ^json
-    ?-  -.u
-      %join  (frond 'join' s+(scot %p who.u))
-      %quit  (frond 'quit' s+(scot %p who.u))
-      %ship  (frond 'ship' s+(scot %p who.u))
-      %kick  (frond 'kick' s+(scot %p who.u))
-      %post  %+  frond  'post'
-             %-  pairs
-             :~  ['who' s+(scot %p who.msg.u)]
-                 ['what' s+what.msg.u]
-             ==
-      %init  %+  frond  'init'
-             %-  pairs
-             :~  ['ppl' (ppl-array ppl.u)]
-                 ['msgs' (msg-array msgs.u)]
-    ==       ==
-    ++  msg-array
-      |=  =msgs
-      ^-  ^json
-      :-  %a
-      %+  turn  (flop msgs)
-      |=  =msg
+    ?-    -.u
+        %new
+      %+  frond  'new'
+      (pairs ~[['hut' (en-hut hut.u)] ['msgs' (en-msgs msgs.u)]])
+    ::
+        %post
+      %+  frond  'post'
+      (pairs ~[['hut' (en-hut hut.u)] ['msg' (en-msg msg.u)]])
+    ::
+        %join
+      %+  frond  'join'
+      (pairs ~[['gid' (en-gid gid.u)] ['who' s+(scot %p who.u)]])
+    ::
+        %quit
+      %+  frond  'quit'
+      (pairs ~[['gid' (en-gid gid.u)] ['who' s+(scot %p who.u)]])
+    ::
+        %del
+      (frond 'del' (frond 'hut' (en-hut hut.u)))
+    ::
+        %init
+      %+  frond  'init'
       %-  pairs
-      :~  ['who' s+(scot %p who.msg)]
-          ['what' s+what.msg]
+      :~  ['huts' (en-huts huts.u)]
+          ['msgJar' (en-msg-jar msg-jar.u)]
+          ['joined' (en-joined joined.u)]
       ==
-    ++  ppl-array
-      |=  ppl=(map @p ?)
+    ::
+        %init-all
+      %+  frond  'initAll'
+      %-  pairs
+      :~  ['huts' (en-huts huts.u)]
+          ['msgJar' (en-msg-jar msg-jar.u)]
+          ['joined' (en-joined joined.u)]
+      ==
+    ==
+    ++  en-joined
+      |=  =joined
       ^-  ^json
       :-  %a
-      %+  turn
-        %+  sort  ~(tap by ppl)
-        |=  [[a=@ @] [b=@ @]]
-        (aor (scot %p a) (scot %p b))
-      |=  [p=@p q=?]
-      a+~[s+(scot %p p) b+q]
+      %+  turn  ~(tap by joined)
+      |=  [=gid =ppl]
+      %-  pairs
+      :~  ['gid' (en-gid gid)]
+          :-  'ppl'
+          a+(sort (turn ~(tap in ppl) |=(=@p s+(scot %p p))) aor)
+      ==
+    ++  en-msg-jar
+      |=  =msg-jar
+      ^-  ^json
+      :-  %a
+      %+  turn  ~(tap by msg-jar)
+      |=  [=hut =msgs]
+      (pairs ~[['hut' (en-hut hut)] ['msgs' (en-msgs msgs)]])
+    ++  en-huts
+      |=  =huts
+      ^-  ^json
+      :-  %a
+      %+  turn  ~(tap by huts)
+      |=  [=gid names=(set name)]
+      %-  pairs
+      :~  ['gid' (en-gid gid)]
+          ['names' a+(turn (sort ~(tap in names) aor) (lead %s))]
+      ==
+    ++  en-msgs  |=(=msgs `^json`a+(turn (flop msgs) en-msg))
+    ++  en-msg
+      |=  =msg
+      ^-  ^json
+      (pairs ~[['who' s+(scot %p who.msg)] ['what' s+what.msg]])
+    ++  en-hut
+      |=  =hut
+      ^-  ^json
+      (pairs ~[['gid' (en-gid gid.hut)] ['name' s+name.hut]])
+    ++  en-gid
+      |=  =gid
+      ^-  ^json
+      (pairs ~[['host' s+(scot %p host.gid)] ['name' s+name.gid]])
     --
   --
-::
-:: grab defines methods to convert from other marks to our mark.
 ++  grab
   |%
-  ::
-  :: We convert from a noun by just molding the data with our upd type.
-  ++  noun  upd
+  ++  noun  hut-upd
   --
-::
-:: grad defines revision control and merge functions. We'll not be storing data
-:: in Arvo's filesystem so this isn't important and we can just delegate it to
-:: the generic noun mark.
 ++  grad  %noun
 --
 ```
 
-## React app
+### React app
 
-Our back-end is complete, so we can now work on our React front-end. Most of the
-front-end is just UI components and logic which aren't very interesting, so
-we'll just look at a few notable parts and walk through the basic process of
-creating it. To skip ahead and get the full React app, you can clone [this repo
-on Github](https://github.com/urbit/docs-examples) and just run `npm i` in
-`chat-app/react-frontend`.
+Our back-end is complete, so we can now work on our React front-end. We'll just
+look at the basic setup process here, but you can get the full React app by
+cloning [this repo on Github](https://github.com/urbit/docs-examples) and run
+`npm i` in `chat-app/react-frontend`. Additional commentary on the code is in
+the [code commentary](#code-commentary) section below.
 
 When creating it from scratch, we can first run `create-react-app` like usual:
 
-```bash
+```shell {% copy=true %}
 npx create-react-app hut-ui
 cd hut-ui
 ```
@@ -897,117 +844,26 @@ constructor(props) {
 };
 ```
 
-There are a fair few functions our front-end uses, so we'll just look at a
-handful. The first is `doPoke`, which (as the name suggests) sends a poke to a
-ship. It takes the poke in JSON form and a callback to do if it succeeds. It
-then calls the `poke` method of our `Urbit` object to perform the poke.
-
 ```javascript
-doPoke = (jon, succ) => {
-  window.urbit.poke({
-    app: "hut",
-    mark: "hut-do",
-    json: jon,
-    onSuccess: succ
-  })
-};
-```
-
-Here's an example of a `%join`-type `act` in JSON form:
-
-```javascript
-joinHut = async hut => {
-  if (hut.host === this.our) return;
-  this.doPoke(
-    {"join": {"host": hut.host, "name": hut.name}},
-    () => this.openHut(hut)
-  )
-};
-```
-
-Our front-end will subscribe to updates for the selected hut. To do so, it calls
-the `subscribe` method of the `Urbit` object with the `path` to subscribe to and
-an `event` callback to handle each update it receives. The `subscribe` method
-return a subscription ID number if successful. We save this ID so we can
-unsubscribe later.
-
-```javascript
-  openHut = async hut => {
-    await this.resetState();
-    const newID = await window.urbit.subscribe({
-      app: "hut",
-      path: "/" + hut.host + "/" + hut.name,
-      event: this.handleUpdate,
-      quit: () => (this.state.host === hut.host) &&
-        this.openHut(hut),
-      err: () => this.resetState()
-    });
-    this.setState({
-      // .....
-    })
-  };
-```
-
-Here's the `handleUpdate` function we gave as a callback. The update will be one
-of our `upd` types in JSON form, so we just switch on the type and handle it as
-appropriate.
-
-```javascript
-handleUpdate = upd => {
-  const { ppl, msgs } = this.state;
-  if ("init" in upd)
-    this.setState({
-      msgs: upd.init.msgs,
-      ppl: new Map(upd.init.ppl)
-    }, () => {
-      this.scrollToBottom()
-    });
-  else if ("join" in upd)
-    this.setState({ppl: ppl.set(upd.join, true)});
-  else if ("quit" in upd)
-    this.setState({ppl: ppl.set(upd.quit, false)});
-  else if ("ship" in upd)
-    this.setState({ppl: ppl.set(upd.ship, false)});
-  else if ("post" in upd)
-    this.setState({
-      msgs: [...msgs.slice(-49), upd.post]
-    }, () => {
-      this.scrollToBottom()
-    });
-  else if ("kick" in upd)
-    if (this.our === upd.kick)
-      this.setState({select: "def"}, () => this.resetState());
-    else {
-      ppl.delete(upd.kick);
-      this.setState({ppl: ppl})
-    }
-};
-```
-
-When we change to a different hut in the front-end, we unsubscribe from the old
-one before opening a new one. This is done by calling the `unsubscribe` method
-of the `Urbit` object with the subscription ID. Note we could have designed our
-app differently and had it receive updates for all huts at the same time, this
-one-at-a-time approach was just done for simplicity.
-
-```javascript
-resetState = async () => {
-  const id = this.state.id;
-  (id !== null) && await window.urbit.unsubscribe(id);
-  await this.getHuts();
-  this.setState({
-    // ......
-  });
+constructor(props) {
+  super(props);
+  window.urbit = new Urbit("");
+  window.urbit.ship = window.ship;
+  // ......
+  window.urbit.onOpen = () => this.setState({conn: "ok"});
+  window.urbit.onRetry = () => this.setState({conn: "try"});
+  window.urbit.onError = () => this.setState({conn: "err"});
+  // ......
 };
 ```
 
 After we've finished writing our React app, we can build it:
 
-```shell
+```shell {% copy=true %}
 npm run build
 ```
 
-## Desk config
+### Desk config
 
 With our agent and front-end both complete, the last thing we need are some desk
 configuration files.
@@ -1015,7 +871,7 @@ configuration files.
 Firstly, we need to specify the kernel version our app is compatible with. We do
 this by adding a `sys.kelvin` file to the root of our `hut` directory:
 
-```shell
+```shell {% copy=true %}
 cd hut
 echo "[%zuse 418]" > sys.kelvin
 ```
@@ -1023,7 +879,7 @@ echo "[%zuse 418]" > sys.kelvin
 We also need to specify which agents to start when our desk is installed. We do
 this in a `desk.bill` file:
 
-```shell
+```shell {% copy=true %}
 echo "~[%hut]" > desk.bill
 ```
 
@@ -1032,7 +888,7 @@ front-ends - it fetches & serves them, and it also configures the app tile and
 other metadata. Create a `desk.docket-0` file in the `hut` directory and add the
 following:
 
-```shell
+```hoon {% copy=true %}
 :~
   title+'Hut'
   info+'A simple chat app.'
@@ -1041,7 +897,7 @@ following:
   website+'https://urbit.org'
   license+'MIT'
   base+'hut'
-  glob-ames+[~zod 0v0]
+  glob-ames+[~sampel-sampel-sampel-sampel--sampel-sampel-sampel-samzod 0v0]
 ==
 ```
 
@@ -1049,22 +905,23 @@ The main field of note is `glob-ames`. A glob is the bundle of front-end
 resources (our React app), and the `-ames` part means it'll be distributed via
 the normal inter-ship networking protocol, as opposed to `glob-http` where it
 would be fetched from a separate server. The two fields are the ship to fetch it
-from and the hash of the glob. We're currently working on a fake ~zod, so we
-just say `~zod` for the ship. We're going to upload the glob in the next step,
-so we'll leave the hash as `0v0` for the moment.
+from and the hash of the glob. We can get the full name of our comet by typing
+`our` in the Dojo (don't use the ship name above, it's just a sample). We're
+going to upload the glob in the next step, so we'll leave the hash as `0v0` for
+the moment.
 
-## Put it together
+### Put it together
 
-Our app is now complete, so let's try it out. In the Dojo of our fake ~zod,
+Our app is now complete, so let's try it out. In the Dojo of our comet,
 we'll create a new desk by forking from an existing one:
 
-```
+``` {% copy=true %}
 |merge %hut our %webterm
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
 
-```
+``` {% copy=true %}
 |mount %hut
 ```
 
@@ -1072,95 +929,358 @@ Currently its contents are the same as the `%webterm` desk, so we'll need to
 delete those files and copy in our own instead. In the normal shell, do the
 following:
 
-```bash
-rm -r zod/hut/*
-cp -r hut/* zod/hut/*
+```shell {% copy=true %}
+rm -r dev-comet/hut/*
+cp -r hut/* dev-comet/hut/
 ```
 
 Back in the Dojo again, we can now commit those files and install the app:
 
-```
+``` {% copy=true %}
 |commit %hut
 |install our %hut
 ```
 
-The last thing to do is upload our front-end resources. Open a browser and go to
-`localhost:8080`. Login with the fake ~zod's code `lidlut-tabwed-pillex-ridrup`.
-Next, go to `localhost:8080/docket/upload` and it'll bring up the Docket
-Globulator tool. Select the `hut` desk from the drop-down menu, then navigate to
-`hut-ui/build` and select the whole folder. Finally, hit `glob!` and it'll
-upload our React app.
+The last thing to do is upload our front-end resources. Open a browser and go
+to `localhost:8080` (or just `localhost` on a Mac). Login with the comet's web
+code, which you can get by running `+code` in the Dojo. Next, go to
+`localhost:8080/docket/upload` (or `localhost/docket/upload` on a Mac) and
+it'll bring up the Docket Globulator tool. Select the `hut` desk from the
+drop-down menu, then navigate to `hut-ui/build` and select the whole folder.
+Finally, hit `glob!` and it'll upload our React app.
 
-If we return to `localhost:8080`, we should see a tile for the Hut app. If we
-click on it, it'll open our React front-end and we can start using it.
+If we return to `localhost:8080` (or `localhost` on a Mac), we should see a
+tile for the Hut app. If we click on it, it'll open our React front-end and we
+can start using it.
 
-## Do it live
+One thing we can also do is publish the app so others can install it from us.
+To do so, just run the following command:
 
-Now that we've confirmed it's all working on a fake ~zod, we can try it on a
-real ship. There's just one small change we need to make to the `desk.docket-0`
-file. Open `hut/desk.docket-0` and change `~zod` in `glob-ames` to the name of
-your ship:
-
-```
-glob-ames+[<your ship> 0v0]
-```
-
-On our live ship, we can repeat the same steps to create and install the desk.
-
-In the Dojo run:
-
-```
-|merge %hut our %webterm
-|mount %hut
-```
-
-Back in the shell, remove the old files and copy in the contents of `hut` again:
-
-```bash
-rm -r <your pier>/hut/*
-cp -r hut/* <your pier>/hut/*
-```
-
-Commit and install it:
-
-```
-|commit %hut
-|install our %hut
-```
-
-Go to the Docket Globulator again at `<host>/docket/upload` and upload `hut-ui/build` again.
-
-Hut will now be installed and running on our live ship. The last thing we can do
-is publish the app, so others can install it from us. In the Dojo, run the
-following:
-
-```
+``` {% copy=true %}
 :treaty|publish %hut
 ```
 
-Now your friends will be able to install it with `|install <your ship> %hut` or
-by searching for `<your ship>` on their ship's homescreen.
+Now our friends will be able to install it with `|install <our ship> %hut` or by
+searching for `<our ship>` on their ship's homescreen.
 
-## Improvements
+## Code commentary
 
-Hut is a very basic chat app to demonstrate app development, front-end
-integration, and networked communications on Urbit.
+### Types
 
-Here are some ideas of how it could be improved:
+We're making a chat app, so a message (`msg`) needs to contain the author and
+the text. A chat room (`hut`) will be identified by the Squad `gid` (group ID)
+it belongs to, as well as a name for the hut itself:
 
-- Message signing: although a chat host can be sure that only the people they've
-  whitelisted can post in a chat, the host is able to post as anyone and the
-  other members won't know. Having all chat members sign their messages so
-  others can validate them is simple to implement, and would mean everyone can
-  be sure about who's talking.
-  
-- Timestamping: Hut doesn't include timestamps with messages and doesn't care
-  about message order, the host just posts them in the order they arrive. This
-  means a chat member who's having networking troubles could post a message and
-  not have it appear until hours later where it might be out of context. If we
-  added timestamps to the messages, the host could apply some logic to correctly
-  order them regardless of when they're received.
-  
-- Groups integration: rather than having to add ships one-by-one to a chat, we
-  could use the existing groups of the Groups app. The `%group-store` agent in
-  Groups has a well-designed API that's simple to interface with.
+```hoon
++$  msg      [who=@p what=@t]
++$  msgs     (list msg)
++$  name     @tas
++$  hut      [=gid =name]
+```
+
+Our app state will contain a map from `gid` to `hut`s for that group. It will
+also contain a map from `hut` to that hut's `msgs`. We also need to keep track
+of who has actually joined, so we'll add a map from `gid` to a `(set ship)`:
+
+```hoon
++$  huts     (jug gid name)
++$  msg-jar  (jar hut msg)
++$  joined   (jug gid @p)
+```
+
+For the actions/requests our app will accept, we'll need the following:
+
+1. Create a new hut.
+2. Post a message to a hut.
+3. Subscribe to huts for a group.
+4. Unsubscribe.
+5. Delete an individual hut if we're the host.
+
+Remote ships will only be able to do #2, while our own ship and front-end will
+be able to perform any of these actions.
+
+The structure for these actions is called `hut-act` and looks like so:
+
+```hoon
++$  hut-act
+  $%  [%new =hut =msgs]
+      [%post =hut =msg]
+      [%join =gid who=@p]
+      [%quit =gid who=@p]
+      [%del =hut]
+  ==
+```
+
+We also need to be able to send these events/updates out to subscribers:
+
+1. The initial state of the huts for a particular group.
+2. The state of all huts (this is for our front-end only).
+3. Any of the actions above.
+
+This structure for these updates is called `hut-upd` and looks like so:
+
+```hoon
++$  hut-upd
+  $%  [%init =huts =msg-jar =joined]
+      [%init-all =huts =msg-jar =joined]
+      hut-act
+  ==
+```
+
+### Agent
+
+The kernel module that manages userspace applications is named Gall. Each
+application is called an *agent*. An agent has a state, and it has a fixed set
+of event handling functions called *arms*. When Arvo (Urbit's operating system)
+receives an event destined for our agent (maybe a message from the network, a
+keystroke, an HTTP request, a timer expiry, etc), the event is given to the
+appropriate arm for handling.
+
+Most agent arms produce the same two things: a list of effects to be emitted,
+and a new version of the agent itself, typically with an updated state. It thus
+behaves much like a state machine, performing the function `(events, old-state)
+=> (effects, new-state)`.
+
+Hut uses a [pub/sub
+pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern).
+Remote ships are able to subscribe to the huts for a group on our ship and
+receive updates such as new messages. They're also able to post new messages to
+a hut by poking our agent with a `%post` action. Likewise, we'll be able to
+subscribe to huts for groups on other ships and poke them to post messages.
+Remember, all Urbit ships are both clients and servers.
+
+There's three main agent arms we use for this:
+
+1. `on-poke`: This arm handles one-off actions/requests, such as posting a
+   message to a hut.
+2. `on-watch`: This arm handles incoming subscription requests.
+3. `on-agent`: This arm handles updates/events from people we've subscribed to.
+
+When you subscribe to an agent, you subscribe to a *path*. In our app's case, we
+use the `gid` (Squad group ID) as the path, like `/~sampel-palnet/my-squad-123`.
+A remote ship will send us a subscription request which will arrive in the
+`on-watch` arm. We'll check with `%squad` whether the remote ship is whitelisted
+for the requested `gid`, and then either accept or reject the subscription
+request. If accepted, we'll send them the initial state of huts for that `gid`,
+and then continue to send them updates as they happen (such as new messages
+being posted).
+
+All network packets coming in from other ships are encrypted using our ship's
+public keys, and signed with the remote ship's keys. The networking keys of all
+ships are published on Azimuth, Urbit's identity system on the Ethereum
+blockchain. All ships listen for transactions on Azimuth, and keep their local
+PKI state up-to-date, so all ships know the keys of all other ships. When each
+packet arrives, it's decrypted and checked for a valid signature. This means we
+can be sure that all network traffic really comes from who it claims to come
+from. Ames, the inter-ship networking kernel module, handles this all
+automatically. When the message arrives at our agent, it'll just note the ship
+it came from. This means checking permissions can be as simple as `?> =(our
+src)` or `?> (~(has in src) allowed)`.
+
+Just as other ships will subscribe to paths via our `on-watch` and then start
+receiving updates we send out, we'll do the same to them. Once subscribed, the
+updates will start arriving in our `on-agent` arm. In order to know what
+subscription the updates relate to, we'll specify a *wire* when we first
+subscribe. A wire is like a tag for responses. All updates we receive for a
+given subscription will come in on the wire we specified when we opened the
+subscription. A wire has the same format as a subscription path, and in this
+case we'll make it the same - `/~sampel-palnet/my-hut-123`. The `on-agent` arm
+will also handle updates from our `%squad` app installed locally, such as
+changes to group whitelists/blacklists.
+
+The last thing to note here is communications with the front-end. The web-server
+kernel module Eyre exposes the same poke and subscription mechanics to the
+front-end as JSON over a SSE (server-sent event) stream. Our front-end will
+therefore interact with our agent just like any other ship would. When pokes and
+subscription requests come in from the front-end, they'll have our own ship as
+the source. This means differentiating the front-end from other ships is as
+simple as checking that the source is us, like `?: =(our src) ...`. On Urbit,
+interacting with a remote ship is just as easy as interacting with the local
+ship.
+
+### Marks
+
+The kernel module Clay is a typed filesystem, and marks are its filetypes. As
+well as defining the type, a mark also specifies methods for converting to and
+from other marks, as well as revision control functions. Our agent doesn't need
+to save files in Clay, but marks aren't just used for files - they're used for
+all data from the outside world like other ships or the front-end. Marks serve
+the same purpose as MIME types, but are much more powerful.
+
+Our agent needs to talk to the front-end in JSON, but it takes and produces
+ordinary Hoon types. We therefore need a way to decode inbound JSON to a
+`hut-act`, and encode an outbound `hut-upd` as JSON when we send the front-end
+an update. This is the main thing our mark files are going to do. The utility
+library Zuse contains many ready-made functions for decoding and encoding JSON,
+so we use those to write our JSON functions.
+
+### React app
+
+There are a fair few functions our front-end uses, so we'll just look at a
+handful. The first is `doPoke`, which (as the name suggests) sends a poke to a
+ship. It takes the poke in JSON form. It then calls the `poke` method of our
+`Urbit` object to perform the poke.
+
+```javascript
+doPoke = jon => {
+  window.urbit.poke({
+    app: "hut",
+    mark: "hut-do",
+    json: jon,
+  })
+};
+```
+
+Here's an example of a `%join`-type `act` in JSON form:
+
+```javascript
+joinGid = () => {
+  const joinSelect = this.state.joinSelect
+  if (joinSelect === "def") return;
+  const [host, name] = joinSelect.split("/");
+  this.doPoke(
+    {"join": {
+      "gid" : {"host": host, "name": name},
+      "who" : this.our
+    }}
+  );
+  this.setState({joinSelect: "def"})
+};
+```
+
+Our front-end will subscribe to updates for all groups our `%hut` agent is
+currently tracking. To do so, it calls the `subscribe` method of the `Urbit`
+object with the `path` to subscribe to and an `event` callback to handle each
+update it receives. Our agent publishes all updates on the local-only `/all`
+path.
+
+```javascript
+subscribe = () => {
+  window.urbit.subscribe({
+    app: "hut",
+    path: "/all",
+    event: this.handleUpdate
+  });
+};
+```
+
+Here's the `handleUpdate` function we gave as a callback. The update will be one
+of our `hut-upd` types in JSON form, so we just switch on the type and handle it
+as appropriate.
+
+```javascript {% mode="collapse" %}
+handleUpdate = upd => {
+  const {huts, msgJar, joined, currentGid, currentHut} = this.state;
+  if ("initAll" in upd) {
+    upd.initAll.huts.forEach(obj =>
+      huts.set(this.gidToStr(obj.gid), new Set(obj.names))
+    );
+    this.setState({
+      huts: huts,
+      msgJar: new Map(
+        upd.initAll.msgJar.map(obj => [this.hutToStr(obj.hut), obj.msgs])
+      ),
+      joined: new Map(
+        upd.initAll.joined.map(obj =>
+          [this.gidToStr(obj.gid), new Set(obj.ppl)]
+        )
+      )
+    })
+  } else if ("init" in upd) {
+    upd.init.msgJar.forEach(obj =>
+      msgJar.set(this.hutToStr(obj.hut), obj.msgs)
+    );
+    this.setState({
+      msgJar: msgJar,
+      huts: huts.set(
+        this.gidToStr(upd.init.huts[0].gid),
+        new Set(upd.init.huts[0].names)
+      ),
+      joined: joined.set(
+        this.gidToStr(upd.init.joined[0].gid),
+        new Set(upd.init.joined[0].ppl)
+      )
+    })
+  } else if ("new" in upd) {
+    const gidStr = this.gidToStr(upd.new.hut.gid);
+    const hutStr = this.hutToStr(upd.new.hut);
+    (huts.has(gidStr))
+      ? huts.get(gidStr).add(upd.new.hut.name)
+      : huts.set(gidStr, new Set(upd.new.hut.name));
+    this.setState({
+      huts: huts,
+      msgJar: msgJar.set(hutStr, upd.new.msgs)
+    })
+  } else if ("post" in upd) {
+    const hutStr = this.hutToStr(upd.post.hut);
+    (msgJar.has(hutStr))
+      ? msgJar.get(hutStr).push(upd.post.msg)
+      : msgJar.set(hutStr, [upd.post.msg]);
+    this.setState(
+      {msgJar: msgJar},
+      () => {
+        (hutStr === this.state.currentHut)
+          && this.scrollToBottom();
+      }
+    )
+  } else if ("join" in upd) {
+    const gidStr = this.gidToStr(upd.join.gid);
+    (joined.has(gidStr))
+      ? joined.get(gidStr).add(upd.join.who)
+      : joined.set(gidStr, new Set([upd.join.who]));
+    this.setState({joined: joined})
+  } else if ("quit" in upd) {
+    const gidStr = this.gidToStr(upd.quit.gid);
+    if ("~" + window.ship === upd.quit.who) {
+      (huts.has(gidStr)) &&
+        huts.get(gidStr).forEach(name =>
+          msgJar.delete(gidStr + "/" + name)
+        );
+      huts.delete(gidStr);
+      joined.delete(gidStr);
+      this.setState({
+        msgJar: msgJar,
+        huts: huts,
+        joined: joined,
+        currentGid: (currentGid === gidStr)
+          ? null : currentGid,
+        currentHut: (currentHut === null) ? null :
+          (
+            currentHut.split("/")[0] + "/" + currentHut.split("/")[1]
+              === gidStr
+          )
+          ? null : currentHut,
+        make: (currentGid === gidStr) ? "" : this.state.make
+      })
+    } else {
+      (joined.has(gidStr)) &&
+        joined.get(gidStr).delete(upd.quit.who);
+      this.setState({joined: joined})
+    }
+  } else if ("del" in upd) {
+    const gidStr = this.gidToStr(upd.del.hut.gid);
+    const hutStr = this.hutToStr(upd.del.hut);
+    (huts.has(gidStr)) &&
+      huts.get(gidStr).delete(upd.del.hut.name);
+    msgJar.delete(hutStr);
+    this.setState({
+      huts: huts,
+      msgJar: msgJar,
+      currentHut: (currentHut === hutStr) ? null : currentHut
+    })
+  }
+};
+```
+
+## Next steps
+
+To learn to create an app like this, the first thing to do is learn Hoon. [Hoon
+School](/guides/core/hoon-school/A-intro) is a comprehensive guide to the
+language, and the best place to start. After learning the basics of Hoon, [App
+School](/guides/core/app-school/intro) will teach you everything you need to
+know about app development.
+
+Along with these self-directed guides, we also run regular courses on both Hoon
+and app development. You can check the [Courses](/courses) page for details, or
+join the [~hiddev-dannut/new-hooniverse](/groups/~hiddev-dannut/new-hooniverse)
+group on Urbit.

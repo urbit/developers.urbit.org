@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Meta from "../components/Meta";
-import { getAllPosts } from "../lib/lib";
 import {
   Container,
   Markdown,
   SingleColumn,
   Section,
   TwoUp,
-} from "foundation-design-system";
+  getAllPosts,
+} from "@urbit/foundation-design-system";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 

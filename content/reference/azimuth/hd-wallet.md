@@ -41,7 +41,7 @@ smart-contracts.
 ### Proxies
 
 Each permanent Urbit ID can designate one or more
-[proxies](/using/id/proxies), which are Ethereum addresses capable of a
+[proxies](https://urbit.org/using/id/proxies), which are Ethereum addresses capable of a
 limited subset of Urbit ID transactions, such as spawning planets or rotating
 keys. The HD wallet automatically generates additional addresses utilized as
 proxies according to what is appropriate for your Urbit ID.
@@ -111,7 +111,7 @@ wallet address you generated on your hardware wallet for ownership.
 Next, login to Bridge using your hardware wallet. While Bridge supports Trezor
 and Ledger natively, this may require using Metamask as an intermediary anyways,
 depending on which firmware you are running. Then [accept the
-transfer](/using/id/using-bridge#accept-your-transfer). Your Azimuth point is
+transfer](https://urbit.org/using/id/using-bridge#accept-your-transfer). Your Azimuth point is
 now stored on your hardware wallet.
 
 To finish the process, use Bridge to set your management, voting, and spawn
@@ -126,7 +126,7 @@ address live on a "cold" wallet that never touches an internet-connected
 computer, and the various proxies on a "hot" wallet that is permitted to connect
 to internet-connected devices. This could be accomplished with multiple hardware
 wallets, a combination of paper and hardware wallet, a hardware cold wallet and
-Metamask hot wallet, etc. See the [User Manual](/using/id/hd-wallet) for
+Metamask hot wallet, etc. See the [User Manual](https://urbit.org/using/id/hd-wallet) for
 concrete suggestions on security practices.
 
 One tool useful for this setup is `claz`, located at `app/claz.hoon`. `claz` is

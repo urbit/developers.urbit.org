@@ -8,7 +8,7 @@ knowledge of parsing is required, and we will explain the basic structure of how
 parsing works in a purely functional language such as Hoon before moving on to
 how it is implemented in Hoon.
 
-**Note:** For JSON printing/parsing and encoding/decoding, see the [JSON Guide](/guides/additional/hoon/json-guide).
+**Note:** For JSON printing/parsing and encoding/decoding, see the [JSON Guide](/guides/additional/json-guide).
 
 ## What is parsing? {% #what-is-parsing %}
 
@@ -270,7 +270,7 @@ is `%foo`.
 ```
 
 One common scenario where `+cold` sees play is when writing [command line
-interface (CLI) apps](/guides/additional/hoon/cli-tutorial). We usher the
+interface (CLI) apps](/guides/additional/cli-tutorial). We usher the
 reader there to find an example where `+cold` is used.
 
 ### [`+knee`](/reference/hoon/stdlib/4f/#knee)

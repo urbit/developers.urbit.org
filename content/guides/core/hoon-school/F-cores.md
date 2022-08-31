@@ -24,7 +24,7 @@ Hoon effects the concept of a loop using recursion, return to a particular point
 
 This program adds 1+2+3+4+5 and returns the sum:
 
-```hoon
+```hoon {% copy=true %}
 =/  counter  1
 =/  sum  0
 |-
@@ -69,7 +69,7 @@ And thus `sum` yields the final value of `15`.
 
 It is frequently helpful, when constructing these, to be able to output the values at each step of the process.  Use the [`~&` sigpam](/reference/hoon/rune/sig#sigpam) rune to create output without changing any values:
 
-```hoon
+```hoon {% copy=true %}
 =/  counter  1
 =/  sum  0
 |-
@@ -87,7 +87,7 @@ It is frequently helpful, when constructing these, to be able to output the valu
 
 You can do even better using _interpolation_:
 
-```hoon
+```hoon {% copy=true %}
 =/  counter  1
 =/  sum  0
 |-
@@ -101,11 +101,11 @@ You can do even better using _interpolation_:
 ==
 ```
 
-#### Exercise:  Calculate a Factorial
+##  Exercise:  Calculate a Factorial
 
 - Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number _n_ is _n_×(_n_-1)×...×2×1.  We will introduce a couple of new bits of syntax and a new gate (`++dec`).  Make this into a generator `factorial.hoon`:
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  n=@ud
     |-
     ~&  n
@@ -119,8 +119,6 @@ You can do even better using _interpolation_:
     ```
 
     - We are using the `=` irregular syntax for the [`.=` dottis](/reference/hoon/rune/dot#-dottis) rune, which tests for the equality of two expressions.
-
-    - We are using the `+` irregular syntax for the [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) rune, which increments a value (adds one).
 
     ```hoon
     > +factorial 5
@@ -148,7 +146,7 @@ You can do even better using _interpolation_:
 
     - Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
 
-#### Exercise:  Tracking Expression Structure
+##  Exercise:  Tracking Expression Structure
 
 As we write more complicated programs, it is helpful to learn to read the runes by identifying which daughter expressions attach to which runes, e.g.:
 
@@ -218,7 +216,7 @@ We will revert to the irregular form more and more.  If you would like to see ex
 
 (_There's a lot going on in there._  Focus on the four-letter runic identifiers:  `%sgpm` for `~&` sigpam, for instance.)
 
-####  Exercise:  Calculate a sequence of numbers
+##  Exercise:  Calculate a sequence of numbers
 
 Produce a gate (generator) which accepts a `@ud` value and calculates the series where the *i*th term in the series is given by the equation
 
@@ -235,7 +233,7 @@ that is, the first numbers are 0, 1, 4, 9, 16, 25, etc.
 
 For this exercise, you do not need to store these values in a list.  Calculate each one but only return the final value.
 
-####  Exercise:  Output each letter in a `tape`
+##  Exercise:  Output each letter in a `tape`
 
 Produce a gate (generator) which accepts a `tape` value and returns a `(list @ud)` containing the ASCII value of each character.  Use a `|-` barhep trap.
 
@@ -246,9 +244,9 @@ For example, given the `tape` `"hello"`, the generator should return the list `~
 Two tools that may help:
 
 - You can retrieve the _n_-th element in a `tape` using the [`++snag`](/reference/hoon/stdlib/2b#snag) gate, e.g. `(snag 3 `(list @ud)`~[1 2 3 4 5])` yields `4` (so `++snag` is zero-indexed; it counts from zero).
-- You can join an element to a list using the [`++snoc`](/reference/hoon/stdlib/2b#snoc) gate, e.g. `(snoc `(list @ud)`~[1 2 3] 4)` yields `~[1 2 3 4]`.
+- You can join an element to a list using the [`++snoc`](/reference/hoon/stdlib/2b#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
 
-```hoon
+```hoon {% copy=true %}
 |=  [input=tape]
 =/  counter  0
 =/  results  *(list @ud)
@@ -284,7 +282,7 @@ Hoon (and Nock) very carefully bounds the known context of any part of the progr
 
 For instance, when we first composed generators, we made what are called “naked generators”:  that is, they do not have access to any information outside of the base subject (Arvo, Hoon, and `%zuse`) and their sample (arguments).  Other generators (such as `%say` generators, described below) can have more contextual information, including random number generators and optional arguments, passed to them to form part of their subject.
 
-Cores have two kinds of values attached:  arms and legs, both called limbs.  Arms describe known labeled addresses (with `++` luslus or `+$` lusbuc) which carry out computations.  Legs are limbs which store data (with e.g. `/=` tisfas).
+Cores have two kinds of values attached:  arms and legs, both called limbs.  Arms describe known labeled addresses (with `++` luslus or `+$` lusbuc) which carry out computations.  Legs are limbs which store data (with e.g. `=/` tisfas).
 
 ### Arms
 
@@ -298,7 +296,7 @@ Every expression of Hoon is evaluated relative to a subject.  An [_arm_](/refere
 
 Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) using the [`++` luslus](/reference/hoon/rune/lus#-luslus) digraph.  (`++` isn't formally a rune because it doesn't actually change the structure of a Hoon expression, it simply marks a name for an expression or value.  The `--` hephep limiter digraph is used because `|%` barcen can have any number of arms attached.  Like `++`, it is not formally a rune.)
 
-```hoon
+```hoon {% copy=true %}
 |%
 ++  add-one
   |=  a=@ud
@@ -323,7 +321,7 @@ Give the name `adder` to the above, and use it thus:
 
 Notice here that we read the arm resolution from right-to-left.  This isn't the only way to address an arm, but it's the most common one.
 
-#### Exercise:  Produce a Gate Arm
+##  Exercise:  Produce a Gate Arm
 
 - Compose a core which contains arms for multiplying a value by two and for dividing a value by two.
 
@@ -333,7 +331,7 @@ We can define custom types for a core using [`+$` lusbuc](/reference/hoon/rune/l
 
 This core defines a set of types intended to work with playing cards:
 
-```hoon
+```hoon {% copy=true %}
 |%
 +$  suit  ?(%hearts %spades %clubs %diamonds)
 +$  rank  ?(1 2 3 4 5 6 7 8 9 10 11 12 13)
@@ -346,7 +344,7 @@ This core defines a set of types intended to work with playing cards:
 
 When we write generators, we can include helpful tools as arms either before the main code (with `=>` tisgar) or after the main code (with `=<` tisgal):
 
-```hoon
+```hoon {% copy=true %}
 |=  n=@ud
 =<
 (add-one n)
@@ -366,7 +364,7 @@ A _leg_ is a data value.  They tend to be trivial but useful ways to pin constan
 
 ```hoon
 > =/  a  1
-  +(a)
+  (add a 1)
 2
 ```
 
@@ -378,7 +376,7 @@ Arms and legs are both _limbs_.  Either one can be replaced in a given subject. 
 
 Often a leg of the subject is produced with its value unchanged. But there is a way to produce a modified version of the leg as well. To do so, we use the `%=` cenhep rune:
 
-```hoon
+```hoon {% copy=true %}
 %=  subject-limb
   leg-1  new-leg-1
   leg-2  new-leg-2
@@ -388,13 +386,13 @@ Often a leg of the subject is produced with its value unchanged. But there is a 
 
 `%=` cenhep is frequently used in its irregular form, particularly if the expression within it fits on a single line.  The irregular form prepends the arm (often `$`) to parentheses `()`.  In its irregular form, the above would be:
 
-```hoon
+```hoon {% copy=true %}
 subject-limb(leg-1 new-leg-1, leg-2 new-leg-2, ...)
 ```
 
 In the first example, we saw the expression
 
-```hoon
+```hoon {% copy=true %}
 %=  $
   counter  (add counter 1)
   sum      (add sum counter)
@@ -403,7 +401,7 @@ In the first example, we saw the expression
 
 which can equivalently be expressed as
 
-```hoon
+```hoon {% copy=true %}
 $(counter (add counter 1), sum (add sum counter))
 ```
 
@@ -436,11 +434,11 @@ Like all arms, `$` buc is computed with its parent core as the subject.  When `$
 
 We will always call the values supplied to the gate the “sample” since we will later discover that this technical meaning (`[battery [sample context]]`) holds throughout more advanced cores.
 
-#### Exercise:  Another Way to Calculate a Factorial
+##  Exercise:  Another Way to Calculate a Factorial
 
 Let's revisit our factorial code from above:
 
-```hoon
+```hoon {% copy=true %}
 |=  n=@ud
 |-
 ?:  =(n 1)
@@ -456,7 +454,7 @@ We can write this code in several ways using the `%=` cenhep plus `$` buc struct
 
 For instance, we can eliminate the trap by recursing straight back to the gate:
 
-```hoon
+```hoon {% copy=true %}
 |=  n=@ud
 ?:  =(n 1)
   1
@@ -467,16 +465,16 @@ n
 ==
 ```
 
-Even more compactly, `(add counter 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/reference/hoon/rune/dot#-dotlus), for the equivalent version:
+This can be collapsed into a shorter equivalent form by employing the irregular form of `%=` cenhep:
 
-```hoon
+```hoon {% copy=true %}
 |=  n=@ud
 ?:  =(n 1)
   1
 (mul n $(n (dec n)))
 ```
 
-(Remember that sugar syntax like `$()` does not affect code efficiency, merely visual layout.)
+(Sugar syntax like `$()` does not affect code efficiency, merely visual layout.)
 
 #### The `$` Buc Arm
 
@@ -652,7 +650,7 @@ _Recursion_ refers to a return to the same logical point in a program again and 
 
 In the following code, the `|-` barhep trap serves as the point of recursion, and the return to that point (with changes) is indicated by the `%=` cenhep.  All this code does is count to the given number, then return that number.
 
-```hoon
+```hoon {% copy=true %}
 |=  n=@ud
 =/  index  0
 |-
@@ -660,6 +658,8 @@ In the following code, the `|-` barhep trap serves as the point of recursion, an
   index
 %=($ index +(index))
 ```
+
+We are using the `+` irregular syntax for the [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) rune, which increments a value (adds one).
 
 In a formal sense, we have to make sure that there is always a base case, a way of actually ending the recursion—if there isn't, we end up with an [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop)!  Some children's songs like [“Yon Yonson”](https://en.wikipedia.org/wiki/Yon_Yonson) or [“The Song That Never Ends”](https://en.wikipedia.org/wiki/The_Song_That_Never_Ends) rely on such recursive humor.
 
@@ -673,7 +673,7 @@ In a formal sense, we have to make sure that there is always a base case, a way 
 
 You need to make sure when you compose a trap that it has a base case which returns a noun.  The following trap results in an infinite loop:
 
-```hoon
+```hoon {% copy=true %}
 =/  index  1
 |-
 ?:  (lth index 1)  ~
@@ -702,7 +702,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     The most naïve version of this calculation simply calculates all previous numbers in the sequence every time they are needed.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  n=@ud
     ^-  @ud
     ?:  =(n 1)  1
@@ -734,7 +734,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated.  We use the [`++snoc`](/reference/hoon/stdlib/2b#snoc) gate to append a noun to a `list`.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  n=@ud
     =/  index  0
     =/  p  0
@@ -751,6 +751,8 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     ==
     ```
 
+    (As in an earlier code example, `(add index 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/reference/hoon/rune/dot#-dotlus).)
+
     This version is a little more complicated to compare using a diagram because of the trap, but yields something like this:
 
     ```
@@ -764,7 +766,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     The program can be improved somewhat again by appending to the head of the cell (rather than using `++snoc`).  This builds a list in a backwards order, so we apply the [`++flop`](/reference/hoon/stdlib/2b#flop) gate to flip the order of the list before we return it.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  n=@ud
     %-  flop
     =/  index  0
@@ -797,7 +799,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     Finally (and then we'll move along) here's a very efficient implementation, which starts with a `0` but builds the list entirely from cells, then appends the `~` `0` at the end:
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  n=@ud
     ^-  (list @ud)
     =/  f0  *@ud
@@ -815,7 +817,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
 The last factorial gate we produced looked like this:
 
-```hoon
+```hoon {% copy=true %}
 |=  n=@ud
 ?:  =(n 1)
   1
@@ -845,7 +847,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
 
     With a bit of refactoring, we can write a version of our factorial gate that is tail-recursive and can take advantage of this feature:
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  n=@ud
     =/  t=@ud  1
     |-
@@ -858,7 +860,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
 
     We then evaluate `n` to see if it is 1. If it is, we return the value of `t`. In case that `n` is anything other than 1, we perform our recursion:
 
-    ```hoon
+    ```hoon {% copy=true %}
     $(n (dec n), t (mul t n))
     ```
 
@@ -894,7 +896,7 @@ The [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function) is on
 
 - Compose a gate that computes the Ackermann function.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  [m=@ n=@]
     ^-  @
     ?:  =(m 0)  +(n)
@@ -914,7 +916,7 @@ The Ackermann function is not terribly useful in and of itself, but it has an in
 
 - Calculate some of the _m_/_n_ pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).
 
-#### Exercise:  The Sudan Function
+##  Exercise:  The Sudan Function
 
 The [Sudan function](https://en.wikipedia.org/wiki/Sudan_function) is related to the Ackermann function.
 

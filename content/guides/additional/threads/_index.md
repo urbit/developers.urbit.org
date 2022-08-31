@@ -1,5 +1,5 @@
 +++
-title = "Basics"
+title = "Threads"
 weight = 10
 sort_by = "weight"
 insert_anchor_links = "right"
@@ -7,22 +7,22 @@ insert_anchor_links = "right"
 
 Tutorial and explanation of the basics of writing threads.
 
-## [Fundamentals](reference/arvo/threads/basics/fundamentals)
+## [Fundamentals](/guides/additional/threads/fundamentals)
 
 Basic explanation of threads and usage of the strand arms `form` and `pure`.
 
-## [Bind](reference/arvo/threads/basics/bind)
+## [Bind](/guides/additional/threads/bind)
 
 Using micgal (`;<`) and the strand arm `bind` to chain strands together.
 
-## [Input](reference/arvo/threads/basics/input)
+## [Input](/guides/additional/threads/input)
 
 Information on what a strand takes.
 
-## [Output](reference/arvo/threads/basics/output)
+## [Output](/guides/additional/threads/output)
 
 Information on what a strand produces.
 
-## [Summary](reference/arvo/threads/basics/summary)
+## [Summary](/guides/additional/threads/summary)
 
 Summary of this information.

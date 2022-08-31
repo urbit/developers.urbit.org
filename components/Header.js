@@ -3,8 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import classnames from "classnames";
 import MenuTray from "../components/MenuTray";
-import { capitalize } from "../lib/lib";
-import { IntraNav } from "foundation-design-system";
+import { IntraNav, capitalize } from "@urbit/foundation-design-system";
 
 function ActiveLink({ children, href, className, currentPath }) {
   const firstCrumb = currentPath.split("/")[1];
@@ -38,7 +37,7 @@ export default function Header({ search }) {
         <div>
           <Link href="/" passHref>
             <a className="text-lg font-semibold leading-3 mr-5">
-              <span className="">Urbit </span>Developers
+              Urbit Developers
             </a>
           </Link>
           {routeDepth > 2 ? (
@@ -80,13 +79,6 @@ export default function Header({ search }) {
             href="/courses"
           >
             Courses
-          </ActiveLink>
-          <ActiveLink
-            currentPath={currentPath}
-            className="mr-5 type-ui"
-            href="/community"
-          >
-            Community
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}
@@ -141,13 +133,6 @@ export default function Header({ search }) {
             href="/courses"
           >
             Courses
-          </ActiveLink>
-          <ActiveLink
-            currentPath={currentPath}
-            className="mr-5 mb-3 type-ui"
-            href="/community"
-          >
-            Community
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}

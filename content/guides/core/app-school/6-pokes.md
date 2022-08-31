@@ -143,9 +143,8 @@ nack, and otherwise do nothing. Sometimes you'll want your agent to do something
 different depending on whether the poke failed or succeeded (and therefore
 whether it's a nack or an ack).
 
-As stated in the [Precepts](/guides/additional/development/precepts#specifics): "Route on wire before sign, never sign before wire.". Thus we first test the
-`wire` so you can tell what the `%poke-ack` was for. You might do something
-like:
+You should always route on wire before sign, never sign before wire. You might
+do something like:
 
 ```hoon
 ?+  wire  (on-agent:def wire sign)
@@ -177,9 +176,9 @@ Finally, you can produce the `(quip card _this)`.
 We're going to look at a couple of agents to demonstrate both sending and
 receiving pokes. Here's the first, an agent that receives pokes:
 
-### `pokeme.hoon`
+**`/app/pokeme.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -326,13 +325,13 @@ dojo will print the `tang` in the `%poke-ack` nack:
 dojo: app poke failed
 ```
 
-### `pokeit.hoon`
-
 Here's a second agent. It takes a poke of `%inc` or `%dec` like before, but
 rather than updating its own state, it sends two pokes to `%pokeme`, so
 `%pokeme`'s state will be incremented or decremented by two.
 
-```hoon
+**`/app/pokeit.hoon`**
+
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  versioned-state

@@ -9,24 +9,19 @@ import {
   Section,
   SingleColumn,
   TwoUp,
-} from "foundation-design-system";
+  getPage,
+  getPreviousPost,
+  getNextPost,
+} from "@urbit/foundation-design-system";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import Card from "../../components/Card";
 import Sidebar from "../../components/Sidebar";
 import ContentArea from "../../components/ContentArea";
 import Pagination from "../../components/Pagination";
-import {
-  Arvo,
-  Hoon,
-  Nock,
-  Vere,
-  Azimuth,
-  Cryptography,
-} from "../../components/icons";
-import Footer from "../../components/Footer";
+import { Arvo, Hoon, Nock, Vere, Azimuth, Dojo } from "../../components/icons";
 import overviewTree from "../../cache/overview.json";
 import { join } from "path";
-import { getPage, getPreviousPost, getNextPost } from "../../lib/lib";
 
 export default function Overview({
   posts,
@@ -218,11 +213,15 @@ function Landing({ search }) {
           <h3>Primer</h3>
           <div className="md:columns-2 space-y-4 mt-4 gap-x-8">
             <p>
-              Urbit development involves a fairly typical client/server/database
-              stack. Urbit is both a server, database, and an entire operating
-              system—this means exposes a filesystem, HTTP server, timer, and
-              much more to the programmer. These different parts of the
-              operating system are called <b>vanes</b>.
+              Urbit application development involves a client/server stack,
+              where Urbit is the server and the client can be any normal
+              interface. Unlike other servers, Urbit is also an entire operating
+              system and ACID datastore. The Urbit OS includes a filesystem,
+              encrypted P2P network, timer, application sandbox, software
+              distribution mechanism, built-in identity layer (Urbit ID), and
+              HTTP server. This means that you can build and distribute
+              production-grade applications without dealing with Linux, databases,
+              authentication systems, devops, or proprietary app stores.
             </p>
             <p>
               Clients that interact with Urbit can be web browsers, mobile or
@@ -282,7 +281,7 @@ function Landing({ search }) {
               It’s possible to develop for Urbit without learning Hoon by
               learning its client-side HTTP interface; however, investing the
               time to learn Hoon will make you a far more capable Urbit
-              developer, so we definitely recommend it.
+              developer.
             </p>
           </div>
         </Section>
@@ -297,20 +296,36 @@ function Landing({ search }) {
               href="/overview/arvo"
             />
             <Card
+              icon={<Azimuth />}
+              title="Azimuth"
+              text="A general-purpose public-key infrastructure (PKI) on the Ethereum blockchain"
+              className="h-full"
+              href="/overview/azimuth"
+            />
+          </TwoUp>
+          <TwoUp>
+            <Card
               icon={<Hoon />}
               title="Hoon"
               text="A strictly typed functional programming language that compiles itself to Nock"
               className="h-full"
               href="/overview/hoon"
             />
-          </TwoUp>
-          <TwoUp>
             <Card
               icon={<Nock />}
               title="Nock"
               text="A low-level homoiconic combinator language"
               className="h-full"
               href="/overview/nock"
+            />
+          </TwoUp>
+          <TwoUp>
+            <Card
+              icon={<Dojo />}
+              title="Dojo"
+              text="Dojo is a system for operating on and transforming data in Urbit"
+              className="h-full"
+              href="/overview/dojo"
             />
             <Card
               icon={<Vere />}
@@ -319,16 +334,6 @@ function Landing({ search }) {
               className="h-full"
               href="/overview/vere"
             />
-          </TwoUp>
-          <TwoUp>
-            <Card
-              icon={<Azimuth />}
-              title="Azimuth"
-              text="A general-purpose public-key infrastructure (PKI) on the Ethereum blockchain"
-              className="h-full"
-              href="/overview/azimuth"
-            />
-            <div />
           </TwoUp>
         </Section>
       </SingleColumn>

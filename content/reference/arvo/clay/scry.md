@@ -3,10 +3,10 @@ title = "Scry Reference"
 weight = 5
 +++
 
-The various Clay scries are specified by a `care`, which is a single character corresponding with a Clay submodule. Apart from `%s` they just take a `path` to a `desk`, file or directory. All examples are dojo commands, the ='s in the path are automatically populated by the dojo like:
+The various Clay scries are specified by a `care`, which is a single character corresponding with a Clay submodule. Apart from `%s` they just take a `path` to a `desk`, file or directory. All examples are dojo commands, the %'s in the path are automatically populated by the dojo like:
 
 ```
-> /===
+> %
 [~.~zod ~.base ~.~2021.4.26..02.29.03..d31b ~]
 ```
 
@@ -17,7 +17,7 @@ A scry with a `care` of `%a` will build a `hoon` file and return it as a `vase`.
 Example:
 
 ```
-.^(vase %ca /===/lib/strandio/hoon)
+.^(vase %ca %/lib/strandio/hoon)
 ```
 
 ## %b - Dyn. mark core.
@@ -27,7 +27,7 @@ A scry with a `care` of `%b` will produce a `dais:clay` processed `mark` core fo
 Example:
 
 ```
-.^(dais:clay %cb /===/txt)
+.^(dais:clay %cb %/txt)
 ```
 
 ## %c - Dyn. mark convert.
@@ -37,7 +37,7 @@ A scry with a `care` of `%c` will produce a `tube:clay` dynamically typed `mark`
 Example:
 
 ```
-> =a .^(tube:clay %cc /===/txt/mime)
+> =a .^(tube:clay %cc %/txt/mime)
 > !<  mime  (a !>(~['foo']))
 [p=/text/plain q=[p=3 q=7.303.014]]
 ```
@@ -50,7 +50,7 @@ Example:
 
 {% customFence %}
 
-\> .^((set desk) %cd /===)  
+\> .^((set desk) %cd %)  
 &#x7B;&#x25;bitcoin %base %landscape %webterm %garden}
 {% /customFence %}
 
@@ -61,7 +61,7 @@ A scry with a `care` of `%e` will return a statically typed `nave:clay` `mark` c
 Example:
 
 ```
-.^((nave:clay noun noun) %ce /===/noun)
+.^((nave:clay noun noun) %ce %/noun)
 ```
 
 ## %f - Stat. mark convert.
@@ -69,7 +69,7 @@ Example:
 A scry with a `care` of `%f` will return a static `mark` conversion gate. The `path` specifies two `mark`s - _from_ and _to_, like `/txt/mime`.
 
 ```
-> =a .^($-(text mime) %cf /===/txt/mime)
+> =a .^($-(text mime) %cf %/txt/mime)
 > (a ~['foo'])
 [p=/text/plain q=[p=3 q=7.303.014]]
 ```
@@ -83,7 +83,7 @@ If the specified file or directory has no permissions set, it will default to th
 Example:
 
 ```
-> .^([dict:clay dict:clay] %cp /===/gen)
+> .^([dict:clay dict:clay] %cp %/gen)
 [[src=/ rul=[mod=%white who=[p={} q={}]]] src=/ rul=[mod=%white who=[p={} q={}]]]
 ```
 
@@ -94,7 +94,7 @@ A scry with a `care` of `%r` will return the data of the given file wrapped in a
 Examples:
 
 ```
-> .^(vase %cr /===/gen/hood/hi/hoon)
+> .^(vase %cr %/gen/hood/hi/hoon)
 [ #t/@
     q
   3.548.750.706.400.251.607.252.023.288.575.526.190.856.734.474.077.821.289.791.377.301.707.878.697.553.411.219.689.905.949.957.893.633.811.025.757.107.990.477.902.858.170.125.439.223.250.551.937.540.468.638.902.955.378.837.954.792.031.592.462.617.422.136.386.332.469.076.584.061.249.923.938.374.214.925.312.954.606.277.212.923.859.309.330.556.730.410.200.952.056.760.727.611.447.500.996.168.035.027.753.417.869.213.425.113.257.514.474.700.810.203.348.784.547.006.707.150.406.298.809.062.567.217.447.347.357.039.994.339.342.906
@@ -102,12 +102,12 @@ Examples:
 ```
 
 ```
-> !<  @t  .^(vase %cr /===/gen/hood/hi/hoon)
+> !<  @t  .^(vase %cr %/gen/hood/hi/hoon)
 '::  Helm: send message to an urbit\0a::\0a::::  /hoon/hi/hood/gen\0a  ::\0a/?    310\0a:-  %say\0a|=([^ [who=ship mez=$@(~ [a=tape ~])] ~] helm-send-hi+[who ?~(mez ~ `a.mez)])\0a'
 ```
 
 ```
-> .^(vase %cr /===/gen)
+> .^(vase %cr %/gen)
 Crash!
 ```
 
@@ -123,12 +123,12 @@ This will return the [yaki:clay](/reference/arvo/clay/data-types#yaki-clay-commi
 
 Example:
 
-Here we scry the [dome:clay](/reference/arvo/clay/data-types#dome-desk-data) for `/===`, get the latest `tako:clay` and the do a `%s` scry for the `yaki:clay` in question.
+Here we scry the [dome:clay](/reference/arvo/clay/data-types#dome-desk-data) for `%`, get the latest `tako:clay` and the do a `%s` scry for the `yaki:clay` in question.
 
 ```
-> =/  =dome:clay  .^(dome:clay %cv /===)
+> =/  =dome:clay  .^(dome:clay %cv %)
   =/  =tako:clay  (~(got by hit.dome) let.dome)
-  .^(yaki:clay %cs /===/yaki/(scot %uv tako))
+  .^(yaki:clay %cs %/yaki/(scot %uv tako))
 [ p=~[80.174.473.756.485.530.520.259.753.935.584.637.641.665.425.899.348.092.348.244.635.557.986.495.151.006]
     q
   { [p=/mar/hark/graph-hook-update/hoon q=0v5.ea0bj.21s5c.mjrop.ishic.fpkvl.e5bbs.91kc9.tdo41.ifi06.60v41]
@@ -151,10 +151,10 @@ Example:
 Here we grab the `lobe:clay` of `/gen/hood/hi/hoon` with a `%y` scry, then use it to do a `%s` scry for the `blob:clay` of the file.
 
 ```
-> =/  =arch  .^(arch %cy /===/gen/hood/hi/hoon)
+> =/  =arch  .^(arch %cy %/gen/hood/hi/hoon)
   ?~  fil.arch
     ~
-  .^(blob:clay %cs /===/blob/(scot %uv u.fil.arch))
+  .^(blob:clay %cs %/blob/(scot %uv u.fil.arch))
 [ %direct
   p=0vp.k7nsm.qkdr3.t17rp.33bae.8gajg.v27gi.40itr.2u9qa.nppbt.7k255
     q
@@ -171,12 +171,12 @@ This will return the `@uvI` content hash of the specified commit. It takes a `ta
 
 Example:
 
-Here we grab the `dome:clay` for `/===` with a `%v` scry, get the latest `tako:clay` and then do a `%s` `%hash` scry for it.
+Here we grab the `dome:clay` for `%` with a `%v` scry, get the latest `tako:clay` and then do a `%s` `%hash` scry for it.
 
 ```
-> =/  =dome:clay  .^(dome:clay %cv /===)
+> =/  =dome:clay  .^(dome:clay %cv %)
   =/  =tako:clay  (~(got by hit.dome) let.dome)
-  .^(tako:clay %cs /===/hash/(scot %uv tako))
+  .^(tako:clay %cs %/hash/(scot %uv tako))
 0v16.er7uq.oke4u.cru7u.nglu9.q3su7.6ub1o.bh4qk.r5uav.ut12d.5rdl5
 ```
 
@@ -189,10 +189,10 @@ Example:
 Here we grab the `lobe:clay` of `/gen/hood/hi/hoon` with a `%y` scry, then use it to do a `%s` scry for the `cage` of the data.
 
 ```
-> =/  =arch  .^(arch %cy /===/gen/hood/hi/hoon)
+> =/  =arch  .^(arch %cy %/gen/hood/hi/hoon)
   ?~  fil.arch
     ~
-  .^(cage %cs /===/cage/(scot %uv u.fil.arch))
+  .^(cage %cs %/cage/(scot %uv u.fil.arch))
 [ p=%hoon
     q
   [ #t/@t
@@ -229,12 +229,12 @@ This will return the mergebase (i.e. most recent common ancestor) between two `d
 Examples:
 
 ```
-> .^((list tako:clay) %cs /===/base/(scot %p (sein:title our now our))/base)
+> .^((list tako:clay) %cs %/base/(scot %p (sein:title our now our))/base)
 ~[102.787.244.596.033.419.950.995.540.301.493.841.569.518.772.322.508.085.465.561.801.703.148.627.263.473]
 ```
 
 ```
-> .^((list tako:clay) %cs /===/base/~sampel/base)
+> .^((list tako:clay) %cs %/base/~sampel/base)
 ~
 ```
 
@@ -245,7 +245,7 @@ A scry with a `care` of `%t` will return a `(list path)` of all files in the giv
 Examples:
 
 ```
-> .^((list path) %ct /===/app/landscape)
+> .^((list path) %ct %/app/landscape)
 ~[
   /app/landscape/css/index/css
   /app/landscape/img/favicon/png
@@ -257,12 +257,12 @@ Examples:
 ```
 
 ```
-> .^((list path) %ct /===/gen/group-store/add/hoon)
+> .^((list path) %ct %/gen/group-store/add/hoon)
 ~[/gen/group-store/add/hoon]
 ```
 
 ```
-> .^((list path) %ct /===/foobar)
+> .^((list path) %ct %/foobar)
 ~
 ```
 
@@ -273,17 +273,17 @@ A scry with a `care` of `%u` will return a `?` depending on whether the file exi
 Examples:
 
 ```
-> .^(? %cu /===/app)
+> .^(? %cu %/app)
 %.n
 ```
 
 ```
-> .^(? %cu /===/gen/code/hoon)
+> .^(? %cu %/gen/code/hoon)
 %.y
 ```
 
 ```
-> .^(? %cu /===/foobar)
+> .^(? %cu %/foobar)
 %.n
 ```
 
@@ -294,7 +294,7 @@ A scry with a care of `%v` will return the entire state of a `desk` as a `dome:c
 Example:
 
 ```
-> =a .^(dome:clay %cv /===)
+> =a .^(dome:clay %cv %)
 > let.a
 1
 ```
@@ -308,7 +308,7 @@ A scry with a `care` of `%w` will return the revision number and date of a given
 Example:
 
 ```
-> .^(cass:clay %cw /===)
+> .^(cass:clay %cw %)
 [ud=2 da=~2021.4.13..19.12.49..3389]
 ```
 
@@ -319,17 +319,17 @@ A scry with a `care` of `%x` will return the raw data of a file as an `@` or cra
 Examples:
 
 ```
-> .^(@ %cx /===/gen/hood/hi/hoon)
+> .^(@ %cx %/gen/hood/hi/hoon)
 3.548.750.706.400.251.607.252.023.288.575.526.190.856.734.474.077.821.289.791.377.301.707.878.697.553.411.219.689.905.949.957.893.633.811.025.757.107.990.477.902.858.170.125.439.223.250.551.937.540.468.638.902.955.378.837.954.792.031.592.462.617.422.136.386.332.469.076.584.061.249.923.938.374.214.925.312.954.606.277.212.923.859.309.330.556.730.410.200.952.056.760.727.611.447.500.996.168.035.027.753.417.869.213.425.113.257.514.474.700.810.203.348.784.547.006.707.150.406.298.809.062.567.217.447.347.357.039.994.339.342.906
 ```
 
 ```
-> .^(@t %cx /===/gen/hood/hi/hoon)
+> .^(@t %cx %/gen/hood/hi/hoon)
 '::  Helm: send message to an urbit\0a::\0a::::  /hoon/hi/hood/gen\0a  ::\0a/?    310\0a:-  %say\0a|=([^ [who=ship mez=$@(~ [a=tape ~])] ~] helm-send-hi+[who ?~(mez ~ `a.mez)])\0a'
 ```
 
 ```
-> .^(@ %cx /===/gen/hood)
+> .^(@ %cx %/gen/hood)
 Crash!
 ```
 
@@ -344,7 +344,7 @@ It will return the bunt of an `arch` if the file or directory is not found.
 Examples:
 
 ```
-> .^(arch %cy /===/gen/group-store)
+> .^(arch %cy %/gen/group-store)
 [ fil=~
     dir
   { [p=~.allow-ships q=~]
@@ -360,17 +360,17 @@ Examples:
 ```
 
 ```
-> .^(arch %cy /===/gen/group-store/allow-ships)
+> .^(arch %cy %/gen/group-store/allow-ships)
 [fil=~ dir={[p=~.hoon q=~]}]
 ```
 
 ```
-> .^(arch %cy /===/gen/group-store/allow-ships/hoon)
+> .^(arch %cy %/gen/group-store/allow-ships/hoon)
 [fil=[~ 0vb.g8sqs.7gjm9.bl3vu.nk677.h5be1.g9eg3.4v1jo.00ivf.g8ndu.48a53] dir={}]
 ```
 
 ```
-> .^(arch %cy /===/foobar)
+> .^(arch %cy %/foobar)
 [fil=~ dir={}]
 ```
 
@@ -383,16 +383,16 @@ The type returned is a `@uxI`.
 Examples:
 
 ```
-> .^(@uvI %cz /===/gen)
+> .^(@uvI %cz %/gen)
 0v5.itmhj.lt7ak.lgr1k.dr7vu.u7u9s.ko5rf.idfcr.ukrd2.t088n.3ml1k
 ```
 
 ```
-> .^(@uvI %cz /===/gen/code/hoon)
+> .^(@uvI %cz %/gen/code/hoon)
 0v1t.vi1pf.3ba4n.87g6h.dcc1p.4t4l8.rm6a9.b4de4.v77qc.p9dc0.p8289
 ```
 
 ```
-> .^(@uvI %cz /===/foobar)
+> .^(@uvI %cz %/foobar)
 0v0
 ```

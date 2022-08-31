@@ -55,12 +55,12 @@ It's important to learn the difference, however, because for certain use cases y
 Let's make a core with arms that build gates of various kinds.  As we did in a previous lesson, we'll use the `|%` rune.  Copy and paste the following into the Dojo:
 
 ```hoon
-> =c |%
-  ++  inc      |=(a=@ (add 1 a))
-  ++  add-two  |=(a=@ (inc (inc a)))
-  ++  double   |=(a=@ (mul 2 a))
-  ++  triple   |=(a=@ (mul 3 a))
-  --
+=c |%
+++  inc      |=(a=@ (add 1 a))
+++  add-two  |=(a=@ (inc (inc a)))
+++  double   |=(a=@ (mul 2 a))
+++  triple   |=(a=@ (mul 3 a))
+--
 ```
 
 Let's try out these arms, using them for function calls:
@@ -156,7 +156,7 @@ If you check the docs on our now-familiar [`%-` cenhep](/reference/hoon/rune/cen
 
 > This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a function. `a` is the gate, and `b` is the desired sample value (i.e., input value) for the gate.
 >
-> ```hoon
+> ```hoon {% copy=true %}
 > %~($ a b)
 > ```
 
@@ -227,7 +227,7 @@ This will be used in two steps:  a gate-building step then a gate usage step.
 
 We produce a gate from a door's arm using the [`%~` censig](/reference/hoon/rune/cen#-censig) rune, almost always used in its irregular form, `~()`.  Here we prime the door with `[5 4 3]`, which yields a gate:
 
-```hoon
+```hoon {% copy=true %}
 ~(quad poly [5 4 3])
 ```
 
@@ -246,12 +246,12 @@ Doors will enable us to build some very powerful data storage tools by letting u
 
 Let's unpack what's going on more with this next door.  Each of the arms in this example door will define a simple gate.  Let's bind the door to `c`.  To make a door we use the `|_` barcab rune:
 
-```hoon
-> =c |_  b=@
-  ++  plus  |=(a=@ (add a b))
-  ++  times  |=(a=@ (mul a b))
-  ++  greater  |=(a=@ (gth a b))
-  --
+```hoon {% copy=true %}
+=c |_  b=@
+++  plus  |=(a=@ (add a b))
+++  times  |=(a=@ (mul a b))
+++  greater  |=(a=@ (gth a b))
+--
 ```
 
 If you type this into the dojo manually, make sure you attend carefully to the spacing. Feel free to cut and paste the code, if desired.
@@ -371,20 +371,20 @@ The standard library provides [currying functionality](./Q-func.md) outside of t
 In the above example we created a door `c` with sample `b=@` and found that the initial value of `b` was `0`, the bunt value of `@`. We then created new door from `c` by modifying the value of `b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` rune, whose irregular form is simply `_`. To create the door `c` with the sample `b=@` set to have the value `7` in the dojo, we would write
 
 ```hoon
-> =c |_  b=_7
-  ++  plus  |=(a=@ (add a b))
-  ++  times  |=(a=@ (mul a b))
-  ++  greater  |=(a=@ (gth a b))
-  --
+=c |_  b=_7
+++  plus  |=(a=@ (add a b))
+++  times  |=(a=@ (mul a b))
+++  greater  |=(a=@ (gth a b))
+--
 ```
 
 Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example.  You will learn more about how types are inferred in the [next module](./L-struct.md).
 
-#### Exercise:  Adding Arms to a Door
+##  Exercise:  Adding Arms to a Door
 
 Recall the quadratic equation door.
 
-```hoon
+```hoon {% copy=true %}
 |_  [a=@ud b=@ud c=@ud]
 ++  quad
   |=  x=@ud
@@ -418,24 +418,24 @@ We'll build a color `map`, from a `@tas` of a [color's name](https://en.wikipedi
 
 We can produce a `map` from a `list` of key-value cells using the [`++malt`](/reference/hoon/stdlib/2l#malt) function.  Using `@tas` terms as keys (which is common) requires us to explicitly mark the list as `(list (pair @tas @ux))`:
 
-```hoon
-> =colors (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870] [%green 0x1.a638] [%blue 0x66ff]])
+```hoon {% copy=true %}
+=colors (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870] [%green 0x1.a638] [%blue 0x66ff]])
 ```
 
 To insert one key-value pair at a time, we use `put`.  In Dojo, we need to either pin it into the subject or modify a copy of the map for the rest of the expression using `=/` tisfas.
 
-```hoon
-> =colors (~(put by colors) [%orange 0xff.8833])
-> =colors (~(put by colors) [%violet 0x83.59a3])
-> =colors (~(put by colors) [%black 0x0])
+```hoon {% copy=true %}
+=colors (~(put by colors) [%orange 0xff.8833])
+=colors (~(put by colors) [%violet 0x83.59a3])
+=colors (~(put by colors) [%black 0x0])
 ```
 
 Note the pattern here:  there is a `++put` arm of `++by` which builds a gate to modify `colors` by inserting a value.
 
 What happens if we try to add something that doesn't match the type?
 
-```hoon
-> =colors (~(put by colors) [%cerulean '#02A4D3'])
+```hoon {% copy=true %}
+=colors (~(put by colors) [%cerulean '#02A4D3'])
 ```
 
 We'll see a `mull-grow`, a `mull-nice`, and a `nest-fail`.  Essentially these are all flavors of mold-matching errors.
@@ -467,6 +467,7 @@ You can check whether a key is present using `++has:by`:
 ```hoon
 > (~(has by colors) %teal)
 %.n
+
 > (~(has by colors) %green)
 %.y
 ```
@@ -482,8 +483,11 @@ You can apply a gate to each value, rather like `++turn` in Lesson 4, using `++r
 
 ```hoon
 > =red |=(a=@ux ^-(@ux (cut 2 [4 2] a)))
+
 > =green |=(a=@ux ^-(@ux (cut 2 [2 2] a)))
+
 > =blue |=(a=@ux ^-(@ux (cut 2 [0 2] a)))
+
 > (~(run by colors) blue)
 { [p=%black q=0x0]  
  [p=%red q=0x3f]  
@@ -495,7 +499,7 @@ You can apply a gate to each value, rather like `++turn` in Lesson 4, using `++r
 }
 ```
 
-#### Exercise:  Display Cards
+##  Exercise:  Display Cards
 
 - Recall the `/lib/playing-cards.hoon` library.  Use a map to pretty-print the `darc`s as Unicode card symbols.
 
@@ -503,13 +507,13 @@ You can apply a gate to each value, rather like `++turn` in Lesson 4, using `++r
 
     Add the following arms to the library core:
 
-    ```hoon
+    ```hoon {% copy=true mode="collapse" %}
     ++  pp-card
       |=  c=darc
       (~(got by card-table) c)
     ++  card-table
       %-  malt
-      ^-  (list [darc:playing-cards @t])
+      ^-  (list [darc @t])
       :~  :-  [sut=%clubs val=1]  '🃑'
           :-  [sut=%clubs val=2]  '🃒'
           :-  [sut=%clubs val=3]  '🃓'
@@ -614,7 +618,7 @@ Below is a generator that performs a Caesar cipher on a `tape`.  This example is
 
 **/gen/caesar.hoon**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 !:
 |=  [msg=tape steps=@ud]
 =<
@@ -720,7 +724,7 @@ Let's examine our caesar.hoon code piece by piece. We won't necessarily go in wr
 
 There are a few runes in this which we haven't seen yet; we will deal with them incidentally in the commentary.
 
-```hoon
+```hoon {% copy=true %}
 !:
 |=  [msg=tape steps=@ud]
 =<
@@ -732,7 +736,7 @@ The `!:` in the first line of the above code enables a full stack trace in the e
 
 `=<` is the rune that evaluates its first child expression with respect to its second child expression as the subject. In this case, we evaluate the expressions in the code chunk below against the [core](/reference/glossary/core) declared later, which allows us reference the core's contained [arms](/reference/glossary/arm) before they are defined. Without `=<`, we would need to put the code chunk below at the bottom of our program. In Hoon, as previously stated, we always want to keep the longer code towards the bottom of our programs - `=<` helps us do that.
 
-```hoon
+```hoon {% copy=true %}
 =.  msg  (cass msg)
 :-  (shift msg steps)
     (unshift msg steps)
@@ -742,13 +746,13 @@ The `!:` in the first line of the above code enables a full stack trace in the e
 
 `:- (shift msg steps)` and `(unshift msg steps)` simply composes a cell of a right-shifted cipher and a left-shifted cipher of our original message. We will see how this is done using the core described below, but this is the final output of our generator. We have indented the lower line, which is not strictly good Hoon style but makes the intent clearer.
 
-```hoon
+```hoon {% copy=true %}
 |%
 ```
 
 `|%` creates a `core`, the second child of `=<`. Everything after `|%` is part of that second child `core`, and will be used as the subject of the first child of `=<`, described above. The various parts, or `arm`s, of the `core` are denoted by `++` beneath it, for instance:
 
-```hoon
+```hoon {% copy=true %}
 ++  rotation
   |=  [my-alphabet=tape my-steps=@ud]
   =/  length=@ud  (lent my-alphabet)
@@ -774,7 +778,7 @@ The `++rotation` arm takes takes a specified number of characters off of a tape 
 
 `(weld q p)` uses `weld`, which combines two strings into one. Remember that `trim` has given us a split version of `my-alphabet` with `p` being the front half that was split off of `my-alphabet` and `q` being the back half. Here we are welding the two parts back together, but in reverse order: the second part `q` is welded to the front, and the first part `p` is welded to the back.
 
-```hoon
+```hoon {% copy=true %}
 ++  map-maker
   |=  [key-position=tape value-result=tape]
   ^-  (map @t @t)
@@ -809,7 +813,7 @@ If the above test finds that the `tape`s are not empty, we trigger a recursion t
 
 We have three related arms to look at next, `++decoder`, `++encoder`, and `++space-adder`. `++space-adder` is required for the other two, so we'll look at it first.
 
-```hoon
+```hoon {% copy=true %}
 ++  space-adder
   |=  [key-position=tape value-result=tape]
   ^-  (map @t @t)
@@ -820,7 +824,7 @@ We have three related arms to look at next, `++decoder`, `++encoder`, and `++spa
 
 We use the `put` arm of the `by` core on the next line, giving it a `map` produced by the `map-maker` arm that we created before as its sample. This adds an entry to the map where the space character (called `ace`) simply maps to itself. This is done to simplify the handling of spaces in `tapes` we want to encode, since we don't want to shift them.
 
-```hoon
+```hoon {% copy=true %}
 ++  encoder
   |=  [steps=@ud]
   ^-  (map @t @t)
@@ -847,7 +851,7 @@ If our two inputs to `space-adder` were `"abcdefghijklmnopqrstuvwxyz"` and `"bcd
 
 Still with us? Good. We are finally about to use all the stuff that we've walked through.
 
-```hoon
+```hoon {% copy=true %}
 ++  shift
   |=  [message=tape shift-steps=@ud]
   ^-  tape
@@ -862,7 +866,7 @@ Both `++shift` and `++unshift` take two arguments: our `message`, the `tape` tha
 
 `++shift` is for encoding, and `++unshift` is for decoding. Thus, `++shift` calls the `operate` arm with `(operate message (encoder shift-steps))`, and `++unshift` makes that call with `(operate message (decoder shift-steps))`. These both produce the final output of the core, to be called in the form of `(shift msg steps)` and `(unshift msg steps)` in the cell being created at the beginning of our code.
 
-```hoon
+```hoon {% copy=true %}
 ++  operate
   |=  [message=tape shift-map=(map @t @t)]
   ^-  tape
@@ -906,7 +910,7 @@ The [`|^` barket](/reference/hoon/rune/bar#-barket) rune is an example of what w
 
 This code calculates the volume of a cylinder, _A=πr²h_.
 
-```hoon
+```hoon {% copy=true %}
 =volume-of-cylinder |^
 (mul:rs (area-of-circle .2.0) height)
 ++  area-of-circle
@@ -921,7 +925,7 @@ Since all of the values either have to be pinned ahead of time or made available
 
 If you read the docs, you'll find that a [`|-` barhep](/reference/hoon/rune/bar#-barhep) rune “produces a trap (a core with one arm `$`) and evaluates it.”  So a trap actually evaluates to a `|%` barcen core with an arm `$`:
 
-```hoon
+```hoon {% copy=true %}
 :: count to five
 =/  index  1
 |-
@@ -931,7 +935,7 @@ $(index +(index))
 
 actually translates to
 
-```hoon
+```hoon {% copy=true %}
 :: count to five
 =/  index  1
 =<  $
@@ -957,3 +961,7 @@ You can also create a trap for later use with the [`|.` bardot](/reference/hoon/
 What is a gate?  It is a door with only one arm `$` buc, and whenever you invoke it then that default arm's expression is referred to and evaluated.
 
 A _gate_ and a _trap_ are actually very similar:  a [gate](/reference/hoon/rune/bar#-bartis) simply has a sample (and can actively change when evaluated or via a `%=` cenhep), whereas a trap does not (and can _only_ be passively changed via something like `%=` cenhep).
+
+#### Example:  Hoon Workbook
+
+Other examples demonstrating `++map` are available in the [Hoon Workbook](/guides/additional/workbook), such as Solution #2 in the [Rhonda Numbers](/guides/additional/workbook/rhonda) tutorial.

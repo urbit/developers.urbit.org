@@ -93,7 +93,7 @@ A planet's sponsor can be calculated as modulo 2¹⁶.
 Galaxy planets occupy points beginning with `0x1.0000` ~dapnep-ronmyl
 (for ~zod); ~zod's last galaxy planet is `0xffff.ffff` - `0xffff` =
 `0xffff.0000` ~lodnyt-ranrud.  The last galaxy planet (of ~fes) is
-`0xffff.ffff` - `0xffff` + `0x100` = `0xffff.0100` ~hidwyt-mogbud.
+`0xffff.ffff` - `0xffff` + `0x00ff` = `0xffff.00ff` ~hidwyt-mogbud.
 
 Star planets span the remaining space.  The first star planet (of
 ~marzod) is `0x1.000` + `0x100` = `0x1.0100` ~wicdev-wisryt.  The last star
@@ -157,19 +157,19 @@ facto* attestation of ownership.
 
 Each point other than a galaxy has a sponsor.  To determine the sponsor of any point, use `++sein:title`:
 
-```hoon
+```hoon {% copy=true %}
 %-(sein:title [our now ~marzod])
 ```
 
 where ~marzod is the point in question; or more succinctly:
 
-```hoon
+```hoon {% copy=true %}
 (sein:title our now ~marzod)
 ```
 
 (This previews the irregular syntax of `%-` cenhep; it is equivalent to `%-  sein:title  [our now ~marzod]`.)
 
-#### Exercise:  Finding neighbors
+##  Exercise:  Finding neighbors
 
 A neighbor of a point is a point which occupies the point immediately above or below that point's `@ud` number.
 
@@ -192,7 +192,7 @@ The previous neighbor of ~sampel-palnet is thus:
 
 - Find the next neighbor of ~sampel-palnet.
 
-#### Exercise:  Finding the sponsor of a neighbor
+##  Exercise:  Finding the sponsor of a neighbor
 
 The sponsor of ~sampel-palnet may be found by:
 
@@ -216,7 +216,7 @@ The sponsor of the previous neighbor of ~sampel-palnet is thus:
 
 - Find the sponsor of the next neighbor of ~sampel-palnet.
 
-#### Exercise:  Finding the child of a point
+##  Exercise:  Finding the child of a point
 
 A point has many children, but the first moon of a planet is located at that point plus 2³² = `4.294.967.296`.
 

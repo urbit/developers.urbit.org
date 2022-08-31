@@ -1,11 +1,3 @@
-import {
-  getPostBySlug,
-  getAllPosts,
-  getNextPost,
-  getPreviousPost,
-  formatDate,
-  generateDisplayDate,
-} from "../../lib/lib";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -20,7 +12,13 @@ import {
   SingleColumn,
   Section,
   TwoUp,
-} from "foundation-design-system";
+  getPostBySlug,
+  getAllPosts,
+  getNextPost,
+  getPreviousPost,
+  formatDate,
+  generateDisplayDate,
+} from "@urbit/foundation-design-system";
 
 export default function BlogPost({
   post,
@@ -43,7 +41,7 @@ export default function BlogPost({
       </Head>
       <Header search={search} />
       <SingleColumn>
-        <Section short narrow>
+        <Section narrow className="pb-10">
           <h1>{post.title}</h1>
           <h3 className=" mt-6">{post.description}</h3>
           <div className="flex items-baseline mt-6">
@@ -60,7 +58,7 @@ export default function BlogPost({
           </div>
           <div className="text-wall-500 type-sub">{formatDate(date)}</div>
         </Section>
-        <Section short narrow className="markdown">
+        <Section short narrow className="markdown py-0 pb-20">
           <Markdown.render content={JSON.parse(markdown)} />
         </Section>
         <Section wide className="flex">

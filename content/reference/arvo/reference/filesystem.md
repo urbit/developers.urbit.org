@@ -90,7 +90,7 @@ desks and their Gall agents:
   automatically started when it's installed. This file may be omitted if there
   are no agents to start.
 - `desk.docket-0` - This file configures the tile,
-  [glob](/guides/additional/dist/glob) and other metadata for apps with a
+  [glob](/reference/additional/dist/glob) and other metadata for apps with a
   front-end. This file may be omitted if the desk does not have a tile or
   front-end to be installed. This file is versioned so the number appended may
   change in the future as changes to its specification are made. See the [Docket

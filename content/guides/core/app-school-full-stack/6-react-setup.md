@@ -1,5 +1,5 @@
 +++
-title = "7. React app setup"
+title = "6. React app setup"
 weight = 7
 +++
 
@@ -50,7 +50,10 @@ Inside our React app directory, let's install the `@urbit/http-api` NPM package:
 npm i @urbit/http-api
 ```
 
-We also install a handful of other packages for the UI components (`bootstrap react-bootstrap react-textarea-autosize date-fns react-bottom-scroll-listener react-day-picker`), but that's not important to our purposes here.
+We also install a handful of other packages for the UI components
+(`bootstrap@5.1.3 react-bootstrap@2.2.0 react-textarea-autosize@8.3.3
+date-fns@2.28.0 react-bottom-scroll-listener@5.0.0 react-day-picker@7.4.10`),
+but that's not important to our purposes here.
 
 ## Additional tweaks
 

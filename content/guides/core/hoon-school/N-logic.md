@@ -45,7 +45,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
 
     Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` wuthep switches over term unions can make it look like the expression is branching on the value.  It's actually branching on the _type_.  These are almost exclusively used with term type unions.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  p=?(%1 %2 %3)
     ?-  p
       %1  1
@@ -56,7 +56,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
 
 - [`?+` wutlus](/reference/hoon/rune/wut#-wutlus) is similar to `?-` but allows a default value in case no branch is taken.  Otherwise these are similar to `?-` wuthep switch statements.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  p=?(%0 %1 %2 %3 %4)
     ?+  p  0
       %1  1
@@ -112,7 +112,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
 
 From these primitive operators, you can build other logical statements at need.
 
-#### Exercise:  Design an `XOR` Function
+##  Exercise:  Design an `XOR` Function
 
 The logical operation `XOR` _p_⊕_q_ exclusive disjunction yields true if one but not both operands are true.  `XOR` can be calculated by (_p_ ∧ ¬_q_) ∨ (¬_p_ ∧ _q_).
 
@@ -123,13 +123,13 @@ The logical operation `XOR` _p_⊕_q_ exclusive disjunction yields true if one b
 
 - Implement `XOR` as a gate in Hoon.
 
-    ```hoon
+    ```hoon {% copy=true %}
     |=  [p=?(%.y %.n) q=?(%.y %.n)]
     ^-  ?(%.y %.n)
     |(&(p !q) &(!p q))
     ```
 
-#### Exercise:  Design a `NAND` Function
+##  Exercise:  Design a `NAND` Function
 
 The logical operation `NAND` _p_ ↑ _q_ produces false if both operands are true.  `NAND` can be calculated by ¬(_p_ ∧ _q_).
 
@@ -140,7 +140,7 @@ The logical operation `NAND` _p_ ↑ _q_ produces false if both operands are tru
 
 - Implement `NAND` as a gate in Hoon.
 
-#### Exercise:  Design a `NOR` Function
+##  Exercise:  Design a `NOR` Function
 
 The logical operation `NOR` _p_ ↓ _q_ produces true if both operands are false.  `NOR` can be calculated by ¬(_p_ ∨ _q_).
 
@@ -151,7 +151,7 @@ The logical operation `NOR` _p_ ↓ _q_ produces true if both operands are false
 
 - Implement `NAND` as a gate in Hoon.
 
-#### Exercise:  Implement a Piecewise Boxcar Function
+##  Exercise:  Implement a Piecewise Boxcar Function
 
 The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.  We implemented the similar Heaviside function [previously](./B-syntax.md) using the `?:` wutcol rune.
 

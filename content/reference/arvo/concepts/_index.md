@@ -7,7 +7,7 @@ insert_anchor_links = "right"
 
 Other concepts related to the way Arvo works.
 
-## [Scries](/reference/arvo/concepts/scries)
+## [Scries](/reference/arvo/concepts/scry)
 
 Details of performing scries.
 

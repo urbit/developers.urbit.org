@@ -11,4 +11,4 @@ within your urbit.
 ### Further Reading
 
 - [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon programming language.
-- [Why Hoon?](/blog/why-hoon): A blog post that explains why Urbit uses its own programming language.
+- [Why Hoon?](https://urbit.org/blog/why-hoon): A blog post that explains why Urbit uses its own programming language.

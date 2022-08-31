@@ -58,7 +58,7 @@ To use it, you just import `dbug` with a
 [faslus](/reference/arvo/ford/ford#ford-runes) (`/+`) rune at the beginning, then add
 the following line directly before the door of your agent:
 
-```hoon
+```hoon {% copy=true %}
 %-  agent:dbug
 ```
 
@@ -108,7 +108,7 @@ have access to them. Each time a name in a `+*` is called, the associated Hoon i
 
 A virtual arm in an agent often looks something like this:
 
-```hoon
+```hoon {% copy=true %}
 +*  this  .
     def   ~(. (default-agent this %.n) bowl)
 ```
@@ -154,10 +154,10 @@ in the next lesson.
 
 ## Example
 
-Here's the `skeleton.hoon` dummy agent from the previous lesson, modified with
+Here's the `/app/skeleton.hoon` dummy agent from the previous lesson, modified with
 the concepts discussed here:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /+  default-agent, dbug
 |%
 +$  card  card:agent:gall
@@ -186,7 +186,7 @@ The first line uses the faslus (`/+`) Ford rune to import
 `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them
 into the subject of our agent so they're available for use. You can read more
 about Ford runes in the [Ford section of the vane
-documenation](/reference/arvo/ford/ford#ford-runes).
+documentation](/reference/hoon/rune/fas).
 
 Next, we've added an extra core. Notice how it's not explicitly composed, since
 the build system will do that for us. In this case we've just added a single
@@ -218,7 +218,7 @@ we can try out `dbug`. To start it, run the following in the dojo:
 ```
 
 For details of using the `|rein` generator, see the [Dojo
-Tools](/using/os/dojo-tools#rein) documentation.
+Tools](https://urbit.org/using/os/dojo-tools#rein) documentation.
 
 Now our agent should be running, so let's try out `dbug`. In the dojo, let's try
 poking our agent with the `+dbug` generator:

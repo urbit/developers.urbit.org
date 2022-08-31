@@ -73,7 +73,7 @@ This didn't work because we haven't first proved to Hoon that `b` is a non-null 
 
 Here's a program that finds and replaces certain atoms in a `(tree @)`.
 
-```hoon
+```hoon {% copy=true %}
 |=  [nedl=@ hay=(tree @) new=@]
 ^-  (tree @)
 ?~  hay  ~
@@ -105,22 +105,22 @@ A `set` is rather like a `list` except that each entry can only be represented o
 
 [`++silt`](/reference/hoon/stdlib/2l#silt) produces a `set` from a `list`:
 
-```hoon
-> =primes (silt ~[2 3 5 7 11 13])
+```hoon {% copy=true %}
+=primes (silt ~[2 3 5 7 11 13])
 ```
 
 `++put:in` adds a value to a `set` (and null-ops when the value is already present):
 
-```hoon
-> =primes (~(put in primes) 17)
-> =primes (~(put in primes) 13)
+```hoon {% copy=true %}
+=primes (~(put in primes) 17)
+=primes (~(put in primes) 13)
 ```
 
 `++del:in` removes a value from a `set`:
 
-```hoon
-> =primes (~(put in primes) 18)
-> =primes (~(del in primes) 18)
+```hoon {% copy=true %}
+=primes (~(put in primes) 18)
+=primes (~(del in primes) 18)
 ```
 
 `++has:in` checks for existence:
@@ -128,6 +128,7 @@ A `set` is rather like a `list` except that each entry can only be represented o
 ```hoon
 > (~(has in primes) 15)
 %.n
+
 > (~(has in primes) 17)
 %.y
 ```
@@ -135,16 +136,17 @@ A `set` is rather like a `list` except that each entry can only be represented o
 `++tap:in` yields a `list` of the values:
 
 ```hoon
-> ~(tap in primes)  
-~[3 2 7 5 11 13 17]  
-> (sort ~(tap in primes) lth)  
+> ~(tap in primes)
+~[3 2 7 5 11 13 17]
+
+> (sort ~(tap in primes) lth)
 ~[2 3 5 7 11 13 17]
 ```
 
 `++run:in` applies a function across all values:
 
 ```hoon
-> (~(run in primes) dec)  
+> (~(run in primes) dec)
 {10 6 12 1 2 16 4}
 ```
 
@@ -152,7 +154,7 @@ A `set` is rather like a `list` except that each entry can only be represented o
 
 Here's a program that takes two sets of atoms and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
 
-```hoon
+```hoon {% copy=true %}
 |=  [a=(set @) b=(set @)]
 =/  c=(list @)  ~(tap in a)
 =/  d=(list @)  ~(tap in b)
@@ -246,13 +248,21 @@ A `+$vase` is a pair of type and value, such as that returned by `!>` zapgar.  A
 
     ```hoon
     > =mip -build-file /=garden=/lib/mip/hoon
+    
     > =my-map-warm (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870]])
+    
     > =my-map-cool (malt `(list (pair @tas @ux))`~[[%green 0x1.a638] [%blue 0x66ff]])
+    
     > =my-mip *(mip:mip @tas (map @tas @ux))
+    
     > =my-mip (~(put bi:mip my-mip) %cool %blue 0x66ff)
+    
     > =my-mip (~(put bi:mip my-mip) %cool %green 0x1.a638)
+    
     > =my-mip (~(put bi:mip my-mip) %warm %red 0xed.0a3f)
+    
     > =my-mip (~(put bi:mip my-mip) %warm %yellow 0xfb.e870)
+    
     > my-mip
     [ n=[p=%warm q=[n=[p=%yellow q=0xfb.e870] l=[n=[p=%red q=0xed.0a3f] l=~ r=~] r=~]]
       l=[n=[p=%cool q=[n=[p=%green q=0x1.a638] l=[n=[p=%blue q=0x66ff] l=~ r=~] r=~]] l=~ r=~]
@@ -297,9 +307,10 @@ In contrast, if you do the same thing to a list of numbers with a fractional par
 Why is this?  Let's peek inside the gates and see.  Since we know a core is a cell of `[battery payload]`, let's take a look at the `payload`:
 
 ```hoon
-> +:mul  
-[[a=1 b=1] <46.hgz 1.pnw %140>]  
-> +:mul:rs  
+> +:mul
+[[a=1 b=1] <46.hgz 1.pnw %140>]
+
+> +:mul:rs
 [[a=.0 b=.0] <21.hqd [r=?(%d %n %u %z) <51.qbt 123.zao 46.hgz 1.pnw %140>]>]
 ```
 
@@ -316,7 +327,7 @@ In an earlier exercise we created a door with sample `[a=@ud b=@ud c=@ud]`.  If 
 
 What if we wish to define a door with a chosen sample value directly?  We can make use of the `$_` rune, whose irregular form is simply `_`.  To create the door `poly` with the sample set to have certain values in the Dojo, we would write
 
-```unknown
+```hoon
 > =poly |_  [a=_5 b=_4 c=_3]
 ++  quad
   |=  x=@ud
@@ -331,8 +342,9 @@ For our earlier example with `++roll`, if we wanted to set the default sample to
 
 ```hoon
 > =mmul |=([a=_1 b=_1] (mul:rs a b))
+
 > (roll `(list @rs)`~[.10 .12 .14 .16 .18] mmul)
-> .483840
+.483840
 ```
 
 ### Named Tuples
@@ -357,7 +369,7 @@ For instance, in eval mode if you use the irregular form `p=1` this is an irregu
 
 In a sample definition, such as in a gate, the statement is evaluated in structure mode; these are equivalent statements:
 
-```hoon
+```hoon {% copy=true %}
 |=(hello=@ hello)
 
 |=($=(hello @) hello)

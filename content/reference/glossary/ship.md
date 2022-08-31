@@ -20,6 +20,6 @@ To be able to use the Arvo network, planets, stars, and galaxies must be combine
 ### Further Reading
 
 - [Using Bridge](/getting-started/): A guide to installing Urbit and booting a ship.
-- [Ship Troubleshooting](/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
+- [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
 - [Understanding Urbit ID](/understanding-urbit/urbit-id)
 - [Pier](/reference/glossary/pier): The directory containing a ship's state.

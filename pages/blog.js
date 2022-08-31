@@ -2,8 +2,12 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Meta from "../components/Meta";
 import BlogPreview from "../components/BlogPreview";
-import { Container, SingleColumn, Section } from "foundation-design-system";
-import { getAllPosts } from "../lib/lib";
+import {
+  Container,
+  SingleColumn,
+  Section,
+} from "@urbit/foundation-design-system";
+import { getAllPosts } from "@urbit/foundation-design-system";
 import Footer from "../components/Footer";
 
 export default function Blog({ posts, search }) {
@@ -20,10 +24,10 @@ export default function Blog({ posts, search }) {
       </Head>
       <Header search={search} />
       <SingleColumn>
-        <Section narrow short>
-          <h1 className="pb-16">Developer Blog</h1>
+        <Section>
+          <h1 className="">Developer Blog</h1>
         </Section>
-        <Section narrow>
+        <Section>
           {posts.map((post) => (
             <BlogPreview post={post} />
           ))}

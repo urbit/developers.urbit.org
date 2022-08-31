@@ -1,10 +1,10 @@
-const markdoc = require("@markdoc/markdoc");
+const markdoc = require("@urbit/markdoc");
 
 module.exports = {
-  presets: [require("foundation-design-system/tailwind.config")],
+  presets: [require("@urbit/foundation-design-system/tailwind.config")],
   content: {
     files: [
-      "./node_modules/foundation-design-system/**/*.js",
+      "./node_modules/@urbit/foundation-design-system/dist/**/*.js",
       "./pages/**/*.{js,ts,jsx,tsx}",
       "./components/**/*.{js,ts,jsx,tsx}",
       "./content/**/*.md",

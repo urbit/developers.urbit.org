@@ -42,6 +42,5 @@ Below are some important functions of Bridge.
 ### Further Reading
 
 - [bridge.urbit.org](https://bridge.urbit.org/): The Bridge website.
-- [Using Bridge](/using/id/using-bridge): A guide to starting out with Bridge.
-- [The Azimuth concepts page](/reference/azimuth/advanced-azimuth-tools): A more
-  in-depth explanation of our identity layer.
+- [Using Bridge](https://urbit.org/using/id/using-bridge): A guide to starting out with Bridge.
+- [The Azimuth concepts page](/reference/azimuth/advanced-azimuth-tools): A more in-depth explanation of our identity layer.

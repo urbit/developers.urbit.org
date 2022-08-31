@@ -19,7 +19,5 @@ Clay is located at `/base/sys/vane/clay.hoon` within Arvo.
 
 ### Further Reading
 
-- [Using Your Ship](/using/os/filesystem): A user guide that includes
-  instructions on using Clay.
-- [The Clay reference](/reference/arvo/clay/clay): A technical guide to the Clay
-  vane.
+- [Using Your Ship](https://urbit.org/using/os/filesystem): A user guide that includes instructions on using Clay.
+- [The Clay tutorial](/reference/arvo/clay/clay): A technical guide to the Clay vane.

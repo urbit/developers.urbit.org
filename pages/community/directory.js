@@ -6,13 +6,13 @@ import {
   SingleColumn,
   Section,
   TwoUp,
-} from "foundation-design-system";
+  getAllPosts,
+} from "@urbit/foundation-design-system";
 import Sigil from "../../components/Sigil";
 import Card from "../../components/Card";
 import Meta from "../../components/Meta";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { getAllPosts } from "../../lib/lib";
 export default function Directory({ search, directory }) {
   const post = {
     title: "Directory",
@@ -50,8 +50,8 @@ export default function Directory({ search, directory }) {
         <Section>
           <p class="text-xl">
             Our community is comprised of individuals, all of whom happen to be
-            pretty friendly. Here’s a list of prominent groups and figures you’ll likely
-            encounter that are open to being contacted.
+            pretty friendly. Here’s a list of prominent groups and figures
+            you’ll likely encounter that are open to being contacted.
           </p>
         </Section>
         <Section>

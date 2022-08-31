@@ -1,6 +1,6 @@
 +++
-title = "17. Generic and Variant Cores"
-weight = 27
+title = "18. Generic and Variant Cores"
+weight = 28
 nodes = [288, 299]
 objectives = ["Distinguish dry and wet cores.", "Describe use cases for wet gates (using genericity).", "Enumerate and distinguish use cases for dry cores (using variance):", "- Covariant (`%zinc`)", "- Contravariant (`%iron`)", "- Bivariant (`%lead`)", "- Invariant (`%gold`)"]
 +++
@@ -64,7 +64,7 @@ Wet gates are therefore used when incoming type information is not well known an
 
 - [~timluc-miptev, “Wet Gates”](https://blog.timlucmiptev.space/wetgates.html)
 
-#### Exercise:  The Trapezoid Rule
+##  Exercise:  The Trapezoid Rule
 
 The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a definite integral.  It approximates the area under the curve by a trapezoid or (commonly) a series of trapezoids.  The rule requires a function as one of the inputs, i.e. it applies _for a specific function_.  We will use wet gates to accomplish this without stripping type information of the input gate core.
 
@@ -78,7 +78,7 @@ The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a de
 
 - Produce a trapezoid-rule integrator which accepts a wet gate (as a function of a single variable) and a list of _x_ values, and yields the integral as a `@rs` floating-point value.  (If you are not yet familiar with these, you may wish to skip ahead to the next lesson.)
 
-```hoon
+```hoon {% copy=true %}
 ++  trapezint
   |*  [a=(list @rs) b=gate]
   =/  n  (lent a)
@@ -99,7 +99,7 @@ Wet gates and wet cores are used in Hoon when type information isn't well-charac
 
 Let's take a look at a particular wet gate from the Hoon standard library, [`++need`](/reference/hoon/stdlib/2a#need).  `++need` works with a `unit` to produce the value of a successful `unit` call, or crash on `~`.  (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
 
-```hoon
+```hoon {% copy=true %}
 ++  need                                                ::  demand
   |*  a=(unit)
   ?~  a  ~>(%mean.'need' !!)
@@ -134,7 +134,7 @@ We encountered `|$` barbuc above as a wet gate that is a mold builder rune which
 
 For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each defined in `hoon.hoon` as wet gate mold builders. Take a moment to see for yourself. Each `++` arm is followed by `|$` and a list of labels for input types inside brackets `[ ]`. After that subexpression comes another that defines a type that is parametrically polymorphic with respect to the input values. For example, here is the definition of `list` from `hoon.hoon`:
 
-```hoon
+```hoon {% copy=true %}
 ++  list
   |$  [item]
   ::    null-terminated list
@@ -164,6 +164,21 @@ Conversely, a `(list *)` should not nest under `(list @)`, because `*` does not 
 > ^-((list @) b)
 nest-fail
 ```
+
+### Drying Out a Gate
+
+Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](https://developers.urbit.org/reference/hoon/stdlib/2b#bake):
+
+```hoon
+> ((curr reel add) `(list @)`[1 2 3 4 ~])
+mull-grow
+-find.i.a
+
+> ((curr (bake reel ,[(list @) _add]) add) `(list @)`[1 2 3 4 ~])
+10
+```
+
+Typically it's better to find another way to express your problem than to `++bake` a wet gate, however.  As we said before, wet gates are powerful and for that reason not apt for every purpose.
 
 
 ##  Variance
@@ -315,7 +330,7 @@ In these examples, the `=>` rune is used to give each core a simple context. The
 
 `%iron` gates are particularly useful when you want to pass gates (having various payload types) to other gates.  We can illustrate this use with a very simple example. Save the following as `/gen/gatepass.hoon` in your `%base` desk:
 
-```hoon
+```hoon {% copy=true %}
 |=  a=_^|(|=(@ 15))
 ^-  @
 =/  b=@  (a 10)
@@ -346,7 +361,7 @@ It still works.  You can't do that with a gold core sample!
 
 There's a simpler way to define an iron sample. Revise the first line of `/gen/gatepass.hoon` to the following:
 
-```hoon
+```hoon {% copy=true %}
 |=  a=$-(@ @)
 ^-  @
 =/  b=@  (a 10)
@@ -526,7 +541,7 @@ This program produces a list populated by the first ten elements of the `++fib` 
 
 **`/gen/fib.hoon`**
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 =<  (to-list (take fib 10))
 |%
 ++  stream
@@ -679,6 +694,6 @@ Finally, the first line of our program will take the first 10 elements of `fib` 
 
 This example is a bit overkill for simply calculating the Fibonacci series, but it illustrates how you could use `%lead` cores.  Instead of `++fib`, you can supply any infinite sequence and `++stream` will correctly handle it.
 
-#### Exercise:  `%lead` Bivariant Polymorphism
+##  Exercise:  `%lead` Bivariant Polymorphism
 
 - Produce a `%say` generator that yields another self-referential sequence, like the [Lucas numbers](https://en.wikipedia.org/wiki/Lucas_number) or the [Thue–Morse sequence](https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).

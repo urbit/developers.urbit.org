@@ -355,4 +355,4 @@ See the [Scrying](/reference/arvo/eyre/guide#scrying) section of the [Guide](/re
 
 ## Spider
 
-See the [HTTP API](reference/arvo/threads/http-api) section of the [Threads](reference/arvo/threads/overview) documentation.
+See the [HTTP API](/reference/arvo/threads/http-api) section of the [Threads](/reference/arvo/threads/overview) documentation.

@@ -1,6 +1,9 @@
 import Link from "next/link";
-import { BackgroundImage } from "foundation-design-system";
-import { formatDate, generateDisplayDate } from "../lib/lib";
+import {
+  BackgroundImage,
+  formatDate,
+  generateDisplayDate,
+} from "@urbit/foundation-design-system";
 
 export default function PostPreview(props) {
   const section = props?.section ? props.section : "blog";

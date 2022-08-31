@@ -1,5 +1,5 @@
 +++
-title = "2. Types"
+title = "1. Types"
 weight = 2
 +++
 
@@ -172,7 +172,9 @@ itself.
 When we put each of these parts together, we have our complete
 `/sur/journal.hoon` file:
 
-```hoon
+**`/sur/journal.hoon`**
+
+```hoon {% copy=true mode="collapse" %}
 |%
 :: Basic types of the data we're dealing with
 ::

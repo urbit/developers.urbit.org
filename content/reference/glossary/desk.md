@@ -15,7 +15,4 @@ Traditionally a ship has at least a `%base` desk, and typically `%garden` and `%
 
 ### Further Reading
 
-- [Using Your Ship](/using/os/filesystem): A user guide that includes
-  instructions for using desks.
-- [The Clay technical reference](/reference/arvo/clay/clay): Detailed technical
-  and developer documentation of Clay.
+- [Using Your Ship](https://urbit.org/using/os/filesystem): A user guide that includes instructions for using desks.

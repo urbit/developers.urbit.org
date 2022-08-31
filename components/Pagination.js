@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { formatDate } from "../lib/lib";
 
 export default function Pagination(props) {
   return (

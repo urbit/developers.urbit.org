@@ -1,5 +1,5 @@
 +++
-title = "3. Agent"
+title = "2. Agent"
 weight = 3
 +++
 
@@ -320,7 +320,7 @@ to `default-agent` for handling:
 ```
 
 The full agent source can be viewed
-[here](https://github.com/urbit/docs-examples/blob/main/journal-app/desk/app/journal.hoon).
+[here](https://github.com/urbit/docs-examples/blob/main/journal-app/bare-desk/app/journal.hoon).
 
 ## Resources
 
