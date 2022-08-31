@@ -1,16 +1,17 @@
 +++
-title = "Bunt"
+title = "Bowl"
 +++
 
-In [Hoon](/reference/glossary/hoon), **bunting** a
-[mold](/reference/glossary/mold) produces its default/example value (or "bunt
-value"). For example, the bunt of a null-terminated `list` is `~` (null, an
-empty list). The bunt of `@ud` (an unsigned decimal) is `0`. Bunting is done
-with the kettar [rune](/reference/glossary/rune) (`^*`), or more commonly its
-irregular form: a `*` prefix like `*@ud`, `*(list @t)`, etc.
+The **bowl** contains useful data about the current
+[ship](/reference/glossary/ship) and context. It is given to a
+[thread](/reference/glossary/thread) or [Gall](/reference/glossary/gall)
+[agent](/reference/glossary/agent) whenever it processes an event. It contains
+the current time, some entropy, the name of the ship, the source of the event,
+and other relevant information.
 
 #### Further reading
 
-- [Kettar rune reference](/reference/hoon/rune/ket#-kettar): Details of the kettar rune.
-- [Hoon School lesson 4 (Molds)](/guides/additional/threads/input#bowl): This
-  lesson discusses bunt values.
+- [Gall data-types reference](/reference/arvo/gall/data-types#bowl): Details of
+  the `bowl` data structure used by Gall.
+- [The threads guide](/guides/additional/threads/input#bowl): This includes
+  details about the bowl given to threads.
