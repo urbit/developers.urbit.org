@@ -38,5 +38,5 @@ or converted to `%lead`.
 
 ### Further Reading
 
-- [Hoon School lesson 18](/guides/core/hoon-school/R-metals): This lesson covers
+- [Hoon School: metals](/guides/core/hoon-school/R-metals): This lesson covers
   core variance.

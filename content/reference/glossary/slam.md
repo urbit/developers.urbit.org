@@ -14,5 +14,5 @@ the same properties of functions from other programming languages.
 
 - [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon
   programming language.
-- [Hoon School lesson 10](/guides/core/hoon-school/K-doors): A guide to cores
+- [Hoon School: doors](/guides/core/hoon-school/K-doors): A guide to cores
   including gates.

@@ -15,6 +15,5 @@ Hoon's type system, and are replaced with tree addresses when compiled to
 
 #### Further reading
 
-- [Hoon school lesson
-  1](/guides/core/hoon-school/B-syntax#preserving-values-with-faces): This
+- [Hoon school: Syntax lesson](/guides/core/hoon-school/B-syntax#preserving-values-with-faces): This
   lesson discusses faces in more detail.

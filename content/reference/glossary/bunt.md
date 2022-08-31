@@ -12,5 +12,5 @@ irregular form: a `*` prefix like `*@ud`, `*(list @t)`, etc.
 #### Further reading
 
 - [Kettar rune reference](/reference/hoon/rune/ket#-kettar): Details of the kettar rune.
-- [Hoon School lesson 4 (Molds)](/guides/additional/threads/input#bowl): This
+- [Hoon School: Molds lesson](/guides/additional/threads/input#bowl): This
   lesson discusses bunt values.

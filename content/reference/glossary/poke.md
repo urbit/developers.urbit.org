@@ -14,6 +14,6 @@ the network to remote ships. A poke is handled by the `++on-poke`
 
 #### Further reading
 
-- [App school lesson 5](/guides/core/app-school/5-cards): A lesson on cards,
+- [App school: cards](/guides/core/app-school/5-cards): A lesson on cards,
   which includes pokes.
-- [App school lesson 6](/guides/core/app-school/6-pokes): A lesson on pokes.
+- [App school: pokes](/guides/core/app-school/6-pokes): A lesson on pokes.

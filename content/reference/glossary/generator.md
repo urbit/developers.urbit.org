@@ -15,7 +15,7 @@ generator with a more particular structure.
 
 #### Further reading
 
-- [Hoon school lesson 3](/guides/core/hoon-school/D-gates): This lesson on gates
+- [Hoon school: gates](/guides/core/hoon-school/D-gates): This lesson on gates
   also introduces generators.
-- [Hoon school lesson 9](/guides/core/hoon-school/J-stdlib-text#say-generators):
+- [Hoon school: text processing](/guides/core/hoon-school/J-stdlib-text#say-generators):
   This lesson includes `%say` generators.

@@ -14,5 +14,5 @@ only take arguments of the type it specified. The typical
 
 ### Further Reading
 
-- [Hoon School lesson 18](/guides/core/hoon-school/R-metals): This lesson covers
+- [Hoon School: Metals](/guides/core/hoon-school/R-metals): This lesson covers
   dry and wet gates.

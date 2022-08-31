@@ -12,5 +12,5 @@ null-terminated n-tuple like `[1 2 3 4 ~]`. An empty list is just null (`~`). Th
 
 #### Further Reading
 
-- [Hoon school lesson 1](/guides/core/hoon-school/B-syntax#lists): This lesson
+- [Hoon school: syntax](/guides/core/hoon-school/B-syntax#lists): This lesson
   includes a section on lists.

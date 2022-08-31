@@ -15,4 +15,4 @@ A **card** is the data type for effects produced by
 
 - [Gall data types reference](/reference/arvo/gall/data-types#cardagent):
   Documentation of the `card` type.
-- [App school lesson 5](/guides/core/app-school/5-cards): A lesson on cards.
+- [App school: cards lesson](/guides/core/app-school/5-cards): A lesson on cards.

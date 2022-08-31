@@ -14,7 +14,7 @@ create with "mold builder" functions, or with `$`-family runes.
 
 ### Further Reading
 
-- [Hoon school lesson 4](/guides/core/hoon-school/E-types): A lesson on molds.
+- [Hoon school: types](/guides/core/hoon-school/E-types): A lesson on molds.
 
 - [Buc (`$`) rune reference](/reference/hoon/rune/buc): Details on the runes
   that can create molds.

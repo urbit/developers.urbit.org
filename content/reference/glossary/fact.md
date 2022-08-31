@@ -11,7 +11,7 @@ primary medium for subscription updates.
 
 #### Further reading
 
-- [App school lesson 5](/guides/core/app-school/5-cards): A lesson on cards,
+- [App school: cards lesson](/guides/core/app-school/5-cards): A lesson on cards,
   which covers `%fact`s.
-- [App school lesson 8](/guides/core/app-school/8-subscriptions): A lesson on
+- [App school: subscriptions lesson](/guides/core/app-school/8-subscriptions): A lesson on
   subscriptions.

@@ -14,7 +14,7 @@ an update given to subscribers.
 
 #### Further reading
 
-- [App school lesson 5](/guides/core/app-school/5-cards): A lesson on cards,
+- [App school: cards](/guides/core/app-school/5-cards): A lesson on cards,
   which covers `%gift`s.
-- [App school lesson 8](/guides/core/app-school/8-subscriptions): A lesson on
+- [App school: subscriptions](/guides/core/app-school/8-subscriptions): A lesson on
   subscriptions.

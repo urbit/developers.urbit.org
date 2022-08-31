@@ -10,4 +10,4 @@ A **trap** is a [core](/reference/glossary/core) with one arm named `$` and no s
 ### Further Reading
 
 - [Hoon School](/guides/core/hoon-school/): Our guide to learning the Hoon programming language.
-  - [Lesson 5, section 1](/guides/core/hoon-school/F-cores#repeating-yourself-using-a-trap): A Hoon School lesson that uses traps to build recursive functions.
+  - [Cores lesson: Trap section](/guides/core/hoon-school/F-cores#repeating-yourself-using-a-trap): A Hoon School lesson that uses traps to build recursive functions.

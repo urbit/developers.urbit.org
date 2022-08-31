@@ -15,5 +15,5 @@ either unsubscribe or are kicked.
 
 #### Further reading
 
-- [App School lesson 8](/guides/core/app-school/8-subscriptions): A lesson on
+- [App School: subscriptions](/guides/core/app-school/8-subscriptions): A lesson on
   Gall agent subscriptions.

@@ -22,5 +22,5 @@ literal. They are ultimately just metadata given to compiler.
 #### Further reading
 
 - [Aura reference](/reference/hoon/auras): Additional information about auras.
-- [Hoon School lesson 1](/guides/core/hoon-school/B-syntax): Includes details of
+- [Hoon School: syntax lesson](/guides/core/hoon-school/B-syntax): Includes details of
   atoms and auras.

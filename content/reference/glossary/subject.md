@@ -18,5 +18,5 @@ entire subject each time, but code behaves as though it does.
 
 #### Further reading
 
-- [Hoon School lesson 14](/guides/core/hoon-school/O-subject): A guide to
+- [Hoon School: subject-oriented programming](/guides/core/hoon-school/O-subject): A guide to
   subject-oriented programming.

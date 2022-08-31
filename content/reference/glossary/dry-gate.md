@@ -13,5 +13,5 @@ types and transparently pass them through. The typical
 
 ### Further Reading
 
-- [Hoon School lesson 18](/guides/core/hoon-school/R-metals): This lesson covers
+- [Hoon School: Metals lesson](/guides/core/hoon-school/R-metals): This lesson covers
   dry and wet gates.
