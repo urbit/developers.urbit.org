@@ -103,7 +103,7 @@ You can do even better using _interpolation_:
 
 ##  Exercise:  Calculate a Factorial
 
-- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number _n_ is _n_×(_n_-1)×...×2×1.  We will introduce a couple of new bits of syntax and a new gate (`++dec`).  Make this into a generator `factorial.hoon`:
+- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number _n_ is <i>n</i>×(_n_-1)×...×2×1.  We will introduce a couple of new bits of syntax and a new gate (`++dec`).  Make this into a generator `factorial.hoon`:
 
     ```hoon {% copy=true %}
     |=  n=@ud
