@@ -107,11 +107,11 @@ across that our app will depend on:
 
 ```shell {% copy=true %}
 mkdir -p tally/{app,sur,mar,lib}
-cp dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} tally/mar/
-cp dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} tally/lib/
-cp dev-comet/squad/sur/{docket*, squad*} tally/sur/
-cp dev-comet/base/sur/ring.hoon tally/sur/
-cp dev-comet/garden/lib/mip.hoon tally/lib/
+cp -r dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} tally/mar/
+cp -r dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} tally/lib/
+cp -r dev-comet/squad/sur/{docket*, squad*} tally/sur/
+cp -r dev-comet/base/sur/ring.hoon tally/sur/
+cp -r dev-comet/garden/lib/mip.hoon tally/lib/
 ```
 
 Now we can start working on the app itself.
