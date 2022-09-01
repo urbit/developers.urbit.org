@@ -218,7 +218,7 @@ We will revert to the irregular form more and more.  If you would like to see ex
 
 ##  Exercise:  Calculate a sequence of numbers
 
-Produce a gate (generator) which accepts a `@ud` value and calculates the series where the 𝑖-th term in the series is given by the equation
+Produce a gate (generator) which accepts a `@ud` value and calculates the series where the 𝑖^th^ term in the series is given by the equation
 
 ![](https://latex.codecogs.com/png.image?\large%20\dpi{110}n_{i}%20=%20i^{2}\textrm{,})
 
@@ -243,7 +243,7 @@ For example, given the `tape` `"hello"`, the generator should return the list `~
 
 Two tools that may help:
 
-- You can retrieve the _n_-th element in a `tape` using the [`++snag`](/reference/hoon/stdlib/2b#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
+- You can retrieve the _n_^th^ element in a `tape` using the [`++snag`](/reference/hoon/stdlib/2b#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
 - You can join an element to a list using the [`++snoc`](/reference/hoon/stdlib/2b#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
 
 ```hoon {% copy=true %}
