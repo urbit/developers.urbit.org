@@ -243,7 +243,7 @@ For example, given the `tape` `"hello"`, the generator should return the list `~
 
 Two tools that may help:
 
-- You can retrieve the _n_-th element in a `tape` using the [`++snag`](/reference/hoon/stdlib/2b#snag) gate, e.g. `(snag 3 `(list @ud)`~[1 2 3 4 5])` yields `4` (so `++snag` is zero-indexed; it counts from zero).
+- You can retrieve the _n_-th element in a `tape` using the [`++snag`](/reference/hoon/stdlib/2b#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
 - You can join an element to a list using the [`++snoc`](/reference/hoon/stdlib/2b#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
 
 ```hoon {% copy=true %}
