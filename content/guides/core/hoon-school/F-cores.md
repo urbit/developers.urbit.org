@@ -218,7 +218,7 @@ We will revert to the irregular form more and more.  If you would like to see ex
 
 ##  Exercise:  Calculate a sequence of numbers
 
-Produce a gate (generator) which accepts a `@ud` value and calculates the series where the *i*th term in the series is given by the equation
+Produce a gate (generator) which accepts a `@ud` value and calculates the series where the 𝑖<sup>th</sup> term in the series is given by the equation
 
 ![](https://latex.codecogs.com/png.image?\large%20\dpi{110}n_{i}%20=%20i^{2}\textrm{,})
 
