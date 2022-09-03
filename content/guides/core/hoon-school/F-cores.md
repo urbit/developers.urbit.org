@@ -811,7 +811,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     [f1 $(f0 f1, f1 (add f0 f1), n (dec n))]
     ```
 
-    - Produce a diagram of how this last implementation yields a Fibonacci sequence for _F_₅, `(fibonacci 5)`.
+    - Produce a diagram of how this last implementation yields a Fibonacci sequence for <i>F</i>₅, `(fibonacci 5)`.
 
 #### Tutorial:  Tail-Call Optimization of the Factorial Gate
 
