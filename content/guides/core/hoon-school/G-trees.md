@@ -187,7 +187,7 @@ A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon a
 
 ##  Addressing Limbs
 
-Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](./core/hoon-school/R-metals#wet-gates) work.)
+Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](/guides/core/hoon-school/R-metals#wet-gates) work.)
 
 There are three different ways to access values:
 
@@ -223,7 +223,7 @@ Much like relative directions, one can also state “left, left, right, left” 
 
 ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
-Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](./M-typecheck.md)):
+Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](/guides/core/hoon-school/M-typecheck.md)):
 
 ```hoon {% copy=true %}
 -:!>('hello Mars')
