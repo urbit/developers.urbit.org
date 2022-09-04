@@ -187,7 +187,7 @@ A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon a
 
 ##  Addressing Limbs
 
-Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](./R-metals.md) work.)
+Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](./core/hoon-school/R-metals#wet-gates) work.)
 
 There are three different ways to access values:
 
