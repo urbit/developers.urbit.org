@@ -70,7 +70,7 @@ Watch for these being used in generators and libraries over the next few modules
 
 ##  Exercise:  A Playing Card Library
 
-In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](./K-doors.md) to produce [randomness](./O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](/reference/hoon/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
+In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](/guides/core/hoon-school/K-doors.md) to produce [randomness](/guides/core/hoon-school/O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](/reference/hoon/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
 
 ```hoon {% copy=true mode="collapse" %}
 |%
@@ -235,7 +235,7 @@ Unfortunately `/` fas runes don't work in the Dojo right now, so we need to buil
     =playing-cards -build-file /===/lib/playing-cards/hoon
     ```
 
-    We then invoke it using the _entropy_ or system randomness.  (This is an unpredictable value we will use when we want a process to be random.  We will discuss it in detail when we talk about [subject-oriented programming](./O-subject.md).)
+    We then invoke it using the _entropy_ or system randomness.  (This is an unpredictable value we will use when we want a process to be random.  We will discuss it in detail when we talk about [subject-oriented programming](/guides/core/hoon-school/O-subject.md).)
 
     ```hoon
     > =deck (shuffle-deck:playing-cards make-deck:playing-cards eny)
