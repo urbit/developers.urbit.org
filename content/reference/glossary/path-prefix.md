@@ -16,14 +16,14 @@ fields encode a `beak` in path-form. A `beak` is a triple of
 ```
 
 The first two fields are the ship and desk in which the target file resides.
-The third field (the `case`) is the desk revision number. A `case` can be one
+The third field (the `case`) is the desk revision. A `case` can be one
 of:
 
 - The revision date-time in `@da` format, as in the example above.
 - A revision number like `42` (`1` is the first commit and it's numbered sequentially).
 - A revision label like `foo`. People rarely label commits so this is seldom useful.
 
-So you could any of:
+So you could do any of:
 
 ```hoon
 /~sampel/base/~2022.9.4..17.13.12..5835
