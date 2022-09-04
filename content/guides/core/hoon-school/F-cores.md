@@ -507,7 +507,7 @@ This result may seem a bit strange.  We didn't call `inc` or in any other way pa
 
 #### The Sample
 
-The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](./G-trees.md).)
+The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](/guides/core/hoon-school/G-trees.md).)
 
 Let's look at the gate for inc again, paying particular attention to its sample:
 
