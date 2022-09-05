@@ -713,23 +713,9 @@ There are a couple of sometimes-useful `list` builders:
 Once you have a `list` (including a `tape`), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
 - [`++find`](/reference/hoon/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
-- [`++snag`](/reference/hoon/stdlib/2b#snag) `[a=@ b=(list)]` produces the element at an index in the list (zero-indexed)
-
-    ```hoon
-    > (snag 0 `(list @)`~[11 22 33 44])
-    11
-
-    > (snag 1 `(list @)`~[11 22 33 44])
-    22
-
-    > (snag 3 `(list @)`~[11 22 33 44])
-    44
-    ```
-
 - [`++snap`](/reference/hoon/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
 - [`++scag`](/reference/hoon/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
 - [`++slag`](/reference/hoon/stdlib/2b#slag) `[a=@ b=(list)]` produces the last _a_ elements from the end of the list
-- [`++weld`](/reference/hoon/stdlib/2b#weld) `[a=(list) b=(list)]` glues two `list`s together (_not_ a single item to the end)
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 
