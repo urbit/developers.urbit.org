@@ -791,11 +791,11 @@ First, bind these faces.
     8.  `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"]9]`
     9.  `%bweh`
     10.  `9` appears 3 times:
-
-        ```hoon
-        > a(a a(a a))
-        [[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
-        ```
+    
+    ```hoon
+    > a(a a(a a))
+    [[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
+    ```
 
 - Roll-Your-Own-`++flop`:
 
