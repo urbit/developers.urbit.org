@@ -188,7 +188,7 @@ It follows from this definition that a gate is a special case of a door.  A gate
 Doors are created with the [`|_` barcab](/reference/hoon/rune/bar#_-barcab) rune.  Doors get used for a few different purposes in the standard library:
 
 - instrumenting and storing persistent data structures like `map`s (this module and the next)
-- implementing state machines (the [subject-oriented programming module](/guides/core/hoon-school/O-subject.md))
+- implementing state machines (the [subject-oriented programming module](/guides/core/hoon-school/O-subject))
 
 One BIG pitfall for thinking about doors is thinking of them as “containing” gates, as if they were more like “objects”.  Instead, think of them the same way as you think of gates, just that they can be altered at a higher level.
 

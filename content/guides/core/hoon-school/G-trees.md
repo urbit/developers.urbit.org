@@ -223,7 +223,7 @@ Much like relative directions, one can also state “left, left, right, left” 
 
 ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
-Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](/guides/core/hoon-school/M-typecheck.md)):
+Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](/guides/core/hoon-school/M-typecheck)):
 
 ```hoon {% copy=true %}
 -:!>('hello Mars')

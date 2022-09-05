@@ -106,7 +106,7 @@ A further tweak of the ASCII-only concept, the `@tas` `term` permits only “tex
 
 `term`s are rarely used for message-like text, but they are used all the time for internal labels in code.  They differ from regular text in a couple of key ways that can confuse you until you're used to them.
 
-For instance, a `@tas` value is also a mold, and the value will _only_ match its own mold, so they are commonly used with [type unions](/guides/core/hoon-school/N-logic.md) to filter for acceptable values.
+For instance, a `@tas` value is also a mold, and the value will _only_ match its own mold, so they are commonly used with [type unions](/guides/core/hoon-school/N-logic) to filter for acceptable values.
 
 ```hoon
 > ^-  @tas  %5
@@ -310,7 +310,7 @@ Given a string of text, what can you do with it?
     [~ 6]
     ```
 
-    `++find` returns a `unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`.  `unit`s are discussed in more detail in [a later lesson](/guides/core/hoon-school/L-struct.md).
+    `++find` returns a `unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`.  `unit`s are discussed in more detail in [a later lesson](/guides/core/hoon-school/L-struct).
 
 #### Tokenize/Parse
 
@@ -321,7 +321,7 @@ To _tokenize_ text is to break it into pieces according to some rule.  For insta
  1   2   3     4   5    6   7   8     9  10         11    12 13 14  15
 ```
 
-Hoon has a sophisticated parser built into it that [we'll use later](/guides/core/hoon-school/P-stdlib-io.md).  There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other.  We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
+Hoon has a sophisticated parser built into it that [we'll use later](/guides/core/hoon-school/P-stdlib-io).  There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other.  We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
 
 ##  Exercise: Break Text at a Space
 
@@ -568,7 +568,7 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 (snag val answers)
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy.  Right now we don't know quite enough to interpret this line, but we'll revisit the `++og` aspect of this `%say` generator in [the lesson on subject-oriented-programming](/guides/core/hoon-school/O-subject.md).  For now, just know that it allows us to produce a random (unpredictable) integer using `++rad:rng`.  We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy.  Right now we don't know quite enough to interpret this line, but we'll revisit the `++og` aspect of this `%say` generator in [the lesson on subject-oriented-programming](/guides/core/hoon-school/O-subject).  For now, just know that it allows us to produce a random (unpredictable) integer using `++rad:rng`.  We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
 
 Since this is a `%say` generator, we can run it without arguments:
 
