@@ -153,7 +153,7 @@ The logical operation `NOR` _p_ ↓ _q_ produces true if both operands are false
 
 ##  Exercise:  Implement a Piecewise Boxcar Function
 
-The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.  We implemented the similar Heaviside function [previously](./B-syntax.md) using the `?:` wutcol rune.
+The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.  We implemented the similar Heaviside function [previously](/guides/core/hoon-school/B-syntax) using the `?:` wutcol rune.
 
 - Compose a gate which implements the boxcar function,
 

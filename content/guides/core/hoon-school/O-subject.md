@@ -350,7 +350,7 @@ We have some more tools available for managing deferred or chained computations,
 
 - [`=^` tisket](/reference/hoon/rune/tis#-tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` cenhep.  (Used in Gall agents frequently.)
 - [`=*` tistar](/reference/hoon/rune/tis#-tistar) defers an expression (rather like a macro).
-- [`;<` micgal](/reference/hoon/rune/mic#-micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](reference/arvo/threads/overview).)
+- [`;<` micgal](/reference/hoon/rune/mic#-micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](/reference/arvo/threads/overview).)
 - [`;~` micsig](/reference/hoon/rune/mic#-micsig) produces a pipeline, a way of piping the output of one gate into another in a chain.  (This is particularly helpful when parsing text.)
 
 ### `++og` Randomness

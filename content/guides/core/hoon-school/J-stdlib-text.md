@@ -5,7 +5,7 @@ nodes = [160, 163]
 objectives = ["Review Unicode text structure.", "Distinguish cords and tapes and their characteristics.", "Transform and manipulate text using text conversion arms.", "Interpolate text.", "Employ sigpam logging levels.", "Create a `%say` generator.", "Identify how Dojo sees and interprets a generator as a cell with a head tag.", "Identify the elements of a `sample` for a `%say` generator.", "Produce a `%say` generator with optional arguments."]
 +++
 
-_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type.  We don't deal with formatted text (`tank`s) or parsers here, deferring that discussion.  Formatted text and text parsing are covered [in a later module](/guides/core/hoon-school/P-stdlib-io.md)._
+_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type.  We don't deal with formatted text (`tank`s) or parsers here, deferring that discussion.  Formatted text and text parsing are covered [in a later module](/guides/core/hoon-school/P-stdlib-io)._
 
 ##  Text in Hoon
 
@@ -71,7 +71,7 @@ Special characters (non-ASCII, beyond the standard keyboard, basically) are repr
 
 There are some tools to work with atom `cord`s of text, but most of the time it is more convenient to unpack the atom into a `tape`.  A `tape` splits out the individual characters from a `cord` into a `list` of character values.
 
-![](./binary-tree-tape.png)
+![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
 We've hinted a bit at the structure of `list`s before; for now the main thing you need to know is that they are cells which end in a `~` sig.  So rather than have all of the text values stored sequentially in a single atom, they are stored sequentially in a rightwards-branching binary tree of cells.
 
