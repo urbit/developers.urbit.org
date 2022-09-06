@@ -716,7 +716,7 @@ Once you have a `list` (including a `tape`), there are a lot of manipulation too
 - [`++find`](/reference/hoon/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
 - [`++snap`](/reference/hoon/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
 - [`++scag`](/reference/hoon/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
-- [`++slag`](/reference/hoon/stdlib/2b#slag) `[a=@ b=(list)]` produces the last _a_ elements from the end of the list
+- [`++slag`](/reference/hoon/stdlib/2b#slag) `[a=@ b=(list)]` produces all elements of the list including and after the element at index _a_
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 
