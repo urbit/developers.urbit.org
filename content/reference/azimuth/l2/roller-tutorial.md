@@ -8,7 +8,7 @@ familiarity with how L2 works in general, as well as the role of the roller, is
 expected. See [Layer 2 Overview](/reference/azimuth/l2/layer2) for a technical
 overview of L2, [Azimuth Data Flow](/reference/azimuth/flow) to gain an understanding
 of how Azimuth data handling and processing is done on Urbit, and
-[Rollers](reference/azimuth/l2/roller) for a short summary of what the different Gall
+[Rollers](/reference/azimuth/l2/roller) for a short summary of what the different Gall
 agents involved for rollers are. This tutorial is focused on setting up a roller
 to work on the main Ethereum network, but only minor changes are needed to
 utilize the Ropsten Ethereum network. We also explain how to set up a front end

@@ -27,7 +27,7 @@ Details of Eyre's scry API are in the [Scry](/reference/arvo/eyre/external-api-r
 
 ## Spider Threads
 
-Spider (the Gall agent that manages threads) has an Eyre binding that allows you to run threads through Eyre. Spider's [HTTP API](reference/arvo/threads/http-api) is not part of Eyre proper, so is documented separately in the [Threads](reference/arvo/threads/overview) documentation.
+Spider (the Gall agent that manages threads) has an Eyre binding that allows you to run threads through Eyre. Spider's [HTTP API](/reference/arvo/threads/http-api) is not part of Eyre proper, so is documented separately in the [Threads](/reference/arvo/threads/overview) documentation.
 
 ## Generators
 

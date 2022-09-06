@@ -103,7 +103,7 @@ You can do even better using _interpolation_:
 
 ##  Exercise:  Calculate a Factorial
 
-- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number _n_ is <i>n</i>×(_n_-1)×...×2×1.  We will introduce a couple of new bits of syntax and a new gate (`++dec`).  Make this into a generator `factorial.hoon`:
+- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number _n_ is *n*×(_n_-1)×...×2×1.  We will introduce a couple of new bits of syntax and a new gate (`++dec`).  Make this into a generator `factorial.hoon`:
 
     ```hoon {% copy=true %}
     |=  n=@ud
@@ -507,7 +507,7 @@ This result may seem a bit strange.  We didn't call `inc` or in any other way pa
 
 #### The Sample
 
-The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](./G-trees.md).)
+The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](/guides/core/hoon-school/G-trees).)
 
 Let's look at the gate for inc again, paying particular attention to its sample:
 
@@ -811,7 +811,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     [f1 $(f0 f1, f1 (add f0 f1), n (dec n))]
     ```
 
-    - Produce a diagram of how this last implementation yields a Fibonacci sequence for _F_₅, `(fibonacci 5)`.
+    - Produce a diagram of how this last implementation yields a Fibonacci sequence for *F*₅, `(fibonacci 5)`.
 
 #### Tutorial:  Tail-Call Optimization of the Factorial Gate
 

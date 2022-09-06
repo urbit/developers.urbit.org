@@ -187,7 +187,7 @@ A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon a
 
 ##  Addressing Limbs
 
-Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](./R-metals.md) work.)
+Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](/guides/core/hoon-school/R-metals#wet-gates) work.)
 
 There are three different ways to access values:
 
@@ -223,7 +223,7 @@ Much like relative directions, one can also state “left, left, right, left” 
 
 ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
-Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](./M-typecheck.md)):
+Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](/guides/core/hoon-school/M-typecheck)):
 
 ```hoon {% copy=true %}
 -:!>('hello Mars')
@@ -479,7 +479,7 @@ How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=1
 
 We say that the outer face has been _shadowed_ when an inner name obscures it.
 
-If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` cenhep loop/recursion of multiple cores with a `|-` barket trap nested inside of a `|=` bartis gate, for instance.
+If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` centis loop/recursion of multiple cores with a `|-` barhep trap nested inside of a `|=` bartis gate, for instance.
 
 Solution #1 in the [Rhonda Numbers](/guides/additional/workbook/rhonda) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
@@ -621,7 +621,7 @@ Enter the following into dojo:
 
 Once you have your data in the form of a `list`, there are a lot of tools available to manipulate and analyze the data:
 
-- [`++flop`](reference/stdlib/2b#flop) reverses the order of the elements (exclusive of the `~`):
+- [`++flop`](/reference/stdlib/2b#flop) reverses the order of the elements (exclusive of the `~`):
   
     ```hoon
     > (flop ~[1 2 3 4 5])
@@ -632,14 +632,14 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
     - Without using flop, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of the page.
 
-- [`++sort`](reference/stdlib/2b#sort) uses a `list` and a comparison function (like `++lth`) to order things:
+- [`++sort`](/reference/stdlib/2b#sort) uses a `list` and a comparison function (like `++lth`) to order things:
 
     ```hoon
     > (sort ~[1 3 5 2 4] lth)
     ~[1 2 3 4 5]
     ```
 
-- [`++snag`](reference/stdlib/2b#snag) takes a index and a `list` to grab out a particular element (note that it starts counting at zero):
+- [`++snag`](/reference/stdlib/2b#snag) takes a index and a `list` to grab out a particular element (note that it starts counting at zero):
 
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
@@ -661,7 +661,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     '!'
     ```
 
-- [`++weld`](reference/stdlib/2b#weld) takes two lists of the same type and concatenates them:
+- [`++weld`](/reference/stdlib/2b#weld) takes two lists of the same type and concatenates them:
 
     ```hoon
     > (weld ~[1 2 3] ~[4 5 6])
@@ -712,24 +712,11 @@ There are a couple of sometimes-useful `list` builders:
 
 Once you have a `list` (including a `tape`), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
+- [`++lent`](/reference/hoon/stdlib/2b#lent) `[a=(list)]` get the number of elements (length) of the list
 - [`++find`](/reference/hoon/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
-- [`++snag`](/reference/hoon/stdlib/2b#snag) `[a=@ b=(list)]` produces the element at an index in the list (zero-indexed)
-
-    ```hoon
-    > (snag 0 `(list @)`~[11 22 33 44])
-    11
-
-    > (snag 1 `(list @)`~[11 22 33 44])
-    22
-
-    > (snag 3 `(list @)`~[11 22 33 44])
-    44
-    ```
-
 - [`++snap`](/reference/hoon/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
 - [`++scag`](/reference/hoon/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
-- [`++slag`](/reference/hoon/stdlib/2b#slag) `[a=@ b=(list)]` produces the last _a_ elements from the end of the list
-- [`++weld`](/reference/hoon/stdlib/2b#weld) `[a=(list) b=(list)]` glues two `list`s together (_not_ a single item to the end)
+- [`++slag`](/reference/hoon/stdlib/2b#slag) `[a=@ b=(list)]` produces all elements of the list including and after the element at index _a_
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 
@@ -805,11 +792,11 @@ First, bind these faces.
     8.  `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"]9]`
     9.  `%bweh`
     10.  `9` appears 3 times:
-
-        ```hoon
-        > a(a a(a a))
-        [[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
-        ```
+    
+    ```hoon
+    > a(a a(a a))
+    [[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
+    ```
 
 - Roll-Your-Own-`++flop`:
 

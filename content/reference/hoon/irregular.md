@@ -316,7 +316,7 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
 
 ### Wings
 
-[docs](content/reference/hoon/limbs/wing)
+[docs](/reference/hoon/limbs/wing)
 `[%wing p=(list limb)]`; a limb search path.
 `a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
 
