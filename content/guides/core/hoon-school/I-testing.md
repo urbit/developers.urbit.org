@@ -54,7 +54,7 @@ OK      /lib/pull-hook-virt/test-kick-mule
 ok=%.y    
 ```
 
-(Depending on when you built your fakeship, particular tests may or may not be present.  You can download them from [the Urbit repo](https://github.com/urbit/urbit) and add them manually if you like. Regarding the example above (`%landscape` desk), the tests are likely not present, so download them from [here](https://github.com/urbit/urbit/tree/master/pkg/landscape) if you want to run them.)
+(Depending on when you built your fakeship, particular tests may or may not be present.  You can download them from [the Urbit repo](https://github.com/urbit/urbit) and add them manually if you like. Regarding the example above (`%landscape` desk), the tests are likely missing, so download them from [here](https://github.com/urbit/urbit/tree/master/pkg/landscape) if you want to run them.)
 
 Hoon unit tests come in two categories:
 
