@@ -87,7 +87,7 @@ By convention any testing suite has the import line `/+  *test` at the top.
     !>  .1
     !>  (absolute .1)
   %-  expect-fail
-    |.  (absolute .0)  :: actually succeeds
+    |.  (absolute .0)
   ==
 --
 ```
