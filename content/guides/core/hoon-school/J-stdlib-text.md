@@ -231,7 +231,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     - Without using `++snag`, write a gate that returns the `n`th item of a list.  There is a solution at the bottom of the page.
 
-- [`++oust`](/reference/hoon/stdlib/2b#oust) takes a pair of atoms [a=@ b=@] and a list, and returns the list with b items removed, starting at item a:
+- [`++oust`](/reference/hoon/stdlib/2b#oust) takes a pair of atoms `[a=@ b=@]` and a list, and returns the list with b items removed, starting at item a:
 
     ```hoon
     > (oust [0 1] `(list @)`~[11 22 33 44])
