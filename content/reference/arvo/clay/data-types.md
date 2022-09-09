@@ -14,7 +14,7 @@ As another general guide, when reading Hoon, it rarely pays off to understand
 every line of code when it appears. Try to get the gist of it, and then move on.
 The next time you come back to it, it'll likely make a lot more sense.
 
-### Data Models
+## Data Models
 
 As you're reading through this section, remember you can always come
 back to this when you run into these types later on. You're not going to
@@ -29,7 +29,9 @@ this section isn't too long, so many readers may wish to quickly read through
 all of it. If you get bored, though, just skip to the next section. You can
 always come back when you need to.
 
-### `$raft`, formal state
+## `$raft`
+
+Formal state
 
 ```hoon
 +$  raft                                                ::  filesystem
@@ -67,7 +69,9 @@ to th pier) and `beam` is a domestic Clay directory.
 
 `pud` is an update that's waiting on a kernel upgrade.
 
-#### `$room`, filesystem per domestic ship
+## `$room`
+
+Filesystem per domestic ship
 
 ```hoon
 +$  room                                                ::  fs per ship
@@ -85,7 +89,9 @@ produced along this `duct`. This is set by the `%init` `move`.
 `dos` is a well-known operating system released in 1981. It is also the
 set of `desk`s on this ship, mapped to their `desk` state.
 
-#### `$desk`, filesystem branch
+## `$desk`
+
+Filesystem branch
 
 ```hoon
 +$  desk  @tas
@@ -95,7 +101,9 @@ This is the name of a branch of the filesystem. The default `desk`s are `%base`,
 independent histories and states, and they may be
 [merged](/reference/arvo/clay/using#merging) into each other.
 
-### `$dojo`, domestic desk state
+## `$dojo`
+
+Domestic desk state
 
 ```hoon
 +$  dojo
@@ -111,7 +119,9 @@ ship. `qyx` is the set of subscribers to this `desk`, and `dom` is the data in
 the `desk`. `regs` are `(map path rule)`, and so `per` is a `map` of read
 permissions by `path` and `pew` is a `map` of write permissions by `path`.
 
-#### `$cult`, subscriptions
+## `$cult`
+
+Subscriptions
 
 ```hoon
 +$  cult  (jug wove duct)
@@ -121,15 +131,17 @@ permissions by `path` and `pew` is a `map` of write permissions by `path`.
 `wove` is mapped to a set of `duct`s associated to subscribers who should be
 notified when the request is filled/updated.
 
-#### `$rave:clay`, general subscription request
+## `$rave:clay`
+
+General subscription request
 
 ```hoon
-  +$  rave                                              ::  general request
-    $%  [%sing =mood]                                   ::  single request
-        [%next =mood]                                   ::  await next version
-        [%mult =mool]                                   ::  next version of any
-        [%many track=? =moat]                           ::  track range
-    ==                                                  ::
++$  rave                                              ::  general request
+  $%  [%sing =mood]                                   ::  single request
+      [%next =mood]                                   ::  await next version
+      [%mult =mool]                                   ::  next version of any
+      [%many track=? =moat]                           ::  track range
+  ==                                                  ::
 ```
 
 This represents a subscription request for a `desk`.
@@ -144,50 +156,58 @@ specified set of files.
 
 A `%many` request asks to be notified on every change in a `desk` for a range of changes (including into the future).
 
-### `$rove`, stored general subscription request
+## `$rove`
+
+Stored general subscription request
 
 ```hoon
-    +$  rove                                                ::  stored request
-          $%  [%sing =mood]                             ::  single request
-              [%next =mood aeon=(unit aeon) =cach]      ::  next version of one
-              $:  %mult                                 ::  next version of any
-                  =mool                                 ::  original request
-                  aeon=(unit aeon)                      ::  checking for change
-                  old-cach=(map [=care =path] cach)     ::  old version
-                  new-cach=(map [=care =path] cach)     ::  new version
-              ==                                        ::
-              [%many track=? =moat lobes=(map path lobe)] ::  change range
++$  rove                                                ::  stored request
+      $%  [%sing =mood]                                 ::  single request
+          [%next =mood aeon=(unit aeon) =cach]          ::  next version of one
+          $:  %mult                                     ::  next version of any
+              =mool                                     ::  original request
+              aeon=(unit aeon)                          ::  checking for change
+              old-cach=(map [=care =path] cach)         ::  old version
+              new-cach=(map [=care =path] cach)         ::  new version
           ==                                            ::
+          [%many track=? =moat lobes=(map path lobe)]   ::  change range
+      ==                                                ::
 ```
 
 Like a `rave` but with provisions to store current versions for `%next` and `%many`.
 Generally used when we store a request in our state somewhere. This is so that
 we can determine whether new versions actually affect the path we're subscribed to.
 
-#### `$mood:clay`, single subscription request
+## `$mood:clay`
+
+Single subscription request
 
 ```hoon
-  +$  mood  [=care =case =path]                         ::  request in desk
++$  mood  [=care =case =path]                         ::  request in desk
 ```
 
 This represents a request for data related to the state of the `desk` at a
 particular commit, specfied by `case`. `care` specifies what kind of information
 is desired, and `path` specifies the path we are requesting.
 
-#### `$moat:clay`, range subscription request
+## `$moat:clay`
+
+Range subscription request
 
 ```hoon
-  +$  moat  [from=case to=case =path]                   ::  change range
++$  moat  [from=case to=case =path]                   ::  change range
 ```
 
 This represents a request for all changes between `from` and `to` on `path`. You
 will be notified when a change is made to the node referenced by the `path` or to
 any of its children.
 
-### `$care:clay`, Clay submode
+## `$care:clay`
+
+Clay submode
 
 ```hoon
-  +$  care  ?(%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z)  ::  clay submode
++$  care  ?(%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z)  ::  clay submode
 ```
 
 This specifies what type of information is requested in a subscription
@@ -231,7 +251,9 @@ return the bunt of an `arch` if the file or directory is not found.
 
 `%z` requests a recursive hash of a node and all its children, returned as a `@uxI`.
 
-#### `$ankh`, filesystem node
+## `$ankh`
+
+Filesystem node
 
 ```hoon
 +$  ankh                                                ::  expanded node
@@ -253,7 +275,9 @@ contents while `q.fil` is the data itself.
 this is empty. The keys are the names of the children and the values
 are, recursively, the nodes themselves.
 
-### `$arch`, shallow filesystem node
+## `$arch`
+
+Shallow filesystem node
 
 ```hoon
 +$  arch  (axil @uvI)
@@ -276,7 +300,9 @@ efficient conversion for when the heavier node is needed.
   [fil=(unit item) dir=(map @ta $)]
 ```
 
-#### `$case`, specifying a commit
+## `$case`
+
+Specifying a commit
 
 ```hoon
 +$  case
@@ -296,7 +322,9 @@ that was at the head on date `p`, `%tas` refers to the commit labeled
 all can be reduced down to a `%ud`, only numbered commits may be
 referenced with a `++case:clay`.
 
-#### `$dome`, desk data
+## `$dome`
+
+Desk data
 
 ```hoon
 +$  dome
@@ -344,7 +372,9 @@ dependencies for each completed build.
 `fer` is the system file cache, which consists of `vase`s for `hoon.hoon`,
 `arvo.hoon`, `lull.hoon`, and `zuse.hoon`.
 
-#### `++rung`, filesystem per neighbor ship
+## `$rung`
+
+Filesystem per neighbor ship
 
 ```hoon
 +$  rung
@@ -355,15 +385,11 @@ dependencies for each completed build.
 This is the filesystem of a neighbor ship. The keys to this `map` are all
 the `desk`s we know about on their ship.
 
-#### `++rede`, generic desk state
+## `$rede`
+
+Generic desk state
 
 ```hoon
-    ++  rede                                                ::  universal project
-              $:  lim=@da                                   ::  complete to
-                  qyx=cult                                  ::  subscribers
-                  ref=(unit rind)                           ::  outgoing requests
-                  dom=dome                                  ::  revision state
-              ==                                            ::
 +$  rede                                                ::  universal project
           $:  lim=@da                                   ::  complete to
               ref=(unit rind)                           ::  outgoing requests
@@ -395,7 +421,9 @@ is all the subscribers from our ship to the foreign `desk`.
 `regs` are `(map path rule)`, and so `per` is a `map` of read permissions by
 `path` and `pew` is a `map` of write permissions by `path`.
 
-#### `$rind`, foreign request manager
+## `$rind`
+
+Foreign request manager
 
 ```hoon
 +$  rind                                                ::  request manager
@@ -425,7 +453,9 @@ numbers to their associated `duct`.
 `haw` is a map from `%sing` requests to their values. This acts as a cache for
 requests that have already been filled.
 
-#### `$update-state`, status of outstanding foreign request
+## `$update-state`
+
+Status of outstanding foreign request
 
 ```hoon
 +$  update-state
@@ -453,13 +483,15 @@ associated with those hashes.
 
 `busy` tracks whether or not the request is currently being fulfilled.
 
-#### `$rang:clay`, data repository
+## `$rang:clay`
+
+Data repository
 
 ```hoon
-  +$  rang                                              ::  repository
-    $:  hut=(map tako yaki)                             ::  changes
-        lat=(map lobe blob)                             ::  data
-    ==                                                  ::
++$  rang                                              ::  repository
+  $:  hut=(map tako yaki)                             ::  changes
+      lat=(map lobe blob)                             ::  data
+  ==                                                  ::
 ```
 
 This is a data repository keyed by hash. Thus, this is where the "real" data
@@ -475,10 +507,12 @@ We often get the hashes from a `yaki`, which references this `map` to get the
 data. There is no `blob` in `yaki:clay`. They are only accessible through
 `lat`.
 
-#### `$tako:clay`, commit reference
+## `$tako:clay`
+
+Commit reference
 
 ```hoon
-  +$  tako  @                                           ::  yaki ref
++$  tako  @                                           ::  yaki ref
 ```
 
 This is a hash of a `yaki:clay`, a commit. These are most notably used as the
@@ -486,15 +520,17 @@ keys in `hut:rang:clay`, where they are associated with the actual `yaki:clay`,
 and as the values in `hit:dome:clay`, where sequential numerical ids are
 associated with these.
 
-#### `$yaki:clay`, commit
+## `$yaki:clay`
+
+Commit
 
 ```hoon
-  +$  yaki                                              ::  commit
-    $:  p=(list tako)                                   ::  parents
-        q=(map path lobe)                               ::  namespace
-        r=tako                                          ::  self-reference
-        t=@da                                           ::  date
-    ==                                                  ::
++$  yaki                                              ::  commit
+  $:  p=(list tako)                                   ::  parents
+      q=(map path lobe)                               ::  namespace
+      r=tako                                          ::  self-reference
+      t=@da                                           ::  date
+  ==                                                  ::
 ```
 
 This is a single commit.
@@ -513,22 +549,26 @@ signature here tells the whole story.
 
 `t` is the date at which this commit was made.
 
-#### `$lobe:clay`, data reference
+## `$lobe:clay`
+
+Data reference
 
 ```hoon
-  +$  lobe  @uvI                                        ::  blob ref
++$  lobe  @uvI                                        ::  blob ref
 ```
 
 This is a hash of a `blob:clay`. These are most notably used in `lat:rang:clay`,
 where they are associated with the actual `blob:clay`, and as the values in
 `q:yaki:clay`, where `path`s are associated with their content hashes in a commit.
 
-#### `$blob:clay`, data
+## `$blob:clay`
+
+Data
 
 ```hoon
-  +$  blob                                              ::  fs blob
-    $%  [%delta p=lobe q=[p=mark q=lobe] r=page]        ::  delta on q
-        [%direct p=lobe q=page]                         ::  immediate
++$  blob                                              ::  fs blob
+  $%  [%delta p=lobe q=[p=mark q=lobe] r=page]        ::  delta on q
+      [%direct p=lobe q=page]                         ::  immediate
 ```
 
 This is a node of data. In both cases, `p` is the hash of the blob.
@@ -541,23 +581,27 @@ blob, and `r` is the delta.
 `%direct` is the case where we simply have the data directly. `q` is the data.
 These almost always come from the creation of a file.
 
-#### `+urge`, list change
+## `+urge`
+
+List change
 
 ```hoon
-  ++  urge  |*(a=mold (list (unce a)))                  ::  list change
+++  urge  |*(a=mold (list (unce a)))                  ::  list change
 ```
 
 This is a parametrized type for list changes. For example, `(urge @t)`
 is a list change for lines of text.
 
-#### `+unce`, change part of a list.
+## `+unce`
+
+Change part of a list.
 
 ```hoon
-  ++  unce                                              ::  change part
-    |*  a=mold                                          ::
-    $%  [%& p=@ud]                                      ::  skip[copy]
-        [%| p=(list a) q=(list a)]                      ::  p -> q[chunk]
-    ==                                                  ::
+++  unce                                              ::  change part
+  |*  a=mold                                          ::
+  $%  [%& p=@ud]                                      ::  skip[copy]
+      [%| p=(list a) q=(list a)]                      ::  p -> q[chunk]
+  ==                                                  ::
 ```
 
 This is a single change in a list of elements of type `a`. For example,
@@ -567,13 +611,15 @@ This is a single change in a list of elements of type `a`. For example,
 
 `%|` means the lines `p` have changed to `q`.
 
-#### `$nori:clay`, repository action
+## `$nori:clay`
+
+Repository action
 
 ```hoon
-  +$  nori                                              ::  repository action
-    $%  [%& p=soba]                                     ::  delta
-        [%| p=@tas]                                     ::  label
-    ==                                                  ::
++$  nori                                              ::  repository action
+  $%  [%& p=soba]                                     ::  delta
+      [%| p=@tas]                                     ::  label
+  ==                                                  ::
 ```
 
 This describes a change that we are asking Clay to make to the `desk`.
@@ -583,25 +629,29 @@ we can apply a label to a commit.
 In the `|` case, we will simply label the current commit with the given
 label. In the `&` case, we will apply the given changes.
 
-#### `$soba:clay`, delta
+## `$soba:clay`
+
+Delta
 
 ```hoon
-  +$  soba  (list [p=path q=miso])                      ::  delta
++$  soba  (list [p=path q=miso])                      ::  delta
 ```
 
 This describes a `list` of changes to make to a `desk`. The `path`s are `path`s
 to files to be changed, and the corresponding `miso` value is a description of
 the change itself.
 
-#### `$miso:clay`, ankh delta
+## `$miso:clay`
+
+Ankh delta
 
 ```hoon
-  +$  miso                                              ::  ankh delta
-    $%  [%del ~]                                        ::  delete
-        [%ins p=cage]                                   ::  insert
-        [%dif p=cage]                                   ::  mutate from diff
-        [%mut p=cage]                                   ::  mutate from raw
-    ==                                                  ::
++$  miso                                              ::  ankh delta
+  $%  [%del ~]                                        ::  delete
+      [%ins p=cage]                                   ::  insert
+      [%dif p=cage]                                   ::  mutate from diff
+      [%mut p=cage]                                   ::  mutate from raw
+  ==                                                  ::
 ```
 
 There are four kinds of changes that may be made to a node in a `desk`.
@@ -618,10 +668,12 @@ changes in directory structure.
 
 `%mut` mutates the file using raw data given by `p`.
 
-#### `$riff:clay`, request/desist
+## `$riff:clay`
+
+Request/desist
 
 ```hoon
-  +$  riff  [p=desk q=(unit rave)]                      ::  request+desist
++$  riff  [p=desk q=(unit rave)]                      ::  request+desist
 ```
 
 This represents a request for data about a particular `desk`. If `q`
@@ -629,24 +681,28 @@ contains a `rave`, then this opens a subscription to the `desk` for that
 data. If `q` is null, then this tells Clay to cancel the subscription
 along this duct.
 
-#### `$riot:clay`, response
+## `$riot:clay`
+
+Response
 
 ```hoon
-  +$  riot  (unit rant)                                 ::  response+complete
++$  riot  (unit rant)                                 ::  response+complete
 ```
 
 A `riot` is a response to a subscription. If null, the subscription has
 been completed, and no more responses will be sent. Otherwise, the
 `rant` is the produced data.
 
-#### `$rant:clay`, response data
+## `$rant:clay`
+
+Response data
 
 ```hoon
-  +$  rant                                              ::  response to request
-    $:  p=[p=care q=case r=desk]                        ::  clade release book
-        q=path                                          ::  spur
-        r=cage                                          ::  data
-    ==                                                  ::
++$  rant                                              ::  response to request
+  $:  p=[p=care q=case r=desk]                        ::  clade release book
+      q=path                                          ::  spur
+      r=cage                                          ::  data
+  ==                                                  ::
 ```
 
 This is the data associated to the response to a request. `p.p` specifies
@@ -655,7 +711,9 @@ specific version reported (since a range of versions may be requested in
 a subscription). `r.p` is the `desk`. `q` is the path to the filesystem
 node. `r` is the data itself (in the format specified by `p.p`).
 
-### `$nako`, subscription response data
+## `$nako`
+
+Subscription response data
 
 ```hoon
 +$  nako                                                ::  subscription state
