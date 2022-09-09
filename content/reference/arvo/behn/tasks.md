@@ -29,7 +29,7 @@ Behn does not return any `gift` in response to a `%born` `task`.
 
 Cancel a timer.
 
-Behn takes in a `@da` and cancels the timer at that time if it exists, then adjusts the next wakeup call from Unix if necessary.
+Behn takes in a `@da` and cancels the timer at that time if one had been set through that `wire`, then adjusts the next wakeup call from Unix if necessary.
 
 #### Returns
 
