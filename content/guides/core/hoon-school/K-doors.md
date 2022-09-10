@@ -479,7 +479,7 @@ You can get a list of all keys with `++key:by`:
 {%black %red %blue %violet %green %yellow %orange}
 ```
 
-You can apply a gate to each value, rather like `++turn` in Lesson 4, using `++run:by`.  For instance, these gates will break the color hexadecimal value into red, green, and blue components:
+You can apply a gate to each value using `++run:by`.  For instance, these gates will break the color hexadecimal value into red, green, and blue components:
 
 ```hoon
 > =red |=(a=@ux ^-(@ux (cut 2 [4 2] a)))
