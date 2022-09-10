@@ -71,6 +71,8 @@ Consider an absolute value arm `++absolute` for `@rs` values. The unit tests for
 -   Verify correct behavior for negative numeric input.
 -   For the purpose of demonstrating `++expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `unit` are a way of dealing with failed computations.)
 
+(You may also think we would need to verify `++absolute` calls only succeed if the input is an `@rs`, but arvo already handles this for us, as a hoon file will not build if a gate call contains an argument that does not match the sample type.)
+
 By convention any testing suite has the import line `/+  *test` at the top.
 
 **/tests/lib/absolute.hoon**
