@@ -392,9 +392,9 @@ Recall the quadratic equation door.
 --
 ```
 
-- Add an arm to the door which calculates the linear function _a_×_x_ + _b_.
+- Add an arm to the door which calculates the linear function _a_ × _x_ + _b_.
 
-- Add another arm which calculates the derivative of the first quadratic function, 2×_a_×_x_ + _b_.
+- Add another arm which calculates the derivative of the first quadratic function, 2 × _a_ × _x_ + _b_.
 
 
 ##  Key-Value Pairs:  `map` as Door
