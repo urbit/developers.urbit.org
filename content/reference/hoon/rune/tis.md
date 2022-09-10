@@ -434,10 +434,10 @@ the expression that uses it.
 #### Examples
 
 ```
-> =foo  |=  a=@
-        =+  b=1
-        =-  (add a b c)
-        c=2
+> =foo |=  a=@
+       =+  b=1
+       =-  (add a b c)
+       c=2
 > (foo 5)
 8
 ```
@@ -722,11 +722,11 @@ is reversed.
 #### Examples
 
 ```
-> =foo  |=  a=@
-        =/   b  1
-        =;   c=@
-          :(add a b c)
-        2
+> =foo |=  a=@
+       =/   b  1
+       =;   c=@
+         :(add a b c)
+       2
 > (foo 5)
 8
 ```
@@ -813,10 +813,10 @@ type-checked variable."
 > =/  x  [1 2 3]  x
 [1 2 3]
 
-> =foo  |=  a=@
-        =/  b  1
-        =/  c=@  2
-        :(add a b c)
+> =foo |=  a=@
+       =/  b  1
+       =/  c=@  2
+       :(add a b c)
 > (foo 5)
 8
 ```
