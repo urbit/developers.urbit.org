@@ -17,13 +17,13 @@ weight = 20
 | `~[a b c]` | [`:~`](/reference/hoon/rune/col#-colsig), constructs null-terminated list |
 | `+(42)` | [`.+`](/reference/hoon/rune/dot#-dotlus), increments with Nock 4 |
 | `=(a b)` | [`.=`](/reference/hoon/rune/dot#-dottis), tests for equality wiht Nock 5 |
-| `&#96;foo&#96;bar` | [`^-`](/reference/hoon/rune/ket#-kethep), typecasts by explicit type label |
+| `` `foo` bar`` | [`^-`](/reference/hoon/rune/ket#-kethep), typecasts by explicit type label |
 | `foo=bar` | [`^=`](/reference/hoon/rune/ket#-kettis), binds name to value |
 | `*foo` | [`^*`](/reference/hoon/rune/ket#-kettar), bunts (produces default mold value) |
 | `,foo` | [`^:`](/reference/hoon/rune/ket#-ketcol), produces “factory” gate for type |
 | `:(fun a b c d)` | [`;:`](/reference/hoon/rune/mic#-miccol), calls binary function as _n_-ary function |
 | `foo:bar` | [`=<`](/reference/hoon/rune/tis#-tisgal), composes two expressions, inverted |
-| `&#124;(foo bar baz)` | [`?&#124;`](/reference/hoon/rune/wut#-wutbar), logical OR (loobean) |
+| `\|(foo bar baz)` | [`?\|`](/reference/hoon/rune/wut#-wutbar), logical OR (loobean) |
 | `&(foo bar baz)` | [`?&`](/reference/hoon/rune/wut#wutpam), logical AND (loobean) |
 | `!foo` | [`?!`](/reference/hoon/rune/wut#-wutzap), logical NOT (loobean) |
 
