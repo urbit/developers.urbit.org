@@ -32,7 +32,7 @@ identity system for other projects.
 
 - [The Azimuth concepts page](/reference/azimuth/azimuth): A more in-depth
   explanation of Azimuth.
-- [Install instructions](/getting-started/): Guide to installing Urbit, which
+- [Install instructions](https://urbit.org/getting-started): Guide to installing Urbit, which
   includes instructions on booting with your Urbit identity.
-- [Understanding Urbit ID](/understanding-urbit/urbit-id)
+- [Urbit ID Overview](https://urbit.org/overview/urbit-id)
 
