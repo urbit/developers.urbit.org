@@ -283,7 +283,7 @@ A `+$vase` is a pair of type and value, such as that returned by `!>` zapgar.  A
 
     `mip`s are unjetted and quite slow but serve as a proof of concept.
 
-- `++mop` ordered maps are discussed in [the App School guides](TODO).
+- `++mop` ordered maps are discussed in [the App School guides](/guides/core/app-school-full-stack/1-types).
 
 
 ##  Molds and Samples

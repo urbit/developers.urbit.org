@@ -529,4 +529,4 @@ There are many more options with Clay than just accessing file and folder data. 
 {%bitcoin %base %landscape %webterm %garden %kids}
 ```
 
-Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](TODO).
+Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](/reference/arvo).
