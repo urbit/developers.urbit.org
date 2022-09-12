@@ -341,7 +341,7 @@ What if we wish to define a door with a chosen sample value directly?  We can ma
 For our earlier example with `++roll`, if we wanted to set the default sample to have a different value than the bunt of the type, we could use `_` cab:
 
 ```hoon
-> =mmul |=([a=_1 b=_1] (mul:rs a b))
+> =mmul |=([a=_.1 b=_.1] (mul:rs a b))
 
 > (roll `(list @rs)`~[.10 .12 .14 .16 .18] mmul)
 .483840
