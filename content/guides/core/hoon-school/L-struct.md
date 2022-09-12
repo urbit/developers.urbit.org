@@ -10,7 +10,7 @@ _This module will introduce you to several useful data structures built on the d
 
 ##  Key Data Structures and Molds
 
-`++map`s are a versatile way to store and access data, but they are far from the only useful pattern.  `++map`s were documented in [the previous module](./K-doors.md).
+`++map`s are a versatile way to store and access data, but they are far from the only useful pattern.  `++map`s were documented in [the previous module](/guides/core/hoon-school/K-doors).
 
 ### `tree`
 

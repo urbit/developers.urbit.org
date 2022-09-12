@@ -93,11 +93,11 @@ across that our app will depend on:
 
 ```shell {% copy=true %}
 mkdir -p squad/{app,sur,mar,lib}
-cp dev-comet/base/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*} squad/mar/
-cp dev-comet/base/lib/{agentio*,dbug*,default-agent*,skeleton*} squad/lib/
-cp dev-comet/garden/mar/docket-0.hoon squad/mar/
-cp dev-comet/garden/lib/docket.hoon squad/lib/
-cp dev-comet/garden/sur/docket.hoon squad/sur/
+cp -r dev-comet/base/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*} squad/mar/
+cp -r dev-comet/base/lib/{agentio*,dbug*,default-agent*,skeleton*} squad/lib/
+cp -r dev-comet/garden/mar/docket-0.hoon squad/mar/
+cp -r dev-comet/garden/lib/docket.hoon squad/lib/
+cp -r dev-comet/garden/sur/docket.hoon squad/sur/
 ```
 
 Now we can start working on the app itself.
@@ -1289,7 +1289,7 @@ Back in the Dojo again, we can now commit those files and install the app:
 
 If we open a web browser, go to `localhost:8080` (or `localhost` on a Mac), and
 login with the password obtained by running `+code` in the Dojo, we should see
-a tile for the Tally app.  If we click on it, it'll open our front-end and we
+a tile for the Squad app.  If we click on it, it'll open our front-end and we
 can start using it.
 
 One thing we can also do is publish the app so others can install it from us. To

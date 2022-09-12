@@ -13,18 +13,17 @@ many uses, including but not limited to:
 - testing software
 
 Comets have nearly all the same capabilities as a planet. The restrictions they
-do possess are technical constraints of the system due primarily to the fact that they
-have no presence on [Azimuth](/reference/glossary/azimuth), rather than purposefully placed
-blockades.
- - They may not [change their networking keys](/reference/glossary/bridge).
- - They may not spawn [moons](/reference/glossary/moon).
- - They must initiate all direct messages with other ships.
-The last constraint has a workaround slated. If you wish to change your
-networking keys, we suggest generating a new comet. Moons are impossible for
-comets due to the structure of the address space.
+do possess are technical constraints of the system due primarily to the fact
+that they have no presence on [Azimuth](/reference/glossary/azimuth), rather
+than purposefully placed blockades:
 
-Some groups on [Landscape](/reference/glossary/landscape) may not allow comet membership, but this is rare.
+- They may not [change their networking keys](/reference/glossary/bridge).
+- They may not spawn [moons](/reference/glossary/moon).
+ 
+If you wish to change your networking keys, we suggest generating a new comet.
+Moons are impossible for comets due to the structure of the address space.
 
+Some groups may also not allow comet membership.
 
 ### Further reading
 

@@ -103,7 +103,7 @@ You can do even better using _interpolation_:
 
 ##  Exercise:  Calculate a Factorial
 
-- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number _n_ is _n_×(_n_-1)×...×2×1.  We will introduce a couple of new bits of syntax and a new gate (`++dec`).  Make this into a generator `factorial.hoon`:
+- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number _n_ is *n*×(_n_-1)×...×2×1.  We will introduce a couple of new bits of syntax and a new gate (`++dec`).  Make this into a generator `factorial.hoon`:
 
     ```hoon {% copy=true %}
     |=  n=@ud
@@ -218,7 +218,7 @@ We will revert to the irregular form more and more.  If you would like to see ex
 
 ##  Exercise:  Calculate a sequence of numbers
 
-Produce a gate (generator) which accepts a `@ud` value and calculates the series where the *i*th term in the series is given by the equation
+Produce a gate (generator) which accepts a `@ud` value and calculates the series where the 𝑖^th^ term in the series is given by the equation
 
 ![](https://latex.codecogs.com/png.image?\large%20\dpi{110}n_{i}%20=%20i^{2}\textrm{,})
 
@@ -243,7 +243,7 @@ For example, given the `tape` `"hello"`, the generator should return the list `~
 
 Two tools that may help:
 
-- You can retrieve the _n_-th element in a `tape` using the [`++snag`](/reference/hoon/stdlib/2b#snag) gate, e.g. `(snag 3 `(list @ud)`~[1 2 3 4 5])` yields `4` (so `++snag` is zero-indexed; it counts from zero).
+- You can retrieve the _n_^th^ element in a `tape` using the [`++snag`](/reference/hoon/stdlib/2b#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
 - You can join an element to a list using the [`++snoc`](/reference/hoon/stdlib/2b#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
 
 ```hoon {% copy=true %}
@@ -507,7 +507,7 @@ This result may seem a bit strange.  We didn't call `inc` or in any other way pa
 
 #### The Sample
 
-The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](./G-trees.md).)
+The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](/guides/core/hoon-school/G-trees).)
 
 Let's look at the gate for inc again, paying particular attention to its sample:
 
@@ -811,7 +811,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     [f1 $(f0 f1, f1 (add f0 f1), n (dec n))]
     ```
 
-    - Produce a diagram of how this last implementation yields a Fibonacci sequence for _F_₅, `(fibonacci 5)`.
+    - Produce a diagram of how this last implementation yields a Fibonacci sequence for *F*₅, `(fibonacci 5)`.
 
 #### Tutorial:  Tail-Call Optimization of the Factorial Gate
 

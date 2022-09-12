@@ -5,7 +5,7 @@ nodes = [110, 113]
 objectives = ["Distinguish nouns, cells, and atoms.", "Apply auras to transform an atom.", "Identify common Hoon molds, such as cells, lists, and tapes.", "Pin a face to the subject.", "Make a decision at a branch point.", "Distinguish loobean from boolean operations.", "Slam a gate (call a function)."]
 +++
 
-_This module will discuss the fundamental data concepts of Hoon and how programs effect control flow._
+_This module will discuss the fundamental data concepts of Hoon and how programs handle control flow._
 
 The study of Hoon can be divided into two parts: syntax and semantics.
 
@@ -52,7 +52,7 @@ The most general data category in Hoon is a _noun_.  This is just about as broad
 
 Progress?  We can say, in plain English, that
 
-- An _atom_ is a nonzero integer number (0–+∞), e.g. `42`.
+- An _atom_ is a non-negative integer number (0 to +∞), e.g. `42`.
 - A _cell_ is a pair of two nouns, written in square brackets, e.g. `[0 1]`.
 
 _Everything_ in Hoon (and Nock, and Urbit) is a noun.  The Urbit OS itself is a noun.  So given any noun, the Urbit VM simply applies the Nock rules to change the noun in well-defined mechanical ways.
@@ -543,7 +543,7 @@ Carefully map how the runes in that statement relate to each other, and notice h
 
 ##  Exercise:  “Absolute” Value (Around Ten)
 
-Implement a version of the absolute value function, _|x|_, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this $|x|_{10}$.)
+Implement a version of the absolute value function, |𝑥|, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this |𝑥|₁₀.)
 
 <img src="https://latex.codecogs.com/svg.image?|x|_{10}=\begin{cases}&space;x-10,&space;&&space;x&space;>&space;10&space;\\&space;0,&space;&&space;10-x&space;\le&space;10&space;\end{cases}" title="https://latex.codecogs.com/svg.image?|x|_{10}=\begin{cases} x-10, & x > 10 \\ 0, & 10-x \le 10 \end{cases}" />
 

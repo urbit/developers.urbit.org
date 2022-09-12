@@ -28,7 +28,7 @@ Until this point in Hoon School, we have rigorously adhered to the regular synta
     [1 2]
     ```
 
-- Aura application ``@ux`500`` which represents a double [`^-` kethep](/reference/hoon/rune/ket#-kethep), `^-  @ux  ^-  @  500`.
+- Aura application `` `@ux`500 `` which represents a double [`^-` kethep](/reference/hoon/rune/ket#-kethep), `^-  @ux  ^-  @  500`.
 
     These are equivalent in Hoon:
 

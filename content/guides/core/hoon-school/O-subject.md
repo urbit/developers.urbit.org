@@ -5,7 +5,7 @@ nodes = [165, 180]
 objectives = ["Review subject-oriented programming as a design paradigm.", "Discuss stateful v. stateless applications and path dependence.", "Enumerate Hoon's tools for dealing with state:  `=.` tisdot, `=^` tisket, `;<` micgal, `;~` micsig.", "Defer a computation."]
 +++
 
-_This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.  This module does not cover core genericity and variance, which will be explained in [a later module](./R-metals.md)._
+_This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.  This module does not cover core genericity and variance, which will be explained in [a later module](/guides/core/hoon-school/R-metals)._
 
 
 ##  The Subject
@@ -25,7 +25,7 @@ Generally speaking, the following rune families allow you to do certain things t
 - `%` cen runes pull arms in cores
 - `=` tis runes modify the subject by introducing or replacing values
 
-Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model.  We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](./R-metals.md) as well.
+Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model.  We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](/guides/core/hoon-school/R-metals) as well.
 
 ### Accessing the Subject
 
@@ -350,12 +350,12 @@ We have some more tools available for managing deferred or chained computations,
 
 - [`=^` tisket](/reference/hoon/rune/tis#-tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` cenhep.  (Used in Gall agents frequently.)
 - [`=*` tistar](/reference/hoon/rune/tis#-tistar) defers an expression (rather like a macro).
-- [`;<` micgal](/reference/hoon/rune/mic#-micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](reference/arvo/threads/overview).)
+- [`;<` micgal](/reference/hoon/rune/mic#-micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](/reference/arvo/threads/overview).)
 - [`;~` micsig](/reference/hoon/rune/mic#-micsig) produces a pipeline, a way of piping the output of one gate into another in a chain.  (This is particularly helpful when parsing text.)
 
 ### `++og` Randomness
 
-A _random number generator_ provides a stream of calculable but unpredictable values from some _distribution_.  In [a later lesson](./S-math.md), we explain how random numbers can be generated from entropy; for now, let's see what's necessary to use such a random-number generator.
+A _random number generator_ provides a stream of calculable but unpredictable values from some _distribution_.  In [a later lesson](/guides/core/hoon-school/S-math), we explain how random numbers can be generated from entropy; for now, let's see what's necessary to use such a random-number generator.
 
 An RNG emits a sequence of values given a starting _seed_.  For instance, a very simple RNG could emit digits of the number _π_ given a seed which is the number of digits to start from.
 

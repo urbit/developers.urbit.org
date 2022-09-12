@@ -5,9 +5,15 @@ title = "Clay"
 category = "arvo"
 +++
 
-**Clay** is the filesystem and typed revision-control [vane](/reference/glossary/vane). It can be thought of as a continuously synced git. Clay handles file-change events and maps them from [Arvo](/reference/glossary/arvo) to Unix and vice versa.
+**Clay** is the typed, revision-controlled filesystem
+[vane](/reference/glossary/vane) (kernel module) and also contains Urbit's build
+system (formerly a separate vane called Ford before it was merged into Clay).
+Clay's revision control system is similar to Git.
 
-A common way to use Clay is to create a pier, a directory that exists in and is visible in Unix. Changes are automatically recorded from Urbit to the Unix directory and vice versa. Just set it and forget it!
+Clay contains a number of [desks](/reference/glossary/desk), which can be
+thought of as separate repos or branches, and contain the source code for your
+apps. The `%base` desk contains the [Arvo](/reference/glossary/arvo) kernel and
+vanes including Clay itself, as well as the standard libraries.
 
 Clay is located at `/base/sys/vane/clay.hoon` within Arvo.
 

@@ -5,7 +5,10 @@ title = "Payload"
 category = "hoon-nock"
 +++
 
-A **payload** is the set of data needed to run computations in a [core](/reference/glossary/core)
+A **payload** is the [subject](/reference/glossary/subject) of a
+[core](/reference/glossary/core). It is exists in the tail of the
+[cell](/reference/glossary/cell) that makes up a core, with the core's
+[battery](/reference/glossary/battery) in the head.
 
 ### Further Reading
 
