@@ -283,7 +283,7 @@ A `+$vase` is a pair of type and value, such as that returned by `!>` zapgar.  A
 
     `mip`s are unjetted and quite slow but serve as a proof of concept.
 
-- `++mop` ordered maps are discussed in [the App School guides](TODO).
+- `++mop` ordered maps are discussed in [the App School guides](/guides/core/app-school-full-stack/1-types).
 
 
 ##  Molds and Samples
@@ -341,7 +341,7 @@ What if we wish to define a door with a chosen sample value directly?  We can ma
 For our earlier example with `++roll`, if we wanted to set the default sample to have a different value than the bunt of the type, we could use `_` cab:
 
 ```hoon
-> =mmul |=([a=_1 b=_1] (mul:rs a b))
+> =mmul |=([a=_.1 b=_.1] (mul:rs a b))
 
 > (roll `(list @rs)`~[.10 .12 .14 .16 .18] mmul)
 .483840

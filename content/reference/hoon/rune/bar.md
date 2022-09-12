@@ -199,10 +199,10 @@ an irregular form for `%~($ foo baz)`,
 A trivial door:
 
 ```
-> =mol  |_  a=@ud
-        ++  succ  +(a)
-        ++  prev  (dec a)
-        --
+> =mol |_  a=@ud
+       ++  succ  +(a)
+       ++  prev  (dec a)
+       --
 
 > ~(succ mol 1)
 2
@@ -381,12 +381,12 @@ a core is an arm that produces a gate.
 A trivial core:
 
 ```
-> =foo  =+  x=58
-        |%
-        ++  n  (add 42 x)
-        ++  g  |=  b=@
-               (add b n)
-        --
+> =foo =+  x=58
+       |%
+       ++  n  (add 42 x)
+       ++  g  |=  b=@
+              (add b n)
+       --
 
 > n.foo
 100
@@ -472,13 +472,13 @@ A trivial trap:
 A more interesting trap:
 
 ```
-> =foo  =/  reps  10
-        =/  step  0
-        =/  outp  0
-        |.
-        ?:  =(step reps)
-          outp
-        $(outp (add outp 2), step +(step))
+> =foo =/  reps  10
+       =/  step  0
+       =/  outp  0
+       |.
+       ?:  =(step reps)
+         outp
+       $(outp (add outp 2), step +(step))
 
 > (foo)
 20
@@ -647,12 +647,12 @@ A trivial computation doesn't recurse:
 The classic loop is a decrement:
 
 ```
-> =foo  =/  a  42
-        =/  b  0
-        |-
-        ?:  =(a +(b))
-          b
-        $(b +(b))
+> =foo =/  a  42
+       =/  b  0
+       |-
+       ?:  =(a +(b))
+         b
+       $(b +(b))
 
 > foo
 41
@@ -895,8 +895,8 @@ A trivial gate:
 A slightly less trivial gate:
 
 ```
-> =foo  |=  [a=@ b=@]
-        (add a b)
+> =foo |=  [a=@ b=@]
+       (add a b)
 
 > (foo 30 400)
 430

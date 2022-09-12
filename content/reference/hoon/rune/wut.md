@@ -208,11 +208,11 @@ A missing case will throw the `mint-lost` error. An extra case will throw
 #### Examples
 
 ```
-> =cor  |=  vat=?(%a %b)
-        ?-  vat
-          %a  20
-          %b  42
-        ==
+> =cor |=  vat=?(%a %b)
+       ?-  vat
+         %a  20
+         %b  42
+       ==
 
 > (cor %a)
 20
@@ -681,11 +681,11 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 #### Examples
 
 ```
-> =cor  |=  vat=@tas
-        ?+  vat  240
-          %a  20
-          %b  42
-        ==
+> =cor |=  vat=@tas
+       ?+  vat  240
+         %a  20
+         %b  42
+       ==
 
 > (cor %a)
 20

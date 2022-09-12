@@ -54,7 +54,7 @@ OK      /lib/pull-hook-virt/test-kick-mule
 ok=%.y    
 ```
 
-(Depending on when you built your fakeship, particular tests may or may not be present.  You can download them from [the Urbit repo](https://github.com/urbit/urbit) and add them manually if you like.)
+(Depending on when you built your fakeship, particular tests may or may not be present.  You can download them from [the Urbit repo](https://github.com/urbit/urbit) and add them manually if you like. Regarding the example above (`%landscape` desk), the tests are likely missing, so download them from [here](https://github.com/urbit/urbit/tree/master/pkg/landscape) if you want to run them.)
 
 Hoon unit tests come in two categories:
 
@@ -69,8 +69,9 @@ Consider an absolute value arm `++absolute` for `@rs` values. The unit tests for
 
 -   Verify correct behavior for positive numeric input.
 -   Verify correct behavior for negative numeric input.
--   Verify correct behavior for zero input.
--   Verify an exception is raised for nonnumeric input.  (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `unit` are a way of dealing with failed computations.)
+-   For the purpose of demonstrating `++expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `unit` are a way of dealing with failed computations.)
+
+(You may also think we would need to verify `++absolute` calls only succeed if the input is an `@rs`, but arvo already handles this for us, as a hoon file will not build if a gate call contains an argument that does not match the sample type. So even if you wanted to add an `++expect-fail` test for it, your test file would not build.)
 
 By convention any testing suite has the import line `/+  *test` at the top.
 
@@ -87,11 +88,8 @@ By convention any testing suite has the import line `/+  *test` at the top.
   %+  expect-eq
     !>  .1
     !>  (absolute .1)
-  %+  expect-eq
-    !>  .0
-    !>  (absolute .0)
   %-  expect-fail
-    |.  (absolute '0')  ::actually succeeds
+    |.  (absolute .0)
   ==
 --
 ```

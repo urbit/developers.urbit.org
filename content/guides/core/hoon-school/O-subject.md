@@ -234,7 +234,7 @@ The core Arvo subject exposes several axes (plural of `+$axis` which is the tree
     now=~2022.6.22..20.41.18..82f4
     ```
 
-- `eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`++shax`]().  (`eny` is shared between vanes during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each Gall agent activation.)
+- `eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`++shax`](/reference/hoon/stdlib/3d#shax).  (`eny` is shared between vanes during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each Gall agent activation.)
 
     ```hoon
     > ->+..
@@ -529,4 +529,4 @@ There are many more options with Clay than just accessing file and folder data. 
 {%bitcoin %base %landscape %webterm %garden %kids}
 ```
 
-Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](TODO).
+Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](/reference/arvo).

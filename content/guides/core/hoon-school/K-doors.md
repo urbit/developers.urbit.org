@@ -368,7 +368,7 @@ The standard library provides [currying functionality](/guides/core/hoon-school/
 
 #### Creating Doors with a Modified Sample
 
-In the above example we created a door `c` with sample `b=@` and found that the initial value of `b` was `0`, the bunt value of `@`. We then created new door from `c` by modifying the value of `b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` rune, whose irregular form is simply `_`. To create the door `c` with the sample `b=@` set to have the value `7` in the dojo, we would write
+In the above example we created a door `c` with sample `b=@` and found that the initial value of `b` was `0`, the bunt value of `@`. We then created new door from `c` by modifying the value of `b`. But what if we wish to define a door with a chosen sample value directly? We make use of the [`$_` buccab](/reference/hoon/rune/buc#_-buccab) rune, whose irregular form is simply `_`. To create the door `c` with the sample `b=@` set to have the value `7` in the dojo, we would write
 
 ```hoon
 =c |_  b=_7
@@ -392,9 +392,9 @@ Recall the quadratic equation door.
 --
 ```
 
-- Add an arm to the door which calculates the linear function _a_×_x_ + _b_.
+- Add an arm to the door which calculates the linear function _a_ × _x_ + _b_.
 
-- Add another arm which calculates the derivative of the first quadratic function, 2×_a_×_x_ + _b_.
+- Add another arm which calculates the derivative of the first quadratic function, 2 × _a_ × _x_ + _b_.
 
 
 ##  Key-Value Pairs:  `map` as Door
@@ -479,7 +479,7 @@ You can get a list of all keys with `++key:by`:
 {%black %red %blue %violet %green %yellow %orange}
 ```
 
-You can apply a gate to each value, rather like `++turn` in Lesson 4, using `++run:by`.  For instance, these gates will break the color hexadecimal value into red, green, and blue components:
+You can apply a gate to each value using `++run:by`.  For instance, these gates will break the color hexadecimal value into red, green, and blue components:
 
 ```hoon
 > =red |=(a=@ux ^-(@ux (cut 2 [4 2] a)))
