@@ -12,23 +12,23 @@ There are two kinds of symbols in `u3`: regular and irregular.
 Regular symbols follow this pattern:
 
 ```
-    prefix    purpose                      .h         .c
-    -------------------------------------------------------
-    u3a_      allocation                   i/n/a.h    n/a.c
-    u3e_      persistence                  i/n/e.h    n/e.c
-    u3h_      hashtables                   i/n/h.h    n/h.c
-    u3i_      noun construction            i/n/i.h    n/i.c
-    u3j_      jet control                  i/n/j.h    n/j.c
-    u3m_      system management            i/n/m.h    n/m.c
-    u3n_      nock computation             i/n/n.h    n/n.c
-    u3r_      noun access (error returns)  i/n/r.h    n/r.c
-    u3t_      profiling                    i/n/t.h    n/t.c
-    u3v_      arvo                         i/n/v.h    n/v.c
-    u3x_      noun access (error crashes)  i/n/x.h    n/x.c
-    u3z_      memoization                  i/n/z.h    n/z.c
-    u3k[a-g]  jets (transfer, C args)      i/j/k.h    j/[a-g]/*.c
-    u3q[a-g]  jets (retain, C args)        i/j/q.h    j/[a-g]/*.c
-    u3w[a-g]  jets (retain, nock core)     i/j/w.h    j/[a-g]/*.c
+prefix    purpose                      .h         .c
+-------------------------------------------------------
+u3a_      allocation                   i/n/a.h    n/a.c
+u3e_      persistence                  i/n/e.h    n/e.c
+u3h_      hashtables                   i/n/h.h    n/h.c
+u3i_      noun construction            i/n/i.h    n/i.c
+u3j_      jet control                  i/n/j.h    n/j.c
+u3m_      system management            i/n/m.h    n/m.c
+u3n_      nock computation             i/n/n.h    n/n.c
+u3r_      noun access (error returns)  i/n/r.h    n/r.c
+u3t_      profiling                    i/n/t.h    n/t.c
+u3v_      arvo                         i/n/v.h    n/v.c
+u3x_      noun access (error crashes)  i/n/x.h    n/x.c
+u3z_      memoization                  i/n/z.h    n/z.c
+u3k[a-g]  jets (transfer, C args)      i/j/k.h    j/[a-g]/*.c
+u3q[a-g]  jets (retain, C args)        i/j/q.h    j/[a-g]/*.c
+u3w[a-g]  jets (retain, nock core)     i/j/w.h    j/[a-g]/*.c
 ```
 
 Irregular symbols always start with `u3` and obey no other rules.
@@ -39,28 +39,29 @@ program in `u3`.
 ### u3: noun internals
 
 A noun is a `u3_noun` - currently defined as a 32-bit `c3_w`.
+(This is zero-indexed so bit `31` is the high bit.)
 
 If your `u3_noun` is less than `(1 << 31)`, it's a direct atom.
 Every unsigned integer between `0` and `0x7fffffff` inclusive is
 its own noun.
 
-If bit `31` is set in a `u3_noun`, bit `30` is always set - this
-bit is reserved.  Bit `29` is `1` if the noun is a cell, `0` if
-it's an atom.  Bits `28` through `0` are a word pointer into the
-loom - see below.  The structures are:
+If bit `31` is set in a `u3_noun` and bit `30` is `1` the noun
+is an indirect cell.  If bit `31` is set and bit `30` is `0` the
+noun is an indirect atom.  Bits `29` through `0` are a word
+pointer into the loom - see below.  The structures are:
 
 ```c
-    typedef struct {
-      c3_w mug_w;
-      c3_w len_w;
-      c3_w buf_w[0];    //  actually [len_w]
-    } u3a_atom;
+typedef struct {
+  c3_w mug_w;
+  c3_w len_w;
+  c3_w buf_w[0];    //  actually [len_w]
+} u3a_atom;
 
-    typedef struct {
-      c3_w    mug_w;
-      u3_noun hed;
-      u3_noun tel;
-    } u3a_cell;
+typedef struct {
+  c3_w    mug_w;
+  u3_noun hed;
+  u3_noun tel;
+} u3a_cell;
 ```
 
 The only thing that should be mysterious here is `mug_w`, which
