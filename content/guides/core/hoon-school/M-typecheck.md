@@ -851,7 +851,7 @@ To summarize, as values get passed around and checked at various points, the Hoo
 
 There are two additional assertions which can be used with the type system:
 
-- [`?>` wutgar](/reference/hoon/rune/wut#-wutgar) is a positive assertion (`%.y%` or crash).
+- [`?>` wutgar](/reference/hoon/rune/wut#-wutgar) is a positive assertion (`%.y` or crash).
 - [`?<` wutgal](/reference/hoon/rune/wut#-wutgal) is a negative assertion (`%.n` or crash).
 
 If you are running into `find-fork` errors in more complicated data structures (like marks or JSONs), consider using these assertions to guide the typechecker.
