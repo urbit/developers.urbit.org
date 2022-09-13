@@ -99,7 +99,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
     %.y
     ```
 
-- [`?!` wutzap](/reference/hoon/rune/wut#-wutzap), irregularly `!`, is a logical `NOT` ¬_p_.  Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
+- [`?!` wutzap](/reference/hoon/rune/wut#-wutzap), irregularly `!`, is a logical `NOT` (i.e. ¬*p*).  Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
 
     |                              | `NOT` |
     |------------------------------|-------|
@@ -120,7 +120,7 @@ From these primitive operators, you can build other logical statements at need.
 
 ##  Exercise:  Design an `XOR` Function
 
-The logical operation `XOR` _p_⊕_q_ exclusive disjunction yields true if one but not both operands are true.  `XOR` can be calculated by (_p_ ∧ ¬_q_) ∨ (¬_p_ ∧ _q_).
+The logical operation `XOR` (i.e. *p*⊕*q* ; exclusive disjunction)  yields true if one but not both operands are true.  `XOR` can be calculated by (_p_ ∧ ¬*q*) ∨ (¬*p* ∧ _q_).
 
 |             `XOR`            | `%.y` | `%.n` |
 |------------------------------|-------|-------|
@@ -137,7 +137,7 @@ The logical operation `XOR` _p_⊕_q_ exclusive disjunction yields true if one b
 
 ##  Exercise:  Design a `NAND` Function
 
-The logical operation `NAND` _p_ ↑ _q_ produces false if both operands are true.  `NAND` can be calculated by ¬(_p_ ∧ _q_).
+The logical operation `NAND` (i.e. _p_ ↑ _q_) produces false if both operands are true.  `NAND` can be calculated by ¬(_p_ ∧ _q_).
 
 |             `NAND`            | `%.y` | `%.n` |
 |-------------------------------|-------|-------|
@@ -148,7 +148,7 @@ The logical operation `NAND` _p_ ↑ _q_ produces false if both operands are tru
 
 ##  Exercise:  Design a `NOR` Function
 
-The logical operation `NOR` _p_ ↓ _q_ produces true if both operands are false.  `NOR` can be calculated by ¬(_p_ ∨ _q_).
+The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands are false.  `NOR` can be calculated by ¬(_p_ ∨ _q_).
 
 |             `NOR`            | `%.y` | `%.n` |
 |------------------------------|-------|-------|
