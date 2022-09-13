@@ -78,7 +78,7 @@ The cell runes.
 
 ### `:-` colhep
 
-[docs](/reference/hoon/rune/col#-colhep) \\[\\]\\^\\+\\\`\\~
+[docs](/reference/hoon/rune/col#-colhep) \\[\\]\\^\\/\\+\\\`\\~
 
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
@@ -186,6 +186,21 @@ Regular: `$_(p)`
 
 Irregular: `_p`
 
+### `$=` buctis
+
+[docs](/reference/hoon/rune/buc#-buctis)  \\=
+
+`[%bcts p=skin q=spec]`: wraps a face around a structure.
+
+Regular: `$=(p q)`
+
+Irregular:
+```hoon
+ p=q   ==>   $=(p q)
+  =q   ==>   q=q
+=p=q   ==>   p-q=q
+```
+
 ## `?` wut (test)
 
 Hoon has the usual branches and logical tests.
@@ -268,6 +283,8 @@ Irregular: `p=q`
 
 ### Trivial molds
 
+\\\*\\@\\^\\?\\~
+
 - `*` noun.
 - `@` atom.
 - `^` cell.
@@ -276,7 +293,7 @@ Irregular: `p=q`
 
 ### Values
 
-\\~\\-\\.\\&\\|
+\\~\\&\\|\\%
 
 - `~` null.
 - `&` loobean true.
@@ -287,12 +304,14 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
 
 ### List addressing
 
+\\&\\|
+
 - `&n` nth element of a list.
 - `|n` tail of list after nth element (i.e. n is the head).
 
 ### Limbs
 
-[docs](/reference/hoon/limbs/limb) \\+\\.\\^
+[docs](/reference/hoon/limbs/limb) \\+\\.\\^\\-
 
 `[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
@@ -316,8 +335,10 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
 
 ### Wings
 
-[docs](/reference/hoon/limbs/wing)
+[docs](/reference/hoon/limbs/wing) \\.
+
 `[%wing p=(list limb)]`; a limb search path.
+
 `a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
 
 ### Printing stuff
