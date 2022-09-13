@@ -152,37 +152,6 @@ nest-fail
 [123 12 14]
 ```
 
-### Nock Checks (`.` dot Runes)
-
-You saw earlier how a type check is performed when [`.=` dottis](/reference/hoon/rune/dot#-dottis)—or more commonly its irregular variant `=( )`—is used.  For any expression of the form `=(a b)`, either the type of `a` must be a subset of the type of `b` or the type of `b` must be a subset of the type of `a`.  Otherwise, the type check fails and you'll get a `nest-fail`.
-
-```hoon
-> =(12 [33 44])
-nest-fail
-
-> =([77 88] [33 44])
-%.n
-```
-
-You can evade the `.=` dottis type-check by casting one of its subexpressions to a `*`, under which all other types nest:
-
-```hoon
-> .=(`*`12 [33 44])
-%.n
-```
-
-(It isn't recommended that you evade the rules in this way, however!)
-
-The [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) increment rune—including its `+( )` irregular form—does a type check to ensure that its subexpression must evaluate to an atom.
-
-```hoon
-> +(12)
-13
-
-> +([12 14])
-nest-fail
-```
-
 ### Arm Checks
 
 Whenever an arm is evaluated in Hoon it expects to have some version of its parent core as the subject.  Specifically, a type check is performed to see whether the arm subject is of the appropriate type.  We see this in action whenever a gate or a multi-arm door is called.
