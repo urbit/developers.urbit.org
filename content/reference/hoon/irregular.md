@@ -343,8 +343,24 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
 
 ### Printing stuff
 
-- `<a b c>` prints a [tape](/reference/hoon/stdlib/2q/#tape).
-- `>a b c<` prints a [tank](/reference/hoon/stdlib/2q/#tank).
+\\\<\\\>
+
+- `>a b c<` produces a [tank](/reference/hoon/stdlib/2q/#tank) of the output of the contents (wrapped in cell if more than 1 item), formatted in pretty-print.
+
+  ```hoon
+  > >1 2 3<
+  [%rose p=[p=" " q="[" r="]"] q=~[[%leaf p="1"] [%leaf p="2"] [%leaf p="3"]]]
+  ```
+
+- `<a b c>` produces a [tape](/reference/hoon/stdlib/2q/#tape) of the tank above (ie `<1 2 3>` is same as `~(ram re >1 2 3<)`).
+
+  ```hoon
+  > <1 2 3>
+  "[1 2 3]"
+
+  > <`(list @)`~[1 2 3]>
+  "~[1 2 3]"
+  ```
 
 ## Commentary
 
