@@ -370,7 +370,7 @@ What if you want to see the inferred type of `b` for yourself for each condition
 [#t/@ud q=15]
 
 > !>([12 14])
-[#t/{@ud @ud} q=[12 14]]
+[#t/[@ud @ud] q=[12 14]]
 
 > !>((add 22 55))
 [#t/@ q=77]
@@ -402,10 +402,10 @@ Now let's try using `?=` wuttis with `?:` wutcol again.  But this time we'll rep
 
 ```
 > =/(b=* [12 14] ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
-[%.n #t/{* *}]
+[%.n #t/[* *]]
 ```
 
-In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `{* *}`).
+In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `[* *]`).
 
 ###### `mint-vain`
 
@@ -442,7 +442,7 @@ If the second `?@` wutpat subexpression is evaluated, Hoon correctly infers that
 [%atom #t/@]
 
 > =/(b=* [12 14] ?@(b [%atom -:!>(b)] [%cell -:!>(b)]))
-[%cell #t/{* *}]
+[%cell #t/[* *]]
 ```
 
 If the inferred type of the first `?@` wutpat subexpression nests under `@` then one of the conditional branches provably never runs.  Attempting to evaluate the expression results in a `mint-vain`:
