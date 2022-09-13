@@ -822,8 +822,11 @@ This is what we mean when we call auras 'soft' types. The above examples show th
 
 > b
 ~[11 22 33 44]
-Now let's use ?~ to prove that b isn't null, and then try to snag it:
+```
 
+Now let's use `?~` to prove that `b` isn't null, and then try to snag it:
+
+```hoon
 > ?~(b ~ (snag 0 b))
 nest-fail
 ```
