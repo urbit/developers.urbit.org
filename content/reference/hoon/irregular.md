@@ -24,7 +24,7 @@ weight = 20
 | `:(fun a b c d)` | [`;:`](/reference/hoon/rune/mic#-miccol), calls binary function as _n_-ary function |
 | `foo:bar` | [`=<`](/reference/hoon/rune/tis#-tisgal), composes two expressions, inverted |
 | `\|(foo bar baz)` | [`?\|`](/reference/hoon/rune/wut#-wutbar), logical OR (loobean) |
-| `&(foo bar baz)` | [`?&`](/reference/hoon/rune/wut#wutpam), logical AND (loobean) |
+| `&(foo bar baz)` | [`?&`](/reference/hoon/rune/wut#-wutpam), logical AND (loobean) |
 | `!foo` | [`?!`](/reference/hoon/rune/wut#-wutzap), logical NOT (loobean) |
 
 ##### Reading guide
@@ -217,7 +217,7 @@ Irregular: `!(p)`
 
 ### `?&` wutpam
 
-[docs](/reference/hoon/rune/wut#wutpam) \\&
+[docs](/reference/hoon/rune/wut#-wutpam) \\&
 
 `[%wtpm p=(list hoon)]`: logical and.
 

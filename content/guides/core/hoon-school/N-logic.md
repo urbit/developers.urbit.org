@@ -69,7 +69,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
 
 Mathematical logic allows the collocation of propositions to determine other propositions.  In computer science, we use this functionality to determine which part of an expression is evaluated.  We can combine logical statements pairwise:
 
-- [`?&` wutpam](/reference/hoon/rune/wut#wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
+- [`?&` wutpam](/reference/hoon/rune/wut#-wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
 
     | `AND` | `%.y` | `%.n` |
     |-------|-------|-------|

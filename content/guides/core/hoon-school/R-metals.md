@@ -241,7 +241,7 @@ ford: %ride failed to compute type:
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
-The [`^&` ketpam](/reference/hoon/rune/ket#ketpam) rune converts a core to a `%zinc` covariant core.
+The [`^&` ketpam](/reference/hoon/rune/ket#-ketpam) rune converts a core to a `%zinc` covariant core.
 
 ### `%iron` Contravariance
 
@@ -462,7 +462,7 @@ If you really want to look at the sample you can check `+6` of `iron-gate`:
 
 As with `%iron` cores, the context of `%zinc` cores is opaque—they cannot be written-to or read-from.  The sample of a `%zinc` core is read-only.  That means, among other things, that `%zinc` cores cannot be used for function calls.  Function calls in Hoon involve a change to the sample (the default sample is replaced with the argument value), which is disallowed as type-unsafe for `%zinc` cores.
 
-We can illustrate the casting properties of `%zinc` cores with a few examples.  The [`^&` ketpam](/reference/hoon/rune/ket#ketpam) rune is used to convert `%gold` cores to `%zinc`:
+We can illustrate the casting properties of `%zinc` cores with a few examples.  The [`^&` ketpam](/reference/hoon/rune/ket#-ketpam) rune is used to convert `%gold` cores to `%zinc`:
 
 ```hoon
 > ^+(^&(|=(^ 15)) |=(^ 16))
