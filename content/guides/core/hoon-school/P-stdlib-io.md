@@ -149,7 +149,7 @@ A `%say` generator is a cell with a metadata tag `%say` as the head and the gate
 |=  [^ [arg=path ~] vane=?(%g %c)]
 ```
 
-This generator requires a path argument in its sample and optionally accepts a vane tag (`%g` Gall or `%c` Clay).  Most of the time, `+cat` is used with Gall, so `%g` as the last entry in the type union serves as the bunt value.
+This generator requires a path argument in its sample and optionally accepts a vane tag (`%g` Gall or `%c` Clay).  Most of the time, `+cat` is used with Clay, so `%c` as the last entry in the type union serves as the bunt value.
 
 ```hoon
 =+  lon=.^(arch (cat 3 vane %y) arg)
