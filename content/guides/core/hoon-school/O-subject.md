@@ -251,7 +251,7 @@ However, clearly regular applications, such as Gall agents, are stateful, meanin
 
 There are several ways to manage state.  One approach, including `%=` centis, directly modifies the subject using a rune.  Another method is to use the other runes to compose or sequence changes together (e.g. as a pipe of gates).  By and large the `=` tis runes are responsible for modifying the subject, and the `;` mic runes permit chaining deferred computations together.
 
-To act in a stateful manner, a core must mutate itself and then pin the mutated copy in its place.  Most of the time this is handled by Arvo's Gall vane, by the Dojo, or another system service, but we need to explicit modify and manage state for cores as we work within these kinds of applicaitons.
+To act in a stateful manner, a core must mutate itself and then pin the mutated copy in its place.  Most of the time this is handled by Arvo's Gall vane, by the Dojo, or another system service, but we need to explicit modify and manage state for cores as we work within these kinds of applications.
 
 We will use `%say` generators as a bridge concept.  We will produce some short applications that maintain state while carrying out a calculation; they still result in a single return value, but gesture at the big-picture approach to maintaining state in persistent agents.
 

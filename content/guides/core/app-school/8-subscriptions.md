@@ -271,7 +271,7 @@ The `on-agent` arm produces a `(quip card _this)`, so you can produce new
 ## Getting kicked
 
 For whatever reason, the agent you're `%watch`ing might want to kick your agent
-from a `path` to which it's suscribed, ending your subscription and ceasing to
+from a `path` to which it's subscribed, ending your subscription and ceasing to
 send your agent `%fact`s. To do this, it will send your agent a `%kick` card [as
 described above](#kicking-subscribers). The `%kick` will come in to your agent's
 `on-agent` arm in a `sign`, like `%watch-ack`s and `%fact`s do. The `%kick`
@@ -314,7 +314,7 @@ question:
 [%pass /some/wire %agent [~some-ship %some-agent] %leave ~]
 ```
 
-The subcription to be ended is determined by the combination of the `wire`, ship
+The subscription to be ended is determined by the combination of the `wire`, ship
 and agent, so the `%leave` task itself always just has `~` at the end.
 
 ## Example
