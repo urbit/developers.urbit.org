@@ -132,7 +132,7 @@ dojo: hoon expression failed
 
 Unfortunately, `++cury` and `++curr` don't work with wet gates, and you'll see a `mull-grow` error.
 
-One solution is to “dry out” the wet gate using [`++bake`](https://developers.urbit.org/reference/hoon/stdlib/2b#bake):
+One solution is to “dry out” the wet gate using [`++bake`](/reference/hoon/stdlib/2b#bake):
 
 ```hoon
 > ((curr (bake reel ,[(list @) _add]) add) `(list @)`[1 2 3 4 ~])

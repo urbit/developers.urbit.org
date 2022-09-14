@@ -167,7 +167,7 @@ nest-fail
 
 ### Drying Out a Gate
 
-Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](https://developers.urbit.org/reference/hoon/stdlib/2b#bake):
+Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](/reference/hoon/stdlib/2b#bake):
 
 ```hoon
 > ((curr reel add) `(list @)`[1 2 3 4 ~])
