@@ -12,7 +12,7 @@ _This module will elaborate on text representation in Hoon, including formatted 
 
 We frequently need to convert from text to data, and between different text-based representations.  Let's examine some specific arms:
 
-- How do we convert text into all upper-case?
+- How do we convert text into all lower-case?
     - [`++cass`](/reference/hoon/stdlib/4b#cass)
 
 - How do we turn a `cord` into a `tape`?
