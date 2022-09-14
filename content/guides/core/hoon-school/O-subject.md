@@ -99,9 +99,9 @@ Let's look inside `/sys/hoon.hoon`, where the standard library is located, to se
 The first core listed here has just one arm.
 
 ```hoon
-  =>  %140  =>
-  |%
-  ++  hoon-version  +
+=>  %140  =>
+|%
+++  hoon-version  +
 --
 ```
 
