@@ -53,7 +53,7 @@ Consider calculating _a x² + b x + c_, a situation we earlier resolved using a 
 117
 ```
 
-One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` miccol.  (There is also [`++corl`](/reference/hoon/stdlib/2n#corl), which composes backwards rather than forwards.)  This example converts a value to `@ux` then decrements it by corking two molds:
+One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` miccol.  (There is also [`++corl`](/reference/hoon/stdlib/2n#corl), which composes backwards rather than forwards.) This example decrements a value then converts it to `@ux` by corking two gates:
 
 ```hoon
 > ((cork dec @ux) 20)  
