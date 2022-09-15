@@ -20,7 +20,7 @@ Computers were built and designed to carry out tasks which were too dainty and t
 
 In programming, we call this behavior a “loop”.  A loop describes the situation in which we set up some condition, and repeat a process over and over until something we do meets that condition.  _Most_ of the time, this means counting once for each item in a collection, like a list.
 
-Hoon effects the concept of a loop using recursion, return to a particular point in an expression (presumably with some different values).  One way to do this is using the [`|-` barhep](/reference/hoon/rune/bar#-barhep) rune, which creates a structure called a _trap_.  (Think of the “trap” in the bottom of your sink.)  It means a point to which you can return again, perhaps with some key values (like a counter) changed.  Then you can repeat the calculation inside the trap again.  This continues until some single value, some noun, results, thereby handing a value back out of the expression.  (Remember that every Hoon expression results in a value.)
+Hoon effects the concept of a loop using recursion, return to a particular point in an expression (presumably with some different values).  One way to do this is using the [`|-` barhep](/reference/hoon/rune/bar#--barhep) rune, which creates a structure called a _trap_.  (Think of the “trap” in the bottom of your sink.)  It means a point to which you can return again, perhaps with some key values (like a counter) changed.  Then you can repeat the calculation inside the trap again.  This continues until some single value, some noun, results, thereby handing a value back out of the expression.  (Remember that every Hoon expression results in a value.)
 
 This program adds 1+2+3+4+5 and returns the sum:
 

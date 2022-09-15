@@ -90,7 +90,7 @@ In addition to each of those individual state versions, you'd also define a
 structure called `versioned-state`, which just contains a union of all the
 possible states. This way, the vase `on-load` receives can be unpacked to a
 `versioned-state` type, and then a
-[wuthep](/reference/hoon/rune/wut#-wuthep) (`?-`) expression can switch on
+[wuthep](/reference/hoon/rune/wut#--wuthep) (`?-`) expression can switch on
 the head (`%0`, `%1`, `%2`, etc) and process each one appropriately.
 
 For example, your state definition core might initially look like:
@@ -197,7 +197,7 @@ from an old version to the new version if necessary, and load it into the
 
 The vase would be unpacked with a
 [zapgal](/reference/hoon/rune/zap#-zapgal) (`!<`) rune, and then typically
-you'd test its version with a [wuthep](/reference/hoon/rune/wut#-wuthep)
+you'd test its version with a [wuthep](/reference/hoon/rune/wut#--wuthep)
 (`?-`) expression.
 
 ## Example

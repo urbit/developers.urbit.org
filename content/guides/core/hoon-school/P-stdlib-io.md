@@ -209,24 +209,24 @@ For instance, how does `+cat` work?  Let's look at the structure of `/gen/cat/ho
   - `/?` faswut pins the expected Arvo kelvin version; right now it doesn't do anything.
   - [`.^` dotket](/reference/hoon/rune/dot#-dotket) loads a value from Arvo (called a “scry”).
   - [`++smyt`](/reference/hoon/stdlib/4m#smyt) pretty-prints a path.
-  - [`=-` tishep](/reference/hoon/rune/tis#-tishep) combines a faced noun with the subject, inverted relative to `=+` tislus/`=/` tisfas.
+  - [`=-` tishep](/reference/hoon/rune/tis#--tishep) combines a faced noun with the subject, inverted relative to `=+` tislus/`=/` tisfas.
 
 You can see how much of the generator is concerned with formatting the content of the file into a formatted text `tank` by prepending `%rose` tags and so forth.
 
 - Work line-by-line through the file and clarify parts that are muddy to you at first glance.
 
 ### Producing Error Messages
-                           
+
 Formal error messages in Urbit are built of tanks.  “A `tang` is a list of `tank`s, and a `tank` is a structure for printing data.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
-          
-One way to include an error message in your code is the [`~_` sigcab](/reference/hoon/rune/sig/#-sigcab) rune, described as a “user-formatted tracing printf”, or the [`~|` sigbar](/reference/hoon/rune/sig/#-sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:                                                         
+
+One way to include an error message in your code is the [`~_` sigcab](/reference/hoon/rune/sig#_-sigcab) rune, described as a “user-formatted tracing printf”, or the [`~|` sigbar](/reference/hoon/rune/sig#-sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
 ```hoon {% copy=true %}
 |=  [a=@ud]
   ~_  leaf+"This code failed"
   !!
-``` 
-      
+```
+
 When you compose your own library functions, consider including error messages for likely failure points.
 
 

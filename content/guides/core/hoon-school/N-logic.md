@@ -41,7 +41,7 @@ The key conditional decision-making rune is [`?:` wutcol](/reference/hoon/rune/w
 
 There are also two long-form decision-making runes, which we will call [_switch statements_](https://en.wikipedia.org/wiki/Switch_statement) by analogy with languages like C.
 
-- [`?-` wuthep](/reference/hoon/rune/wut#-wuthep) lets you choose between several possibilities, as with a type union.  Every case must be handled and no case can be unreachable.
+- [`?-` wuthep](/reference/hoon/rune/wut#--wuthep) lets you choose between several possibilities, as with a type union.  Every case must be handled and no case can be unreachable.
 
     Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` wuthep switches over term unions can make it look like the expression is branching on the value.  It's actually branching on the _type_.  These are almost exclusively used with term type unions.
 
