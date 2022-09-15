@@ -124,9 +124,9 @@ q=15
 If you've already encountered [wet gates](/guides/core/hoon-school/R-metals) and how they handle their sample, you may eventually circle back around to attempting to write statements which curry a wet gate.  For instance, here is an attempt to curry `++reel` which itself takes a gate (in this case `++add`) as an argument:
 
 ```hoon
-> (curr (reel add `(list @)`[1 2 3 4 ~]))
+> ((curr reel add) `(list @)`[1 2 3 4 ~])
 mull-grow
--find.,.+13.b
+-find.i.a
 dojo: hoon expression failed
 ```
 
