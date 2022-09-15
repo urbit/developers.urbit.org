@@ -174,11 +174,11 @@ This is something to be wary of. For example, if you wanted to form a `(set @tas
 However, this will actually form a set of the union `?(%foo %bar %baz)` due to
 the specificity of type inference:
 
-{% customFence %}
-\> ? (silt (limo ~[%foo %bar %baz]))
+```
+> ? (silt (limo ~[%foo %bar %baz]))
 ?(%~ [?(n=%bar n=%baz n=%foo) l=nlr(?(%bar %baz %foo)) r=nlr(?(%bar %baz %foo))])
-[n=%baz l&#x7B;&#x25;bar} r=&#x7B;&#x25;foo}]
-{% /customFence %}
+[n=%baz l={%bar} r={%foo}]
+```
 
 One further note about the type-as-itself form: Ocassionally you may wish to
 form a union of strings which contain characters disallowed in `term`s. To get
