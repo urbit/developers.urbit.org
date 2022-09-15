@@ -17,6 +17,8 @@ The basic problem all parsers face is this:
 2. You need to ingest one or more characters and decide what they “mean”, including storing the result of this meaning.
 3. You need to loop back to #1 again and again until you are out of characters.
 
+## The Hoon Parser
+
 We could build a simple parser out of a trap and `++snag`, but it would be brittle and difficult to extend.  The Hoon parser is very sophisticated, since it has to take a file of ASCII characters (and some UTF-8 strings) and turn it via an AST into Nock code.  What makes parsing challenging is that we have to wade directly into a sea of new types and processes.  To wit:
 
 -   A `tape` is the string to be parsed.
@@ -31,7 +33,7 @@ A substantial swath of the standard library is built around parsing for various 
 
 There is a [full guide on parsing](/guides/additional/parsing) which goes into more detail than this quick overview.
 
-### Scanning Through a `tape`
+## Scanning Through a `tape`
 
 [`++scan`](/reference/hoon/stdlib/4g#scan) parses a `tape` or crashes, simple enough.  It will be our workhorse.  All we really need to know in order to use it is how to build a `rule`.
 
@@ -47,11 +49,11 @@ syntax error
 dojo: hoon expression failed
 ```
 
-### `rule` Building
+## `rule` Building
 
 The `rule`-building system is vast and often requires various components together to achieve the desired effect.
 
-#### `rule`s to parse fixed strings
+### `rule`s to parse fixed strings
 
 - [`++just`](/reference/hoon/stdlib/4f/#just) takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `tape` of the input `nail`.
 
@@ -89,7 +91,7 @@ The `rule`-building system is vast and often requires various components togethe
     [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-#### `rule`s to parse flexible strings
+### `rule`s to parse flexible strings
 
 So far we can only parse one character at a time, which isn't much better than just using `++snag` in a trap.
 
@@ -201,7 +203,7 @@ However, to parse iteratively, we need to use the [`++knee`](/reference/hoon/std
 
 There is an example of a calculator [in the parsing guide](/guides/additional/parsing#recursive-parsers) that's worth a read at this point.  It uses `++knee` to scan in a set of numbers at a time.
 
-#### Example:  Parse a String of Numbers
+### Example:  Parse a String of Numbers
 
 A simple `++shim`-based parser:
 
@@ -220,6 +222,6 @@ A refined `++cook`/`++cury`/`++jest` parser:
 [p=[p=1 q=3] q=[~ u=[p=[~ 12] q=[p=[p=1 q=3] q="3"]]]]
 ```
 
-#### Example:  Hoon Workbook
+### Example:  Hoon Workbook
 
 More examples demonstrating parser usage are available in the [Hoon Workbook](/guides/additional/workbook), such as the [Roman Numeral](/guides/additional/workbook/roman) tutorial.
