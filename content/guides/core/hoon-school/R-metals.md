@@ -115,10 +115,10 @@ Line by line:
 This declares a wet gate which accepts a `unit`.
 
 ```hoon
-?~  a  ~<(%mean.'need' !!)
+?~  a  ~>(%mean.'need' !!)
 ```
 
-If `a` is empty, `~`, then the `unit` cannot be unwrapped.  Crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap), but use [`~<` siggal](/reference/hoon/rune/sig#-siggal) to hint to the runtime interpreter how to handle the crash.
+If `a` is empty, `~`, then the `unit` cannot be unwrapped.  Crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap), but use [`~>` siggar](/reference/hoon/rune/sig#-siggar) to hint to the runtime interpreter how to handle the crash.
 
 ```hoon
 u.a
