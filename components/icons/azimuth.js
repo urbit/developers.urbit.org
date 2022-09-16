@@ -29,9 +29,9 @@ export default function Azimuth() {
         x2="39.2917"
         y2="19.3467"
         className="stroke-black"
-        stroke-width="0.75"
-        stroke-linecap="round"
-        stroke-dasharray="1 2"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        strokeDasharray="1 2"
       />
       <line
         x1="59.1683"
@@ -39,9 +39,9 @@ export default function Azimuth() {
         x2="39.848"
         y2="51.47"
         className="stroke-black"
-        stroke-width="0.75"
-        stroke-linecap="round"
-        stroke-dasharray="1 2"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        strokeDasharray="1 2"
       />
       <line
         x1="5"
@@ -49,7 +49,7 @@ export default function Azimuth() {
         x2="74.3333"
         y2="51.9299"
         className="stroke-black"
-        stroke-width="0.75"
+        strokeWidth="0.75"
       />
       <path
         d="M52.3333 29.6384L52.9855 31.1801L54.476 30.4183L53.9846 32.0184L55.616 32.3929L54.211 33.3029L55.2201 34.6384L53.5589 34.4324L53.4734 36.1041L52.3333 34.8784L51.1933 36.1041L51.1078 34.4324L49.4466 34.6384L50.4556 33.3029L49.0506 32.3929L50.6821 32.0184L50.1907 30.4183L51.6812 31.1801L52.3333 29.6384Z"

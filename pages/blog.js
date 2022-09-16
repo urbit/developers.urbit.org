@@ -29,7 +29,7 @@ export default function Blog({ posts, search }) {
         </Section>
         <Section>
           {posts.map((post) => (
-            <BlogPreview post={post} />
+            <BlogPreview key={post.slug} post={post} />
           ))}
         </Section>
       </SingleColumn>

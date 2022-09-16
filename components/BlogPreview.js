@@ -10,8 +10,8 @@ export default function BlogPreview({ post }) {
   return (
     <div key={post.slug} className="mb-20 cursor-pointer">
       <Link href={`/blog/${post.slug}`}>
-        <div class="flex items-center md:flex-row flex-col">
-          <div class="flex w-full">
+        <div className="flex items-center md:flex-row flex-col">
+          <div className="flex w-full">
             {
               // Not all blog posts have images
               post.extra.image ? (
@@ -25,7 +25,7 @@ export default function BlogPreview({ post }) {
             }
           </div>
 
-          <div class="w-full md:pl-6 ">
+          <div className="w-full md:pl-6 ">
             <h3 className="mt-6 md:mt-0">{post.title}</h3>
             <div className="flex items-center justify-between mt-2">
               <div className="flex items-baseline">
