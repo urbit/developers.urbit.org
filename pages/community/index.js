@@ -29,7 +29,7 @@ export default function Community({ search }) {
           <h1>Community</h1>
         </Section>
         <Section>
-          <p class="text-xl">
+          <p className="text-xl">
             The developer community is a combination of top-down stewardship
             from the Urbit Foundation and Tlon, as well as organic, bottom-up
             coordination from unaffiliated enthusiasts.

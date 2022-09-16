@@ -31,7 +31,7 @@ export default function Courses({ search, courses }) {
           <TwoUp>
             {courses.sort((a, b) => a.weight > b.weight ? 1 : -1).map((course) => {
               return (
-                <div className="flex flex-col space-y-4 h-full">
+                <div key={course.slug} className="flex flex-col space-y-4 h-full">
                   <h3>{course.title}</h3>
                   <div className="markdown">
                     <Markdown.render content={JSON.parse(course.content)} />

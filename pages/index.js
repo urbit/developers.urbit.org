@@ -205,6 +205,7 @@ export default function Home({ search, posts }) {
                 const date = generateDisplayDate(e.date);
                 return (
                   <IndexCard
+                    key={e.slug}
                     slug={`/blog/${e.slug}`}
                     title={e.title}
                     image={e.extra.image}
@@ -224,10 +225,10 @@ export default function Home({ search, posts }) {
           <Section narrow>
             <div className="measure">
               <h3 className="pb-2">[battery payload]</h3>
-              <p class="pb-6">The Urbit Developer Newsletter</p>
+              <p className="pb-6">The Urbit Developer Newsletter</p>
             </div>
             <NewsletterSignup />
-            <p class="pt-6">
+            <p className="pt-6">
               Get monthly developer news on releases, applications, events, and
               more.
             </p>
