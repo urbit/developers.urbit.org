@@ -216,7 +216,7 @@ if it does not. Therefore, you would not explicitly produce a `%watch-ack` or
 `%fact` and `%kick` are both sent out to existing subscribers - entities that
 have previously `%watch`ed a path on your ship.
 
-A `%kick` gift takes a list of subscription `path`s. and a `(unit ship)`, which
+A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which
 is the ship to kick from those paths. If the `unit` is null, all subscribers are
 kicked from the specified paths. Note that sometimes Gall can produce `%kick`
 gifts without your agent explicitly sending a card, due to networking
