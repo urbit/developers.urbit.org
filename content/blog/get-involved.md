@@ -1,6 +1,6 @@
 +++
 title = "Get involved building Urbit"
-date = "2022-09-23"
+date = "2022-09-25"
 description = "a roadmap to getting started building the new internet"
 [extra]
 ship = "~sarlev-sarsen"
