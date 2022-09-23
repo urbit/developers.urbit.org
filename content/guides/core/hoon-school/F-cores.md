@@ -374,7 +374,7 @@ Under the hood, legs and arms are distinguished by the Nock instructions used in
 
 Arms and legs are both _limbs_.  Either one can be replaced in a given subject.  This turns out to be very powerful, and permits Hoon to implement gates (functions) in a mathematically rigorous way, among other applications.
 
-Often a leg of the subject is produced with its value unchanged. But there is a way to produce a modified version of the leg as well. To do so, we use the `%=` cenhep rune:
+Often a leg of the subject is produced with its value unchanged. But there is a way to produce a modified version of the leg as well. To do so, we use the `%=` centis rune:
 
 ```hoon {% copy=true %}
 %=  subject-limb
@@ -384,7 +384,7 @@ Often a leg of the subject is produced with its value unchanged. But there is a 
 ==
 ```
 
-`%=` cenhep is frequently used in its irregular form, particularly if the expression within it fits on a single line.  The irregular form prepends the arm (often `$`) to parentheses `()`.  In its irregular form, the above would be:
+`%=` centis is frequently used in its irregular form, particularly if the expression within it fits on a single line.  The irregular form prepends the arm (often `$`) to parentheses `()`.  In its irregular form, the above would be:
 
 ```hoon {% copy=true %}
 subject-limb(leg-1 new-leg-1, leg-2 new-leg-2, ...)
@@ -450,7 +450,7 @@ n
 ==
 ```
 
-We can write this code in several ways using the `%=` cenhep plus `$` buc structure.
+We can write this code in several ways using the `%=` centis plus `$` buc structure.
 
 For instance, we can eliminate the trap by recursing straight back to the gate:
 
@@ -465,7 +465,7 @@ n
 ==
 ```
 
-This can be collapsed into a shorter equivalent form by employing the irregular form of `%=` cenhep:
+This can be collapsed into a shorter equivalent form by employing the irregular form of `%=` centis:
 
 ```hoon {% copy=true %}
 |=  n=@ud
@@ -648,7 +648,7 @@ Before finishing the lesson let's unbind ten:
 
 _Recursion_ refers to a return to the same logical point in a program again and again.  It's a common pattern for solving certain problems in most programming languages, and Hoon is no exception.
 
-In the following code, the `|-` barhep trap serves as the point of recursion, and the return to that point (with changes) is indicated by the `%=` cenhep.  All this code does is count to the given number, then return that number.
+In the following code, the `|-` barhep trap serves as the point of recursion, and the return to that point (with changes) is indicated by the `%=` centis.  All this code does is count to the given number, then return that number.
 
 ```hoon {% copy=true %}
 |=  n=@ud
@@ -710,7 +710,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     (add $(n (dec n)) $(n (dec (dec n))))
     ```
 
-    We can use _two_ recursion points for `%=` cenhep.  The first calculate _F_ for _n_-1; the second calculate _F_ for _n_-2.  These are then added together.  If we diagram what's happening, we can see that each additional number costs as much as the previous numbers:
+    We can use _two_ recursion points for `%=` centis.  The first calculate _F_ for _n_-1; the second calculate _F_ for _n_-2.  These are then added together.  If we diagram what's happening, we can see that each additional number costs as much as the previous numbers:
 
     ```
     (fibonacci 5)
