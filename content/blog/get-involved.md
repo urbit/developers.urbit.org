@@ -4,7 +4,7 @@ date = "2022-09-25"
 description = "a roadmap to getting started building the new internet"
 [extra]
 ship = "~sarlev-sarsen"
-image = "https://sarlev-sarsen.sfo3.digitaloceanspaces.com/sarlev-sarsen/2022.7.07..19.09.39-ryan-Um9AkOiIDcU-unsplash.jpg"
+image = "https://sarlev-sarsen.sfo3.digitaloceanspaces.com/sarlev-sarsen/2022.9.23..18.05.20-image.png"
 +++
 
 ![](https://sarlev-sarsen.sfo3.digitaloceanspaces.com/sarlev-sarsen/2022.9.23..18.05.20-image.png)
@@ -80,7 +80,7 @@ If you are an entrepreneur, we will help you staff up with Urbit developers, wor
 
 ### For Investors
 
-If you are an investor, VC, or urbit maxi with capital, the CombineDAO offers an opportunity to buy into the fund which pools stars to invest in Urbit companies. Additionally, if you are looking for more direct investment opportunities, you can connect with ~poldec-tonteg to get on the list of partners 
+If you are an investor, VC, or Urbit maxi with capital, the CombineDAO offers an opportunity to buy into the fund which pools stars to invest in Urbit companies. Additionally, if you are looking for more direct investment opportunities, you can connect with ~poldec-tonteg to get on the list of partners 
 
 For additional information or to get involved in the CombineDAO, reach out to ~poldec-tonteg on Urbit, or via email at [anthony@urbit.org](mailto:anthony@urbit.org).
 
@@ -89,10 +89,10 @@ For additional information or to get involved in the CombineDAO, reach out to ~p
 
 Have you worked on a few side projects, delivered on a grant, or perhaps have a pre-existing skillset that you think can help grow the network? Urbit companies are regularly looking for talent and hiring Hoon developers to contribute to their projects. Most organizations support fully remote positions although occasionally will get together in-person to drive highly effective collaboration in a ‘high-bandwidth’ environment. The following companies are currently looking for talent:
 
-Chorus One - [Platform Engineer](https://careers.chorus.one/o/platforms-engineer-baar) to work on hosting solutions
+Chorus One - Hiring a [Platform Engineer](https://careers.chorus.one/o/platforms-engineer-baar) to work on hosting solutions
 
-Tlon - Customer Experience [Manager](https://tlon.io/careers/cx-manager/); product [designer](https://tlon.io/careers/principal-product-designer/), [full stack developer](https://tlon.io/careers/full-stack-developer) 
+Tlon - Hiring for various roles which can be found at [https://tlon.io/careers](https://tlon.io/careers)
 
-Urbit.Live - Documentation & Content Work: DM ~bitmep-faswyn
+Holium: Hiring for both technical and non-technical roles, details for which can be found at ~lomder-librun/holium-forerunners.
 
-Holium: currently hiring for both technical and non-technical roles, details for which can be found at ~lomder-librun/holium-forerunners.
+Additional companies will be hiring following the conclusion of Assembly. Get on the network to find opportunites before they get listed.
