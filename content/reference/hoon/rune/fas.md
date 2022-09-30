@@ -5,8 +5,8 @@ weight = 15
 
 Fas (`/`) runes are not technically hoon runes, but instead are instructions to
 Arvo's build system. In the past, the build system was its own vane called
-[Ford](/reference/arvo/ford/ford). Ford has since been merged into the filesystem
-vane [Clay](/reference/arvo/clay/clay), but these are still referred to as "Ford
+Ford. Ford has since been merged into the filesystem vane
+[Clay](/reference/arvo/clay/clay), but these are still referred to as "Ford
 runes".
 
 Ford runes are used at the top of a hoon file, and they typically specify
