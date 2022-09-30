@@ -78,7 +78,7 @@ The library contains four functions:
 - `+validate` - Check all rows of `(list (list @t))` are the same length.
 - `+csv-join` - Ignore this for now, we'll use it later on.
 
-The decoding and encoding arms use parsing functions from the Hoon standard library. It's not important to be familiar with parsing in Hoon for our purposes here, but you can have a look at the [Parsing Guide](/guides/additional/hoon/parsing) in the Hoon documentation if you're interested. The important thing to note is that `+de-csv` takes a valid CSV-format `@t` and returns a `(list (list @t))`, and `+en-csv` does the reverse - it takes a `(list (list @t))` and returns a CSV-format `@t`.
+The decoding and encoding arms use parsing functions from the Hoon standard library. It's not important to be familiar with parsing in Hoon for our purposes here, but you can have a look at the [Parsing Guide](/guides/additional/parsing) in the Hoon documentation if you're interested. The important thing to note is that `+de-csv` takes a valid CSV-format `@t` and returns a `(list (list @t))`, and `+en-csv` does the reverse - it takes a `(list (list @t))` and returns a CSV-format `@t`.
 
 Let's try the library in the dojo. After we've added it to `/lib` and run `|commit`, we can build the file:
 
