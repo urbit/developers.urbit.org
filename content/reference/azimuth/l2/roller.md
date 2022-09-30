@@ -27,14 +27,14 @@ for detailed information on the API.
 
 `%roller` is the Gall agent which collects layer 2 Azimuth **transactions**, which
 are a concatenation of an
-[action](/reference/azimuth/l2/bytestrings#actions) and a
-[signature](/reference/azimuth/l2/bytestrings#signatures) and forms them into
-[batches](/reference/azimuth/l2/bytestrings#batch) to be submitted periodically to the
+[action](/reference/azimuth/l2/bytestring#actions) and a
+[signature](/reference/azimuth/l2/bytestring#signatures) and forms them into
+[batches](/reference/azimuth/l2/bytestring#batch) to be submitted periodically to the
 Ethereum blockchain.
 
 ### Transaction format
 
-See [Bytestring Format](/reference/azimuth/l2/bytestrings) for a technical description of
+See [Bytestring Format](/reference/azimuth/l2/bytestring) for a technical description of
 how layer 2 transactions are formatted.
 
 ### Pending transactions

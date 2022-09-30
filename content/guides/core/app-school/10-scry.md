@@ -154,7 +154,7 @@ can do something like:
 Previously we discussed custom `mark` files. Such mark files are most commonly
 used when the data might be accessed through Eyre's HTTP API, and therefore
 required JSON conversion methods. We cover such things separately in the
-[Full-Stack Walkthrough](/guides/core/app-school-full-stack/1-intro), but note that if
+[Full-Stack Walkthrough](/guides/core/app-school-full-stack/intro), but note that if
 that's the case for your agent, you may wish to also have your scry endpoints
 return data with your custom `mark` so it can easily be converted to JSON when
 accessed from the web.

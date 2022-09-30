@@ -25,7 +25,7 @@ following documents for help writing a web front-end for your app:
 - [Zuse reference](/reference/hoon/zuse/table-of-contents) - This contains
   documentation of all JSON encoding and decoding functions included in the
   `zuse.hoon` utility library.
-- [The software distribution guide](/guides/additional/dist/dist) - This covers
+- [The software distribution guide](/guides/additional/software-distribution) - This covers
   everything you need to know to distribute apps to other ships. It includes
   details of bundling a web front-end and serving it to the user in the browser.
 - [The HTTP API guide](/guides/additional/http-api-guide) - This is a reference
@@ -38,7 +38,7 @@ following documents for help writing a web front-end for your app:
 In addition to these documents about creating a web-based user interface for
 your app, there are some other guides you might like to have a look at:
 
-- [Threads guide](/reference/arvo/threads/overview) - Threads are like transient
+- [Threads guide](/guides/additional/threads/fundamentals) - Threads are like transient
   agents, typically used for handling complex I/O functionality for Gall
   agents - like interacting with an external HTTP API.
 - [The software distribution guide](/guides/additional/software-distribution) - This explains

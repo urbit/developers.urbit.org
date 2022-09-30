@@ -221,5 +221,5 @@ from our ship. To do that, we just run the following command in the dojo:
 - [Glob documentation](/reference/additional/dist/glob) - Comprehensive documentation
   of handling front-end files.
 
-- [Desk publishing guide](/guides/additional/dist/guide) - A step-by-step guide to
+- [Desk publishing guide](/guides/additional/software-distribution) - A step-by-step guide to
   creating and publishing a desk.

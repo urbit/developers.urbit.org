@@ -82,6 +82,6 @@ agent.
 Building and "globbing" our front-end, and putting together a desk for
 distribution.
 
-#### [9. Summary](/guides/core/app-school-full-stack/8-final)
+#### [9. Summary](/guides/core/app-school-full-stack/9-final)
 
 Some final comments and additional resources.
