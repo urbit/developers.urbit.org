@@ -34,7 +34,7 @@ Ethereum blockchain.
 
 ### Transaction format
 
-See [Bytestring Format](/reference/azimuth/l2/bytestring) for a technical description of
+See [Bytestring Format](/reference/azimuth/l2/bytestrings) for a technical description of
 how layer 2 transactions are formatted.
 
 ### Pending transactions

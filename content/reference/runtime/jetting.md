@@ -126,7 +126,7 @@ or in a more compact form (omitting the parent core and chapter label)
   $(a (dec a), b +(b))
 ```
 
-The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist.  By convention, the jet hint name matches the gate label.  Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below.  We will expand on the jet registration runes [`~/` sigfas](/reference/hoon/sig#-sigfas) and [`~%` sigcen](/reference/hoon/sig#-sigcen) later.
+The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist.  By convention, the jet hint name matches the gate label.  Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below.  We will expand on the jet registration runes [`~/` sigfas](/reference/hoon/rune/sig#-sigfas) and [`~%` sigcen](/reference/hoon/rune/sig#-sigcen) later.
 
 The following C code implements `++add` as a significantly faster operation including handling of >31-bit atoms.  It may be found in `urbit/pkg/urbit/jets/a/add.c`:
 
@@ -942,8 +942,8 @@ Hoon jets are compiled into the Vere binary for distribution with the Urbit runt
 
 Jets are registered with the runtime so that Vere knows to check whether a particular jet exists when it encounters a marked Hoon arm.
 
-- [`~/` sigfas](/reference/hoon/sig#-sigfas) registers a jet simply (using defaults).
-- [`~%` sigcen](/reference/hoon/sig#-sigcen) registers a jet with all arguments specified.
+- [`~/` sigfas](/reference/hoon/rune/sig#-sigfas) registers a jet simply (using defaults).
+- [`~%` sigcen](/reference/hoon/rune/sig#-sigcen) registers a jet with all arguments specified.
 
 Typically we use `~/` sigfas to register jets within a core under the umbrella of a `~%` sigcen registration.  For instance, `++add` is registered under the Kelvin tag of `hoon.hoon`:
 
@@ -1453,7 +1453,7 @@ All nontrivial code should be thoroughly tested to ensure software quality. To r
 2.  Comparison to the reference Urbit binary can be done with a second
     development ship and the same Hoon library and generator.
 
-3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](/guides/core/hoon-school/I-testing) and the [testing guide](/guides/additional/hoon/unit-tests).
+3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](/guides/core/hoon-school/I-testing) and the [testing guide](/guides/additional/unit-tests).
 
     ```hoon
     > -test %/tests/lib/trig-rs ~

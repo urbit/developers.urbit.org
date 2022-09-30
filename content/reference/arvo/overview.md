@@ -69,7 +69,7 @@ We consider Arvo to be deterministic at a high level. By that we mean that it is
 stacked on top of a frozen instruction set known as Nock. Frozen instruction
 sets are a new idea for an operating system, but not for computing in general.
 For instance, the CPU instruction sets such as
-[x86-64](https://en.wikipedia.org/wiki/X86-64v) are frozen at the level of the
+[x86-64](https://en.wikipedia.org/wiki/X86-64) are frozen at the level of the
 chip. A given operating system may be adapted to run on more than one CPU
 instruction set, we merely freeze the instruction set at a higher level in order
 to enable deterministic computation.
@@ -238,7 +238,7 @@ which applies many of the concepts covered below.
 - Larval stage core
 - Formal interface
 
-See [Hoon School “Subject-Oriented Programming”](/guides/core/hoon-school/P-subject#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
+See [Hoon School “Subject-Oriented Programming”](/guides/core/hoon-school/O-subject#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
 
 ### Formal interface
 
