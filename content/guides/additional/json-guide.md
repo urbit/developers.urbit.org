@@ -507,6 +507,6 @@ Usually (though not in all cases) these mark conversions will be performed impli
 
 [The Iris documentation](/reference/arvo/iris/iris) - Details of the web client vane Iris, which may be used to fetch external JSON data among other things.
 
-[Strings Guide](/guides/additional/hoon/strings) - Atom printing functions like `+scot` will often be useful for JSON encoding - see the [Encoding in Text](/guides/additional/hoon/strings#encoding-in-text) section for usage.
+[Strings Guide](/guides/additional/strings) - Atom printing functions like `+scot` will often be useful for JSON encoding - see the [Encoding in Text](/guides/additional/hoon/strings#encoding-in-text) section for usage.
 
-[Parsing Guide](/guides/additional/hoon/parsing) - Learn how to write functional parsers in hoon which can be used with `+su`.
+[Parsing Guide](/guides/additional/parsing) - Learn how to write functional parsers in hoon which can be used with `+su`.

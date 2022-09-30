@@ -562,4 +562,4 @@ reference:
 - [Gora by ~rabsef-bicrym][gora]
 
 [pals]: https://github.com/Fang-/suite/blob/master/app/pals/webui/index.hoon
-[gora]: https://github.com/dalten-collective/gora/blob/master/sail/app/gora/goraui/index.hoon
+[gora]: https://github.com/dalten-collective/gora/tree/master/sail/app/gora

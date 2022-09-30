@@ -1282,5 +1282,4 @@ know about app development.
 
 Along with these self-directed guides, we also run regular courses on both Hoon
 and app development. You can check the [Courses](/courses) page for details, or
-join the [~hiddev-dannut/new-hooniverse](/groups/~hiddev-dannut/new-hooniverse)
-group on Urbit.
+join the `~hiddev-dannut/new-hooniverse` group on Urbit.

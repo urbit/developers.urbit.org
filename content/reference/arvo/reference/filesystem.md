@@ -49,7 +49,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
 -> `lull.hoon` -> `zuse.hoon`. We give a brief description of each of them.
 
 - `hoon.hoon` contains the Hoon compiler and the [Hoon standard
-  library](/reference/hoon/stdlib/table-of-contents). The Hoon
+  library](/reference/hoon/stdlib). The Hoon
   compiler is self-hosted. This is the first file loaded by the Nock virtual
   machine, [Vere](/reference/runtime/runtime), in order for it to learn how to
   interpret Hoon. The kelvin version number is the subject of `hoon.hoon`,
@@ -94,9 +94,9 @@ desks and their Gall agents:
   front-end. This file may be omitted if the desk does not have a tile or
   front-end to be installed. This file is versioned so the number appended may
   change in the future as changes to its specification are made. See the [Docket
-  File](/guides/additional/dist/docket) documentation for more details.
+  File](/reference/additional/dist/docket) documentation for more details.
 - `desk.ship` - This specifies the original publisher of the desk and is useful
   if a desk is being republished. It is optional and may be omitted.
 
-For more details of creating and distributing desks, see the
-[Distribution](/guides/additional/dist/dist) documentation.
+For more details of creating and distributing desks, see the [Software
+Distribution](/guides/additional/software-distribution) documentation.

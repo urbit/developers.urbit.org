@@ -255,7 +255,7 @@ This means all re-sends of an ack packet will be bitwise identical to each other
 Each datum in this noun is an atom with the aura `@ud` or an aura that nests
 under `@ud`.
 
-Here, `our-life` refers to the [`life`](/reference/glossary/breach), or revision
+Here, `our-life` refers to the [`life`](/reference/azimuth/life-and-rift), or revision
 number, of the acking ship's networking keys, and `her-life` is the `life` of
 the ack-receiving ship's networking keys. `bone` is an opaque number identifying
 the flow. `message-num` denotes the number of the

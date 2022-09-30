@@ -236,7 +236,7 @@ Previously, we introduced the concept of a `%say` generator to produce a more ve
 
 We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than expecting arguments to be passed in at the time of initiation.
 
-This section will briefly walk through an `%ask` generator to give you a taste of how they work.  The [CLI app guide](/guides/additional/hoon/cli-tutorial) walks through the libraries necessary for working with `%ask` generators in greater detail.  We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
+This section will briefly walk through an `%ask` generator to give you a taste of how they work.  The [CLI app guide](/guides/additional/cli-tutorial) walks through the libraries necessary for working with `%ask` generators in greater detail.  We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
 
 ##### Tutorial:  `%ask` Generator
 

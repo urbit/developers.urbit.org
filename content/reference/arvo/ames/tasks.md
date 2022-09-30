@@ -87,7 +87,7 @@ Unix to send packets. In terms of `%pass`/`%give` semantics, this is in
 response to the `%born` `task`, which came along the Unix `duct`, rather than a
 response to the `%plea`.
 
-A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](/reference/arvo/ames/data-types.md#plea).
+A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](/reference/arvo/ames/data-types#plea).
 
 #### Returns
 

@@ -92,5 +92,5 @@ mark in the same manner as our `%journal-action` mark above.
   Guide](/guides/core/app-school/7-sur-and-marks#mark-files) - This part of
   App School goes through the basics of mark files.
 
-- [The JSON Guide](/guides/additional/hoon/json-guide) - This also covers writing mark
+- [The JSON Guide](/guides/additional/json-guide) - This also covers writing mark
   files to convert to/from JSON.

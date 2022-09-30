@@ -8,10 +8,11 @@ blockchain, used as a platform for _Urbit identities_. You need such an identity
 to use the Arvo network.
 
 The primary way to interact with Azimuth is through
-[Bridge](https://github.com/urbit/bridge) and the node libraries that it depends
-on, [azimuth-js](https://github.com/urbit/azimuth-js) and
+[Bridge](https://github.com/urbit/bridge) and the node libraries that it
+depends on, [azimuth-js](https://github.com/urbit/azimuth-js) and
 [urbit-key-generation](https://github.com/urbit/urbit-key-generation). Take a
-look at the source and play around, or see [Getting Started](/getting-started/).
+look at the source and play around, or see [Getting
+Started](https://urbit.org/getting-started).
 
 ## Arvo vs. Azimuth
 

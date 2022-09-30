@@ -15,7 +15,7 @@ be installed from `~pocwet/journal`.
 In this guide we've built a separate React app for the front-end, but Hoon also
 has a native domain-specific language for composing HTML structures called Sail.
 Sail allows you to compose a front-end inside a Gall agent and serve it
-directly. See the [Sail guide](/guides/additional/hoon/sail) for details.
+directly. See the [Sail guide](/guides/additional/sail) for details.
 
 Along with `@urbit/http-api`, there's also the `@urbit/api` NPM package, which
 contains a large number of helpful functions for dealing with Hoon data types
