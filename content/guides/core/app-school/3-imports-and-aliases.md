@@ -55,7 +55,7 @@ door, adding its extra debugging functionality while transparently passing
 events to your agent for handling like usual.
 
 To use it, you just import `dbug` with a
-[faslus](/reference/arvo/ford/ford#ford-runes) (`/+`) rune at the beginning, then add
+[faslus](/reference/hoon/rune/fas#-faslus) (`/+`) rune at the beginning, then add
 the following line directly before the door of your agent:
 
 ```hoon {% copy=true %}

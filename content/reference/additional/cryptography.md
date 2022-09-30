@@ -93,7 +93,7 @@ is responsible for encryption, decryption, and authentication of all packets. By
 default, this utilizes AES symmetric key encryption, whose shared private key is
 got by elliptic curve Diffie-Hellman key exchange of the ships' networking keys.
 
-[Jael](/reference/arvo/jael/jael-api) is primarily utilized for the safe storage
+[Jael](/reference/arvo/jael/jael) is primarily utilized for the safe storage
 of private networking keys and retrieval of public networking keys utilized by
 Ames. The Jael vane of planets, stars, and galaxies are responsible for
 distributing the public keys of their moons (ultimately via Ames).

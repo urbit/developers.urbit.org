@@ -696,7 +696,7 @@ represents a single XML node.
 
 #### Discussion
 
-`;=` is a [Sail](/guides/additional/hoon/sail) rune. Sail is a part of Hoon used for
+`;=` is a [Sail](/guides/additional/sail) rune. Sail is a part of Hoon used for
 creating and operating on nouns that represent XML nodes. With the appropriate
 rendering pipeline, a Sail document can be used to generate a static website.
 
