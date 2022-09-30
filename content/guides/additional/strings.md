@@ -10,7 +10,7 @@ functions you'll regularly encounter. In particular, it discusses conversions
 and the encoding/decoding of atom auras in strings.
 
 Hoon has a system for writing more elaborate functional parsers, but that is not
-touched on here. Instead, see the [Parsing](/guides/additional/hoon/parsing) guide.
+touched on here. Instead, see the [Parsing](/guides/additional/parsing) guide.
 Hoon also has a type for UTF-32 strings, but those are rarely used and not
 discussed in this document.
 
@@ -512,7 +512,7 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 
 ## Further reading
 
-- [Parsing](/guides/additional/hoon/parsing) - A guide to writing fully-fledged
+- [Parsing](/guides/additional/parsing) - A guide to writing fully-fledged
   functional parsers in hoon.
 
 - [Auras](/reference/hoon/auras) - Details of auras in hoon.
