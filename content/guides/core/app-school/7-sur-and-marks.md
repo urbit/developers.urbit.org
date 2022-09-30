@@ -63,8 +63,8 @@ occur. If our agent were named `%todo`, it might have the following structure in
 ```
 
 Our `%todo` agent could then import this structure file with a [fashep ford
-rune](/reference/arvo/ford/ford#ford-runes) (`/-`) at the beginning of the agent like
-so:
+rune](/reference/hoon/rune/fas#--fashep) (`/-`) at the beginning of the agent
+like so:
 
 ```hoon
 /-  todo
