@@ -110,4 +110,4 @@ Finally, we check if the `unit` is null and either print an error or print the p
 ```
 
 For more information about working with `json`, see the [JSON
-Guide](/guides/additional/hoon/json-guide).
+Guide](/guides/additional/json-guide).

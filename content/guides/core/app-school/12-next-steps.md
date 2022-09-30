@@ -8,7 +8,7 @@ to start writing your own agent.
 
 The things haven't touched on yet are front-end development and integration,
 Eyre's HTTP API for communicating with agents from the web, and dealing with
-JSON data. The [Full-stack Walkthrough](/guides/core/app-school-full-stack/1-intro)
+JSON data. The [Full-stack Walkthrough](/guides/core/app-school-full-stack/intro)
 covers these aspects of Urbit app development, and it also puts into practice
 many of the concepts we've discussed in this guide, so you might like to work
 through that next. In addition to that walkthrough, you can refer to the

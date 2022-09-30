@@ -185,7 +185,7 @@ the concepts discussed here:
 The first line uses the faslus (`/+`) Ford rune to import
 `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them
 into the subject of our agent so they're available for use. You can read more
-about Ford runes in the [Ford section of the vane
+about Ford runes in the [Fas section of the rune
 documentation](/reference/hoon/rune/fas).
 
 Next, we've added an extra core. Notice how it's not explicitly composed, since
@@ -272,9 +272,8 @@ The key takeaways are:
 
 - Run through the [example](#example) yourself on a fake ship if you've not done
   so already.
-- Have a read through the [Ford rune
-  documentation](/reference/arvo/ford/ford#ford-runes) for details about importing
-  libraries, structures and other things.
+- Have a read through the [Ford rune documentation](/reference/hoon/rune/fas)
+  for details about importing libraries, structures and other things.
 - Try the `+dbug` generator out on some other agents, like `:settings-store +dbug`, `:btc-wallet +dbug`, etc, and try some of its options [described
   above](#dbug).
 - Have a quick look over the source of the `default-agent` library, located at
