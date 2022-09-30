@@ -67,7 +67,7 @@ A helper core is a separate core composed into the subject of the agent core,
 containing useful functions for use by the agent arms. Such a helper core would
 typically contain functions that would only ever be used internally by the
 agent - more general functions would usually be included in a separate `/lib`
-library and imported with a [faslus](/reference/arvo/ford/ford#ford-runes) (`/+`)
+library and imported with a [faslus](/reference/hoon/rune/fas#-faslus) (`/+`)
 rune. Additionally, you might recall that the example agent of the
 [subscriptions lesson](/guides/core/app-school/8-subscriptions#example) used
 a barket (`|^`) rune to create a door in the `on-poke` arm with a separate
