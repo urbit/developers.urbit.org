@@ -6,7 +6,7 @@ weight = 2
 In this lightning tutorial, we're going to build an app to create groups called
 Squad. It'll look like this:
 
-![squad screenshot](https://media.urbit.org/guides/quickstart/groups-app/squad-screenshot.png)
+![squad screenshot](https://media.urbit.org/guides/quickstart/groups-app/squad-screenshot-reskin.png)
 
 We'll be able to create either public groups or private groups. Private groups
 will have a whitelist of allowed ships, and public groups will have a blacklist
@@ -892,28 +892,31 @@ Save the code below in `squad/app/squad/index.hoon`.
   ;head
     ;title: squad
     ;meta(charset "utf-8");
+    ;link(href "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap", rel "stylesheet");
     ;style
       ;+  ;/  style
     ==
   ==
   ;body
+    ;main
     ;+  ?.  =('generic' sect.page)
-          ;/("")
-        %+  success-component
-          ?:(success.page "success" "failed")
-        success.page
-    ;h2: join
-    ;+  join-component
-    ;h2: create
-    ;+  new-component
-    ;+  ?~  squads
-          ;/("")
-        ;h2: squads
-    ;*  %+  turn
-          %+  sort  ~(tap by squads)
-          |=  [a=[* =title *] b=[* =title *]]
-          (aor title.a title.b)
-        squad-component
+            ;/("")
+          %+  success-component
+            ?:(success.page "success" "failed")
+          success.page
+      ;h2: Join
+      ;+  join-component
+      ;h2: Create
+      ;+  new-component
+      ;+  ?~  squads
+            ;/("")
+          ;h2: Squads
+      ;*  %+  turn
+            %+  sort  ~(tap by squads)
+            |=  [a=[* =title *] b=[* =title *]]
+            (aor title.a title.b)
+          squad-component
+    ==
   ==
 ==
 ::
@@ -929,12 +932,13 @@ Save the code below in `squad/app/squad/index.hoon`.
       =type         "text"
       =id           "join"
       =name         "target-squad"
+      =class        "code"
       =size         "30"
       =required     ""
       =placeholder  "~sampel-palnet/squad-name"
       ;+  ;/("")
     ==
-    ;input(type "submit", value "join");
+    ;button(type "submit", class "bg-green-400 text-white"): Join
     ;+  ?.  =('join' sect.page)
           ;/("")
         %+  success-component
@@ -955,16 +959,19 @@ Save the code below in `squad/app/squad/index.hoon`.
       ;+  ;/("")
     ==
     ;br;
-    ;label(for "new-pub-checkbox"): Public:
-    ;input
-      =type   "checkbox"
-      =id     "new-pub-checkbox"
-      =name   "public"
-      =value  "true"
-      ;+  ;/("")
+    ;div
+      ;input
+        =type   "checkbox"
+        =id     "new-pub-checkbox"
+        =style  "margin-right: 0.5rem"
+        =name   "public"
+        =value  "true"
+        ;+  ;/("")
+      ==
+      ;label(for "new-pub-checkbox"): Public
     ==
     ;br;
-    ;input(type "submit", value "create");
+    ;button(type "submit", class "bg-green-400 text-white"): Create
     ;+  ?.  =('new' sect.page)
           ;/("")
         %+  success-component
@@ -978,11 +985,14 @@ Save the code below in `squad/app/squad/index.hoon`.
   =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
   =/  summary=manx
     ;summary
-      ;h3: {(trip title.squad)}
+      ;h3(class "inline"): {(trip title.squad)}
     ==
   =/  content=manx
     ;div
-      ;p: id: {<host.gid>}/{(trip name.gid)}
+      ;p
+        ;span(style "margin-right: 2px;"): id:
+        ;span(class "code"): {<host.gid>}/{(trip name.gid)}
+      ==
       ;+  ?.  =(our.bol host.gid)
             ;/("")
           (squad-title-component gid squad)
@@ -1019,7 +1029,7 @@ Save the code below in `squad/app/squad/index.hoon`.
       =placeholder  "My Squad"
       ;+  ;/("")
     ==
-    ;input(type "submit", value "change");
+    ;button(type "submit"): Change
     ;+  ?.  &(=('title' sect.page) ?=(^ gid.page) =(gid u.gid.page))
           ;/("")
         %+  success-component
@@ -1033,11 +1043,11 @@ Save the code below in `squad/app/squad/index.hoon`.
   =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
   ;form(method "post", action "/squad/{?:(pub.squad "private" "public")}")
     ;input(type "hidden", name "gid", value gid-str);
-    ;input(type "submit", value ?:(pub.squad "make private" "make public"));
+    ;button(type "submit"): {?:(pub.squad "Make Private" "Make Public")}
     ;+  ?.  &(=('public' sect.page) ?=(^ gid.page) =(gid u.gid.page))
           ;/("")
         %+  success-component
-          ?:(success.page "success" "failed")
+          ?:(success.page "Success!" "Failed!")
         success.page
   ==
 ::
@@ -1051,7 +1061,7 @@ Save the code below in `squad/app/squad/index.hoon`.
     =action    ?:(=(our.bol host.gid) "/squad/delete" "/squad/leave")
     =onsubmit  ?.(=(our.bol host.gid) "" "return confirm('Are you sure?');")
     ;input(type "hidden", name "gid", value gid-str);
-    ;input(type "submit", value ?:(=(our.bol host.gid) "delete" "leave"));
+    ;button(type "submit", class "bg-red text-white"): {?:(=(our.bol host.gid) "Delete" "Leave")}
   ==
 ::
 ++  squad-acl-component
@@ -1061,7 +1071,7 @@ Save the code below in `squad/app/squad/index.hoon`.
   =/  gid-str=tape  "{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
   =/  summary=manx
     ;summary
-      ;h4: {?:(pub.squad "blacklist" "whitelist")} ({(a-co:co (lent acl))})
+      ;h4(class "inline"): {?:(pub.squad "Blacklist" "Whitelist")} ({(a-co:co (lent acl))})
     ==
   =/  kick-allow-form=manx
     ;form(method "post", action "/squad/{?:(pub.squad "kick" "allow")}")
@@ -1075,7 +1085,7 @@ Save the code below in `squad/app/squad/index.hoon`.
         =placeholder  "~sampel-palnet"
         ;+  ;/("")
       ==
-      ;input(type "submit", value ?:(pub.squad "blacklist" "whitelist"));
+      ;input(type "submit", value ?:(pub.squad "Blacklist" "Whitelist"));
       ;+  ?.  &(=('kick' sect.page) ?=(^ gid.page) =(gid u.gid.page))
             ;/("")
           %+  success-component
@@ -1130,7 +1140,7 @@ Save the code below in `squad/app/squad/index.hoon`.
   =/  members=(list @p)  ~(tap in (~(get ju members) gid))
   ;details
     ;summary
-      ;h4: members ({(a-co:co (lent members))})
+      ;h4(class "inline"): Members ({(a-co:co (lent members))})
     ==
     ;div
       ;*  %+  turn
@@ -1144,57 +1154,118 @@ Save the code below in `squad/app/squad/index.hoon`.
 ++  style
   ^~
   %-  trip
-  '''
-  body {
-    background-color: white;
-    color: black;
-  }
-  * {font-family: monospace}
-  summary > * {display: inline}
-  details > div {margin: 1em 2ch}
-  label {padding-right: 1ch}
-  .success {
-    background-color: #bfee90;
-    color: green;
-    padding: 3px;
-    border: 1px solid green;
-    border-radius: 2px;
-  }
-  .failure {
-    background-color: #ab4642;
-    padding: 3px;
-    color: white;
-    border: 1px solid darkred;
-    border-radius: 2px;
-
-  }
-  .success:not(:first-child), .failure:not(:first-child) {
-    margin-left: 1ch
-  }
-  .delete-form > input:hover {
-    background-color: #ab4642;
-    color: white;
-    border-color: #ab4642;
-  }
-  .ship-acl-form {display: inline}
-  .ship-acl-form > input {
-    background-color: white;
-    border: 1px solid lightgrey;
-  }
-  .ship-acl-form > input:hover {
-    background-color: #ab4642;
-    color: white;
-    border-color: #ab4642;
-  }
-  .ship-acl-form:not(:last-child) {
-    padding-right: 1ch;
-  }
-  .ship-members-span:not(:last-child), .ship-acl-span:not(:last-child) {
-    padding-right: 1ch;
-  }
-  .new-form {line-height: 300%}
-  input[type=text] + input[type=submit] {margin-left: 1ch}
-  '''
+    '''
+    body {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      width: 100%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 1rem;
+    }
+    button {
+      -webkit-appearance: none;
+      border: none;
+      outline: none;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 12px 24px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+    button.inactive {
+      background-color: #F4F3F1;
+      color: #626160;
+    }
+    button.active {
+      background-color: #000000;
+      color: white;
+    }
+    a {
+      text-decoration: none;
+      font-weight: 600;
+      color: rgb(0,177,113);
+    }
+    a:hover {
+      opacity: 0.8;
+    }
+    .none {
+      display: none;
+    }
+    .block {
+      display: block;
+    }
+    code, .code {
+      font-family: "Source Code Pro", monospace;
+    }
+    .bg-green {
+      background-color: #12AE22;
+    }
+    .bg-green-400 {
+      background-color: #4eae75;
+    }
+    .bg-red {
+      background-color: #ff4136;
+    }
+    .text-white {
+      color: #fff;
+    }
+    h3 {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #626160;
+    }
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    form button, button[type="submit"] {
+      border-radius: 10px;
+    }
+    input {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .flex {
+      display: flex;
+    }
+    .col {
+      flex-direction: column;
+    }
+    .align-center {
+      align-items: center;
+    }
+    .justify-between {
+      justify-content: space-between;
+    }
+    .grow {
+      flex-grow: 1;
+    }
+    .inline {
+      display: inline;
+    }
+    @media screen and (max-width: 480px) {
+      main {
+        padding: 1rem;
+      }
+    }
+    '''
 --
 ```
 
