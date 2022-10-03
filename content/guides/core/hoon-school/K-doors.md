@@ -923,7 +923,7 @@ This code calculates the volume of a cylinder, _A=πr²h_.
 
 Since all of the values either have to be pinned ahead of time or made available as arms, a `|^` barket would probably be used inside of a gate.  Of course, since it is a core with a `$` buc arm, one could also use it recursively to calculate values like the factorial.
 
-If you read the docs, you'll find that a [`|-` barhep](/reference/hoon/rune/bar#-barhep) rune “produces a trap (a core with one arm `$`) and evaluates it.”  So a trap actually evaluates to a `|%` barcen core with an arm `$`:
+If you read the docs, you'll find that a [`|-` barhep](/reference/hoon/rune/bar#--barhep) rune “produces a trap (a core with one arm `$`) and evaluates it.”  So a trap actually evaluates to a `|%` barcen core with an arm `$`:
 
 ```hoon {% copy=true %}
 :: count to five

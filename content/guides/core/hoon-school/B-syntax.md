@@ -91,7 +91,7 @@ Hearkening back to our discussion of interchangeable representations in Lesson -
 
 There's a special value that recurs in many contexts in Hoon:  `~` sig is the null or zero value.
 
-The [`^-` kethep](/reference/hoon/rune/ket#-kethep) rune is useful for ensuring that everything in the second child matches the type (aura) of the first, e.g.
+The [`^-` kethep](/reference/hoon/rune/ket#--kethep) rune is useful for ensuring that everything in the second child matches the type (aura) of the first, e.g.
 
 ```
 ^-  @ux  0x1ab4
@@ -119,7 +119,7 @@ A cell is a pair of nouns.  Cells are traditionally written using square bracket
 [[1 2] [3 4]]
 ```
 
-This is actually a shorthand for a rune as well, [`:-` colhep](/reference/hoon/rune/col#-colhep):
+This is actually a shorthand for a rune as well, [`:-` colhep](/reference/hoon/rune/col#--colhep):
 
 ```
 :-  1  2
@@ -231,7 +231,7 @@ Here is a snippet of Hoon code:
  
 Without looking it up first, what does the [`==` tistis](/reference/hoon/rune/terminators#-tistis) do for the [`:~` colsig](/reference/hoon/rune/col#-colsig) rune?  Hint:  some runes can take any number of arguments.
 
-> Most runes are used at the beginning of a complex expression, but there are exceptions. For example, the runes [`--` hephep](/reference/hoon/rune/terminators#-hephep) and [`==` tistis](/reference/hoon/rune/terminators#-tistis) are used at the end of certain expressions.
+> Most runes are used at the beginning of a complex expression, but there are exceptions. For example, the runes [`--` hephep](/reference/hoon/rune/terminators#---hephep) and [`==` tistis](/reference/hoon/rune/terminators#-tistis) are used at the end of certain expressions.
 
 #### Aside:  Writing Incorrect Code
 

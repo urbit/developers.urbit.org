@@ -92,7 +92,7 @@ The most obvious case is when there is a casting `^` ket rune in your code.  The
 
 #### `^-` kethep Cast with a Type
 
-You've already seen one rune that calls for a type check:  [`^-` kethep](/reference/hoon/rune/ket#-kethep):
+You've already seen one rune that calls for a type check:  [`^-` kethep](/reference/hoon/rune/ket#--kethep):
 
 ```hoon
 > ^-(@ 12)
@@ -688,7 +688,7 @@ So far you've learned about four kinds of type inference:
 3.  gate sample definitions
 4.  branch specialization using runes in the `?` family
 
-There are several other ways that Hoon infers type.  Any rune expression that evaluates to a `?` flag, e.g., `.=` dottis, will be inferred from accordingly.  The `.+` dotlus rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, [`:-` colhep](/reference/hoon/rune/col#-colhep), [`:+` collus](/reference/hoon/rune/col#-collus), [`:^` colket](/reference/hoon/rune/col#-colket), and [`:*` coltar](/reference/hoon/rune/col#-coltar) are all known to produce cells.
+There are several other ways that Hoon infers type.  Any rune expression that evaluates to a `?` flag, e.g., `.=` dottis, will be inferred from accordingly.  The `.+` dotlus rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, [`:-` colhep](/reference/hoon/rune/col#--colhep), [`:+` collus](/reference/hoon/rune/col#-collus), [`:^` colket](/reference/hoon/rune/col#-colket), and [`:*` coltar](/reference/hoon/rune/col#-coltar) are all known to produce cells.
 
 More subtly, the [`=+` tislus](/reference/hoon/rune/tis#-tislus), [`=/` tisfas](/reference/hoon/rune/tis#-tisfas), and [`=|` tisbar](/reference/hoon/rune/tis#-tisbar) runes modify the subject by pinning values to the head.  Hoon infers from this that the subject has a new type:  a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
 

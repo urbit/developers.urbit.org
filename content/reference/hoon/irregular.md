@@ -7,7 +7,7 @@ weight = 20
 
 | Form | Regular Form |
 | ---- | ------------ |
-| `_foo` | [`$_`](/reference/hoon/rune/buc#-buccab), normalizes to an example |
+| `_foo` | [`$_`](/reference/hoon/rune/buc#_-buccab), normalizes to an example |
 | `foo=bar` | [`$=`](/reference/hoon/rune/buc#-buctis), wraps a face around a value |
 | `?(%foo %bar %baz)` | [`$?`](/reference/hoon/rune/buc#-bucwut), forms a type union |
 | `(fun a b c)` | [`%:`](/reference/hoon/rune/cen#-cencol), calls a gate with n arguments |
@@ -17,7 +17,7 @@ weight = 20
 | `~[a b c]` | [`:~`](/reference/hoon/rune/col#-colsig), constructs null-terminated list |
 | `+(42)` | [`.+`](/reference/hoon/rune/dot#-dotlus), increments with Nock 4 |
 | `=(a b)` | [`.=`](/reference/hoon/rune/dot#-dottis), tests for equality wiht Nock 5 |
-| `` `foo` bar`` | [`^-`](/reference/hoon/rune/ket#-kethep), typecasts by explicit type label |
+| `` `foo` bar`` | [`^-`](/reference/hoon/rune/ket#--kethep), typecasts by explicit type label |
 | `foo=bar` | [`^=`](/reference/hoon/rune/ket#-kettis), binds name to value |
 | `*foo` | [`^*`](/reference/hoon/rune/ket#-kettar), bunts (produces default mold value) |
 | `,foo` | [`^:`](/reference/hoon/rune/ket#-ketcol), produces “factory” gate for type |
@@ -78,7 +78,7 @@ The cell runes.
 
 ### `:-` colhep
 
-[docs](/reference/hoon/rune/col#-colhep) \\[\\]\\^\\+\\\`\\~
+[docs](/reference/hoon/rune/col#--colhep) \\[\\]\\^\\/\\+\\\`\\~
 
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
@@ -178,7 +178,7 @@ Irregular: `?(p)`
 
 ### `$_` buccab
 
-[docs](/reference/hoon/rune/buc#-buccab) \\\_
+[docs](/reference/hoon/rune/buc#_-buccab) \\\_
 
 `[%bccb p=value]`: mold which normalizes to an example.
 
@@ -236,7 +236,7 @@ Irregular: `,p`
 
 ### `^-` kethep
 
-[docs](/reference/hoon/rune/ket#-kethep) \\\`
+[docs](/reference/hoon/rune/ket#--kethep) \\\`
 
 `[%kthp p=model q=value]`: typecast by mold.
 

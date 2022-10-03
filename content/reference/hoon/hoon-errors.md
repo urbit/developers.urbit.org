@@ -134,7 +134,7 @@ function.
 ### `mint-vain` and `mint-lost`
 
 These are errors caused by type inference in pattern matching.
-`mint-vain` means this hoon is never executed. `mint-lost` means there's a case in a `?-` ([**wuthep**](/reference/hoon/rune/wut#-wuthep)) that isn't handled.
+`mint-vain` means this hoon is never executed. `mint-lost` means there's a case in a `?-` ([**wuthep**](/reference/hoon/rune/wut#--wuthep)) that isn't handled.
 
 ## Runtime crashes
 
