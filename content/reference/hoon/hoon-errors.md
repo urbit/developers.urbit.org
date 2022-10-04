@@ -164,7 +164,7 @@ The worst possibility, of course, is that your code runs but does
 the wrong thing. This is relatively unusual in a typed
 functional language, but it still happens.
 
-`~&` ([**sigpam**](/reference/hoon/rune/sig#sigpam)) is Hoon's debugging printf.
+`~&` ([**sigpam**](/reference/hoon/rune/sig#-sigpam)) is Hoon's debugging printf.
 This pretty-prints its argument:
 
 ```hoon

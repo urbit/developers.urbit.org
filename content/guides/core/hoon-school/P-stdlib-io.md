@@ -12,7 +12,7 @@ _This module will elaborate on text representation in Hoon, including formatted 
 
 We frequently need to convert from text to data, and between different text-based representations.  Let's examine some specific arms:
 
-- How do we convert text into all upper-case?
+- How do we convert text into all lower-case?
     - [`++cass`](/reference/hoon/stdlib/4b#cass)
 
 - How do we turn a `cord` into a `tape`?
@@ -149,7 +149,7 @@ A `%say` generator is a cell with a metadata tag `%say` as the head and the gate
 |=  [^ [arg=path ~] vane=?(%g %c)]
 ```
 
-This generator requires a path argument in its sample and optionally accepts a vane tag (`%g` Gall or `%c` Clay).  Most of the time, `+cat` is used with Gall, so `%g` as the last entry in the type union serves as the bunt value.
+This generator requires a path argument in its sample and optionally accepts a vane tag (`%g` Gall or `%c` Clay).  Most of the time, `+cat` is used with Clay, so `%c` as the last entry in the type union serves as the bunt value.
 
 ```hoon
 =+  lon=.^(arch (cat 3 vane %y) arg)
@@ -323,11 +323,11 @@ Because we imported `generators`, we can access its contained gates, three of wh
 
 - `print` is used for printing a `tank` to the console.
 
-    In our example, `%+` cenlus is the rune to call a gate, and our gate `++print` takes one argument which is a `tank` to print.  The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write.
+    In our example, `%+` cenlus is used to call the gate `++print`, with two arguments. The first argument is a `tank` to print.  The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
 
-- `prompt` is used to construct a prompt for the user to provide input.  It takes a single argument that is a tuple.  Most `%ask` generators will want to use the `++prompt` gate.
+- `prompt` is used to construct a prompt for the user to provide input. The first argument is a tuple. The second argument is a gate that returns the output of a call to `++produce`. Most `%ask` generators will want to use the `++prompt` gate.
 
-    The first element of the `++prompt` sample is a flag that indicates whether what the user typed should be echoed out to them or hidden. `%&` will produce echoed output and `%|` will hide the output (for use in passwords or other secret text).
+    The first element of the `++prompt` tuple/sample is a flag that indicates whether what the user typed should be echoed out to them or hidden. `%&` will produce echoed output and `%|` will hide the output (for use in passwords or other secret text).
 
     The second element of the `++prompt` sample is intended to be information for use in creating autocomplete options for the prompt. This functionality is not yet implemented.
 

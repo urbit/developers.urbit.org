@@ -67,7 +67,7 @@ Let's unroll it:
 
 And thus `sum` yields the final value of `15`.
 
-It is frequently helpful, when constructing these, to be able to output the values at each step of the process.  Use the [`~&` sigpam](/reference/hoon/rune/sig#sigpam) rune to create output without changing any values:
+It is frequently helpful, when constructing these, to be able to output the values at each step of the process.  Use the [`~&` sigpam](/reference/hoon/rune/sig#-sigpam) rune to create output without changing any values:
 
 ```hoon {% copy=true %}
 =/  counter  1

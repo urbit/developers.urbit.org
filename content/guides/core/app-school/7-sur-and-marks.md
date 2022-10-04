@@ -293,7 +293,7 @@ One further note on marks - while data from remote ships must have a matching
 mark file in `/mar`, it's possible to exchange data between local agents with
 "fake" marks - ones that don't exist in `/mar`. Your `on-poke` arm could, for
 example, use a made-up mark like `%foobar` for actions initiated locally. This
-is because marks come into play only at validation boundries, none of which are
+is because marks come into play only at validation boundaries, none of which are
 crossed when doing local agent-to-agent communications.
 
 ## Permissions

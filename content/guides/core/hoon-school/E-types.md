@@ -209,19 +209,19 @@ The downside of using `^` ket for casts is that Hoon will infer only that the pr
 
 ```hoon
 > ? ^-(^ [12 13])
-  {* *}
+  [* *]
 [12 13]
 
 > ? ^-(^ [[12 13] 14])
-  {* *}
+  [* *]
 [[12 13] 14]
 
 > ? ^-(^ [[12 13] [14 15 16]])
-  {* *}
+  [* *]
 [[12 13] [14 15 16]]
 ```
 
-When we use the `?` operator to see the type inferred by Hoon for the expression, in all three of the above cases the same thing is returned: `{* *}`.  The `*` symbol indicates the type for any noun, and the curly braces `{ }` indicate a cell.  Every cell in Hoon is a cell of nouns; remember that cells are defined as pairs of nouns.
+When we use the `?` operator to see the type inferred by Hoon for the expression, in all three of the above cases the same thing is returned: `[* *]`.  The `*` symbol indicates the type for any noun, and the square brackets `[ ]` indicate a cell.  Every cell in Hoon is a cell of nouns; remember that cells are defined as pairs of nouns.
 
 Yet the cell `[[12 13] [14 15 16]]` is a bit more complex than the cell `[12 13]`.  Can we use the type system to distinguish them?  Yes.
 
@@ -234,7 +234,7 @@ What if you want to cast for a particular kind of cell?  You can use square brac
 [12 13]
 
 > ? ^-([@ @] [12 13])
-  {@ @}
+  [@ @]
 [12 13]
 
 > ^-([@ @] 12)
@@ -256,7 +256,7 @@ You can get even more specific about the kind of cell you want by using atom aur
 [0b11 0x10]
 
 > ? ^-([@ub @ux] [0b11 0x10])
-  {@ub @ux}
+  [@ub @ux]
 [0b11 0x10]
 
 > ^-([@ub @ux] [12 13])
@@ -270,7 +270,7 @@ You are also free to embed more square brackets `[ ]` to indicate cells within c
 [[12 --0b1101] 0xdead.beef]
 
 > ? ^-([[@ud @sb] @ux] [[12 --0b1101] 0xdead.beef])
-  {{@ud @sb} @ux}
+  [[@ud @sb] @ux]
 [[12 --0b1101] 0xdead.beef]
 
 > ^-([[@ @] @] [12 13])
@@ -284,7 +284,7 @@ You can also be highly specific with certain parts of the type structure, leavin
 [[12 26] 0xdead.beef]
 
 > ? ^-([^ @ux] [[12 --0b1101] 0xdead.beef])
-  {{* *} @ux}
+  [[* *] @ux]
 [[12 26] 0xdead.beef]
 
 > ^-(* [[12 --0b1101] 0xdead.beef])

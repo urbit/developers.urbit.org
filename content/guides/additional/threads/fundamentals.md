@@ -80,7 +80,7 @@ Strands are conventionally given the face `m` like:
 ...
 ```
 
-**NOTE:** a comma prefix as in `,vase` is the irregular form of `^:` which is a gate that returns the sample value if it's of the correct type, but crashes otherwise.
+**NOTE:** a comma prefix as in `,vase` is the irregular form of `$:` which produces a gate that returns the sample value if it's of the correct type, but crashes otherwise.
 
 ## Form and Pure
 

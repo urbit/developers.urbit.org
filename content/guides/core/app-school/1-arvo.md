@@ -126,7 +126,7 @@ disk, deserialize them into data structures in memory, perform some computations
 and manipulate the data, then serialize the new data and write it back to disk.
 This process is necessary because persistent storage is too slow to operate on
 directly and the fast memory is wiped when it loses power. The result is that
-all non-emphemeral data is ultimately stored as files in the filesystem on disk.
+all non-ephemeral data is ultimately stored as files in the filesystem on disk.
 Arvo on the other hand is completely different.
 
 Arvo has no concept of volatile memory - its whole state is assumed to be

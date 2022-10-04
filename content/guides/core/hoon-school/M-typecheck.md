@@ -339,7 +339,7 @@ What if you want to see the inferred type of `b` for yourself for each condition
 [#t/@ud q=15]
 
 > !>([12 14])
-[#t/{@ud @ud} q=[12 14]]
+[#t/[@ud @ud] q=[12 14]]
 
 > !>((add 22 55))
 [#t/@ q=77]
@@ -371,10 +371,10 @@ Now let's try using `?=` wuttis with `?:` wutcol again.  But this time we'll rep
 
 ```
 > =/(b=* [12 14] ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
-[%.n #t/{* *}]
+[%.n #t/[* *]]
 ```
 
-In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `{* *}`).
+In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `[* *]`).
 
 ###### `mint-vain`
 
@@ -411,7 +411,7 @@ If the second `?@` wutpat subexpression is evaluated, Hoon correctly infers that
 [%atom #t/@]
 
 > =/(b=* [12 14] ?@(b [%atom -:!>(b)] [%cell -:!>(b)]))
-[%cell #t/{* *}]
+[%cell #t/[* *]]
 ```
 
 If the inferred type of the first `?@` wutpat subexpression nests under `@` then one of the conditional branches provably never runs.  Attempting to evaluate the expression results in a `mint-vain`:
@@ -791,8 +791,11 @@ This is what we mean when we call auras 'soft' types. The above examples show th
 
 > b
 ~[11 22 33 44]
-Now let's use ?~ to prove that b isn't null, and then try to snag it:
+```
 
+Now let's use `?~` to prove that `b` isn't null, and then try to snag it:
+
+```hoon
 > ?~(b ~ (snag 0 b))
 nest-fail
 ```
@@ -817,7 +820,7 @@ To summarize, as values get passed around and checked at various points, the Hoo
 
 There are two additional assertions which can be used with the type system:
 
-- [`?>` wutgar](/reference/hoon/rune/wut#-wutgar) is a positive assertion (`%.y%` or crash).
+- [`?>` wutgar](/reference/hoon/rune/wut#-wutgar) is a positive assertion (`%.y` or crash).
 - [`?<` wutgal](/reference/hoon/rune/wut#-wutgal) is a negative assertion (`%.n` or crash).
 
 If you are running into `find-fork` errors in more complicated data structures (like marks or JSONs), consider using these assertions to guide the typechecker.

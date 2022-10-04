@@ -115,10 +115,10 @@ Line by line:
 This declares a wet gate which accepts a `unit`.
 
 ```hoon
-?~  a  ~<(%mean.'need' !!)
+?~  a  ~>(%mean.'need' !!)
 ```
 
-If `a` is empty, `~`, then the `unit` cannot be unwrapped.  Crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap), but use [`~<` siggal](/reference/hoon/rune/sig#-siggal) to hint to the runtime interpreter how to handle the crash.
+If `a` is empty, `~`, then the `unit` cannot be unwrapped.  Crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap), but use [`~>` siggar](/reference/hoon/rune/sig#-siggar) to hint to the runtime interpreter how to handle the crash.
 
 ```hoon
 u.a
@@ -167,7 +167,7 @@ nest-fail
 
 ### Drying Out a Gate
 
-Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](https://developers.urbit.org/reference/hoon/stdlib/2b#bake):
+Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](/reference/hoon/stdlib/2b#bake):
 
 ```hoon
 > ((curr reel add) `(list @)`[1 2 3 4 ~])
@@ -241,7 +241,7 @@ ford: %ride failed to compute type:
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
-The [`^&` ketpam](/reference/hoon/rune/ket#ketpam) rune converts a core to a `%zinc` covariant core.
+The [`^&` ketpam](/reference/hoon/rune/ket#-ketpam) rune converts a core to a `%zinc` covariant core.
 
 ### `%iron` Contravariance
 
@@ -318,7 +318,7 @@ Two more examples:
 
 ```
 > ^+(=>([1 2] |=(@ 15)) =>([123 456] |=(@ 16)))
-<1.xqz {@ @ud @ud}>
+<1.xqz [@ @ud @ud]>
 
 > ^+(=>([1 2] |=(@ 15)) =>([123 456 789] |=(@ 16)))
 nest-fail
@@ -462,7 +462,7 @@ If you really want to look at the sample you can check `+6` of `iron-gate`:
 
 As with `%iron` cores, the context of `%zinc` cores is opaque—they cannot be written-to or read-from.  The sample of a `%zinc` core is read-only.  That means, among other things, that `%zinc` cores cannot be used for function calls.  Function calls in Hoon involve a change to the sample (the default sample is replaced with the argument value), which is disallowed as type-unsafe for `%zinc` cores.
 
-We can illustrate the casting properties of `%zinc` cores with a few examples.  The [`^&` ketpam](/reference/hoon/rune/ket#ketpam) rune is used to convert `%gold` cores to `%zinc`:
+We can illustrate the casting properties of `%zinc` cores with a few examples.  The [`^&` ketpam](/reference/hoon/rune/ket#-ketpam) rune is used to convert `%gold` cores to `%zinc`:
 
 ```hoon
 > ^+(^&(|=(^ 15)) |=(^ 16))
