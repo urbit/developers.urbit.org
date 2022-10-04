@@ -83,9 +83,8 @@ export default function GuidePage({
           <a
             className="font-semibold rounded-xl block p-2 text-wall-400 hover:text-green-400 mt-16"
             target="_blank"
-            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/guides/${
-              params.slug?.join("/") || "_index"
-            }.md`}
+            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/guides/${params.slug?.join("/") || "_index"
+              }.md`}
           >
             Edit this page on GitHub
           </a>
@@ -286,6 +285,7 @@ function Landing({ search }) {
               className="basis-1/2"
               href="/guides/additional/client"
             />
+            <div className="basis-1/2" />
           </div>
         </Section>
       </SingleColumn>
