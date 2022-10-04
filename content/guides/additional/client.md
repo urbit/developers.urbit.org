@@ -72,7 +72,9 @@ mkdir -p comet/flap/app/flap
 mkdir -p comet/flap/mar/flap
 
 # Include the Schooner library by Quartus/Dalten for HTTP handling.
-git clone https://github.com/dalten-collective/schooner.git
+#git clone https://github.com/dalten-collective/schooner.git
+# We actually should instead pull a slightly modified version of `schooner.hoon` pending some upstream changes
+git clone https://github.com/hoon-school/schooner.git
 cp schooner/lib/schooner.hoon comet/flap/lib
 ```
 
