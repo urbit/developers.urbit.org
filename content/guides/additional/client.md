@@ -1,13 +1,13 @@
 +++
-title = "Clients"
+title = "Serving a Browser Game"
 weight = 11
 +++
 
 ## Introduction
 
-In this tutorial, we will take an off-the-shelf JavaScript game which runs in the browser and connect it to an Urbit back-end.  This page assumes that you have completed some version of Hoon School and App School, whether the [live courses](/courses) or the [written docs](/guides/core/hoon-school/A-intro).
+In this tutorial, we will take an off-the-shelf JavaScript game which runs in the browser and connect it to an Urbit back-end.  This page assumes that you have completed some version of Hoon School and App School, whether the [live courses](/courses) or the [written docs](/guides/core/hoon-school/A-intro).  Our goal is to show you one way of directly serving client code from an Urbit ship as server.
 
-_Flappy Bird_ is an "insanely irritating, difficult and frustrating game which combines a super-steep difficulty curve with bad, boring graphics and jerky movement" ([Huffington Post](https://web.archive.org/web/20140205084251/http://www.huffingtonpost.com/2014/02/03/flappy-bird-tips_n_4717406.html)).  We are going to implement `%flap`, a _Flappy Bird_ leaderboard using `%pals` and an off-the-shelf [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) JavaScript game.  The approach given in this tutorial will apply to any game which is primarily run in the browser and has some persistent state to retain across sessions or communicate between players at discrete intervals.  Direct player-v.-player games will require other techniques to implement.
+_Flappy Bird_ is an "insanely irritating, difficult and frustrating game which combines a super-steep difficulty curve with bad, boring graphics and jerky movement" ([Huffington Post](https://web.archive.org/web/20140205084251/http://www.huffingtonpost.com/2014/02/03/flappy-bird-tips_n_4717406.html)).  We are going to implement `%flap`, a _Flappy Bird_ leaderboard using `%pals`.  The approach given in this tutorial will apply to any game which is primarily run in the browser and has some persistent state to retain across sessions or communicate between players at discrete intervals.  Direct player-v.-player games will require other techniques to implement.
 
 Our objective is to illustrate a minimum viable set of changes necessary to implement the task.  We should the following components when complete:
 
@@ -85,7 +85,7 @@ Make an appropriate docket file `desk.docket-0`, e.g.:
   color+0xea.c124
   version+[0 0 1]
   website+'https://urbit.org'
-  license+'MIT'
+  license+''
   base+'flap'
   site+/apps/flap
 ==
@@ -309,7 +309,7 @@ The main app implements the logic for exposing and tracking data.
     ::
       %flap-action
     =/  axn  !<(action vase)
-    ?>  =(-.axn %gain)
+    ?>  ?=(-.axn %gain)
     ?.  (gth score.axn hiscore)
       `this(score score.axn)
     `this(score score.axn, hiscore score.axn)
@@ -497,139 +497,135 @@ Now when we navigate to `localhost:8080/apps/flap`, what do we see?  The game ca
 
 ### Serving Correctly
 
-If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located and that cross-origin requests are blocked.  Thus we need to solve two problems:
+If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source, or
 
-1. CORS is a security policy that allows you to load resources dynamically with prior approval from the browser and server.  The quickest workaround for our case now is to simply copy `game.js` into the `script` tag.  We can also [set up CORS origins](https://developers.urbit.org/reference/arvo/eyre/guide#managing-cors-origins) for Eyre.
+If we hot-link the resources, the corresponding lines will look like this:
 
-    The first case is trivial:  remove the `src` attribute from the `script` tag and copy all of `game.js` in between the head and tail `script` tags.
+```js
+const sprite = new Image();
+sprite.src = "https://raw.githubusercontent.com/CodeExplainedRepo/Original-Flappy-bird-JavaScript/master/img/sprite.png";
+```
 
-    The second case solves the problem a bit more generally for development:  tell your Urbit to allow `localhost` files to be served on the appropriate port.
+This is easiest if less elegant than serving the files from Urbit.
 
-    ```hoon {% copy=true %}
-    |cors-approve 'http://localhost:8080'
-    ```
+If we want to serve our files from Urbit, we need to build the files and serve them to particular endpoints so that they are visible to the browser.  This means importing and serving these to make these available.  It also means renaming the files so that they are compatible with `@ta`-style path entries.
 
-2. Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source, or 
+```sh {% copy=true %}
+mv comet/flap/app/flap/audio/sfx_point.wav comet/flap/app/flap/audio/sfx-point.wav
+mv comet/flap/app/flap/audio/sfx_flap.wav comet/flap/app/flap/audio/sfx-flap.wav
+mv comet/flap/app/flap/audio/sfx_hit.wav comet/flap/app/flap/audio/sfx-hit.wav
+mv comet/flap/app/flap/audio/sfx_swooshing.wav comet/flap/app/flap/audio/sfx-swooshing.wav
+mv comet/flap/app/flap/audio/sfx_die.wav comet/flap/app/flap/audio/sfx-die.wav
+```
 
-    If we hot-link the resources, the corresponding lines will look like this:
+The import lines at the top of `/app/flap.hoon` build each file according to its mark:
 
-    ```js
-    const sprite = new Image();
-    sprite.src = "https://raw.githubusercontent.com/CodeExplainedRepo/Original-Flappy-bird-JavaScript/master/img/sprite.png";
-    ```
+```hoon {% copy=true %}
+/*  flapjs  %js    /app/flap/game/js
+/*  flapsprite  %png   /app/flap/img/sprite/png
+/*  flapaudios  %wav   /app/flap/audio/sfx-point/wav
+/*  flapaudiof  %wav   /app/flap/audio/sfx-flap/wav
+/*  flapaudioh  %wav   /app/flap/audio/sfx-hit/wav
+/*  flapaudiow  %wav   /app/flap/audio/sfx-swooshing/wav
+/*  flapaudiod  %wav   /app/flap/audio/sfx-die/wav
+```
 
-    This is easiest if less elegant than serving the files from Urbit.
+Later in `/app/flap.hoon` we serve the files at particular endpoints:
 
-    If we want to serve our files from Urbit, we need to build the files and serve them to particular endpoints so that they are visible to the browser.  This means importing and serving these to make these available.  It also means renaming the files so that they are compatible with `@ta`-style path entries.
+```hoon {% copy=true mode="collapse" %}
+  [%apps %flap %game %js ~]
+:_  this
+%-  send
+:+  200
+  ~
+[%plain (trip flapjs)]
+::
+  [%apps %flap %img %sprite %png ~]
+:_  this
+%-  send
+:+  200
+  ~
+[%image-png flapsprite]
+::
+  [%apps %flap %audio %sfx-point %wav ~]
+:_  this
+%-  send
+:+  200
+  ~
+[%audio-wav flapaudios]
+::
+  [%apps %flap %audio %sfx-flap %wav ~]
+:_  this
+%-  send
+:+  200
+  ~
+[%audio-wav flapaudiof]
+::
+  [%apps %flap %audio %sfx-hit %wav ~]
+:_  this
+%-  send
+:+  200
+  ~
+[%audio-wav flapaudioh]
+::
+  [%apps %flap %audio %sfx-swooshing %wav ~]
+:_  this
+%-  send
+:+  200
+  ~
+[%audio-wav flapaudiow]
+::
+  [%apps %flap %audio %sfx-die %wav ~]
+:_  this
+%-  send
+:+  200
+  ~
+[%audio-wav flapaudiod]
+```
 
-    ```sh {% copy=true %}
-    mv comet/flap/app/flap/audio/sfx_point.wav comet/flap/app/flap/audio/sfx-point.wav
-    mv comet/flap/app/flap/audio/sfx_flap.wav comet/flap/app/flap/audio/sfx-flap.wav
-    mv comet/flap/app/flap/audio/sfx_hit.wav comet/flap/app/flap/audio/sfx-hit.wav
-    mv comet/flap/app/flap/audio/sfx_swooshing.wav comet/flap/app/flap/audio/sfx-swooshing.wav
-    mv comet/flap/app/flap/audio/sfx_die.wav comet/flap/app/flap/audio/sfx-die.wav
-    ```
+In `index.html`:
 
-    The import lines at the top of `/app/flap.hoon` build each file according to its mark:
+```html
+<script src="flap/game/js"></script>
+```
 
-    ```hoon {% copy=true %}
-    /*  flapjs      %js    /app/flap/game/js
-    /*  flapsprite  %png   /app/flap/img/sprite/png
-    /*  flapaudios  %wav   /app/flap/audio/sfx-point/wav
-    /*  flapaudiof  %wav   /app/flap/audio/sfx-flap/wav
-    /*  flapaudioh  %wav   /app/flap/audio/sfx-hit/wav
-    /*  flapaudiow  %wav   /app/flap/audio/sfx-swooshing/wav
-    /*  flapaudiod  %wav   /app/flap/audio/sfx-die/wav
-    ```
+In `game.js`, all we need to change are the source paths:
 
-    Later in `/app/flap.hoon` we serve the files at particular endpoints:
+```js
+// LOAD SPRITE IMAGE
+const sprite = new Image();
+sprite.src = "flap/img/sprite/png";
 
-    ```hoon {% copy=true mode="collapse" %}
-      [%apps %flap %game %js ~]
-    :_  this
-    %-  send
-    :+  200
-      ~
-    [%plain (trip flapjs)]
-    ::
-      [%apps %flap %img %sprite %png ~]
-    :_  this
-    %-  send
-    :+  200
-      ~
-    [%image-png flapsprite]
-    ::
-      [%apps %flap %audio %sfx-point %wav ~]
-    :_  this
-    %-  send
-    :+  200
-      ~
-    [%audio-wav flapaudios]
-    ::
-      [%apps %flap %audio %sfx-flap %wav ~]
-    :_  this
-    %-  send
-    :+  200
-      ~
-    [%audio-wav flapaudiof]
-    ::
-      [%apps %flap %audio %sfx-hit %wav ~]
-    :_  this
-    %-  send
-    :+  200
-      ~
-    [%audio-wav flapaudioh]
-    ::
-      [%apps %flap %audio %sfx-swooshing %wav ~]
-    :_  this
-    %-  send
-    :+  200
-      ~
-    [%audio-wav flapaudiow]
-    ::
-      [%apps %flap %audio %sfx-die %wav ~]
-    :_  this
-    %-  send
-    :+  200
-      ~
-    [%audio-wav flapaudiod]
-    ```
+// LOAD SOUNDS
+const SCORE_S = new Audio();
+SCORE_S.src = "flap/audio/sfx-point/wav";
 
-    In `index.html`:
+const FLAP = new Audio();
+FLAP.src = "flap/audio/sfx-flap/wav";
 
-    ```html
-    <script src="flap/game/js"></script> 
-    ```
+const HIT = new Audio();
+HIT.src = "flap/audio/sfx-hit/wav";
 
-    In `game.js`, all we need to change are the source paths:
+const SWOOSHING = new Audio();
+SWOOSHING.src = "flap/audio/sfx-swooshing/wav";
 
-    ```js
-    // LOAD SPRITE IMAGE
-    const sprite = new Image();
-    sprite.src = "flap/img/sprite/png";
-
-    // LOAD SOUNDS
-    const SCORE_S = new Audio();
-    SCORE_S.src = "flap/audio/sfx-point/wav";
-
-    const FLAP = new Audio();
-    FLAP.src = "flap/audio/sfx-flap/wav";
-
-    const HIT = new Audio();
-    HIT.src = "flap/audio/sfx-hit/wav";
-
-    const SWOOSHING = new Audio();
-    SWOOSHING.src = "flap/audio/sfx-swooshing/wav";
-
-    const DIE = new Audio();
-    DIE.src = "flap/audio/sfx-die/wav";
-    ```
+const DIE = new Audio();
+DIE.src = "flap/audio/sfx-die/wav";
+```
 
 Flappy Bird in HTML+JS needs Urbit affordances so it knows how to talk to the app backend.  Changes like the above will be common in adapting non-Hoon-compliant code due to assumptions about file location and naming conventions, but most of the time your process of adaptation will look much like the above.
 
 You can check out the API endpoints listed in the code above:  `/apps/flap/whoami`, `/apps/flap/img/sprite/png` and so forth, to see what they serve to the browser as.
 
 This version of the app should run in your browser correctly once you `|commit %flap`.  Urbit knows where all resources are and how to serve them.  However, while the vertical communications work (between client and server), the horizontal communications are still missing (between Urbit peers).
+
+> ##  Cross-Origin Resource Sharing
+>
+> CORS is a security policy that allows you to load resources dynamically with prior approval from the browser and server.  Sometimes when you are serving various game configurations during development, you may arrive a situation in which things aren't loading correctly to due to the CORS policy.  (When things are entirely served from your Urbit ship then this shouldn't be an issue.)  If you encounter this problem on your way, however, you can [set up CORS origins](https://developers.urbit.org/reference/arvo/eyre/guide#managing-cors-origins) for Eyre by telling your Urbit ship to allow `localhost` files to be served on the appropriate port.
+>
+> ```hoon {% copy=true %}
+> |cors-approve 'http://localhost:8080'
+> ```
 
 
 ##  Communications Protocol
@@ -699,7 +695,7 @@ Subscriptions will all take place over the `/flap` path.  In the `++on-poke` arm
 ```hoon
   %flap-action
 =/  axn  !<(action vase)
-?>  =(-.axn %gain)
+?>  ?=(-.axn %gain)
 ?.  (gth score.axn hiscore)
   `this(score score.axn)
 :_  this(score score.axn, hiscore score.axn)
@@ -712,7 +708,7 @@ We also need to process incoming `%fact`s with a `%flap-update` cage in `++on-ag
 ```hoon
   %flap-update
 =/  upd  !<(update q.cage.sign)
-?>  =(-.upd %lord)
+?>  ?=(-.upd %lord)
 ?:  (gth (~(got by scores) fren.upd) score.upd)
   `this
 ~&  >  "%flap:  new high score {<score.upd>} from {<fren.upd>}"
@@ -723,9 +719,9 @@ Changes to `%pals` come in along the path `/newpals`, so we need to watch for in
 
 ```hoon
   [%newpals ~]
-?+    -.sign  (on-agent:default wire sign)
+?+    -.sign  `this
     %fact
-  ?+    p.cage.sign  (on-agent:default wire sign)
+  ?+    p.cage.sign  `this
       %pals-effect
     =/  fx  !<(effect:pals q.cage.sign)
     ?+    -.fx  (on-agent:default wire sign)
@@ -738,6 +734,10 @@ Changes to `%pals` come in along the path `/newpals`, so we need to watch for in
       :~  [%pass /flap %agent [+.fx %flap] %leave ~]
       ==
     ==
+  ==
+    %kick
+  :_  this
+  :~  [%pass /flap %agent [src.bol dap.bol] %watch /flap]
   ==
 ==
 ```
@@ -820,7 +820,7 @@ With all of the above, you should have a working `%flappy` instance at `http://l
     ::
       %flap-action
     =/  axn  !<(action vase)
-    ?>  =(-.axn %gain)
+    ?>  ?=(-.axn %gain)
     ?.  (gth score.axn (~(gut by scores) our.bol 0))
       `this(score score.axn)
     :_  this(score score.axn, scores (~(put by scores) our.bol score.axn))
@@ -990,7 +990,7 @@ With all of the above, you should have a working `%flappy` instance at `http://l
       ?+    p.cage.sign  (on-agent:default wire sign)
           %flap-update
         =/  upd  !<(update q.cage.sign)
-        ?>  =(-.upd %lord)
+        ?>  ?=(-.upd %lord)
         =/  hiscore  (~(gut by `(map @p @ud)`scores) fren.upd 0)
         ?:  (gth hiscore score.upd)
           `this
@@ -1010,9 +1010,9 @@ With all of the above, you should have a working `%flappy` instance at `http://l
     ==
     ::
       [%newpals ~]
-    ?+    -.sign  (on-agent:default wire sign)
+    ?+    -.sign  `this
         %fact
-      ?+    p.cage.sign  (on-agent:default wire sign)
+      ?+    p.cage.sign  `this
           %pals-effect
         =/  fx  !<(effect:pals q.cage.sign)
         ?+    -.fx  (on-agent:default wire sign)
@@ -1026,6 +1026,10 @@ With all of the above, you should have a working `%flappy` instance at `http://l
           ==
         ==
       ==
+    ==
+      %kick
+    :_  this
+    :~  [%pass /flap %agent [src.bol dap.bol] %watch /flap]
     ==
   ==
 ::

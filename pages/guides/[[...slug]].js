@@ -278,6 +278,15 @@ function Landing({ search }) {
               href="/guides/additional/threads/fundamentals"
             />
           </div>
+
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
+            <CardText
+              title="Serving a Browser Game"
+              text="Serve a client-side game from Urbit"
+              className="basis-1/2"
+              href="/guides/additional/client"
+            />
+          </div>
         </Section>
       </SingleColumn>
       <Footer />
