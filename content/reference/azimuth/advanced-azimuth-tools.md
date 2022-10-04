@@ -15,7 +15,7 @@ These tools are currently only available for layer 1 transactions. Tooling for
 layer 2 transactions is forthcoming.
 
 First you will want to [boot a
-fakezod](https://urbit.org/using/develop/#creating-a-development-ship). You can
+fakezod](/guides/core/environment#creating-a-fake-ship). You can
 do this with your live running ship but at this time this will need you to
 modify the code so it's best to do this on a ship you can make mistakes on.
 

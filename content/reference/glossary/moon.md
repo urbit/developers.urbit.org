@@ -29,5 +29,5 @@ their parent planet.
 
 - [User manual: Basics](https://operators.urbit.org/manual/os/basics#moons): The
   "Moons" section contains instructions for creating and managing moons.
-- [Lunar Urbit and the Internet of Things](/blog/iot): Blog post on the past,
+- [Lunar Urbit and the Internet of Things](https://urbit.org/blog/iot): Blog post on the past,
   present, and future of moons.

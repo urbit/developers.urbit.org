@@ -11,7 +11,7 @@ _This module will teach you how to produce deferred computations for later use, 
 
 Until this point in Hoon School, we have rigorously adhered to the regular syntax of runes so that you could get used to using them.  In fact, the only two irregular forms we used were these:
 
-- Cell definition `[a b]` which represents the [`:-` colhep](/reference/hoon/rune/col#-colhep) rune, `:-  a  b`.
+- Cell definition `[a b]` which represents the [`:-` colhep](/reference/hoon/rune/col#--colhep) rune, `:-  a  b`.
 
     That is, these expressions are all the same for Hoon:
 
@@ -28,7 +28,7 @@ Until this point in Hoon School, we have rigorously adhered to the regular synta
     [1 2]
     ```
 
-- Aura application `` `@ux`500 `` which represents a double [`^-` kethep](/reference/hoon/rune/ket#-kethep), `^-  @ux  ^-  @  500`.
+- Aura application `` `@ux`500 `` which represents a double [`^-` kethep](/reference/hoon/rune/ket#--kethep), `^-  @ux  ^-  @  500`.
 
     These are equivalent in Hoon:
 
@@ -114,7 +114,7 @@ Beyond those, what is the purpose of each line?
 
 The [`spec`](/reference/hoon/stdlib/4o#spec) gives the type as a mold and attaches a face to it for use in the gate.
 
-The [`hoon`](/reference/hoon/stdlib/4o#hoon) body expression evaluates and yields a result, ultimately sent back to the call site.  Frequently it is wise to explicitly require a particular type for the return value using the [`^-` kethep](/reference/hoon/rune/ket#-kethep) rune:
+The [`hoon`](/reference/hoon/stdlib/4o#hoon) body expression evaluates and yields a result, ultimately sent back to the call site.  Frequently it is wise to explicitly require a particular type for the return value using the [`^-` kethep](/reference/hoon/rune/ket#--kethep) rune:
 
 ```hoon {% copy=true %}
 ::  Confirm whether a value is greater than one.

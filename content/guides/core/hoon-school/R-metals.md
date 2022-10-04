@@ -368,7 +368,7 @@ There's a simpler way to define an iron sample. Revise the first line of `/gen/g
 (add b 20)
 ```
 
-If you test it, you'll find that the generator behaves the same as it did before the edits.  The [`$-` buchep](/reference/hoon/rune/buc#-buchep) rune is used to create an `%iron` gate structure, i.e., an `%iron` gate type.  The first expression defines the desired sample type, and the second subexpression defines the gate's desired output type.
+If you test it, you'll find that the generator behaves the same as it did before the edits.  The [`$-` buchep](/reference/hoon/rune/buc#--buchep) rune is used to create an `%iron` gate structure, i.e., an `%iron` gate type.  The first expression defines the desired sample type, and the second subexpression defines the gate's desired output type.
 
 The sample type of an `%iron` gate is contravariant.  This means that, when doing a cast with some `%iron` gate, the desired gate must have either the same sample type or a superset.
 

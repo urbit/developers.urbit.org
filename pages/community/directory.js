@@ -48,7 +48,7 @@ export default function Directory({ search, directory }) {
           <h1>Directory</h1>
         </Section>
         <Section>
-          <p class="text-xl">
+          <p className="text-xl">
             Our community is comprised of individuals, all of whom happen to be
             pretty friendly. Here’s a list of prominent groups and figures
             you’ll likely encounter that are open to being contacted.
@@ -57,11 +57,12 @@ export default function Directory({ search, directory }) {
         <Section>
           <h3>Urbit Foundation</h3>
           <div className="mt-4">
-            {uf.map((pair) => {
+            {uf.map((pair, i) => {
               return (
-                <TwoUp>
+                <TwoUp key={i}>
                   {pair.map((e) => (
                     <Card
+                      key={e.patp}
                       title={e.name}
                       text={[
                         <code className="block text-green-400 font-semibold">
@@ -88,11 +89,12 @@ export default function Directory({ search, directory }) {
         <Section>
           <h3>Tlon Corporation</h3>
           <div className="flex flex-wrap mt-4">
-            {tlon.map((pair) => {
+            {tlon.map((pair, i) => {
               return (
-                <TwoUp>
+                <TwoUp key={i}>
                   {pair.map((e) => (
                     <Card
+                      key={e.patp}
                       title={e.name}
                       text={[
                         <code className="block text-green-400 font-semibold">
@@ -119,11 +121,12 @@ export default function Directory({ search, directory }) {
         <Section>
           <h3>Additional Community Members</h3>
           <div className="flex flex-wrap mt-4">
-            {additional.map((pair) => {
+            {additional.map((pair, i) => {
               return (
-                <TwoUp>
+                <TwoUp key={i}>
                   {pair.map((e) => (
                     <Card
+                      key={e.patp}
                       title={e.name}
                       text={[
                         <code className="block text-green-400 font-semibold">

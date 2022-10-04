@@ -65,7 +65,7 @@ Here's a brief summary of each of the vanes:
 
 - **Iris**: Web client vane. If you want your agent to query external web APIs and
   the like, it's done via Iris. Oftentimes web API interactions are
-  spun out into [threads](/reference/arvo/threads/overview) to avoid
+  spun out into [threads](/guides/additional/threads/fundamentals) to avoid
   complicating the Gall agent itself, so a Gall agent would not necessary deal
   with Iris directly, even if it made use of external APIs.
 - **Jael**: Key infrastructure vane. Jael keeps track of PKI data for your ship and
@@ -106,7 +106,7 @@ there's also:
   IO logic in a separate thread which is completely atomic. That way the Gall
   agent only has to deal with the two conditions of success or failure. Writing
   threads is covered in a [separate
-  guide](/reference/arvo/threads/basics/fundamentals), which you might like to
+  guide](/guides/additional/threads/fundamentals), which you might like to
   work through after completing App School I.
 
 - **Front-end**: Web UIs. It's possible for Gall agents to handle HTTP requests

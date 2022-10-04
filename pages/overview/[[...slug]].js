@@ -111,7 +111,7 @@ const breadcrumbs = (posts, paths) => {
 const childPages = (thisLink, children, level = 0) => (
   <ul>
     {children?.map((child) => (
-      <li>{pageTree(join(thisLink, child.slug), child, level)}</li>
+      <li key={child.slug}>{pageTree(join(thisLink, child.slug), child, level)}</li>
     ))}
   </ul>
 );

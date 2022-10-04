@@ -6,7 +6,7 @@ weight = 3
 In this lightning tutorial, we're going to build a simple chat app named Hut. It'll
 look like this:
 
-![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-v2-screenshot.png)
+![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-screenshot-reskin.png)
 
 We'll be able to create private chat rooms with members of our
 [Squad](https://urbit.org/applications/~pocwet/squad) groups, and communicate
@@ -1282,5 +1282,4 @@ know about app development.
 
 Along with these self-directed guides, we also run regular courses on both Hoon
 and app development. You can check the [Courses](/courses) page for details, or
-join the [~hiddev-dannut/new-hooniverse](/groups/~hiddev-dannut/new-hooniverse)
-group on Urbit.
+join the `~hiddev-dannut/new-hooniverse` group on Urbit.

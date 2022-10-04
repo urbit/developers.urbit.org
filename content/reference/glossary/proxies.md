@@ -24,7 +24,7 @@ The voting proxy can cast votes on behalf of its assigned point on new proposals
 
 - **Spawn Proxy**
 
-Creates new child points given Ethereum address. For [stars](/reference/glossary/stars) and [galaxies](/reference/glossary/galaxy) only.
+Creates new child points given Ethereum address. For [stars](/reference/glossary/star) and [galaxies](/reference/glossary/galaxy) only.
 
 
 ### Further Reading

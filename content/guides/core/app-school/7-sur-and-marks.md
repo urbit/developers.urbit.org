@@ -63,8 +63,8 @@ occur. If our agent were named `%todo`, it might have the following structure in
 ```
 
 Our `%todo` agent could then import this structure file with a [fashep ford
-rune](/reference/arvo/ford/ford#ford-runes) (`/-`) at the beginning of the agent like
-so:
+rune](/reference/hoon/rune/fas#--fashep) (`/-`) at the beginning of the agent
+like so:
 
 ```hoon
 /-  todo
@@ -285,7 +285,7 @@ This simple mark file isn't all that useful. Typically, you'd add `json` arms
 to `grow` and `grab`, which allow your data to be converted to and from JSON,
 and therefore allow your agent to communicate with a web front-end. Front-ends,
 JSON, and Eyre's APIs which facilitate such communications will be covered in
-the separate [Full-Stack Walkthrough](/guides/core/app-school-full-stack/1-intro),
+the separate [Full-Stack Walkthrough](/guides/core/app-school-full-stack/intro),
 which you might like to work through after completing this guide. For now
 though, it's still useful to use marks and understand how they work.
 

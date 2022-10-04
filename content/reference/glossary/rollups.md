@@ -22,7 +22,7 @@ blockchains.
 
 ### Further reading
 
-- [Layer 2 for planets](/getting-started/layer-2-for-planets): Essential
+- [Layer 2 for planets](https://operators.urbit.org/manual/id/layer-2-for-planets): Essential
   information for planet owners on layer 2 or considering a move to layer 2
 - [The Gang Solves the Gas Crisis](https://urbit.org/blog/rollups): A casual overview of how
 naive rollups works.

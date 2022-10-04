@@ -13,7 +13,7 @@ _This module will discuss how we can have confidence that a program does what it
 >
 > It's natural to feel fear of code; however, you must act as though you are able to master and change any part of it. To code courageously is to walk into any abyss, bring light, and make it right.
 >
-> (~wicdev-wisryt, [“Urbit Precepts” C1](/guides/additional/development/precepts))
+> ~wicdev-wisryt
 
 When you produce software, how much confidence do you have that it does what you think it does?  Bugs in code are common, but judicious testing can manifest failures so that the bugs can be identified and corrected.  We can classify a testing regimen for Urbit code into a couple of layers:  fences and unit tests.
 
@@ -172,7 +172,7 @@ Formal error messages in Urbit are built of tanks.
 
 As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of the evaluations and expressions that got the program to its notional point of computation.  When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
-- The [`~_` sigcab](/reference/hoon/rune/sig/#-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `tank`.  (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
+- The [`~_` sigcab](/reference/hoon/rune/sig/#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `tank`.  (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 - The [`~|` sigbar](/reference/hoon/rune/sig/#-sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` cord.
 
     What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:

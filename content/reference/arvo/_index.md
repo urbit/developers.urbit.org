@@ -30,10 +30,6 @@ Dill is our terminal driver. Unix sends keyboard events to dill from the termina
 
 Eyre is our HTTP server. Unix sends HTTP messages to `%eyre`, and `%eyre` produces HTTP messages in response.
 
-## [Ford](/reference/arvo/ford/ford)
-
-Ford is our build system. It handles resources and publishing.
-
 ## [Gall](/reference/arvo/gall/gall)
 
 Gall is the vane for controlling userspace apps.

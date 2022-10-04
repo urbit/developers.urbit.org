@@ -24,7 +24,7 @@ Below are some important functions of Bridge.
   on [L2](/reference/glossary/rollups), you can generate planet invite codes.
 - **Accept sponsorship request:** - Accept a sponsorship request to a galaxy or star.
 - **Transfer:** Send the Urbit identity to another Ethereum address or a new
-  [Master Ticket](/reference/glossary/master-ticket).
+  Master Ticket.
 - **Accept incoming transfer:** If someone is trying to send you an Urbit
   identity, you must use this action to receive it.
 - **Cancel outgoing transfer:** Cancel a transfer that you initiated before the

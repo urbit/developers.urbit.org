@@ -4,7 +4,7 @@ title = "Behn"
 category = "arvo"
 +++
 
-**Behn** is the timing [vane](/reference/glossary/filesystem) (kernel module).
+**Behn** is the timing [vane](/reference/glossary/vane) (kernel module).
 It allows for applications to schedule events, which are managed in a simple
 priority queue. For example, [Clay](/reference/glossary/clay), the Urbit
 filesystem, uses Behn to keep track of time-specific file requests.

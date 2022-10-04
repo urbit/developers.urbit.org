@@ -11,9 +11,9 @@ an _aura_, which is a soft type that declares if an atom is a date, a ship name,
 a number, etc, and an optional constant. A Hoon atom type is _warm_ or _cold_
 based on whether or not the constant exists:
 
-- A Hoon atom type is [warm](/reference/glossary/warm) if the constant is `~`
+- A Hoon atom type is [warm](/reference/glossary/warm-atom) if the constant is `~`
   (null), any atom is in the type.
-- A Hoon atom type is [cold](/reference/glossary/cold) if the constant is `[~
+- A Hoon atom type is [cold](/reference/glossary/cold-atom) if the constant is `[~
   atom]`, its only legal value is the exact value of the atom.
 
 ### Further Reading

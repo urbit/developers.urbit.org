@@ -99,7 +99,7 @@ batches of transactions to Ethereum, which requires ETH. If you downloaded
 code, you are putting the assets in this wallet at risk. Also keep in mind that
 while Urbit has undergone several security audits, some components such as the
 runtime have never been audited by a third party. We maintain a list of these
-audits [here](/audits), as well as an
+audits [here](https://urbit.org/audits), as well as an
 [FAQ](https://urbit.org/faq#how-secure-is-urbit) on the state of security in
 Urbit. Thus we recommend a fresh wallet generated specifically to be used by
 `%roller` and to only put the amount of ETH in it that you expect to need in the

@@ -14,7 +14,7 @@ export default function Functional({ className = "" }) {
         x2="55.8175"
         y2="33.6907"
         className="stroke-wall-600"
-        stroke-dasharray="2 2"
+        strokeDasharray="2 2"
       />
       <line
         x1="7.71708"
@@ -22,7 +22,7 @@ export default function Functional({ className = "" }) {
         x2="31.8594"
         y2="58.0905"
         className="stroke-wall-600"
-        stroke-dasharray="2 2"
+        strokeDasharray="2 2"
       />
       <line
         x1="31.3249"
@@ -30,7 +30,7 @@ export default function Functional({ className = "" }) {
         x2="7.72494"
         y2="34.3819"
         className="stroke-wall-600"
-        stroke-dasharray="2 2"
+        strokeDasharray="2 2"
       />
       <line
         x1="55.8252"
@@ -38,7 +38,7 @@ export default function Functional({ className = "" }) {
         x2="31.6828"
         y2="9.98223"
         className="stroke-wall-600"
-        stroke-dasharray="2 2"
+        strokeDasharray="2 2"
       />
       <line
         x1="31.5"
@@ -46,7 +46,7 @@ export default function Functional({ className = "" }) {
         x2="31.5"
         y2="51"
         className="stroke-wall-600"
-        stroke-dasharray="2 2"
+        strokeDasharray="2 2"
       />
       <line
         x1="31.5"
@@ -54,7 +54,7 @@ export default function Functional({ className = "" }) {
         x2="31.5"
         y2="25"
         className="stroke-wall-600"
-        stroke-dasharray="2 2"
+        strokeDasharray="2 2"
       />
       <line
         x1="24"
@@ -62,7 +62,7 @@ export default function Functional({ className = "" }) {
         x2="14"
         y2="33.5"
         className="stroke-wall-600"
-        stroke-dasharray="2 2"
+        strokeDasharray="2 2"
       />
       <line
         x1="49"
@@ -70,7 +70,7 @@ export default function Functional({ className = "" }) {
         x2="40"
         y2="33.5"
         className="stroke-wall-600"
-        stroke-dasharray="2 2"
+        strokeDasharray="2 2"
       />
       <circle cx="7.5" cy="33.1001" r="5" className="fill-white stroke-black" />
       <circle cx="31.1001" cy="9.5" r="5" className="fill-white stroke-black" />

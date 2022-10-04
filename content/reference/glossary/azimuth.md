@@ -22,7 +22,7 @@ having value. This allows for identities to function as reputation primitives,
 since such scarcity creates an economic incentive for identities to remain
 static and to keep the network friendly. Undesirable behavior – spamming,
 scamming, and malware-spreading - will generally result in a
-[censure](/reference/glossary/censure) from [galaxies](/reference/glossary/galaxy) and
+[censure](/reference/glossary/censures) from [galaxies](/reference/glossary/galaxy) and
 [stars](/reference/glossary/star), marking the bad actor.
 
 It should be noted that Azimuth isn't built just for Arvo. It can be used as an
