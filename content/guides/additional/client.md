@@ -11,7 +11,7 @@ _Flappy Bird_ is an "insanely irritating, difficult and frustrating game which c
 
 Our objective is to illustrate a minimum viable set of changes necessary to implement the task.  We should the following components when complete:
 
-1. A front end.  We will start with the FOSS app and make some adjustments so it can communicate with Urbit and display shared results.
+1. A front end.  We will start with the JS browser app and make some adjustments so it can communicate with Urbit and display shared results.
 2. A data model.  Structure and mark files will allow the components of the system to seamlessly communicate.
 3. A back end.  Urbit will serve as the database for storing and propagating scores.  Urbit will also serve the front end.
 4. A communications protocol.  The leaderboard will need to know who to watch and track as peers.  We will utilize [~paldev](https://urbit.org/ids/~paldev)'s [`%pals`](https://urbit.org/applications/~paldev/pals) contact list.
