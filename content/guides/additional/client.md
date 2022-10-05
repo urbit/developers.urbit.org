@@ -16,7 +16,7 @@ Our objective is to illustrate a minimum viable set of changes necessary to impl
 3. A back end.  Urbit will serve as the database for storing and propagating scores.  Urbit will also serve the front end.
 4. A communications protocol.  The leaderboard will need to know who to watch and track as peers.  We will utilize [~paldev](https://urbit.org/ids/~paldev)'s [`%pals`](https://urbit.org/applications/~paldev/pals) contact list.
 
-We will conceive of this app's communications structure as consisting of a _vertical_ component (which is the communication between the client in the browser and the Urbit ship as database) and a _horizontal_ component (which is the communication between Urbit peers).  Vertical communication will take place using JSON via the `%flappy-action` mark, while horizontal communication will take place using the `%flappy-update` mark.  Apps can achieve good data modularity using this separation.
+We will conceive of this app's communications structure as consisting of a _vertical_ component (which is the communication between the client in the browser and the Urbit ship as database) and a _horizontal_ component (which is the communication between Urbit peers).  Vertical communication will take place using JSON via the `%flap-action` mark, while horizontal communication will take place using the `%flap-update` mark.  Apps can achieve good data modularity using this separation.
 
 ![](vert-horz.svg)
 
