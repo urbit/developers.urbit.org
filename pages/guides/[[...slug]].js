@@ -317,8 +317,7 @@ export async function getStaticProps({ params }) {
       "weight"
     ) || null;
 
-  const markdown = JSON.stringify(Markdown.parse({ post: { content } }));
-
+  const markdown = JSON.stringify(Markdown.parse({ post: { content: String.raw`${content}` } }));
   return { props: { posts, data, markdown, params, previousPost, nextPost } };
 }
 

@@ -25,7 +25,8 @@ export async function getStaticProps({ params }) {
   if (index === undefined) {
     index = null;
   }
-  const markdown = JSON.stringify(Markdown.parse({ post }));
+  const markdown = JSON.stringify(Markdown.parse({ post: { content: String.raw`${post.content}` } }));
+
   return {
     props: { post, markdown, index },
   };

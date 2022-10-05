@@ -510,7 +510,11 @@ Given a test expression like those above, we can use the `?:` wutcol rune to dec
 
 [Piecewise mathematical functions](https://en.wikipedia.org/wiki/Piecewise) require precisely this functionality.  For instance, the Heaviside function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.
 
-<img src="https://latex.codecogs.com/svg.image?\large&space;H(x)=\begin{cases}&space;1,&space;&&space;x&space;>&space;0&space;\\&space;0,&space;&&space;x&space;\le&space;0&space;\end{cases}" title="https://latex.codecogs.com/svg.image?\large H(x):=\begin{cases} 1, & x > 0 \\ 0, & x \le 0 \end{cases}" />
+{% math block=true %}
+H(x)
+=
+\begin{cases} 1, & x > 0 \\\ 0, & x \le 0 \end{cases}
+{% /math %}
 
 <!--$$
 H(x)

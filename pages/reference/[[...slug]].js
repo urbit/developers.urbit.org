@@ -81,9 +81,8 @@ export default function GuidePage({
           <a
             className="font-semibold rounded-xl block p-2 text-wall-400 hover:text-green-400 mt-16"
             target="_blank"
-            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/reference/${
-              params.slug?.join("/") || "_index"
-            }.md`}
+            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/reference/${params.slug?.join("/") || "_index"
+              }.md`}
           >
             Edit this page on GitHub
           </a>
@@ -130,7 +129,7 @@ export async function getStaticProps({ params }) {
       "weight"
     ) || null;
 
-  const markdown = JSON.stringify(Markdown.parse({ post: { content } }));
+  const markdown = JSON.stringify(Markdown.parse({ post: { content: String.raw`${content}` } }));
 
   return { props: { posts, data, markdown, params, previousPost, nextPost } };
 }
