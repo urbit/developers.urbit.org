@@ -255,7 +255,7 @@ To act in a stateful manner, a core must mutate itself and then pin the mutated 
 
 We will use `%say` generators as a bridge concept.  We will produce some short applications that maintain state while carrying out a calculation; they still result in a single return value, but gesture at the big-picture approach to maintaining state in persistent agents.
 
-Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` cenhep which you've already seen:
+Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` centis which you've already seen:
 
 - [`=.` tisdot](/reference/hoon/rune/tis#-tisdot) is used to change a leg in the subject.
 - [`=~` tissig](/reference/hoon/rune/tis#-tissig) composes many expressions together serially.
@@ -348,7 +348,7 @@ For instance, a network service call may take a while or may fail.  How should t
 
 We have some more tools available for managing deferred or chained computations, in addition to `=~` tissig and `=*` tistar:
 
-- [`=^` tisket](/reference/hoon/rune/tis#-tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` cenhep.  (Used in Gall agents frequently.)
+- [`=^` tisket](/reference/hoon/rune/tis#-tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` centis.  (Used in Gall agents frequently.)
 - [`=*` tistar](/reference/hoon/rune/tis#-tistar) defers an expression (rather like a macro).
 - [`;<` micgal](/reference/hoon/rune/mic#-micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](/reference/arvo/threads/overview).)
 - [`;~` micsig](/reference/hoon/rune/mic#-micsig) produces a pipeline, a way of piping the output of one gate into another in a chain.  (This is particularly helpful when parsing text.)
