@@ -121,7 +121,7 @@ Save the above code as a file in `ted/mythread.hoon` and `|commit` it. Run it wi
 [~ 'foo']
 ```
 
-**NOTE:** The dojo wraps arguments in a unit so that's why it's `[~ 'foo']` rather than just `foo`.
+**NOTE:** The dojo wraps arguments in a unit so that's why it's `[~ 'foo']` rather than just `'foo'`.
 
 ## Analysis
 

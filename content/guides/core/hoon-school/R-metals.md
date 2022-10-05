@@ -680,7 +680,7 @@ If `i` and `n` are equal, the trap will produce `~`.  If not, `s` is called and 
   ==
 ```
 
-The final arm in our core is `++fib`, which is a `++stream` of `@ud` and therefore is a `%lead` core.  Its subject contains `p` and `q`, which will not be accessible outside of this trap, but because of the `%=` cenhep will be retained in their modified form in the product trap.  The product of the trap is a pair (`:-` colhep) of an `@ud` and the trap that will produce the next `@ud` in the Fibonacci series.
+The final arm in our core is `++fib`, which is a `++stream` of `@ud` and therefore is a `%lead` core.  Its subject contains `p` and `q`, which will not be accessible outside of this trap, but because of the `%=` centis will be retained in their modified form in the product trap.  The product of the trap is a pair (`:-` colhep) of an `@ud` and the trap that will produce the next `@ud` in the Fibonacci series.
 
 ```hoon
 =<  (to-list (take fib 10))
