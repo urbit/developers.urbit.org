@@ -70,7 +70,12 @@ The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a de
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Integration_num_trapezes_notation.svg/573px-Integration_num_trapezes_notation.svg.png)
 
-<img src="https://latex.codecogs.com/svg.image?\large&space;\int_a^b&space;f(x)&space;\,&space;dx&space;\approx&space;\sum_{k=1}^N&space;\frac{f(x_{k-1})&space;&plus;&space;f(x_k)}{2}&space;\Delta&space;x_k&space;=&space;\tfrac{\Delta&space;x}{2}\left(f(x_0)&space;&plus;&space;2f(x_1)&plus;2f(x_2)&plus;&space;2f(x_3)&plus;2f(x_4)&plus;\cdots&plus;2f(x_{N-1})&space;&plus;&space;f(x_N)\right)" title="https://latex.codecogs.com/svg.image?\large \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)" />
+<!-- equation too long to fit on page  so have to wrap with a div to make text smaller to compress it -->
+{% div class="text-xs" %}
+{% math block=true %}
+\int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)
+{% /math %}
+{% /div %}
 
 <!--
 \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)

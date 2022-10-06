@@ -163,7 +163,16 @@ The boxcar function is a piecewise mathematical function which is equal to zero 
 
 - Compose a gate which implements the boxcar function,
 
-    <img src="https://latex.codecogs.com/svg.image?\large&space;\text{boxcar}(x):=\begin{pmatrix}1,&space;&&space;10&space;\leq&space;x&space;<&space;20&space;\\0,&space;&&space;\text{otherwise}&space;\\\end{pmatrix}" title="https://latex.codecogs.com/svg.image?\large \text{boxcar}(x):=\begin{matrix}1, & 10 \leq x < 20 \\0, & \text{otherwise} \\\end{matrix}" />
+    {% math block=true %}
+    \text{boxcar}(x)
+    :=
+    \left(
+    \begin{matrix}
+    1, & 10 \leq x < 20 \\\\
+    0, & \text{otherwise} \\\\
+    \end{matrix}
+    \right)
+    {% /math %}
 
     <!--
     $$
