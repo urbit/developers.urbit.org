@@ -45,15 +45,15 @@ A number with a fractional part is called a “floating-point number” in compu
 
 Consider for a moment how you would represent a regular decimal fraction if you only had integers available.  You would probably adopt one of three strategies:
 
-1. [**Rational numbers**](https://en.wikipedia.org/wiki/Fraction).  Track whole-number ratios like fractions.  Thus 1.25 = 5/4, thence the pair `(5, 4)`.  Two numbers have to be tracked:  the numerator and the denominator.
-2. [**Fixed-point**](https://en.wikipedia.org/wiki/Fixed-point_arithmetic).  Track the value in smaller fixed units (such as thousandths).  By defining the base unit to be ¹/₁₀₀₀, 1.25 may be written 1250.  One number needs to be tracked:  the value in terms of the scale.  (This is equivalent to rational numbers with only a fixed denominator allowed.)
-3. [**Floating-point**](https://en.wikipedia.org/wiki/Floating-point_arithmetic).  Track the value at adjustable scale.  In this case, one needs to represent 1.25 as something like 125 × 10⁻².  Two numbers have to be tracked:  the significand (125) and the exponent (-2).
+1. [**Rational numbers**](https://en.wikipedia.org/wiki/Fraction).  Track whole-number ratios like fractions.  Thus {% math %}1.25 = \frac{5}{4}{% /math %}, thence the pair `(5, 4)`.  Two numbers have to be tracked:  the numerator and the denominator.
+2. [**Fixed-point**](https://en.wikipedia.org/wiki/Fixed-point_arithmetic).  Track the value in smaller fixed units (such as thousandths).  By defining the base unit to be {% math %}\frac{1}{1000}{% /math %} , {% math %}1.25{% /math %} may be written {% math %}1250{% /math %}.  One number needs to be tracked:  the value in terms of the scale.  (This is equivalent to rational numbers with only a fixed denominator allowed.)
+3. [**Floating-point**](https://en.wikipedia.org/wiki/Floating-point_arithmetic).  Track the value at adjustable scale.  In this case, one needs to represent {% math %}1.25{% /math %} as something like {% math %}125 \times 10^{-2}{% /math %}.  Two numbers have to be tracked:  the significand ({% math %}125{% /math %}) and the exponent ({% math %}-2{% /math %}).
 
 Most systems use floating-point mathematics to solve this problem.  For instance, single-precision floating-point mathematics designate one bit for the sign, eight bits for the exponent (which has 127 subtracted from it), and twenty-three bits for the significand.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/640px-Float_example.svg.png)
 
-This number, `0b11.1110.0010.0000.0000.0000.0000.0000`, is converted to decimal as (-1)⁰ × 2⁽¹²⁴⁻¹²⁷⁾ × 1.25 = 2⁻³ × 1.25 = 0.15625.
+This number, `0b11.1110.0010.0000.0000.0000.0000.0000`, is converted to decimal as {% math %}(-1)^0 \times 2^{(124 - 127)} \times 1.25 = 2^{-3} \times 1.25 = 0.15625{% /math %}.
 
 (If you want to explore the bitwise representation of values, [this tool](https://evanw.github.io/float-toy/) allows you to tweak values directly and see the results.)
 
@@ -92,7 +92,7 @@ However, as you can see here, the conversion is not “correct” for the percei
 0b11.1111.1000.0000.0000.0000.0000.0000
 ```
 
-If you refer back to the 32-bit floating-point example above, you'll see why:  to represent one exactly, we have to use 1.0 = (-1)⁰ × 2⁽¹²⁷⁻¹²⁷⁾ × 1 and thus `0b11.1111.1000.0000.0000.0000.0000.0000`.
+If you refer back to the 32-bit floating-point example above, you'll see why:  to represent one exactly, we have to use {% math %}1.0 = (-1)^0 \times 2^{{127 - 127}} \times 1{% /math %} and thus `0b11.1111.1000.0000.0000.0000.0000.0000`.
 
 So to carry out this conversion from `@ud` to `@rs` correctly, we should use the [`++sun:rs`](/reference/hoon/stdlib/3b#sunrs) arm.
 
@@ -169,7 +169,9 @@ The `++equ:rs` arm checks for complete equality of two values.  The downside of 
 
 - Produce an arm which check for two values to be close to each other by an absolute amount.  It should accept three values:  `a`, `b`, and `atol`.  It should return the result of the following comparison:
 
-    <img src="https://latex.codecogs.com/svg.image?\large&space;|a-b|&space;\leq&space;\texttt{atol}" title="https://latex.codecogs.com/svg.image?\large |a-b| \leq \texttt{atol}" />
+    {% math block=true %}
+    |a-b| \leq \texttt{atol}
+    {% /math %}
 
 #### Tutorial:  Length Converter
 
@@ -337,8 +339,8 @@ Just as there is a door for `@rs` functions, there is a Hoon standard library do
 
 Similar to floating-point representations, [signed integer](https://en.wikipedia.org/wiki/Signed_number_representations) representations use an internal bitwise convention to indicate whether a number should be treated as having a negative sign in front of the magnitude or not.  There are several ways to represent signed integers:
 
-1. [**Sign-magnitude**](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude).  Use the first bit in a fixed-bit-width representation to indicate whether the whole should be multiplied by -1, e.g. `0010.1011` for 43₁₀ and `1010.1011` for -43₁₀.  (This is similar to the floating-point solution.)
-2. [**One's complement**](https://en.wikipedia.org/wiki/Ones%27_complement).  Use the bitwise `NOT` operation to represent the value, e.g. `0010.1011` for 43₁₀ and `1101.0100` for -43₁₀.  This has the advantage that arithmetic operations are trivial, e.g. 43₁₀-41₁₀ = `0010.1011` + `1101.0110` = `1.0000.0001`, end-around carry the overflow to yield `0000.0010` = 2.  (This is commonly used in hardware.)
+1. [**Sign-magnitude**](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude).  Use the first bit in a fixed-bit-width representation to indicate whether the whole should be multiplied by {% math %}-1{% /math %}, e.g. `0010.1011` for {% math %}43_{10}{% /math %} and `1010.1011` for {% math %}-43_{10}{% /math %}.  (This is similar to the floating-point solution.)
+2. [**One's complement**](https://en.wikipedia.org/wiki/Ones%27_complement).  Use the bitwise `NOT` operation to represent the value, e.g. `0010.1011` for {% math %}43_{10}{% /math %} and `1101.0100` for {% math %}-43_{10}{% /math %}.  This has the advantage that arithmetic operations are trivial, e.g. {% math %}43_{10} - 41_{10}{% /math %} = `0010.1011` + `1101.0110` = `1.0000.0001`, end-around carry the overflow to yield `0000.0010` = 2.  (This is commonly used in hardware.)
 3. [**Offset binary**](https://en.wikipedia.org/wiki/Offset_binary).  This represents a number normally in binary _except_ that it counts from a point other than zero, like `-256`.
 4. [**ZigZag**](https://developers.google.com/protocol-buffers/docs/encoding?hl=en#signed-ints).  Positive signed integers correspond to even atoms of twice their absolute value, and negative signed integers correspond to odd atoms of twice their absolute value minus one.
 
@@ -423,8 +425,11 @@ The Hoon standard library at the current time omits many [transcendental functio
 
 - Using both of the above, produce the `++sine` function, defined by
 
-    <img src="https://latex.codecogs.com/svg.image?\large&space;\sin(x)&space;=&space;\sum_{n=0}^\infty&space;\frac{(-1)^n}{(2n&plus;1)!}x^{2n&plus;1}=&space;x&space;-&space;\frac{x^3}{3!}&space;&plus;&space;\frac{x^5}{5!}&space;-&space;\frac{x^7}{7!}&space;&plus;&space;\cdots" title="https://latex.codecogs.com/svg.image?\large \sin(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots" />
-    <br>
+    {% math block=true %}
+    \sin(x)
+    = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} x^{2n+1}
+    = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
+    {% /math %}
 
     <!--
     \sin(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
@@ -448,8 +453,11 @@ The Hoon standard library at the current time omits many [transcendental functio
 
 - Implement `++cosine`.
 
-    <img src="https://latex.codecogs.com/svg.image?\large&space;\cos(x)&space;=&space;\sum_{n=0}^\infty&space;\frac{(-1)^n}{(2n)!}x^{2n}&space;=&space;1&space;-&space;\frac{x^2}{2!}&space;&plus;&space;\frac{x^4}{4!}&space;-&space;\frac{x^6}{6!}&space;&plus;&space;\cdots&space;\\[8pt]&space;" title="https://latex.codecogs.com/svg.image?\large \cos(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots \\[8pt] " />
-    <br>
+    {% math block=true %}
+    \cos(x)
+    = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}
+    = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
+    {% /math %}
 
     <!--
     \cos(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
@@ -457,8 +465,9 @@ The Hoon standard library at the current time omits many [transcendental functio
 
 - Implement `++tangent`.
 
-    <img src="https://latex.codecogs.com/svg.image?\large&space;\tan(x)&space;=&space;\frac{\sin(x)}{\cos(x)}" title="https://latex.codecogs.com/svg.image?\large \tan(x) = \frac{\sin(x)}{\cos(x)}" />
-    <br>
+    {% math block=true %}
+    \tan(x) = \frac{\sin(x)}{\cos(x)}
+    {% /math %}
 
     <!--
     \tan(x) = \frac{\sin(x)}{\cos(x)}
@@ -466,7 +475,9 @@ The Hoon standard library at the current time omits many [transcendental functio
 
 - As a stretch exercise, look up definitions for [exp (e^x)](https://en.wikipedia.org/wiki/Exponentiation#The_exponential_function) and [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm), and implement these.  You can implement a general-purpose exponentiation function using the formula
 
-    <img src="https://latex.codecogs.com/svg.image?\large&space;x^n&space;=&space;\exp(n&space;\,\text{ln}\,&space;x)" title="https://latex.codecogs.com/svg.image?\large x^n = \exp(n \,\text{ln}\, x)" />
+    {% math block=true %}
+    x^n = \exp(n \\, \text{ln} \\, x)
+    {% /math %}
 
     <!--
     x^n = \exp(n \,\text{ln}\, x)
@@ -476,9 +487,12 @@ The Hoon standard library at the current time omits many [transcendental functio
 
 ##  Exercise:  Calculate the Fibonacci Sequence
 
-The Binet expression gives the 𝑛^th^ Fibonacci number.
+The Binet expression gives the {% math %}n^\text{th}{% /math %} Fibonacci number.
 
-<img src="https://latex.codecogs.com/svg.image?\large&space;F_n&space;=&space;\frac{\varphi^n-(-\varphi)^{-n}}{\sqrt&space;5}&space;=&space;\frac{\varphi^n-(-\varphi)^{-n}}{2&space;\varphi&space;-&space;1}" title="https://latex.codecogs.com/svg.image?\large F_n = \frac{\varphi^n-(-\varphi)^{-n}}{\sqrt 5} = \frac{\varphi^n-(-\varphi)^{-n}}{2 \varphi - 1}" />
+{% math block=true %}
+F_n = \frac{\varphi^n - (-\varphi)^{-n}}{\sqrt 5}
+= \frac{\varphi^n - (-\varphi)^{-n}}{2 \varphi - 1}
+{% /math %}
 
 <!--
 F_n = \frac{\varphi^n-(-\varphi)^{-n}}{\sqrt 5} = \frac{\varphi^n-(-\varphi)^{-n}}{2 \varphi - 1}
@@ -664,9 +678,9 @@ Given a source of entropy to seed a random number generator, one can then use th
 
 - Produce a random stream of bits using the linear congruential random number generator.
 
-The linear congruential random number generator produces a stream of random bits with a repetition period of 2³¹.  Numericist John Cook [explains how LCGs work](https://www.johndcook.com/blog/2017/07/05/simple-random-number-generator/):
+The linear congruential random number generator produces a stream of random bits with a repetition period of {% math %}2^{31}{% /math %}.  Numericist John Cook [explains how LCGs work](https://www.johndcook.com/blog/2017/07/05/simple-random-number-generator/):
 
-> The linear congruential generator used here starts with an arbitrary seed, then at each step produces a new number by multiplying the previous number by a constant and taking the remainder by 2³¹-1.
+> The linear congruential generator used here starts with an arbitrary seed, then at each step produces a new number by multiplying the previous number by a constant and taking the remainder by {% math %}2^{31} - 1{% /math %}.
 
 **`/gen/lcg.hoon`**
 
@@ -746,7 +760,9 @@ One way to get from a uniform random number to a normal random number is [to use
 
 This is an approximation which is accurate to one decimal place:
 
-<img src="https://latex.codecogs.com/svg.image?\large&space;Z&space;=&space;\frac{U^{0.135}-(1-U)^{0.135}}{0.1975}" title="https://latex.codecogs.com/svg.image?\large Z = \frac{U^{0.135}-(1-U)^{0.135}}{0.1975}" />
+{% math block=true %}
+Z = \frac{U^{0.135} - (1-U)^{0.135}}{0.1975}
+{% /math %}
 
 where
 
@@ -758,7 +774,7 @@ Z = \frac{U^{0.135}-(1-U)^{0.135}}{0.1975}
 $$
 -->
 
-To calculate an arbitrary power of a floating-point number, we require a few transcendental functions, in particular the natural logarithm and exponentiation of base _e_.  The following helper core contains relatively inefficient but clear implementations of standard numerical methods.
+To calculate an arbitrary power of a floating-point number, we require a few transcendental functions, in particular the natural logarithm and exponentiation of base {% math %}e{% /math %}.  The following helper core contains relatively inefficient but clear implementations of standard numerical methods.
 
 **`/gen/normal.hoon`**
 
@@ -854,19 +870,21 @@ To calculate an arbitrary power of a floating-point number, we require a few tra
 
 A more complicated formula uses several constants to improve the accuracy significantly:
 
-<img src="https://latex.codecogs.com/svg.image?\large&space;Z&space;=&space;\text{sgn}\left(U-\frac{1}{2}\right)&space;\left(&space;t&space;-&space;\frac{c_{0}&plus;c_{1}&space;t&plus;c_{2}&space;t^{2}}{1&plus;d_{1}&space;t&plus;d_{2}&space;t^{2}&space;&plus;&space;d_{3}&space;t^{3}}&space;\right)" title="https://latex.codecogs.com/svg.image?\large Z = \text{sgn}\left(U-\frac{1}{2}\right) \left( t - \frac{c_{0}+c_{1} t+c_{2} t^{2}}{1+d_{1} t+d_{2} t^{2} + d_{3} t^{3}} \right)" />
+{% math block=true %}
+Z = \text{sgn}\left(U-\frac{1}{2}\right) \left( t - \frac{c_{0}+c_{1} t+c_{2} t^{2}}{1+d_{1} t+d_{2} t^{2} + d_{3} t^{3}} \right)
+{% /math %}
 
 where
 
 - sgn is the signum or sign function;
-- 𝑡 is √−𝗅𝗇[𝗆𝗂𝗇(𝑈, 𝟣−𝑈)²]; and
+- {% math %}t{% /math %} is {% math %}\sqrt{-\ln[\min(U, 1-U)^2]}{% /math %}; and
 - the constants are:
-  - 𝑐₀ = 2.515517
-  - 𝑐₁ = 0.802853
-  - 𝑐₂ = 0.010328
-  - 𝑑₁ = 1.532788
-  - 𝑑₂ = 0.189268
-  - 𝑑₃ = 0.001308
+  - {% math %}c_0 = 2.515517{% /math %}
+  - {% math %}c_1 = 0.802853{% /math %}
+  - {% math %}c_2 = 0.010328{% /math %}
+  - {% math %}d_1 = 1.532788{% /math %}
+  - {% math %}d_2 = 0.189268{% /math %}
+  - {% math %}d_3 = 0.001308{% /math %}
 
 <!--
 $$

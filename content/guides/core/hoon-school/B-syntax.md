@@ -524,7 +524,11 @@ $$-->
 
 _However_, we don't yet know how to represent a negative value!  All of the decimal values we have used thus far are unsigned (non-negative) values, `@ud`.  For now, the easiest solution is to just translate the Heaviside function so it activates at a different value:
 
-<img src="https://latex.codecogs.com/svg.image?\large&space;H_{10}(x)=\begin{cases}&space;1,&space;&&space;x&space;>&space;10&space;\\&space;0,&space;&&space;x&space;\le&space;10&space;\end{cases}" title="https://latex.codecogs.com/svg.image?\large H_{10}(x):=\begin{cases} 1, & x > 10 \\ 0, & x \le 10 \end{cases}" />
+{% math block=true %}
+H_{10}(x)
+=
+\begin{cases} 1, & x > 10 \\\ 0, & x \le 10 \end{cases}
+{% /math %}
 
 <!--$$
 H_{10}(x)
@@ -547,9 +551,13 @@ Carefully map how the runes in that statement relate to each other, and notice h
 
 ##  Exercise:  “Absolute” Value (Around Ten)
 
-Implement a version of the absolute value function, |𝑥|, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this |𝑥|₁₀.)
+Implement a version of the absolute value function, {% math %}|x|{% /math %}, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this {% math %}|x|_{10}{% /math %}.)
 
-<img src="https://latex.codecogs.com/svg.image?|x|_{10}=\begin{cases}&space;x-10,&space;&&space;x&space;>&space;10&space;\\&space;0,&space;&&space;10-x&space;\le&space;10&space;\end{cases}" title="https://latex.codecogs.com/svg.image?|x|_{10}=\begin{cases} x-10, & x > 10 \\ 0, & 10-x \le 10 \end{cases}" />
+{% math block=true %}
+|x|_{10}
+=
+\begin{cases} x-10, & x > 10 \\\ 0, & 10-x \le 10 \end{cases}
+{% /math %}
 
 <!--$$
 |x|_{10}
