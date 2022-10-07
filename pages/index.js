@@ -224,13 +224,12 @@ export default function Home({ search, posts }) {
 
           <Section narrow>
             <div className="measure">
-              <h3 className="pb-2">[battery payload]</h3>
+              <h2 className="pb-2">[battery payload]</h2>
               <p className="pb-6">The Urbit Developer Newsletter</p>
             </div>
             <NewsletterSignup />
             <p className="pt-6">
-              Get monthly developer news on releases, applications, events, and
-              more.
+              Get monthly developer news on releases, applications, events, and&nbsp;more.
             </p>
           </Section>
         </SingleColumn>
