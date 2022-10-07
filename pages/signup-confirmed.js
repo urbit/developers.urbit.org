@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export default function NotFound(props) {
   const post = {
-    title: "Sign up Confirmation",
+    title: "Sign up Confirmed",
   };
   return (
     <Container>
