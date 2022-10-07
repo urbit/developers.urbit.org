@@ -77,9 +77,9 @@ The fields are as follows:
   initially, but once we upload the front-end files it will be updated to the
   hash of those files automatically. Note that it's also possible to distribute
   front-end files from a separate web server. In that case, you'd use
-  `glob-http` rather than `glob-ames`. The [Glob section of the distribution
-  guide](/reference/additional/dist/glob) covers this alternative approach in more
-  detail.
+  `glob-http` rather than `glob-ames`. The [Glob
+  documentation](/reference/additional/dist/glob) covers this alternative
+  approach in more detail.
 
 Our files should now look like this:
 
@@ -221,5 +221,5 @@ from our ship. To do that, we just run the following command in the dojo:
 - [Glob documentation](/reference/additional/dist/glob) - Comprehensive documentation
   of handling front-end files.
 
-- [Desk publishing guide](/guides/additional/dist/guide) - A step-by-step guide to
+- [Desk publishing guide](/guides/additional/software-distribution) - A step-by-step guide to
   creating and publishing a desk.

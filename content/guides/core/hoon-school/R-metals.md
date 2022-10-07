@@ -70,7 +70,12 @@ The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a de
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Integration_num_trapezes_notation.svg/573px-Integration_num_trapezes_notation.svg.png)
 
-<img src="https://latex.codecogs.com/svg.image?\large&space;\int_a^b&space;f(x)&space;\,&space;dx&space;\approx&space;\sum_{k=1}^N&space;\frac{f(x_{k-1})&space;&plus;&space;f(x_k)}{2}&space;\Delta&space;x_k&space;=&space;\tfrac{\Delta&space;x}{2}\left(f(x_0)&space;&plus;&space;2f(x_1)&plus;2f(x_2)&plus;&space;2f(x_3)&plus;2f(x_4)&plus;\cdots&plus;2f(x_{N-1})&space;&plus;&space;f(x_N)\right)" title="https://latex.codecogs.com/svg.image?\large \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)" />
+<!-- equation too long to fit on page  so have to wrap with a div to make text smaller to compress it -->
+{% div class="text-xs" %}
+{% math block=true %}
+\int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)
+{% /math %}
+{% /div %}
 
 <!--
 \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)
@@ -115,10 +120,10 @@ Line by line:
 This declares a wet gate which accepts a `unit`.
 
 ```hoon
-?~  a  ~<(%mean.'need' !!)
+?~  a  ~>(%mean.'need' !!)
 ```
 
-If `a` is empty, `~`, then the `unit` cannot be unwrapped.  Crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap), but use [`~<` siggal](/reference/hoon/rune/sig#-siggal) to hint to the runtime interpreter how to handle the crash.
+If `a` is empty, `~`, then the `unit` cannot be unwrapped.  Crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap), but use [`~>` siggar](/reference/hoon/rune/sig#-siggar) to hint to the runtime interpreter how to handle the crash.
 
 ```hoon
 u.a
@@ -167,7 +172,7 @@ nest-fail
 
 ### Drying Out a Gate
 
-Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](https://developers.urbit.org/reference/hoon/stdlib/2b#bake):
+Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](/reference/hoon/stdlib/2b#bake):
 
 ```hoon
 > ((curr reel add) `(list @)`[1 2 3 4 ~])
@@ -241,7 +246,7 @@ ford: %ride failed to compute type:
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
-The [`^&` ketpam](/reference/hoon/rune/ket#ketpam) rune converts a core to a `%zinc` covariant core.
+The [`^&` ketpam](/reference/hoon/rune/ket#-ketpam) rune converts a core to a `%zinc` covariant core.
 
 ### `%iron` Contravariance
 
@@ -318,7 +323,7 @@ Two more examples:
 
 ```
 > ^+(=>([1 2] |=(@ 15)) =>([123 456] |=(@ 16)))
-<1.xqz {@ @ud @ud}>
+<1.xqz [@ @ud @ud]>
 
 > ^+(=>([1 2] |=(@ 15)) =>([123 456 789] |=(@ 16)))
 nest-fail
@@ -368,7 +373,7 @@ There's a simpler way to define an iron sample. Revise the first line of `/gen/g
 (add b 20)
 ```
 
-If you test it, you'll find that the generator behaves the same as it did before the edits.  The [`$-` buchep](/reference/hoon/rune/buc#-buchep) rune is used to create an `%iron` gate structure, i.e., an `%iron` gate type.  The first expression defines the desired sample type, and the second subexpression defines the gate's desired output type.
+If you test it, you'll find that the generator behaves the same as it did before the edits.  The [`$-` buchep](/reference/hoon/rune/buc#--buchep) rune is used to create an `%iron` gate structure, i.e., an `%iron` gate type.  The first expression defines the desired sample type, and the second subexpression defines the gate's desired output type.
 
 The sample type of an `%iron` gate is contravariant.  This means that, when doing a cast with some `%iron` gate, the desired gate must have either the same sample type or a superset.
 
@@ -462,7 +467,7 @@ If you really want to look at the sample you can check `+6` of `iron-gate`:
 
 As with `%iron` cores, the context of `%zinc` cores is opaque—they cannot be written-to or read-from.  The sample of a `%zinc` core is read-only.  That means, among other things, that `%zinc` cores cannot be used for function calls.  Function calls in Hoon involve a change to the sample (the default sample is replaced with the argument value), which is disallowed as type-unsafe for `%zinc` cores.
 
-We can illustrate the casting properties of `%zinc` cores with a few examples.  The [`^&` ketpam](/reference/hoon/rune/ket#ketpam) rune is used to convert `%gold` cores to `%zinc`:
+We can illustrate the casting properties of `%zinc` cores with a few examples.  The [`^&` ketpam](/reference/hoon/rune/ket#-ketpam) rune is used to convert `%gold` cores to `%zinc`:
 
 ```hoon
 > ^+(^&(|=(^ 15)) |=(^ 16))
@@ -680,7 +685,7 @@ If `i` and `n` are equal, the trap will produce `~`.  If not, `s` is called and 
   ==
 ```
 
-The final arm in our core is `++fib`, which is a `++stream` of `@ud` and therefore is a `%lead` core.  Its subject contains `p` and `q`, which will not be accessible outside of this trap, but because of the `%=` cenhep will be retained in their modified form in the product trap.  The product of the trap is a pair (`:-` colhep) of an `@ud` and the trap that will produce the next `@ud` in the Fibonacci series.
+The final arm in our core is `++fib`, which is a `++stream` of `@ud` and therefore is a `%lead` core.  Its subject contains `p` and `q`, which will not be accessible outside of this trap, but because of the `%=` centis will be retained in their modified form in the product trap.  The product of the trap is a pair (`:-` colhep) of an `@ud` and the trap that will produce the next `@ud` in the Fibonacci series.
 
 ```hoon
 =<  (to-list (take fib 10))

@@ -48,11 +48,10 @@ A scry with a `care` of `%d` will return a `(set desk)` of the `desk`s that exis
 
 Example:
 
-{% customFence %}
-
-\> .^((set desk) %cd %)  
-&#x7B;&#x25;bitcoin %base %landscape %webterm %garden}
-{% /customFence %}
+```
+> .^((set desk) %cd %)  
+{%bitcoin %base %landscape %webterm %garden %kids}
+```
 
 ## %e - Static mark core.
 

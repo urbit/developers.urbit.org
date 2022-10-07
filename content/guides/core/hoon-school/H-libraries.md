@@ -15,7 +15,7 @@ If you have only built generators, you will soon or later become frustrated with
 
 A generator gives us on-demand access to code, but it is helpful to load and use code from files while we work in the Dojo.
 
-A conventional library import with [`/+` faslus](https://developers.urbit.org/reference/hoon/rune/fas#-faslus) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.  The first line of many generators will include an import line like this:
+A conventional library import with [`/+` faslus](/reference/hoon/rune/fas#-faslus) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.  The first line of many generators will include an import line like this:
 
 ```hoon {% copy=true %}
 /+  number-to-words
@@ -208,7 +208,7 @@ We add a bunted `deck`, then encounter a very interesting statement that you hav
 
 With `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with [`++lent`](/reference/hoon/stdlib/2b#lent).
 
-`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a cell of `shuffled` and the one card left in `unshuffled`. We use the [`:_` colcab](/reference/hoon/rune/col#-colcab) rune here, so that the “heavier” expression is at the bottom.
+`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a cell of `shuffled` and the one card left in `unshuffled`. We use the [`:_` colcab](/reference/hoon/rune/col#_-colcab) rune here, so that the “heavier” expression is at the bottom.
 
 If the above conditional evaluates to `%.n` false, we need to do a little work. [`=^` tisket](/reference/hoon/rune/tis#-tisket) is a rune that pins the head of a pair and changes a leg in the subject with the tail.  It's useful for interacting with the `og` core arms, as many of them produce a pair of a random numbers and the next state of the core.  We're going to put the random number in the subject with the face `index` and change `random` to be the next core.
 
@@ -438,7 +438,7 @@ In brief, each mark has a `++grab` arm to convert from other types to it; a `++g
 
 ##  Other Ford Runes
 
-The `++ford` arm of Clay builds Hoon code.  It provides [a number of runes](https://developers.urbit.org/reference/hoon/rune/fas) which allow fine-grained control over building and importing files.  These must be in the specific order at the top of any file.  (They also don't work in Dojo; see `-build-file` for a workaround.)  The runes include:
+The `++ford` arm of Clay builds Hoon code.  It provides [a number of runes](/reference/hoon/rune/fas) which allow fine-grained control over building and importing files.  These must be in the specific order at the top of any file.  (They also don't work in Dojo; see `-build-file` for a workaround.)  The runes include:
 
 - `/-` fashep imports a structure file from `/sur`.  Structure files are a way to share common data structures (across agents, for instance).
 - `/+` faslus imports a library file from `/lib`.

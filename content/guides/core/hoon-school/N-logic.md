@@ -41,7 +41,7 @@ The key conditional decision-making rune is [`?:` wutcol](/reference/hoon/rune/w
 
 There are also two long-form decision-making runes, which we will call [_switch statements_](https://en.wikipedia.org/wiki/Switch_statement) by analogy with languages like C.
 
-- [`?-` wuthep](/reference/hoon/rune/wut#-wuthep) lets you choose between several possibilities, as with a type union.  Every case must be handled and no case can be unreachable.
+- [`?-` wuthep](/reference/hoon/rune/wut#--wuthep) lets you choose between several possibilities, as with a type union.  Every case must be handled and no case can be unreachable.
 
     Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` wuthep switches over term unions can make it look like the expression is branching on the value.  It's actually branching on the _type_.  These are almost exclusively used with term type unions.
 
@@ -69,12 +69,14 @@ There are also two long-form decision-making runes, which we will call [_switch 
 
 Mathematical logic allows the collocation of propositions to determine other propositions.  In computer science, we use this functionality to determine which part of an expression is evaluated.  We can combine logical statements pairwise:
 
-- [`?&` wutpam](/reference/hoon/rune/wut#wutpam), irregularly `&()`, is a logical `AND` _p_ ∧ _q_ over loobean values, e.g. both terms must be true.
+- [`?&` wutpam](/reference/hoon/rune/wut#-wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
 
-    | `AND` | `%.y` | `%.n` |
-    |-------|-------|-------|
-    | `%.y` | `%.y` | `%.n` |
-    | `%.n` | `%.n` | `%.n` |
+    |             `AND`            | `%.y` | `%.n` |
+    |------------------------------|-------|-------|
+    | `%.y`{% class="font-bold" %} | `%.y` | `%.n` |
+    | `%.n`{% class="font-bold" %} | `%.n` | `%.n` |
+
+    <br>
 
     ```hoon
     > =/  a  5
@@ -82,12 +84,14 @@ Mathematical logic allows the collocation of propositions to determine other pro
     %.y
     ```
 
-- [`?|` wutbar](/reference/hoon/rune/wut#-wutbar), irregularly `|()`, is a logical `OR` _p_ ∨ _q_  over loobean values, e.g. either term may be true.
+- [`?|` wutbar](/reference/hoon/rune/wut#-wutbar), irregularly `|()`, is a logical `OR` (i.e. _p_ ∨ _q_)  over loobean values, e.g. either term may be true.
 
-    | `OR`  | `%.y` | `%.n` |
-    |-------|-------|-------|
-    | `%.y` | `%.y` | `%.y` |
-    | `%.n` | `%.y` | `%.n` |
+    |             `OR`             | `%.y` | `%.n` |
+    |------------------------------|-------|-------|
+    | `%.y`{% class="font-bold" %} | `%.y` | `%.y` |
+    | `%.n`{% class="font-bold" %} | `%.y` | `%.n` |
+
+    <br>
 
     ```hoon
     > =/  a  5
@@ -95,12 +99,14 @@ Mathematical logic allows the collocation of propositions to determine other pro
     %.y
     ```
 
-- [`?!` wutzap](/reference/hoon/rune/wut#-wutzap), irregularly `!`, is a logical `NOT` ¬_p_.  Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
+- [`?!` wutzap](/reference/hoon/rune/wut#-wutzap), irregularly `!`, is a logical `NOT` (i.e. ¬*p*).  Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
 
-    |       | `NOT` |
-    |-------|-------|
-    | `%.y` | `%.n` |
-    | `%.n` | `%.y` |
+    |                              | `NOT` |
+    |------------------------------|-------|
+    | `%.y`{% class="font-bold" %} | `%.n` |
+    | `%.n`{% class="font-bold" %} | `%.y` |
+
+    <br>
 
     ```hoon
     > !%.y
@@ -114,12 +120,12 @@ From these primitive operators, you can build other logical statements at need.
 
 ##  Exercise:  Design an `XOR` Function
 
-The logical operation `XOR` _p_⊕_q_ exclusive disjunction yields true if one but not both operands are true.  `XOR` can be calculated by (_p_ ∧ ¬_q_) ∨ (¬_p_ ∧ _q_).
+The logical operation `XOR` (i.e. *p*⊕*q* ; exclusive disjunction)  yields true if one but not both operands are true.  `XOR` can be calculated by (_p_ ∧ ¬*q*) ∨ (¬*p* ∧ _q_).
 
-| `XOR` | `%.y` | `%.n` |
-|-------|-------|-------|
-| `%.y` | `%.n` | `%.y` |
-| `%.n` | `%.y` | `%.n` |
+|             `XOR`            | `%.y` | `%.n` |
+|------------------------------|-------|-------|
+| `%.y`{% class="font-bold" %} | `%.n` | `%.y` |
+| `%.n`{% class="font-bold" %} | `%.y` | `%.n` |
 
 - Implement `XOR` as a gate in Hoon.
 
@@ -131,23 +137,23 @@ The logical operation `XOR` _p_⊕_q_ exclusive disjunction yields true if one b
 
 ##  Exercise:  Design a `NAND` Function
 
-The logical operation `NAND` _p_ ↑ _q_ produces false if both operands are true.  `NAND` can be calculated by ¬(_p_ ∧ _q_).
+The logical operation `NAND` (i.e. _p_ ↑ _q_) produces false if both operands are true.  `NAND` can be calculated by ¬(_p_ ∧ _q_).
 
-| `NAND` | `%.y` | `%.n` |
-|--------|-------|-------|
-| `%.y`  | `%.n` | `%.y` |
-| `%.n`  | `%.y` | `%.y` |
+|             `NAND`            | `%.y` | `%.n` |
+|-------------------------------|-------|-------|
+| `%.y`{% class="font-bold" %}  | `%.n` | `%.y` |
+| `%.n`{% class="font-bold" %}  | `%.y` | `%.y` |
 
 - Implement `NAND` as a gate in Hoon.
 
 ##  Exercise:  Design a `NOR` Function
 
-The logical operation `NOR` _p_ ↓ _q_ produces true if both operands are false.  `NOR` can be calculated by ¬(_p_ ∨ _q_).
+The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands are false.  `NOR` can be calculated by ¬(_p_ ∨ _q_).
 
-| `NOR` | `%.y` | `%.n` |
-|-------|-------|-------|
-| `%.y` | `%.n` | `%.n` |
-| `%.n` | `%.n` | `%.y` |
+|             `NOR`            | `%.y` | `%.n` |
+|------------------------------|-------|-------|
+| `%.y`{% class="font-bold" %} | `%.n` | `%.n` |
+| `%.n`{% class="font-bold" %} | `%.n` | `%.y` |
 
 - Implement `NAND` as a gate in Hoon.
 
@@ -157,7 +163,16 @@ The boxcar function is a piecewise mathematical function which is equal to zero 
 
 - Compose a gate which implements the boxcar function,
 
-    <img src="https://latex.codecogs.com/svg.image?\large&space;\text{boxcar}(x):=\begin{pmatrix}1,&space;&&space;10&space;\leq&space;x&space;<&space;20&space;\\0,&space;&&space;\text{otherwise}&space;\\\end{pmatrix}" title="https://latex.codecogs.com/svg.image?\large \text{boxcar}(x):=\begin{matrix}1, & 10 \leq x < 20 \\0, & \text{otherwise} \\\end{matrix}" />
+    {% math block=true %}
+    \text{boxcar}(x)
+    :=
+    \left(
+    \begin{matrix}
+    1, & 10 \leq x < 20 \\\\
+    0, & \text{otherwise} \\\\
+    \end{matrix}
+    \right)
+    {% /math %}
 
     <!--
     $$

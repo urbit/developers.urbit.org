@@ -27,7 +27,7 @@ rather than just `cage`, simply because it's easier to work with.
 Typically, you'd first test the `mark` with something like a
 [wutlus](/reference/hoon/rune/wut#-wutlus) `?+` expression, passing
 unexpected `mark`s to `default-agent`, which just crashes. We'll look at custom
-`mark`s in a subsequent lesson, but the basic patten looks like:
+`mark`s in a subsequent lesson, but the basic pattern looks like:
 
 ```hoon
 ?+  mark  (on-poke:def mark vase)

@@ -99,9 +99,9 @@ Let's look inside `/sys/hoon.hoon`, where the standard library is located, to se
 The first core listed here has just one arm.
 
 ```hoon
-  =>  %140  =>
-  |%
-  ++  hoon-version  +
+=>  %140  =>
+|%
+++  hoon-version  +
 --
 ```
 
@@ -234,7 +234,7 @@ The core Arvo subject exposes several axes (plural of `+$axis` which is the tree
     now=~2022.6.22..20.41.18..82f4
     ```
 
-- `eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`++shax`]().  (`eny` is shared between vanes during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each Gall agent activation.)
+- `eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`++shax`](/reference/hoon/stdlib/3d#shax).  (`eny` is shared between vanes during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each Gall agent activation.)
 
     ```hoon
     > ->+..
@@ -251,11 +251,11 @@ However, clearly regular applications, such as Gall agents, are stateful, meanin
 
 There are several ways to manage state.  One approach, including `%=` centis, directly modifies the subject using a rune.  Another method is to use the other runes to compose or sequence changes together (e.g. as a pipe of gates).  By and large the `=` tis runes are responsible for modifying the subject, and the `;` mic runes permit chaining deferred computations together.
 
-To act in a stateful manner, a core must mutate itself and then pin the mutated copy in its place.  Most of the time this is handled by Arvo's Gall vane, by the Dojo, or another system service, but we need to explicit modify and manage state for cores as we work within these kinds of applicaitons.
+To act in a stateful manner, a core must mutate itself and then pin the mutated copy in its place.  Most of the time this is handled by Arvo's Gall vane, by the Dojo, or another system service, but we need to explicit modify and manage state for cores as we work within these kinds of applications.
 
 We will use `%say` generators as a bridge concept.  We will produce some short applications that maintain state while carrying out a calculation; they still result in a single return value, but gesture at the big-picture approach to maintaining state in persistent agents.
 
-Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` cenhep which you've already seen:
+Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` centis which you've already seen:
 
 - [`=.` tisdot](/reference/hoon/rune/tis#-tisdot) is used to change a leg in the subject.
 - [`=~` tissig](/reference/hoon/rune/tis#-tissig) composes many expressions together serially.
@@ -348,7 +348,7 @@ For instance, a network service call may take a while or may fail.  How should t
 
 We have some more tools available for managing deferred or chained computations, in addition to `=~` tissig and `=*` tistar:
 
-- [`=^` tisket](/reference/hoon/rune/tis#-tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` cenhep.  (Used in Gall agents frequently.)
+- [`=^` tisket](/reference/hoon/rune/tis#-tisket) is used to change a leg in the tail of the subject then evaluate against it.  This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` centis.  (Used in Gall agents frequently.)
 - [`=*` tistar](/reference/hoon/rune/tis#-tistar) defers an expression (rather like a macro).
 - [`;<` micgal](/reference/hoon/rune/mic#-micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](/reference/arvo/threads/overview).)
 - [`;~` micsig](/reference/hoon/rune/mic#-micsig) produces a pipeline, a way of piping the output of one gate into another in a chain.  (This is particularly helpful when parsing text.)
@@ -529,4 +529,4 @@ There are many more options with Clay than just accessing file and folder data. 
 {%bitcoin %base %landscape %webterm %garden %kids}
 ```
 
-Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](TODO).
+Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](/reference/arvo).

@@ -5,7 +5,7 @@ title = "Dill"
 category = "arvo"
 +++
 
-**Dill** is the terminal-driver [vane](/reference/glossary/filesystem). You run
+**Dill** is the terminal-driver [vane](/reference/glossary/vane). You run
 your urbit in your Unix terminal, and Unix sends every event—such as a keystroke
 or a change in the dimensions of the terminal window—to be handled by Dill.
 

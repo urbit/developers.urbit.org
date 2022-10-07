@@ -33,7 +33,7 @@ It's hard to write a purely functional operating system on hardware which doesn'
 
 Hoon School introduces and explains the fundamental concepts you need in order to understand Hoon's semantics.  It then introduces a number of key examples and higher-order abstractions which will make you a more fluent Hoon programmer.
 
-Once you have completed Hoon School, you should work through [App School](/guides/core/app-school/1-intro) to learn how to build full applications on Urbit.
+Once you have completed Hoon School, you should work through [App School](/guides/core/app-school/intro) to learn how to build full applications on Urbit.
 
 
 ##  Environment Setup

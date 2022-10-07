@@ -8,7 +8,7 @@ and _rift_. This numbering system partition messages according to the quantity
 of networking key changes and quantity of
 [breaches](https://urbit.org/using/id/guide-to-resets), respectively. This is explained in
 more detail below. These values are utilized by [Ames](/reference/arvo/ames/ames)
-and [Jael](/reference/arvo/jael/jael-api) to ensure that communication between
+and [Jael](/reference/arvo/jael/jael) to ensure that communication between
 ships is always done with the most recent set of networking keys, and that
 networking state is appropriately reset when a breach has occurred.
 

@@ -83,9 +83,8 @@ export default function GuidePage({
           <a
             className="font-semibold rounded-xl block p-2 text-wall-400 hover:text-green-400 mt-16"
             target="_blank"
-            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/guides/${
-              params.slug?.join("/") || "_index"
-            }.md`}
+            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/guides/${params.slug?.join("/") || "_index"
+              }.md`}
           >
             Edit this page on GitHub
           </a>
@@ -278,6 +277,16 @@ function Landing({ search }) {
               href="/guides/additional/threads/fundamentals"
             />
           </div>
+
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
+            <CardText
+              title="Serving a Browser Game"
+              text="Serve a client-side game from Urbit"
+              className="basis-1/2"
+              href="/guides/additional/client"
+            />
+            <div className="basis-1/2" />
+          </div>
         </Section>
       </SingleColumn>
       <Footer />
@@ -308,8 +317,7 @@ export async function getStaticProps({ params }) {
       "weight"
     ) || null;
 
-  const markdown = JSON.stringify(Markdown.parse({ post: { content } }));
-
+  const markdown = JSON.stringify(Markdown.parse({ post: { content: String.raw`${content}` } }));
   return { props: { posts, data, markdown, params, previousPost, nextPost } };
 }
 

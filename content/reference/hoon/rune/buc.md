@@ -573,7 +573,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-Since a `$-` reduces to a [`$_`](#-buccab), it is not useful for normalizing, just for typechecking. In particular, the existence of `$-`s does **not** let us send gates or other cores over the network!
+Since a `$-` reduces to a [`$_`](#_-buccab), it is not useful for normalizing, just for typechecking. In particular, the existence of `$-`s does **not** let us send gates or other cores over the network!
 
 #### Examples
 

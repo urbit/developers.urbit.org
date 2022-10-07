@@ -12,10 +12,10 @@ can be verified to have come from a group member and duplicate votes can be
 detected, but it cannot be determined who voted for what. The finished app will
 look like this:
 
-![tally screenshot](https://media.urbit.org/guides/quickstart/voting-app-guide/tally-screenshot.png)
+![tally screenshot](https://media.urbit.org/guides/quickstart/voting-app-guide/tally-screenshot-reskin.png)
 
 The front-end of the app will be written in
-[Sail](/reference/glossary/sailudon), Urbit's XML language built into the Hoon
+[Sail](/reference/glossary/sail), Urbit's XML language built into the Hoon
 compiler. Using Sail means we don't need to create a separate React front-end,
 and can instead serve pages directly from our back-end. This works well for
 static pages but a full JS-enabled front-end would be preferred for a dynamic
@@ -184,13 +184,20 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
 |%
 +$  versioned-state
   $%  state-0
+      state-1
   ==
 +$  state-0  [%0 =by-group voted=(set pid) withdrawn=(set pid)]
++$  state-1  $:  %1
+                 =by-group
+                 voted=(set pid)
+                 withdrawn=(set pid)
+                 section=?(%subs %new %groups)
+             ==
 +$  card  card:agent:gall
 --
 ::
 %-  agent:dbug
-=|  state-0
+=|  state-1
 =*  state  -
 ^-  agent:gall
 =<
@@ -209,7 +216,11 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
 ++  on-load
   |=  old-vase=vase
   ^-  (quip card _this)
-  [~ this(state !<(state-0 old-vase))]
+  =/  old  !<(versioned-state old-vase)
+  ?-  -.old
+    %1  `this(state old)
+    %0  `this(state [%1 by-group.old voted.old withdrawn.old %subs])
+  ==
 ::
 ++  on-poke
   |=  [=mark =vase]
@@ -224,10 +235,10 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
     |=  [rid=@ta req=inbound-request:eyre]
     ^-  (quip card _state)
     ?.  authenticated.req
-      :_  state
+      :_  state(section %subs)
       (give-http:hc rid [307 ['Location' '/~/login?redirect='] ~] ~)
     ?+  method.request.req
-      :_  state
+      :_  state(section %subs)
       %^    give-http:hc
           rid
         :-  405
@@ -238,36 +249,38 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
       (some (as-octs:mimes:html '<h1>405 Method Not Allowed</h1>'))
     ::
         %'GET'
-      [(make-index:hc rid) state]
+      [(make-index:hc rid) state(section %subs)]
     ::
         %'POST'
-      ?~  body.request.req  [(redirect:hc rid "/tally") state]
+      ?~  body.request.req
+        [(redirect:hc rid "/tally") state(section %subs)]
       =/  query=(unit (list [k=@t v=@t]))
         (rush q.u.body.request.req yquy:de-purl:html)
-      ?~  query  [(redirect:hc rid "/tally") state]
+      ?~  query
+        [(redirect:hc rid "/tally") state(section %subs)]
       =/  kv-map  (~(gas by *(map @t @t)) u.query)
       ?.  (~(has by kv-map) 'gid')
-        [(redirect:hc rid "/tally") state]
+        [(redirect:hc rid "/tally") state(section %subs)]
       =/  =path
         %-  tail
         %+  rash  url.request.req
         ;~(sfix apat:de-purl:html yquy:de-purl:html)
-      ?+    path  [(redirect:hc rid "/tally") state]
+      ?+    path  [(redirect:hc rid "/tally") state(section %subs)]
           [%tally %watch ~]
         ?.  (~(has by kv-map) 'gid')
-          [(redirect:hc rid "/tally") state]
+          [(redirect:hc rid "/tally") state(section %subs)]
         =/  =gid
           %+  rash  (~(got by kv-map) 'gid')
           ;~(plug fed:ag ;~(pfix cab sym))
         =^  cards  state  (handle-action %watch gid)
-        [(weld cards (redirect:hc rid "/tally")) state]
+        [(weld cards (redirect:hc rid "/tally")) state(section %subs)]
       ::
           [%tally %leave ~]
         =/  =gid
           %+  rash  (~(got by kv-map) 'gid')
           ;~(plug fed:ag ;~(pfix cab sym))
         =^  cards  state  (handle-action %leave gid)
-        [(weld cards (redirect:hc rid "/tally")) state]
+        [(weld cards (redirect:hc rid "/tally")) state(section %subs)]
       ::
           [%tally %new ~]
         =/  =gid
@@ -278,7 +291,7 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
         =/  location=tape
           "/tally#{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
         =^  cards  state  (handle-action %new proposal days gid)
-        [(weld cards (redirect:hc rid location)) state]
+        [(weld cards (redirect:hc rid location)) state(section %groups)]
       ::
           [%tally %withdraw ~]
         =/  =gid
@@ -288,7 +301,7 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
         =^  cards  state  (handle-action %withdraw gid pid)
         =/  location=tape
           "/tally#{=>(<host.gid> ?>(?=(^ .) t))}_{(trip name.gid)}"
-        [(weld cards (redirect:hc rid location)) state]
+        [(weld cards (redirect:hc rid location)) state(section %groups)]
       ::
           [%tally %vote ~]
         =/  =gid
@@ -313,7 +326,8 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
             participants.ring-group.poll
           ==
         =^  cards  state  (handle-action %vote gid pid choice raw)
-        [(weld cards (redirect:hc rid "/tally#{(a-co:co pid)}")) state]
+        :_  state(section %groups)
+        (weld cards (redirect:hc rid "/tally#{(a-co:co pid)}"))
       ==
     ==
   ::
@@ -630,7 +644,7 @@ directory of a desk, so save this code in `tally/app/tally.hoon`:
   %-  as-octs:mimes:html
   %-  crip
   %-  en-xml:html
-  (index bol by-group voted withdrawn)
+  (index bol by-group voted withdrawn section)
 ::
 ++  make-200
   |=  [rid=@ta dat=octs]
@@ -772,13 +786,24 @@ Save the code below in `tally/app/tally/index.hoon`.
 
 ```hoon {% copy=true mode="collapse" %}
 /-  *tally, *squad
-|=  [bol=bowl:gall =by-group voted=(set pid) withdrawn=(set pid)]
+|=  $:  bol=bowl:gall
+        =by-group
+        voted=(set pid)
+        withdrawn=(set pid)
+        section=?(%subs %new %groups)
+    ==
 ^-  manx
 ?.  .^(? %gu /(scot %p our.bol)/squad/(scot %da now.bol))
   ;html
     ;head
       ;title: Tally
       ;meta(charset "utf-8");
+      ;link
+        =href  "https://fonts.googleapis.com/css2?family=Inter:wght@400;".
+               "600&family=Source+Code+Pro:wght@400;600&display=swap"
+        =rel   "stylesheet"
+        ;+  ;/("")
+      ==
       ;style
         ;+  ;/
             ^~
@@ -786,8 +811,11 @@ Save the code below in `tally/app/tally/index.hoon`.
             %-  trip
             '''
             body {width: 100%; height: 100%; margin: 0;}
-            * {font-family: monospace}
+            * {font-family: "Inter", sans-serif;}
             div {
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              padding: 1rem;
               position: relative;
               top: 50%;
               left: 50%;
@@ -838,67 +866,109 @@ Save the code below in `tally/app/tally/index.hoon`.
   ;head
     ;title: Tally
     ;meta(charset "utf-8");
+    ;link
+      =href  "https://fonts.googleapis.com/css2?family=Inter:wght@400;".
+             "600&family=Source+Code+Pro:wght@400;600&display=swap"
+      =rel   "stylesheet"
+      ;+  ;/("")
+    ==
     ;style
       ;+  ;/  style
     ==
   ==
   ;body
-    ;h1: tally
-    ;h2: subscriptions
-    ;form(method "post", action "/tally/watch")
-      ;select
-        =name      "gid"
-        =required  ""
-        ;*  (group-options-component %.n %.n)
+    ;main
+      ;header
+        ;h1: Tally
+        ;div
+          ;button
+            =id       "sub-button"
+            =class    ?:(?=(%subs section) "active" "inactive")
+            =onclick  sub-button
+            ;+  ;/    "Subscriptions"
+          ==
+          ;button
+            =id       "new-button"
+            =class    ?:(?=(%new section) "active" "inactive")
+            =onclick  new-button
+            ;+  ;/    "New"
+          ==
+          ;button
+            =id      "group-button"
+            =class    ?:(?=(%groups section) "active" "inactive")
+            =onclick  group-button
+            ;+  ;/  "Groups"
+          ==
+        ==
       ==
-      ;input(id "s", type "submit", value "watch");
+      ;div(id "sub", class ?:(?=(%subs section) "flex col" "none"))
+        ;form(method "post", action "/tally/watch")
+          ;select
+            =name      "gid"
+            =required  ""
+            ;*  (group-options-component %.n %.n)
+          ==
+          ;input(id "s", type "submit", value "Watch");
+        ==
+        ;form(method "post", action "/tally/leave")
+          ;select
+            =name      "gid"
+            =required  ""
+            ;*  (group-options-component %.n %.y)
+          ==
+          ;input(id "u", type "submit", value "Leave");
+        ==
+      ==
+      ;div(id "new", class ?:(?=(%new section) "flex col" "none"))
+        ;form(method "post", action "/tally/new", class "col align-start")
+          ;div
+            ;label(for "n-gid"): Group:
+            ;select
+              =id        "n-gid"
+              =name      "gid"
+              =style     "margin-left: 1rem"
+              =required  ""
+              ;*  (group-options-component %.y %.y)
+            ==
+          ==
+          ;br;
+          ;label(for "days"): Duration:
+          ;input
+            =type         "number"
+            =id           "days"
+            =name         "days"
+            =min          "1"
+            =step         "1"
+            =required     ""
+            =placeholder  "days"
+            ;+  ;/("")
+          ==
+          ;br;
+          ;label(for "proposal"): Proposal:
+          ;input
+            =type      "text"
+            =id        "proposal"
+            =name      "proposal"
+            =size      "50"
+            =required  ""
+            ;+  ;/("")
+          ==
+          ;br;
+          ;input
+            =id     "submit"
+            =type   "submit"
+            =class  "bg-green-400 text-white"
+            =value  "Submit"
+            ;+  ;/("")
+          ==
+        ==
+      ==
+      ;div(id "group", class ?:(?=(%groups section) "flex col scroll" "none"))
+        ;*  ?~  has-polls
+              ~[;/("")]
+            (turn has-polls group-component)
+      ==
     ==
-    ;form(method "post", action "/tally/leave")
-      ;select
-        =name      "gid"
-        =required  ""
-        ;*  (group-options-component %.n %.y)
-      ==
-      ;input(id "u", type "submit", value "leave");
-    ==
-    ;h2: new poll
-    ;form(method "post", action "/tally/new")
-      ;label(for "n-gid"): group:
-      ;select
-        =id        "n-gid"
-        =name      "gid"
-        =required  ""
-        ;*  (group-options-component %.y %.y)
-      ==
-      ;br;
-      ;label(for "days"): duration:
-      ;input
-        =type         "number"
-        =id           "days"
-        =name         "days"
-        =min          "1"
-        =step         "1"
-        =required     ""
-        =placeholder  "days"
-        ;+  ;/("")
-      ==
-      ;br;
-      ;label(for "proposal"): proposal:
-      ;input
-        =type      "text"
-        =id        "proposal"
-        =name      "proposal"
-        =size      "50"
-        =required  ""
-        ;+  ;/("")
-      ==
-      ;br;
-      ;input(id "submit", type "submit", value "submit");
-    ==
-    ;h2: groups
-    ;*  ?~  has-polls
-          ~[;/("")]
-        (turn has-polls group-component)
   ==
 ==
 ::
@@ -943,7 +1013,7 @@ Save the code below in `tally/app/tally/index.hoon`.
     " ({(a-co:co open)})"
   ;details(id "{=>(<host.p> ?>(?=(^ .) t))}_{(trip name.p)}", open "open")
     ;summary
-      ;h3: {title}
+      ;h3(class "inline"): {title}
     ==
     ;*  (group-polls-component p polls)
   ==
@@ -977,7 +1047,7 @@ Save the code below in `tally/app/tally/index.hoon`.
         ;tr
           ;th: withdraw:
           ;td
-            ;form(method "post", action "/tally/withdraw")
+            ;form(class "inline-form", method "post", action "/tally/withdraw")
               ;input
                 =type  "hidden"
                 =name  "gid"
@@ -985,7 +1055,7 @@ Save the code below in `tally/app/tally/index.hoon`.
                 ;+  ;/("")
               ==
               ;input(type "hidden", name "pid", value (a-co:co pid));
-              ;input(type "submit", value "withdraw?");
+              ;input(type "submit", value "withdraw", class "bg-red text-white");
             ==
           ==
         ==
@@ -1010,7 +1080,7 @@ Save the code below in `tally/app/tally/index.hoon`.
         ;tr
           ;th: vote:
           ;td
-            ;form(method "post", action "/tally/vote")
+            ;form(class "inline-form", method "post", action "/tally/vote")
               ;input
                 =type   "hidden"
                 =name   "gid"
@@ -1090,27 +1160,189 @@ Save the code below in `tally/app/tally/index.hoon`.
         ;/  "{(a-co:co m.tarp)} minutes"
   ==
 ::
+++  sub-button
+  """
+  document.getElementById('new').classList = 'none';
+  document.getElementById('group').classList = 'none';
+  document.getElementById('sub').classList = 'flex col';
+  document.getElementById('sub-button').classList = 'active';
+  document.getElementById('new-button').classList = 'inactive';
+  document.getElementById('group-button').classList = 'inactive';
+  """
+::
+++  new-button
+  """
+  document.getElementById('new').classList = 'flex col';
+  document.getElementById('group').classList = 'none';
+  document.getElementById('sub').classList = 'none';
+  document.getElementById('sub-button').classList = 'inactive';
+  document.getElementById('new-button').classList = 'active';
+  document.getElementById('group-button').classList = 'inactive';
+  """
+::
+++  group-button
+  """
+  document.getElementById('new').classList = 'none';
+  document.getElementById('group').classList = 'flex col';
+  document.getElementById('sub').classList = 'none';
+  document.getElementById('sub-button').classList = 'inactive';
+  document.getElementById('new-button').classList = 'inactive';
+  document.getElementById('group-button').classList = 'active';
+  """
+::
 ++  style
   ^~
   ^-  tape
   %-  trip
   '''
-  * {font-family: monospace}
-  h3 {display: inline}
-  table {margin: 1em}
-  th {text-align: right; vertical-align: middle;}
-  td {padding-left: 1em; vertical-align: middle;}
-  td form {margin: 0}
-  label {
-    display: inline-block;
-    margin-right: 1em;
-    min-width: 9ch;
-    vertical-align: middle;
-  }
-  select {min-width: 8ch}
-  #s, #u {margin-left: 1ch}
-  #submit {margin-top: 1em}
-  #yea {margin-right: 1ch}
+    body {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: flex-start;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      width: 100%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 0 1rem 1rem 1rem;
+      margin-top: 15vh;
+      min-height: 0;
+      max-height: min(80vh, 800px);
+      overflow-y: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      flex: 0 0 auto;
+      padding-bottom: 2rem;
+    }
+    #group {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    button {
+      -webkit-appearance: none;
+      border: none;
+      outline: none;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 12px 24px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+    button.inactive {
+      background-color: #F4F3F1;
+      color: #626160;
+    }
+    button.active {
+      background-color: #000000;
+      color: white;
+    }
+    a {
+      text-decoration: none;
+      font-weight: 600;
+      color: rgb(0,177,113);
+    }
+    a:hover, input[type="submit"]:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+    .none {
+      display: none;
+    }
+    .block {
+      display: block;
+    }
+    code, .code {
+      font-family: "Source Code Pro", monospace;
+    }
+    .bg-green {
+      background-color: #12AE22;
+    }
+    .bg-green-400 {
+      background-color: #4eae75;
+    }
+    .bg-red {
+      background-color: #ff4136;
+    }
+    .text-white {
+      color: #fff;
+    }
+    h3 {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #626160;
+    }
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .inline-form {
+      display: flex;
+      align-items: center;
+      flex-direction: horizontal;
+      justify-content: start;
+      margin: 0;
+    }
+    form button, button[type="submit"] {
+      border-radius: 10px;
+    }
+    input {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    table {
+      margin: 2rem 0;
+    }
+    th {
+       padding-right: 1ch;
+    }
+    select {
+      min-width: 10ch;
+    }
+    .flex {
+      display: flex;
+    }
+    .col {
+      flex-direction: column;
+    }
+    .align-center {
+      align-items: center;
+    }
+    .align-start {
+      align-items: flex-start;
+    }
+    .justify-between {
+      justify-content: space-between;
+    }
+    .grow {
+      flex-grow: 1;
+    }
+    .inline {
+      display: inline;
+    }
+    .scroll {
+      overflow-y: auto;
+    }
+    @media screen and (max-width: 480px) {
+      main {
+        padding: 1rem;
+      }
+    }
   '''
 --
 ```
@@ -1257,14 +1489,19 @@ our `index.hoon` front-end file.
 The agent's state is defined as:
 
 ```hoon
-+$  state-0  [%0 =by-group voted=(set pid) withdrawn=(set pid)]
++$  state-1  $:  %1
+                 =by-group
+                 voted=(set pid)
+                 withdrawn=(set pid)
+                 section=?(%subs %new %groups)
+             ==
 ```
 
 The `by-group` structure is `mip`, which is a map of map. The first set of keys
-is the group ID, and then for each group there is a map from poll ID to the poll
-and associated votes. We additionally have `voted` and `withdrawn` to keep track
-of actions we've taken so the front-end will update instantly rather than having
-to wait for a remote ship to acknowledge the request.
+is the group ID, and then for each group there is a map from poll ID to the
+poll and associated votes. We additionally have `voted`, `withdrawn` and
+`section` to keep track of actions we've taken so the front-end will update
+instantly and load the right sections.
 
 A Gall agent has ten event handler *arms*. Most agent arms produce the same two
 things: a list of effects to be emitted, and a new version of the agent itself,
@@ -1383,5 +1620,4 @@ know about app development.
 
 Along with these self-directed guides, we also run regular courses on both Hoon
 and app development. You can check the [Courses](/courses) page for details, or
-join the [~hiddev-dannut/new-hooniverse](/groups/~hiddev-dannut/new-hooniverse)
-group on Urbit.
+join the `~hiddev-dannut/new-hooniverse` group on Urbit.

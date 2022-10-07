@@ -82,9 +82,8 @@ export default function Overview({
           <a
             className="font-semibold rounded-xl block p-2 text-wall-400 hover:text-green-400 mt-16"
             target="_blank"
-            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/overview/${
-              params.slug?.join("/") || "_index"
-            }.md`}
+            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/overview/${params.slug?.join("/") || "_index"
+              }.md`}
           >
             Edit this page on GitHub
           </a>
@@ -111,7 +110,7 @@ const breadcrumbs = (posts, paths) => {
 const childPages = (thisLink, children, level = 0) => (
   <ul>
     {children?.map((child) => (
-      <li>{pageTree(join(thisLink, child.slug), child, level)}</li>
+      <li key={child.slug}>{pageTree(join(thisLink, child.slug), child, level)}</li>
     ))}
   </ul>
 );
@@ -365,7 +364,7 @@ export async function getStaticProps({ params }) {
       "weight"
     ) || null;
 
-  const markdown = JSON.stringify(Markdown.parse({ post: { content } }));
+  const markdown = JSON.stringify(Markdown.parse({ post: { content: String.raw`${content}` } }));
 
   return { props: { posts, data, markdown, params, previousPost, nextPost } };
 }

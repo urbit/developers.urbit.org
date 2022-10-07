@@ -69,7 +69,7 @@ We consider Arvo to be deterministic at a high level. By that we mean that it is
 stacked on top of a frozen instruction set known as Nock. Frozen instruction
 sets are a new idea for an operating system, but not for computing in general.
 For instance, the CPU instruction sets such as
-[x86-64](https://en.wikipedia.org/wiki/X86-64v) are frozen at the level of the
+[x86-64](https://en.wikipedia.org/wiki/X86-64) are frozen at the level of the
 chip. A given operating system may be adapted to run on more than one CPU
 instruction set, we merely freeze the instruction set at a higher level in order
 to enable deterministic computation.
@@ -238,7 +238,7 @@ which applies many of the concepts covered below.
 - Larval stage core
 - Formal interface
 
-See [Hoon School “Subject-Oriented Programming”](/guides/core/hoon-school/P-subject#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
+See [Hoon School “Subject-Oriented Programming”](/guides/core/hoon-school/O-subject#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
 
 ### Formal interface
 
@@ -530,15 +530,13 @@ As described above, we use Arvo proper to route and control the flow of `move`s.
 However, Arvo proper is rarely directly responsible for processing the event
 data that directly causes the desired outcome of a `move`. This event data is contained within a `card`. Instead, Arvo proper passes the `card` off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
 
-As of this writing, we have nine vanes, which each provide the following services:
+As of this writing, we have eight vanes, which each provide the following services:
 
 - [Ames](/reference/arvo/ames/ames): the name of both our network and the vane that communicates over it.
 - [Behn](/reference/arvo/behn/behn): a simple timer.
 - [Clay](/reference/arvo/clay/clay): our version-controlled, referentially- transparent, and global filesystem.
 - [Dill](/reference/arvo/dill/dill): a terminal driver. Unix sends keyboard events to `%dill` from the console, and `%dill` produces terminal output.
 - [Eyre](/reference/arvo/eyre/eyre): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
-- [Ford](/reference/arvo/ford/ford): a build system also utilized for marks
-  (file types) and debugging.
 - [Gall](/reference/arvo/gall/gall): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - [Iris](/reference/arvo/iris/iris): an http client.
 - [Jael](/reference/arvo/jael/jael): storage for Azimuth information.

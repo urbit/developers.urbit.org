@@ -141,7 +141,7 @@ dojo. We'll get to what each of the arms do later. For now, we'll just consider
 a few particular points.
 
 Firstly, note its structure - it's a door (created with `|_`) with a sample of
-`bowl:gall` and the ten arms described earlier.
+`bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](/reference/hoon/irregular#-buctis)).
 
 Secondly, you'll notice some of the arms return:
 

@@ -7,7 +7,7 @@ weight = 20
 
 | Form | Regular Form |
 | ---- | ------------ |
-| `_foo` | [`$_`](/reference/hoon/rune/buc#-buccab), normalizes to an example |
+| `_foo` | [`$_`](/reference/hoon/rune/buc#_-buccab), normalizes to an example |
 | `foo=bar` | [`$=`](/reference/hoon/rune/buc#-buctis), wraps a face around a value |
 | `?(%foo %bar %baz)` | [`$?`](/reference/hoon/rune/buc#-bucwut), forms a type union |
 | `(fun a b c)` | [`%:`](/reference/hoon/rune/cen#-cencol), calls a gate with n arguments |
@@ -17,15 +17,19 @@ weight = 20
 | `~[a b c]` | [`:~`](/reference/hoon/rune/col#-colsig), constructs null-terminated list |
 | `+(42)` | [`.+`](/reference/hoon/rune/dot#-dotlus), increments with Nock 4 |
 | `=(a b)` | [`.=`](/reference/hoon/rune/dot#-dottis), tests for equality wiht Nock 5 |
-| `&#96;foo&#96;bar` | [`^-`](/reference/hoon/rune/ket#-kethep), typecasts by explicit type label |
+| `` `foo` bar`` | [`^-`](/reference/hoon/rune/ket#--kethep), typecasts by explicit type label |
 | `foo=bar` | [`^=`](/reference/hoon/rune/ket#-kettis), binds name to value |
 | `*foo` | [`^*`](/reference/hoon/rune/ket#-kettar), bunts (produces default mold value) |
 | `,foo` | [`^:`](/reference/hoon/rune/ket#-ketcol), produces “factory” gate for type |
 | `:(fun a b c d)` | [`;:`](/reference/hoon/rune/mic#-miccol), calls binary function as _n_-ary function |
 | `foo:bar` | [`=<`](/reference/hoon/rune/tis#-tisgal), composes two expressions, inverted |
-| `&#124;(foo bar baz)` | [`?&#124;`](/reference/hoon/rune/wut#-wutbar), logical OR (loobean) |
-| `&(foo bar baz)` | [`?&`](/reference/hoon/rune/wut#wutpam), logical AND (loobean) |
+| `\|(foo bar baz)` | [`?\|`](/reference/hoon/rune/wut#-wutbar), logical OR (loobean) |
+| `&(foo bar baz)` | [`?&`](/reference/hoon/rune/wut#-wutpam), logical AND (loobean) |
 | `!foo` | [`?!`](/reference/hoon/rune/wut#-wutzap), logical NOT (loobean) |
+
+<br>
+
+<br>
 
 ##### Reading guide
 
@@ -78,7 +82,7 @@ The cell runes.
 
 ### `:-` colhep
 
-[docs](/reference/hoon/rune/col#-colhep) \\[\\]\\^\\+\\\`\\~
+[docs](/reference/hoon/rune/col#--colhep) \\[\\]\\^\\/\\+\\\`\\~
 
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
@@ -178,13 +182,28 @@ Irregular: `?(p)`
 
 ### `$_` buccab
 
-[docs](/reference/hoon/rune/buc#-buccab) \\\_
+[docs](/reference/hoon/rune/buc#_-buccab) \\\_
 
 `[%bccb p=value]`: mold which normalizes to an example.
 
 Regular: `$_(p)`
 
 Irregular: `_p`
+
+### `$=` buctis
+
+[docs](/reference/hoon/rune/buc#-buctis)  \\=
+
+`[%bcts p=skin q=spec]`: wraps a face around a structure.
+
+Regular: `$=(p q)`
+
+Irregular:
+```hoon
+ p=q   ==>   $=(p q)
+  =q   ==>   q=q
+=p=q   ==>   p-q=q
+```
 
 ## `?` wut (test)
 
@@ -202,7 +221,7 @@ Irregular: `!(p)`
 
 ### `?&` wutpam
 
-[docs](/reference/hoon/rune/wut#wutpam) \\&
+[docs](/reference/hoon/rune/wut#-wutpam) \\&
 
 `[%wtpm p=(list hoon)]`: logical and.
 
@@ -236,7 +255,7 @@ Irregular: `,p`
 
 ### `^-` kethep
 
-[docs](/reference/hoon/rune/ket#-kethep) \\\`
+[docs](/reference/hoon/rune/ket#--kethep) \\\`
 
 `[%kthp p=model q=value]`: typecast by mold.
 
@@ -268,6 +287,8 @@ Irregular: `p=q`
 
 ### Trivial molds
 
+\\\*\\@\\^\\?\\~
+
 - `*` noun.
 - `@` atom.
 - `^` cell.
@@ -276,7 +297,7 @@ Irregular: `p=q`
 
 ### Values
 
-\\~\\-\\.\\&\\|
+\\~\\&\\|\\%
 
 - `~` null.
 - `&` loobean true.
@@ -287,12 +308,14 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
 
 ### List addressing
 
+\\&\\|
+
 - `&n` nth element of a list.
 - `|n` tail of list after nth element (i.e. n is the head).
 
 ### Limbs
 
-[docs](/reference/hoon/limbs/limb) \\+\\.\\^
+[docs](/reference/hoon/limbs/limb) \\+\\.\\^\\-
 
 `[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
@@ -316,14 +339,32 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
 
 ### Wings
 
-[docs](/reference/hoon/limbs/wing)
+[docs](/reference/hoon/limbs/wing) \\.
+
 `[%wing p=(list limb)]`; a limb search path.
+
 `a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
 
 ### Printing stuff
 
-- `<a b c>` prints a [tape](/reference/hoon/stdlib/2q/#tape).
-- `>a b c<` prints a [tank](/reference/hoon/stdlib/2q/#tank).
+\\\<\\\>
+
+- `>a b c<` produces a [tank](/reference/hoon/stdlib/2q/#tank) of the output of the contents (wrapped in cell if more than 1 item), formatted in pretty-print.
+
+  ```hoon
+  > >1 2 3<
+  [%rose p=[p=" " q="[" r="]"] q=~[[%leaf p="1"] [%leaf p="2"] [%leaf p="3"]]]
+  ```
+
+- `<a b c>` produces a [tape](/reference/hoon/stdlib/2q/#tape) of the tank above (ie `<1 2 3>` is same as `~(ram re >1 2 3<)`).
+
+  ```hoon
+  > <1 2 3>
+  "[1 2 3]"
+
+  > <`(list @)`~[1 2 3]>
+  "~[1 2 3]"
+  ```
 
 ## Commentary
 

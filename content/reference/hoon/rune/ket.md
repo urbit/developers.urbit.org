@@ -3,7 +3,7 @@ title = "Casts ^ ('ket')"
 weight = 11
 +++
 
-[`^-` ("kethep")](#-kethep), [`^+` ("ketlus")](#-ketlus), and [`^=`
+[`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=`
 ("kettis")](#-kettis) let us adjust types without violating type constraints.
 
 The `nest` algorithm which tests subtyping is conservative; it never allows
@@ -297,9 +297,9 @@ infinite loop in the compiler).
 ~zod:dojo> ^-(@t (add 90 7))
 'a'
 
-/~zod:dojo> =foo  |=  a=@tas
-                  ^-  (unit @ta)
-                  `a
+/~zod:dojo> =foo |=  a=@tas
+                 ^-  (unit @ta)
+                 `a
 
 /~zod:dojo> (foo 97)
 [~ ~.a]

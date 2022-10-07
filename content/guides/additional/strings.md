@@ -10,7 +10,7 @@ functions you'll regularly encounter. In particular, it discusses conversions
 and the encoding/decoding of atom auras in strings.
 
 Hoon has a system for writing more elaborate functional parsers, but that is not
-touched on here. Instead, see the [Parsing](/guides/additional/hoon/parsing) guide.
+touched on here. Instead, see the [Parsing](/guides/additional/parsing) guide.
 Hoon also has a type for UTF-32 strings, but those are rarely used and not
 discussed in this document.
 
@@ -174,11 +174,11 @@ This is something to be wary of. For example, if you wanted to form a `(set @tas
 However, this will actually form a set of the union `?(%foo %bar %baz)` due to
 the specificity of type inference:
 
-{% customFence %}
-\> ? (silt (limo ~[%foo %bar %baz]))
+```
+> ? (silt (limo ~[%foo %bar %baz]))
 ?(%~ [?(n=%bar n=%baz n=%foo) l=nlr(?(%bar %baz %foo)) r=nlr(?(%bar %baz %foo))])
-[n=%baz l&#x7B;&#x25;bar} r=&#x7B;&#x25;foo}]
-{% /customFence %}
+[n=%baz l={%bar} r={%foo}]
+```
 
 One further note about the type-as-itself form: Ocassionally you may wish to
 form a union of strings which contain characters disallowed in `term`s. To get
@@ -512,7 +512,7 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 
 ## Further reading
 
-- [Parsing](/guides/additional/hoon/parsing) - A guide to writing fully-fledged
+- [Parsing](/guides/additional/parsing) - A guide to writing fully-fledged
   functional parsers in hoon.
 
 - [Auras](/reference/hoon/auras) - Details of auras in hoon.

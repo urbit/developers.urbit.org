@@ -29,9 +29,9 @@ export default function Courses({ search, courses }) {
         </Section>
         <Section>
           <TwoUp>
-            {courses.map((course) => {
+            {courses.sort((a, b) => a.weight > b.weight ? 1 : -1).map((course) => {
               return (
-                <div className="flex flex-col space-y-4 h-full">
+                <div key={course.slug} className="flex flex-col space-y-4 h-full">
                   <h3>{course.title}</h3>
                   <div className="markdown">
                     <Markdown.render content={JSON.parse(course.content)} />
@@ -49,7 +49,7 @@ export default function Courses({ search, courses }) {
 
 export async function getStaticProps() {
   const courses = getAllPosts(
-    ["title", "slug", "date", "description", "extra", "content"],
+    ["title", "slug", "weight", "description", "extra", "content"],
     "courses",
     "weight"
   ).map((e) => ({

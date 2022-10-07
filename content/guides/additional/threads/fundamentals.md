@@ -80,7 +80,7 @@ Strands are conventionally given the face `m` like:
 ...
 ```
 
-**NOTE:** a comma prefix as in `,vase` is the irregular form of `^:` which is a gate that returns the sample value if it's of the correct type, but crashes otherwise.
+**NOTE:** a comma prefix as in `,vase` is the irregular form of `$:` which produces a gate that returns the sample value if it's of the correct type, but crashes otherwise.
 
 ## Form and Pure
 
@@ -121,7 +121,7 @@ Save the above code as a file in `ted/mythread.hoon` and `|commit` it. Run it wi
 [~ 'foo']
 ```
 
-**NOTE:** The dojo wraps arguments in a unit so that's why it's `[~ 'foo']` rather than just `foo`.
+**NOTE:** The dojo wraps arguments in a unit so that's why it's `[~ 'foo']` rather than just `'foo'`.
 
 ## Analysis
 

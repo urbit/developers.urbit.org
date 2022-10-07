@@ -92,7 +92,7 @@ The most obvious case is when there is a casting `^` ket rune in your code.  The
 
 #### `^-` kethep Cast with a Type
 
-You've already seen one rune that calls for a type check:  [`^-` kethep](/reference/hoon/rune/ket#-kethep):
+You've already seen one rune that calls for a type check:  [`^-` kethep](/reference/hoon/rune/ket#--kethep):
 
 ```hoon
 > ^-(@ 12)
@@ -150,37 +150,6 @@ nest-fail
 
 > ^+([12 [1 2]] [123 [12 14]])
 [123 12 14]
-```
-
-### Nock Checks (`.` dot Runes)
-
-You saw earlier how a type check is performed when [`.=` dottis](/reference/hoon/rune/dot#-dottis)—or more commonly its irregular variant `=( )`—is used.  For any expression of the form `=(a b)`, either the type of `a` must be a subset of the type of `b` or the type of `b` must be a subset of the type of `a`.  Otherwise, the type check fails and you'll get a `nest-fail`.
-
-```hoon
-> =(12 [33 44])
-nest-fail
-
-> =([77 88] [33 44])
-%.n
-```
-
-You can evade the `.=` dottis type-check by casting one of its subexpressions to a `*`, under which all other types nest:
-
-```hoon
-> .=(`*`12 [33 44])
-%.n
-```
-
-(It isn't recommended that you evade the rules in this way, however!)
-
-The [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) increment rune—including its `+( )` irregular form—does a type check to ensure that its subexpression must evaluate to an atom.
-
-```hoon
-> +(12)
-13
-
-> +([12 14])
-nest-fail
 ```
 
 ### Arm Checks
@@ -370,7 +339,7 @@ What if you want to see the inferred type of `b` for yourself for each condition
 [#t/@ud q=15]
 
 > !>([12 14])
-[#t/{@ud @ud} q=[12 14]]
+[#t/[@ud @ud] q=[12 14]]
 
 > !>((add 22 55))
 [#t/@ q=77]
@@ -402,10 +371,10 @@ Now let's try using `?=` wuttis with `?:` wutcol again.  But this time we'll rep
 
 ```
 > =/(b=* [12 14] ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
-[%.n #t/{* *}]
+[%.n #t/[* *]]
 ```
 
-In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `{* *}`).
+In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `[* *]`).
 
 ###### `mint-vain`
 
@@ -442,7 +411,7 @@ If the second `?@` wutpat subexpression is evaluated, Hoon correctly infers that
 [%atom #t/@]
 
 > =/(b=* [12 14] ?@(b [%atom -:!>(b)] [%cell -:!>(b)]))
-[%cell #t/{* *}]
+[%cell #t/[* *]]
 ```
 
 If the inferred type of the first `?@` wutpat subexpression nests under `@` then one of the conditional branches provably never runs.  Attempting to evaluate the expression results in a `mint-vain`:
@@ -719,7 +688,7 @@ So far you've learned about four kinds of type inference:
 3.  gate sample definitions
 4.  branch specialization using runes in the `?` family
 
-There are several other ways that Hoon infers type.  Any rune expression that evaluates to a `?` flag, e.g., `.=` dottis, will be inferred from accordingly.  The `.+` dotlus rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, [`:-` colhep](/reference/hoon/rune/col#-colhep), [`:+` collus](/reference/hoon/rune/col#-collus), [`:^` colket](/reference/hoon/rune/col#-colket), and [`:*` coltar](/reference/hoon/rune/col#-coltar) are all known to produce cells.
+There are several other ways that Hoon infers type.  Any rune expression that evaluates to a `?` flag, e.g., `.=` dottis, will be inferred from accordingly.  The `.+` dotlus rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, [`:-` colhep](/reference/hoon/rune/col#--colhep), [`:+` collus](/reference/hoon/rune/col#-collus), [`:^` colket](/reference/hoon/rune/col#-colket), and [`:*` coltar](/reference/hoon/rune/col#-coltar) are all known to produce cells.
 
 More subtly, the [`=+` tislus](/reference/hoon/rune/tis#-tislus), [`=/` tisfas](/reference/hoon/rune/tis#-tisfas), and [`=|` tisbar](/reference/hoon/rune/tis#-tisbar) runes modify the subject by pinning values to the head.  Hoon infers from this that the subject has a new type:  a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
 
@@ -822,8 +791,11 @@ This is what we mean when we call auras 'soft' types. The above examples show th
 
 > b
 ~[11 22 33 44]
-Now let's use ?~ to prove that b isn't null, and then try to snag it:
+```
 
+Now let's use `?~` to prove that `b` isn't null, and then try to snag it:
+
+```hoon
 > ?~(b ~ (snag 0 b))
 nest-fail
 ```
@@ -848,7 +820,7 @@ To summarize, as values get passed around and checked at various points, the Hoo
 
 There are two additional assertions which can be used with the type system:
 
-- [`?>` wutgar](/reference/hoon/rune/wut#-wutgar) is a positive assertion (`%.y%` or crash).
+- [`?>` wutgar](/reference/hoon/rune/wut#-wutgar) is a positive assertion (`%.y` or crash).
 - [`?<` wutgal](/reference/hoon/rune/wut#-wutgal) is a negative assertion (`%.n` or crash).
 
 If you are running into `find-fork` errors in more complicated data structures (like marks or JSONs), consider using these assertions to guide the typechecker.

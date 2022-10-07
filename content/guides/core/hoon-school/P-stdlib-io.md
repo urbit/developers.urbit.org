@@ -12,7 +12,7 @@ _This module will elaborate on text representation in Hoon, including formatted 
 
 We frequently need to convert from text to data, and between different text-based representations.  Let's examine some specific arms:
 
-- How do we convert text into all upper-case?
+- How do we convert text into all lower-case?
     - [`++cass`](/reference/hoon/stdlib/4b#cass)
 
 - How do we turn a `cord` into a `tape`?
@@ -149,7 +149,7 @@ A `%say` generator is a cell with a metadata tag `%say` as the head and the gate
 |=  [^ [arg=path ~] vane=?(%g %c)]
 ```
 
-This generator requires a path argument in its sample and optionally accepts a vane tag (`%g` Gall or `%c` Clay).  Most of the time, `+cat` is used with Gall, so `%g` as the last entry in the type union serves as the bunt value.
+This generator requires a path argument in its sample and optionally accepts a vane tag (`%g` Gall or `%c` Clay).  Most of the time, `+cat` is used with Clay, so `%c` as the last entry in the type union serves as the bunt value.
 
 ```hoon
 =+  lon=.^(arch (cat 3 vane %y) arg)
@@ -209,24 +209,24 @@ For instance, how does `+cat` work?  Let's look at the structure of `/gen/cat/ho
   - `/?` faswut pins the expected Arvo kelvin version; right now it doesn't do anything.
   - [`.^` dotket](/reference/hoon/rune/dot#-dotket) loads a value from Arvo (called a “scry”).
   - [`++smyt`](/reference/hoon/stdlib/4m#smyt) pretty-prints a path.
-  - [`=-` tishep](/reference/hoon/rune/tis#-tishep) combines a faced noun with the subject, inverted relative to `=+` tislus/`=/` tisfas.
+  - [`=-` tishep](/reference/hoon/rune/tis#--tishep) combines a faced noun with the subject, inverted relative to `=+` tislus/`=/` tisfas.
 
 You can see how much of the generator is concerned with formatting the content of the file into a formatted text `tank` by prepending `%rose` tags and so forth.
 
 - Work line-by-line through the file and clarify parts that are muddy to you at first glance.
 
 ### Producing Error Messages
-                           
+
 Formal error messages in Urbit are built of tanks.  “A `tang` is a list of `tank`s, and a `tank` is a structure for printing data.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
-          
-One way to include an error message in your code is the [`~_` sigcab](/reference/hoon/rune/sig/#-sigcab) rune, described as a “user-formatted tracing printf”, or the [`~|` sigbar](/reference/hoon/rune/sig/#-sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:                                                         
+
+One way to include an error message in your code is the [`~_` sigcab](/reference/hoon/rune/sig#_-sigcab) rune, described as a “user-formatted tracing printf”, or the [`~|` sigbar](/reference/hoon/rune/sig#-sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
 ```hoon {% copy=true %}
 |=  [a=@ud]
   ~_  leaf+"This code failed"
   !!
-``` 
-      
+```
+
 When you compose your own library functions, consider including error messages for likely failure points.
 
 
@@ -236,7 +236,7 @@ Previously, we introduced the concept of a `%say` generator to produce a more ve
 
 We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than expecting arguments to be passed in at the time of initiation.
 
-This section will briefly walk through an `%ask` generator to give you a taste of how they work.  The [CLI app guide](/guides/additional/hoon/cli-tutorial) walks through the libraries necessary for working with `%ask` generators in greater detail.  We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
+This section will briefly walk through an `%ask` generator to give you a taste of how they work.  The [CLI app guide](/guides/additional/cli-tutorial) walks through the libraries necessary for working with `%ask` generators in greater detail.  We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
 
 ##### Tutorial:  `%ask` Generator
 
@@ -323,11 +323,11 @@ Because we imported `generators`, we can access its contained gates, three of wh
 
 - `print` is used for printing a `tank` to the console.
 
-    In our example, `%+` cenlus is the rune to call a gate, and our gate `++print` takes one argument which is a `tank` to print.  The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write.
+    In our example, `%+` cenlus is used to call the gate `++print`, with two arguments. The first argument is a `tank` to print.  The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
 
-- `prompt` is used to construct a prompt for the user to provide input.  It takes a single argument that is a tuple.  Most `%ask` generators will want to use the `++prompt` gate.
+- `prompt` is used to construct a prompt for the user to provide input. The first argument is a tuple. The second argument is a gate that returns the output of a call to `++produce`. Most `%ask` generators will want to use the `++prompt` gate.
 
-    The first element of the `++prompt` sample is a flag that indicates whether what the user typed should be echoed out to them or hidden. `%&` will produce echoed output and `%|` will hide the output (for use in passwords or other secret text).
+    The first element of the `++prompt` tuple/sample is a flag that indicates whether what the user typed should be echoed out to them or hidden. `%&` will produce echoed output and `%|` will hide the output (for use in passwords or other secret text).
 
     The second element of the `++prompt` sample is intended to be information for use in creating autocomplete options for the prompt. This functionality is not yet implemented.
 

@@ -163,10 +163,10 @@ A `note-arvo` is defined in `lull.hoon` like so:
 ```
 
 The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for
-Clay, etc. After then vane letter comes the task. Each vane has an API with a
+Clay, etc. After the vane letter comes the task. Each vane has an API with a
 set of tasks that it will accept, and are defined in each vane's section of
 `lull.hoon`. Each vane's tasks are documented on the API Reference page of its
-section in the [Arvo documentation](/reference/arvo/arvo).
+section in the [Arvo documentation](/reference/arvo/overview).
 
 #### Examples
 
@@ -216,7 +216,7 @@ if it does not. Therefore, you would not explicitly produce a `%watch-ack` or
 `%fact` and `%kick` are both sent out to existing subscribers - entities that
 have previously `%watch`ed a path on your ship.
 
-A `%kick` gift takes a list of subscription `path`s. and a `(unit ship)`, which
+A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which
 is the ship to kick from those paths. If the `unit` is null, all subscribers are
 kicked from the specified paths. Note that sometimes Gall can produce `%kick`
 gifts without your agent explicitly sending a card, due to networking

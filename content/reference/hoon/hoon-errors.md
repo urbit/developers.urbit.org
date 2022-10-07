@@ -134,7 +134,7 @@ function.
 ### `mint-vain` and `mint-lost`
 
 These are errors caused by type inference in pattern matching.
-`mint-vain` means this hoon is never executed. `mint-lost` means there's a case in a `?-` ([**wuthep**](/reference/hoon/rune/wut#-wuthep)) that isn't handled.
+`mint-vain` means this hoon is never executed. `mint-lost` means there's a case in a `?-` ([**wuthep**](/reference/hoon/rune/wut#--wuthep)) that isn't handled.
 
 ## Runtime crashes
 
@@ -164,7 +164,7 @@ The worst possibility, of course, is that your code runs but does
 the wrong thing. This is relatively unusual in a typed
 functional language, but it still happens.
 
-`~&` ([**sigpam**](/reference/hoon/rune/sig#sigpam)) is Hoon's debugging printf.
+`~&` ([**sigpam**](/reference/hoon/rune/sig#-sigpam)) is Hoon's debugging printf.
 This pretty-prints its argument:
 
 ```hoon

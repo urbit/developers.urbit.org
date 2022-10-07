@@ -13,7 +13,7 @@ _This module will discuss how we can have confidence that a program does what it
 >
 > It's natural to feel fear of code; however, you must act as though you are able to master and change any part of it. To code courageously is to walk into any abyss, bring light, and make it right.
 >
-> (~wicdev-wisryt, [“Urbit Precepts” C1](/guides/additional/development/precepts))
+> ~wicdev-wisryt
 
 When you produce software, how much confidence do you have that it does what you think it does?  Bugs in code are common, but judicious testing can manifest failures so that the bugs can be identified and corrected.  We can classify a testing regimen for Urbit code into a couple of layers:  fences and unit tests.
 
@@ -54,7 +54,7 @@ OK      /lib/pull-hook-virt/test-kick-mule
 ok=%.y    
 ```
 
-(Depending on when you built your fakeship, particular tests may or may not be present.  You can download them from [the Urbit repo](https://github.com/urbit/urbit) and add them manually if you like.)
+(Depending on when you built your fakeship, particular tests may or may not be present.  You can download them from [the Urbit repo](https://github.com/urbit/urbit) and add them manually if you like. Regarding the example above (`%landscape` desk), the tests are likely missing, so download them from [here](https://github.com/urbit/urbit/tree/master/pkg/landscape) if you want to run them.)
 
 Hoon unit tests come in two categories:
 
@@ -69,8 +69,9 @@ Consider an absolute value arm `++absolute` for `@rs` values. The unit tests for
 
 -   Verify correct behavior for positive numeric input.
 -   Verify correct behavior for negative numeric input.
--   Verify correct behavior for zero input.
--   Verify an exception is raised for nonnumeric input.  (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `unit` are a way of dealing with failed computations.)
+-   For the purpose of demonstrating `++expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `unit` are a way of dealing with failed computations.)
+
+(You may also think we would need to verify `++absolute` calls only succeed if the input is an `@rs`, but arvo already handles this for us, as a hoon file will not build if a gate call contains an argument that does not match the sample type. So even if you wanted to add an `++expect-fail` test for it, your test file would not build.)
 
 By convention any testing suite has the import line `/+  *test` at the top.
 
@@ -87,11 +88,8 @@ By convention any testing suite has the import line `/+  *test` at the top.
   %+  expect-eq
     !>  .1
     !>  (absolute .1)
-  %+  expect-eq
-    !>  .0
-    !>  (absolute .0)
   %-  expect-fail
-    |.  (absolute '0')  ::actually succeeds
+    |.  (absolute .0)
   ==
 --
 ```
@@ -174,7 +172,7 @@ Formal error messages in Urbit are built of tanks.
 
 As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of the evaluations and expressions that got the program to its notional point of computation.  When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
-- The [`~_` sigcab](/reference/hoon/rune/sig/#-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `tank`.  (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
+- The [`~_` sigcab](/reference/hoon/rune/sig/#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `tank`.  (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 - The [`~|` sigbar](/reference/hoon/rune/sig/#-sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` cord.
 
     What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:

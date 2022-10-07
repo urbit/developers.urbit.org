@@ -53,7 +53,7 @@ Consider calculating _a x² + b x + c_, a situation we earlier resolved using a 
 117
 ```
 
-One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` miccol.  (There is also [`++corl`](/reference/hoon/stdlib/2n#corl), which composes backwards rather than forwards.)  This example converts a value to `@ux` then decrements it by corking two molds:
+One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` miccol.  (There is also [`++corl`](/reference/hoon/stdlib/2n#corl), which composes backwards rather than forwards.) This example decrements a value then converts it to `@ux` by corking two gates:
 
 ```hoon
 > ((cork dec @ux) 20)  
@@ -124,15 +124,15 @@ q=15
 If you've already encountered [wet gates](/guides/core/hoon-school/R-metals) and how they handle their sample, you may eventually circle back around to attempting to write statements which curry a wet gate.  For instance, here is an attempt to curry `++reel` which itself takes a gate (in this case `++add`) as an argument:
 
 ```hoon
-> (curr (reel add `(list @)`[1 2 3 4 ~]))
+> ((curr reel add) `(list @)`[1 2 3 4 ~])
 mull-grow
--find.,.+13.b
+-find.i.a
 dojo: hoon expression failed
 ```
 
 Unfortunately, `++cury` and `++curr` don't work with wet gates, and you'll see a `mull-grow` error.
 
-One solution is to “dry out” the wet gate using [`++bake`](https://developers.urbit.org/reference/hoon/stdlib/2b#bake):
+One solution is to “dry out” the wet gate using [`++bake`](/reference/hoon/stdlib/2b#bake):
 
 ```hoon
 > ((curr (bake reel ,[(list @) _add]) add) `(list @)`[1 2 3 4 ~])
