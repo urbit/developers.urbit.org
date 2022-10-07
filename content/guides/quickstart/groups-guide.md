@@ -36,7 +36,7 @@ has two folders inside:
 
 Let's get started.
 
-### Install binary
+## Install binary
 
 If you've already got the `urbit` CLI runtime installed, you can skip this step.
 Otherwise, run one of the commands below, depending on your platform. It will
@@ -54,7 +54,7 @@ curl -L https://urbit.org/install/linux64/latest | tar xzk --strip=1
 curl -L https://urbit.org/install/mac/latest | tar xzk --strip=1
 ```
 
-### Development ship
+## Development ship
 
 App development is typically done on a "fake" ship, which can be created with
 the `-F` flag. In this case, so we can test it on the live network right away,
@@ -72,7 +72,7 @@ by the `~sampel_samzod:dojo>` prompt.
 Note: we'll use `~sampel_samzod` throughout this guide, but this will be
 different for you as a comet's ID is randomly generated.
 
-### Dependencies
+## Dependencies
 
 Our app needs a few standard files. We'll mount a couple of default desks so we
 can copy them across. We can do this with the `|mount` command:
@@ -97,7 +97,7 @@ cp -r dev-comet/garden/sur/docket.hoon squad/sur/
 
 Now we can start working on the app itself.
 
-### Types
+## Types
 
 The first thing we typically do when developing an app is define:
 
@@ -223,7 +223,7 @@ following code in `squad/sur/squad.hoon`:
 --
 ```
 
-### Agent
+## Agent
 
 With all the types now defined, we can create the app itself.
 
@@ -1369,7 +1369,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
 --
 ```
 
-### Marks
+## Marks
 
 Marks are Urbit's version of filetypes/MIME types (but strongly typed and with
 inter-mark conversion methods). We need to define a mark for the `act`ions we'll
@@ -1444,7 +1444,7 @@ mark in `squad/mar/squad/did.hoon`.
 ++  grad  %noun
 --
 ```
-### Front-end
+## Front-end
 
 We could have put the front-end code directly in our Gall agent, but it tends to
 be quite large so it's convenient to have it in a separate file and just import
@@ -1894,7 +1894,7 @@ Save the code below in `squad/app/squad/index.hoon`.
 --
 ```
 
-### Desk config
+## Desk config
 
 With our types, agent, mark files and front-end now complete, the last thing we
 need are some desk configuration files.
@@ -1932,7 +1932,7 @@ and add the following:
 ==
 ```
 
-### Put it together
+## Put it together
 
 Our app is now complete. In the `squad` working directory, we should have the
 following files, as well as the dependencies we copied in at the beginning:
