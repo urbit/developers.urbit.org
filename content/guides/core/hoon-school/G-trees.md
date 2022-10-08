@@ -477,7 +477,7 @@ The first `b`, `b=[a=1 b=2 c=3]`, is skipped; so the entire head of the subject 
 
 How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=14 15]]`? In each case you should use a wing.
 
-We say that the outer face has been _shadowed_ when an inner name obscures it.
+We say that the inner face has been _shadowed_ when an outer name obscures it.
 
 If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` centis loop/recursion of multiple cores with a `|-` barhep trap nested inside of a `|=` bartis gate, for instance.
 
