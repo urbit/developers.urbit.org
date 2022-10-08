@@ -46,7 +46,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
 
     | Noun | Tree Diagram |
     | ---- | ------------ |
-    | `[[[1 2] 3] 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-1.png) | 
+    | `[[1 2] [3 4]]`<br><br>pretty printed:<br>`[[1 2] 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-1.png) | 
     | `[[1 2] 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
     | `[1 2 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
 
