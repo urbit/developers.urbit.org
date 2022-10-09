@@ -51,6 +51,7 @@ changed two parts: `%core` and `%face`.  We added polymorphism to
 
 If cores never changed, we wouldn't need polymorphism.  Of
 course, nouns are immutable and never change, but we use them as
+but we use them as templates to construct new nouns around.
 
 Suppose we take a core, a cell `[battery payload]`, and replace
 the payload with a different noun.  Then, we invoke an arm from
