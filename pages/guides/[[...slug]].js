@@ -21,6 +21,10 @@ import {
   getNextPost,
 } from "@urbit/foundation-design-system";
 import { Comms, Ringsig, Squad } from "../../components/icons";
+import HoonIcon from "../../components/icons/TallCard/hoon";
+import EnvironmentIcon from "../../components/icons/TallCard/env";
+import AppIcon from "../../components/icons/TallCard/app";
+import FullStackIcon from "../../components/icons/TallCard/full";
 import guidesTree from "../../cache/guides.json";
 import { join } from "path";
 
@@ -170,7 +174,7 @@ function Landing({ search }) {
               description="Learn how to get your urbit development environment configured"
               callout="View Guide"
               href="/guides/core/environment"
-              image="/images/environment.svg"
+              image={EnvironmentIcon}
               className="h-full"
             />
             <TallCard
@@ -178,7 +182,7 @@ function Landing({ search }) {
               description="Learn the fundamentals of the Hoon programming language"
               callout="View Guide"
               href="/guides/core/hoon-school"
-              image="/images/hoon.svg"
+              image={HoonIcon}
               className="h-full"
             />
           </TwoUp>
@@ -188,7 +192,7 @@ function Landing({ search }) {
               description="Learn how to build Urbit userspace applications by writing your own Gall agents"
               callout="View Guide"
               href="/guides/core/app-school"
-              image="/images/app.svg"
+              image={AppIcon}
               className="h-full"
             />
             <TallCard
@@ -196,7 +200,7 @@ function Landing({ search }) {
               description="Learn how to create Gall agents and integrate them into a React front-end"
               callout="View Guide"
               href="/guides/core/app-school-full-stack"
-              image="/images/fullstack.svg"
+              image={FullStackIcon}
               className="h-full"
             />
           </TwoUp>
@@ -290,7 +294,7 @@ function Landing({ search }) {
         </Section>
       </SingleColumn>
       <Footer />
-    </Container>
+    </Container >
   );
 }
 
