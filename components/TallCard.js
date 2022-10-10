@@ -15,10 +15,9 @@ export default function TallCard({
       <div key={title} className={`bg-wall-100 rounded-xl min-h-0 `}>
         <Link href={href}>
           <div className="flex flex-col space-y-4 p-6 justify-center items-center h-full relative">
-            <img
-              className="rounded-lg self-center overflow-hidden border-transparent border w-full shrink-0"
-              src={image}
-            />
+            <div className="rounded-lg self-center overflow-hidden border-transparent border w-full shrink-0">
+              {image({ className: "w-full h-full" })}
+            </div>
             <div className={`grow-1 flex flex-col h-full w-full`}>
               <h3 className="mb-2">{title}</h3>
               <p>{description}</p>
