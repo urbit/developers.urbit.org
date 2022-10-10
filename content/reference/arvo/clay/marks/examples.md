@@ -44,7 +44,7 @@ These are the files used in the [Writing Marks](/reference/arvo/clay/marks/writi
         (cat 3 (crip tape) '"')
       (crip tape)
     ;~  pose
-      (full (star ;~(less (mask "\",\0a\0d") next)))
+      (full (star ;~(less ;~(pose doq (mask ",\0a\0d")) next)))
       ;~  plug
         (easy '"')
         (star ;~(pose (cold '""' doq) next))
@@ -73,7 +73,7 @@ These are the files used in the [Writing Marks](/reference/arvo/clay/marks/writi
       ;~(pose unenclosed enclosed)
       ++  unenclosed                                     ::  unquoted field
         ;~  sfix
-          (star ;~(less (mask "\",\0a\0d") next))
+          (star ;~(less ;~(pose doq (mask ",\0a\0d")) next))
           ;~  pose
             ;~  plug
               ;~(pose (jest '\0d\0a') (mask "\0a\0d"))
