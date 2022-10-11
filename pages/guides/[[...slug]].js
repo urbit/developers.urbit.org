@@ -304,7 +304,6 @@ export async function getStaticProps({ params }) {
     join(process.cwd(), "content/guides", params.slug?.join("/") || "/"), true
   );
 
-  console.log(data);
   const previousPost =
     getPreviousPost(
       params.slug?.slice(-1).join("") || "guides",
