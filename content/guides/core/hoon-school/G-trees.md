@@ -42,13 +42,13 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
 
 ##  Exercise:  Map Nouns to Tree Diagrams
 
-- Consider each of the following nouns.  Which tree diagram do they correspond to?
+- Consider each of the following nouns.  Which tree diagram do they correspond to?  (This is a matching exercise.)
 
     | Noun | Tree Diagram |
     | ---- | ------------ |
-    | `[[[1 2] 3] 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-1.png) | 
-    | `[[1 2] 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
-    | `[1 2 3 4]` | ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
+    | 1. `[[[1 2] 3] 4]` | A. ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-1.png) | 
+    | 2. `[[1 2] 3 4]` | B. ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
+    | 3. `[1 2 3 4]` | C. ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
 
 ##  Exercise:  Produce a List of Numbers
 
