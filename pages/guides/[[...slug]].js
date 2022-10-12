@@ -80,14 +80,17 @@ export default function GuidePage({
               />
             )}
           </div>
-          <a
-            className="font-semibold rounded-xl block p-2 text-wall-400 hover:text-green-400 mt-16"
-            target="_blank"
-            href={`https://github.com/urbit/developers.urbit.org/blob/master/content/guides/${params.slug?.join("/") || "_index"
-              }.md`}
-          >
-            Edit this page on GitHub
-          </a>
+          <div className="flex justify-between items-center mt-16">
+            <a
+              className="font-semibold rounded-xl block p-2 text-wall-400 hover:text-green-400"
+              target="_blank"
+              href={`https://github.com/urbit/developers.urbit.org/blob/master/content/guides/${params.slug?.join("/") || "_index"
+                }.md`}
+            >
+              Edit this page on GitHub
+            </a>
+            <p className="font-semibold block p-2 text-wall-400">Last modified {data.lastModified}</p>
+          </div>
         </ContentArea>
       </div>
     </>
@@ -298,7 +301,7 @@ export async function getStaticProps({ params }) {
   let posts = guidesTree;
 
   const { data, content } = getPage(
-    join(process.cwd(), "content/guides", params.slug?.join("/") || "/")
+    join(process.cwd(), "content/guides", params.slug?.join("/") || "/"), true
   );
 
   const previousPost =
