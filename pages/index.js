@@ -26,6 +26,8 @@ import {
 } from "../components/icons";
 import Card from "../components/Card";
 import TallCard from "../components/TallCard";
+import HoonIcon from "../components/icons/TallCard/hoon";
+import AppIcon from "../components/icons/TallCard/app";
 
 export default function Home({ search, posts }) {
   return (
@@ -138,7 +140,7 @@ export default function Home({ search, posts }) {
                 description="Learn the fundamentals of the Hoon programming language"
                 callout="View Guide"
                 href="/guides/core/hoon-school"
-                image="/images/hoon.svg"
+                image={HoonIcon}
                 className="h-full"
               />
               <TallCard
@@ -146,7 +148,7 @@ export default function Home({ search, posts }) {
                 description="Learn how to build Urbit userspace applications by writing your own Gall agents"
                 callout="View Guide"
                 href="/guides/core/app-school"
-                image="/images/app.svg"
+                image={AppIcon}
                 className="h-full"
               />
             </TwoUp>
