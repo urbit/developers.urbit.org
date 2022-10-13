@@ -11,7 +11,7 @@ Since jetting code requires modifying the binary runtime, we will work some in H
 
 #### Additional Resources
 
-- [~timluc-miptev, “Jets”](https://github.com/timlucmiptev/docs-runtime/blob/master/jets.md) (recommended to start here first)
+- [~timluc-miptev, “Jets in the Urbit Runtime”](https://github.com/timlucmiptev/docs-runtime/blob/master/jets1_current.md) (recommended to start here first)
 - [“`u3`: Land of Nouns”](/reference/runtime/nouns/) (recommended as supplement to this document)
 - [“API overview by prefix”](/reference/runtime/api/) (recommended as supplement after this document)
 
