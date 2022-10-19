@@ -14,7 +14,6 @@ class Search extends Component {
     this.searchEndpoint = this.searchEndpoint.bind(this);
     this.onInputValueChange = this.onInputValueChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    this.glossarySearch = this.glossarySearch.bind(this);
     this.patpSearch = this.patpSearch.bind(this);
     this.urbitOrgSearch = this.urbitOrgSearch.bind(this);
     this.opsSearch = this.opsSearch.bind(this);
@@ -22,10 +21,6 @@ class Search extends Component {
 
   searchEndpoint(query) {
     return `/api/search?q=${query}`;
-  }
-
-  glossarySearch(query) {
-    return `/api/glossary?q=${encodeURIComponent(query)}`;
   }
 
   opsSearch(query) {
@@ -45,16 +40,20 @@ class Search extends Component {
   }
 
   onSelect(item) {
-    if (item.slug) {
-      this.props.router.push(item.slug);
-    }
-
     this.setState({
       query: "",
       results: [],
     });
 
-    this.props.closeSearch();
+    if (item.url) {
+      this.props.router.push(`${item.url}${item?.slug ? item.slug : ""}`);
+      return this.props.closeSearch();
+    }
+
+    if (item.slug) {
+      this.props.router.push(item.slug);
+      return this.props.closeSearch();
+    }
   }
 
   onInputValueChange = debounce(async (query) => {
@@ -63,10 +62,14 @@ class Search extends Component {
         .then((res) => res.json())
         .then(async (res) => {
           // Wrap results in an object which will tell React what component to use to render results.
-          return res.results.map((item) => ({
+          console.log(res)
+          return [...res.glossary.map((item) => ({
+            type: "GLOSSARY_RESULT",
+            content: item
+          })), ...res.results.map((item) => ({
             type: "RESULT",
             content: item,
-          }));
+          }))];
         });
 
       const patp = this.patpSearch(query)
@@ -77,14 +80,14 @@ class Search extends Component {
 
       const patpResult = this.patpSearch(query)
         ? [
-            {
-              type: "PATP",
-              content: {
-                patp: patp,
-                slug: `https://urbit.org/ids/${patp}`,
-              },
+          {
+            type: "PATP",
+            content: {
+              patp: patp,
+              slug: `https://urbit.org/ids/${patp}`,
             },
-          ]
+          },
+        ]
         : [];
 
       const urbitOrgSearch = fetch(this.urbitOrgSearch(query))
@@ -96,34 +99,32 @@ class Search extends Component {
           }));
         });
 
-      const glossarySearch = fetch(this.glossarySearch(query))
-        .then((res) => res.json())
-        .then((res) => {
-          return res.results.map((item) => ({
-            type: "GLOSSARY_RESULT",
-            content: item,
-          }));
-        });
-
       const opsSearch = fetch(this.opsSearch(query))
         .then((res) => res.json())
         .then((res) => {
-          return res.results.map((item) => ({
+          return [...res.glossary.map((item) => ({
+            type: "GLOSSARY_RESULT",
+            content: item
+          })), res.results.map((item) => ({
             type: "OPS_RESULT",
             content: item,
-          }));
+          }))];
         });
 
-      const [glossaryResults, results, urbitOrgResults, opsResults] =
-        await Promise.all([glossarySearch, search, urbitOrgSearch, opsSearch]);
+      const [results, urbitOrgResults, opsResults] =
+        await Promise.all([search, urbitOrgSearch, opsSearch]);
 
       const list = [
-        ...glossaryResults,
         ...patpResult,
         ...results,
         ...urbitOrgResults,
         ...opsResults,
-      ];
+      ]
+        .sort((a, b) => {
+          const aNum = a?.type === "GLOSSARY_RESULT" ? 1 : -1;
+          const bNum = b?.type === "GLOSSARY_RESULT" ? 1 : -1;
+          return bNum - aNum;
+        });
       this.setState({ results: list });
     } else {
       this.setState({ results: [] });
@@ -182,209 +183,195 @@ class Search extends Component {
                 <ul {...getMenuProps()} className="overflow-y-scroll">
                   {isOpen
                     ? state.results.map((item, index) => {
-                        const selected = highlightedIndex === index;
-                        if (item.type === "PATP") {
-                          return (
-                            <li
-                              className={`cursor-pointer p-2 flex space-x-2 items-center text-left w-full ${
-                                selected ? "bg-green-400" : ""
+                      const selected = highlightedIndex === index;
+                      if (item.type === "PATP") {
+                        return (
+                          <li
+                            className={`cursor-pointer p-2 flex space-x-2 items-center text-left w-full ${selected ? "bg-green-400" : ""
                               }`}
-                              {...getItemProps({
-                                key: item.content.slug + "-" + index,
-                                index,
-                                item: item.content,
-                                selected: highlightedIndex === index,
-                              })}
-                            >
-                              <div className="rounded-md overflow-hidden">
-                                <Sigil
-                                  patp={item.content.patp}
-                                  size={25}
-                                  icon
-                                />
-                              </div>
-                              <p className="font-mono">{item.content.patp}</p>
-                            </li>
-                          );
-                        }
-                        if (item.type === "GLOSSARY_RESULT") {
-                          return (
-                            <li
-                              className={`cursor-pointer flex text-left w-full ${
-                                selected ? "bg-green-400" : ""
+                            {...getItemProps({
+                              key: item.content.slug + "-" + index,
+                              index,
+                              item: item.content,
+                              selected: highlightedIndex === index,
+                            })}
+                          >
+                            <div className="rounded-md overflow-hidden">
+                              <Sigil
+                                patp={item.content.patp}
+                                size={25}
+                                icon
+                              />
+                            </div>
+                            <p className="font-mono">{item.content.patp}</p>
+                          </li>
+                        );
+                      }
+                      if (item.type === "GLOSSARY_RESULT") {
+                        return (
+                          <li
+                            className={`cursor-pointer flex text-left w-full ${selected ? "bg-green-400" : ""
                               }`}
-                              {...getItemProps({
-                                key: item.content.slug + "-" + index,
-                                index,
-                                item: item.content,
-                                selected: highlightedIndex === index,
-                              })}
-                            >
-                              <div className="font-semibold p-3">
-                                <p
-                                  className={`text-base ${
-                                    selected ? "text-white" : "text-wall-600"
+                            {...getItemProps({
+                              key: item.content.slug + "-" + index,
+                              index,
+                              item: item.content,
+                              selected: highlightedIndex === index,
+                            })}
+                          >
+                            <div className="font-semibold p-3">
+                              <p
+                                className={`text-base ${selected ? "text-white" : "text-wall-600"
                                   }`}
-                                >
-                                  {item.content.symbol.length > 0 && (
-                                    <code
-                                      className={`mr-1 rounded px-1 py-0.5 ${
-                                        selected
-                                          ? "bg-washedWhite"
-                                          : "bg-wall-100"
+                              >
+                                {item.content.symbol.length > 0 && (
+                                  <code
+                                    className={`mr-1 rounded px-1 py-0.5 ${selected
+                                      ? "bg-washedWhite"
+                                      : "bg-wall-100"
                                       }`}
-                                    >
-                                      {item.content.symbol}
-                                    </code>
-                                  )}
-                                  {item.content.name}
-                                </p>
-                                <p
-                                  className={`font-normal text-base mt-1 ${
-                                    selected ? "text-white" : "text-wall-600"
+                                  >
+                                    {item.content.symbol}
+                                  </code>
+                                )}
+                                {item.content.name}
+                              </p>
+                              <p
+                                className={`font-normal text-base mt-1 ${selected ? "text-white" : "text-wall-600"
                                   }`}
-                                  dangerouslySetInnerHTML={{
-                                    __html: item.content.desc,
-                                  }}
-                                ></p>
-                              </div>
-                            </li>
-                          );
-                        }
-                        if (item.type === "RESULT") {
-                          return (
-                            <li
-                              className={`cursor-pointer flex text-left w-full ${
-                                selected ? "bg-green-400" : ""
+                                dangerouslySetInnerHTML={{
+                                  __html: item.content.desc,
+                                }}
+                              ></p>
+                            </div>
+                          </li>
+                        );
+                      }
+                      if (item.type === "RESULT") {
+                        return (
+                          <li
+                            className={`cursor-pointer flex text-left w-full ${selected ? "bg-green-400" : ""
                               }`}
-                              {...getItemProps({
-                                key: item.content.link + "-" + index,
-                                index,
-                                item: item.content,
-                                selected,
-                              })}
-                            >
-                              <div className="p-3">
-                                <p
-                                  className={`font-medium text-base ${
-                                    selected ? "text-white" : "text-wall-600"
+                            {...getItemProps({
+                              key: item.content.link + "-" + index,
+                              index,
+                              item: item.content,
+                              selected,
+                            })}
+                          >
+                            <div className="p-3">
+                              <p
+                                className={`font-medium text-base ${selected ? "text-white" : "text-wall-600"
                                   }`}
-                                >
+                              >
+                                {item.content.parent !== "Content"
+                                  ? `${item.content.parent} /`
+                                  : ""}{" "}
+                                {item.content.title}
+                              </p>
+                              <p
+                                className={`text-base font-regular text-small ${selected ? "text-midWhite" : "text-wall-500"
+                                  }`}
+                              >
+                                {item.content.content}
+                                {item?.content?.foundOnPage && (
+                                  <span className="italic block">
+                                    Found in page content
+                                  </span>
+                                )}
+                              </p>
+                            </div>
+                          </li>
+                        );
+                      }
+                      if (item.type === "URBIT_ORG_RESULT") {
+                        const urbOrgItem = Object.assign({}, item.content);
+                        urbOrgItem[
+                          "slug"
+                        ] = `https://urbit.org${item.content.slug}`;
+                        return (
+                          <li
+                            className={`cursor-pointer flex text-left w-full ${selected ? "bg-green-400" : ""
+                              }`}
+                            {...getItemProps({
+                              key: item.content.link + "-" + index,
+                              index,
+                              item: urbOrgItem,
+                              selected,
+                            })}
+                          >
+                            <div className="p-3">
+                              <p
+                                className={`font-medium text-base ${selected ? "text-white" : "text-wall-600"
+                                  }`}
+                              >
+                                <span className="text-wall-400">
                                   {item.content.parent !== "Content"
-                                    ? `${item.content.parent} /`
-                                    : ""}{" "}
-                                  {item.content.title}
-                                </p>
-                                <p
-                                  className={`text-base font-regular text-small ${
-                                    selected ? "text-midWhite" : "text-wall-500"
+                                    ? `urbit.org / ${item.content.parent} /`
+                                    : "urbit.org /"}{" "}
+                                </span>
+                                {item.content.title}
+                              </p>
+                              <p
+                                className={`text-base font-regular text-small ${selected ? "text-midWhite" : "text-wall-500"
                                   }`}
-                                >
-                                  {item.content.content}
-                                  {item?.content?.foundOnPage && (
-                                    <span className="italic block">
-                                      Found in page content
-                                    </span>
-                                  )}
-                                </p>
-                              </div>
-                            </li>
-                          );
-                        }
-                        if (item.type === "URBIT_ORG_RESULT") {
-                          const urbOrgItem = Object.assign({}, item.content);
-                          urbOrgItem[
-                            "slug"
-                          ] = `https://urbit.org${item.content.slug}`;
-                          return (
-                            <li
-                              className={`cursor-pointer flex text-left w-full ${
-                                selected ? "bg-green-400" : ""
-                              }`}
-                              {...getItemProps({
-                                key: item.content.link + "-" + index,
-                                index,
-                                item: urbOrgItem,
-                                selected,
-                              })}
-                            >
-                              <div className="p-3">
-                                <p
-                                  className={`font-medium text-base ${
-                                    selected ? "text-white" : "text-wall-600"
-                                  }`}
-                                >
-                                  <span className="text-wall-400">
-                                    {item.content.parent !== "Content"
-                                      ? `urbit.org / ${item.content.parent} /`
-                                      : "urbit.org /"}{" "}
+                              >
+                                {item.content.content}
+                                {item?.content?.foundOnPage && (
+                                  <span className="italic block">
+                                    Found in page content
                                   </span>
-                                  {item.content.title}
-                                </p>
-                                <p
-                                  className={`text-base font-regular text-small ${
-                                    selected ? "text-midWhite" : "text-wall-500"
-                                  }`}
-                                >
-                                  {item.content.content}
-                                  {item?.content?.foundOnPage && (
-                                    <span className="italic block">
-                                      Found in page content
-                                    </span>
-                                  )}
-                                </p>
-                              </div>
-                            </li>
-                          );
-                        }
-                        if (item.type === "OPS_RESULT") {
-                          const opsItem = Object.assign({}, item.content);
-                          opsItem[
-                            "slug"
-                          ] = `https://operators.urbit.org${item.content.slug}`;
-                          return (
-                            <li
-                              className={`cursor-pointer flex text-left w-full ${
-                                selected ? "bg-green-400" : ""
+                                )}
+                              </p>
+                            </div>
+                          </li>
+                        );
+                      }
+                      if (item.type === "OPS_RESULT") {
+                        const opsItem = Object.assign({}, item.content);
+                        opsItem[
+                          "slug"
+                        ] = `https://operators.urbit.org${item.content.slug}`;
+                        return (
+                          <li
+                            className={`cursor-pointer flex text-left w-full ${selected ? "bg-green-400" : ""
                               }`}
-                              {...getItemProps({
-                                key: item.content.link + "-" + index,
-                                index,
-                                item: opsItem,
-                                selected,
-                              })}
-                            >
-                              <div className="p-3">
-                                <p
-                                  className={`font-medium text-base ${
-                                    selected ? "text-white" : "text-wall-600"
+                            {...getItemProps({
+                              key: item.content.link + "-" + index,
+                              index,
+                              item: opsItem,
+                              selected,
+                            })}
+                          >
+                            <div className="p-3">
+                              <p
+                                className={`font-medium text-base ${selected ? "text-white" : "text-wall-600"
                                   }`}
-                                >
-                                  <span className="text-wall-400">
-                                    {item.content.parent !== "Content"
-                                      ? `operators.urbit.org / ${item.content.parent} /`
-                                      : "operators.urbit.org /"}{" "}
+                              >
+                                <span className="text-wall-400">
+                                  {item.content.parent !== "Content"
+                                    ? `operators.urbit.org / ${item.content.parent} /`
+                                    : "operators.urbit.org /"}{" "}
+                                </span>
+                                {item.content.title}
+                              </p>
+                              <p
+                                className={`text-base font-regular text-small ${selected ? "text-midWhite" : "text-wall-500"
+                                  }`}
+                              >
+                                {item.content.content}
+                                {item?.content?.foundOnPage && (
+                                  <span className="italic block">
+                                    Found in page content
                                   </span>
-                                  {item.content.title}
-                                </p>
-                                <p
-                                  className={`text-base font-regular text-small ${
-                                    selected ? "text-midWhite" : "text-wall-500"
-                                  }`}
-                                >
-                                  {item.content.content}
-                                  {item?.content?.foundOnPage && (
-                                    <span className="italic block">
-                                      Found in page content
-                                    </span>
-                                  )}
-                                </p>
-                              </div>
-                            </li>
-                          );
-                        }
-                        return null;
-                      })
+                                )}
+                              </p>
+                            </div>
+                          </li>
+                        );
+                      }
+                      return null;
+                    })
                     : null}
                 </ul>
               </div>
