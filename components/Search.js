@@ -62,7 +62,6 @@ class Search extends Component {
         .then((res) => res.json())
         .then(async (res) => {
           // Wrap results in an object which will tell React what component to use to render results.
-          console.log(res)
           return [...res.glossary.map((item) => ({
             type: "GLOSSARY_RESULT",
             content: item
@@ -105,7 +104,7 @@ class Search extends Component {
           return [...res.glossary.map((item) => ({
             type: "GLOSSARY_RESULT",
             content: item
-          })), res.results.map((item) => ({
+          })), ...res.results.map((item) => ({
             type: "OPS_RESULT",
             content: item,
           }))];
