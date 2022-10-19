@@ -3,6 +3,13 @@ title = "Helm"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.helm]
+name = "helm"
+symbol = ""
+usage = "arvo"
+desc = "A library and set of generators to manage system settings and get reports."
+
 +++
 
 The [hood](/reference/glossary/hood) [agent](/reference/glossary/agent) is

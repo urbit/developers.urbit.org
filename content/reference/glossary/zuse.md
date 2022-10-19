@@ -1,5 +1,12 @@
 +++
 title = "Zuse"
+
+[glossaryEntry.zuse]
+name = "zuse"
+symbol = ""
+usage = "arvo"
+desc = "A utility library included in the kernel, primarily dealing with cryptography and HTML/JSON parsing/printing."
+
 +++
 
 **Zuse** is a utility library included with the

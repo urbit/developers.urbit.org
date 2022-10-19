@@ -3,6 +3,13 @@ title = "Sample"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.sample]
+name = "sample"
+symbol = ""
+usage = "hoon-nock"
+desc = "The argument taken by a function in Hoon."
+
 +++
 
 The **sample** is the argument taken by a function (specifically a

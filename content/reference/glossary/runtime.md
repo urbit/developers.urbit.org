@@ -3,6 +3,13 @@ title = "Runtime"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.runtime]
+name = "runtime"
+symbol = ""
+usage = "arvo"
+desc = "The binary you run your ship with in the terminal."
+
 +++
 
 The **runtime** is the `urbit` or `urbit.exe` binary you run your ship with in

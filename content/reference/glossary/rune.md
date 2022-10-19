@@ -1,7 +1,15 @@
 +++
 title = "Rune"
+
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.rune]
+name = "rune"
+symbol = ""
+usage = "hoon-nock"
+desc = "Runes are the fundamental operators in the Hoon language."
+
 +++
 
 **Runes** are the fundamental operators/functions in the

@@ -1,7 +1,15 @@
 +++
 title = "Duct"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.duct]
+name = "duct"
+symbol = ""
+usage = "arvo"
+desc = "A causal event chain for routing inter-vane messages in Arvo."
+
 +++
 
 [Arvo](/reference/glossary/arvo) is designed to avoid the usual state of complex

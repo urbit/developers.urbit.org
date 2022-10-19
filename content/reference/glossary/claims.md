@@ -3,6 +3,13 @@ title = "Claims"
 
 [extra]
 category = "azimuth"
+
+[glossaryEntry.claims]
+name = "claims"
+symbol = ""
+usage = "azimuth"
+desc = "Allows Urbit identities to make publicly visible assertions about their owner."
+
 +++
 
 The **Claims** [Azimuth](/reference/glossary/azimuth) contract allows Urbit identities to make publicly visible assertions about their owner. Such assertions are most commonly about the owner's identity, real-world or otherwise. A claim has three fields: the claim itself, the _protocol_, and the _dossier_.

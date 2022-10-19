@@ -1,6 +1,69 @@
 +++
 title = "Wild ! ('zap')"
 weight = 4
+
+[glossaryEntry.zap]
+name = "zap"
+symbol = "!"
+usage = "wild"
+desc = "Wildcard category. Expressions that don't fit anywhere else go here."
+
+[glossaryEntry.zapgar]
+name = "zapgar"
+symbol = "!>"
+usage = "wild"
+slug = "#-zapgar"
+desc = "<code>[%zpgr p=hoon]</code>: wrap a noun in its type."
+
+[glossaryEntry.zapgal]
+name = "zapgal"
+symbol = "!<"
+usage = "wild"
+slug = "#-zapgal"
+desc = "<code>[%zpld p=spec q=hoon]</code>: extracts typed value from a vase."
+
+[glossaryEntry.zapcol]
+name = "zapcol"
+symbol = "!:"
+usage = "wild"
+slug = "#-zapcol"
+desc = "<code>[%dbug p=hoon]</code>: turn on stack trace"
+
+[glossaryEntry.zapdot]
+name = "zapdot"
+symbol = "!."
+usage = "wild"
+slug = "#-zapdot"
+desc = "Turn off stack trace for a subexpression <code>p</code>"
+
+[glossaryEntry.zaptis]
+name = "zaptis"
+symbol = "!="
+usage = "wild"
+slug = "#-zaptis"
+desc = "<code>[%zpts p=hoon]</code>: make the Nock formula for a Hoon expression."
+
+[glossaryEntry.zapwut]
+name = "zapwut"
+symbol = "!?"
+usage = "wild"
+slug = "#-zapwut"
+desc = "<code>[%zpwt p=@ q=hoon]</code>: restrict Hoon version."
+
+[glossaryEntry.zappat]
+name = "zappat"
+symbol = "!@"
+usage = "wild"
+slug = "#-zappat"
+desc = "<code>[%zppt p=(list wing) q=hoon r=hoon]</code>: branch on wing existence."
+
+[glossaryEntry.zapzap]
+name = "zapzap"
+symbol = "!!"
+usage = "wild"
+slug = "#-zapzap"
+desc = "<code>[%zpzp ~]</code>: crash."
+
 +++
 
 ## `!,` "zapcom"

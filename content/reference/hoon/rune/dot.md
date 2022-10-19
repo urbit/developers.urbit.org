@@ -1,6 +1,48 @@
 +++
 title = "Nock . ('dot')"
 weight = 3
+
+[glossaryEntry.dot]
+name = "dot"
+symbol = "."
+usage = "Nock"
+desc = "Runes used for carrying out Nock operations in Hoon."
+
+[glossaryEntry.dotket]
+name = "dotket"
+symbol = ".^"
+usage = "Nock"
+slug = "#-dotket"
+desc = "<code>[%dtkt p=spec q=hoon]</code>: load from the Arvo namespace with a fake Nock instruction: 'Nock <code>12</code>''."
+
+[glossaryEntry.dotlus]
+name = "dotlus"
+symbol = ".+"
+usage = "Nock"
+slug = "#-dotlus"
+desc = "<code>[%dtls p=hoon]</code>: increment an atom with Nock <code>4</code>."
+
+[glossaryEntry.dottar]
+name = "dottar"
+symbol = ".*"
+usage = "Nock"
+slug = "#-dottar"
+desc = "<code>[%dttr p=hoon q=hoon]</code>: evaluate with Nock <code>2</code>."
+
+[glossaryEntry.dottis]
+name = "dottis"
+symbol = ".="
+usage = "Nock"
+slug = "#-dottis"
+desc = "<code>[%dtts p=hoon q=hoon]</code>: test for equality with Nock <code>5</code>."
+
+[glossaryEntry.dotwut]
+name = "dotwut"
+symbol = ".?"
+usage = "Nock"
+slug = "#-dotwut"
+desc = "<code>[%dtwt p=hoon]</code>: test for cell or atom with Nock <code>3</code>."
+
 +++
 
 Anything Nock can do, Hoon can do also. These runes are used for carrying out Nock operations in Hoon.

@@ -3,6 +3,13 @@ title = "Path"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.path]
+name = "path"
+symbol = ""
+usage = "hoon-nock"
+desc = "A data type in Hoon that resembles a file path and is a list of @ta text strings."
+
 +++
 
 A **path** is a data type in [Hoon](/reference/glossary/hoon). It is a

@@ -1,5 +1,12 @@
 +++
 title = "Aural ASCII"
+
+[glossaryEntry."aural ASCII"]
+name = "aural ASCII"
+symbol = ""
+usage = "hoon-nock"
+desc = "Short names for special characters in hoon."
+
 +++
 
 The [Hoon](/reference/glossary/hoon) language makes extensive use of

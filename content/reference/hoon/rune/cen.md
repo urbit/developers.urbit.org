@@ -1,6 +1,76 @@
 +++
 title = "Calls % ('cen')"
 weight = 10
+
+[glossaryEntry.cen]
+name = "cen"
+symbol = "%"
+usage = "Calls"
+desc = "Runes used for making function calls in Hoon."
+
+[glossaryEntry.cencab]
+name = "cencab"
+symbol = "%_"
+usage = "Calls"
+slug = "#_-cencab"
+desc = "Resolve a wing with changes, preserving type."
+
+[glossaryEntry.cencol]
+name = "cencol"
+symbol = "%:"
+usage = "Calls"
+slug = "#-cencol"
+desc = "Call a gate with many arguments."
+
+[glossaryEntry.cendot]
+name = "cendot"
+symbol = "%."
+usage = "Calls"
+slug = "#-cendot"
+desc = "Call a gate (function), inverted."
+
+[glossaryEntry.cenhep]
+name = "cenhep"
+symbol = "%-"
+usage = "Calls"
+slug = "#-cenhep"
+desc = "Call a gate (function)."
+
+[glossaryEntry.cenket]
+name = "cenket"
+symbol = "%^"
+usage = "Calls"
+slug = "#-cenket"
+desc = "Call gate with triple sample."
+
+[glossaryEntry.cenlus]
+name = "cenlus"
+symbol = "%+"
+usage = "Calls"
+slug = "#-cenlus"
+desc = "Call gate with a cell sample."
+
+[glossaryEntry.censig]
+name = "censig"
+symbol = "%~"
+usage = "Calls"
+slug = "#-censig"
+desc = "Evaluate an arm in a door."
+
+[glossaryEntry.centar]
+name = "centar"
+symbol = "%*"
+usage = "Calls"
+slug = "#-centar"
+desc = "Evaluate an expression, then resolve a wing with changes."
+
+[glossaryEntry.centis]
+name = "centis"
+symbol = "%="
+usage = "Calls"
+slug = "#-centis"
+desc = "Resolve a wing with changes."
+
 +++
 
 The `%` family of runes is used for making 'function calls' in Hoon. To be more

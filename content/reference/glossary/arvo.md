@@ -1,5 +1,12 @@
 +++
 title = "Arvo"
+
+[glossaryEntry.arvo]
+name = "arvo"
+symbol = ""
+usage = "Arvo"
+desc = "The Urbit operating system and kernel."
+
 +++
 
 **Arvo** is the Urbit operating system and kernel. Arvo's state is a pure

@@ -1,5 +1,12 @@
 +++
 title = "Bunt"
+
+[glossaryEntry.bunt]
+name = "bunt"
+symbol = ""
+usage = "hoon-nock"
+desc = "Produce the default/example value of a mold"
+
 +++
 
 In [Hoon](/reference/glossary/hoon), **bunting** a

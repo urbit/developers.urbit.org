@@ -1,7 +1,15 @@
 +++
 title = "Kelvin versioning"
+
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry."kelvin versioning"]
+name = "kelvin versioning"
+symbol = ""
+usage = "hoon-nock"
+desc = "A software versioning system that counts downwards to zero, at which point it will be permanently fixed and final."
+
 +++
 
 Typical software versioning schemes (e.g. v3.1.45) count ever upwards with each

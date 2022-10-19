@@ -1,6 +1,104 @@
 +++
 title = "Structures $ ('buc')"
 weight = 12
+
+[glossaryEntry.buc]
+name = "buc"
+symbol = "$"
+usage = "Structures"
+desc = "Runes used for defining custom types."
+
+[glossaryEntry.bucbar]
+name = "bucbar"
+symbol = "$|"
+usage = "Structures"
+slug = "#-bucbar"
+desc = "<code>[%bsbr p=spec q=hoon]</code>: structure that satisfies a validator."
+
+[glossaryEntry.buccab]
+name = "buccab"
+symbol = "$_"
+usage = "Structures"
+slug = "#_-buccab"
+desc = "<code>[%bscb p=hoon]</code>: structure that normalizes to an example."
+
+[glossaryEntry.buccen]
+name = "buccen"
+symbol = "$%"
+usage = "Structures"
+slug = "#-buccen"
+desc = "<code>[%bscn p=(list spec)]</code>: structure which recognizes a union tagged by head atom."
+
+[glossaryEntry.buccol]
+name = "buccol"
+symbol = "$:"
+usage = "Structures"
+slug = "#-buccol"
+desc = "<code>[%bscl p=(list spec)]</code>: form a cell type."
+
+[glossaryEntry.bucgal]
+name = "bucgal"
+symbol = "$<"
+usage = "Structures"
+slug = "#-bucgal"
+desc = "<code>[%bsld p=spec q=spec]</code>: restrict a mold by excluding some given mold."
+
+[glossaryEntry.bucgar]
+name = "bucgar"
+symbol = "$>"
+usage = "Structures"
+slug = "#-bucgar"
+desc = "<code>[%bshp p=spec q=spec]</code>: filter a mold to obtain a new mold."
+
+[glossaryEntry.buchep]
+name = "buchep"
+symbol = "$-"
+usage = "Structures"
+slug = "#--buchep"
+desc = "<code>[%bshp p=spec q=spec]</code>: structure that normalizes to an example gate."
+
+[glossaryEntry.bucket]
+name = "bucket"
+symbol = "$^"
+usage = "Structures"
+slug = "#-bucket"
+desc = "<code>[%bskt p=spec q=spec]</code>: structure which normalizes a union tagged by head depth (cell)."
+
+[glossaryEntry.bucsig]
+name = "bucsig"
+symbol = "$~"
+usage = "Structures"
+slug = "#-bucsig"
+desc = "<code>[%bssg p=hoon q=spec]</code>: define a custom type default value"
+
+[glossaryEntry.bucpam]
+name = "bucpam"
+symbol = "$&"
+usage = "Structures"
+slug = "#-bucpam"
+desc = "<code>[%bspd p=spec q=hoon]</code>: repair a value of a tagged union type"
+
+[glossaryEntry.bucpat]
+name = "bucpat"
+symbol = "$@"
+usage = "Structures"
+slug = "#-bucpat"
+desc = "<code>[%bsvt p=spec q=spec]</code>: structure which normalizes a union tagged by head depth (atom)."
+
+[glossaryEntry.buctis]
+name = "buctis"
+symbol = "$="
+usage = "Structures"
+slug = "#-buctis"
+desc = "<code>[%bsts p=skin q=spec]</code>: structure which wraps a face around another structure."
+
+[glossaryEntry.bucwut]
+name = "bucwut"
+symbol = "$?"
+usage = "Structures"
+slug = "#-bucwut"
+desc = "<code>[%bswt p=(list spec)]</code>: form a type from a union of other types."
+
 +++
 
 The `$` family of runes is used for defining custom types. Strictly speaking,

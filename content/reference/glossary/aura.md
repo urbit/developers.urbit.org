@@ -1,5 +1,12 @@
 +++
 title = "Aura"
+
+[glossaryEntry.aura]
+name = "aura"
+symbol = ""
+usage = "hoon-nock"
+desc = "Types for atoms."
+
 +++
 
 **Auras** are types of [atoms](/reference/glossary/atom). A generic atom (`@`)

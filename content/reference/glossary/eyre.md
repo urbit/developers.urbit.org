@@ -3,6 +3,13 @@ title = "Eyre"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.eyre]
+name = "eyre"
+symbol = ""
+usage = "arvo"
+desc = "The web-server vane of Arvo. Handles all HTTP messages."
+
 +++
 
 **Eyre** is the web-server [vane](/reference/glossary/vane) (kernel module) that

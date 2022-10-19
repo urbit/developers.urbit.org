@@ -3,6 +3,13 @@ title = "Case"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.case]
+name = "case"
+symbol = ""
+usage = "arvo"
+desc = "A reference to a commit in Clay"
+
 +++
 
 [Clay](/reference/glossary/clay) is [Arvo's](/reference/glossary/arvo)

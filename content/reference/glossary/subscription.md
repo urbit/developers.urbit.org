@@ -3,6 +3,13 @@ title = "Subscription"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.subscription]
+name = "subscription"
+symbol = ""
+usage = "arvo"
+desc = "One of the main methods of communication for Gall agents."
+
 +++
 
 **Subscriptions** are one of the main ways [Gall](/reference/glossary/gall)

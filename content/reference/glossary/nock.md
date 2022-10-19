@@ -1,6 +1,12 @@
 +++
 title = "Nock"
 
+[glossaryEntry.nock]
+name = "nock"
+symbol = ""
+usage = "hoon-nock"
+desc = "A purely functional typeless programming language, and Urbit's lowest-level language."
+
 +++
 
 **Nock** is a purely functional typeless programming language and acts as

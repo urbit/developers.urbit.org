@@ -3,6 +3,13 @@ title = "Mark"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.mark]
+name = "mark"
+symbol = ""
+usage = "arvo"
+desc = "A file type in the Clay filesystem."
+
 +++
 
 A **mark** is a file-type in the [Clay](/reference/glossary/clay) filesystem. A

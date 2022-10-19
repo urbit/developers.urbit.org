@@ -3,6 +3,13 @@ title = "Hood"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.hood]
+name = "hood"
+symbol = ""
+usage = "arvo"
+desc = "The system app: comprised of Kiln, Drum and Helm."
+
 +++
 
 **Hood** is the "system app", it controls various basic functions of Arvo and

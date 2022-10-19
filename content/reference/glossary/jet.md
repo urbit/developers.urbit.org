@@ -3,6 +3,13 @@ title = "Jet"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.jet]
+name = "jet"
+symbol = ""
+usage = "arvo"
+desc = "A fast, external implementation of some Hoon/Nock which the runtime can use instead of the native code."
+
 +++
 
 [Hoon](/reference/glossary/hoon) is compiled to

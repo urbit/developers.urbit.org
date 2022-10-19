@@ -3,6 +3,13 @@ title = "@p"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry."@p"]
+name = "@p"
+symbol = ""
+usage = "hoon-nock"
+desc = "An atom aura in Hoon used for ship names like ~sampel-palnet."
+
 +++
 
 A **`@p`** (pronounced "pat P") is an [atom](/reference/glossary/atom)

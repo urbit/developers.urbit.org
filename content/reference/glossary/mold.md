@@ -1,7 +1,15 @@
 +++
 title = "Mold"
+
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.mold]
+name = "mold"
+symbol = ""
+usage = "hoon-nock"
+desc = "Data types in Hoon."
+
 +++
 
 **Molds** are data types in [Hoon](/reference/glossary/hoon).

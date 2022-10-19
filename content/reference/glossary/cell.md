@@ -3,6 +3,13 @@ title = "Cell"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.cell]
+name = "cell"
+symbol = ""
+usage = "hoon-nock"
+desc = "An ordered pair of nouns in Hoon and Nock."
+
 +++
 
 A **cell** is an ordered pair of [nouns](/reference/glossary/noun). It is a

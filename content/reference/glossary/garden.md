@@ -3,6 +3,13 @@ title = "Garden"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.garden]
+name = "garden"
+symbol = ""
+usage = "arvo"
+desc = "The desk that serves Landscape, manages app front-ends and handles notifications."
+
 +++
 
 `%garden` is the [desk](/reference/glossary/desk) in

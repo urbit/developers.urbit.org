@@ -3,6 +3,13 @@ title = "Scry"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.scry]
+name = "scry"
+symbol = ""
+usage = "hoon-nock"
+desc = "A scry is a read-only request to the namespace of a local vane or agent."
+
 +++
 
 A **scry** is a read-only request to the namespace of a local

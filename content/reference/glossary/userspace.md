@@ -1,7 +1,15 @@
 +++
 title = "Userspace"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.userspace]
+name = "userspace"
+symbol = ""
+usage = "arvo"
+desc = "Gall agents, threads, generators, front-ends and related files in Clay. That which is not in kernelspace."
+
 +++
 
 **Userspace** is composed of [Gall](/reference/glossary/gall)

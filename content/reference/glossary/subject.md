@@ -3,6 +3,13 @@ title = "Subject"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.subject]
+name = "subject"
+symbol = ""
+usage = "hoon-nock"
+desc = "The context against which a Hoon expression is evaluated."
+
 +++
 
 The **subject** is the [context](/reference/glossary/context) a particular

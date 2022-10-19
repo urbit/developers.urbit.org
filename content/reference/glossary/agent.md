@@ -1,5 +1,12 @@
 +++
 title = "Agent"
+
+[glossaryEntry.agent]
+name = "agent"
+symbol = ""
+usage = "Arvo"
+desc = "A userspace application managed by Gall."
+
 +++
 
 **Agents** are the main kind of userspace application on Urbit. They have a

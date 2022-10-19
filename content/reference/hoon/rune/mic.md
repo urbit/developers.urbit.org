@@ -1,6 +1,69 @@
 +++
 title = "Make ; ('mic')"
 weight = 13
+
+[glossaryEntry.mic]
+name = "mic"
+symbol = ";"
+usage = "Make"
+desc = "Miscellaneous useful macros."
+
+[glossaryEntry.miccol]
+name = "miccol"
+symbol = ";:"
+usage = "Make"
+slug = "#-miccol"
+desc = "<code>[%mccl p=hoon q=(list hoon)]</code>: call a binary function as an n-ary function."
+
+[glossaryEntry.micgal]
+name = "micgal"
+symbol = ";<"
+usage = "Make"
+slug = "#-micgal"
+desc = "<code>[%mcgl p=spec q=hoon r=hoon s=hoon]</code>: monadic do notation."
+
+[glossaryEntry.miclus]
+name = "miclus"
+symbol = ";+"
+usage = "Make"
+slug = "#-miclus"
+desc = "make a single XML node (Sail)"
+
+[glossaryEntry.micmic]
+name = "micmic"
+symbol = ";;"
+usage = "Make"
+slug = "#-micmic"
+desc = "<code>[%mcmc p=spec q=hoon]</code>: normalize with a mold, asserting fixpoint."
+
+[glossaryEntry.micfas]
+name = "micfas"
+symbol = ";/"
+usage = "Make"
+slug = "#-micfas"
+desc = "<code>[%mcnt p=hoon]</code>: tape as XML element."
+
+[glossaryEntry.micsig]
+name = "micsig"
+symbol = ";~"
+usage = "Make"
+slug = "#-micsig"
+desc = "<code>[%mcsg p=hoon q=(list hoon)]</code>: glue a pipeline together with a"
+
+[glossaryEntry.mictar]
+name = "mictar"
+symbol = ";*"
+usage = "Make"
+slug = "#-mictar"
+desc = "Make a list of XML nodes from complex Hoon expression (Sail)."
+
+[glossaryEntry.mictis]
+name = "mictis"
+symbol = ";="
+usage = "Make"
+slug = "#-mictis"
+desc = "Make a list of XML nodes (Sail)."
+
 +++
 
 Miscellaneous useful macros.

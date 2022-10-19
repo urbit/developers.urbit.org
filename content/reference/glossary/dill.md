@@ -3,6 +3,13 @@ title = "Dill"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.dill]
+name = "dill"
+symbol = ""
+usage = "arvo"
+desc = "The terminal-driver vane of Arvo."
+
 +++
 
 **Dill** is the terminal-driver [vane](/reference/glossary/vane). You run

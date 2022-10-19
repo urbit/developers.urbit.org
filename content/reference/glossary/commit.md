@@ -3,6 +3,13 @@ title = "Commit"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.commit]
+name = "commit"
+symbol = ""
+usage = "arvo"
+desc = "A revision to a desk in the Clay filesystem."
+
 +++
 
 [Clay](/reference/glossary/clay) is [Arvo's](/reference/glossary/arvo)

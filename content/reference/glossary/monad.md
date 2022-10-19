@@ -1,7 +1,15 @@
 +++
 title = "Monad"
+
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.monad]
+name = "monad"
+symbol = ""
+usage = "hoon-nock"
+desc = "A software design pattern in functional languages where functions wrap results in types that require additional computation."
+
 +++
 
 In functional programming languages, a **monad** is a pattern where functions

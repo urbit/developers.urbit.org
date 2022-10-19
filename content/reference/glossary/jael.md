@@ -1,7 +1,15 @@
 +++
 title = "Jael"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.jael]
+name = "jael"
+symbol = ""
+usage = "arvo"
+desc = "Security and encryption vane of Arvo."
+
 +++
 
 **Jael** is the [vane](/reference/glossary/vane) that keeps track of

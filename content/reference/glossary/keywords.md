@@ -1,7 +1,15 @@
 +++
 title = "Keywords"
+
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.keywords]
+name = "keywords"
+symbol = ""
+usage = "hoon-nock"
+desc = "Reserved words in a programming language."
+
 +++
 
 In programming languages, a **keyword** is a predefined, reserved word with

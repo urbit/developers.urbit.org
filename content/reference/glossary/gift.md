@@ -3,6 +3,13 @@ title = "Gift"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.gift]
+name = "gift"
+symbol = ""
+usage = "arvo"
+desc = "A gift is an effect produced by agents and threads in response to a request from another agent or vane."
+
 +++
 
 A `%gift` [card](/reference/glossary/card) is an effect produced by

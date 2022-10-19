@@ -3,6 +3,13 @@ title = "Dry Gate"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry."dry gate"]
+name = "dry gate"
+symbol = ""
+usage = "hoon-nock"
+desc = "A gate that only accepts an argument of the type it specified."
+
 +++
 
 A **dry gate** is a [gate](/reference/glossary/gate) that only accepts an

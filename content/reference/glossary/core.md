@@ -3,6 +3,13 @@ title = "Core"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.core]
+name = "core"
+symbol = ""
+usage = "core"
+desc = "A cell of battery and payload."
+
 +++
 
 A **core** is a cell of a [`battery`](/reference/glossary/battery) and a

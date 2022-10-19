@@ -1,6 +1,104 @@
 +++
 title = "Conditionals ? ('wut')"
 weight = 6
+
+[glossaryEntry.wut]
+name = "wut"
+symbol = "?"
+usage = "Conditionals"
+desc = "Runes used for branching on conditionals."
+
+[glossaryEntry.wutgar]
+name = "wutgar"
+symbol = "?>"
+usage = "Conditionals"
+slug = "#-wutgar"
+desc = "<code>[%wtbn p=hoon q=hoon]</code>: positive assertion."
+
+[glossaryEntry.wutbar]
+name = "wutbar"
+symbol = "?|"
+usage = "Conditionals"
+slug = "#-wutbar"
+desc = "<code>[%wtbr p=(list hoon)]</code>: logical OR."
+
+[glossaryEntry.wutcol]
+name = "wutcol"
+symbol = "?:"
+usage = "Conditionals"
+slug = "#wutcol"
+desc = "<code>[%wtcl p=hoon q=hoon r=hoon]</code>: branch on a boolean test."
+
+[glossaryEntry.wutdot]
+name = "wutdot"
+symbol = "?."
+usage = "Conditionals"
+slug = "#-wutdot"
+desc = "<code>[%wtdt p=hoon q=hoon r=hoon]</code>: branch on a boolean test, inverted."
+
+[glossaryEntry.wuthep]
+name = "wuthep"
+symbol = "?-"
+usage = "Conditionals"
+slug = "#--wuthep"
+desc = "<code>[%wthp p=wing q=(list (pair spec value))]</code>: switch against a union, with no default."
+
+[glossaryEntry.wutket]
+name = "wutket"
+symbol = "?^"
+usage = "Conditionals"
+slug = "#-wutket"
+desc = "<code>[%wtkt p=wing q=hoon r=hoon]</code>: branch on whether a wing"
+
+[glossaryEntry.wutgal]
+name = "wutgal"
+symbol = "?<"
+usage = "Conditionals"
+slug = "#-wutgal"
+desc = "<code>[%wtgl p=hoon q=hoon]</code>: negative assertion."
+
+[glossaryEntry.wutlus]
+name = "wutlus"
+symbol = "?+"
+usage = "Conditionals"
+slug = "#-wutlus"
+desc = "<code>[%wtls p=wing q=hoon r=(list (pair spec hoon))]</code>: switch against"
+
+[glossaryEntry.wutpam]
+name = "wutpam"
+symbol = "?&"
+usage = "Conditionals"
+slug = "#-wutpam"
+desc = "<code>[%wtpd p=(list hoon)]</code>: logical AND."
+
+[glossaryEntry.wutsig]
+name = "wutsig"
+symbol = "?~"
+usage = "Conditionals"
+slug = "#-wutsig"
+desc = "<code>[%wtsg p=wing q=hoon r=hoon]</code>: branch on whether a wing of the subject is null."
+
+[glossaryEntry.wuttis]
+name = "wuttis"
+symbol = "?="
+usage = "Conditionals"
+slug = "#-wuttis"
+desc = "<code>[%wtts p=spec q=wing]</code>: test pattern match."
+
+[glossaryEntry.wutpat]
+name = "wutpat"
+symbol = "?@"
+usage = "Conditionals"
+slug = "#-wutpat"
+desc = "<code>[%wtpt p=wing q=hoon r=hoon]</code>: branch on whether a wing of the subject is an atom."
+
+[glossaryEntry.wutzap]
+name = "wutzap"
+symbol = "?!"
+usage = "Conditionals"
+slug = "#-wutzap"
+desc = "<code>[%wtzp p=hoon]</code>: logical NOT."
+
 +++
 
 Hoon has the usual program control branches. It also has the usual logical

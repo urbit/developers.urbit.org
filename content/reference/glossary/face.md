@@ -3,6 +3,13 @@ title = "Face"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.face]
+name = "face"
+symbol = ""
+usage = "hoon-nock"
+desc = "A 'variable name' in Hoon."
+
 +++
 
 A **face** is a name for a value, type or expression in

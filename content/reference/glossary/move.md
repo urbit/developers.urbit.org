@@ -1,7 +1,15 @@
 +++
 title = "Move"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.move]
+name = "move"
+symbol = ""
+usage = "arvo"
+desc = "A kernel-level inter-vane message sent over ducts by Arvo."
+
 +++
 
 **Moves** are kernel-level inter-vane messages sent over

@@ -1,7 +1,15 @@
 +++
 title = "Warm atom"
+
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry."warm atom"]
+name = "warm atom"
+symbol = ""
+usage = "hoon-nock"
+desc = "An atom with an ordinary aura."
+
 +++
 
 A **warm atom** is an [atom](/reference/glossary/atom) with an ordinary

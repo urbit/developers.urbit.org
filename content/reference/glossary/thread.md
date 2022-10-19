@@ -3,6 +3,13 @@ title = "Thread"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.thread]
+name = "thread"
+symbol = ""
+usage = "arvo"
+desc = "A transient service used primarily for complex I/O operations by Gall agents."
+
 +++
 
 A **thread** is like a transient [Gall](/reference/glossary/gall)

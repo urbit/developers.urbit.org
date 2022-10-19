@@ -1,5 +1,12 @@
 +++
 title = "Entropy"
+
+[glossaryEntry.entropy]
+name = "entropy"
+symbol = ""
+usage = "arvo"
+desc = "Randomness used for things like cryptography by software."
+
 +++
 
 **Entropy** is the randomness collected by an operating system or application for

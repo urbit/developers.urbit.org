@@ -3,6 +3,13 @@ title = "Slam"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.slam]
+name = "slam"
+symbol = ""
+usage = "hoon-nock"
+desc = "To slam a gate is to call the function with an argument."
+
 +++
 
  **Slamming** a gate is another word for calling a gate with an argument. A gate

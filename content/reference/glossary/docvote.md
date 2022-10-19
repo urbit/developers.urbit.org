@@ -3,6 +3,13 @@ title = "Document Proposal"
 
 [extra]
 category = "azimuth"
+
+[glossaryEntry."document vote"]
+name = "document vote"
+symbol = ""
+usage = "azimuth"
+desc = "A voting action taken by the Galactic Senate over Azimuth."
+
 +++
 
 A **document proposal** is a type of [vote](/reference/glossary/voting) action

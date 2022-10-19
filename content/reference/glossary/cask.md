@@ -3,6 +3,13 @@ title = "Cask"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.cask]
+name = "cask"
+symbol = ""
+usage = "hoon-nock"
+desc = "A cell of a mark and a noun. Similar to a cage but with a simple noun rather than a vase in the tail."
+
 +++
 
 A **cask** is a [cell](/reference/glossary/cell) whose head is a

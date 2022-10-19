@@ -3,6 +3,13 @@ title = "Path Prefix"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry."path prefix"]
+name = "path prefix"
+symbol = ""
+usage = "arvo"
+desc = "The first three elements of a Clay file path denoting ship, desk and case (revision number)."
+
 +++
 
 A **path prefix** is the first three elements of a

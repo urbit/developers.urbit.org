@@ -3,6 +3,13 @@ title = "String"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.string]
+name = "string"
+symbol = ""
+usage = "hoon-nock"
+desc = "A string is a general term for a piece of text. Cords and tapes are the two main types in Hoon."
+
 +++
 
 **String** is the general programming term for a piece of text. In Hoon, there

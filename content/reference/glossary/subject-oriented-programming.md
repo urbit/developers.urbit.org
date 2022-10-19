@@ -3,6 +3,13 @@ title = "Subject Oriented Programming"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry."subject oriented programming"]
+name = "subject oriented programming"
+symbol = ""
+usage = "hoon-nock"
+desc = "The programming paradigm where each expression is evaluated against a piece of data called the subject and containing the expression's context."
+
 +++
 
 The Urbit operating system hews to a conceptual model wherein each expression

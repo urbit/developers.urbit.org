@@ -1,6 +1,83 @@
 +++
 title = "Casts ^ ('ket')"
 weight = 11
+
+[glossaryEntry.ket]
+name = "ket"
+symbol = "^"
+usage = "Casts"
+desc = "Runes that let us adjust types without violating type constraints."
+
+[glossaryEntry.ketbar]
+name = "ketbar"
+symbol = "^|"
+usage = "Casts"
+slug = "#-ketbar"
+desc = "<code>[%ktbr p=hoon]</code>: convert a gold core to an iron core (contravariant)."
+
+[glossaryEntry.ketcol]
+name = "ketcol"
+symbol = "^:"
+usage = "Casts"
+slug = "#-ketcol"
+desc = "<code>[%ktcl p=spec]</code>: 'factory' gate for type <code>p</code>."
+
+[glossaryEntry.ketdot]
+name = "ketdot"
+symbol = "^."
+usage = "Casts"
+slug = "#-ketdot"
+desc = "<code>[%ktdt p=hoon q=hoon]</code>: typecast on value produced by passing <code>q</code> to <code>p</code>."
+
+[glossaryEntry.kethep]
+name = "kethep"
+symbol = "^-"
+usage = "Casts"
+slug = "#--kethep"
+desc = "<code>[%kthp p=spec q=hoon]</code>: typecast by explicit type label."
+
+[glossaryEntry.ketlus]
+name = "ketlus"
+symbol = "^+"
+usage = "Casts"
+slug = "#-ketlus"
+desc = "<code>[%ktls p=hoon q=hoon]</code>: typecast by inferred type."
+
+[glossaryEntry.ketpam]
+name = "ketpam"
+symbol = "^&"
+usage = "Casts"
+slug = "#-ketpam"
+desc = "<code>[%ktpd p=hoon]</code>: convert a core to a zinc core (covariant)."
+
+[glossaryEntry.ketsig]
+name = "ketsig"
+symbol = "^~"
+usage = "Casts"
+slug = "#-ketsig"
+desc = "<code>[%ktsg p=hoon]</code>: fold constant at compile time."
+
+[glossaryEntry.kettar]
+name = "kettar"
+symbol = "^*"
+usage = "Casts"
+slug = "#-kettar"
+desc = "<code>[%kttr p=spec]</code>: Produce example type value."
+
+[glossaryEntry.kettis]
+name = "kettis"
+symbol = "^="
+usage = "Casts"
+slug = "#-kettis"
+desc = "<code>[%ktts p=skin q=hoon]</code>: Bind name to a value."
+
+[glossaryEntry.ketwut]
+name = "ketwut"
+symbol = "^?"
+usage = "Casts"
+slug = "#-ketwut"
+desc = "<code>[%ktwt p=hoon]</code>: convert any core to a lead core (bivariant)."
+
 +++
 
 [`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=`

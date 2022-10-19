@@ -3,6 +3,13 @@ title = "Ship"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.ship]
+name = "ship"
+symbol = ""
+usage = "arvo"
+desc = "An instance of an Urbit computer that is a peer on the network."
+
 +++
 
 A **ship** is an instance of an Urbit computer that is a peer on the [Arvo](/reference/glossary/arvo) network.

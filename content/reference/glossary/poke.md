@@ -3,6 +3,13 @@ title = "Poke"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.poke]
+name = "poke"
+symbol = ""
+usage = "arvo"
+desc = "A one-off request/action passed from one Gall agent to another."
+
 +++
 
 A **poke** is a kind of `note` passed from one

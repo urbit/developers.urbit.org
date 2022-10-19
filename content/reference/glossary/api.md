@@ -1,5 +1,12 @@
 +++
 title = "API"
+
+[glossaryEntry.API]
+name = "API"
+symbol = ""
+usage = "Arvo"
+desc = "An application programming interface."
+
 +++
 
 **API** stands for "application programming interface". It refers to the

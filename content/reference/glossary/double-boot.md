@@ -3,6 +3,13 @@ title = "Double-boot"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.double-boot]
+name = "double-boot"
+symbol = ""
+usage = "arvo"
+desc = "When you boot an old copy of your pier on the live network."
+
 +++
 
 **Double-booting** is when you have a second, older copy of your
