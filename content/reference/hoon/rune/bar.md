@@ -1,6 +1,97 @@
 +++
 title = "Cores | ('bar')"
 weight = 7
+
+[glossaryEntry.bar]
+name = "bar"
+symbol = "|"
+usage = "Cores"
+desc = "Runes used to produce cores."
+
+[glossaryEntry.barbuc]
+name = "barbuc"
+symbol = "|$"
+usage = "Cores"
+slug = "#-barbuc"
+desc = "Declare a wet gate mold builder."
+
+[glossaryEntry.barcab]
+name = "barcab"
+symbol = "|_"
+usage = "Cores"
+slug = "#_-barcab"
+desc = "Produce a **door** (a core with a sample)."
+
+[glossaryEntry.barcen]
+name = "barcen"
+symbol = "|%"
+usage = "Cores"
+slug = "#-barcen"
+desc = "Produce a core, <code>[battery payload]</code>."
+
+[glossaryEntry.barcol]
+name = "barcol"
+symbol = "|:"
+usage = "Cores"
+slug = "#-barcol"
+desc = "Produce a gate with a custom sample."
+
+[glossaryEntry.bardot]
+name = "bardot"
+symbol = "|."
+usage = "Cores"
+slug = "#-bardot"
+desc = "Produce a trap (a core with one arm <code>$</code>)."
+
+[glossaryEntry.barhep]
+name = "barhep"
+symbol = "|-"
+usage = "Cores"
+slug = "#--barhep"
+desc = "Produce a trap (a core with one arm <code>$</code>) and evaluate it."
+
+[glossaryEntry.barket]
+name = "barket"
+symbol = "|^"
+usage = "Cores"
+slug = "#-barket"
+desc = "Produce a core whose battery includes a <code>$</code> arm and compute the latter."
+
+[glossaryEntry.barsig]
+name = "barsig"
+symbol = "|~"
+usage = "Cores"
+slug = "#-barsig"
+desc = "Produce an iron gate."
+
+[glossaryEntry.bartar]
+name = "bartar"
+symbol = "|*"
+usage = "Cores"
+slug = "#-bartar"
+desc = "Produce a wet gate (one-armed core with sample)."
+
+[glossaryEntry.bartis]
+name = "bartis"
+symbol = "|="
+usage = "Cores"
+slug = "#-bartis"
+desc = "Produce a gate (a one-armed core with a sample)."
+
+[glossaryEntry.barpat]
+name = "barpat"
+symbol = "|@"
+usage = "Cores"
+slug = "#-barpat"
+desc = "Produce a 'wet' core <code>[battery payload]</code>."
+
+[glossaryEntry.barwut]
+name = "barwut"
+symbol = "|?"
+usage = "Cores"
+slug = "#-barwut"
+desc = "Produce a lead trap."
+
 +++
 
 Core expressions produce cores. A core is a cell of `[battery payload]`.

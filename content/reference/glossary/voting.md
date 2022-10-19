@@ -3,6 +3,13 @@ title = "Voting"
 
 [extra]
 category = "azimuth"
+
+[glossaryEntry.vote]
+name = "vote"
+symbol = ""
+usage = "azimuth"
+desc = "Voting is a power available to galaxies in their capacities as members of the Galactic Senate."
+
 +++
 
 **Voting** is a power available to [galaxies](/reference/glossary/galaxy), in their

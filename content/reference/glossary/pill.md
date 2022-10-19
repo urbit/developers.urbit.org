@@ -3,6 +3,13 @@ title = "Pill"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.pill]
+name = "pill"
+symbol = ""
+usage = "arvo"
+desc = "A bootstrap sequence to launch an Urbit ship for the first time."
+
 +++
 
 A **Pill** is a bootstrap sequence to launch an Urbit ship for the first time. The [event log](/reference/glossary/eventlog) begins with the bootstrap sequence of a Pill.

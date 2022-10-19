@@ -3,6 +3,13 @@ title = "Cord"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.cord]
+name = "cord"
+symbol = ""
+usage = "hoon-nock"
+desc = "An atom aura for a little-endian UTF-8 string."
+
 +++
 
 A **cord** is an [atom](/reference/glossary/atom)

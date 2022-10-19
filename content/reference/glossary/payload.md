@@ -3,6 +3,13 @@ title = "Payload"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.payload]
+name = "payload"
+symbol = ""
+usage = "payload"
+desc = "The set of data needed to run computations in a core."
+
 +++
 
 A **payload** is the [subject](/reference/glossary/subject) of a

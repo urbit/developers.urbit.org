@@ -3,6 +3,13 @@ title = "Context"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.context]
+name = "context"
+symbol = ""
+usage = "hoon-nock"
+desc = "The symbols and values reachable from a point in some code."
+
 +++
 
 **Context** refers to the execution context of a program, which is the symbols

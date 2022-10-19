@@ -1,6 +1,12 @@
 +++
 title = "Hoon"
 
+[glossaryEntry.hoon]
+name = "hoon"
+symbol = ""
+usage = "arvo"
+desc = "A strict, higher-order typed functional programming language that compiles to Nock."
+
 +++
 
 Hoon is a strict, higher-order typed functional programming language that compiles itself to [Nock](/reference/glossary/nock). As a result Hoon code is effectively implemented by the interpreter [Vere](/reference/glossary/vere). Programs for the Urbit operating system and kernel, [Arvo](/reference/glossary/arvo), are written in Hoon.

@@ -3,6 +3,13 @@ title = "HD Wallet"
 
 [extra]
 category = "azimuth"
+
+[glossaryEntry."hd wallet"]
+name = "hd wallet"
+symbol = ""
+usage = "azimuth"
+desc = "A system of related Ethereum addresses that store and manage an Urbit identity, each a proxy with different permissions over its management."
+
 +++
 
 The **Urbit HD Wallet** (_Hierarchical Deterministic_ Wallet) is a system of related Ethereum addresses that's used to store and manage an Urbit identity. Each of these Ethereum addresses have different powers over the same identity, from setting networking keys for communicating in the [Arvo](/reference/glossary/arvo) network to transferring ownership of identities.

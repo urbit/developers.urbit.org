@@ -1,5 +1,12 @@
 +++
 title = "Azimuth"
+
+[glossaryEntry.azimuth]
+name = "azimuth"
+symbol = ""
+usage = "azimuth"
+desc = "Urbit's identity layer, built as a suite of smart contracts on the Ethereum blockchain."
+
 +++
 
 **Azimuth** is Urbit's identity layer, built as a suite of smart contracts on

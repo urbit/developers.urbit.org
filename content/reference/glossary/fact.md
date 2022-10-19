@@ -3,6 +3,13 @@ title = "Fact"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.fact]
+name = "fact"
+symbol = ""
+usage = "arvo"
+desc = "An update sent to subscribers by a Gall agent."
+
 +++
 
 A **%fact** is a [gift](/reference/glossary/gift) given to subscribers by a

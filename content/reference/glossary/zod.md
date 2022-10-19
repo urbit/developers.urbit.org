@@ -3,6 +3,13 @@ title = "~zod"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry."~zod"]
+name = "~zod"
+symbol = ""
+usage = "arvo"
+desc = "The first galaxy: number 0"
+
 +++
 
 There are 256 [galaxies](/reference/glossary/galaxy), and `~zod` is the first:

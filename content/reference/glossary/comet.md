@@ -1,7 +1,15 @@
 +++
 title = "Comet"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.comet]
+name = "comet"
+symbol = ""
+usage = "arvo"
+desc = "A type of ship on the Urbit network."
+
 +++
 
 A **comet** is a kind of [ship](/reference/glossary/ship) on the [Ames](/reference/glossary/ames) network which

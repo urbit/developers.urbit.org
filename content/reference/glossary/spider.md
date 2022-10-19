@@ -3,6 +3,13 @@ title = "Spider"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.spider]
+name = "spider"
+symbol = ""
+usage = "arvo"
+desc = "The Gall agent that manages threads."
+
 +++
 
 **Spider** is the [Gall](/reference/glossary/gall)

@@ -1,6 +1,97 @@
 +++
 title = "Hints ~ ('sig')"
 weight = 14
+
+[glossaryEntry.sig]
+name = "sig"
+symbol = "~"
+usage = "Hints"
+desc = "Runes that use Nock <code>11</code> to pass non-semantic info to the interpreter."
+
+[glossaryEntry.siggar]
+name = "siggar"
+symbol = "~>"
+usage = "Hints"
+slug = "#-siggar"
+desc = "<code>[%sgbn p=$@(term [p=term q=hoon]) q=hoon]</code>: raw hint, applied"
+
+[glossaryEntry.sigbar]
+name = "sigbar"
+symbol = "~|"
+usage = "Hints"
+slug = "#-sigbar"
+desc = "<code>[%sgbr p=hoon q=hoon]</code>: tracing printf."
+
+[glossaryEntry.sigbuc]
+name = "sigbuc"
+symbol = "~$"
+usage = "Hints"
+slug = "#-sigbuc"
+desc = "<code>[%sgbs p=term q=hoon]</code>: profiling hit counter."
+
+[glossaryEntry.sigcab]
+name = "sigcab"
+symbol = "~_"
+usage = "Hints"
+slug = "#_-sigcab"
+desc = "<code>[%sgcb p=hoon q=hoon]</code>: user-formatted tracing printf."
+
+[glossaryEntry.sigcen]
+name = "sigcen"
+symbol = "~%"
+usage = "Hints"
+slug = "#-sigcen"
+desc = "<code>[%sgcn p=term q=wing r=(list [term hoon]) s=hoon]</code>: jet registration."
+
+[glossaryEntry.siggal]
+name = "siggal"
+symbol = "~<"
+usage = "Hints"
+slug = "#-siggal"
+desc = "<code>[%sgld p=$@(term [p=term q=hoon]) q=hoon]</code>: raw hint, applied to product."
+
+[glossaryEntry.siglus]
+name = "siglus"
+symbol = "~+"
+usage = "Hints"
+slug = "#-siglus"
+desc = "<code>[%sgls p=hoon]</code>: cache a computation."
+
+[glossaryEntry.sigfas]
+name = "sigfas"
+symbol = "~/"
+usage = "Hints"
+slug = "#-sigfas"
+desc = "<code>[%sgnt p=term q=hoon]</code>: jet registration for gate with"
+
+[glossaryEntry.sigpam]
+name = "sigpam"
+symbol = "~&"
+usage = "Hints"
+slug = "#-sigpam"
+desc = "<code>[%sgpd p=hoon q=hoon]</code>: debugging printf."
+
+[glossaryEntry.sigtis]
+name = "sigtis"
+symbol = "~="
+usage = "Hints"
+slug = "#-sigtis"
+desc = "<code>[%sgts p=hoon q=hoon]</code>: detect duplicate."
+
+[glossaryEntry.sigwut]
+name = "sigwut"
+symbol = "~?"
+usage = "Hints"
+slug = "#-sigwut"
+desc = "<code>[%sgwt p=hoon q=hoon r=hoon]</code>: conditional debug printf."
+
+[glossaryEntry.sigzap]
+name = "sigzap"
+symbol = "~!"
+usage = "Hints"
+slug = "#-sigzap"
+desc = "<code>[%sgzp p=hoon q=hoon]</code>: print type on compilation fail."
+
 +++
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter. A

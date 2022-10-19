@@ -3,6 +3,13 @@ title = "Tape"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.tape]
+name = "tape"
+symbol = ""
+usage = "hoon-nock"
+desc = "A type of string in Hoon. A list of UTF-8 characters."
+
 +++
 
 A **tape** is a type of [string](/reference/glossary/string) in

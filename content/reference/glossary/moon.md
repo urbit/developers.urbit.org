@@ -1,7 +1,15 @@
 +++
 title = "Moon"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.moon]
+name = "moon"
+symbol = ""
+usage = "arvo"
+desc = "A kind of ship on the Arvo network, issued by planets."
+
 +++
 
 A **moon** is a kind of [ship](/reference/glossary/ship) on the [Arvo](/reference/glossary/arvo) network. Moons

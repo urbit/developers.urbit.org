@@ -3,6 +3,13 @@ title = "List"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.list]
+name = "list"
+symbol = ""
+usage = "hoon-nock"
+desc = "A list is a basic datastructure in Hoon, similar to an array in other languages."
+
 +++
 
 A **list** is a basic data structure in [Hoon](/reference/glossary/hoon),

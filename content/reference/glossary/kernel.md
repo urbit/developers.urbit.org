@@ -1,7 +1,15 @@
 +++
 title = "Kelvin versioning"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.kernel]
+name = "kernel"
+symbol = ""
+usage = "arvo"
+desc = "The core components of an operating system; Arvo and its vanes in Urbit."
+
 +++
 
 The **kernel** is the core, fundamental components of an operating system. In

@@ -1,7 +1,15 @@
 +++
 title = "Bridge"
+
 [extra]
 category = "azimuth"
+
+[glossaryEntry.bridge]
+name = "bridge"
+symbol = ""
+usage = "azimuth"
+desc = "A client made for interacting with Azimuth."
+
 +++
 
 **Bridge** is a client made for interacting with

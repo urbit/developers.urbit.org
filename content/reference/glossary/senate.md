@@ -3,6 +3,13 @@ title = "Senate"
 
 [extra]
 category = "azimuth"
+
+[glossaryEntry.senate]
+name = "senate"
+symbol = ""
+usage = "azimuth"
+desc = "The body of all galaxies that govern Azimuth by majority vote."
+
 +++
 
 The **Galactic Senate** is the body of all [galaxies](/reference/glossary/galaxy) that governs

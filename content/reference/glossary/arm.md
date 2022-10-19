@@ -3,6 +3,13 @@ title = "Arm"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.arm]
+name = "arm"
+symbol = ""
+usage = "arm"
+desc = "A Hoon expression encoded as a noun. Part of a core."
+
 +++
 
 An **arm** is a named Hoon expression in a [core](/reference/glossary/core). A

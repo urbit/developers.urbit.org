@@ -3,6 +3,13 @@ title = "Gall"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.gall]
+name = "gall"
+symbol = ""
+usage = "arvo"
+desc = "The application-management vane of Arvo. Userspace applications are stopped, started, and sandboxed by Gall."
+
 +++
 
 **Gall** is the application-management [vane](/reference/glossary/vane) (kernel

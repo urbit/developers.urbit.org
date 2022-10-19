@@ -3,6 +3,13 @@ title = "Wire"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.wire]
+name = "wire"
+symbol = ""
+usage = "hoon-nock"
+desc = "A tag specified for responses to requests a Gall agent makes to other agents or vanes."
+
 +++
 
 A **wire** is a tag specified for responses to requests a

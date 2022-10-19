@@ -3,6 +3,13 @@ title = "Galaxy"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.galaxy]
+name = "galaxy"
+symbol = ""
+usage = "arvo"
+desc = "8-bit Urbit addresses, sitting at the top of the identity hierarchy, that vote on network changes and act as infrastructural nodes."
+
 +++
 
 A **galaxy** can be one of two related things:

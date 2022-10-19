@@ -3,6 +3,13 @@ title = "Proxies"
 
 [extra]
 category = "azimuth"
+
+[glossaryEntry.proxies]
+name = "proxies"
+symbol = ""
+usage = "azimuth"
+desc = "Ethereum addresses in the Urbit HD Wallet that have limited powers."
+
 +++
 
 **Proxies** are Ethereum addresses in the [Urbit ID](/reference/glossary/azimuth)

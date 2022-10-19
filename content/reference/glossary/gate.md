@@ -3,6 +3,13 @@ title = "Gate"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.gate]
+name = "gate"
+symbol = ""
+usage = "gate"
+desc = "A core with one arm named $. The Hoon equivalent of a function."
+
 +++
 
 A **gate** is [core](/reference/glossary/core) with one [arm](/reference/glossary/arm)

@@ -1,7 +1,15 @@
 +++
 title = "Ames"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.ames]
+name = "ames"
+symbol = ""
+usage = "Arvo"
+desc = "The name of the Urbit network and the vane that communicates over it."
+
 +++
 
 **Ames** is the name of the Urbit network and the

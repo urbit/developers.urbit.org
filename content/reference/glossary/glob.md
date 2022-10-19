@@ -3,6 +3,13 @@ title = "Glob"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.glob]
+name = "glob"
+symbol = ""
+usage = "arvo"
+desc = "A bundle of front-end resources for an app."
+
 +++
 
 A **glob** is a bundle of front-end resources for an app which is served to a

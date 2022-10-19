@@ -3,6 +3,13 @@ title = "Desk"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.desk]
+name = "desk"
+symbol = ""
+usage = "arvo"
+desc = "A revision-controlled branch of the Clay filesystem."
+
 +++
 
 A **desk** is an independently revision-controlled branch of a [ship](/reference/glossary/ship) that uses the [Clay](/reference/glossary/clay) filesystem. Each desk contains its own apps, [mark](/reference/glossary/mark) definitions, files, and so forth.

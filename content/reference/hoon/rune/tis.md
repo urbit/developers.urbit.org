@@ -1,6 +1,111 @@
 +++
 title = "Change Subject = ('tis')"
 weight = 5
+
+[glossaryEntry.tis]
+name = "tis"
+symbol = "="
+usage = "Subject Modification"
+desc = "Runes used to modify the subject."
+
+[glossaryEntry.tisgar]
+name = "tisgar"
+symbol = "=>"
+usage = "Subject Modification"
+slug = "#-tisgar"
+desc = "<code>[%tsgr p=hoon q=hoon]</code>: compose two expressions."
+
+[glossaryEntry.tisbar]
+name = "tisbar"
+symbol = "=|"
+usage = "Subject Modification"
+slug = "#-tisbar"
+desc = "<code>[%tsbr p=spec q=hoon]</code>: combine a default type value with the subject."
+
+[glossaryEntry.tiscol]
+name = "tiscol"
+symbol = "=:"
+usage = "Subject Modification"
+slug = "#-tiscol"
+desc = "<code>[%tscl p=(list (pair wing hoon)) q=hoon]</code>: change multiple legs in the subject."
+
+[glossaryEntry.tiscom]
+name = "tiscom"
+symbol = "=,"
+usage = "Subject Modification"
+slug = "#-tiscom"
+desc = "<code>[%tscm p=hoon q=hoon]</code>: expose namespace"
+
+[glossaryEntry.tisdot]
+name = "tisdot"
+symbol = "=."
+usage = "Subject Modification"
+slug = "#-tisdot"
+desc = "<code>[%tsdt p=wing q=hoon r=hoon]</code>: change one leg in the subject."
+
+[glossaryEntry.tishep]
+name = "tishep"
+symbol = "=-"
+usage = "Subject Modification"
+slug = "#--tishep"
+desc = "<code>[%tshp p=hoon q=hoon]</code>: combine a new noun with the subject, inverted."
+
+[glossaryEntry.tisket]
+name = "tisket"
+symbol = "=^"
+usage = "Subject Modification"
+slug = "#-tisket"
+desc = "<code>[%tskt p=skin q=wing r=hoon s=hoon]</code>: pin the head of a pair; change"
+
+[glossaryEntry.tisgal]
+name = "tisgal"
+symbol = "=<"
+usage = "Subject Modification"
+slug = "#-tisgal"
+desc = "<code>[%tsgl p=hoon q=hoon]</code>: compose two expressions, inverted."
+
+[glossaryEntry.tislus]
+name = "tislus"
+symbol = "=+"
+usage = "Subject Modification"
+slug = "#-tislus"
+desc = "<code>[%tsls p=hoon q=hoon]</code>: combine a new noun with the subject."
+
+[glossaryEntry.tismic]
+name = "tismic"
+symbol = "=;"
+usage = "Subject Modification"
+slug = "#-tismic"
+desc = "<code>[%tssm p=skin q=hoon r=hoon]</code>: combine a named noun with the subject, possibly with type annotation; inverted order."
+
+[glossaryEntry.tisfas]
+name = "tisfas"
+symbol = "=/"
+usage = "Subject Modification"
+slug = "#-tisfas"
+desc = "<code>[%tsfs p=skin q=hoon r=hoon]</code>: combine a named noun with the subject, possibly with type annotation."
+
+[glossaryEntry.tissig]
+name = "tissig"
+symbol = "=~"
+usage = "Subject Modification"
+slug = "#-tissig"
+desc = "<code>[%tssg p=(list hoon)]</code>: compose many expressions."
+
+[glossaryEntry.tistar]
+name = "tistar"
+symbol = "=*"
+usage = "Subject Modification"
+slug = "#tistar"
+desc = "<code>[%tstr p=term q=hoon r=hoon]</code>: define a deferred expression."
+
+[glossaryEntry.tiswut]
+name = "tiswut"
+symbol = "=?"
+usage = "Subject Modification"
+slug = "#-tiswut"
+desc = "<code>[$tswt p=wing q=hoon r=hoon s=hoon]</code>: conditionally change one leg in the subject."
+
 +++
 
 These runes modify the subject. (Or more precisely, they

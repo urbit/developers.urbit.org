@@ -1,7 +1,15 @@
 +++
 title = "Lull"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.lull]
+name = "lull"
+symbol = ""
+usage = "arvo"
+desc = "Data types and interface definitions for vanes."
+
 +++
 
 **`lull.hoon`** is a library in the `/sys` folder of the `%base`

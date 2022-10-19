@@ -1,6 +1,41 @@
 +++
 title = "Imports / ('fas')"
 weight = 15
+
+[glossaryEntry.fas]
+name = "fas"
+symbol = "/"
+usage = "Ford"
+desc = "Runes specific to Ford, not considered to be Hoon runes."
+
+[glossaryEntry.faslus]
+name = "faslus"
+symbol = "/+"
+usage = "Ford"
+slug = "#-faslus"
+desc = "Ford rune. Import from <code>lib/</code>"
+
+[glossaryEntry.fashep]
+name = "fashep"
+symbol = "/-"
+usage = "Ford"
+slug = "#--fashep"
+desc = "Ford rune. Import from <code>sur/</code>"
+
+[glossaryEntry.fastis]
+name = "fastis"
+symbol = "/="
+usage = "Ford"
+slug = "#-fastis"
+desc = "Ford rune. Wrap a face around an included horn."
+
+[glossaryEntry.fastar]
+name = "fastar"
+symbol = "/*"
+usage = "Ford"
+slug = "#-fastar"
+desc = "Ford rune. Import file, convert to mark, and wrap a face."
+
 +++
 
 Fas (`/`) runes are not technically hoon runes, but instead are instructions to

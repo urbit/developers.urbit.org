@@ -3,6 +3,13 @@ title = "Iris"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.iris]
+name = "iris"
+symbol = ""
+usage = "arvo"
+desc = "The server-side HTTP vane of Arvo. Its client-facing counterpart is Eyre."
+
 +++
 
 **Iris** is the web client [vane](/reference/glossary/vane) that handles HTTP

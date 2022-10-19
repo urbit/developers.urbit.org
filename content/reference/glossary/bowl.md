@@ -1,5 +1,12 @@
 +++
 title = "Bowl"
+
+[glossaryEntry.bowl]
+name = "bowl"
+symbol = ""
+usage = "arvo"
+desc = "Useful data given to a Gall agent or thread."
+
 +++
 
 The **bowl** contains useful data about the current

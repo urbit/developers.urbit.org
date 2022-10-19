@@ -1,7 +1,15 @@
 +++
 title = "Roller"
+
 [extra]
 category = "azimuth"
+
+[glossaryEntry.roller]
+name = "roller"
+symbol = ""
+usage = "azimuth"
+desc = "A service that batches L2 transactions and submits them to Azimuth on the Ethereum blockchain"
+
 +++
 
 A **roller** is a service that can be run on a [ship](/reference/glossary/ship)

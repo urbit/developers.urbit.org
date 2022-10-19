@@ -3,6 +3,13 @@ title = "Generator"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.generator]
+name = "generator"
+symbol = ""
+usage = "arvo"
+desc = "A generator is kind of Hoon script you can run from the dojo."
+
 +++
 
 A **generator** is something like a script in [Arvo](/reference/glossary/arvo).

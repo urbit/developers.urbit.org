@@ -1,7 +1,15 @@
 +++
 title = "Behn"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.behn]
+name = "behn"
+symbol = ""
+usage = "arvo"
+desc = "Timing vane of Arvo. Allows for applications to schedule events."
+
 +++
 
 **Behn** is the timing [vane](/reference/glossary/vane) (kernel module).

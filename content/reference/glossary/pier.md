@@ -1,7 +1,15 @@
 +++
 title = "Pier"
+
 [extra]
 category = "arvo"
+
+[glossaryEntry.pier]
+name = "pier"
+symbol = ""
+usage = "arvo"
+desc = "The stored state of an Urbit ship on disk."
+
 +++
 
 A **pier** is the directory which contains the state of an Urbit

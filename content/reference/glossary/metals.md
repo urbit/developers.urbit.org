@@ -3,6 +3,13 @@ title = "Metals"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry.metals]
+name = "metals"
+symbol = ""
+usage = "hoon-nock"
+desc = "Core type variance."
+
 +++
 
 "Variance" describes the four possible relationships that type rules for

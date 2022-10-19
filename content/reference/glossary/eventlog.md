@@ -3,6 +3,13 @@ title = "Event Log"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry."event log"]
+name = "event log"
+symbol = ""
+usage = "arvo"
+desc = "A totally ordered list of every single Arvo event a ship has undergone. A ship's state is a pure function of its event log."
+
 +++
 
 The **event log** of a [ship](/reference/glossary/ship) is a totally ordered list of every single [Arvo](/reference/glossary/arvo) event that ship has undergone. The state of a ship is a pure function of the event log.

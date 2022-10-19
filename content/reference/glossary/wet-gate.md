@@ -3,6 +3,13 @@ title = "Wet Gate"
 
 [extra]
 category = "hoon-nock"
+
+[glossaryEntry."wet gate"]
+name = "wet gate"
+symbol = ""
+usage = "hoon-nock"
+desc = "A gate that can take arguments of a type other that what it specified."
+
 +++
 
 A **wet gate** is a [gate](/reference/glossary/gate) that can accept arguments

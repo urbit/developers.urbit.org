@@ -1,6 +1,62 @@
 +++
 title = "Cells : ('col')"
 weight = 9
+
+[glossaryEntry.col]
+name = "col"
+symbol = ":"
+usage = "Cells"
+desc = "Runes used to produce cells, which are pairs of nouns."
+
+[glossaryEntry.colcab]
+name = "colcab"
+symbol = ":_"
+usage = "Cells"
+slug = "#_-colcab"
+desc = "<code>[%clcb p=hoon q=hoon]</code>; construct a cell, inverted."
+
+[glossaryEntry.colcol]
+name = "colcol"
+symbol = "::"
+usage = "Cells"
+slug = "#-colcol"
+desc = "Code comment."
+
+[glossaryEntry.colhep]
+name = "colhep"
+symbol = ":-"
+usage = "Cells"
+slug = "#--colhep"
+desc = "<code>[%clhp p=hoon q=hoon]</code>: construct a cell (2-tuple)."
+
+[glossaryEntry.colket]
+name = "colket"
+symbol = ":^"
+usage = "Cells"
+slug = "#-colket"
+desc = "<code>[%clkt p=hoon q=hoon r=hoon s=hoon]</code>: construct a quadruple (4-tuple)."
+
+[glossaryEntry.collus]
+name = "collus"
+symbol = ":+"
+usage = "Cells"
+slug = "#-collus"
+desc = "<code>[%clls p=hoon q=hoon r=hoon]</code>: construct a triple (3-tuple)."
+
+[glossaryEntry.colsig]
+name = "colsig"
+symbol = ":~"
+usage = "Cells"
+slug = "#-colsig"
+desc = "<code>[%clsg p=(list hoon)]</code>: construct a null-terminated list."
+
+[glossaryEntry.coltar]
+name = "coltar"
+symbol = ":*"
+usage = "Cells"
+slug = "#-coltar"
+desc = "<code>[%cltr p=(list hoon)]</code>: construct an n-tuple."
+
 +++
 
 The `:` ("col") expressions are used to produce cells, which are pairs of

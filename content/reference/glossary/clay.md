@@ -3,6 +3,13 @@ title = "Clay"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.clay]
+name = "clay"
+symbol = ""
+usage = "arvo"
+desc = "The filesystem and typed revision-control vane of Arvo."
+
 +++
 
 **Clay** is the typed, revision-controlled filesystem

@@ -3,6 +3,13 @@ title = "OTA Updates"
 
 [extra]
 category = "arvo"
+
+[glossaryEntry.OTA]
+name = "OTA"
+symbol = ""
+usage = "arvo"
+desc = "Ships have the ability to upgrade themselves over the air. They receive updates from a sponsor star or galaxy."
+
 +++
 
 [Ships](/reference/glossary/ship) have the ability to upgrade themselves **over

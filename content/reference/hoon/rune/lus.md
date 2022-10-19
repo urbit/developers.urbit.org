@@ -1,6 +1,41 @@
 +++
 title = "Arms + ('lus')"
 weight = 8
+
+[glossaryEntry.lus]
+name = "lus"
+symbol = "+"
+usage = "Arms"
+desc = "Runes used to define arms in a core."
+
+[glossaryEntry.lusbar]
+name = "lusbar"
+symbol = "+|"
+usage = "Arms"
+slug = "#-lusbar"
+desc = "Chapter label."
+
+[glossaryEntry.lusbuc]
+name = "lusbuc"
+symbol = "+$"
+usage = "Arms"
+slug = "#-lusbuc"
+desc = "Produce a structure arm (type definition)."
+
+[glossaryEntry.luslus]
+name = "luslus"
+symbol = "++"
+usage = "Arms"
+slug = "#-luslus"
+desc = "Produce a normal arm."
+
+[glossaryEntry.lustar]
+name = "lustar"
+symbol = "+*"
+usage = "Arms"
+slug = "#-lustar"
+desc = "Produce a deferred expression arm."
+
 +++
 
 A core is a cell of `[battery payload]`. The battery is made of one or more
