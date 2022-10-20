@@ -766,7 +766,7 @@ The `++rotation` arm takes takes a specified number of characters off of a tape 
 
 `=/ length=@ud (lent my-alphabet)` stores the length of `my-alphabet` to make the following code a little clearer.
 
-`trim` is a a gate from the standard library that splits a tape at into two parts at a specified position. So `=+ (trim (mod my-steps length) my-alphabet)` splits the tape `my-alphabet` into two parts, `p` and `q`, which are now directly available in the subject. We call the modulus operation `mod` to make sure that the point at which we split our `tape` is a valid point inside of `my-alphabet` even if `my-steps` is greater than `length`, the length of `my-alphabet`. Try trim in the dojo:
+`trim` is a a gate from the standard library that splits a tape into two parts at a specified position. So `=+ (trim (mod my-steps length) my-alphabet)` splits the tape `my-alphabet` into two parts, `p` and `q`, which are now directly available in the subject. We call the modulus operation `mod` to make sure that the point at which we split our `tape` is a valid point inside of `my-alphabet` even if `my-steps` is greater than `length`, the length of `my-alphabet`. Try trim in the dojo:
 
 ```hoon
 > (trim 2 "abcdefg")
