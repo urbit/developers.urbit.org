@@ -10,11 +10,11 @@ If you prefer to learn as part of a group with a hands-on instructor, regular
 exercises and discussions, and a completion certification, then Hoon School Live
 will be a good fit for you.  We seek to offer it a few times a year.
 
-The next cohort will begin after [Assembly 2022](https://assembly.urbit.org) on
-September 29, 2022.
+The current/last cohort began after [Assembly 2022](https://assembly.urbit.org) on
+September 29, 2022.  We will have another HSL cohort in spring 2023.
 
-- [Complete this form](https://forms.gle/V1jKKEqcsayDx6Hi6) to get on our
-  mailing list about that opportunity.
+- [Complete this form](https://forms.gle/kgiPckuHaVtJng9r5) to get on our
+  mailing list about the next opportunity.
 
 Until then, feel free to work through the [Hoon School
 docs](/guides/core/hoon-school).
