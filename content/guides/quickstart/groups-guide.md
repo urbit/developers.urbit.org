@@ -106,7 +106,7 @@ The first thing we typically do when developing an app is define:
 3. The app's interface - the types of requests it will accept and the types of
    updates it will send out to subscribers.
 
-Four our app, a group (aka squad) will be identified by a combination of the
+For our app, a group (aka squad) will be identified by a combination of the
 host ship and the group name - this structure will be called a `gid` (group ID).
 A squad has a changeable title, and may be public or private, so we'll track
 these in a `squad` structure. We also need to track the current members of a
