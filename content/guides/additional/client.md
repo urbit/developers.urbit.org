@@ -311,7 +311,7 @@ The main app implements the logic for exposing and tracking data.
     ::
       %flap-action
     =/  axn  !<(action vase)
-    ?>  ?=(-.axn %gain)
+    ?>  ?=(%gain -.axn)
     ?.  (gth score.axn hiscore)
       `this(score score.axn)
     `this(score score.axn, hiscore score.axn)
