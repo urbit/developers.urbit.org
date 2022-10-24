@@ -354,7 +354,7 @@ way.
 - `?` gives the type as printed by `hoon.hoon`.
 - `??` shows the type noun as-is.
 - `???` shows the `hoon` of the expression.
-- `????` does nothing.
+- `????` reveals the `spec` of a gate.
 - `?????` uses an “x-ray” pretty-printer.
 
 ```hoon
@@ -384,8 +384,8 @@ way.
   ]
 ]
 
-> ???? `@da`(add ~2000.1.1 ~d366)
-~2001.1.1
+> ???? add
+$-([a=@ b=@] @)
 
 > ????? `@da`(add ~2000.1.1 ~d366)
   @da
