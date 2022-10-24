@@ -142,7 +142,7 @@ One solution is to “dry out” the wet gate using [`++bake`](/reference/hoon/s
 
 ##  Classic Operations
 
-Functional programmers rely on three design patterns:
+Functional programmers frequently rely on three design patterns to produce operations on collections of data:
 
 1. Map.  The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed.  In Hoon terms, we would say slamming a gate on each member of a `list` or `set`.  The standard library arm that accomplishes this is [`++turn`](https://developers.urbit.org/reference/hoon/stdlib/2b#turn) for a `list`, [`++run:in`](https://developers.urbit.org/reference/hoon/stdlib/2h#repin) for a `set`, and [`++run:by`](https://developers.urbit.org/reference/hoon/stdlib/2i#runby) for a `map`.
 
