@@ -136,9 +136,10 @@ roller you set up above instead of Tlon's roller.
 First you'll need to make the urbit running `%roller` accessible to the web.
 This is outside the scope of the tutorial, but we suggest using a tool like
 `caddy` or `nginx`. You'll want to set up a URL such as
-`https://myroller.sampel-pal.net/v1/roller` and use the port you'd ordinarily use to
+`https://myroller.sampel-pal.net` and use the port you'd ordinarily use to
 access Landscape, probably `80` or `8080`. To be clear, this is the same process
 you'd use if you set up a custom URL to access your urbit hosted in the cloud.
+The associated roller URL will then be `https://myroller.sampel-pal.net/v1/roller`.
 
 To point Bridge at your roller we [launch
 Bridge](https://github.com/urbit/bridge/blob/master/DEVELOPMENT.md) with a
