@@ -404,9 +404,9 @@ For reasons which will be elaborated in Trees, this is often employed as the so-
 
 ### Type Unions
 
-[`$?` bucwut](/reference/hoon/rune/buc#-bucwut) forms a type union.
+[`$?` bucwut](/reference/hoon/rune/buc#-bucwut) forms a type union.  Most commonly these are used with types having different structures, such as an atom and a cell.
 
-For instance, if you wanted a gate to return one of an unsigned aura type, but no other type, you could define a type union thus:
+For instance, if you wanted a gate to accept an atom of an unsigned aura type, but no other type, you could define a type union thus:
 
 ```hoon {% copy=true %}
 $?  [@ud @ux @ub ~]
@@ -432,6 +432,8 @@ and use it in a gate:
 nest-fail  
 dojo: hoon expression failed
 ```
+
+Unfortunately, type unions of atoms are not helpful in filtering over produced values (with `^-` kethep), as they default to the type of the last value in the union.  So the type union `$?(@ (list @))` distinguishes an atom and a list, but `(list $?(@ud @sd))` does not successfully produce a list distinguishing both types.
 
 The irregular form of `$?` bucwut looks like this:
 
