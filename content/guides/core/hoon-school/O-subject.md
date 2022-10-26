@@ -255,6 +255,8 @@ To act in a stateful manner, a core must mutate itself and then pin the mutated 
 
 We will use `%say` generators as a bridge concept.  We will produce some short applications that maintain state while carrying out a calculation; they still result in a single return value, but gesture at the big-picture approach to maintaining state in persistent agents.
 
+[As you may recall](./J-stdlib-text.md), a `%say` generator is like a naked generator except rather than being simply a gate, it is a cell of `%say` (as a tag) and a gate.  This gate can receive more information as gate arguments as part of its `sample`, such as a timestamp `now`, some entropy `eny`, and a file system beak `bec`.  These allow us to think about how a core can modify and maintain state.  Although a `%say` generator, like all generators, ultimately simply terminates, a Gall agent will be a persistent core with state that can continue to be used.
+
 Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` centis which you've already seen:
 
 - [`=.` tisdot](/reference/hoon/rune/tis#-tisdot) is used to change a leg in the subject.

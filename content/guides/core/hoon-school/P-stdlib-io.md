@@ -203,7 +203,7 @@ For instance, how does `+cat` work?  Let's look at the structure of `/gen/cat/ho
 ==
 ```
 
-- What is the top-level structure of the generator?  (A cell of `%say` and the gate, previewing `%say` generators.)
+- What is the top-level structure of the generator?  (A cell of `%say` and the gate, what Dojo recognizes as a `%say` generator.)
 
 - Some points of interest include:
   - `/?` faswut pins the expected Arvo kelvin version; right now it doesn't do anything.
