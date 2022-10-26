@@ -517,9 +517,9 @@ A `%say` generator has access to values besides those passed into it and the Hoo
 - `our` is our current ship identity.
 - `eny` is entropy, a source of randomness.
 - `now` is the current system timestamp.
-- `bec` is the current path (beak) consisting of `[our desk now]`.
+- `bec` is the current path (beak).
 
-Dojo will automatically supply these values to the gate unless they are stubbed out with `*` or `^`.
+These values can be stubbed out with `*` or `^` if they are not needed in a particular generator.
 
 ### `%say` generators with arguments
 
