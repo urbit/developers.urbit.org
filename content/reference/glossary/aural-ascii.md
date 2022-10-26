@@ -21,7 +21,7 @@ Here is a complete list:
 
 | Symbol      | Name |
 |-------------|------|
-| ` ` (space) | ace  |
+| `␣` (space) | ace  |
 | `\`         | bas  |
 | `$`         | buc  |
 | `_`         | cab  |
@@ -32,6 +32,7 @@ Here is a complete list:
 | `.`         | dot  |
 | `/`         | fas  |
 | `<`         | gal  |
+| `␣␣`, `\0a`  | gap  |
 | `>`         | gar  |
 | `#`         | hax  |
 | `-`         | hep  |
