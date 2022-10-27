@@ -187,7 +187,9 @@ One argument, fixed.
 ---
 
 - Irregular
-- None.
+- ```hoon
+  ,p
+  ```
 {% /table %}
 
 #### AST
