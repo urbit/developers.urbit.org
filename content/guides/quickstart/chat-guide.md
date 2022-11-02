@@ -94,9 +94,9 @@ across that our app will depend on:
 
 ```shell {% copy=true %}
 mkdir -p hut/{app,sur,mar,lib}
-cp dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} hut/mar/
+cp -r dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} hut/mar/
 cp dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} hut/lib/
-cp dev-comet/squad/sur/{docket*, squad*} hut/sur/
+cp dev-comet/squad/sur/{docket*,squad*} hut/sur/
 cp dev-comet/garden/lib/mip.hoon hut/lib/
 ```
 
