@@ -7,8 +7,6 @@ insert_anchor_links = "right"
 
 Documentation for the `zuse.hoon` library.
 
-[Table of Contents](/reference/hoon/zuse/table-of-contents)
-
 ### 2d: Formatting functions
 
 [2d(1-5): To JSON, Wains](/reference/hoon/zuse/2d_1-5)
@@ -28,3 +26,7 @@ Functions for decoding `json` to `unit`s.
 [2e(2-3): Print & Parse JSON](/reference/hoon/zuse/2e_2-3)
 
 Print `json` and parse JSON.
+
+### 2m: Ordered Maps
+
+[2m: Ordered Maps](/reference/hoon/zuse/2m)

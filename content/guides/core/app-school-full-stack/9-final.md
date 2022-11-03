@@ -56,7 +56,7 @@ Here is the reference material for each section of this walkthrough.
 
 - [The JSON Guide](/guides/additional/json-guide) - The stand-alone JSON guide
   covers JSON encoding/decoding in great detail.
-- [The Zuse Reference](/reference/hoon/zuse/table-of-contents) - The
+- [The Zuse Reference](/reference/hoon/zuse) - The
   `zuse.hoon` reference documents all JSON-related functions in detail.
 
 - [`++enjs:format` reference](/reference/hoon/zuse/2d_1-5#enjsformat) -
