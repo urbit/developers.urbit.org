@@ -81,7 +81,7 @@ It is frequently helpful, when constructing these, to be able to output the valu
   sum
 %=  $
   counter  (add counter 1)
-  sum      (add sum counter))
+  sum      (add sum counter)
 ==
 ```
 
@@ -97,7 +97,7 @@ You can do even better using _interpolation_:
   sum
 %=  $
   counter  (add counter 1)
-  sum      (add sum counter))
+  sum      (add sum counter)
 ==
 ```
 
