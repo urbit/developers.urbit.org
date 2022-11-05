@@ -354,7 +354,7 @@ There are tradeoffs in compactness of representation and efficiency of mathemati
 | ---- | ------- | ------- |
 | `@s` | signed integer|  |
 | `@sb` | signed binary | `--0b11.1000` (positive) |
-|       |               | `--0b11.1000` (negative) |
+|       |               | `-0b11.1000` (negative) |
 | `@sd` | signed decimal | `--1.000.056` (positive) |
 |       |                | `-1.000.056` (negative) |
 | `@sx` | signed hexadecimal | `--0x5f5.e138` (positive) |
