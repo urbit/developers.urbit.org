@@ -12,7 +12,7 @@ not yet proper libraries for other languages that can make use of it. Therefore,
 these documents will only touch on Khan's internal interface.
 
 Khan's internal interface lets you run threads via Khan rather than having to
-poke Spider and subscribe for the result. This interface is simpler and more
+poke [Spider](/reference/arvo/threads/reference) and subscribe for the result. This interface is simpler and more
 ergonomic than Spider's, so is usually preferable.
 
 There's only one `task` to run a thread a thread: `%fard`. This is documented in
