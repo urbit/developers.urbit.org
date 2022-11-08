@@ -13,6 +13,8 @@ import Card from "../../components/Card";
 import Meta from "../../components/Meta";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { pair } from '../../lib/util';
+
 export default function Directory({ search, directory }) {
   const post = {
     title: "Directory",
@@ -155,14 +157,6 @@ export default function Directory({ search, directory }) {
     </Container>
   );
 }
-
-const pair = (arr) =>
-  arr.reduce(function (rows, key, index) {
-    return (
-      (index % 2 == 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) &&
-      rows
-    );
-  }, []);
 
 export async function getStaticProps() {
   const directory = getAllPosts(

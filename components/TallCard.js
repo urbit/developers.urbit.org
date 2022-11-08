@@ -6,35 +6,22 @@ export default function TallCard({
   description,
   callout,
   href,
-  className = "",
+  className = ""
 }) {
-  return (
-    <div
-      className={`cursor-pointer lg:aspect-w-8 lg:aspect-h-10 xl:aspect-w-8 xl:aspect-h-8 ${className}`}
-    >
-      <div key={title} className={`bg-wall-100 rounded-xl min-h-0 `}>
-        <Link href={href}>
-          <div className="flex flex-col space-y-4 p-6 justify-center items-center h-full relative">
-            <div className="rounded-lg self-center overflow-hidden border-transparent border w-full shrink-0">
-              {image({ className: "w-full h-full" })}
-            </div>
-            <div className={`grow-1 flex flex-col h-full w-full`}>
-              <h3 className="mb-2">{title}</h3>
-              <p>{description}</p>
-            </div>
-            <div className="self-start">
-              <Link href={href} passHref>
-                <a
-                  className="button-sm bg-green-400 text-white w-fit"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {callout}
-                </a>
-              </Link>
-            </div>
+  return <div className={"cursor-pointer h-full flex flex-col min-h-0 " + className}>
+    <div key={title} className="bg-wall-100 rounded-xl h-full">
+      <Link href={href}>
+        <div className="flex flex-col space-y-4 p-6 justify-between items-start lg:items-center relative">
+          <div className="rounded-lg w-full">
+            {image({ className: "w-full h-full" })}
           </div>
-        </Link>
-      </div>
+          <div className="flex flex-col space-y-2">
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </div>
+          <a className="button-sm bg-green-400 text-white w-fit self-start">{callout}</a>
+        </div>
+      </Link>
     </div>
-  );
+  </div>
 }
