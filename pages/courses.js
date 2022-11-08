@@ -2,20 +2,48 @@ import Head from "next/head";
 import Meta from "../components/Meta";
 import {
   Container,
-  Markdown,
   SingleColumn,
   Section,
   TwoUp,
-  getAllPosts,
 } from "@urbit/foundation-design-system";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import TallCard from "../components/TallCard";
+import AppSchoolLive from "../components/icons/TallCard/appSchoolLive"
+import HoonSchoolLive from "../components/icons/TallCard/hoonSchoolLive";
+import { pair } from "../lib/util";
 
-export default function Courses({ search, courses }) {
+export default function Courses({ search }) {
   const post = {
     title: "Courses",
     description: "Join the next session of Hoon School or App School.",
   };
+
+  // We can't just import this information from the content folder,
+  // because it uses svg icons for the cards that need to be imported
+  // as React components, so they can be detected by Tailwind and
+  // restyled for light and dark modes.
+  // 
+  // The icon components need to be imported, so they can't
+  // just be declared as TOML metadata, either.
+
+  const courses = [
+    {
+      title: "App School Live",
+      description: "App School focuses on how to build a backend Gall agent, then on connecting it to a React-based front-end. When you're done, you'll be able to produce and distribute your own Urbit apps.",
+      slug: 'asl',
+      icon: AppSchoolLive
+    },
+    {
+      title: "Hoon School Live",
+      description: "Hoon School Live teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification.",
+      slug: 'hsl',
+      icon: HoonSchoolLive
+    }
+  ]
+
+  const pairedCourses = pair(courses);
+
   return (
     <Container>
       <Head>
@@ -28,36 +56,25 @@ export default function Courses({ search, courses }) {
           <h1>Courses</h1>
         </Section>
         <Section>
-          <TwoUp>
-            {courses.sort((a, b) => a.weight > b.weight ? 1 : -1).map((course) => {
-              return (
-                <div key={course.slug} className="flex flex-col space-y-4 h-full">
-                  <h3>{course.title}</h3>
-                  <div className="markdown">
-                    <Markdown.render content={JSON.parse(course.content)} />
-                  </div>
-                </div>
-              );
-            })}
-          </TwoUp>
+          {pairedCourses.map((pair) => {
+            return <TwoUp>
+              {pair.map((course) => {
+                return (
+                  <TallCard
+                    title={course.title}
+                    description={course.description}
+                    callout="Learn More"
+                    href={`/courses/${course.slug}`}
+                    image={course.icon}
+                    className="h-full"
+                  />
+                );
+              })}
+            </TwoUp>
+          })}
         </Section>
       </SingleColumn>
       <Footer />
     </Container>
   );
-}
-
-export async function getStaticProps() {
-  const courses = getAllPosts(
-    ["title", "slug", "weight", "description", "extra", "content"],
-    "courses",
-    "weight"
-  ).map((e) => ({
-    ...e,
-    content: JSON.stringify(Markdown.parse({ post: { content: e.content } })),
-  }));
-
-  return {
-    props: { courses },
-  };
 }
