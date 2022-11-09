@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { configure, GlobalHotKeys } from "react-hotkeys";
+import { init } from "@socialgouv/matomo-next";
 import Search from "../components/Search";
 import Head from "next/head";
 
@@ -8,8 +9,21 @@ import "@urbit/foundation-design-system/styles/markdown.css";
 import "@urbit/foundation-design-system/styles/prism.css";
 import "../styles/developers.css";
 
+const MATOMO_URL = process?.env?.NEXT_PUBLIC_MATOMO_URL || "";
+const MATOMO_SITE_ID = process?.env?.NEXT_PUBLIC_MATOMO_SITE_ID || "";
+
+
 function MyApp({ Component, pageProps }) {
   const [showSearch, setSearch] = useState(false);
+
+  useEffect(() => {
+    init({
+      url: MATOMO_URL,
+      siteId: MATOMO_SITE_ID,
+    });
+  });
+
+
   const closeSearch = (event) => {
     if (event?.preventDefault) {
       event.preventDefault();
@@ -45,7 +59,7 @@ function MyApp({ Component, pageProps }) {
   configure({
     // ignoreTags: [],
     ignoreTags: ["input", "select", "textarea"],
-    ignoreEventsCondition: function () {},
+    ignoreEventsCondition: function () { },
   });
 
   return (
