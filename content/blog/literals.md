@@ -12,7 +12,7 @@ image = "https://www.themarginalian.org/wp-content/uploads/2020/01/wilsonbentley
 
 #  What Every Hooner Should Know About Literals on Urbit
 
-The Hoon source builder handles conversions between values and applications of auras and molds automatically, and most of the time you won't be surprised.  But sometimes you run into something like this:
+The Hoon compiler handles conversions between values and applications of auras and molds automatically, and most of the time you won't be surprised.  But sometimes you run into something like this:
 
 ```hoon
 > %~  
