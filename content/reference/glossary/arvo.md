@@ -38,12 +38,14 @@ Here, [Vere](/reference/glossary/vere) is the virtual machine running Urbit.
 
 Arvo is located in `/base/sys/arvo.hoon` within your urbit.
 
-Arvo vanes include [Ames](/reference/glossary/ames) for networking,
+Arvo vanes are [Ames](/reference/glossary/ames) for networking,
 [Behn](/reference/glossary/behn) for timing, [Clay](/reference/glossary/clay)
 for the filesystem and build system, [Dill](/reference/glossary/dill) for
 terminal driving, [Eyre](/reference/glossary/eyre) for the web server,
-[Gall](/reference/glossary/gall) for application management, and
-[Iris](/reference/glossary/iris) for the HTTP client.
+[Gall](/reference/glossary/gall) for application management,
+[Iris](/reference/glossary/iris) for the HTTP client,
+[Jael](/reference/glossary/jael) for PKI management, and
+[Khan](/reference/glossary/khan) for external control and thread running.
 
 Vanes and other programs for Arvo are written in [Hoon](/reference/glossary/hoon).
 

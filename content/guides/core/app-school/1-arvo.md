@@ -47,7 +47,6 @@ Here's a brief summary of each of the vanes:
   source code and relevant files are automatically built and loaded upon
   installation, so your Gall agent itself would not need to interact with Clay
   unless you specifically wanted to read and write files.
-
 - **Dill**: Terminal driver vane. You would not typically interact with Dill
   directly; printing debug messages to the terminal is usually done with hinting runes
   and functions rather than tasks to Dill, and CLI apps are mediated by a
@@ -60,9 +59,7 @@ Here's a brief summary of each of the vanes:
   Guide](/reference/arvo/eyre/guide) for details), but usually you'd just serve a
   front-end [glob](/reference/additional/dist/glob) via the `%docket` agent, so you'd
   not typically have your agent deal with Eyre directly.
-
 - **Gall**: App management vane; this is where your agent lives.
-
 - **Iris**: Web client vane. If you want your agent to query external web APIs and
   the like, it's done via Iris. Oftentimes web API interactions are
   spun out into [threads](/guides/additional/threads/fundamentals) to avoid
@@ -73,15 +70,19 @@ Here's a brief summary of each of the vanes:
   since Gall handles Ames communications for you, you'd not typically deal with
   Jael directly unless your were specifically writing something that made use of
   its data.
+- **Khan**: Control plane vane. The main purpose of Khan is for external
+  application to be able to run threads via a Unix socket and receive their
+  results. Khan's external interface is still experimental, but it's also good
+  for running threads internally.
 
 ## Userspace
 
 Gall agents live in "userspace" as opposed to "kernelspace". Kernelspace is Arvo
-and its eight vanes. Userspace is primarily Gall agents, generators, threads,
+and its nine vanes. Userspace is primarily Gall agents, generators, threads,
 front-ends, and all of their related files in Clay. The distinction looks
 something like this:
 
-[![kernelspace/userspace diagram](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram.svg)](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram.svg)
+[![kernelspace/userspace diagram](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)
 
 By and large, Gall _is_ the userspace vane - the majority of userspace is either
 Gall agents, or things used by Gall agents. Apart from the agents themselves,
@@ -212,7 +213,8 @@ sys
 │   ├── eyre.hoon
 │   ├── gall.hoon
 │   ├── iris.hoon
-│   └── jael.hoon
+│   ├── jael.hoon
+│   └── khan.hoon
 └── zuse.hoon
 ```
 
