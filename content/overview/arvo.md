@@ -29,3 +29,4 @@ Arvo modules are also called 'vanes'. Arvo's vanes are:
 - [Gall](/reference/arvo/gall/gall): application sandbox and manager.
 - [Iris](/reference/arvo/iris/iris): HTTP client.
 - [Jael](/reference/arvo/jael/jael): Public and private key storage.
+- [Khan](/reference/arvo/khan/khan): Control plane and thread runner.

@@ -12,7 +12,7 @@ equivalent, you should be fine.
 
 ## What are Gall agents?
 
-Gall is one of the eight vanes (kernel modules) of Arvo, Urbit's operating
+Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating
 system. Gall's purpose is to manage userspace applications called _agents_.
 
 An agent is a piece of software that is primarily focused on maintaining and

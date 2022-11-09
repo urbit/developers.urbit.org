@@ -58,6 +58,7 @@ The `path` will just be the `wire` you want the response to arrive on. The
       [%g task:gall]
       [%i task:iris]
       [%j task:jael]
+      [%k task:khan]
       [%$ %whiz ~]
       [@tas %meta vase]
   ==
@@ -108,6 +109,7 @@ A `sign-arvo` is the following structure, defined in `lull.hoon`:
       [%gall gift:gall]
       [%iris gift:iris]
       [%jael gift:jael]
+      [%khan gift:khan]
   ==
 ```
 

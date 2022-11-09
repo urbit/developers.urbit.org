@@ -19,7 +19,7 @@ Scries are performed exclusively with the dotket rune: `.^`
 
 For details of its usage, see the [dotket](/reference/hoon/rune/dot#-dotket) section of the Nock rune documentation. In addition to the dotket documentation, below is a colour-coded diagram breaking down the structure of a dotket scry expression with some additional notes.
 
-![Scry diagram](https://storage.googleapis.com/media.urbit.org/docs/arvo/scry-diagram-v2.svg)
+![Scry diagram](https://media.urbit.org/docs/arvo/scry-diagram-v3.svg)
 
 One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](/reference/arvo/clay/scry).
 
@@ -31,7 +31,15 @@ There are two places where scry endpoints are defined:
 
 #### Vanes
 
-Each of Arvo's eight vanes (kernel modules) include a `+scry` arm which defines that vane's scry endpoints. The number of endpoints and extent of data available varies between vanes. For example, Clay has a very extensive set of scry endpoints which provide read access to all files in all desks across all revisions, as well as the ability to build files, perform `mark` conversions, and various other functions. Jael provides access to a great deal of PKI data. On the other hand, Dill has only a couple of endpoints which are mostly useful for debugging, and Iris has none at all (apart from standard memory reporting endpoints you'd not typically use in your applications).
+Each of Arvo's nine vanes (kernel modules) include a `+scry` arm which defines
+that vane's scry endpoints. The number of endpoints and extent of data available
+varies between vanes. For example, Clay has a very extensive set of scry
+endpoints which provide read access to all files in all desks across all
+revisions, as well as the ability to build files, perform `mark` conversions,
+and various other functions. Jael provides access to a great deal of PKI data.
+On the other hand, Dill has only a couple of endpoints which are mostly useful
+for debugging, and Iris has none at all (apart from standard memory reporting
+endpoints you'd not typically use in your applications).
 
 To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/reference/arvo/overview) section of the documents.
 

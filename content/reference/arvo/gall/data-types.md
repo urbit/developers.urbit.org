@@ -241,6 +241,7 @@ vanes, or for sending out updates to subscribers. The three cases are:
         [%g task:gall]
         [%i task:iris]
         [%j task:jael]
+        [%k task:khan]
         [%$ %whiz ~]
         [@tas %meta vase]
     ==
@@ -476,6 +477,7 @@ This arm is called when a vane gives our agent a `gift`. A `sign-arvo` is:
       [%gall gift:gall]
       [%iris gift:iris]
       [%jael gift:jael]
+      [%khan gift:khan]
   ==
 ```
 
