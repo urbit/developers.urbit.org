@@ -24,23 +24,15 @@ Setting aside [literal syntax](TODO), Urbit distinguishes quite a few text repre
 4. `tape`s (`(list @tD`)
 5. UTF-32 strings (`@c`)
 6. `tour`s (`(list @c)`)
-7. `wain`s (`(list cord)`)
-8. `wall`s (`(list tape)`)
-9. `tank`s (formatted print trees)
-10. `tang`s (`(list tank)`)
+7. `tank`s (formatted print trees)
+8. `tang`s (`(list tank)`)
+9. `wain`s (`(list cord)`)
+10. `wall`s (`(list tape)`)
 11. `path`s (`(list knot)`) (with alias `wire`)
-12. `char`s (UTF-8 bytes)
-13. JSON-tagged trees
-14. Sail (for HTML)
+12. JSON-tagged trees
+13. Sail (for HTML)
 
-Since Urbit is homoiconic and introspective, you can do neat things like convert arbitrary text into terms or even wings (limb search paths).
-
-ream
-cook
-
-Urbit uses `term`s to represent internal data tags throughout the Hoon compiler, the Arvo kernel, and userspace.
-
-But don't confuse `term`s with atom literal syntax!  That's another rabbit hole entirely.
+Let's examine each of these in turn.
 
 ###  `cord` (`@t`)
 
@@ -79,7 +71,9 @@ You can see all ASCII characters checked for their `knot` compatibility using ``
 
 A `term` is an atom type intended for marking tags, types, and labels.  A value prefixed with `%` cen such as `%hello` is first a _constant_ (_q.v._) and only possesses `term`-nature if explicitly marked as such with `@tas`.  A term is [defined](https://developers.urbit.org/reference/hoon/basic) as “an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen, first character must be a lowercase letter.”
 
-Note that the empty `term` is written `%$`, not `%~`.  `%~` is a constant null value, not a `term`.
+Urbit uses `term`s to represent internal data tags throughout the Hoon compiler, the Arvo kernel, and userspace.
+
+(Note that the empty `term` is written `%$`, not `%~`.  `%~` is a constant null value, not a `term`.)
 
 As with `knot`s, values can be incorrectly cast to `@tas` in the Dojo.  Use `++sane` to avoid issues as a result of this behavior.
 
