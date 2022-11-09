@@ -12,7 +12,7 @@ image = "https://www.themarginalian.org/wp-content/uploads/2020/01/wilsonbentley
 
 #  What Every Hooner Should Know About Literals on Urbit
 
-The Hoon compiler handles conversions between values and applications of auras and molds automatically, and most of the time you won't be surprised.  But sometimes you run into something like this:
+The Hoon compiler handles value/aura conversions and nesting automatically, and most of the time you won't be surprised (once you've satisfied the type checker).  But sometimes you run into something like this:
 
 ```hoon
 > %~  
@@ -165,7 +165,7 @@ Since we're being quite thorough in this article, let's summarize every single a
 | `@uw` | unsigned base64 | `0w_____._____` | `0wbnC.8haTg` | |
 | `@ux` | unsigned hexadecimal | `0x____.____` | `0x5f5.e138` | |
 
-You'll also find some irregular auras in use:  `%lull`, for instance, has a `@uxblob` type.  Nonstandard auras (i.e. those not listed in the table above) 
+You'll also find some irregular auras in use:  `%lull`, for instance, has a `@uxblob` type.  Nonstandard auras (i.e. those not listed in the table above) render as `@ux` visibly, but are still subject to nesting rules.  In fact, the capital-letter suffixes one occasionally encounters (like `@tD` and `@uvJ`) are programmer annotations to mark the intended bit-width of a value.  (`A` = $2^0$, `B` = $2^1$, `C` = $2^2$, `D` = $2^3$, `E` = $2^5$, etc.)
 
 We also include two other literal syntaxes which don't resolve to atoms:
 
