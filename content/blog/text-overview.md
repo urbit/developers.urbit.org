@@ -14,9 +14,9 @@ image = "https://media.urbit.org/site/posts/essays/blog-text-bottles.png"
 
 ##  Forms of Text
 
-[Text strings](https://en.wikipedia.org/wiki/String_%28computer_science%29%) are sequences of characters.  At one level, the file containing code is itself a string—at a more fine-grained level, we take strings to mean either byte sequences obtained from literals (like `'Hello Mars'`) or from external APIs.
+[Text strings](https://en.wikipedia.org/wiki/String_%28computer_science%29%) are sequences of characters.  At one level, the file containing code is itself a string—at a more fine-grained level, we take strings to mean either byte sequences obtained from literals (like `'Hello Mars'`) or from external APIs.  This blog post will expand on [existing docs](https://developers.urbit.org/guides/additional/strings) to explain what is going on with text in various corners of Hoon.
 
-Setting aside literal syntax, Urbit distinguishes quite a few text representation types:
+Setting aside [literal syntax](TODO), Urbit distinguishes quite a few text representation types:
 
 1. `cord`s (`@t`, [LSB](https://en.wikipedia.org/wiki/Bit_numbering#Least_significant_byte))
 2. `knot`s (`@ta`)
@@ -127,6 +127,14 @@ A `tape` is a list of `@tD` 8-bit atoms.  Similar to `cord`s, `tape`s support UT
 
 The `tape` type is slightly more restrictive than just `(list @t)`, and so `(list @t)` has a slightly different representation yielded to it by the pretty-printer.
 
+```hoon
+> "Hello Mars"
+"Hello Mars"
+
+> `(list @t)`"Hello Mars"
+<|H e l l o   M a r s|>
+```
+
 What's the `@tD` doing in `(list @tD)`?  By convention, a suffixed upper-case letter indicates the size of the entry in bits, with `A` for 2⁰ = 1, `B` for 2¹ = 2, `C` for 2² = 4, `D` for 2³ = 8, and so forth.  While the inclusion of `D` isn't coercive, it is advisory:  a `tape` is processed in such a way that multi-byte characters are broken into successive bytes:
 
 ```hoon
@@ -134,7 +142,80 @@ What's the `@tD` doing in `(list @tD)`?  By convention, a suffixed upper-case le
 ~[0x6b 0xc3 0xbc 0xc3 0x9f 0xc3 0xae]
 ```
 
-### `cord` v. `tape`
+#### Converting Text to Hoon
+
+There are a few ways to get from a `cord` of text to a Hoon representation.
+
+Most commonly, one has a value as text and needs to get it as an atom, or vice versa.
+
+- [`++scot`](https://developers.urbit.org/reference/hoon/stdlib/4m#scot) takes a Hoon atom and produces a `cord` or `knot`.
+
+```hoon
+> (scot %ud 1.000)
+~.1.000
+
+> (scot %ux 0xdead.beef)
+~.0xdead.beef
+
+> (scot %p ~sampel-palnet)
+~.~sampel-palnet
+
+> > (scot %si --1)
+~.--0i1
+```
+
+This example shows the atom literal syntax we wrote about recently:
+
+```hoon
+> (scot %t 'Hello Mars')
+~.~~~48.ello.~4d.ars
+
+> ~~~48.ello.~4d.ars
+'Hello Mars'
+```
+
+- [`++scow`](https://developers.urbit.org/reference/hoon/stdlib/4m#scow) does the same but to a `tape`.
+
+- [`++slaw`](https://developers.urbit.org/reference/hoon/stdlib/4m#slaw) converts a `cord` representation—in Hoon aura notation—into an `unit` of `@` atom.
+
+    ```hoon
+    > (slaw %ux '0xdead.beef')
+    [~ 3.735.928.559]
+    
+    > (slaw %p '~sampel-palnet')
+    [~ 1.624.961.343]
+    
+    > (slaw %p '~sample-planet')
+    ~
+    ```
+
+- [`++ream`](https://developers.urbit.org/reference/hoon/stdlib/5d#ream) accepts a `cord` and shows the resulting abstract syntax tree of Hoon.
+
+```hoon
+> (ream '+(2)')
+[%dtls p=[%sand p=%ud q=2]]
+```
+
+Other methods, such as text to number, are included in the discussion of JSON and MIME type data below.
+
+#### Interpolation
+
+`tape`s support interpolation:  including the result of Hoon expressions as text in the middle of the tape.
+
+Curly braces `{` sel and `}` ser indicate that the result of a calculation has been converted into a `tape` directly.
+
+```hoon
+> "There are {(scow %ud (sub (pow 2 128) (pow 2 64)))} comets."
+"There are 340.282.366.920.938.463.444.927.863.358.058.659.840 comets."
+```
+
+Angle brackers `<` gal and `>` gar employ automatic text conversion:
+
+```hoon
+> "There are many ships, but {<our>} is my ship."
+"There are many ships, but ~zod is my ship."
+```
+#### `cord` v. `tape`
 
 Most commonly, developers will represent text using either `tape`s or `cord`s.  Both of these facilitate straightforward direct representation as string literals using either single quotes `'example of cord'` or double quotes `"example of tape"`.
 
@@ -154,7 +235,7 @@ A `cord` can be transformed into a `tape` using `++trip` (mnemonic "tape rip"). 
 
 #### An Aside on Unicode
 
-Unicode is a chart of character representations, with each character receiving a unique number or _codepoint_.  This codepoint is then represented in various ways in binary encodings, the most common of which is [UTF-8](https://en.wikipedia.org/wiki/UTF-8).   UTF-8 is a variable-byte encoding scheme which balances the economy of representing common characters like ASCII using only a single byte with the ability to represent characters from more complex character sets like Chinese `漢語` or Cherokee `ᏣᎳᎩ ᎦᏬᏂᎯᏍᏗ`.  While something of a pain when processing byte-by-byte, this allows for an adaptively compact way of writing values (rather than the mostly-zeroes [UTF-32](https://en.wikipedia.org/wiki/UTF-32) mode, available in Urbit as `@c`.)
+Unicode is a chart of character representations, with each character receiving a unique number or _codepoint_.  This codepoint is then represented in various ways in binary encodings, the most common of which is [UTF-8](https://en.wikipedia.org/wiki/UTF-8).   UTF-8 is a variable-byte encoding scheme which balances the economy of representing common characters like ASCII using only a single byte with the ability to represent characters from more complex character sets like Chinese `漢語` or Cherokee `ᏣᎳᎩ ᎦᏬᏂᎯᏍᏗ`.  While something of a pain when processing byte-by-byte, this allows for an adaptively compact way of writing values (rather than the mostly-zeroes [UTF-32](https://en.wikipedia.org/wiki/UTF-32) mode, available in Urbit as `@c`.)  A `char` is a self-conscious UTF-8 single byte in Hoon, but it's simply an alias for `@t` and doesn't enforce bitwidth.
 
 Joel Spolsky wrote [a classic article on Unicode](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) which happily has been partly-superseded by much more extensive software support in the two decades since its publication.
 
@@ -180,191 +261,238 @@ You can use `++taft` to convert from a UTF-8 `cord` to a UTF-32 `@c`, and `++tuf
 
 One library, `l10n`, proposes to handle text as a list of UTF-8 multi-byte characters, `calf` or `(list @t)`, rather than a `tape`, which has each byte as a separate entry.  This eases processing for certain Unicode text operations.
 
+### `tank`s (formatted print trees) & `tang`s ((list tank))
+
+Moving past the simple text types, we find that text alone provides little information about structure or display.  Formatted print trees, or `tank`s, are commonly used to produce error messages and other data displays within the Dojo.
+
+A `tank` is a structure of tagged values.  The tag indicates to the pretty-printer how to convert the final value to a `tape` for output (using `ram:re`).
+
+```hoon
+> ~(ram re 'Hello Mars')
+"Hello Mars"
+
+> ~(ram re leaf+"Hello Mars")
+"Hello Mars"
+
+> ~(ram re rose+[["|" "«" "»"] leaf+"Hello Mars" leaf+"Phobos" leaf+"Deimos" ~])  
+"«Hello Mars|Phobos|Deimos»"
+
+> %~  ram  re
+  :-  %palm
+  :-  ["|" "<" ":" ">"]
+  :~  leaf+"Hello Mars"
+      rose+[["║" "«" "»"] leaf+"Hello Mars" leaf+"Phobos" leaf+"Deimos" ~]
+  ==
+"<:Hello Mars|«Hello Mars║Phobos║Deimos»>"
+```
+
+Formatted text based on `tank`s is very helpful when working with `%say` generators.
+
+### `wain`s (`(list cord)`) & `wall`s (`(list tape)`)
+
+Collections of `cord`s and `tape`s are occasionally useful when building output.
+
+The `shoe`/`sole` CLI libraries use `wain`s and `wall`s for various aspects of rendering an app at the CLI.
+
+### `path`s (`(list knot)`) (with alias `wire`)
+
+Gall agents and Clay both use `path`s to uniquely identify resources such as noun data on the file system or subscriptions.  Furthermore, a `wire` is an alias for a `path` which particularly denotes the subscriber's identification, preferably unique.  Any valid `@ta` value separated by `/` fas values becomes a `path`, and `=` tis entries in the first three slots are expanded to the Clay `beak`.
+
+```hoon
+> /hello/mars
+[%hello %mars ~]
+
+> /1/2/3
+[~.1 ~.2 ~.3 ~]
+
+> /
+~
+
+> /===
+[~.~zod ~.base ~.~2022.11.9..19.13.51..efb6 ~]
+```
+
+### JSON-style strings
+
+[JSON](https://en.wikipedia.org/wiki/JSON) is a data interchange format based on text.  Web apps and several other platforms use JSON as a fairly concise human-readable way to transmit information, including text.
+
+Hoon represents the equivalent structure of the JSON as a tagged noun.  This requires parsing a JSON string into a tagged noun structure, then reparsing that into particular Hoon values.
+
+For our purposes here, a JSON-style string thus means a tagged string `s+'Hello Mars'`.
+
+```hoon
+> =myjson '{
+  "firstName": "John",
+  "lastName": "Smith",
+  "isAlive": true,
+  "age": 27,
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York",
+    "state": "NY",
+    "postalCode": "10021-3100"
+  },
+  "phoneNumbers": [
+    {
+      "type": "home",
+      "number": "212 555-1234"
+    },
+    {
+      "type": "office",
+      "number": "646 555-4567"
+    }
+  ],
+  "children": [
+      "Catherine",
+      "Thomas",
+      "Trevor"
+  ],
+  "spouse": null
+}'
+
+> (de-json:html myjson)
+[ ~
+  [ %o
+      p
+    { [p='firstName' q=[%s p='John']]
+      [p='lastName' q=[%s p='Smith']]
+      [ p='children'
+        q=[%a p=~[[%s p='Catherine'] [%s p='Thomas'] [%s p='Trevor']]]
+      ]
+      [ p='address'
+          q
+        [ %o
+            p
+          { [p='postalCode' q=[%s p='10021-3100']]
+            [p='streetAddress' q=[%s p='21 2nd Street']]
+            [p='city' q=[%s p='New York']]
+            [p='state' q=[%s p='NY']]
+          }
+        ]
+      ]
+      [ p='phoneNumbers'
+          q
+        [ %a
+            p
+          ~[
+            [ %o
+                p
+              { [p='type' q=[%s p='home']]
+                [p='number' q=[%s p='212 555-1234']]
+              }
+            ]
+            [ %o
+                p
+              { [p='type' q=[%s p='office']]
+                [p='number' q=[%s p='646 555-4567']]
+              }
+            ]
+          ]
+        ]
+      ]
+      [p='spouse' q=~]
+      [p='isAlive' q=[%b p=%.y]]
+      [p='age' q=[%n p=~.27]]
+    }
+  ]
+]
+```
+
+#### Converting Text to Hoon (and Vice Versa)
+
+Notice at this point that most of the values in the `json` data structure are tagged with `%s` string except for a few:  `%a` array, `%b` boolean, `%n` number, and `%o` map.  The tricky part to deal with in reparsing these values back to and from text are the `%n` numbers, since Hoon has several number types.
+
+Thus we must consider how to convert `json` values [to](https://developers.urbit.org/reference/hoon/zuse/2d_6)  and [from](https://developers.urbit.org/reference/hoon/zuse/2d_1-5) Hoon representations.  Fortunately, most gates one would need are already included in the Zuse standard library for handling `json` structures.  The standard JSON-style operations include:
+
+- [`++numb:enjs:format`](https://developers.urbit.org/reference/hoon/zuse/2d_1-5#numbenjsformat) converts from `@u` to a JSON number (as `knot`).
+
+    ```hoon
+    > (numb:enjs:format 0xdead.beef)
+    [%n p=~.3735928559]
+    ```
+
+- [`++ne:dejs:format`](https://developers.urbit.org/reference/hoon/zuse/2d_6#nedejsformat) parses a JSON-style string as a real, or `@rd`.
+
+    ```hoon
+    > (ne:dejs:format n+'0.31415e1')
+    .~3.1415
+    ```
+
+- [`++ni:dejs:format`](https://developers.urbit.org/reference/hoon/zuse/2d_6#nidejsformat) parses a JSON-style string as an integer, or `@ud`.
+
+    ```hoon
+    > (ni:dejs:format n+'65536')
+    65.536
+    ```
+
+- `++ns:dejs:format` parses a JSON-style string as a signed integer, or `@sd`.
+
+    ```hoon
+    > (ns:dejs:format n+'-1')
+    -1
+    ```
+
+- [`++nu:dejs:format`](https://developers.urbit.org/reference/hoon/zuse/2d_6#nudejsformat) parses a JSON-style string as a hexadecimal.
+
+    ```hoon
+    > (nu:dejs:format s+'deadbeef')
+    0xdead.beef
+    ```
+
+There are date format parsers as well, such as [`++du`](https://developers.urbit.org/reference/hoon/zuse/2d_6#dudejsformat).
+
+Another category of converters are the MIME parsers.  These are nominally for webpages serving content, but prove useful in a variety of other situations as well.
+
+- `++en:base16:mimes:html` converts a `@ux` hexadecimal value to a `cord` with zero-padding (while `++de` goes the other way).
+
+    ```hoon
+    > (en:base16:mimes:html 8 0x12.3456.7890.abcd)  
+    '001234567890abcd'
+    
+    > (de:base16:mimes:html '012345')
+    [~ [p=3 q=74.565]]
+    ```
+
+There are base-64 and base-58 (Bitcoin address) parsers as well.
+
+### Sail (for HTML)
+
+Sail is Hoon's internal markup for HTML and XML.  It can support all HTML tags and attributes.  The [Sail guide](https://developers.urbit.org/guides/additional/sail) contains full details on how to work with the markup format, but here I want to briefly demonstrate how text in Sail is handled.
+
+Basically, Sail opens a tag and associates either the rest of the line (`:`) or continuing text until `==`.
+
+```hoon
+;html
+  ;head
+    ;title = My page
+    ;meta(charset "utf-8");
+  ==
+  ;body
+    ;h1: Welcome!
+    ;p
+      ; Hello, world!
+      ; Welcome to my page.
+      ; Here is an image:
+      ;br;
+      ;img@"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg";
+    ==
+  ==
+==
+```
+
+The `;` markers open a tag or, within a string like `<p>`'s content, mark subsequent lines.  Since the entire Sail file is a `tape`, we can use `tape` interpolation to inject the results of Hoon expressions.
+
+```hoon
+;p
+  ; Hello, world!
+  ; Welcome to my page.
+  ; Today is {<now.bowl>}.
+  ; I have {<+(4)>} fingers.
+==
+```
 
 ### Further Reading
 
-This article may be considered a sister to the Hoon School pages on [“Trees and Addressing (Tapes)”](https://developers.urbit.org/guides/core/hoon-school/G-trees#exercise-tapes-for-text) and [“Text Processing I”](https://developers.urbit.org/guides/core/hoon-school/J-stdlib-text).
+This article may be considered a sister to the Hoon School pages on [“Trees and Addressing (Tapes)”](https://developers.urbit.org/guides/core/hoon-school/G-trees#exercise-tapes-for-text) and [“Text Processing I”](https://developers.urbit.org/guides/core/hoon-school/J-stdlib-text).  There are further details on many elements of working with strings in [“Working with Strings”](https://developers.urbit.org/guides/additional/strings), unsurprisingly.
 
 You may also find [~wicdev-wisryt’s “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) an instructive supplement.
-
----
-
-```
-> %~
-~
-> %~~
-%''
-> %~~~~
-%'~'
-```
-
-=+(-:!>(%~) ?>(?=(%atom -.-) ,.-))
-
-`%~` v. `%0` v. `%~~`
-
----
-
-This one confuses me. What exactly is being said in each case?
-
-> `@ud`%0 0 > -:!>(%0) #t/%0 > `@ud`%~ 0 > -:!>(%~) #t/%~
-
-~sipfyn-pidmex11:26 AM
-
-i gotchu fam
-
-> `type`[%atom %ud `0] #t/%0 > `type`[%atom %null `0] #t/%~
-
-so 
-
-𐐝𐐮𐐾𐐮𐑊𐐰𐑌𐐻𐐨
-
- i think it's just the term being %null to distinguish it from regular / tas 0
-
-cf.
-
-[https://developers.urbit.org/reference/hoon/stdlib/4o#type](https://developers.urbit.org/reference/hoon/stdlib/4o#type)
-
-hopefully that was useful
-
-![](https://raw.githubusercontent.com/sigilante/pixiesticks/master/lagrev-nocfep-jaguar-small.png)
-
-𐐝𐐮𐐾𐐮𐑊𐐰𐑌𐐻𐐨11:37 AM
-
-okay, thanks—basically in "signed zero"-style territory of needing to distinguish types then
-
-~sipfyn-pidmex11:53 AM
-
-yeah probably
-
-another curiosity:
-
-> `@null`2 ~ > =(2 `@null`2) %.y > =(~ `@null`2) %.n > `type`[%atom %null ~] #t/@null > `type`[%atom %null `0] #t/%~
-
-> `type`[%atom %null `1] #t/%~
-
-
-these aren't terms
-
-you can put % in front of any atom literal
-
-and there is a _lot_ of atom literal syntax
-
-i've never seen ~~abc before
-
-%.3.14%.3.14
-
-that's an @rs _constant_
-
-&c
-
-(i had posted %~zod before the &c, but that one's stayin gray)
-
-4:11
-
-the nest-fail is due to some surprising aura logic in +fuse:ut (combining the types in the success branch after the pattern match)
-
-![](https://raw.githubusercontent.com/sigilante/pixiesticks/master/lagrev-nocfep-jaguar-small.png)
-
-𐐝𐐮𐐾𐐮𐑊𐐰𐑌𐐻𐐨4:13 PM
-
-this is cold/warm atom stuff then?
-
-I really am going to write something up on this...
-
----
-
-  
-these aren't terms
-
-you can put % in front of any atom literal
-
-and there is a _lot_ of atom literal syntax
-
-i've never seen ~~abc before
-
-%.3.14%.3.14
-
-that's an @rs _constant_
-
-&c
-
-(i had posted %~zod before the &c, but that one's stayin gray)
-
-the nest-fail is due to some surprising aura logic in +fuse:ut (combining the types in the success branch after the pattern match)
-
-=+(-:!>(%~) ?>(?=(%atom -.-) ,.-))[%atom p=%n q=[~ 0]]
-
-=+(-:!>(%~~) ?>(?=(%atom -.-) ,.-))[%atom p=%t q=[~ 0]]
-  
-the aura of your "input" (a) is @t, the aura from the pattern is @n, when they are intersected in +fuse:ut the input aura is overriding the pattern aura since they don't nest
-
-if you switch from %~ to %$ this goes away
-
-=/ a-keys ?(%aa %ab %ac %ad %ae %$) `a-keys`(scan "aa" (sear |=(a=tape =/(a (crip a) ?.(?=(a-keys a) ~ (some a)))) (star (shim 'a' 'z'))))%aa
-
----
-
-![](https://raw.githubusercontent.com/sigilante/pixiesticks/master/lagrev-nocfep-jaguar-small.png)
-
-𐐝𐐮𐐾𐐮𐑊𐐰𐑌𐐻𐐨11:54 AM
-
-Is there a good way to parse to a type union without a vase?
-
-`?(%en %dv %ti %fo)``@tas`(crip "en")
-
-Maybe with ream?
-
-~master-morzod12:08 PM
-
-=/(a (crip "en") ?>(?=(?(%en %dv %ti %fo) a) a))%en
-
-![](https://raw.githubusercontent.com/sigilante/pixiesticks/master/lagrev-nocfep-jaguar-small.png)
-
-𐐝𐐮𐐾𐐮𐑊𐐰𐑌𐐻𐐨12:12 PM
-
-ah, so assert over the union
-
-ty
-
-~master-morzod12:42 PM
-
-yeah, you could also use ?: and handle the non-matching case yourself
-
-![](https://raw.githubusercontent.com/sigilante/pixiesticks/master/lagrev-nocfep-jaguar-small.png)
-
-𐐝𐐮𐐾𐐮𐑊𐐰𐑌𐐻𐐨3:40 PM
-
-OK, nominally that works. But there's something strange going on when I try to actually use the cast:
-
-> =a-keys $? %aa %ab %ac %ad %ae %~ == > =str "aa" > p.u.+.q:((cook |=(a=tape =/(a (crip a) ?>(?=(a-keys a) a))) (star (shim 'a' 'z'))) [[1 1] str]) %aa > `a-keys`p.u.+.q:((cook |=(a=tape =/(a (crip a) ?>(?=(a-keys a) a))) (star (shim 'a' 'z'))) [[1 1] str]) -need.?(%~ %aa %ab %ac %ad %ae) -have.%~~ nest-fail dojo: hoon expression failed > -:!>(p.u.+.q:((cook |=(a=tape =/(a (crip a) ?>(?=(a-keys a) a))) (star (shim 'a' 'z'))) [[1 1] str])) #t/?(%~~ %aa %ab %ac %ad %ae)
-
-1. where is that %~~ coming from?  
-2. why is this mad at enforcing the cast?
-
-which gets into another rabbit hole, which is that %~ and %~~ are valid symbols, but %~~~ is not, and %~~~~ is again
-
-> %~ ~ > %~~ %'' > %~~~~ %'~'
-
-someday I'm gonna write a blog post called "Everything You Know About Terms is Wrong"
-
-I didn't know ~ was escaping values
-
-%~~a%'a'
-
-similar to how =old becomes old=old, =old=vase becomes old-vase=vase
-
----
-
-~nomryg-nilref
-
- for some unknown reason, i can't post eval's through landscape:
-
-> ?=([^ ^] [i=1.701.667.182 t=~]) %.n > ?=([^ ^] [[i=29.550 t=~] [i=1.701.667.182 t=~]]) %.y > ?=([^ ^ ^] [[i=29.550 t=~] [i=1.701.667.182 t=~]]) %.n > ?=([^ ^ ^] [[i=25.188 t=~] [i=29.550 t=~] [i=1.701.667.182 t=~]]) %.y > ?=([^ ^ ^] [[i=25.188 t=~] '.' '.' [i=1.701.667.182 t=~]]) %.n > ?=([^ @ ^] [[i=25.188 t=~] '.' '.' [i=1.701.667.182 t=~]]) %.y
-
-you get pretty far with basic noun-shape patterns, especially if you have atoms at certain positions, or list-style null terminators
-
-but it's always best to build specific, discriminable unions from the beginning, with $@, $^, and $%
-
-you can use +stag to make any parser rule tag the output data (for use with $%
-
-> (scan "foo" (jest 'foo')) 'foo' > (scan "foo" (stag %a (jest 'foo'))) [%a 'foo']
