@@ -556,13 +556,7 @@ Implement a version of the absolute value function, {% math %}|x|{% /math %}, si
 {% math block=true %}
 |x|_{10}
 =
-\begin{cases} x-10, & x > 10 \\\ 0, & 10-x \le 10 \end{cases}
+\begin{cases} x-10, & x > 10 \\\ 10-x & 0 \le x \le 10 \end{cases}
 {% /math %}
-
-<!--$$
-|x|_{10}
-=
-\begin{cases} x-10, & x > 10 \\ 0, & 10-x \le 10 \end{cases}
-$$-->
 
 Test it on a few values like 8, 9, 10, 11, and 12.
