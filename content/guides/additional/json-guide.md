@@ -499,7 +499,7 @@ Usually (though not in all cases) these mark conversions will be performed impli
 
 ## Further reading
 
-[The Zuse library reference](/reference/hoon/zuse/table-of-contents) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
+[The Zuse library reference](/reference/hoon/zuse) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
 
 [The Marks section of the Clay documentation](/reference/arvo/clay/marks/marks) - Comprehensive documentation of `mark`s.
 

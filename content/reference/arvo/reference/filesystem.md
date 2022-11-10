@@ -73,7 +73,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
   [cryptography](/reference/arvo/reference/cryptography). `zuse.hoon` is loaded by
   the larval kernel following `lull.hoon`. `lull.hoon` is the subject of
   `zuse.hoon`. Then `zuse` is the subject of the vanes. Some of the functions in
-  Zuse are documented [here](/reference/hoon/zuse/table-of-contents).
+  Zuse are documented [here](/reference/hoon/zuse).
 
 ## Desks
 

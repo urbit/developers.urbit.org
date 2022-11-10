@@ -22,7 +22,7 @@ following documents for help writing a web front-end for your app:
 - [JSON guide](/guides/additional/json-guide) - This walks through the basics of
   converting Hoon data structures to JSON, for use with a web client. It also
   covers JSON conversion methods in `mark` files.
-- [Zuse reference](/reference/hoon/zuse/table-of-contents) - This contains
+- [Zuse reference](/reference/hoon/zuse) - This contains
   documentation of all JSON encoding and decoding functions included in the
   `zuse.hoon` utility library.
 - [The software distribution guide](/guides/additional/software-distribution) - This covers
