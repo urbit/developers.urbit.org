@@ -1,3 +1,15 @@
++++
+title = "Developer Workflows"
+date = "2022-11-14"
+description = "How some long-term developers work on Urbit."
+[extra]
+author = "N E Davis"
+ship = "~lagrev-nocfep"
+image = "https://media.urbit.org/site/posts/essays/blog-workflow.png"
++++
+
+![](https://media.urbit.org/site/posts/essays/blog-workflow.png)
+
 We asked several long-time developers on Urbit about their preferred developer tooling and workflow.  Here's what we learned.
 
 ---
