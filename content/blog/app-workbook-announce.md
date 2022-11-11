@@ -16,7 +16,7 @@ We introduced the [Hoon Workbook](https://developers.urbit.org/guides/additional
 
 As a companion piece, we are pleased to inaugurate the [App Workbook](TODO), a collection of tutorials built around real-world Gall agents that exemplify some element of practice.
 
-We'll be expanding it with more examples over time, but to start us off we have a discussion of ~midden-fabler's `%ahoy` and ~hanfel-dovned's `%page`. 
+We'll be expanding it with more examples over time, but to start us off we have a discussion of ~midden-fabler's `%ahoy` and ~hanfel-dovned's `%page`, as well as moving ~lagrev-nocfep's `%flap` over to the App Workbook from its current home.
 
 Each of these exemplifies some aspect of Gall agent architecture.  For instance, `%ahoy` shows how to build a Gall agent that uses generators instead of raw pokes at the CLI to carry out target activities.  `%page` illustrates simple HTTP page hosting from an Urbit ship.
 
