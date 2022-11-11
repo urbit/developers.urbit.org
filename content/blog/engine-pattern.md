@@ -14,6 +14,7 @@ image = "https://media.urbit.org/site/posts/essays/blog-engine.png"
 #   The Engine Design Pattern
 
 TODO some snappy intro
+Although of [long standing](https://github.com/urbit/urbit/commit/4caa90c68fc4aeffa926570bfce301a04bdc1f10) in the kernel, the engine pattern has only gradually come to prominence and interest among Urbit's userspace developers.
 
 Many applications store their data in `+$map`s.  The basic engine pattern uses an auxiliary core to manage building state changes.  By convention, an `++abed` arm provides initialization (if any) and an `++abet` arm finalizes the changes and hands back the mutated state.  A number of other semi-standard arms are employed to manage particular state changes.  Core arms are conventionally prefixed with two letters because engine patterns can nest inside of each other.
 
