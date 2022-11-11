@@ -1,25 +1,25 @@
-I'm preparing an article for the developer's site about current developer workflows.  Would you be willing to contribute?  All I'm looking for from you is answers to a few questions:
-
-- What do you work on primarily in Urbit?
-- What does your typical working environment look like?
-- Is there something particularly cool or compelling you have figured out that eases your workflow?
-- What would you like to see soon that would make doing what you do easier?
-
-We asked 
+We asked several long-time developers on Urbit about their preferred developer tooling and workflow.  Here's what we learned.
 
 ---
 
 ## [`~tinnus-napbus`](https://urbit.org/ids/~tinnus-napbus)
 
 
-What do you work on primarily in Urbit?
-So far I have been focused on developer experience, primarily documentation. Going forward I will be focusing more on core development. Currently I'm working on implementing kelvin version shims so outdated apps which depend on an old kernel version can be run on newer kernels.
-What does your typical working environment look like?
-I work on a desktop machine running Arch linux with i3 tiling window manager. I usually use Doom Emacs with hoon-mode for writing hoon, but also sometime Vim with hoon.vim. Usually I have a fakezod in one window, Emacs in another, and then a billion terminal windows open across two screens and several workspaces , many running Vim with additional code I'm referencing. I am not very organised.
-Is there something particularly cool or compelling you have figured out that eases your workflow?
-Not really, I do most things manually. The only Urbit-related tools I use are syntax highlighting. I also use display-fill-column-indicator-mode in Emacs and put a line in column 80 so it's easy to see if code is creeping too far to the right; I find this quite useful for hoon.
-What would you like to see soon that would make doing what you do easier?
-I would like to see hoon-mode & hoon.vim be able to collapse arms of cores in a similar way to collapsing section headers in markdown & org-mode. I would also like the hoon.vim arm-search implemented in hoon-mode. I also have a bounty up for a desk import/export app - I think this would make it much easier working on fake ships where you can't simply |install apps over the network.
+- What do you work on primarily in Urbit?
+
+    So far I have been focused on developer experience, primarily documentation. Going forward I will be focusing more on core development. Currently I'm working on implementing kelvin version shims so outdated apps which depend on an old kernel version can be run on newer kernels.
+
+- What does your typical working environment look like?
+
+I work on a desktop machine running Arch linux with i3 tiling window manager. I usually use [Doom Emacs](https://github.com/doomemacs/doomemacs) with hoon-mode for writing hoon, but also sometime Vim with hoon.vim. Usually I have a fakezod in one window, Emacs in another, and then a billion terminal windows open across two screens and several workspaces , many running Vim with additional code I'm referencing. I am not very organised.
+
+- Is there something particularly cool or compelling you have figured out that eases your workflow?
+
+    Not really, I do most things manually. The only Urbit-related tools I use are syntax highlighting. I also use display-fill-column-indicator-mode in Emacs and put a line in column 80 so it's easy to see if code is creeping too far to the right; I find this quite useful for hoon.
+
+- What would you like to see soon that would make doing what you do easier?
+
+    I would like to see `hoon-mode` & `hoon.vim` be able to collapse arms of cores in a similar way to collapsing section headers in markdown & org-mode. I would also like the hoon.vim arm-search implemented in `hoon-mode`. I also have a [bounty](https://urbit.org/grants/desk-import-export) up for a desk import/export app - I think this would make it much easier working on fake ships where you can't simply |install apps over the network.
 
 ---
 
