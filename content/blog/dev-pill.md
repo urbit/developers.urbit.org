@@ -14,7 +14,8 @@ image = "https://media.urbit.org/site/posts/essays/blog-dev-pill.png"
 
 A [pill](https://developers.urbit.org/reference/glossary/pill) is a bootstrap sequence to launch an Urbit ship for the first time.  For most of Urbit's history, developers and users have typically used the supplied standard pill for booting their ships.  Core developers would produce custom pills as a matter of testing changes in Arvo, but otherwise alternative pills were mostly ignored.
 
-- [**The Developer Pill**]()
+- [**The Developer Pill (generic `latest`)**]([https://storage.googleapis.com/media.urbit.org/developers/dev-20221111.pill](https://storage.googleapis.com/media.urbit.org/developers/dev-latest.pill))
+- [**The Developer Pill (timestamped 2022-11-11)](https://storage.googleapis.com/media.urbit.org/developers/dev-20221111.pill)
 
 Today the Urbit Foundation unveils a new developer-oriented pill, which contains tools out-of-the-box to ease development and encourage best practices.
 
@@ -38,7 +39,7 @@ To use the pill, boot your developer ship with the `-B` option and the current p
 urbit -B dev-20221111.pill
 ```
 
-When serving with web pages, we also recommend considering using tooling from [`~paldev`'s Suite (namely Rudder)](https://github.com/Fang-/suite/blob/master/lib/rudder.hoon) and [Quartus’ Schooner](https://github.com/dalten-collective/schooner/blob/master/lib/schooner.hoon).
+When serving with web pages, we also recommend considering using tooling such as [`~paldev`'s Suite (namely Rudder)](https://github.com/Fang-/suite/blob/master/lib/rudder.hoon) and [Quartus’ Schooner](https://github.com/dalten-collective/schooner/blob/master/lib/schooner.hoon).
 
 We expect the developer pill to evolve over time as new apps come out and newer libraries and practices supersede others.
 
@@ -49,8 +50,10 @@ This brass pill was built using [a slightly modified pill builder](https://githu
 - `%argo` has `%language-server` activated.
 - `%citadel` has `%citadel-cli` activated.
 
+No desks relying on `glob-ames` can be installed without modification, as Ames is not visible to a development fakeship.
+
 The pill was built as a brass pill, e.g.:
 
 ```hoon {% copy=true %}
-.brass/pill +brass %argo %base %citadel %cliff %docs %garden %webterm
+.brass/pill +brass %base %argo %citadel %cliff %docs %garden %webterm
 ```
