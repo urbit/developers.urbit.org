@@ -11,11 +11,11 @@ We asked several long-time developers on Urbit about their preferred developer t
 
 - What does your typical working environment look like?
 
-I work on a desktop machine running Arch linux with i3 tiling window manager. I usually use [Doom Emacs](https://github.com/doomemacs/doomemacs) with hoon-mode for writing hoon, but also sometime Vim with hoon.vim. Usually I have a fakezod in one window, Emacs in another, and then a billion terminal windows open across two screens and several workspaces , many running Vim with additional code I'm referencing. I am not very organised.
+I work on a desktop machine running Arch Linux with [i3 tiling window manager](https://i3wm.org/). I usually use [Doom Emacs](https://github.com/doomemacs/doomemacs) with hoon-mode for writing hoon, but also sometime Vim with [`hoon.vim`](https://github.com/urbit/hoon.vim). Usually I have a fakezod in one window, Emacs in another, and then a billion terminal windows open across two screens and several workspaces, many running Vim with additional code I'm referencing.
 
 - Is there something particularly cool or compelling you have figured out that eases your workflow?
 
-    Not really, I do most things manually. The only Urbit-related tools I use are syntax highlighting. I also use display-fill-column-indicator-mode in Emacs and put a line in column 80 so it's easy to see if code is creeping too far to the right; I find this quite useful for hoon.
+    Not really, I do most things manually. The only Urbit-related tool I use is syntax highlighting. I also use `display-fill-column-indicator-mode` in Emacs and put a line in column 80 so it's easy to see if code is creeping too far to the right; I find this quite useful for hoon.
 
 - What would you like to see soon that would make doing what you do easier?
 
@@ -26,31 +26,44 @@ I work on a desktop machine running Arch linux with i3 tiling window manager. I 
 ## [`~rovnys-ricfer`](https://urbit.org/ids/~rovnys-ricfer)
 
 - What do you work on primarily in Urbit?
-the kernel, with occasional forays into the runtime and userspace
+
+    The kernel, with occasional forays into the runtime and userspace.
+
 - What does your typical working environment look like?
-vim, and fakezods in a ~/ships folder
+
+    Vim, and fakezods in a `~/ships` folder.
+
 - What would you like to see soon that would make doing what you do easier?
-make the pretty printer stop hanging
+
+    Make the pretty printer stop hanging.
 
 ---
 
 ## [`~wicdev-wisryt`](https://urbit.org/ids/~wicdev-wisryt)
 
-- I work mostly on Urbit's kernel and occasionally on its runtime.
+- What do you work on primarily in Urbit?
 
-- I use a 40" 4k monitor with full-screen tmux, with one large pane on top and five small panes across the bottom. The bottom panes are regular fish shells for running ships, using git, etc.
+    I work mostly on Urbit's kernel and occasionally on its runtime.
 
-The top pane is neovim with minimal configuration. The biggest modifications are hoon.vim, a blue crosshair on the cursor (it's easy to lose your place on a large monitor), remapping ^h ^j ^k ^l to move around between neovim panes and tmux panes seamlessly, and swapping the numbers and symbols (so you can type symbols without using shift).
+- What does your typical working environment look like?
 
-Neovim usually has 5-7 columns, and usually the rightmost one is hoon/lull/zuse, the leftmost one is another reference file and/or a notes file, and the middle ones are all the main file I'm working on, at various different points in the file.
+    I use a 40" 4k monitor with full-screen `tmux`, with one large pane on top and five small panes across the bottom. The bottom panes are regular [`fish` shells](https://fishshell.com/) for running ships, using Git, etc.
 
-For the ships, I use either a moon or fake ship, mount whatever desk I need, and in one pane run watch cp -LR <git_desk> <mount_point>. This copies the desk into the ship every two seconds. Then when I want to commit, I run |commit %desk on the ship, using ^R to quickly find the command.
+    The top pane is [Neovim](https://neovim.io/) with minimal configuration. The biggest modifications are hoon.vim, a blue crosshair on the cursor (it's easy to lose your place on a large monitor), remapping `^h` `^j` `^k` `^l` to move around between `neovim` panes and `tmux` panes seamlessly, and swapping the numbers and symbols (so you can type symbols without using shift).
 
-I constantly copy ships so I can revert their state over and over to try things. Don't spend time waiting for ships to boot.
+    Neovim usually has 5-7 columns, and usually the rightmost one is hoon/lull/zuse, the leftmost one is another reference file and/or a notes file, and the middle ones are all the main file I'm working on, at various different points in the file.
 
-neovim config: [https://github.com/philipcmonk/dotfiles/blob/7a575b6c43e3a27bd54722a9c5ca456a54a8d974/vim.nix](https://github.com/philipcmonk/dotfiles/blob/7a575b6c43e3a27bd54722a9c5ca456a54a8d974/vim.nix)- For C, make heavy use of gdb. lldb is far worse than gdb for debugging urbit, so it's worth developing on a Linux box even if that means sshing into a server.
+    For the ships, I use either a moon or fake ship, mount whatever desk I need, and in one pane run `watch cp -LR <git_desk> <mount_point>`. This copies the desk into the ship every two seconds. Then when I want to commit, I run `|commit %desk` on the ship, using `^R` to quickly find the command.
 
-- I don't know about soon, but nock should be very debugger-friendly, I would love to see a well-done one.
+    I constantly copy ships so I can revert their state over and over to try things. Don't spend time waiting for ships to boot.
+
+    `neovim` config: [https://github.com/philipcmonk/dotfiles/blob/7a575b6c43e3a27bd54722a9c5ca456a54a8d974/vim.nix](https://github.com/philipcmonk/dotfiles/blob/7a575b6c43e3a27bd54722a9c5ca456a54a8d974/vim.nix)
+    
+    For C, make heavy use of `gdb`. `lldb` is far worse than `gdb` for debugging Urbit, so it's worth developing on a Linux box even if that means `ssh`ing into a server.
+
+- What would you like to see soon that would make doing what you do easier?
+
+    I don't know about soon, but Nock should be very debugger-friendly.  I would love to see a well-done one.
 
 ---
 
