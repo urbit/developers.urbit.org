@@ -69,53 +69,44 @@ I work on a desktop machine running Arch Linux with [i3 tiling window manager](h
 
 ## [`~rabsef-bicrym`](https://urbit.org/ids/~rabsef-bicrym)
 
+- What do you work on primarily in Urbit?
 
-(a) Primarily i work on userspace applications that express the breadth of the promise that Urbit brings to potential users.
+    Primarily I work on userspace applications that express the breadth of the promise that Urbit brings to potential users.
 
-(b) my working environment is VS code and one folder. I have 6 panes - 4 of code, 2 of wet and zod in terminal. The panes are in 2x3 arrangement. Sometimes I add additional panes. Basically top left is always the Agent, top right is "other agents and additional errata", middle left is sur files, middle right is lull, hoon, zuse, other sys files, bottom panes are left zod right wet.
+- What does your typical working environment look like?
 
-(c) the biggest thing for me is building my desks replete with all of the mar files they need by hand and then using |new-desk %whatever which is available [https://github.com/urbit/urbit/pull/5360](https://github.com/urbit/urbit/pull/5360) and will be in next/arvo when released
+    My working environment is [VSCode](https://code.visualstudio.com/) and one folder. I have 6 panes - 4 of code, 2 of `~wet` and `~zod` in terminal. The panes are in 2x3 arrangement. Sometimes I add additional panes. Basically top left is always the Agent, top right is "other agents and additional errata", middle left is sur files, middle right is lull, hoon, zuse, other sys files, bottom panes are left zod right wet.
 
-(d) A hoon-first UI system would make me a single person full stack dev shop.
+- Is there something particularly cool or compelling you have figured out that eases your workflow?
 
-does that help? do you want more, less, different?
+    The biggest thing for me is building my desks replete with all of the mar files they need by hand and then using |new-desk %whatever which is available [https://github.com/urbit/urbit/pull/5360](https://github.com/urbit/urbit/pull/5360) and will be in next/arvo when released
 
-(c) further: If you just build all your desks with everything they need you don't have to get smacked with "what desks do I merge in here" which I find intensely annoying
+    Further: If you just build all your desks with everything they need you don't have to get smacked with "what desks do I merge in here" which I find intensely annoying.  (Also it's wasteful of files you don't need which just makes downloading your agent take longer.)
 
-also it's wasteful of files u don't need which just makes downloading your agent take longer
+    Another point here: When reading the engine pattern I find it helpful to have 2 panes of the same agent open side by side.  In one pane you're seeing `go-abet`:`go-able`:`go-past`:`go-fish`:`(go-abed 1 ~)` and the other you're tracking back thru to each one of those functions.  The pattern is very efficient for some things and is in use in a lot of Tlon stuff and core, so reading it is important.
 
-is bad practice
+- What would you like to see soon that would make doing what you do easier?
 
-Another point here: When reading the engine pattern I find it helpful to have 2 panes of the same agent open side by side
-
-in one pane you're seeing go-abet:go-able:go-past:go-fish:(go-abed 1 ~) and the other you're tracking back thru to each one of those functions
-
-The pattern is very efficient for some things and is in use in a lot of tlon stuff and core, so reading it is important
-
-and I find that to be the best way
+    A hoon-first UI system would make me a single person full stack dev shop.
 
 ---
 
 ## [`~palfun-foslup`](https://urbit.org/ids/~palfun-foslup)
 
+- What do you work on primarily in Urbit?
 
+    Primarily kernel development for Tlon, userspace development in my spare time.
 
-primarily
+- What does your typical working environment look like?
 
-kernel development for tlon, userspace development in my spare time
+    VSCode with Hoon syntax highlighting and a slightly borked [tabnine](https://www.tabnine.com/) install.  No other hoon-writing-related assists otherwise.  Manual `cp -RL` and `|commit` into fakeships in a `tmux` session.
 
-typical working environment
+- Is there something particularly cool or compelling you have figured out that eases your workflow?
 
-vscode with hoon syntax highlighting and a slightly borked tabnine install. no other hoon-writing-related assists otherwise. manual cp -RL and |commit into fakeships in a tmux session
+    Simply learn to live with the pain.
 
-cool or compelling
+- What would you like to see soon that would make doing what you do easier?
 
-simply learn to live with the pain
+    I don't feel like I particularly need it, but Hoon IDE would be a _lot_ of fun:  [Power Thesaurus](https://www.powerthesaurus.org/) integration and everything
 
-like to see soon
-
-i don't feel like i particularly need it, but hoon ide would be a _lot_ of fun. powerthesaurus integration and everything
-
-to clarify on the "learn to live" point: i don't actually think the manual stuff is all that painful. takes me just a quick second or two to copy things in once it's all set up. "desk building" from the *-dev pkg directories is dumb and trimming it down is worth the effort, but also not that hard if you know what you're looking at
-
-i realize this is a hot take (^:
+To clarify on the "learn to live" point:  I don't actually think the manual stuff is all that painful.  It takes me just a quick second or two to copy things in once it's all set up.  "Desk building" from the `*-dev` package directories is dumb and trimming it down is worth the effort, but also not that hard if you know what you're looking at.  I realize this is a hot take `(^:`.
