@@ -1,3 +1,8 @@
++++
+title = "%ahoy Ship Monitoring"
+weight = 160
++++
+
 # `%page`
 
 https://github.com/hanfel-dovned/Feature
