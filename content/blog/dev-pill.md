@@ -57,3 +57,9 @@ The pill was built as a brass pill, e.g.:
 ```hoon {% copy=true %}
 .brass/pill +brass %base %argo %citadel %cliff %docs %garden %webterm
 ```
+
+##  Feedback
+
+If there are other developer-friendly apps that come online in the future, let us know and we'll be happy to consider them.
+
+[~dister-dozzod-lapdeg/battery-payload](https://urbit.org/groups/~dister-dozzod-lapdeg/battery-payload)
