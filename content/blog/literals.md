@@ -12,7 +12,7 @@ image = "https://www.themarginalian.org/wp-content/uploads/2020/01/wilsonbentley
 
 #  What Every Hooner Should Know About Literals on Urbit
 
-The Hoon compiler handles value/aura conversions and nesting automatically, and most of the time you won't be surprised (once you've satisfied the type checker).  But sometimes you run into something like this:
+The Hoon compiler handles value/aura conversions and nesting automatically, and most of the time you shouldn't be surprised once you've satisfied the type checker.  But sometimes you run into something like this which may defy your expectations:
 
 ```hoon
 > %~  
@@ -288,7 +288,7 @@ These are controlled using a conjunct of related auxiliary arms:
 'Hello Mars!'
 ```
 
-Thus `%~` and its friends led me down a surprisingly deep rabbit hole into the Hoon parser `++so` and the parsing rules.
+Thus `%~` and its friends led me down a surprisingly deep rabbit hole into the Hoon parser `++so` and its parsing rules.
 
 ---
 
