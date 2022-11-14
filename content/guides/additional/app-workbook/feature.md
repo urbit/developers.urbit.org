@@ -219,7 +219,7 @@ The most interesting part of the whole app is the `++handle-http` arm:
     ==
 ```
 
-This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  All HTTP requests are checked for login authentication.
+This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/app/feature` are checked for login authentication, while `/app/feature/public` is not.
 
 ### `POST`
 
@@ -227,7 +227,10 @@ In response to a `POST` request, the default page in the state can be changed.  
 
 ### `GET`
 
-A `GET` request defaults to a `404` error, but a correct call to `/apps/feature/public` returns `200` success and the default page.  `/apps/feature` returns `200` success and the target page.
+A `GET` request defaults to a `404` error.
+
+- `/apps/feature/public` returns `200` success and the default page in the state.
+- `/apps/feature` returns `200` success and the target page, statically compiled on agent build.
 
 ### `/lib/schooner`
 
