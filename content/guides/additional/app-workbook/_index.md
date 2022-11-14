@@ -8,5 +8,5 @@ insert_anchor_links = "right"
 
 ## [`%flap`](/guides/additional/app-workbook/flap)
 
-## [`%page`](/guides/additional/app-workbook/page)
+## [`%feature`](/guides/additional/app-workbook/feature)
 
