@@ -5,7 +5,7 @@ weight = 160
 
 # `%feature`
 
-[`%feature`](https://github.com/hanfel-dovned/Feature) hosts a simple HTML page from an Urbit ship at an associated URL.  This tutorial examines how it uses the middleware [`%schooner`](https://github.com/dalten-collective/schooner/) library by Quartus to return a web page when contacted by a web browser.  You will learn how a basic site hosting app can handle HTTP requests and render a page using an `%html` mark.
+[`%feature`](https://github.com/hanfel-dovned/Feature) by [~hanfel-dovned](https://urbit.org/ids/~hanfel-dovned) hosts a simple HTML page from an Urbit ship at an associated URL.  This tutorial examines how it uses the middleware [`%schooner`](https://github.com/dalten-collective/schooner/) library by Quartus to return a web page when contacted by a web browser.  You will learn how a basic site hosting app can handle HTTP requests and render a page using an `%html` mark.
 
 `%feature` presents a web page from `/app/feature-ui` at `/apps/feature/feature-ui`.  These paths are both configurable by the developer.
 
