@@ -65,7 +65,7 @@ variable sequences, and cores/engines. Let’s talk about each.
 
 A fixed sequence is a rune with a fixed number of children. Most
 runes are fixed sequences. In wide mode we terminate a fixed
-sequence with a right-parenthesis (“rit”). In tall mode there is
+sequence with a right-parenthesis (“par”). In tall mode there is
 no terminator.
 
 With a fixed sequence, we typically use “backstep indentation.”
