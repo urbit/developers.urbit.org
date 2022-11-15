@@ -16,7 +16,7 @@ image = "https://media.urbit.org/site/posts/essays/blog-text-bottles.png"
 
 [Text strings](https://en.wikipedia.org/wiki/String_%28computer_science%29%) are sequences of characters.  At one level, the file containing code is itself a string—at a more fine-grained level, we take strings to mean either byte sequences obtained from literals (like `'Hello Mars'`) or from external APIs.  This blog post will expand on [existing docs](https://developers.urbit.org/guides/additional/strings) to explain what is going on with text in various corners of Hoon.
 
-Setting aside [literal syntax](TODO), Urbit distinguishes quite a few text representation types:
+Setting aside [literal syntax](https://developers.urbit.org/blog/literals), Urbit distinguishes quite a few text representation types:
 
 1. `cord`s (`@t`, [LSB](https://en.wikipedia.org/wiki/Bit_numbering#Least_significant_byte))
 2. `knot`s (`@ta`)
