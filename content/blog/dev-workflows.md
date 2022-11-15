@@ -23,7 +23,7 @@ We asked several long-time developers on Urbit about their preferred developer t
 
 - What does your typical working environment look like?
 
-I work on a desktop machine running Arch Linux with [i3 tiling window manager](https://i3wm.org/). I usually use [Doom Emacs](https://github.com/doomemacs/doomemacs) with hoon-mode for writing hoon, but also sometime Vim with [`hoon.vim`](https://github.com/urbit/hoon.vim). Usually I have a fakezod in one window, Emacs in another, and then a billion terminal windows open across two screens and several workspaces, many running Vim with additional code I'm referencing.
+    I work on a desktop machine running Arch Linux with [i3 tiling window manager](https://i3wm.org/). I usually use [Doom Emacs](https://github.com/doomemacs/doomemacs) with hoon-mode for writing hoon, but also sometime Vim with [`hoon.vim`](https://github.com/urbit/hoon.vim). Usually I have a fakezod in one window, Emacs in another, and then a billion terminal windows open across two screens and several workspaces, many running Vim with additional code I'm referencing.
 
 - Is there something particularly cool or compelling you have figured out that eases your workflow?
 
@@ -121,4 +121,4 @@ I work on a desktop machine running Arch Linux with [i3 tiling window manager](h
 
     I don't feel like I particularly need it, but Hoon IDE would be a _lot_ of fun:  [Power Thesaurus](https://www.powerthesaurus.org/) integration and everything
 
-To clarify on the "learn to live" point:  I don't actually think the manual stuff is all that painful.  It takes me just a quick second or two to copy things in once it's all set up.  "Desk building" from the `*-dev` package directories is dumb and trimming it down is worth the effort, but also not that hard if you know what you're looking at.  I realize this is a hot take `(^:`.
+    To clarify on the "learn to live" point:  I don't actually think the manual stuff is all that painful.  It takes me just a quick second or two to copy things in once it's all set up.  "Desk building" from the `*-dev` package directories is dumb and trimming it down is worth the effort, but also not that hard if you know what you're looking at.  I realize this is a hot take `(^:`.
