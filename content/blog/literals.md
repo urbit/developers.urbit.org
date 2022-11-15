@@ -165,7 +165,7 @@ Since we're being quite thorough in this article, let's summarize every single a
 | `@uw` | unsigned base64 | `0w_____._____` | `0wbnC.8haTg` | |
 | `@ux` | unsigned hexadecimal | `0x____.____` | `0x5f5.e138` | |
 
-You'll also find some irregular auras in use:  `%lull`, for instance, has a `@uxblob` type.  Nonstandard auras (i.e. those not listed in the table above) render as `@ux` visibly, but are still subject to nesting rules.  In fact, the capital-letter suffixes one occasionally encounters (like `@tD` and `@uvJ`) are programmer annotations to mark the intended bit-width of a value.  (`A` = $2^0$, `B` = $2^1$, `C` = $2^2$, `D` = $2^3$, `E` = $2^5$, etc.)
+You'll also find some irregular auras in use:  `%lull`, for instance, has a `@uxblob` type.  Nonstandard auras (i.e. those not listed in the table above) render as `@ux` visibly, but are still subject to nesting rules.  In fact, the capital-letter suffixes one occasionally encounters (like `@tD` and `@uvJ`) are programmer annotations to mark the intended bit-width of a value.  (`A` = {% math %}2^0{% /math %}, `B` = {% math %}2^1%{% /math %}, `C` = {% math %}2^2{% /math %}, `D` = {% math %}2^3{% /math %}, `E` = {% math %}2^5{% /math %}, etc.)
 
 We also include two other literal syntaxes which don't resolve to atoms:
 
