@@ -122,3 +122,28 @@ We asked several long-time developers on Urbit about their preferred developer t
     I don't feel like I particularly need it, but Hoon IDE would be a _lot_ of fun:  [Power Thesaurus](https://www.powerthesaurus.org/) integration and everything
 
     To clarify on the "learn to live" point:  I don't actually think the manual stuff is all that painful.  It takes me just a quick second or two to copy things in once it's all set up.  "Desk building" from the `*-dev` package directories is dumb and trimming it down is worth the effort, but also not that hard if you know what you're looking at.  I realize this is a hot take `(^:`.
+
+---
+
+## [`~sogrum-savluc`](https://urbit.org/ids/~sogrum-savluc)
+
+- What do you work on primarily in Urbit?
+
+    The majority of my time is spent building Vue.js Typescript interfaces for [Quartus](https://www.quartus.co/) applications but I've been spending ever more time in Hoon lately. In fact, now when I write Javascript I just wish I was writing Hoon!
+
+- What does your typical working environment look like?
+
+    I use `tmux` + `vim` on linux. When I'm in interface mode I have a fullscreen `tmux` session in front of me with `vim` in 75% of that and a stack of panes in the right-most 25% containing fake zods, `bounce` scripts, js dev server, temporary shells, etc. I've got another (vertical) monitor on my left with a browser + dev tools.  
+    When I'm writing Hoon-only that left-side monitor features urbit.org docs.  
+    I have an Obsidian notebook where I keep my own Hoon reference. That's bound to some keystrokes so I can easily check (and slowly build) my own Hoon notes.
+
+- Is there something particularly cool or compelling you have figured out that eases your workflow?
+
+    Yes! [bouncer](https://github.com/tloncorp/bouncer).  
+    Any time I find myself repeating a set of dojo or unix commands for ship management, I instead configure it in `bouncer`. I now have a little stable of app configs for the various projects I've worked on and ship/dependency management is a dream. At this point I've saved at least _hours_ not screwing around with fake ships. Everything is automated and idempotent(ish).
+
+- What would you like to see soon that would make doing what you do easier?
+
+    Automatic JSON spec generation from `mar` files.   
+    It's less important to me now that I'm competent in Hoon, but early on I sucked up a lot of time from the Hooners on the team in petitioning them to help me understand the expected poke and response structures. And when those changed we'd have to get into it again (and change my types in Typescript).
+    If a two-person team of newcomer front end developer + experienced Hooner could instead share a single automatically-generated JSON spec/contract I think we'd see a much-needed spike in Javascript developers building interfaces for gall agents.
