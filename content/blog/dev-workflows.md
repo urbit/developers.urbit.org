@@ -95,7 +95,7 @@ We asked several long-time developers on Urbit about their preferred developer t
 
     Further: If you just build all your desks with everything they need you don't have to get smacked with "what desks do I merge in here" which I find intensely annoying.  (Also it's wasteful of files you don't need which just makes downloading your agent take longer.)
 
-    Another point here: When reading the engine pattern I find it helpful to have 2 panes of the same agent open side by side.  In one pane you're seeing `go-abet`:`go-able`:`go-past`:`go-fish`:`(go-abed 1 ~)` and the other you're tracking back thru to each one of those functions.  The pattern is very efficient for some things and is in use in a lot of Tlon stuff and core, so reading it is important.
+    Another point here: When reading the nested core pattern I find it helpful to have 2 panes of the same agent open side by side.  In one pane you're seeing `go-abet`:`go-able`:`go-past`:`go-fish`:`(go-abed 1 ~)` and the other you're tracking back thru to each one of those functions.  The pattern is very efficient for some things and is in use in a lot of Tlon stuff and core, so reading it is important.
 
 - What would you like to see soon that would make doing what you do easier?
 
