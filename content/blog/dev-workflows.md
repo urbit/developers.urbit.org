@@ -1,6 +1,6 @@
 +++
 title = "Developer Workflows"
-date = "2022-11-14"
+date = "2022-11-16"
 description = "How some long-term developers work on Urbit."
 [extra]
 author = "N E Davis"
