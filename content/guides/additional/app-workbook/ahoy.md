@@ -1,5 +1,5 @@
 +++
-title = "`%ahoy` Ship Monitoring"
+title = "%ahoy Ship Monitoring"
 weight = 10
 +++
 
