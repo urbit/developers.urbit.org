@@ -14,7 +14,7 @@ image = "https://media.urbit.org/site/posts/essays/blog-workbook.png"
 
 We introduced the [Hoon Workbook](https://developers.urbit.org/guides/additional/workbook) last summer as a way of showcasing how to solve problems with Hoon code.  The Hoon Workbook mainly focuses on library and generator code rather than apps.
 
-As a companion piece, we are pleased to inaugurate the [App Workbook](TODO), a collection of tutorials built around real-world Gall agents that exemplify some element of practice.
+As a companion piece, we are pleased to inaugurate the [App Workbook](https://developers.urbit.org/guides/additional/app-workbook), a collection of tutorials built around real-world Gall agents that exemplify some element of practice.
 
 We'll be expanding it with more examples over time, but to start us off we have a discussion of ~midden-fabler's `%ahoy` and ~hanfel-dovned's `%page`, as well as moving ~lagrev-nocfep's `%flap` over to the App Workbook from its current home.
 
