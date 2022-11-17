@@ -1,9 +1,9 @@
 +++
-title = "`%flap`"
+title = "%flap JS Client"
 weight = 60
 +++
 
-#   `%flap`
+#   `%flap` JS Client
 
 ##  Introduction
 
