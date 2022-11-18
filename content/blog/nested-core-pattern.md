@@ -17,9 +17,7 @@ The [core](https://developers.urbit.org/reference/glossary/core) is one of the k
 
 The basic nested core pattern uses an auxiliary core to manage building state changes.  As a core contains `[battery payload]`, code and data, we can recursively place cores into the `payload` of a core.  By carefully maintaining encapsulated state (i.e. state that doesn't leak, state that is enclosed by its core), we can build a pattern of stacked cores that maintain their own mutable state locally.  That is, the inner core becomes a sort of “scripting language” for the outer core, wherein local mutable state is finalized and propagated back to the outer core using the `++abet` arm.  Even a gate in a core is actually a stacked core in this sense:  it stacks a sample and `$` arm onto the core stack which formed its subject.
 
-~~A door (like a Gall agent) typically shares state between its daughter arms (most or all of which are gate cores).  In many nontrivial agents, an auxiliary core is placed next to the primary agent door, to which agent state can be passed and by which it can be manipulated, but which does not maintain its own internal state.  The nested core pattern rather has an outer core (like the auxiliary core) with one or more inner cores to script its behavior, but which are never part of the returned state.~~
-
-By convention, an `++abed` arm provides initialization (if any) and an `++abet` arm finalizes the changes and hands back the mutated state.  A number of other semi-standard arms are employed to manage particular state changes.  Core arms are conventionally prefixed with two letters because engine patterns can nest inside of each other.
+By convention, an `++abed` arm (if any) provides initialization and an `++abet` arm finalizes the changes and hands back the mutated state.  A number of other semi-standard arms are employed to manage particular state changes.  Core arms are conventionally prefixed with two letters because engine patterns can nest inside of each other.
 
 Thus, a very simple engine core could look like this (from New Groups):
 
