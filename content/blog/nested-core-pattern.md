@@ -1,7 +1,7 @@
 +++
 title = "The Nested Core Design Pattern (As Seen Through `++abet`)"
 date = "2022-11-18"
-description = "Explaining the engine design pattern in Hoon apps."
+description = "Explaining the nested core design pattern in Hoon apps."
 [extra]
 author = "N E Davis"
 ship = "~lagrev-nocfep"
@@ -13,7 +13,7 @@ image = "https://media.urbit.org/site/posts/essays/blog-engine.png"
 
 #   The Nested Core Design Pattern (As Seen Through `++abet`)
 
-The core is one of the key elements of Urbit's subject-oriented programming paradigm.  As a way of organizing code and data in a homoiconic language, the core pattern allows Hoon developers to manipulate and metaprogram while relying on a well-structured fundament.  Simple core patterns like gates and traps have only one arm in their `battery` and possibly no `sample` at all (for a trap).  More complex core patterns (such as the `|^` barket core and doors) consist of inner cores and outer cores, as well as inner samples (e.g. for a gate) and outer samples (for a door).  This pattern can extend beyond doors, however, into the nested core pattern.  In this article, we examine the nested core pattern through its most common instantiation, the `++abet` pattern.
+The [core](https://developers.urbit.org/reference/glossary/core) is one of the key elements of Urbit's subject-oriented programming paradigm.  As a way of organizing code and data in a homoiconic language, the core pattern allows Hoon developers to encapsulate processes and lexically scope code while relying on a well-structured fundament.  Simple core patterns like gates and traps have only one arm in their `battery` and possibly no `sample` at all (for a trap).  More complex core patterns (such as the `|^` barket core and doors) can consist of inner cores and outer cores, as well as stacking `sample`s (such as for a gate in a door).  This pattern can telescope beyond doors, however, into the nested core pattern.  In this article, we examine the nested core pattern through its most common instantiation, the `++abet` pattern.
 
 For instance, many applications store their data in `+$map`s.  The basic nested core pattern uses an auxiliary core to manage building state changes.  As a core contains `[battery payload]`, code and data, we can recursively place cores into the `battery` of code.  By carefully maintaining encapsulated state (i.e. state that doesn't leak, state that is enclosed by its core), we can build a pattern of stacked cores that maintain their own mutable state locally.  That is, the inner core becomes a sort of “scripting language” for the outer core, wherein local mutable state is finalized and propagated back to the outer core using the `++abet` arm.  Even a gate in a core is actually a stacked core in this sense:  it stacks a sample and `$` arm onto the core stack which formed its subject.
 
