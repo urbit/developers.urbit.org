@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { configure, GlobalHotKeys } from "react-hotkeys";
 import { init } from "@socialgouv/matomo-next";
-import Search from "../components/Search";
+import { Search } from "@urbit/foundation-design-system";
 import Head from "next/head";
 
 import "@urbit/foundation-design-system/styles/globals.css";
@@ -92,6 +92,8 @@ function MyApp({ Component, pageProps }) {
         toggleSearch={toggleSearch}
         closeSearch={closeSearch}
         openSearch={openSearch}
+        order={["dev", "org", "ops", "roadmap"]}
+        ourSite="https://developers.urbit.org"
       />
       <Component
         {...pageProps}

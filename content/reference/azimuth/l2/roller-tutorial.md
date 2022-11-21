@@ -139,6 +139,7 @@ This is outside the scope of the tutorial, but we suggest using a tool like
 `https://myroller.sampel-pal.net` and use the port you'd ordinarily use to
 access Landscape, probably `80` or `8080`. To be clear, this is the same process
 you'd use if you set up a custom URL to access your urbit hosted in the cloud.
+The associated roller URL will then be `https://myroller.sampel-pal.net/v1/roller`.
 
 To point Bridge at your roller we [launch
 Bridge](https://github.com/urbit/bridge/blob/master/DEVELOPMENT.md) with a
@@ -146,11 +147,11 @@ custom command that modifies an environment variable called
 `REACT_APP_ROLLER_HOST`:
 
 ```
-REACT_APP_ROLLER_HOST=https://myroller.sampel-pal.net npm run pilot-mainnet
+REACT_APP_ROLLER_HOST=https://myroller.sampel-pal.net/v1/roller npm run pilot-mainnet
 ```
 
 This will launch a server running Bridge that utilizes the mainnet roller you
-set up at `https://myroller.sampel-pal.net`.
+set up at `https://myroller.sampel-pal.net/v1/roller`.
 
 ### Additional `%roller` commmands
 

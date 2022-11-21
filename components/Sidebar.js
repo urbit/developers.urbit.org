@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import MenuTray from "./MenuTray";
+import { MenuTray } from "@urbit/foundation-design-system";
 
 export default function Sidebar(props) {
   const [isOpen, setTray] = useState(false);

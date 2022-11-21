@@ -1,14 +1,13 @@
 import Head from "next/head";
-import Link from "next/link";
 import {
   Markdown,
   Container,
   SingleColumn,
   Section,
+  Sigil,
   TwoUp,
   getAllPosts,
 } from "@urbit/foundation-design-system";
-import Sigil from "../../components/Sigil";
 import Card from "../../components/Card";
 import Meta from "../../components/Meta";
 import Header from "../../components/Header";
