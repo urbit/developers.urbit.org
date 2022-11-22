@@ -1,6 +1,6 @@
 +++
 title = "Hoon Workbook"
-weight = 30
+weight = 1
 insert_anchor_links = "right"
 +++
 

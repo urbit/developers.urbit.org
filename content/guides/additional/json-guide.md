@@ -1,9 +1,9 @@
 +++
-title = "Working with JSON"
-weight = 20
+title = "JSON"
+weight = 50
 +++
 
-If you are working on a Gall agent with any kind of web interface, it's likely you will encounter the problem of converting Hoon data structures to JSON and vice versa. This is what we'll look at in this document.
+If you are working on a Gall agent with any kind of web interface, it's likely you will encounter the problem of converting Hoon data structures to JSON and vice versa. This is what we'll examine in this document.
 
 Urbit represents JSON data with the `$json` structure (defined in `lull.hoon`). You can refer to the [json type](#the-json-type) section below for details.
 
