@@ -2,9 +2,9 @@ export default function Meta(post, disableImage) {
   const author = post?.extra?.author || "Urbit";
   const title = post?.title ? `${post.title} - ` : "";
   const description =
-    post?.description || "Urbit is a personal server built from scratch.";
+    post?.description || "Urbit provides foundational primitives at the operating system layer, serving as a better platform for building networked, decentralized applications.";
   const image =
-    post?.extra?.image || "https://media.urbit.org/logo/urbit-logo-card.png";
+    post?.extra?.image || "https://storage.googleapis.com/media.urbit.org/site/opengraph/developers.png";
   return (
       
     <>
