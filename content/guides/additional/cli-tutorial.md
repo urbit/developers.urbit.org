@@ -1,6 +1,6 @@
 +++
-title = "CLI Apps"
-weight = 10
+title = "Command-Line Apps"
+weight = 15
 +++
 
 ## Introduction
