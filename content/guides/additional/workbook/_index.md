@@ -1,5 +1,6 @@
 +++
 title = "Hoon Workbook"
+description = "Additional Hoon challenges and explication"
 weight = 1
 insert_anchor_links = "right"
 +++

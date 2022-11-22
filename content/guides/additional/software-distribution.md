@@ -1,5 +1,6 @@
 +++
 title = "Software Distribution"
+description = "Learn to publish a desk that others can install"
 weight = 98
 +++
 

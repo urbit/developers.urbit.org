@@ -1,5 +1,6 @@
 +++
 title = "App Workbook"
+description = "Learn by examining example applications"
 weight = 3
 insert_anchor_links = "right"
 +++
