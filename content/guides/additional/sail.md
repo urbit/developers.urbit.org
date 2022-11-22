@@ -1,5 +1,6 @@
 +++
 title = "Sail (HTML)"
+description = "Learn the basics of Sail"
 weight = 95
 +++
 

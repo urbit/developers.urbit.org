@@ -1,5 +1,6 @@
 +++
 title = "JSON"
+description = "Learn how to handle this common data standard in Urbit"
 weight = 50
 +++
 

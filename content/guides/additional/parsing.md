@@ -1,5 +1,6 @@
 +++
 title = "Parsing Text"
+description = "Learn to parse text with Hoon"
 weight = 80
 +++
 

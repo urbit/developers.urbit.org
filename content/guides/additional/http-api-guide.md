@@ -1,5 +1,6 @@
 +++
 title = "HTTP API"
+description = "Learn how to interact with ships through Eyre's web API"
 weight = 40
 +++
 

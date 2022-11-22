@@ -1,5 +1,6 @@
 +++
 title = "Strings"
+description = "Learn about Hoon's two main string types"
 weight = 99
 +++
 

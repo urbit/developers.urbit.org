@@ -1,5 +1,6 @@
 +++
 title = "Threads"
+description = "Learn to write asynchronous I/O functions"
 weight = 101
 sort_by = "weight"
 insert_anchor_links = "right"
