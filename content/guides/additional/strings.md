@@ -1,6 +1,6 @@
 +++
-title = "Working with Strings"
-weight = 40
+title = "Strings"
+weight = 90
 +++
 
 This document discusses hoon's two main string types: `cord`s (as well as its
@@ -514,6 +514,8 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 
 - [Parsing](/guides/additional/parsing) - A guide to writing fully-fledged
   functional parsers in hoon.
+  
+- [Developer Blog, "What Every Hooner Should Know About Text on Urbit"](/blog/text-overview)
 
 - [Auras](/reference/hoon/auras) - Details of auras in hoon.
 
