@@ -11,7 +11,7 @@ All of the math we've done until this point relied on unsigned integers:  there 
 
 `@u` unsigned integers (whether `@ud` decimal, `@ux` hexadecimal, etc.) simply count upwards by binary place value from zero.  However, if we apply a different interpretive rule to the resulting value, we can treat the integer (in memory) _as if_ it corresponded to a different real value, such as a [negative number](https://en.wikipedia.org/wiki/Integer) or a [number with a fractional part](https://en.wikipedia.org/wiki/Rational_number).  Auras make this straightforward to explore:
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 > `@ud`1.000.000
 1.000.000
 
