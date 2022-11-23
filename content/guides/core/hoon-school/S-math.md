@@ -592,6 +592,58 @@ The Urbit date system correctly compensates for the lack of Year Zero:
 
 The [`++yo`](/reference/hoon/stdlib/3c#yo) core contains constants useful for calculating time, but in general you should not hand-roll time or timezone calculations.
 
+### Tutorial:  Julian Day
+
+Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to uniquely denote days.  (This is not to be confused with the Julian calendar.)  The following core demonstrates conversion to and from Julian days using signed integer (`@sd`) and date (`@da`) mathematics.
+
+```hoon
+|%
+++  ju
+  |%
+  ++  to
+    |=  =@da  ^-  @sd
+    =,  si
+    =/  date  (yore da)
+    =/  y=@sd  (sun y.date)
+    =/  m=@sd  (sun m.date)
+    =/  d=@sd  (sun d.t.date)
+    ;:  sum
+      (fra (pro --1.461 :(sum y --4.800 (fra (sum m -14) --12))) --4)
+      (fra (pro --367 :(sum m -2 (pro -12 (fra (sum m -14) --12)))) --12)
+      (fra (pro -3 (fra :(sum y --4.900 (fra (sum m -14) --12)) --100)) --4)
+      d
+      -32.075
+    ==
+  ++  from
+    |=  =@sd  ^-  @da
+      =,  si
+      :: f = J + 1401 + (((4 × J + 274277) ÷ 146097) × 3) ÷ 4 - 38
+      =/  f  ;:  sum 
+               sd
+               --1.401
+               (fra (pro (fra (sum (pro --4 sd) --274.277) --146.097) --3) --4)
+               -38
+             ==
+      :: e = 4 × f + 3
+      =/  e  (sum (pro --4 f) --3)
+      :: g = mod(e, 1461) ÷ 4
+      =/  g  (fra (mod e --1.461) --4)
+      :: h = 5 × g + 2
+      =/  h  (sum (pro --5 g) --2)
+      :: D = (mod(h, 153)) ÷ 5 + 1
+      =/  dy  (sum (fra (mod h --153) --5) --1)
+      :: M = mod(h ÷ 153 + 2, 12) + 1
+      =/  mn  (sum (mod (sum (fra h --153) --2) --12) --1)
+      :: Y = (e ÷ p) - y + (n + m - M) ÷ n
+      =/  yr  (sum (dif (fra e --1.461) --4.716) (fra (sum --12 (dif --2 mn)) --12))
+      =/  dy=@ud  (div dy 2)
+      =/  mn=@ud  (div mn 2)
+      =/  yr=@ud  (div yr 2)
+      (year [[a=(gth yr --0) yr] mn [dy 0 0 0 ~]])
+--
+```
+
+
 
 ##  Unusual Bases
 
