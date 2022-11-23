@@ -11,7 +11,7 @@ All of the math we've done until this point relied on unsigned integers:  there 
 
 `@u` unsigned integers (whether `@ud` decimal, `@ux` hexadecimal, etc.) simply count upwards by binary place value from zero.  However, if we apply a different interpretive rule to the resulting value, we can treat the integer (in memory) _as if_ it corresponded to a different real value, such as a [negative number](https://en.wikipedia.org/wiki/Integer) or a [number with a fractional part](https://en.wikipedia.org/wiki/Rational_number).  Auras make this straightforward to explore:
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 > `@ud`1.000.000
 1.000.000
 
@@ -596,7 +596,7 @@ The [`++yo`](/reference/hoon/stdlib/3c#yo) core contains constants useful for ca
 
 Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to uniquely denote days.  (This is not to be confused with the Julian calendar.)  The following core demonstrates conversion to and from Julian days using signed integer (`@sd`) and date (`@da`) mathematics.
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 |%
 ++  ju
   |%
