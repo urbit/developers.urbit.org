@@ -5,7 +5,7 @@ weight = 10
 
 #   `%ahoy` Ship Monitoring
 
-The `%ahoy` desk by [~midden-fabler](https://urbit.org/ids/~midden-fabler) provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `++abet` engine design pattern, construct CLI generators, and set wakeup timers using [Behn](https://developers.urbit.org/reference/glossary/behn).
+The `%ahoy` desk by [~midden-fabler](https://urbit.org/ids/~midden-fabler) provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `++abet` nested core design pattern, construct CLI generators, and set wakeup timers using [Behn](https://developers.urbit.org/reference/glossary/behn).
 
 `%ahoy` presents a web UI at `/ahoy` rendered using [Sail](https://developers.urbit.org/guides/additional/sail) and [~paldev](https://urbit.org/ids/~paldev)'s Rudder library alongside command-line generators to add, delete, and modify ship watches.  Notifications are sent using `%hark-store` if a ship hasn't been contacted after a specified amount of time.
 
@@ -133,15 +133,15 @@ The agent expects to receive a `%wake` gift periodically from Behn on the wire `
 [cards this]
 ```
 
-This helper core arm notably employs the `++abet` engine pattern for handling cards.  The `++abet` engine is a design pattern rather than a specific core.  It is designed to accumulate cards, often using `++emit` and `++emil`, then send them all at once.
+This helper core arm notably employs the `++abet` nested core pattern for handling cards.  The `++abet` nested core is a design pattern rather than a specific core.  It is designed to accumulate cards, often using `++emit` and `++emil`, then send them all at once.
 
-The `++abet` engine pattern itself is rather simple to construct.  It enables other arms to construct a list of cards rather than having to produce complex `=^`-style constructions.  This instance of the engine pattern consists of three arms (omitting an `++abed` arm):
+The `++abet` pattern itself is rather simple to construct.  It enables other arms to construct a list of cards rather than having to produce complex `=^`-style constructions.  This instance of the nested core pattern consists of three arms (omitting an `++abed` arm):
 
-- `++emit` is used to submit a card to a collection of cards in the engine helper core.
+- `++emit` is used to submit a card to a collection of cards in the helper core.
 - `++emil` is similar but accepts a list of cards.
 - `++abet` issues the list of cards back along with the state to be updated.  (Note that the core must be scoped such that the Gall agent's state is visible.)
 
-Other arms (such as `++set-timer`) then simply construct cards which are inserted into the `++abet` engine's list.
+Other arms (such as `++set-timer`) then simply construct cards which are inserted into the `++abet` core's list.
 
 
 ```hoon {% mode="collapse" %}
