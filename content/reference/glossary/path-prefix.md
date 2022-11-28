@@ -12,7 +12,7 @@ desc = "The first three elements of a Clay file path denoting ship, desk and cas
 
 [glossaryEntry."beak"]
 name = "beak"
-symbol = ""
+symbol = "beak"
 usage = "arvo"
 desc = "The first three elements of a Clay file path denoting ship, desk and case (revision number) as a three-element tuple."
 +++
