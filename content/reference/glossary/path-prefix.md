@@ -14,12 +14,12 @@ desc = "The first three elements of a Clay file path denoting ship, desk and cas
 name = "beak"
 symbol = ""
 usage = "arvo"
-desc = "The first three elements of a Clay file path denoting ship, desk and case (revision number)."
+desc = "The first three elements of a Clay file path denoting ship, desk and case (revision number) as a three-element tuple."
 +++
 
 A **path prefix** is the first three elements of a
 [Clay](/reference/glossary/clay) [path](/reference/glossary/path). These three
-fields encode a `beak` in `path` form. A `beak` is a triple of
+fields encode a `beak` in `path` form. A `beak` is a three-element tuple of
 [ship](/reference/glossary/ship), [desk](/reference/glossary/desk), and
 [case](/reference/glossary/case). Here's an example:
 
