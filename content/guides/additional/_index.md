@@ -29,3 +29,5 @@ type = "tab"
 ## [Threads](/guides/additional/threads){% class="!mb-0 !mt-12" %}
 
 ## [Unit Tests](/guides/additional/unit-tests){% class="!mb-0 !mt-12" %}
+
+## [Vases](/guides/additional/vases){% class="!mb-0 !mt-12" %}
