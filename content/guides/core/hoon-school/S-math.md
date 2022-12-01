@@ -505,7 +505,7 @@ F_n = \frac{\varphi^n-(-\varphi)^{-n}}{\sqrt 5} = \frac{\varphi^n-(-\varphi)^{-n
 Date and time calculations are challenging for a number of reasons:  What is the correct granularity for an integer to represent?  What value should represent the starting value?  How should time zones and leap seconds be handled?
 
 One particularly complicating factor is that there is no [Year Zero](https://en.wikipedia.org/wiki/Year_zero); 1 B.C. is immediately followed by A.D. 1.
-The Julian date system used in astronomy differs from standard time in this regard.
+(The date systems used in astronomy [differ](https://en.wikipedia.org/wiki/Julian_day#cite_note-7) from standard time in this regard, for instance.)
 
 In computing, absolute dates are calculated with respect to some base value; we refer to this as the _epoch_.  Unix/Linux systems count time forward from Thursday 1 January 1970 00:00:00 UT, for instance.  Windows systems count in 10⁻⁷ s intervals from 00:00:00 1 January 1601.  The Urbit epoch is `~292277024401-.1.1`, or 1 January 292,277,024,401 B.C.; since values are unsigned integers, no date before that time can be represented.
 
