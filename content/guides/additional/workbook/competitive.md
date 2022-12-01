@@ -226,7 +226,7 @@ Now that we can find factors, it should be straightforward to find primes.  In t
   =/  prm  *(list @ud)
   |-  ^-  (list @ud)
   ?:  =(1 ctr)  prm
-  ?:  =(0 (lent (factors ctr)))
+  ?:  =(~ (factors ctr))
     $(ctr (sub ctr 1), prm [ctr prm])
   $(ctr (sub ctr 1))
 --
