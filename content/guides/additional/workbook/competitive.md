@@ -330,7 +330,7 @@ Equivalent mathematical operations for `@rs` values are available in the `++rs` 
 
 - [Mathematics](https://developers.urbit.org/guides/core/hoon-school/S-math) - This module introduces how non-`@ud` mathematics are instrumented in Hoon.
 
-(I picked the above set of examples after perusing the excellent book [Antti Laaksonen (2017) _Guide to Competitive Programming:  Learning and Improving Algorithms Through Contests_](https://link.springer.com/book/10.1007/978-3-319-72547-5), which is available for free as a PDF or EPUB.)
+(I picked the above set of examples after perusing the excellent book [Antti Laaksonen (2017) _Guide to Competitive Programming:  Learning and Improving Algorithms Through Contests_](https://link.springer.com/book/10.1007/978-3-319-72547-5).)
 
 ### Debugging and Troubleshooting
 
