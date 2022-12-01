@@ -1,3 +1,8 @@
++++
+title = "Competitive Programming"
+weight = 10
++++
+
 #   Competitive Programming
 
 Let's take a quick look at implementations for some common tasks in Hoon.  I assume that you want to use library tools whenever possible, but you can delve into the source code itself if you want to know more.
