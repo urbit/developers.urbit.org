@@ -217,7 +217,7 @@ Now that we can find factors, it should be straightforward to find primes.  In t
   =/  fxr  *(list @ud)
   |-  ^-  (list @ud)
   ?:  =(1 ctr)  fxr
-  ?:  =(0 +:(dvr n ctr))
+  ?:  =(0 (mod n ctr))
     $(ctr (sub ctr 1), fxr [ctr fxr])
   $(ctr (sub ctr 1))
 ++  primes
