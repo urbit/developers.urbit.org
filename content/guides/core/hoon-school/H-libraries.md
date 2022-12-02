@@ -293,7 +293,7 @@ At this point, you've likely only worked on the `%base` desk.  You can see data 
 ```hoon
 > +vat %base
 %base
-  /sys/kelvin:      [%zuse 418]
+  /sys/kelvin:      [%zuse 417]
   base hash:        ~
   %cz hash:         0v2.r1lbp.i9jr2.hosbi.rvg16.pqe7u.i3hnp.j7k27.9jsgv.8k7rp.oi98q
   app status:       running

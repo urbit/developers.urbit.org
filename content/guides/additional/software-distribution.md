@@ -44,9 +44,9 @@ lib  mar  sur
 Our desk must include a `sys.kelvin` file which specifies the kernel version it's compatible with. Let's create that:
 
 ```sh
-[user@host hello]$ echo "[%zuse 418]" > sys.kelvin
+[user@host hello]$ echo "[%zuse 417]" > sys.kelvin
 [user@host hello]$ cat sys.kelvin
-[%zuse 418]
+[%zuse 417]
 ```
 
 ### `desk.ship`
