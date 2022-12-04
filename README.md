@@ -2,7 +2,28 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, ensure you have a compatible version of node and npm to avoid issues:
+
+```bash
+node --version
+# v14.17.6
+
+npm --version
+# 9.1.3
+
+# or
+yarn --version
+# 1.22.19
+```
+
+Next, install dependencies:
+```bash
+npm i
+# or
+yarn install
+```
+
+Finally, run the development server:
 
 ```bash
 npm run dev
