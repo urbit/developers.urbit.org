@@ -2,6 +2,9 @@
   "name": "developers.urbit.org",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=14.17.6"
+  },
   "scripts": {
     "dev": "npm run prebuild && next dev",
     "prebuild": "npm run cache-posts && npm run glossary && npm run guide && npm run overview && npm run reference",
