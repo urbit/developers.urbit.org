@@ -1890,7 +1890,7 @@ this by adding a `sys.kelvin` file to the root of our `tally` directory:
 
 ```shell {% copy=true %}
 cd tally
-echo "[%zuse 418]" > sys.kelvin
+echo "[%zuse 417]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do
