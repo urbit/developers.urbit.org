@@ -25,6 +25,29 @@ What are the actual values of these, _sans_ formatting?
 Pretty much all conditional operators rely on loobeans, although it is very uncommon for you to need to unpack them.
 
 
+##  Noun Equality
+
+The most fundamental comparison in Hoon is provided by `.=` dottis, a test for equality of two nouns using Nock 5.  This is almost always used in its irregular form of `=` tis.
+
+```hoon
+> =(0 0)
+%.y
+
+> =('a' 'b')
+%.n
+```
+
+Since Nock is unaware of the Hoon metadata type system, only bare atoms in the nouns are compared.  If you need to compare include type information, create vases with `!>` zapgar.
+
+```hoon
+> =('a' 97)
+%.y
+
+> =(!>('a') !>(97))
+%.n
+```
+
+
 ##  Making Choices
 
 You are familiar in everyday life with making choices on the basis of a decision expression.  For instance, you can compare two prices for similar products and select the cheaper one for purchase.
