@@ -5,7 +5,7 @@ nodes = [170, 190]
 objectives = ["Run existing unit tests.", "Produce a unit test.", "Employ a debugging strategy to identify and correct errors in Hoon code."]
 +++
 
-_This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies._
+_This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.  It may be considered optional and skipped if you are speedrunning Hoon School._
 
 > Code courageously.
 >
