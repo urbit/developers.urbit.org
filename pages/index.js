@@ -41,6 +41,7 @@ export default function Home({ search, posts }) {
     <div>
       <Head>
         <title>Urbit Developers</title>
+        {Meta(post, false, true)}
       </Head>
       <Container>
         <Header search={search} />
