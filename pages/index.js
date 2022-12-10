@@ -28,6 +28,7 @@ import Card from "../components/Card";
 import TallCard from "../components/TallCard";
 import HoonIcon from "../components/icons/TallCard/hoon";
 import AppIcon from "../components/icons/TallCard/app";
+import Meta from "../components/Meta";
 
 export default function Home({ search, posts }) {
 
