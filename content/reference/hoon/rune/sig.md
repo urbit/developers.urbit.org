@@ -476,7 +476,7 @@ a core, we state the leg to its parent, in the form of wing `q`.
 We assume that the parent -- any core within the payload -- is
 already registered.
 
-`p` is the name of this core within its parent; `q` is a the leg
+`p` is the name of this core within its parent; `q` is the leg
 
 Registers a jet in core `s` so that it can be called when that code is run.
 
