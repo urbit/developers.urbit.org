@@ -1,6 +1,6 @@
 +++
-title = "Wild ! ('zap')"
-weight = 4
+title = "`! zap` Wild"
+weight = 110
 
 [glossaryEntry.zap]
 name = "zap"
