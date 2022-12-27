@@ -1,6 +1,6 @@
 +++
-title = "Hints ~ ('sig')"
-weight = 14
+title = "`~ sig` Hints"
+weight = 90
 
 [glossaryEntry.sig]
 name = "sig"
