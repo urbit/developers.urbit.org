@@ -1,6 +1,6 @@
 +++
-title = "Cells : ('col')"
-weight = 9
+title = "`: col` Cells"
+weight = 40
 
 [glossaryEntry.col]
 name = "col"
