@@ -14,7 +14,8 @@ If you prefer to learn as part of a group with a hands-on instructor, regular
 exercises and discussions, and a completion certification, then App School Live
 will be a good fit for you.
 
-The next cohort for App School Live will run in early 2023.
+The next cohort for App School Live will begin the week of January 23, 2023.
+The cohort after that is scheduled for the end of May 2023.
 
 - [Complete this form](https://forms.gle/3c8xBubvSiQfj7Tr6) to get on our
   mailing list about the next opportunity.
@@ -32,3 +33,4 @@ docs](/guides/core/app-school).
 - `lesson4`.  🦩 The Front-End
 - `lesson5`.  🕷️ Threads
 - `lesson6`.  🦭 Production Apps
+- `lesson7`.  🦏 Design Patterns
