@@ -1,5 +1,5 @@
 +++
-title = "`| bar` Cores"
+title = "Cores (| 'bar')"
 weight = 10
 
 [glossaryEntry.bar]
