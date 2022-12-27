@@ -1,6 +1,6 @@
 +++
 title = "`$ buc` Structures"
-weight = 12
+weight = 20
 
 [glossaryEntry.buc]
 name = "buc"
