@@ -1,6 +1,6 @@
 +++
-title = "Casts ^ ('ket')"
-weight = 11
+title = "`^ ket` Casts"
+weight = 70
 
 [glossaryEntry.ket]
 name = "ket"
