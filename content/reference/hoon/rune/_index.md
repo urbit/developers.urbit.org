@@ -55,13 +55,13 @@ Runes that let us adjust types without violating type constraints.
 
 Miscellaneous useful macros.
 
-### [`= tis` (Subject Modification)](/reference/hoon/rune/tis)
-
-Runes used to modify the subject.
-
 ### [`~ sig` (Hints)](/reference/hoon/rune/sig)
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter.
+
+### [`= tis` (Subject Modification)](/reference/hoon/rune/tis)
+
+Runes used to modify the subject.
 
 ### [`? wut` (Conditionals)](/reference/hoon/rune/wut)
 
