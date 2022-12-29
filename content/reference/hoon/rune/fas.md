@@ -1,5 +1,5 @@
 +++
-title = "`/ fas` Imports"
+title = "/ fas · Imports"
 weight = 60
 
 [glossaryEntry.fas]
