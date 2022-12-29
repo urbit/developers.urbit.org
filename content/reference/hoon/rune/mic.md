@@ -1,5 +1,5 @@
 +++
-title = "`; mic` Make"
+title = "; mic · Make"
 weight = 80
 
 [glossaryEntry.mic]
