@@ -1,5 +1,5 @@
 +++
-title = "`= tis` Subject"
+title = "= tis · Subject"
 weight = 100
 
 [glossaryEntry.tis]
