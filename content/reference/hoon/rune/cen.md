@@ -1,5 +1,5 @@
 +++
-title = "`% cen` Calls"
+title = "% cen · Calls"
 weight = 30
 
 [glossaryEntry.cen]
