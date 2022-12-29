@@ -1,5 +1,5 @@
 +++
-title = "`! zap` Wild"
+title = "! zap · Wild"
 weight = 110
 
 [glossaryEntry.zap]
