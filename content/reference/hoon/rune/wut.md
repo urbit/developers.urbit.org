@@ -1,6 +1,6 @@
 +++
-title = "`? wut` Conditionals"
-weight = 100
+title = "? wut · Conditionals"
+weight = 105
 
 [glossaryEntry.wut]
 name = "wut"
