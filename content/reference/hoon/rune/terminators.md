@@ -1,5 +1,5 @@
 +++
-title = "`--`/`==` Terminators"
+title = "--, == Terminators"
 weight = 120
 
 [glossaryEntry.terminators]
