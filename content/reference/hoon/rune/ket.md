@@ -1,5 +1,5 @@
 +++
-title = "`^ ket` Casts"
+title = "^ ket · Casts"
 weight = 70
 
 [glossaryEntry.ket]
