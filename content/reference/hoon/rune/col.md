@@ -1,5 +1,5 @@
 +++
-title = "`: col` Cells"
+title = ": col · Cells"
 weight = 40
 
 [glossaryEntry.col]
