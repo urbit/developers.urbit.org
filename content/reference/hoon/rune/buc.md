@@ -1,6 +1,6 @@
 +++
-title = "Structures $ ('buc')"
-weight = 12
+title = "$ buc · Structures"
+weight = 20
 
 [glossaryEntry.buc]
 name = "buc"

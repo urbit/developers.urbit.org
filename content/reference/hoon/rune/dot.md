@@ -1,6 +1,6 @@
 +++
-title = "Nock . ('dot')"
-weight = 3
+title = ". dot · Nock"
+weight = 50
 
 [glossaryEntry.dot]
 name = "dot"

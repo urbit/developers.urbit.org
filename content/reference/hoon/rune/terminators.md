@@ -1,6 +1,6 @@
 +++
-title = "Terminators -- and =="
-weight = 16
+title = "--, == Terminators"
+weight = 120
 
 [glossaryEntry.terminators]
 name = "terminators"

@@ -1,6 +1,6 @@
 +++
-title = "Change Subject = ('tis')"
-weight = 5
+title = "= tis · Subject"
+weight = 100
 
 [glossaryEntry.tis]
 name = "tis"
