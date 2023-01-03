@@ -3,9 +3,17 @@ title = "API Reference"
 weight = 6
 +++
 
-This document details all the `task`s you're likely to use to interact with Clay, as well as the `gift`s you'll receive in response. Each section has a corresponding practical example in the [Examples](/reference/arvo/clay/examples) document. Many of the types referenced are detailed in the [Data Types](/reference/arvo/clay/data-types) document. It may also be useful to look at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
+This document details all the `task`s you're likely to use to interact with
+Clay, as well as the `gift`s you'll receive in response. Most sections have a
+corresponding practical example in the [Examples](/reference/arvo/clay/examples)
+document. Many of the types referenced are detailed in the [Data
+Types](/reference/arvo/clay/data-types) document. It may also be useful to look
+at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s,
+`gift`s and data structures are defined.
 
-The focus of this document is on interacting with Clay from userspace applications and threads, so it doesn't delve into the internal mechanics of Clay from a kernel development perspective.
+The focus of this document is on interacting with Clay from userspace
+applications and threads, so it doesn't delve into the internal mechanics of
+Clay from a kernel development perspective.
 
 ## `%warp` - Read and track
 
@@ -60,6 +68,8 @@ The [case](/reference/arvo/clay/data-types#case-specifying-a-commit) specifies t
 
 [See here for an example of using %sing.](/reference/arvo/clay/examples#sing)
 
+---
+
 ### `%next` - Await next
 
 ```hoon
@@ -73,6 +83,8 @@ If you subscribe to the current `case` of the `desk`, Clay will not respond unti
 #### Example
 
 [See here for an example of using %next.](/reference/arvo/clay/examples#next)
+
+---
 
 ### `%mult` - Next of any
 
@@ -95,6 +107,8 @@ You can use a different `care` for each of the files specified by the `path` if 
 #### Example
 
 [See here for an example of using %mult.](/reference/arvo/clay/examples#mult)
+
+---
 
 ### `%many` - Track range
 
@@ -128,6 +142,8 @@ When you reach the end of the subscribed range of `case`s, Clay will send you a 
 
 [See here for an example of using %many.](/reference/arvo/clay/examples#many)
 
+---
+
 ### Cancel Subscription
 
 To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in the `riff`. Clay will cancel the subscription based on the `wire`. The request is exactly the same regardless of which type of `rave` you subscribed with originally.
@@ -135,6 +151,8 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 #### Example
 
 [See here for an example of cancelling a subscription.](/reference/arvo/clay/examples#cancel-subscription)
+
+---
 
 ## Write and Modify
 
@@ -165,6 +183,200 @@ Here are examples of using each of these as well as making multiple changes in o
 - [%ins](/reference/arvo/clay/examples#ins)
 - [%mut](/reference/arvo/clay/examples#mut)
 - [Multiple Changes](/reference/arvo/clay/examples#multiple-changes)
+
+---
+
+## Apps and updates
+
+### `%rein` - Force apps
+
+```hoon
+[%rein des=desk ren=rein]
+```
+
+Force on/off apps on a desk. A
+[`rein:clay`](/reference/arvo/clay/data-types#rein) is a `map` from Gall agent
+name to `?`, where `%.y` is *on* and `%.n` is *off*. By default, a live desk
+will run the agents defined in its `desk.bill` manifest, so this is used to
+either stop agents in its manifest or start agents which aren't in its manifest.
+
+Note that the given `rein` overrides the existing one set by a previous `%rein`
+task.
+
+---
+
+### `%tire` - App state sub
+
+```hoon
+[%tire p=(unit ~)]
+```
+
+A `%tire` task subscribes to, or unsubscribes from, updates to the state of
+apps. If `p` is non-null, it subscribes. If `p` is null, it unsubscribes.
+
+Once subscribed, you'll immediately receive a `%tire` `gift`, which looks like:
+
+```hoon
+[%tire p=(each rock:tire wave:tire)]
+```
+
+You'll continue to receive `%tire` `gift`s each time app states change.
+
+A `rock:tire` is a:
+
+```hoon
++$  rock  (map desk [=zest wic=(set weft)])
+```
+
+The [`zest:clay`](/reference/arvo/clay/data-types#zestclay) says whether the
+desk is running (`%live`), suspended (`%dead`), or suspended pending a
+kernel-compatible update (`%held`). The `wic` set contains the `weft`s (kernel
+versions) of any queued updates.
+
+A `wave:tire` is a:
+
+```hoon
++$  wave                           ::
+  $%  [%wait =desk =weft]          ::  blocked
+      [%warp =desk =weft]          ::  unblocked
+      [%zest =desk =zest]          ::  running
+  ==                               ::
+```
+
+It's an app state delta for a particular desk.
+
+---
+
+### `%wick` - Bump kernel
+
+```hoon
+[%wick ~]
+```
+
+Try to apply a queued kernel update.
+
+---
+
+### `%zest` - App state
+
+```hoon
+[%zest des=desk liv=zest]
+```
+
+A `%zest` `task` suspends or unsuspends a desk. the
+[`zest:clay`](/reference/arvo/clay/data-types#zestclay) in `liv` is one of:
+
+- `%live`: running.
+- `%dead`: suspended.
+- `%held`: suspended pending kernel update.
+
+---
+
+## `%tomb` - Tombstoning
+
+```hoon
+[%tomb =clue]
+```
+
+Tombstoning is the deletion of data for old desk revisions. Clay has a single
+`%tomb` `task`, but its [`clue:clay`](/reference/arvo/clay/data-types#clueclay)
+has a number of different possible actions:
+
+```hoon
++$  clue                                              ::  murder weapon
+  $%  [%lobe =lobe]                                   ::  specific lobe
+      [%all ~]                                        ::  all safe targets
+      [%pick ~]                                       ::  collect garbage
+      [%norm =ship =desk =norm]                       ::  set default norm
+      [%worn =ship =desk =tako =norm]                 ::  set commit norm
+      [%seek =ship =desk =cash]                       ::  fetch source blobs
+  ==                                                  ::
+```
+
+We'll look at each of these in turn.
+
+### `%lobe` - Specific page
+
+```hoon
+[%lobe =lobe]
+```
+
+A `%tomb` `task` with a `%lobe` `clue` will tombstone the `page` matching the
+given [`lobe:clay`](/reference/arvo/clay/data-types#lobeclay). If the `page` in
+question is used in the current revision of any desks, it will fail. Otherwise,
+it will be tombstoned globally.
+
+---
+
+### `%all` - Everything
+
+```hoon
+[%all ~]
+```
+
+A `%tomb` `task` with an `%all` `clue` will tombstone everything that's not used
+by current desk revisions, globally. This should be used with caution.
+
+---
+
+### `%pick` - Collect garbage
+
+```hoon
+[%pick ~]
+```
+
+A `%tomb` `task` with a `%pick` `clue` will perform garbage collection,
+tombstoning any data that should be tombstoned according to current tombstoning
+policy ([`norm`](/reference/arvo/clay/data-types#normclay)s).
+
+---
+
+### `%norm` - Default policy
+
+```hoon
+[%norm =ship =desk =norm]
+```
+
+A `%tomb` `task` with a `%norm` `clue` will set the default tombstoning policy
+for the given `desk` and `ship`. A
+[`norm:clay`](/referende/arvo/clay/data-types#normclay) is an `(axal ?)`. An
+`axal` is like a recursive `arch`, and is defined in `arvo.hoon`. The `?` says
+whether to *keep* the given file or directory. You may want to look at the `+of`
+axal engine in `arvo.hoon` for constructing and manipulating the `norm`.
+
+Note the given `norm` will overwrite the existing one for the the ship/desk in
+question. If you want to modify the existing one, you'll need to retrieve it and
+make your changes.
+
+---
+
+### `%worn` - Commit policy
+
+```hoon
+[%worn =ship =desk =tako =norm]
+```
+
+A `%tomb` `task` with a `%worn` `clue` is like
+[`%norm`](#norm---default-policy), except it only applies to a specific commit
+for a ship/desk. The [`tako:clay`](/reference/arvo/clay/data-types#takoclay)
+denotes the commit to apply the policy.
+
+---
+
+### `%seek` - Backfill
+
+```hoon
+[%seek =ship =desk =cash]
+```
+
+A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing,
+tombstoned data and integrate it into Clay's object store. The
+[`cash:clay`](/reference/arvo/clay/data-types#cashclay) is a reference to a
+commit on the given ship/desk as either a
+[`tako:clay`](/reference/arvo/clay/data-types#takoclay) or a
+[`case:clay`](/reference/arvo/clay/data-types#caseclay).
+
+---
 
 ## Manage Mounts
 
@@ -199,6 +411,8 @@ The type it returns is a `%hill` `gift`, which looks like:
 
 [See here for an example of using %boat.](/reference/arvo/clay/examples#boat)
 
+---
+
 ### `%mont` - Mount
 
 ```hoon
@@ -223,6 +437,8 @@ Clay does not return a `gift` in response to a `%mont` `%task`.
 
 [See here for an example of using %mont.](/reference/arvo/clay/examples#mont)
 
+---
+
 ### `%ogre` - Unmount
 
 ```hoon
@@ -241,6 +457,8 @@ Clay does not return a `gift` in response to a `%ogre` `task`.
 
 [See here for an example of using %ogre.](/reference/arvo/clay/examples#ogre)
 
+---
+
 ### `%dirk` - Commit
 
 ```hoon
@@ -258,6 +476,8 @@ Clay does not return a `gift` in response to a `%dirk` `task`.
 #### Example
 
 [See here for an example of using %dirk.](/reference/arvo/clay/examples#dirk)
+
+---
 
 ## Merge Desks
 
@@ -301,6 +521,8 @@ If the merge failed, `p` will have a head of `%.n` and then a `[term tang]` wher
 #### Example
 
 [See here for an example of using %merg.](/reference/arvo/clay/examples#merg)
+
+---
 
 ## Permissions
 
@@ -386,6 +608,8 @@ Clay does not return a `gift` in response to a `%perm` `task`.
 
 [See here for an example of using %perm.](/reference/arvo/clay/examples#perm)
 
+---
+
 ### `%cred` - Add group
 
 ```hoon
@@ -407,6 +631,8 @@ Clay does not return a `gift` in response to a `%cred` `task`.
 #### Example
 
 [See here for an example of using %cred.](/reference/arvo/clay/examples#cred)
+
+---
 
 ### `%crew` - Get groups
 
@@ -431,6 +657,8 @@ The `cez` is just a map from group name to `crew` which is just a `(set ship)`.
 #### Example
 
 [See here for an example of using %crew.](/reference/arvo/clay/examples#crew)
+
+---
 
 ### `%crow` - Group files
 
@@ -460,6 +688,8 @@ The `gift` you get back is a `%croz` which looks like:
 
 [See here for an example of using %crow.](/reference/arvo/clay/examples#crow)
 
+---
+
 ## Foreign Ships
 
 Here we'll looking at making Clay requests to a foreign ship.
@@ -485,6 +715,8 @@ The foreign ship will respond only if correct permissions have been set. See the
 
 Note that if you're reading a whole `desk` or directory, all subfolders and files must also permit reading. If even a single file does not permit you reading it, the foreign ship will not respond to the request.
 
+---
+
 #### Example
 
 [See here for examples of requests to foreign ships.](/reference/arvo/clay/examples#foreign-ships)
@@ -500,3 +732,5 @@ Note that all subfolders and individual files within the `desk` must permit your
 #### Example
 
 [See here for examples of requests to foreign ships.](/reference/arvo/clay/examples#foreign-ships)
+
+---
