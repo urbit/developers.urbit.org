@@ -339,8 +339,8 @@ it to do a `%s` scry for the `blob:clay` of the file.
 
 ### `%hash` - Commit hash
 
-This will return the `@uvI` content hash of the specified commit. It takes a
-[`tako:clay`](/reference/arvo/clay/data-types#takoclay).
+This will return the `@uvI` (256-bit) content hash of the specified commit. It
+takes a [`tako:clay`](/reference/arvo/clay/data-types#takoclay).
 
 Example:
 
