@@ -191,9 +191,9 @@ Everything in Urbit is a binary tree.  And all code in Urbit is also represented
 
 There are three different ways to access values:
 
-1. _Numeric addressing_ is useful when you know the address, rather like knowing a house's street address directly.
-2. _Positional addressing_ is helpful when you don't want to figure out the room number, but you know how to navigate to the value.  This is like knowing the directions somewhere even if you don't know the house number.
-3. _Wing addressing_ is a way of attaching a name to the address so that you can access it directly.
+1. [Numeric addressing](/guides/core/hoon-school/G-trees#numeric-addressing) is useful when you know the address, rather like knowing a house's street address directly.
+2. [Positional addressing](/guides/core/hoon-school/G-trees#positional-addressing-(lark-notation)) is helpful when you don't want to figure out the room number, but you know how to navigate to the value.  This is like knowing the directions somewhere even if you don't know the house number.
+3. [Wing addressing](/guides/core/hoon-school/G-trees#wings) is a way of attaching a name to the address so that you can access it directly.
 
 ### Numeric Addressing
 
