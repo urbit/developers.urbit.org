@@ -219,7 +219,7 @@ A `tape` is actually a `(list @t)`, a binary tree of single characters which onl
 
 ### Positional Addressing (Lark Notation)
 
-Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree.  These are written using `-` (left) and `+` (right) alternating with `<` (left) and `<` (right).
+Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree.  These are written using `-` (left) and `+` (right) alternating with `<` (left) and `>` (right).
 
 ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
