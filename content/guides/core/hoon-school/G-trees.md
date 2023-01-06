@@ -271,7 +271,7 @@ There is a solution at the bottom of the page.
       6   7
     ```
 
-- Use a lark expression to obtain the value `9` in the following noun: `[[5 6] 7 [[8 9 10] 3] 2]`.
+- Use a lark expression to obtain the value `9` in the following noun: `[[[5 6 7] 8 9] 10 11 12 13]`.
 
 Solutions to these exercises may be found at the bottom of this lesson.
 
