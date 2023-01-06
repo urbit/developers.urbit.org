@@ -49,17 +49,13 @@ There are also a number of other import runes which make library, structure, and
 
 For simplicity, everything we do will take place on the `%base` desk for now.  We will learn how to create a library in a subsequent lesson.
 
-> ### Loading a Library
->
-> In a generator, load the `number-to-words` library using the
-> `/+` tislus rune.  (This must take place at the very top of
-> your file.)
-> 
-> Use this to produce a gate which accepts an unsigned decimal
-> integer and returns the text interpretation of its increment.
-{: .challenge}
+### Exercise: Loading a Library
 
-### Helper Cores
+In a generator, load the `number-to-words` library using the `/+` tislus rune.  (This must take place at the very top of your file.)
+
+Use this to produce a gate which accepts an unsigned decimal integer and returns the text interpretation of its increment.
+
+## Helper Cores
 
 Another common design pattern besides creating a library is to sequester core-specific behavior in a helper core, which sits next to the interface operations.  Two runes are used to compose expressions together so that the subject has everything it needs to carry out the desired calculations.
 
@@ -68,7 +64,7 @@ Another common design pattern besides creating a library is to sequester core-sp
 
 Watch for these being used in generators and libraries over the next few modules.
 
-##  Exercise:  A Playing Card Library
+###  Exercise:  A Playing Card Library
 
 In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The core below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](/guides/core/hoon-school/K-doors) to produce [randomness](/guides/core/hoon-school/O-subject).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` wutcol you may see [`?.` wutdot](/reference/hoon/rune/wut#-wutdot), which inverts the order of the true/false arms, as well as other new constructions.
 
@@ -223,7 +219,7 @@ With that completed, we use `%=` centis to call `$` buc to recurse back up to `|
 This is a very naive shuffling algorithm.  We leave the implementation of a better shuffling algorithm as an exercise for the reader.
 
 
-##  Exercise:  Using the Playing Card Library
+###  Exercise:  Using the Playing Card Library
 
 Unfortunately `/` fas runes don't work in the Dojo right now, so we need to build code using the `-build-file` thread if we want to use the library directly.
 
@@ -369,7 +365,7 @@ You'll also sometimes see `%` cen stand in for the whole including the “curren
 [~.~zod ~.base ~.~2022.6.14..18.15.10..698c ~]
 ```
 
-#### Paths and Files
+### Paths and Files
 
 A `path` is a `(list @ta)`, a list of text identifiers.  The first three are always the beak and the last one conventionally refers to the mark by which the file is represented.
 
@@ -429,7 +425,7 @@ you are in 0 group(s):
 you are hosting 0 group(s):
 ```
 
-#### Marks
+### Marks
 
 Marks play the role of file extensions, with an important upgrade:  they are actually molds and define conversion paths.  We won't write them in Hoon School, but you will encounter them when you begin writing apps.  They are used more broadly than merely as file types, because they act as smart molds to ingest and yield data structures such as JSON and HTML from Hoon data structures.
 
