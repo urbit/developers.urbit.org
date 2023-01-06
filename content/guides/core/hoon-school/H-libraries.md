@@ -344,7 +344,7 @@ This message says that a file `demo.hoon` was added to the Urbit filesystem at t
 2. The **desk**, here `%base`.
 3. A **revision number** or **timestamp**, here `2`.  (The current system time is available as `now`.)  Clay tracks the history of each file, so older versions can be accessed by their revision number.  (This is uncommon to need to do today.)
 
-The beak is commonly constructued with the `/` fas prefix and `=` tis signs for the three components:
+The beak is commonly constructed with the `/` fas prefix and `=` tis signs for the three components:
 
 ```hoon
 > /===
