@@ -71,7 +71,7 @@ In this exercise, we examine a library that can be used to represent a deck of 5
 ```hoon {% copy=true mode="collapse" %}
 |%
 +$  suit  ?(%hearts %spades %clubs %diamonds)
-+$  darc  [sut=suit val=@ud]
++$  darc  [sut=suit val=@ud]  :: see below about naming
 +$  deck  (list darc)
 ++  make-deck
   ^-  deck
