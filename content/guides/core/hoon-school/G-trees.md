@@ -98,7 +98,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
 
 ### Tuples as Trees
 
-What we've been calling a running cell would more conventionally be named a _tuple_, so we'll switch to that syntax now that the idea is more familiar.  Basically its a cell series which doesn't necessarily end in `~`.
+What we've been calling a running cell would more conventionally be named a _tuple_, so we'll switch to that syntax now that the idea is more familiar.  Basically it's a cell series which doesn't necessarily end in `~`.
 
 Given the cell `[1 2 3 4 ~]` (or equivalently `~[1 2 3 4]`, an irregular form for a null-terminated tuple or list), what tree address does each value occupy?
 
