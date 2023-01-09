@@ -13,7 +13,7 @@ image = "https://www.nps.gov/articles/images/Archives-at-Iowa-State.png"
 
 ##  Enquiry
 
-I investigated the Urbit kernel for the actual usage rates of various Hoon runes in practice by experienced senior developers.  While I had done this [a few years ago](https://groups.google.com/a/urbit.org/g/dev/c/gAfhjAzccAk/m/WBpK2izmCgAJ) using a naïve regex match, this time I built the abstract syntax tree of every file in the kernel.  This allows us to include irregular syntax and exclude non-runes (like the spurious `^~` in ``rose+[" " `~]^~[leaf+"*" (smyt pax)]``).
+I investigated the Urbit kernel for the actual usage rates of various Hoon runes in practice by experienced senior developers.  While I had done this [a few years ago](https://groups.google.com/a/urbit.org/g/dev/c/gAfhjAzccAk/m/WBpK2izmCgAJ) using a naïve regex match, this time I built the abstract syntax tree of every file in the kernel.  This allowed me to include irregular syntax and exclude non-runes (like the spurious `^~` non-ketsig in ``rose+[" " `~]^~[leaf+"*" (smyt pax)]``).
 
 The survey was based on the contents of `/sys` as of ~2022.12.14.  For the first pass, every file in `/sys` was built using [`++reck`](https://developers.urbit.org/reference/hoon/stdlib/5d#reck) and [`++noah`](https://developers.urbit.org/reference/hoon/stdlib/5c#noah), e.g.
 
@@ -21,7 +21,7 @@ The survey was based on the contents of `/sys` as of ~2022.12.14.  For the first
 *%/out/ames/txt &txt (noah !>((reck /===/sys/vane/ames)))
 ```
 
-I tabulated the number of instances of each currently-supported Hoon rune from the AST.  While the particular values are noisy across commits, we expect secular trends to persist.
+I tabulated the number of instances of each currently-supported Hoon rune from the AST.  While the particular values are noisy across commits, I expect secular trends to persist.
 
 **Table 1**.  Rune AST labels.
 
@@ -179,7 +179,7 @@ Rune frequency follows a [power-law distribution](https://en.wikipedia.org/wiki/
 
 ##  Analysis
 
-There aren't any real surprises here.  The most frequent runes surface the most common design patterns:
+There aren't any real surprises here.  The most frequent runes reflect the most common design patterns:
 
 - `%` cen rune calls tend to route through [`%:` cencol](https://developers.urbit.org/reference/hoon/rune/cen#-cencol) since the irregular form `(fun 1 2)` desugars to `%:`.
 - [`:*` coltar](https://developers.urbit.org/reference/hoon/rune/col#-coltar) serves similarly as the desugaring of lists constructed by `~[1 2 3]`.
@@ -236,7 +236,7 @@ Rune labels like `%ktpm` that that occur in the codebase may not be represented 
 i=[%leaf p=%tas q=1.836.086.379]
 ```
 
-Of the other uncommon runes, we note as well that [`.^` dotket](https://developers.urbit.org/reference/hoon/rune/dot#-dotket) to peek or scry is important in userspace but that the kernel rarely needs this expedient.
+Of the other uncommon runes, I note as well that [`.^` dotket](https://developers.urbit.org/reference/hoon/rune/dot#-dotket) to peek or scry is important in userspace but that the kernel rarely needs this expedient.
 
 
 ##  Conclusion
