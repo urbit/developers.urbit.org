@@ -522,6 +522,24 @@ With `c`, we produce a noun which contains both code and data - a
 **core**.  We use this core as the subject, and evaluate the
 formula within it at slot `b`.
 
+### `10`, replace at address
+
+`10` is how Nock updates a tree by altering a particular slot.
+
+```
+*[a 10 [b c] d]      #[b *[a c] *[a d]]
+```
+
+This operation relies on the `#` hax operator, which has the form
+
+```
+#[mem-slot new-val target-tree]
+```
+
+This replaces the memory slot `mem-slot` in `target-tree` with `new-val`.
+
+So all together, `10` means that we calculate `*[a c]` and `*[a d]`, then replace memory slot `b` in the latter with the result of the former.
+
 ### `6`, if-then-else
 
 This looks much scarier than it is:
