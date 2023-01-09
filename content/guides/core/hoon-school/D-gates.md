@@ -54,7 +54,7 @@ Hoon developers often employ irregular forms, sometimes called â€œsugar syntaxâ€
 
 You should get used to reading and interpreting these forms.  We will start to use them actively during this lesson.  You can find other irregular forms in the [irregular forms reference](/reference/hoon/irregular).
 
-##  Exercise:  Converting Between Forms
+### Exercise:  Converting Between Forms
 
 Convert each of the following irregular forms into the correct regular runic syntax.
 
