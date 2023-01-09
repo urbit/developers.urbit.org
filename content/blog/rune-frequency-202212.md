@@ -169,9 +169,9 @@ This technique converted irregular syntax to regular syntax, but did not desugar
 
 Rune frequency follows a [power-law distribution](https://en.wikipedia.org/wiki/Power_law) with 18 runes representing 80% of total rune utilization.  Indeed, several runes are _hapax legomena_ in `/sys` ([`|?` barwut](https://developers.urbit.org/reference/hoon/rune/bar#-barwut), [`~<`](https://developers.urbit.org/reference/hoon/rune/sig#-siggal)) or do not occur at all (discussed below).
 
-**Figure 1**.  Observed rune frequency in `/sys` as a power law.
-
 ![**Figure 1**.  Observed rune frequency in `/sys` as a power law.](https://storage.googleapis.com/media.urbit.org/blog/rune-frequency.png)
+
+**Figure 1**.  Observed rune frequency in `/sys` as a power law.
 
 (Bear with me on that graph:  it's rather hard to display order runes in any sort of coherent way I've come up with so far.)
 
