@@ -201,7 +201,7 @@ In the example gate above, `inc`, the sample is defined by `a=@`.  This means th
 
 The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go.  In `inc`, the product is defined by `(add 1 a)`.  There's not much to it—it returns the value of `a+1`!
 
-##  Exercise:  Double a Value
+### Exercise:  Double a Value
 
 - Produce a gate which accepts any `@` unsigned integer value and doubles it.  Call it `double`.
 
@@ -212,7 +212,7 @@ The second subexpression after the `|=` bartis rune is used to build the gate's 
     10
     ```
 
-##  Exercise:  Convert Between Auras
+### Exercise:  Convert Between Auras
 
 - Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent.  Call it `myship`.
 
@@ -351,7 +351,7 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 
 **Note**: If you're using VS Code on Windows, you might need to manually change the line endings from Windows-style `CRLF` to Unix-style `LF` in the status bar at the bottom.  Urbit requires Unix-style line endings for Hoon files.
 
-##  Exercise:  Triangular Function
+### Exercise:  Triangular Function
  
 - Implement the triangular function as a gate and save it as a generator `tri.hoon`.
 
@@ -385,7 +385,7 @@ There are also a number of other import runes which make library, structure, and
 
 For simplicity, everything we do will take place on the `%base` desk for now.  We will learn how to create a library in a subsequent lesson.
 
-##  Exercise:  Loading a Library
+### Exercise:  Loading a Library
 
 In a generator, load the `number-to-words` library using the `/+` faslus rune.  (This must take place at the very top of your file.)
  

@@ -63,7 +63,7 @@ Hoon unit tests come in two categories:
 
 Let's look at a practical example first, then dissect these.
 
-##  Exercise:  Testing a Library
+### Exercise:  Testing a Library
 
 Consider an absolute value arm `++absolute` for `@rs` values. The unit tests for `++absolute` should accomplish a few things:
 

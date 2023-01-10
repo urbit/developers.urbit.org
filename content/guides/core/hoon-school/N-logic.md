@@ -141,7 +141,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
 
 From these primitive operators, you can build other logical statements at need.
 
-##  Exercise:  Design an `XOR` Function
+### Exercise:  Design an `XOR` Function
 
 The logical operation `XOR` (i.e. *p*⊕*q* ; exclusive disjunction)  yields true if one but not both operands are true.  `XOR` can be calculated by (_p_ ∧ ¬*q*) ∨ (¬*p* ∧ _q_).
 
@@ -158,7 +158,7 @@ The logical operation `XOR` (i.e. *p*⊕*q* ; exclusive disjunction)  yields tru
     |(&(p !q) &(!p q))
     ```
 
-##  Exercise:  Design a `NAND` Function
+### Exercise:  Design a `NAND` Function
 
 The logical operation `NAND` (i.e. _p_ ↑ _q_) produces false if both operands are true.  `NAND` can be calculated by ¬(_p_ ∧ _q_).
 
@@ -169,7 +169,7 @@ The logical operation `NAND` (i.e. _p_ ↑ _q_) produces false if both operands 
 
 - Implement `NAND` as a gate in Hoon.
 
-##  Exercise:  Design a `NOR` Function
+### Exercise:  Design a `NOR` Function
 
 The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands are false.  `NOR` can be calculated by ¬(_p_ ∨ _q_).
 
@@ -180,7 +180,7 @@ The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands ar
 
 - Implement `NAND` as a gate in Hoon.
 
-##  Exercise:  Implement a Piecewise Boxcar Function
+### Exercise:  Implement a Piecewise Boxcar Function
 
 The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.  We implemented the similar Heaviside function [previously](/guides/core/hoon-school/B-syntax) using the `?:` wutcol rune.
 

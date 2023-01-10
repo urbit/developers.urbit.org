@@ -380,7 +380,7 @@ In the above example we created a door `c` with sample `b=@` and found that the 
 
 Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example.  You will learn more about how types are inferred in the [next module](/guides/core/hoon-school/L-struct).
 
-##  Exercise:  Adding Arms to a Door
+### Exercise:  Adding Arms to a Door
 
 Recall the quadratic equation door.
 
@@ -499,7 +499,7 @@ You can apply a gate to each value using `++run:by`.  For instance, these gates 
 }
 ```
 
-##  Exercise:  Display Cards
+### Exercise:  Display Cards
 
 - Recall the `/lib/playing-cards.hoon` library.  Use a map to pretty-print the `darc`s as Unicode card symbols.
 
