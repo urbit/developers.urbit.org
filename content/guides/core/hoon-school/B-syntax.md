@@ -99,7 +99,7 @@ The [`^-` kethep](/reference/hoon/rune/ket#--kethep) rune is useful for ensuring
 
 We will use `^-` kethep extensively to enforce type constraints, a very useful tool in Hoon code.
 
-##  Exercise:  Aura Conversions
+### Exercise:  Aura Conversions
 
 Convert between some of the given auras at the Dojo prompt, e.g.:
 
@@ -187,7 +187,7 @@ Any Hoon program is architected around runes.  If you have used another programm
 
 We are only going to introduce a handful of runes in this lesson, but by the time we're done with Hoon School, you'll know the twenty-five or so runes that yield 80% of the capability.
 
-##  Exercise:  Identifying Unknown Runes
+### Exercise:  Identifying Unknown Runes
 
 Here is a lightly-edited snippet of Hoon code.  Anything written after a `::` colcol is a _comment_ and is ignored by the computer.  (Comments are useful for human-language explanations.)
 
@@ -394,7 +394,7 @@ This convention keeps the notation from getting too cluttered.  For now, let's c
 
 Since almost all cells branch rightwards, the pretty-printer (the printing routine that the Dojo uses) prefers to omit `[]` brackets marking the rightmost cells in a running cell.  These read to the right—that is, `[1 2 3]` is the same as `[1 [2 3]]`.
 
-##  Exercise:  Comparing Cells
+### Exercise:  Comparing Cells
 
 Enter the following cells:
 
@@ -420,7 +420,7 @@ A running cell which terminates in a `~` sig (null) atom is a list.
   
 Lists are ubiquitous in Hoon, and many specialized tools exist to work with them.  (For instance, to apply a gate to each value in a list, or to sum up the values in a list, etc.)  We'll see more of them in a future lesson.
 
-##  Exercise:  Making a List from a Null-Terminated Cell
+### Exercise:  Making a List from a Null-Terminated Cell
 
 You can apply an aura to explicitly designate a null-terminated running cell as a list containing particular types of data.  Sometimes you have to clear the aura using a more general aura (like `@`) before the conversion can work.
 
@@ -466,7 +466,7 @@ We will use these incidentally for now and explain their characteristics in a la
 "Some UTF-8: ἄλφα"
 ```
 
-##  Exercise:  ASCII Values in Text
+### Exercise:  ASCII Values in Text
 
 A cord (`@t`) represents text as a sequence of characters.  If you know the [ASCII](https://en.wikipedia.org/wiki/ASCII) value for a particular character, you can identify how the text is structured as a number.  (This is most easily done using the hexadecimal `@ux` representation due to bit alignment.)
 
@@ -549,7 +549,7 @@ We don't know yet how to store this capability for future use on as-yet-unknown 
 
 Carefully map how the runes in that statement relate to each other, and notice how the taller structure makes it relatively easier to read and understand what's going on.
 
-##  Exercise:  “Absolute” Value (Around Ten)
+### Exercise:  “Absolute” Value (Around Ten)
 
 Implement a version of the absolute value function, {% math %}|x|{% /math %}, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this {% math %}|x|_{10}{% /math %}.)
 
