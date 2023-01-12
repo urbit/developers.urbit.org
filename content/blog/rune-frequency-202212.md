@@ -187,7 +187,7 @@ There aren't any real surprises here.  The most frequent runes reflect the most 
 - [`^=` kettis](https://developers.urbit.org/reference/hoon/rune/ket#-kettis) happens in face assignments `a=1`.
 - [`^-` kethep](https://developers.urbit.org/reference/hoon/rune/ket#--kethep) compile-time typechecks use tics or explicit rune passage.
 - [`%~` censig](https://developers.urbit.org/reference/hoon/rune/cen#-censig) is used to pull an arm in a door.
-- [`=<` tisgal](https://developers.urbit.org/reference/hoon/rune/tis#-tisgal) composes two expressions in inverted order.  I suspect this is arising from irregular composition patterns and implicit conses rather than being explicitly used.
+- [`=<` tisgal](https://developers.urbit.org/reference/hoon/rune/tis#-tisgal) composes two expressions in inverted order.  This arises from `this:that` wing search patterns.
 - [`=/` tisfas](https://developers.urbit.org/reference/hoon/rune/tis#-tisfas) seems to be slightly preferred in more contemporary code to [`=+` tislus](https://developers.urbit.org/reference/hoon/rune/tis#-tislus), altho they carry out equivalent operations to pin a value to the subject.
 
 Other common runes follow a similar logic based on common design patterns.
@@ -220,7 +220,7 @@ The least frequent runes include:
 - [`|?` barwut](https://developers.urbit.org/reference/hoon/rune/bar#-barwut) produces a lead trap.  Like `^&` ketpam, lead cores have not yet proven to be a useful expedient in practice.
 - [`~<` siggar](https://developers.urbit.org/reference/hoon/rune/sig#-siggar) applies hints for the runtime to process.  This can be helpful in debugging[.](https://www.youtube.com/watch?v=tbdpv7G_PPg)
 - [`;=` mictis](https://developers.urbit.org/reference/hoon/rune/mic#-mictis) produces Sail code, unnecessary within the kernel.
-- `?#` wuthax, as yet undocumented, is being developed as a replacement for [`?=` wuttis](https://developers.urbit.org/reference/hoon/rune/wut#-wuttis) that can better handle `list` detection.
+- `?#` wuthax, as yet undocumented, is being developed as a replacement for [`?=` wuttis](https://developers.urbit.org/reference/hoon/rune/wut#-wuttis) that can more powerfully match patterns in general, such as `list` detection.
 
 A very few runes are never once used in the kernel.  Some are simply intended for transient or labile userspace code, for instance.
 
