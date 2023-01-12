@@ -1,6 +1,6 @@
 +++
 title = "Rune Utilization in Hoon"
-date = "2023-01-09"
+date = "2023-01-12"
 description = "An investigation of rune frequency in /sys."
 [extra]
 ship = "~lagrev-nocfep"
