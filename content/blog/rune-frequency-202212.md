@@ -190,7 +190,7 @@ There aren't any real surprises here.  The most frequent runes reflect the most 
 - [`=<` tisgal](https://developers.urbit.org/reference/hoon/rune/tis#-tisgal) composes two expressions in inverted order.  I suspect this is arising from irregular composition patterns and implicit conses rather than being explicitly used.
 - [`=/` tisfas](https://developers.urbit.org/reference/hoon/rune/tis#-tisfas) seems to be slightly preferred in more contemporary code to [`=+` tislus](https://developers.urbit.org/reference/hoon/rune/tis#-tislus), altho they carry out equivalent operations to pin a value to the subject.
 
-Other common runes follow a similar logic based on common design patterns.
+Other common runes follow a similar logic based on common design patterns.  Of note, [`:^` ketcol](https://developers.urbit.org/reference/hoon/rune/ket#-ketcol) is fairly frequent in the codebase, but is now superseded by Hoon's behavior.
 
 **Table 3**.  Observed rune frequency in `/sys`, eighteen runes representing 80% of all Hoon code in `/sys`.
 
