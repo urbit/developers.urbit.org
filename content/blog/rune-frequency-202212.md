@@ -183,7 +183,7 @@ There aren't any real surprises here.  The most frequent runes reflect the most 
 
 - `%` cen rune calls tend to route through [`%:` cencol](https://developers.urbit.org/reference/hoon/rune/cen#-cencol) since the irregular form `(fun 1 2)` desugars to `%:`.
 - [`:*` coltar](https://developers.urbit.org/reference/hoon/rune/col#-coltar) serves similarly as the desugaring of tuples constructed by `[1 2 3]`.
-- [`%=` centis](https://developers.urbit.org/reference/hoon/rune/cen#-centis) is invoked through the irregular `$()` expression resets.  These are most commonly employed in gates and traps as a recursion, as well as to modify legs.
+- [`%=` centis](https://developers.urbit.org/reference/hoon/rune/cen#-centis) is invoked through the irregular `$()` expression resets.  These are most commonly employed in gates and traps as a recursion, as well as to modify legs and in the nested core design pattern, e.g. `this(value new-value)`.
 - [`^=` kettis](https://developers.urbit.org/reference/hoon/rune/ket#-kettis) happens in face assignments `a=1`.
 - [`^-` kethep](https://developers.urbit.org/reference/hoon/rune/ket#--kethep) compile-time typechecks use tics or explicit rune passage.
 - [`%~` censig](https://developers.urbit.org/reference/hoon/rune/cen#-censig) is used to pull an arm in a door.
