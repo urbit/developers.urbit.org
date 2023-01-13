@@ -1,6 +1,6 @@
 +++
 name = "Joe Bryan"
 patp = "~master-morzod"
-org = "Tlon"
+org = "Core Developers"
 title = "Senior infrastructure engineer, Tlon"
 +++

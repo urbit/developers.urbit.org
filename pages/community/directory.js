@@ -21,9 +21,9 @@ export default function Directory({ search, directory }) {
       "Our community is comprised of individuals, all of whom happen to be pretty friendly.",
   };
 
-  const tlon = pair(
+  const core = pair(
     directory
-      .filter((e) => e.org === "Tlon")
+      .filter((e) => e.org === "Core Developers")
       .sort((a, b) => a.name.localeCompare(b.name))
   );
   const uf = pair(
@@ -88,9 +88,9 @@ export default function Directory({ search, directory }) {
           </div>
         </Section>
         <Section>
-          <h3>Tlon Corporation</h3>
+          <h3>Core Developers</h3>
           <div className="flex flex-wrap mt-4">
-            {tlon.map((pair, i) => {
+            {core.map((pair, i) => {
               return (
                 <TwoUp key={i}>
                   {pair.map((e) => (

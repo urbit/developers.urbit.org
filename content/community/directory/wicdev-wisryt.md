@@ -1,6 +1,6 @@
 +++
 name = "Philip Monk"
 patp = "~wicdev-wisryt"
-org = "Tlon"
+org = "Core Developers"
 title = "CTO, Tlon"
 +++
