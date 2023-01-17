@@ -60,13 +60,13 @@ curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/
 #### macOS (`x86_64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/g'
+curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 #### macOS (`aarch64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/g'
+curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 ## Development ship
