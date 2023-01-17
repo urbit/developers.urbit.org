@@ -42,28 +42,28 @@ If you've already got the `urbit` CLI runtime installed, you can skip this step.
 Otherwise, run one of the commands below, depending on your platform. It will
 fetch the binary and save it in the current directory.
 
-#### Linux (`aarch64`)
-
-```shell {% copy=true %}
-curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --strip=1
-```
-
 #### Linux (`x86_64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### macOS (`aarch64`)
+#### Linux (`aarch64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
 #### macOS (`x86_64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/g'
+```
+
+#### macOS (`aarch64`)
+
+```shell {% copy=true %}
+curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/g'
 ```
 
 ## Development ship
