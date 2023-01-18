@@ -179,9 +179,10 @@ Start two fake ships, one named `~zod` and the other can have any name - we will
 go with `~nus`. Fake ships run locally are able to see each other, and our
 intention is to connect their `%shoe` apps.
 
-On each fake ship start `%shoe` by entering `|start %shoe` into dojo. This will
-automatically
-change the prompt to `~zod:shoe>` and `~nus:shoe>`. Type `demo` and watch the following appear:
+On each fake ship start `%shoe` by entering `|start %shoe` into dojo. Now that
+the agent is running, you can run `|link %shoe` to connect to its cli interface.
+This will change the prompt to `~zod:shoe>` and `~nus:shoe>`. Type `demo` and
+watch the following appear:
 
 ```
 ~zod ran the command
