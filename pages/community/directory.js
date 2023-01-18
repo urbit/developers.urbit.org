@@ -13,6 +13,7 @@ import Meta from "../../components/Meta";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { pair } from '../../lib/util';
+import Link from "next/link";
 
 export default function Directory({ search, directory }) {
   const post = {
@@ -151,6 +152,15 @@ export default function Directory({ search, directory }) {
             })}
           </div>
         </Section>
+        <Section>
+          <h3>Developer Mailing List</h3>
+          <div className="flex flex-wrap mt-4">
+            <p>Active contributors to urbit can be be found in conversation around new releases on <Link href="https://groups.google.com/a/urbit.org/g/dev">urbit-dev</Link>, our Google group and developer mailing list.
+            </p>
+          </div>
+        </Section>
+
+
       </SingleColumn>
       <Footer />
     </Container>
