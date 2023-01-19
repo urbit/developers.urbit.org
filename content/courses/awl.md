@@ -13,7 +13,7 @@ leverage Urbit's platform.
 
 The first cohort for App Workshop Live will take place in late 2023.
 
-- [Complete this form](https://forms.gle/3c8xBubvSiQfj7Tr6) to get on our
+- [Complete this form](https://forms.gle/tP7yJoa4JP1G4Jv19) to get on our
   mailing list about the next opportunity.
 
 Until then, feel free to work through the [App
