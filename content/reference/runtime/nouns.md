@@ -9,30 +9,35 @@ with nouns is in `u3`.
 ### u3: a map of the system
 
 There are two kinds of symbols in `u3`: regular and irregular.
+All files listed below are found in the `pkg/noun` directory.
 Regular symbols follow this pattern:
 
 ```
-prefix    purpose                      .h         .c
--------------------------------------------------------
-u3a_      allocation                   i/n/a.h    n/a.c
-u3e_      persistence                  i/n/e.h    n/e.c
-u3h_      hashtables                   i/n/h.h    n/h.c
-u3i_      noun construction            i/n/i.h    n/i.c
-u3j_      jet control                  i/n/j.h    n/j.c
-u3m_      system management            i/n/m.h    n/m.c
-u3n_      nock computation             i/n/n.h    n/n.c
-u3r_      noun access (error returns)  i/n/r.h    n/r.c
-u3t_      profiling                    i/n/t.h    n/t.c
-u3v_      arvo                         i/n/v.h    n/v.c
-u3x_      noun access (error crashes)  i/n/x.h    n/x.c
-u3z_      memoization                  i/n/z.h    n/z.c
-u3k[a-g]  jets (transfer, C args)      i/j/k.h    j/[a-g]/*.c
-u3q[a-g]  jets (retain, C args)        i/j/q.h    j/[a-g]/*.c
-u3w[a-g]  jets (retain, nock core)     i/j/w.h    j/[a-g]/*.c
+prefix    purpose                      .h            .c
+-------------------------------------------------------------------
+u3a_      allocation                   allocate.h    allocate.c
+u3e_      persistence                  events.h      events.c
+u3h_      hashtables                   hashtable.h   hashtable.c
+u3i_      noun construction            imprison.h    imprison.c
+u3j_      jet control                  jets.h        jets.c
+u3l_      logging                      log.h         log.c
+u3m_      system management            manage.h      manage.c
+u3n_      nock computation             nock.h        nock.c
+u3o_      command-line options         options.h     options.c
+u3r_      noun access (error returns)  retrieve.h    retrieve.c
+u3s_      noun serialization           serial.h      serial.c
+u3t_      profiling                    trace.h       trace.c
+u3u_      urth (memory management)     urth.h        urth.c
+u3v_      arvo                         vortex.h      vortex.c
+u3x_      noun access (error crashes)  xtract.h      xtract.c
+u3z_      memoization                  zave.h        zave.c
+u3k[a-g]  jets (transfer, C args)      jets/k.h      jets/[a-g]/*.c
+u3q[a-g]  jets (retain, C args)        jets/q.h      jets/[a-g]/*.c
+u3w[a-g]  jets (retain, nock core)     jets/w.h      jets/[a-g]/*.c
 ```
 
 Irregular symbols always start with `u3` and obey no other rules.
-They're defined in `i/n/u.h`.  Finally, `i/all.h` includes all
+They're defined in `pkg/noun/types.h`.  Finally, `noun.h` includes all
 these headers (fast compilers, yay) and is all you need to
 program in `u3`.
 
