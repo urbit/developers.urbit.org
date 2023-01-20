@@ -8,9 +8,10 @@ with nouns is in `u3`.
 
 ### u3: a map of the system
 
-There are two kinds of symbols in `u3`: regular and irregular.
-All files listed below are found in the `pkg/noun` directory.
-Regular symbols follow this pattern:
+These are the symbols you'll need to know about to program in `u3`.
+All files listed below are found in the 
+[`pkg/noun`](https://github.com/urbit/vere/tree/develop/pkg/noun) 
+directory. Symbols follow this pattern:
 
 ```
 prefix    purpose                      .h            .c
@@ -36,10 +37,7 @@ u3q[a-g]  jets (retain, C args)        jets/q.h      jets/[a-g]/*.c
 u3w[a-g]  jets (retain, nock core)     jets/w.h      jets/[a-g]/*.c
 ```
 
-Irregular symbols always start with `u3` and obey no other rules.
-They're defined in `pkg/noun/types.h`.  Finally, `noun.h` includes all
-these headers (fast compilers, yay) and is all you need to
-program in `u3`.
+Additionally, various noun type definition are found in `pkg/noun/types.h`.
 
 ### u3: noun internals
 
