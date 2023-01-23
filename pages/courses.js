@@ -29,16 +29,28 @@ export default function Courses({ search }) {
 
   const courses = [
     {
-      title: "App School Live",
-      description: "App School focuses on how to build a backend Gall agent, then on connecting it to a React-based front-end. When you're done, you'll be able to produce and distribute your own Urbit apps.",
-      slug: 'asl',
-      icon: AppSchoolLive
-    },
-    {
       title: "Hoon School Live",
       description: "Hoon School Live teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification.",
       slug: 'hsl',
       icon: HoonSchoolLive
+    },
+    {
+      title: "App School Live",
+      description: "App School Live focuses on how to build a backend Gall agent, then on connecting it to a React-based front-end. When you're done, you'll be able to produce and distribute your own Urbit apps.",
+      slug: 'asl',
+      icon: AppSchoolLive
+    },
+    {
+      title: "Core School Live",
+      description: "Core School Live teaches students how to contribute to Urbit as a core platform and infrastructure developer.",
+      slug: 'csl',
+      icon: AppSchoolLive
+    },
+    {
+      title: "App Workshop Live",
+      description: "App Workshop Live teaches developers how to produce more complex practical applications on the Urbit platform, synthesizing all that they've seen in the previous schools and preparing them to work as professional Hoon developers.",
+      slug: 'awl',
+      icon: AppSchoolLive
     }
   ]
 
