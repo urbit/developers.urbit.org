@@ -68,10 +68,11 @@ typedef struct {
 ```
 
 The only thing that should be mysterious here is `mug_w`, which
-is a 31-bit lazily computed nonzero short hash (FNV currently,
-soon Murmur3).  If `mug_w` is 0, the hash is not yet computed.
-We also hijack this field for various hacks, such as saving the
-new address of a noun when copying over.
+is a 31-bit lazily computed nonzero short hash 
+([Murmur3](https://github.com/PeterScott/murmur3)).  If 
+`mug_w` is 0, the hash is not yet computed. We also hijack this 
+field for various hacks, such as saving the new address of a noun 
+when copying over.
 
 Also, the value `0xffffffff` is `u3_none`, which is never a valid
 noun.  Use the type `u3_weak` to express that a noun variable may
@@ -280,7 +281,7 @@ A "south" road is the other way around:
 ```
     0           mat   cap                                    ffff
     |            |     |                                       |
-    |~~~~~~~~~~~~$++++++##########################------~~~~~|
+    |~~~~~~~~~~~~$++++++##########################--------~~~~~|
     |                                             |      |     |
     0                                            hat    rut  ffff
 ```
