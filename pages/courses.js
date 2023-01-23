@@ -11,6 +11,9 @@ import Footer from "../components/Footer";
 import TallCard from "../components/TallCard";
 import AppSchoolLive from "../components/icons/TallCard/appSchoolLive"
 import HoonSchoolLive from "../components/icons/TallCard/hoonSchoolLive";
+import AppWorkshopLive from "../components/icons/TallCard/appWorkshopLive";
+import CoreSchoolLive from "../components/icons/TallCard/coreSchoolLive";
+
 import { pair } from "../lib/util";
 
 export default function Courses({ search }) {
@@ -29,16 +32,28 @@ export default function Courses({ search }) {
 
   const courses = [
     {
+      title: "Hoon School Live",
+      description: "Hoon School Live teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification.",
+      slug: 'hsl',
+      icon: HoonSchoolLive
+    },
+    {
       title: "App School Live",
       description: "App School focuses on how to build a backend Gall agent, then on connecting it to a React-based front-end. When you're done, you'll be able to produce and distribute your own Urbit apps.",
       slug: 'asl',
       icon: AppSchoolLive
     },
     {
-      title: "Hoon School Live",
-      description: "Hoon School Live teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification.",
-      slug: 'hsl',
-      icon: HoonSchoolLive
+      title: "App Workshop Live",
+      description: "App Workshop will serve as a hands-on intensive course to build high-quality Urbit apps ready for end users.  It serves as a follow-on to App School with more focus on building complex apps.",
+      slug: 'awl',
+      icon: AppWorkshopLive
+    },
+    {
+      title: "Core School Live",
+      description: "Core School prepares experienced Hoon developers to work on the Arvo kernel, the Vere or New Mars runtime, and otherwise build the platform as a senior developer.",
+      slug: 'csl',
+      icon: CoreSchoolLive
     }
   ]
 

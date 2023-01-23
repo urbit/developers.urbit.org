@@ -3,8 +3,8 @@ import { Markdown, getPostBySlug, getAllPosts } from "@urbit/foundation-design-s
 
 export default function CoursePage({ post, markdown, search, index }) {
     return (
-        <BasicPage
-            wide
+        <BasicPage 
+            narrow
             post={post}
             markdown={markdown}
             search={search}
