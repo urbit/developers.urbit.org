@@ -1,6 +1,8 @@
 +++
 title = "App Workshop Live"
 weight = 15
+next_cohort = "Late 2023"
+
 +++
 
 App Workshop will serve as a hands-on intensive course to build

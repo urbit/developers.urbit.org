@@ -1,6 +1,7 @@
 +++
 title = "Hoon School Live"
 weight = 10
+next_cohort = "March 20, 2023"
 +++
 
 Periodically, the Urbit Foundation has offered synchronous cohort classes which

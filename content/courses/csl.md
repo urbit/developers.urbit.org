@@ -1,6 +1,7 @@
 +++
 title = "Core School Live"
 weight = 20
+next_cohort = "Late Summer 2023"
 +++
 
 The Urbit Foundation will offer a cohort classes to train new core developers.

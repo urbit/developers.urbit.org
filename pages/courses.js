@@ -69,8 +69,9 @@ export default function Courses({ search }) {
       <SingleColumn>
         <Section>
           <h1>Courses</h1>
-        </Section>
-        <Section>
+          <div class="pt-12 pb-12 sm:pr-32">
+            <p className="">The Urbit Foundation offers a variety of cohort courses for those interested in learning development on Urbit. If you prefer to learn as part of a group with a hands-on instructor, regular exercises and discussions, and a completion certification, then these courses will be a good fit for you.</p>
+          </div>
           {pairedCourses.map((pair) => {
             return <TwoUp>
               {pair.map((course) => {

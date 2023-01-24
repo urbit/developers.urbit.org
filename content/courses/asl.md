@@ -1,6 +1,7 @@
 +++
 title = "App School Live"
 weight = 6
+next_cohort = "January 23, 2023"
 +++
 
 The Urbit Foundation offers cohort classes to cover the [App
