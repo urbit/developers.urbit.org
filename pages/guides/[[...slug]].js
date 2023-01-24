@@ -179,8 +179,7 @@ function Landing({ search, posts }) {
         <Section short className="space-y-6">
           <h3>Core Curriculum</h3>
           <p>
-            The following guides will teach you everything you need to know to
-            start building applications on Urbit.
+            Learn to code and how to build applications on Urbit.
           </p>
           <TwoUp>
             <TallCard

@@ -100,17 +100,16 @@ export default function Home({ search, posts }) {
               })}
             </div>
             <div className="pt-12">
-              <p>
+              <h3 className="max-w-prose font-normal">
                 Thanks to this architecture, you can take software into
-                production within weeks rather than months. Check out our
-                Lightning Tutorials below to jump right in and build an app in
-                15 minutes.
-              </p>
+                production within weeks rather than months.
+              </h3>
             </div>
           </Section>
           <Section>
             <h2 className="pt-12">Quickstart: Lightning Tutorials</h2>
-            <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
+            <p className="pt-12 text-lg">Jump right in and build an app in under a half hour.</p>
+            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-8 pt-12">
               <Card
                 icon={<Squad />}
                 title="Groups Application"
@@ -126,7 +125,7 @@ export default function Home({ search, posts }) {
                 href="/guides/quickstart/chat-guide"
               />
             </div>
-            <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
+            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-8 pt-8">
               <Card
                 icon={<Ringsig />}
                 title="Ring Signature Voting App"
@@ -139,9 +138,9 @@ export default function Home({ search, posts }) {
           </Section>
           <Section className="flex flex-col space-y-12">
             <h2>Guides</h2>
-            <p className="text-lg">
+            <p className="text-lg max-w-prose">
               Learn the foundations of software development on Urbit with our
-              core curriculum of guides.
+              core curriculum of guides and workbooks.
             </p>
             <TwoUp>
               <TallCard
@@ -169,9 +168,9 @@ export default function Home({ search, posts }) {
           </Section>
           <Section className="flex flex-col space-y-12">
             <h2>Courses</h2>
-            <p className="text-lg">
+            <p className="text-lg max-w-prose">
               Want an interactive experience to truly learn software development
-              on Urbit? Join the next cohort for Hoon or App School Live and
+              on Urbit? <br/>Join the next cohort for Hoon or App School Live and
               learn with a group.
             </p>
             <Link href="/courses" passHref>
