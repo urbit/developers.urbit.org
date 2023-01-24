@@ -51,8 +51,7 @@ export default function Community({ search }) {
               group.
             </p>
             <p className="">
-              <a href="https://tlon.io">Tlon</a> is the primary developer of
-              Urbit itself and the foremost product developer within the Urbit
+              <a href="https://tlon.io">Tlon</a> is the original vehicle for Urbits development and remains the primary product developer in the 
               ecosystem. They’ve been developing Urbit since 2013 and are
               naturally a great source of information. They maintain the most
               popular Landscape groups,{" "}

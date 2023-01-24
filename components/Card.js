@@ -24,7 +24,7 @@ export default function Card({
         <h3 className="font-bold">{title}</h3>
         <p>{text}</p>
         <Link href={href} passHref>
-          <a className="button-sm bg-green-400 font-medium text-white text-sm pl-8">{callout}</a>
+          <a className="button-sm bg-green-400 font-medium text-white text-sm w-fit">{callout}</a>
         </Link>
       </div>
     </div>
