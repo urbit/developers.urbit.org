@@ -144,7 +144,7 @@ function Landing({ search, posts }) {
           <h1>Guides</h1>
         </Section>
         <Section short>
-          <h3 className="pt-12">Quickstart: Lightning Tutorials</h3>
+          <h2 className="pt-12">Quickstart: Lightning Tutorials</h2>
           <p className="pt-4">
             Build an application on Urbit in 15 minutes with these instant
             application guides.
@@ -165,7 +165,7 @@ function Landing({ search, posts }) {
               href="/guides/quickstart/chat-guide"
             />
           </div>
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6 pb-12">
             <Card
               icon={<Ringsig />}
               title="Ring Signature Voting App"
@@ -177,7 +177,7 @@ function Landing({ search, posts }) {
           </div>
         </Section>
         <Section short className="space-y-6">
-          <h3>Core Curriculum</h3>
+          <h2>Core Curriculum</h2>
           <p>
             Learn to code and how to build applications on Urbit.
           </p>
@@ -220,7 +220,7 @@ function Landing({ search, posts }) {
         </Section>
 
         <Section short>
-          <h3 className="my-12">Additional Guides</h3>
+          <h2 className="my-12">Additional Guides</h2>
           {additionalGuides.map((pair) => {
             return <TwoUp>
               {pair.map((guide) => {

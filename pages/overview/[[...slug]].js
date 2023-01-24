@@ -159,7 +159,7 @@ function Landing({ search }) {
           <h1>Overview</h1>
         </Section>
         <Section className="space-y-4">
-          <h3>How to use this site</h3>
+          <h2 className="pb-8">How to use this site</h2>
           <div className="md:columns-2 space-y-4 mt-4 gap-x-8">
             <p>
               This site is intended for developers who want to learn how Urbit
@@ -212,7 +212,7 @@ function Landing({ search }) {
           </div>
         </Section>
         <Section short>
-          <h3>Primer</h3>
+          <h2 className="pb-8">Primer</h2>
           <div className="md:columns-2 space-y-4 mt-4 gap-x-8">
             <p>
               Urbit application development involves a client/server stack,
@@ -288,7 +288,7 @@ function Landing({ search }) {
           </div>
         </Section>
         <Section short>
-          <h3 className="pb-8">Core Components</h3>
+          <h2 className="pb-8">Core Components</h2>
           <TwoUp>
             <Card
               icon={<Arvo />}
