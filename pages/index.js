@@ -29,8 +29,9 @@ import TallCard from "../components/TallCard";
 import HoonIcon from "../components/icons/TallCard/hoon";
 import AppIcon from "../components/icons/TallCard/app";
 import Meta from "../components/Meta";
+import HighlightCard from "../components/HighlightCard";
 
-export default function Home({ search, posts }) {
+export default function Home({ search, posts, highlights }) {
 
   const post = {
     title: "Urbit Developers",
@@ -47,7 +48,7 @@ export default function Home({ search, posts }) {
       <Container>
         <Header search={search} />
         <SingleColumn>
-          <Section className="pb-72">
+          <Section className="pb-36">
             {/* Hero statement */}
             <div className="flex flex-col space-y-4">
               <h1 className="max-w-prose">
@@ -73,6 +74,15 @@ export default function Home({ search, posts }) {
               </div>
             </div>
           </Section>
+
+        <Section className="pb-36">
+        
+          <HighlightCard highlight={highlights[0]} key={highlights[0].slug} />
+
+        </Section>
+
+
+
           <Section short>
             <h2 className="font-normal">
               Urbit provides{" "}
@@ -286,7 +296,16 @@ const pitch = [
   },
 ];
 
+
+
 export async function getStaticProps() {
+
+  // Highlights
+  const highlights = getAllPosts(
+    ["title", "slug", "image", "url", "description"],
+    "highlights"
+  );
+
   const posts = getAllPosts(
     ["title", "slug", "date", "description", "extra"],
     "blog",
@@ -295,6 +314,7 @@ export async function getStaticProps() {
   return {
     props: {
       posts,
+      highlights
     },
   };
 }
