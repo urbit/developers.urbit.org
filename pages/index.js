@@ -158,7 +158,7 @@ export default function Home({ search, posts, highlights }) {
                 description="Learn the fundamentals of the Hoon programming language"
                 callout="View Guide"
                 href="/guides/core/hoon-school"
-                image={HoonIcon}
+                image="https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school.svg"
                 className="h-full"
               />
               <TallCard
@@ -166,7 +166,7 @@ export default function Home({ search, posts, highlights }) {
                 description="Learn how to build Urbit userspace applications by writing your own Gall agents"
                 callout="View Guide"
                 href="/guides/core/app-school"
-                image={AppIcon}
+                image="https://storage.googleapis.com/media.urbit.org/developers/images/app-school.svg"
                 className="h-full"
               />
             </TwoUp>

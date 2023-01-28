@@ -1,7 +1,10 @@
 +++
 title = "App School Live"
-weight = 6
-next_cohort = "January 23, 2023"
+date = "2023-05-01"
+weight = 90
+next_cohort = "May 2023"
+image = "https://storage.googleapis.com/media.urbit.org/developers/images/app-school-live.svg"
+description = "App School focuses on how to build a backend Gall agent, then on connecting it to a React-based front-end. When you're done, you'll be able to produce and distribute your own Urbit apps."
 +++
 
 The Urbit Foundation offers cohort classes to cover the [App
