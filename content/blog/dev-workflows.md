@@ -91,7 +91,7 @@ We asked several long-time developers on Urbit about their preferred developer t
 
 - Is there something particularly cool or compelling you have figured out that eases your workflow?
 
-    The biggest thing for me is building my desks replete with all of the mar files they need by hand and then using |new-desk %whatever which is available [https://github.com/urbit/urbit/pull/5360](https://github.com/urbit/urbit/pull/5360) and will be in next/arvo when released
+    The biggest thing for me is building my desks replete with all of the mar files they need by hand and then using `|new-desk %whatever` which is available [https://github.com/urbit/urbit/pull/5360](https://github.com/urbit/urbit/pull/5360) and will be in `next/arvo` when released
 
     Further: If you just build all your desks with everything they need you don't have to get smacked with "what desks do I merge in here" which I find intensely annoying.  (Also it's wasteful of files you don't need which just makes downloading your agent take longer.)
 

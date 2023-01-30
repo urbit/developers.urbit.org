@@ -238,12 +238,12 @@ echo "[%zuse 417]" > sys.kelvin
 
 The other `mark` files can just be copied across from the `%base` desk.
 
-### Using dev desks
+### Using `dev` desks
 
 If you're working on something more complex, for example a desk with agents and
 a front-end, there will be a number of `mark` files, libraries, etc, that will
 be necessary. Rather than having to manually copy all the files from the
-relevant default desks, the [urbit git repo](https://github.com/urbit/urbit)
+relevant default desks, the [Urbit OS repo](https://github.com/urbit/urbit)
 includes some dev desks which can be used as a base. To get these, make sure you
 have git installed and then clone the repo:
 

@@ -679,7 +679,7 @@ discarded and a fresh channel ID will be generated.
 Here are some examples which make use of `@urbit/http-api` that might be useful
 as a reference:
 
-- [Bitcoin Wallet](https://github.com/urbit/urbit/tree/master/pkg/btc-wallet)
+- [Bitcoin Wallet](https://github.com/urbit/bitcoin-wallet)
 - [Web Terminal](https://github.com/urbit/urbit/tree/master/pkg/interface/webterm)
 - [UrChatFM](https://github.com/urbit/urbit-webrtc/tree/master/urchatfm)
 

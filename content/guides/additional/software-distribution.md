@@ -8,7 +8,7 @@ In this document we'll walk through an example of creating and publishing a desk
 
 ## Create desk
 
-To begin, we'll need to clone the [Urbit Git repo](https://github.com/urbit/urbit) from the Unix terminal:
+To begin, we'll need to clone the [Urbit OS repo](https://github.com/urbit/urbit) from the Unix terminal:
 
 ```sh
 [user@host ~]$ git clone https://github.com/urbit/urbit urbit-git
