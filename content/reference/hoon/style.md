@@ -199,7 +199,7 @@ a nontrivial amount of work and ambiguity in reading.
 
 ### Comments and unparsed bytes
 
-Hoon comments are 8-column lines which contain whitespace, then
+Hoon comments are 80-column lines which contain whitespace, then
 `::`, then optional text.
 
 Blank lines are lines containing no characters, or only whitespace.
