@@ -13,91 +13,98 @@ name = "bucbar"
 symbol = "$|"
 usage = "Structures"
 slug = "#-bucbar"
-desc = "<code>[%bsbr p=spec q=hoon]</code>: structure that satisfies a validator."
+desc = "<code>[%bcbr p=spec q=hoon]</code>: structure that satisfies a validator."
 
 [glossaryEntry.buccab]
 name = "buccab"
 symbol = "$_"
 usage = "Structures"
 slug = "#_-buccab"
-desc = "<code>[%bscb p=hoon]</code>: structure that normalizes to an example."
+desc = "<code>[%bccb p=hoon]</code>: structure that normalizes to an example."
 
 [glossaryEntry.buccen]
 name = "buccen"
 symbol = "$%"
 usage = "Structures"
 slug = "#-buccen"
-desc = "<code>[%bscn p=(list spec)]</code>: structure which recognizes a union tagged by head atom."
+desc = "<code>[%bccn p=(list spec)]</code>: structure which recognizes a union tagged by head atom."
 
 [glossaryEntry.buccol]
 name = "buccol"
 symbol = "$:"
 usage = "Structures"
 slug = "#-buccol"
-desc = "<code>[%bscl p=(list spec)]</code>: form a cell type."
+desc = "<code>[%bccl p=(list spec)]</code>: form a cell type."
 
 [glossaryEntry.bucgal]
 name = "bucgal"
 symbol = "$<"
 usage = "Structures"
 slug = "#-bucgal"
-desc = "<code>[%bsld p=spec q=spec]</code>: restrict a mold by excluding some given mold."
+desc = "<code>[%bcgl p=spec q=spec]</code>: restrict a mold by excluding some given mold."
 
 [glossaryEntry.bucgar]
 name = "bucgar"
 symbol = "$>"
 usage = "Structures"
 slug = "#-bucgar"
-desc = "<code>[%bshp p=spec q=spec]</code>: filter a mold to obtain a new mold."
+desc = "<code>[%bchp p=spec q=spec]</code>: filter a mold to obtain a new mold."
 
 [glossaryEntry.buchep]
 name = "buchep"
 symbol = "$-"
 usage = "Structures"
 slug = "#--buchep"
-desc = "<code>[%bshp p=spec q=spec]</code>: structure that normalizes to an example gate."
+desc = "<code>[%bchp p=spec q=spec]</code>: structure that normalizes to an example gate."
 
 [glossaryEntry.bucket]
 name = "bucket"
 symbol = "$^"
 usage = "Structures"
 slug = "#-bucket"
-desc = "<code>[%bskt p=spec q=spec]</code>: structure which normalizes a union tagged by head depth (cell)."
+desc = "<code>[%bckt p=spec q=spec]</code>: structure which normalizes a union tagged by head depth (cell)."
+
+[glossaryEntry.buclus]
+name = "buclus"
+symbol = "$+"
+usage = "Structures"
+slug = "#buclus"
+desc = "<code>[%bcls p=stud q=spec]</code>: specify a shorthand type name for prettyprinting."
 
 [glossaryEntry.bucsig]
 name = "bucsig"
 symbol = "$~"
 usage = "Structures"
 slug = "#-bucsig"
-desc = "<code>[%bssg p=hoon q=spec]</code>: define a custom type default value"
+desc = "<code>[%bcsg p=hoon q=spec]</code>: define a custom type default value"
 
 [glossaryEntry.bucpam]
 name = "bucpam"
 symbol = "$&"
 usage = "Structures"
 slug = "#-bucpam"
-desc = "<code>[%bspd p=spec q=hoon]</code>: repair a value of a tagged union type"
+desc = "<code>[%bcpm p=spec q=hoon]</code>: repair a value of a tagged union type"
 
 [glossaryEntry.bucpat]
 name = "bucpat"
 symbol = "$@"
 usage = "Structures"
 slug = "#-bucpat"
-desc = "<code>[%bsvt p=spec q=spec]</code>: structure which normalizes a union tagged by head depth (atom)."
+desc = "<code>[%bcpt p=spec q=spec]</code>: structure which normalizes a union tagged by head depth (atom)."
 
 [glossaryEntry.buctis]
 name = "buctis"
 symbol = "$="
 usage = "Structures"
 slug = "#-buctis"
-desc = "<code>[%bsts p=skin q=spec]</code>: structure which wraps a face around another structure."
+desc = "<code>[%bcts p=skin q=spec]</code>: structure which wraps a face around another structure."
 
 [glossaryEntry.bucwut]
 name = "bucwut"
 symbol = "$?"
 usage = "Structures"
 slug = "#-bucwut"
-desc = "<code>[%bswt p=(list spec)]</code>: form a type from a union of other types."
+desc = "<code>[%bcwt p=(list spec)]</code>: form a type from a union of other types."
 
 +++
 
