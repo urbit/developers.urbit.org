@@ -233,7 +233,7 @@ compatible. You can copy it across from the `%base` desk, or just run the
 following in the terminal from within the desk directory:
 
 ```sh
-echo "[%zuse 417]" > sys.kelvin
+echo "[%zuse 416]" > sys.kelvin
 ```
 
 The other `mark` files can just be copied across from the `%base` desk.
@@ -260,17 +260,15 @@ cd ~/git/urbit/pkg
 
 The desks ending in `-dev`, like `base-dev` and `garden-dev`, contain files for
 interfacing with those respective desks. If you're creating a new desk that has
-a tile and front-end, for example, you might like to use `base-dev` and
-`garden-dev` as a base. To create such a base, there's a `symbolic-merge.sh`
+a tile and front-end, for example, you might like to use `base-dev` as a base. To create such a base, there's a `symbolic-merge.sh`
 script included in the directory. You can use it like so:
 
 ```
 ./symbolic-merge base-dev mydesk
-./symbolic-merge garden-dev mydesk
 ```
 
 After running that, you'll have a `mydesk` desk in the `pkg` directory that
-contains the symlinked files from both those dev desks. To copy the files into
+contains the symlinked files from that dev desk. To copy the files into
 your pier, you can create and mount a mydesk desk in the dojo:
 
 ```
@@ -303,7 +301,7 @@ and copy the actual files.
 Now you can just add a `sys.kelvin` file:
 
 ```
-echo "[%zuse 417]" > mydesk/sys.kelvin
+echo "[%zuse 416]" > mydesk/sys.kelvin
 ```
 
 And you'll be able to mount the desk with `|commit %mydesk`.
