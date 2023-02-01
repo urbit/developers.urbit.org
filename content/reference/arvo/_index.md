@@ -38,6 +38,10 @@ Gall is the vane for controlling userspace apps.
 
 Iris is our HTTP client.
 
+## [Khan](/reference/arvo/khan/khan)
+
+Khan is our thread dispatcher.
+
 ## [Concepts](/reference/arvo/concepts/)
 
 Explanations of design decisions that are pervasive throughout Arvo.
