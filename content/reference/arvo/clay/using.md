@@ -3,7 +3,7 @@ title = "Using Clay"
 weight = 3
 +++
 
-### Reading and Subscribing
+## Reading and Subscribing
 
 When reading from Clay, there are three types of requests. A
 `%sing` request asks for data at single revsion. A `%next`
@@ -46,7 +46,7 @@ from the start to the end triggers a response. Since a `%many`
 request doesn't ask for any particular data, there aren't `%u`,
 `%x`, and `%y` versions for it.
 
-### Unix sync
+## Unix sync
 
 Usage:
 
@@ -73,7 +73,7 @@ back when read from Unix. The entire directory is watched (a la Dropbox), and
 every change is committed once you run `|commit %mount-point`. Every change can
 be automatically committed with `|autocommit %mount-point`.
 
-### Merging
+## Merging
 
 Usage:
 
@@ -97,7 +97,7 @@ Several strategies need a "merge-base". They find it by identifying
 the most recent common ancestor of the two `desk`s. If none, fail
 with `%merge-no-merge-base`; if there are two or more, pick one.
 
-#### Strategies
+### Strategies
 
 **`%init`**: the only way to create a `desk`. Not a true merge, since it
 simply assigns the source commit to the destination.
@@ -140,7 +140,7 @@ file, use the version in the destination `desk`.
 **`%meet-that`**: merge as in `%meet`, except if both sides changed the same
 file, use the version in the source commit.
 
-#### Examples and notes:
+### Examples and notes
 
 The most common merge strategy is `%mate`, which is a normal 3-way
 merge which aborts on conflict.
@@ -194,7 +194,7 @@ the `desk`s to not conflict with.
 `%meet-this` and `%meet-that` imply the existence of `%mate-this` and
 `%mate-that`, but those don't exist yet.
 
-### Autosync
+## Autosync
 
 Usage:
 
