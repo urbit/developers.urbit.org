@@ -69,7 +69,7 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
 
 **`/gen/dbug.hoon`**:
 
-```hoon {mode="collapse"}
+```hoon {% mode="collapse" %}
 /+  *dbug
 :-  %say
 |=  $:  ::  environment
