@@ -254,7 +254,7 @@ As we examine this code, there are two particularly interesting aspects:
 
 There is also extensive use of `tank`/`tang` formatted error messaging.
 
-### How the library modifies an agent
+## How the library works
 
 By applying this door builder using `%-` censig, the `++on-poke` and `++on-peek` arms can be modified.  (In fact, all of the arms can be modified but most of the arms are pass-throughs to the modified agent.)
 
