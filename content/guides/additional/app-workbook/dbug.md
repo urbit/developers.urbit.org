@@ -370,7 +370,7 @@ This branch includes the use of a rare [`=?` tiswut](https://developers.urbit.or
 
 #### `++on-peek`
 
-```hoon {mode="collapse"}
+```hoon {% mode="collapse" %}
   ++  on-peek
     |=  =path
     ^-  (unit (unit cage))
