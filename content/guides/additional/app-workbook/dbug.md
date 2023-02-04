@@ -89,7 +89,7 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
 
 **`/lib/dbug.hoon`**:
 
-```hoon {mode="collapse"}
+```hoon {% mode="collapse" %}
 ::  dbug: agent wrapper for generic debugging tools
 ::
 ::    usage: %-(agent:dbug your-agent)
