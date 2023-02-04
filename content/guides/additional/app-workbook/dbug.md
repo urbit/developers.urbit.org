@@ -260,7 +260,7 @@ By applying this door builder using `%-` censig, the `++on-poke` and `++on-peek`
 
 #### `++on-poke`
 
-```hoon {mode="collapse"}
+```hoon {% mode="collapse" %}
 ++  on-poke
     |=  [=mark =vase]
     ^-  (quip card:agent:gall agent:gall)
