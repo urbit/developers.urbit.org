@@ -38,6 +38,10 @@ Gall is the vane for controlling userspace apps.
 
 Iris is our HTTP client.
 
+## [Jael](/reference/arvo/jael/jael)
+
+Jael manages keys and Azimuth state.
+
 ## [Khan](/reference/arvo/khan/khan)
 
 Khan is our thread dispatcher.
