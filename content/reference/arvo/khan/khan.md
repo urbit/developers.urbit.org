@@ -15,7 +15,8 @@ Khan's internal interface lets you run threads via Khan rather than having to
 poke [Spider](/reference/arvo/threads/reference) and subscribe for the result. This interface is simpler and more
 ergonomic than Spider's, so is usually preferable.
 
-There's only one `task` to run a thread a thread: `%fard`. This is documented in
+There are currently three `task`s to run a thread: `%fard`, `%fyrd`, and `%lard`.
+Only `%fard` is currently documented in
 the [API Reference](/reference/arvo/khan/tasks) section, and a practical example
 is given in the [Example](/reference/arvo/khan/example) section.
 
