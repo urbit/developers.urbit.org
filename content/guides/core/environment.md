@@ -16,13 +16,6 @@ different text editors. These are listed below.
 fail to parse Windows-style line endings (CRLF). Make sure your editor is set
 to use LF for line endings, especially if you're developing on Windows.
 
-#### Atom
-
-Atom is free and open-source and runs on all major operating systems. It is
-available [here](https://atom.io/). A package for Hoon support is maintained by
-Tlon and may be obtained using the package manager within the editor by
-searching for `Hoon`.
-
 #### Sublime Text
 
 Sublime Text is closed-source, but may be downloaded for free and there is no
