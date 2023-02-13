@@ -34,7 +34,7 @@ is that UTF-8 characters vary in their byte-length. ASCII characters are all
 8-bit, but others can occupy up to four bytes. Accounting for this variation in
 character size can complicate otherwise simple functions. Tapes, on the other
 hand, don't have this problem because each character is a separate item in the
-list, regardless of it byte-length. This fact makes it much easier to process
+list, regardless of its byte-length. This fact makes it much easier to process
 tapes in non-trivial ways with simple list functions.
 
 In light of this, a general rule of thumb is to use cords for simple things like
