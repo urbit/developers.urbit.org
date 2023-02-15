@@ -19,32 +19,30 @@ Once that's done, we can navigate to the `pkg` directory in our cloned repo:
 ```sh
 [user@host ~]$ cd urbit-git/pkg
 [user@host pkg]$ ls .
-arvo      btc-wallet    garden        grid  interface   npm                webterm
-base-dev  docker-image  garden-dev    herb  landscape   symbolic-merge.sh
-bitcoin   ent           ge-additions  hs    libaes_siv  urbit
+arvo/  autoprop/  base-dev/  herb/  interface/  landscape/  npm/  symbolic-merge.sh*  webterm/
 ```
 
-Each desk defines its own `mark`s, in its `/mar` folder. There are no longer shared system marks that all userspace code knows, nor common libraries in `/lib` or `/sur`. Each desk is completely self-contained. This means any new desk will need a number of base files.
+Each desk defines its own `mark`s, in its `/mar` folder. There are no longer shared system marks that all userspace code knows, nor common libraries in `/lib` or `/sur`. Each desk is completely self-contained. This means any new desk will need a number of basic files from `%base` and `%landscape`.
 
-To make the creation of a new desk easier, `base-dev` and `garden-dev` contain symlinks to all `/sur`, `/lib` and `/mar` files necessary for interacting with the `%base` and `%garden` desks respectively. These dev desks can be copied and merged with the `symbolic-merge.sh` included.
+To make the creation of a new desk easier, `base-dev` and `garden-dev` contain all `/sur`, `/lib` and `/mar` files necessary for interacting with the `%base` and `%garden` desks respectively. Other desks may include symlinks to these.  These dev desks can be copied and merged with the `symbolic-merge.sh` included.
 
 Let's create a new `hello` desk:
 
 ```sh
 [user@host pkg]$ mkdir hello
 [user@host pkg]$ ./symbolic-merge.sh base-dev hello
-[user@host pkg]$ ./symbolic-merge.sh garden-dev hello
+[user@host pkg]$ ./symbolic-merge.sh landscape hello
 [user@host pkg]$ cd hello
-[user@host hello]$ ls
-lib  mar  sur
+[user@host hello]$ ls -F
+app/  desk.ship@  gen/  lib/  mar/  sur/  ted/  tests/
 ```
 
 ### `sys.kelvin`
 
-Our desk must include a `sys.kelvin` file which specifies the kernel version it's compatible with. Let's create that:
+Our desk must include a `sys.kelvin` file which specifies the kernel version it's compatible with. You should use the current system kelvin.  Let's create that:
 
 ```sh
-[user@host hello]$ echo "[%zuse 417]" > sys.kelvin
+[user@host hello]$ echo "[%zuse 415]" > sys.kelvin
 [user@host hello]$ cat sys.kelvin
 [%zuse 417]
 ```
@@ -113,20 +111,27 @@ That's everything we need for now.
 
 ## Install
 
-Let's spin up a fakezod in which we can install our desk. By default a fakezod will be out of date, so we need to bootstrap with a pill from our urbit-git repo. The pills are stored in git lfs and need to be pulled into our repo first:
+Let's spin up a fakezod in which we can install our desk. By default a fakezod will be out of date, so we need to bootstrap with a pill from our `urbit-git` repo.
 
 ```
 [user@host hello]$ cd ~/urbit-git
-[user@host urbit-git]$ git lfs install
-[user@host urbit-git]$ git lfs pull
 [user@host urbit-git]$ cd ~/piers/fake
-[user@host fake]$ urbit -F zod -B ~/urbit-git/bin/multi-brass.pill
+[user@host fake]$ urbit -F zod -B ~/urbit-git/bin/multi.pill
 ```
 
-Once our fakezod is booted, we'll need to create a new `%hello` desk for our app and mount it. We can do this in the dojo like so:
+Once our fakezod is booted, we'll need to create a new `%hello` desk for our app and mount it. We can do this manually in the dojo like so:
 
 ```
 > |merge %hello our %base
+>=
+> |mount %hello
+>=
+```
+
+or using the `|new-desk` generator:
+
+```
+> |new-desk %hello
 >=
 > |mount %hello
 >=
@@ -140,7 +145,7 @@ Now, back in the Unix terminal, we should see the new desk mounted:
 hello
 ```
 
-Currently it's just a clone of the `%base` desk, so let's delete its contents:
+Currently it's either a clone of the `%base` desk (if we merged from `%base`) or a minimal working desk (if we used `|new-desk`).  Let's delete its contents so we can copy in our new code:
 
 ```
 [user@host zod]$ rm -r hello/*
