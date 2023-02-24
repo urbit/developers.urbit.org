@@ -1,7 +1,7 @@
 +++
 title = "Hoon School Live"
 weight = 100
-next_cohort = "March 20, 2023"
+next_cohort = "March 29, 2023"
 image = "https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school-live.svg"
 description = "Hoon School Live teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification."
 +++
@@ -19,8 +19,8 @@ explain subject-oriented programming.  We omit some of the written Hoon School
 content for time, but you should be well-equipped to understand the optional
 lessons.
 
-The next cohort will begin the week of March 20, 2023.  The cohort after that is
-scheduled for the end of May 2023.
+The next cohort will begin on March 29, 2023.  The cohort after that is
+scheduled for the end of spring 2023.
 
 - [Complete this form](https://forms.gle/kgiPckuHaVtJng9r5) to get on our
   mailing list about the next opportunity.
