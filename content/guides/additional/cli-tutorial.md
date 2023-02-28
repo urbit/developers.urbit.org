@@ -48,7 +48,7 @@ Gall agents with the `shoe` library are able to utilize `%shoe` `card`s. These
 additions to the standard set of `cards` have the following shape:
 
 ```hoon
-[%shoe sole-ids=(list sole-id) effect=shoe-effect]`
+[%shoe sole-ids=(list sole-id) effect=shoe-effect]
 ```
 
 `sole-ids` is the `list` of session ids that the following `effect` is
