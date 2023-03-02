@@ -3,9 +3,7 @@ title = "App Workshop Live"
 weight = 30
 next_cohort = "2023-04-12"
 image = "https://storage.googleapis.com/media.urbit.org/developers/images/app-workshop-live.svg"
-description = "App Workshop will serve as a hands-on intensive course
-to build high-quality Urbit apps ready for end users. It serves as a
-follow-on to App School with more focus on building complex apps."
+description = "App Workshop will serve as a hands-on intensive course to build high-quality Urbit apps ready for end users. It serves as a follow-on to App School with more focus on building complex apps."
 +++
 
 App Workshop will serve as a hands-on intensive course to build
