@@ -35,3 +35,5 @@ App Workshop is expected to consist of the following lessons:
 -   `awl4`. 🖴 Database Operators:  build a CLI for database operations
 -   `awl5`. 🖵 Front End:  implement more sophisticated React-based responsive webapps
 -   `awlx`. ★ Challenge Exercises:  complete a specified capstone project to take your AWL crown
+
+The structure of AWL will be slightly different.  We will have biweekly 90-minute working sessions (lecture and discussion) with an expected 10–12 hours per week of homework per lesson.
