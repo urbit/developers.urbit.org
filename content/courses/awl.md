@@ -1,7 +1,7 @@
 +++
 title = "App Workshop Live"
 weight = 30
-next_cohort = "2023-04-12"
+next_cohort = "April 12, 2023"
 image = "https://storage.googleapis.com/media.urbit.org/developers/images/app-workshop-live.svg"
 description = "App Workshop will serve as a hands-on intensive course to build high-quality Urbit apps ready for end users. It serves as a follow-on to App School with more focus on building complex apps."
 +++
@@ -20,8 +20,7 @@ look.
 The first cohort for App Workshop Live will take place in spring 2023,
 starting on April 12.
 
-- [Complete this form](https://forms.gle/tP7yJoa4JP1G4Jv19) to get on our
-  mailing list about the next opportunity.
+- Are you up for the challenge?[Sign up now](https://forms.gle/tP7yJoa4JP1G4Jv19) for App Workshop live.
 
 Until then, feel free to work through the [App
 Workbook](/guides/additional/app-workbook).

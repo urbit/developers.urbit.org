@@ -20,10 +20,9 @@ content for time, but you should be well-equipped to understand the optional
 lessons.
 
 The next cohort will begin on March 29, 2023.  The cohort after that is
-scheduled for the end of spring 2023.
+scheduled to begin in June 2023.
 
-- [Complete this form](https://forms.gle/kgiPckuHaVtJng9r5) to get on our
-  mailing list about the next opportunity.
+- [Complete this form](https://forms.gle/kgiPckuHaVtJng9r5) to sign up for the next Hoon School Live.
 
 Until then, feel free to work through the [Hoon School
 docs](/guides/core/hoon-school).
