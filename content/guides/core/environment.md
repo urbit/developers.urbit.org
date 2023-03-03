@@ -135,8 +135,6 @@ have to do it again each time. In the dojo:
 >=
 > |mount %landscape
 >=
-> |mount %bitcoin
->=
 > |mount %webterm
 >=
 ```
