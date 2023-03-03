@@ -22,11 +22,9 @@ By completing App School as a cohort student, you should be able to design and
 implement basic user apps, produce minimal working example applications, and
 contribute at the level of basic Urbit userspace bounties.
 
-The current cohort for App School Live began the week of January 23, 2023.
-The cohort after that is scheduled for August 2023.
+The next cohort for App School Live will begin the week of August 21st, 2023.
 
-- [Complete this form](https://forms.gle/3c8xBubvSiQfj7Tr6) to get on our
-  mailing list about the next opportunity.
+- [Complete this form](https://forms.gle/3c8xBubvSiQfj7Tr6) to sign up for the upcomming class.
 
 Until then, feel free to work through the [App School
 docs](/guides/core/app-school).
