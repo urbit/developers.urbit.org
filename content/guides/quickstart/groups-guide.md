@@ -270,7 +270,7 @@ Let's look at each part in a little more detail.
 #### `on-poke`
 
 For this app, the `on-poke` will only allow pokes from the local ship - either
-other agents using Squad's API or Squad's front-end. It will accept pokes with a
+other agents using Squad's API or Squad's front-end. It will accept pokes with
 either a `%squad-do` mark containing an `act` action we defined earlier, or a
 `%handle-http-request` mark from the front-end. The latter case will be handles
 by the `handle-http` arm. We'll check which URL path the request was sent to
