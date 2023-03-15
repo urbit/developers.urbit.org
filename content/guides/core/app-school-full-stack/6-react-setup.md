@@ -10,143 +10,116 @@ React app front-end.
 
 Node.js must be installed, and can be downloaded from their
 [website](https://nodejs.org/en/download). With that installed, we'll have the
-`npm` package manager available. The first thing we'll do is globally install
-the `create-react-app` package with the following command:
+`npm` package manager available and its utility binaries like `npx` to help
+set up our project. The first thing we'll do is create a project using the
+[`create-landscape-app`](https://www.npmjs.com/package/@urbit/create-landscape-app)
+template with the following command:
 
 ```sh
-npm install -g create-react-app
-```
-
-Once installed, we can use it to create a new `journal-ui` directory and setup a
-new React app in it with the following command:
-
-```sh
-create-react-app journal-ui
+npx @urbit/create-landscape-app
+✔ What should we call your application? … journal
+✔ What URL do you use to access Urbit? … http://127.0.0.1:8080
 ```
 
 We can then open our new directory:
 
-```sh
-cd journal-ui
+```sh {% copy=true %}
+cd journal/ui
 ```
 
 Its contents should look something like this:
 
 ```
-journal-ui
-├── node_modules
+ui
+├── index.html
 ├── package.json
 ├── package-lock.json
-├── public
-├── README.md
+├── postcss.config.js
+├── tailwind.config.js
+├── vite.config.js
 └── src
 ```
 
-## Install `http-api`
+## Install dependencies
 
-Inside our React app directory, let's install the `@urbit/http-api` NPM package:
+Inside our React app directory, let's install the NPM packages used by
+our project:
 
-```sh
-npm i @urbit/http-api
+```sh {% copy=true %}
+npm i
 ```
 
-We also install a handful of other packages for the UI components
-(`bootstrap@5.1.3 react-bootstrap@2.2.0 react-textarea-autosize@8.3.3
-date-fns@2.28.0 react-bottom-scroll-listener@5.0.0 react-day-picker@7.4.10`),
-but that's not important to our purposes here.
-
-## Additional tweaks
-
-Our front-end will be served directly from the ship by the `%docket` app, where
-a user will open it by clicking on its homescreen tile. Docket serves such
-front-ends with a base URL path of `/apps/[desk]/`, so in our case it will be
-`/apps/journal`. In order for our app to be built with correct resource paths,
-we must add the following line to `package.json`:
-
-```json
-"homepage": "/apps/journal/",
-```
-
-Our app also needs to know the name of the ship it's being served from in order
-to talk with it. The `%docket` agent serves a small file for this purpose at
-`[host]/session.js`. This file is very simple and just contains:
-
-```js
-window.ship = "sampel-palnet";
-```
-
-`sampel-palnet` will of course be replaced by the actual name of the ship. We
-include this script by adding the following line to the `<head>` section of
-`public/index.html`:
-
-```
-<script src="/session.js"></script>
-```
+This command will install the Urbit interface package (i.e. `@urbit/http-api`)
+and a handful of other packages for the UI components (e.g. `react-bootstrap`,
+`react-bottom-scroll-listener`, `react-day-picker`). The remainder of this
+tutorial will focus primarily on how the former is used to communicate with a
+live ship from within a React application.
 
 ## Basic API setup
 
-With everything now setup, we can begin work on the app itself. In this case
-we'll just edit the existing `App.js` file in the `/src` directory. The first thing is to import the `Urbit` class from `@urbit/http-api`:
+With everything now set up, we can begin work on the app itself. In this case
+we'll just edit the `src/app.jsx` file. The first thing is to clear the content
+of the file and then add the following import statements for the React
+framework and the `Urbit` class:
 
-```js
+```javascript {% copy=true %}
+import React, { useState, useEffect } from "react";
 import Urbit from "@urbit/http-api";
 ```
 
 We also need to import a few other things, mostly relating to UI components (but
 these aren't important for our purposes here):
 
-```js
-import React, { Component } from "react";
+```javascript {% copy=true %}
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-day-picker/lib/style.css";
-import TextareaAutosize from "react-textarea-autosize";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Stack from "react-bootstrap/Stack";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import ToastContainer from "react-bootstrap/ToastContainer";
-import Toast from "react-bootstrap/Toast";
-import Spinner from "react-bootstrap/Spinner";
-import CloseButton from "react-bootstrap/CloseButton";
-import Modal from "react-bootstrap/Modal";
+import {
+  Modal, Card, Stack, Tab, Tabs, Toast, ToastContainer,
+  Button, Spinner, CloseButton,
+} from "react-bootstrap";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import endOfDay from "date-fns/endOfDay";
-import startOfDay from "date-fns/startOfDay";
+import { startOfDay, endOfDay } from "date-fns";
 import { BottomScrollListener } from "react-bottom-scroll-listener";
 ```
 
-Inside the existing `App` class:
+Now we'll begin defining our components. For the purposes of this tutorial,
+we'll focus on the primary `App` component, which is defined as follows:
 
-```js
-class App extends Component {
+```javascript {% copy=true %}
+export default function App() {
+  /* remainder of the source goes here */
+}
 ```
 
-...we'll clear out the existing demo code and start adding ours. The first thing
-is to define our app's state. We'll look at most of the state entries in the
-next section. For now, we'll just consider `status`.
+The first thing we'll define in our `App` component is its state. In modern
+React, component state is defined using the
+[`useState()`](https://beta.reactjs.org/reference/react/useState) hook, which
+returns a pair of `[stateVariable, setStateVariableFunction]`. For now, we'll
+just consider the `status` state variable:
 
-```js
-state = {
-  // .....
-  status: null,
-  // .....
-};
+```javascript {% copy=true %}
+const [status, setStatus] = useState(null);
 ```
 
-Next, we'll setup the `Urbit` API object in `componentDidMount`. We could do
-this outside the `App` class since we're adding it to `window`, but we'll do it
-this way so it's all in one place:
+Next, we'll set up the `Urbit` API object in a
+[`useEffect()`](https://beta.reactjs.org/reference/react/useEffect) call, which
+allows the connection to be established *exactly once* after the initial
+content of the page is rendered. Since the connection itself is independent of
+the component state, we could do this outside of the `App` component; however,
+in this case, we choose to put it in a component `useEffect()` so all the setup
+code is together:
 
-```js
-componentDidMount() {
+```javascript {% copy=true %}
+useEffect(() => {
   window.urbit = new Urbit("");
   window.urbit.ship = window.ship;
-  window.urbit.onOpen = () => this.setState({status: "con"});
-  window.urbit.onRetry = () => this.setState({status: "try"});
-  window.urbit.onError = (err) => this.setState({status: "err"});
-  this.init();
-};
+
+  window.urbit.onOpen = () => setStatus("con");
+  window.urbit.onRetry = () => setStatus("try");
+  window.urbit.onError = () => setStatus("err");
+
+  init();
+}, []);
 ```
 
 The first thing we do is create a new instance of the `Urbit` class we imported
@@ -164,16 +137,17 @@ is mandatory.
 
 Therefore, we call the class contructor with just the empty `url` string:
 
-```js
+```javascript
 window.urbit = new Urbit("");
 ```
 
 Next, we need to set the ship name in our `Urbit` instance. Eyre requires the
-ship name be specified in all requests, so if we don't set it, Eyre will reject
-all the messages we send. We previously included `session.js` which sets
-`window.ship` to the ship name, so we just set `window.urbit.ship` as that:
+ship name be specified in all requests; if we don't set it, Eyre will reject
+all the messages we send. Fortunately, `create-landscape-app` handles this
+detail by automatically initializing the active ship's name to the variable
+`window.ship`, so we just set `window.urbit.ship` to this value:
 
-```js
+```javascript
 window.urbit.ship = window.ship;
 ```
 
@@ -195,8 +169,8 @@ leaving connection problems unhandled is usually a bad idea.
 
 The last thing we do is call:
 
-```js
-this.init();
+```javascript
+init();
 ```
 
 This function will fetch initial entries and subscribe for updates. We'll look
