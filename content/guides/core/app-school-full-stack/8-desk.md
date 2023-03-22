@@ -34,20 +34,20 @@ There's a handful of extra files we need in the root of our desk:
 
 We only have one agent to start, so `desk.bill` is very simple:
 
-```
+``` {% copy=true %}
 :~  %journal
 ==
 ```
 
 Likewise, `sys.kelvin` just contains:
 
-```
+``` {% copy=true %}
 [%zuse 417]
 ```
 
 The `desk.docket-0` file is slightly more complicated:
 
-```
+``` {% copy=true %}
 :~
   title+'Journal'
   info+'Dear diary...'
@@ -107,24 +107,22 @@ Once created, we can mount it to the unix filesystem.
 
 In the dojo of a fake ship:
 
-```
-> |merge %journal our %webterm
->=
-> |mount %journal
->=
+``` {% copy=true %}
+|new-desk %journal
+|mount %journal
 ```
 
 Now we can browse to it in the unix terminal:
 
-```sh
-cd ~/zod/journal
+```sh {% copy=true %}
+cd /path/to/zod/journal
 ```
 
 Currently it has the same files as the `%webterm` desk, so we need to delete
 those:
 
-```sh
-rm -r .
+```sh {% copy=true %}
+rm -rI /path/to/zod/journal/*
 ```
 
 Apart from the kernel and standard library, desks need to be totally
@@ -134,28 +132,28 @@ For example, since our app contains a number of `.hoon` files, we need the
 everything it needs is to copy in the "dev" versions of the `%base` and
 `%garden` desks. To do this, we first clone the Urbit git repository:
 
-```sh
+```sh {% copy=true %}
 git clone https://github.com/urbit/urbit.git urbit-git
 ```
 
 If we navigate to the `pkg` directory in the cloned repo:
 
-```sh
-cd ~/urbit-git/pkg
+```sh {% copy=true %}
+cd /path/to/urbit-git/pkg
 ```
 
 ...we can combine the `base-dev` and `garden-dev` desks with the included
 `symbolic-merge.sh` script:
 
-```sh
+```sh {% copy=true %}
 ./symbolic-merge.sh base-dev journal
 ./symbolic-merge.sh garden-dev journal
 ```
 
 Now, we copy the contents of the new `journal` folder into our empty desk:
 
-```sh
-cp -rL journal/* ~/zod/journal/
+```sh {% copy=true %}
+cp -rL journal/* /path/to/zod/journal/
 ```
 
 Note we've used the `L` flag to resolve symbolic links, because the dev-desks
@@ -163,22 +161,25 @@ contain symlinks to files in the actual `arvo` and `garden` folders.
 
 We can copy across all of our own files too:
 
-```sh
-cp -r ~/ourfiles/* ~/zod/journal/
+```sh {% copy=true %}
+cp -r /path/to/ourfiles/* /path/to/zod/journal/
 ```
 
 Finally, in the dojo, we can commit the whole lot:
 
-```
+``` {% copy=true %}
 |commit %journal
 ```
 
 ## Glob
 
-The next step is to build our front-end and upload the files to our ship. In the
-`journal-ui` folder containing our React app, we can run:
+The next step is to build our front-end and upload the files to our ship. If
+you haven't yet downloaded the journal front-end source files, you can grab
+them from [their repository](https://github.com/urbit/docs-examples). In the
+folder containing our React app (`journal-app/ui` relative to the repository
+base directory), we can run:
 
-```sh
+```sh {% copy=true %}
 npm run build
 ```
 
@@ -186,7 +187,7 @@ This will create a `build` directory containing the compiled front-end files. To
 upload it to our ship, we need to first install the `%journal` desk. In the
 dojo:
 
-```
+``` {% copy=true %}
 |install our %journal
 ```
 
@@ -208,7 +209,7 @@ If we now return to the homescreen of our ship, we'll see our tile displayed, an
 The last thing we need to do is publish our app, so other users can install it
 from our ship. To do that, we just run the following command in the dojo:
 
-```
+``` {% copy=true %}
 :treaty|publish %journal
 ```
 
