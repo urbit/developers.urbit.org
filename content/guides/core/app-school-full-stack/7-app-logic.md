@@ -3,14 +3,21 @@ title = "7. React app logic"
 weight = 8
 +++
 
-With the basic things setup, we can now go over the logic of our app. We'll just
-focus on functions that are related to ship communications using the `Urbit`
-object we previously setup, and ignore UI components and other helper functions.
+Now that we've reviewed the basics of setting up an Urbit React app, we can
+dive into the more complex logic that drives our [journal app's
+front-end](https://github.com/urbit/docs-examples/tree/main/journal-app/ui).
+We'll focus on the app's main component `App` (defined in
+[`src/app.jsx`](https://github.com/urbit/docs-examples/tree/main/journal-app/ui/src/app.jsx))
+and how it leverages functions related to ship communications using the `Urbit`
+object. For more information on UI components and other helper functions, see
+the [resources section](#resources).
 
 ## State
 
-In the previous section we just mentioned the connection `status` field of our
-state. Here's the full state of our App:
+In the previous section, we introduced how React components use [`useState()`]
+to declare state variables within components. The main `App` component in our
+journal app contains a number of these statements to manage its many
+constituents and sub-components:
 
 ```javascript
 // Control/Meta State //
@@ -39,7 +46,9 @@ We'll see how these are used subsequently.
 
 ## Initialize
 
-The first thing our app does is call `init()`:
+After defining its state, the next thing our `App` component does is define a
+function called `init()`, which is one of the first functions called during its
+bootstrapping process:
 
 ```javascript
 const init = () => {
@@ -59,17 +68,17 @@ const init = () => {
 
 This function just calls `getEntries()` to retrieve the initial list of journal
 entries; then, if that succeeded, it publishes this update with `setSubEvent()`
-and `setLatestUpdate()` invocations and then calls `subscribe()` to subscribe
-for new updates. If the initial entry retrieval failed, we set the connection
-`status` and save an error message in the `errors` map. We'll look at what we
-do with errors later.
+and `setLatestUpdate()` and then calls `subscribe()` to subscribe for new
+updates. If the initial entry retrieval failed, we set the connection `status`
+and save an error message in the `errors` map. We'll look at what we do with
+errors later.
 
 ## Getting entries
 
 ![entries screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/entries.png)
 
 The `getEntries()` function scries our `%journal` agent for up to 10 entries
-before the oldest we currently have. We call this initially, and then each time
+before the oldest we currently have. We call this initially and then each time
 the user scrolls to the bottom of the list.
 
 ```javascript
@@ -164,8 +173,10 @@ major parts:
    ```
 
 The key piece of this architecture is the [`useEffect()`] trigger, which is
-called whenever an event comes in on the subscription wire. In our application,
-this hook is also triggered by calls to [`getEntries()`](#getting-entries) and
+called whenever an event comes in on the subscription wire (achieved by
+including the subscription object `subEvent` as a re-invocation trigger in
+[`useEffect()`]'s second argument). In our application, this hook is also
+triggered by calls to [`getEntries()`](#getting-entries) and
 [`getUpdates()`](#error-handling), which will be described in greater detail
 later.
 
@@ -420,12 +431,15 @@ expression, where the success case passes each update retrieved to the
 Lastly, as well as handling channel connection errors, we also handle errors
 such as poke nacks or failed scries by printing error messages added to the
 `error` map by the `setErrorMsg()` function. You could of course handle nacks,
-kicks, scry failures, etc differently than just printing an error, it depends on
-the needs of your app.
+kicks, scry failures, etc differently than just printing an error; it depends
+on the needs of your app.
 
 ![search failed screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/search-failed.png)
 
 ## Resources
+
+- [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial
+  walking through the basics of writing a modern React application.
 
 - [HTTP API Guide](/guides/additional/http-api-guide) - Reference documentation for
   `@urbit/http-api`.
@@ -438,10 +452,6 @@ the needs of your app.
   code](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) - The
   source code for the `@urbit/http-api` NPM package.
 
-- [Modern React
-  Tutorial](https://beta.reactjs.org/learn/tutorial-tic-tac-toe) - A tutorial
-  walking through the basics of writing a modern React application.
 
-
-[`usestate()`]: https://beta.reactjs.org/reference/react/useState
-[`useeffect()`]: https://beta.reactjs.org/reference/react/useEffect
+[`usestate()`]:  https://react.dev/reference/react/useState
+[`useeffect()`]: https://react.dev/reference/react/useEffect
