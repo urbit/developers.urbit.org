@@ -547,8 +547,8 @@ Three arguments, fixed.
 
 - Tall
 - ```hoon
-  %~  p  q
-  r
+  %~  p=wing  q=hoon
+  r=hoon
   ```
 
 ---
@@ -579,6 +579,10 @@ door itself. `c` is the sample of the door.
 
 `%~` is the general case of a function call, `%-`. In both, we replace the sample (`+6`) of a core. In `%-` the core is a gate and the `$` arm is evaluated. In `%~` the core is a door and any arm may be evaluated. You must identify the arm to be run: `%~(arm door arg)`.
 
+Note also that `p` is a wing and can therefore be `.`, as in `~(. door
+sample)`. This little idiom lets you load your sample into the door once
+instead of over and over.
+
 See also [`|_`](/reference/hoon/rune/bar#_-barcab).
 
 #### Examples
@@ -587,6 +591,9 @@ See also [`|_`](/reference/hoon/rune/bar#_-barcab).
 > =mycore |_  a=@
           ++  plus-two  (add 2 a)
           ++  double  (mul 2 a)
+          ++  mul-by
+            |=  b=@
+            (mul a b)
           --
 
 > ~(plus-two mycore 10)
@@ -594,6 +601,10 @@ See also [`|_`](/reference/hoon/rune/bar#_-barcab).
 
 > ~(double mycore 10)
 20
+
+>  =tencore ~(. mycore 10)
+>  (mul-by:tencore 5)
+50
 ```
 
 ---
