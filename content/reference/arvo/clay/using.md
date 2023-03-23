@@ -6,7 +6,7 @@ weight = 3
 ## Reading and Subscribing
 
 When reading from Clay, there are three types of requests. A
-`%sing` request asks for data at single revision. A `%next`
+`%sing` request asks for data at a single revision. A `%next`
 request asks to be notified the next time there's a change to
 given file. A `%many` request asks to be notified on every
 change in a `desk` for a range of changes.
