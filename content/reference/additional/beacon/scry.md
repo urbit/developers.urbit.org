@@ -14,18 +14,26 @@ Make a [`proof`](/reference/additional/beacon/types#proof) for the given
 `<domain>/.well-known/appspecific/org.urbit.beacon.json`. Sentinel uses it to
 validate requests.
 
-{% callout %}
+#### Returns
 
-**Important**
+A [`proof`](/reference/additional/beacon/types#proof).
 
-When encoding a `turf` (domain) in a subscription or scry path, you **must** use
-`++wood` encoding as described in [this
-function](https://github.com/urbit/urbit/blob/master/pkg/npm/api/lib/lib.ts#L207-L242),
-except without the leading `~.`. If your domain does not contain unusual
-characters, just lowercase letters, numbers and hyphens, you can just put a
-tilde (`~`) before each dot separator rather than using the full function above.
+#### Example
 
-{% /callout %}
+```
+/proof/example.com
+```
+
+---
+
+## `/proof/wood/[turf]`
+
+Make a [`proof`](/reference/additional/beacon/types#proof) for the given
+[`++wood`-encoded](/reference/additional/beacon/overview#additional-note)
+[`turf`](/reference/additional/beacon/types#turf) (domain). This is put in a
+[`manifest`](/reference/additional/beacon/types#manifest) and published at
+`<domain>/.well-known/appspecific/org.urbit.beacon.json`. Sentinel uses it to
+validate requests.
 
 #### Returns
 
@@ -34,7 +42,7 @@ A [`proof`](/reference/additional/beacon/types#proof).
 #### Example
 
 ```
-/proof/example~.com
+/proof/example.com
 ```
 
 ---
@@ -50,10 +58,10 @@ containing the current state.
 
 ---
 
-## `/all/since/[stamp]`
+## `/all/since/[time]`
 
-Get all requests later than the specified
-[`stamp`](/reference/additional/beacon/types#stamp), and their statuses.
+Get all requests later than the specified Unix millisecond time, and their
+statuses.
 
 #### Returns
 
@@ -64,15 +72,15 @@ current state of requests later than the one specified.
 #### Example
 
 ```
-/all/since/1666875948253000000
+/all/since/1678658855227
 ```
 
 ---
 
-## `/all/before/[stamp]`
+## `/all/before/[time]`
 
-Get all requests before the specified
-[`stamp`](/reference/additional/beacon/types#stamp), and their statuses.
+Get all requests before the specified Unix millisecond time, and their
+statuses.
 
 #### Returns
 
@@ -82,26 +90,78 @@ containing the current state of requests earlier than the one specified.
 #### Example
 
 ```
-/all/before/1666875948253000000
+/all/before/1678658855227
+```
+
+---
+
+## `/ship/[ship]`
+
+Get the state of all existing requests for the specifed
+[`ship`](/reference/additional/beacon/types#ship).
+
+#### Returns
+
+You'll receive an [`initShip`](/reference/additional/beacon/types#initship)
+update containing all requests for the specified `ship`, and their statuses.
+
+#### Example
+
+Note the leading `~` is omitted:
+
+```
+/ship/sampel-palnet
+```
+
+---
+
+## `/ship/[ship]/since/[time]`
+
+Get the state of all existing requests for the specifed
+[`ship`](/reference/additional/beacon/types#ship) later than the specified Unix millisecond time.
+
+#### Returns
+
+You'll receive an [`initShip`](/reference/additional/beacon/types#initship)
+update containing all entries for the specified `ship` with `time `s later than
+the one specified.
+
+#### Example
+
+```
+/ship/sampel-palnet/since/1678658855227
+```
+
+---
+
+## `/ship/[ship]/before/[time]`
+
+Get the state of all existing requests for the specifed
+[`ship`](/reference/additional/beacon/types#ship) earlier than the specified Unix millisecond time.
+
+#### Returns
+
+You'll receive an [`initShip`](/reference/additional/beacon/types#initship)
+update containing all entries for the specified `ship` with `time `s before the
+one specified.
+
+#### Example
+
+```
+/ship/sampel-palnet/before/1678658855227
 ```
 
 ---
 
 ## `/turf/[turf]`
-
+    
 Get the state of all existing requests for the specifed
 [`turf`](/reference/additional/beacon/types#turf) (domain).
 
 {% callout %}
 
-**Important**
-
-When encoding a `turf` (domain) in a subscription or scry path, you **must** use
-`++wood` encoding as described in [this
-function](https://github.com/urbit/urbit/blob/master/pkg/npm/api/lib/lib.ts#L207-L242),
-except without the leading `~.`. If your domain does not contain unusual
-characters, just lowercase letters, numbers and hyphens, you can just put a
-tilde (`~`) before each dot separator rather than using the full function above.
+If your domain contains characters apart from `a-z`, `0-9`, `-` and `.`
+separators, see the `/turf/wood/[turf]` path instead.
 
 {% /callout %}
 
@@ -113,138 +173,126 @@ update containing all requests for the specified `turf`, and their statuses.
 #### Example
 
 ```
-/turf/example~.com
+/turf/example.com
 ```
 
 ---
 
-## `/turf/[turf]/since/[stamp]`
+## `/turf/[turf]/since/[time]`
 
 Get the state of all existing requests for the specifed
 [`turf`](/reference/additional/beacon/types#turf) (domain) later than the
-specified [`stamp`](/reference/additional/beacon/types#stamp).
+specified Unix millisecond time.
 
 {% callout %}
 
-**Important**
-
-When encoding a `turf` (domain) in a subscription or scry path, you **must** use
-`++wood` encoding as described in [this
-function](https://github.com/urbit/urbit/blob/master/pkg/npm/api/lib/lib.ts#L207-L242),
-except without the leading `~.`. If your domain does not contain unusual
-characters, just lowercase letters, numbers and hyphens, you can just put a
-tilde (`~`) before each dot separator rather than using the full function above.
+If your domain contains characters apart from `a-z`, `0-9`, `-` and `.`
+separators, see the `/turf/wood/[turf]/since/[time]` path instead.
 
 {% /callout %}
 
 #### Returns
 
 You'll receive an [`initTurf`](/reference/additional/beacon/types#initturf)
-update containing all entries with `stamp `s later than the one specified.
+update containing all entries with timestamps later than the one specified.
 
 #### Example
 
 ```
-/turf/example~.com/since/1666875948253000000
+/turf/example.com/since/1678658855227
 ```
 
 ---
 
-## `/turf/before/[stamp]`
+## `/turf/[turf]/before/[time]`
 
 Get the state of all existing requests for the specifed
 [`turf`](/reference/additional/beacon/types#turf) (domain) earlier than the
-specified [`stamp`](/reference/additional/beacon/types#stamp).
+specified Unix millisecond time.
 
 {% callout %}
 
-**Important**
-
-When encoding a `turf` (domain) in a subscription or scry path, you **must** use
-`++wood` encoding as described in [this
-function](https://github.com/urbit/urbit/blob/master/pkg/npm/api/lib/lib.ts#L207-L242),
-except without the leading `~.`. If your domain does not contain unusual
-characters, just lowercase letters, numbers and hyphens, you can just put a
-tilde (`~`) before each dot separator rather than using the full function above.
+If your domain contains characters apart from `a-z`, `0-9`, `-` and `.`
+separators, see the `/turf/wood/[turf]/before/[time]` path instead.
 
 {% /callout %}
 
 #### Returns
 
 You'll receive an [`initTurf`](/reference/additional/beacon/types#initturf)
-update containing all entries for the specified `turf` (domain) with
-[`stamp`](/reference/additional/beacon/types#stamp)s earlier than the one
-specified.
+update containing all entries for the specified `turf` (domain) with timestamps
+earlier than the one specified.
 
 #### Example
 
 ```
-/turf/example~.com/before/1666875948253000000
+/turf/example.com/before/1678658855227
 ```
 
 ---
 
-## `/ship/[ship]`
-
+## `/turf/wood/[turf]`
+    
 Get the state of all existing requests for the specifed
-[`ship`](/reference/additional/beacon/types#turf).
+[`turf`](/reference/additional/beacon/types#turf) (domain), with [`++wood` encoding](/reference/additional/beacon/overview#additonal-note).
 
 #### Returns
 
-You'll receive an [`initShip`](/reference/additional/beacon/types#initturf)
-update containing all requests for the specified `ship`, and their statuses.
+You'll receive an [`initTurf`](/reference/additional/beacon/types#initturf)
+update containing all requests for the specified `turf`, and their statuses.
 
 #### Example
 
 ```
-/ship/sampel-palnet
+/turf/wood/example~.com
 ```
 
 ---
 
-## `/ship/[ship]/since/[stamp]`
+## `/turf/wood/[turf]/since/[time]`
 
 Get the state of all existing requests for the specifed
-[`ship`](/reference/additional/beacon/types#ship) later than the specified
-[`stamp`](/reference/additional/beacon/types#stamp).
+[`turf`](/reference/additional/beacon/types#turf) (domain) later than the
+specified Unix millisecond time. With [`++wood`
+encoding](/reference/additional/beacon/overview#additonal-note).
 
 #### Returns
 
-You'll receive an [`initShip`](/reference/additional/beacon/types#initship)
-update containing all entries for the specified `ship` with `stamp `s later than
-the one specified.
+You'll receive an [`initTurf`](/reference/additional/beacon/types#initturf)
+update containing all entries with timestamps later than the one specified.
 
 #### Example
 
 ```
-/ship/sampel-palnet/since/1666875948253000000
+/turf/wood/example~.com/since/1678658855227
 ```
 
 ---
 
-## `/ship/[ship]/before/[stamp]`
+## `/turf/wood/[turf]/before/[time]`
 
 Get the state of all existing requests for the specifed
-[`ship`](/reference/additional/beacon/types#ship) earlier than the specified
-[`stamp`](/reference/additional/beacon/types#stamp).
+[`turf`](/reference/additional/beacon/types#turf) (domain) earlier than the
+specified Unix millisecond time. With [`++wood`
+encoding](/reference/additional/beacon/overview#additonal-note).
 
 #### Returns
 
-You'll receive an [`initShip`](/reference/additional/beacon/types#initship)
-update containing all entries for the specified `ship` with `stamp `s before the
-one specified.
+You'll receive an [`initTurf`](/reference/additional/beacon/types#initturf)
+update containing all entries for the specified `turf` (domain) with timestamps
+earlier than the one specified.
 
 #### Example
 
 ```
-/ship/sampel-palnet/before/1666875948253000000
+/turf/wood/example~.com/before/1678658855227
 ```
 
 ---
 
-## `/stamp/[stamp]`
+## `/id/[uuid]`
 
-Get a particular request and its current status.
+Get a particular request and its current status, by UUID.
 
 #### Returns
 
@@ -254,23 +302,24 @@ request in question and its current status.
 #### Example
 
 ```
-/stamp/1666875948253000000
+/id/2321f509-316c-4545-a838-4740eed86584
+
 ```
 
 ---
 
-## `/stamp/status/[stamp]`
+## `/id/status/[time]`
 
 Get the status of a particular request.
 
 #### Returns
 
-A [`status`](/reference/additional/beacon/types#status) update containing the status of the request with the specified [`stamp`](/reference/additional/beacon/types#stamp).
+A [`status`](/reference/additional/beacon/types#status) update containing the status of the request with the specified [`id`](/reference/additional/beacon/types#id).
 
 #### Example
 
 ```
-/stamp/status/1666875948253000000
+/x/id/status/01a618cc-0c65-4278-853b-21d9e1289b93
 ```
 
 ---

@@ -28,7 +28,7 @@ quickly go over how the system works.
 6. The user of `~sampel-palnet` clicks "Approve" in Sentinel.
 7. Sentinel on `~sampel-palnet` sends an update to Beacon on `~master` saying
    the request was approved.
-8. Beacon notififies `example.com` that the request was authorized.
+8. Beacon notifies `example.com` that the request was authorized.
 9. `example.com` logs the user in.
 
 ## Beacon Basics
@@ -53,23 +53,22 @@ cancel an existing request. The `new` action looks something like this:
 ```json
 {
   "new": {
-    "stamp": 1666795723664000000,
+    "id": "2321f509-316c-4545-a838-4740eed86584",
     "request": {
       "ship": "sampel-palnet",
       "turf": "example.com",
       "user": "foobar123",
       "code": 123456,
       "msg": "blah blah blah",
-      "expire": 1666882123664
+      "expire": 1679788361389
+      "time": 1679787461389
     }
   }
 }
 ```
 
-The [`stamp`](/reference/additional/beacon/types#stamp) field is the request ID
-and is typically the current time in nanoseconds since the Unix epoch. Note it's
-*nanoseconds* - this extra precision is because every request needs a unique
-`stamp` and collisions are less likely to occur this way.
+The [`id`](/reference/additional/beacon/types#id) field is a random unique
+ID for the request, and must be a v4 UUID (variant 1, RFC 4122/DCE 1.1).
 
 The fields in the [`request`](/reference/additional/beacon/types#request) are as
 follows:
@@ -92,10 +91,12 @@ follows:
   want. You might like to include things like the IP address of the login
   request and the browser it came from. It's up to you.
 - `expire`: This is the time the request should expire, in milliseconds since
-  the Unix epoch. Note it's *milliseconds*, not nanoseconds like the `stamp`.
-  You can have it expire whenever you want, but setting it unreasonably soon
-  (like seconds) may mean the user can't get to it in time, especially if
-  there's network latency. At least a few minutes from now is a good idea.
+  the Unix epoch. You can have it expire whenever you want, but setting it
+  unreasonably soon (like seconds) may mean the user can't get to it in time,
+  especially if there's network latency. At least a few minutes from now is a
+  good idea.
+- `time`: This is the timestamp of the request in milliseconds since the Unix
+  epoch. You would typically just set it to now.
 
 ### Updates
 
@@ -107,21 +108,22 @@ looks like this:
 ```json
 {
   "entry": {
-    "stamp": 1667212978424000000,
+    "id": "2321f509-316c-4545-a838-4740eed86584",
     "request": {
-      "expire": 1667213278424,
-      "code": 123456,
-      "turf": "localhost",
       "ship": "zod",
+      "turf": "localhost",
+      "user": "@user123",
+      "code": 123456,
       "msg": "blah blah blah",
-      "user": "@user123"
+      "expire": 1667213278424,
+      "time": 1679787461389
     },
     "result": "sent"
   }
 }
 ```
 
-It contains the [`stamp`](/reference/additional/beacon/types#stamp) and
+It contains the [`id`](/reference/additional/beacon/types#id) and
 [`request`](/reference/additional/beacon/types#request) from the `new` action
 above, and additionally shows the initial status in the
 [`result`](/reference/additional/beacon/types#result) field. This will normally
@@ -133,7 +135,7 @@ After it's been sent you'll get [`status`](/reference/additional/beacon/types#st
 ```json
 {
   "status": {
-    "stamp": 1667213952904000000,
+    "id": "2321f509-316c-4545-a838-4740eed86584",
     "result": "yes"
   }
 }
@@ -142,7 +144,7 @@ After it's been sent you'll get [`status`](/reference/additional/beacon/types#st
 Assuming it was initally `"sent"`, you'll get an update with a `"got"`
 [`result`](/reference/additional/beacon/types#result) when the user receives it
 (but hasn't yet approved or denied it). If they approve it, you'll then get a
-`"yes"` update, and if they deny it you'll get `"no"`. If it expires before they
+`"yes"` update, or if they deny it you'll get `"no"`. If it expires before they
 receive it or before they approve/deny it, you'll get an `"expire"` update. If
 there was an error in them receiving the request or your Beacon couldn't
 subscribe for the result, you'll get an `"error"` update. If you cancelled the
@@ -164,15 +166,15 @@ will do the same, but they'll also give you initial state. For each of these,
 there is a path to receive all updates, and there are also sub-paths to filter
 by [`turf`](/reference/additional/beacon/types#turf) (domain),
 [`ship`](/reference/additional/beacon/types#ship) and
-[`stamp`](/reference/additional/beacon/types#stamp). Additionally, for each
-sub-path, you can specify a "since" `stamp`, and only receive updates and
-initial state for requests with `stamp`s *later* than the one you specify.
+[`id`](/reference/additional/beacon/types#id). Additionally, for each
+sub-path, you can specify a "since" time, and only receive updates and
+initial state for requests with `time`s *later* than the one you specify.
 
 If you're only handling a single site in Beacon, you can just subscribe to the
 `/init/all` path, retreiving initial state and then further updates as they
 occur. If your site loses connection to Beacon, you can just resubscribe to
 `/init/all` to resync state, or, if you don't want all historical state, you
-could subscribe to `/init/all/since/1666875948253000000` where the `stamp`
+could subscribe to `/init/all/since/1679787461389 ` where the `time`
 specified is the oldest time you think you could reasonably care about.
 
 ### Attestations
@@ -193,18 +195,26 @@ like:
 }
 ```
 
-In order to generate a proof, you must make a scry request to the
-[`/proof/[turf]`](/reference/additional/beacon/scry#proof[turf]) scry path. The
-`turf` in the path is your domain. Note it *must* use `++wood` encoding as
-described in the [reference for that
-path](/reference/additional/beacon/scry#proof[turf]). Assuming your domain just
-contains lowercase letters, numbers and hyphens, it's as simple as prepending
-`~` to all dot separators like `foo~.example~.com` for `foo.example.com`.
+The Beacon front-end includes a simple tool to generate a `manifest` for a
+single domain and ship. You can access it by clicking on Beacon's tile in
+Landscape.
 
-Once you have the proof you can just put it in an array. The `manifest` is
-allowed to contain multiple proofs for the same ship, including different
-`live`s (key revisions), as well as for multiple different ships and domains.
-Sentinel will try find the best case with the following priority:
+Alternatively, you can make a scry request to the
+[`/proof/[turf]`](/reference/additional/beacon/scry#proof[turf]) scry path and
+then programmatically put resulting proof(s) in a `manifest` array and serve
+them on the `/.well-known/...` path. The `turf` in the path is your domain.
+
+{% callout %}
+
+[If your domain contains special characters, see the note at the bottom.](#additional note)
+
+{% /callout %}
+
+
+The `manifest` is allowed to contain multiple proofs for the same ship,
+including different `live`s (key revisions), as well as for multiple different
+ships and domains. Sentinel will try find the best case with the following
+priority:
 
 1. Valid signature at current life.
 2. Invalid signature at current life.
@@ -232,9 +242,59 @@ icon and a warning as described above.
 
 {% callout %}
 
-**Important note:**
-
-It cannot follow relative redirect URLs - redirects MUST be absolute URLs
+Sentinel cannot follow relative redirect URLs - redirects MUST be absolute URLs
 including protocol.
 
 {% /callout %}
+
+## Additional note
+
+The manifest generator along with the `/proof/[turf]` scry path and `turf`
+subscription paths expect a domain with only lowercase `a-z`, `0-9`, `-` and
+`.` separators. If your domain contains other characters, you'll have to use
+the altenative `wood` paths with `++wood` encoding.
+
+Here's an example implementation of `++wood` encoding:
+
+```javascript
+// encode the string into @ta-safe format, using logic from +wood.
+// for example, 'some Chars!' becomes '~.some.~43.hars~21.'
+//
+export function stringToTa(str: string): string {
+  let out = "";
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    let add = "";
+    switch (char) {
+      case " ":
+        add = ".";
+        break;
+      case ".":
+        add = "~.";
+        break;
+      case "~":
+        add = "~~";
+        break;
+      default:
+        const charCode = str.charCodeAt(i);
+        if (
+          (charCode >= 97 && charCode <= 122) || // a-z
+          (charCode >= 48 && charCode <= 57) || // 0-9
+          char === "-"
+        ) {
+          add = char;
+        } else {
+          // TODO behavior for unicode doesn't match +wood's,
+          //     but we can probably get away with that for now.
+          add = "~" + charCode.toString(16) + ".";
+        }
+    }
+    out = out + add;
+  }
+  return out;
+}
+```
+
+You might also like to look at the Hoon reference for the
+`++wood` function [here](/reference/hoon/stdlib/4b#wood).
+

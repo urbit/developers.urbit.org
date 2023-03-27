@@ -6,8 +6,8 @@ template = "doc.html"
 
 ## `logs`
 
-A list of [`request`](#request)s, their [`stamp`](#stamp)s (IDs), and their
-current [`result`](#result)s. These are given in the various initialization
+A list of [`request`](#request)s, their [`id`](#id)s, and their current
+[`result`](#result)s. These are given in the various initialization
 [`updates`](#updates).
 
 #### Example
@@ -15,38 +15,41 @@ current [`result`](#result)s. These are given in the various initialization
 ```json
 [
   {
-    "stamp": 1666795723664000000,
+    "id": "7e16a2f5-b955-47c3-b921-da349c0e2c24",
     "request": {
       "ship": "zod",
       "turf": "localhost",
       "user": "foobar123",
       "code": 123456,
       "msg": "blah blah blah",
-      "expire": 1666882123664,
+      "expire": 1679820698574,
+      "time": 1679819798574
     },
     "result": "yes"
   },
   {
-    "stamp": 1666799618474000000,
+    "id": "d63971cc-453f-49a8-868f-02e2ff768ed2",
     "request": {
       "ship": "zod",
       "turf": "localhost",
       "user": "xyz",
       "code": 123456,
       "msg": null,
-      "expire": 1666886018474,
+      "expire": 1679820699556,
+      "time": 1679819799556
     },
     "result": "yes"
   },
   {
-    "stamp": 1666799624841000000,
+    "id": "587f6be9-1dca-4310-9239-ea541943f0e0",
     "request": {
       "ship": "zod",
       "turf": "localhost",
       "user": null,
       "code": null,
       "msg": "blah blah blah",
-      "expire": 1666886024841,
+      "expire": 1679820700233,
+      "time": 1679819800233
     },
     "result": "no"
   }
@@ -97,7 +100,8 @@ published at `<domain>/.well-known/appspecific/org.urbit.beacon.json` in a
 
 An authorization request. The `user`, `code` and `msg` fields are all optional
 and may be `null` if not used. The `expire` field is the date-time that the
-request should expire, as milliseconds since the Unix Epoch.
+request should expire, as milliseconds since the Unix Epoch. The `time` field
+is the timestamp of the request - you'd typically use now.
 
 #### Examples
 
@@ -108,7 +112,8 @@ request should expire, as milliseconds since the Unix Epoch.
   "user": "foo123",
   "code": 1234,
   "msg": "blah blah blah",
-  "expire": 1666955338448
+  "expire": 1679820700233,
+  "time" 1679819800233,
 }
 ```
 
@@ -119,7 +124,8 @@ request should expire, as milliseconds since the Unix Epoch.
   "user": null,
   "code": null,
   "msg": null,
-  "expire": 1666955338448
+  "expire": 1679820700233,
+  "time" 1679819800233,
 }
 ```
 
@@ -134,7 +140,8 @@ The status of an authorization request. It may be one of:
 * `"expire"` - The request expired without the user approving or denying it.
 * `"got"` - The user's ship received the request, but they have not yet approved
   or denied it.
-* `"sent"` - Beacon has sent the request; the user's ship has not yet received it.
+* `"sent"` - Beacon has sent the request; the user's ship has not yet confirmed
+  receipt.
 * `"abort"` - You have given beacon a [`cancel`](#cancel) action, so the request
   has been cancelled.
 * `"error"` - The request failed. This will occur if the user's ship rejected
@@ -185,22 +192,19 @@ of a particular site.
 
 ---
 
-## `stamp`
+## `id`
 
-A request ID. This is a date-time as the number of **nanoseconds** since the
-Unix Epoch. Each request must have a unique `stamp`, and requests are ordered by
-this `stamp`. You would typically use the date-time when the request occurred.
+A request ID. The [`id`](/reference/additional/beacon/types#id) field is a
+random unique ID for the request, and must be a v4 UUID (variant 1, RFC
+4122/DCE 1.1).
 
-Nanoseconds are used rather than milliseconds to make collisions less likely if
-two requests occur at roughly the same time. If you don't need or don't have
-this much precision you can just multiply the Unix millisecond time by a million
-or just fudge the less significant digits. The important thing is that it's
-unique for each request.
+Note this is decoded into a 122-bit `@ux` atom by `%beacon` - the UUID form is
+only used in JSON, scry paths and subscription paths.
 
 #### Example
 
 ```json
-1666953051302000000
+"6360904f-7645-4747-91a1-8d7844f11d18"
 ```
 
 ---
@@ -220,21 +224,22 @@ one. These are given to Beacon as pokes.
 ### `new`
 
 Initiate a new authorization request. The `new` action contains a
-[`request`](#request) structure and a [`stamp`](#stamp) (request ID).
+[`request`](#request) structure and a request [`id`](#id).
 
 #### Example
 
 ```json
 {
   "new": {
-    "stamp": 1666795723664000000,
+    "id": "6360904f-7645-4747-91a1-8d7844f11d18",
     "request": {
       "ship": "zod",
       "turf": "localhost",
       "user": "foobar123",
       "code": 123456,
       "msg": "blah blah blah",
-      "expire": 1666882123664
+      "expire": 1679820700233,
+      "time" 1679819800233
     }
   }
 }
@@ -242,13 +247,13 @@ Initiate a new authorization request. The `new` action contains a
 
 ### `cancel`
 
-Cancel an existing request. The [`stamp`](#stamp) in the ID of the request you
+Cancel an existing request. The [`id`](#id) in the ID of the request you
 want to cancel.
 
 #### Example
 
 ```json
-{"cancel": {"stamp": 1666795723664000000}}
+{"cancel": {"id": "6360904f-7645-4747-91a1-8d7844f11d18"}}
 ```
 
 ---
@@ -259,7 +264,8 @@ The types of event/update that beacon can send back to you.
 
 ### `entry`
 
-This will be sent back to you whenever you make a new request with a [`new`](#new) action. It contains the [`stamp`](#stamp) (request ID),
+This will be sent back to you whenever you make a new request with a
+[`new`](#new) action. It contains the request [`id`](#id),
 [`request`](#request) and initial [`result`](#result). The initial result will
 typically be `sent`, unless you specified an expiration time before the current
 time, in which case it'll be `expire`.
@@ -269,14 +275,15 @@ time, in which case it'll be `expire`.
 ```json
 {
   "entry": {
-    "stamp": 1667212978424000000,
+    "id": "6360904f-7645-4747-91a1-8d7844f11d18",
     "request": {
-      "expire": 1667213278424,
       "code": 123456,
       "turf": "localhost",
       "ship": "zod",
       "msg": "blah blah blah",
-      "user": "@user123"
+      "user": "@user123",
+      "expire": 1679820700233,
+      "time" 1679819800233
     },
     "result": "sent"
   }
@@ -287,15 +294,15 @@ time, in which case it'll be `expire`.
 
 A `status` update will be sent back whenever the status of a request changes,
 for example if the user receives the request, the user approves or denies the
-request, the request expires, etc. It contains a [`stamp`](#stamp) (request ID)
-and a [`result`](#result).
+request, the request expires, etc. It contains a request [`id`](#id) and a
+[`result`](#result).
 
 #### Examples
 
 ```json
 {
   "status": {
-    "stamp": 1667213952904000000,
+    "id": "6360904f-7645-4747-91a1-8d7844f11d18",
     "result": "yes"
   }
 }
@@ -304,7 +311,7 @@ and a [`result`](#result).
 ```json
 {
   "status": {
-    "stamp": 1667213954564000000,
+    "id": "6360904f-7645-4747-91a1-8d7844f11d18",
     "result": "got"
   }
 }
@@ -313,13 +320,13 @@ and a [`result`](#result).
 ### `initAll`
 
 This is sent as the inital update when you first subscribe to one of the
-`/init/all/...` paths. It's also returned by some of the scry paths. It contains
-existing entries, possibly limited to entries before or after a specific
-[`stamp`](#stamp).
+`/init/all/...` paths. It's also returned by some of the scry paths. It
+contains existing entries, possibly limited to entries before or after a
+specific timestamp.
 
 It contains a [`logs`](#logs) field with the entries themselves, and also
-`before` and `after` fields which will either contain [`stamp`](#stamp)s or else
-be null if no such limits were specified.
+`before` and `after` fields which will either contain Unix millisecond times or
+else be null if no such limits were specified.
 
 #### Example
 
@@ -330,26 +337,28 @@ be null if no such limits were specified.
     "before": null,
     "logs": [
       {
-        "stamp": 1666795723664000000,
+        "id": "0782ebea-e8d3-4c6a-bf1c-5c336c82a0d3",
         "request": {
-          "expire": 1666882123664,
           "code": 123456,
           "turf": "localhost",
           "ship": "zod",
           "msg": "blah blah",
-          "user": "foobar123"
+          "user": "foobar123",
+          "expire": 1679827515744,
+          "time": 1679826615744
         },
         "result": "yes"
       },
       {
-        "stamp": 1666799618474000000,
+        "id": "4c54c5d9-6584-4d3b-ab62-e55f5f2033c4",
         "request": {
-          "expire": 1666886018474,
           "code": 123456,
           "turf": "localhost",
           "ship": "zod",
           "msg": "foo bar baz",
-          "user": null
+          "user": null,
+          "expire": 1679827571421,
+          "time": 1679826671421
         },
         "result": "no"
       },
@@ -363,12 +372,12 @@ be null if no such limits were specified.
 This is sent as the inital update when you first subscribe to one of the
 `/init/turf/...` paths. It's also returned by some of the scry paths. It
 contains existing entries for a specific [`turf`](#turf) (domain), possibly
-limited to entries before or after a specific [`stamp`](#stamp).
+limited to entries before or after a specific timestamp.
 
 It contains a [`turf`](#turf) field showing which domain it's for, a
-[`logs`](#logs) field with the entries themselves, and also `before` and `after`
-fields which will either contain [`stamp`](#stamp)s or else be null if no such
-limits were specified.
+[`logs`](#logs) field with the entries themselves, and also `before` and
+`after` fields which will either contain Unix millisecond timestamps or else be
+null if no such limits were specified.
 
 #### Example
 
@@ -380,26 +389,28 @@ limits were specified.
     "before": null,
     "logs": [
       {
-        "stamp": 1666795723664000000,
+        "id": "0782ebea-e8d3-4c6a-bf1c-5c336c82a0d3",
         "request": {
-          "expire": 1666882123664,
           "code": 123456,
           "turf": "localhost",
           "ship": "zod",
           "msg": "blah blah",
-          "user": "foobar123"
+          "user": "foobar123",
+          "expire": 1679827515744,
+          "time": 1679826615744
         },
         "result": "yes"
       },
       {
-        "stamp": 1666799618474000000,
+        "id": "4c54c5d9-6584-4d3b-ab62-e55f5f2033c4",
         "request": {
-          "expire": 1666886018474,
           "code": 123456,
           "turf": "localhost",
           "ship": "zod",
           "msg": "foo bar baz",
-          "user": null
+          "user": null,
+          "expire": 1679827571421,
+          "time": 1679826671421
         },
         "result": "no"
       },
@@ -413,12 +424,12 @@ limits were specified.
 This is sent as the inital update when you first subscribe to one of the
 `/init/ship/...` paths. It's also returned by some of the scry paths. It
 contains existing entries for a specific [`ship`](#ship), possibly limited to
-entries before or after a specific [`stamp`](#stamp).
+entries before or after a specific timestamp.
 
 It contains a [`ship`](#ship) field showing which ship it's for, a
-[`logs`](#logs) field with the entries themselves, and also `before` and `after`
-fields which will either contain [`stamp`](#stamp)s or else be null if no such
-limits were specified.
+[`logs`](#logs) field with the entries themselves, and also `before` and
+`after` fields which will either contain Unix millisecond timestamps or else be
+null if no such limits were specified.
 
 #### Example
 
@@ -430,26 +441,28 @@ limits were specified.
     "before": null,
     "logs": [
       {
-        "stamp": 1666795723664000000,
+        "id": "0782ebea-e8d3-4c6a-bf1c-5c336c82a0d3",
         "request": {
-          "expire": 1666882123664,
           "code": 123456,
           "turf": "localhost",
           "ship": "zod",
           "msg": "blah blah",
-          "user": "foobar123"
+          "user": "foobar123",
+          "expire": 1679827515744,
+          "time": 1679826615744
         },
         "result": "yes"
       },
       {
-        "stamp": 1666799618474000000,
+        "id": "4c54c5d9-6584-4d3b-ab62-e55f5f2033c4",
         "request": {
-          "expire": 1666886018474,
           "code": 123456,
           "turf": "localhost",
           "ship": "zod",
           "msg": "foo bar baz",
-          "user": null
+          "user": null,
+          "expire": 1679827571421,
+          "time": 1679826671421
         },
         "result": "no"
       },
