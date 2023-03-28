@@ -27,6 +27,27 @@ A `%code` scry gets the current web login code. It takes your ship name as its `
 ~lidlut-tabwed-pillex-ridrup
 ```
 
+## `%fake`
+
+A `%fake` scry checks whether the current ship is fake (a development ship
+booted with the `-F` option). The type returned is a `?`.
+
+#### Example
+
+On a fake `~zod`:
+
+```
+> .^(? %j /=fake=)
+%.y
+```
+
+On a real planet:
+
+```
+> .^(? %j /=fake=)
+%.n
+```
+
 ## `%life`
 
 A `%life` scry gets the current `life` (key revision number) of a ship if known, otherwise it crashes. It takes a ship as its `path` and the type returned is a `@ud`.
