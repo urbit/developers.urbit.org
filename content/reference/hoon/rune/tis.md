@@ -533,18 +533,22 @@ Two arguments, fixed.
 #### Discussion
 
 `=-` is just like `=+` but its subexpressions are reversed. `=-` looks better
-than `=+` when the expression you're pinning to the subject is much smaller than
+than `=+` when the expression you're pinning to the subject is much larger than
 the expression that uses it.
 
 #### Examples
 
 ```
 > =foo |=  a=@
-       =+  b=1
-       =-  (add a b c)
-       c=2
+       =-  (add a b)
+       :*  %a-bunch
+           %of-stuff
+           %here
+           b=2
+           %and-perhaps-more
+       ==
 > (foo 5)
-8
+7
 ```
 
 ---
