@@ -1395,7 +1395,7 @@ export function App() {
 ```
 
 After we've finished writing our React app, we can build it and view the
-result files in the `dist` directory:
+resulting files in the `dist` directory:
 
 ```shell
 npm run build
