@@ -376,7 +376,7 @@ infinite loop in the compiler).
 ~zod:dojo> ^-(@t (add 90 7))
 'a'
 
-/~zod:dojo> =foo |=  a=@tas
+/~zod:dojo> =foo |=  a=@
                  ^-  (unit @ta)
                  `a
 
