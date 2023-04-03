@@ -242,7 +242,7 @@ Produce a gate (generator) which accepts a `tape` value and returns a `(list @ud
 
 The previous code simply modified a value by addition.  You can generalize this to other arithmetic processes, like multiplication, but you can also grow a data structure like a list.
 
-For example, given the `tape` `"hello"`, the generator should return the list `[104 101 108 108 111 ~]`.  (A list is structurally a null-terminated tuple, or rightwards-branching cell ending in `~` or `0`.)
+For example, given the `tape` `"hello"`, the generator should return the list `[104 101 108 108 111 ~]`.  (A list is structurally a null-terminated tuple, or rightwards-branching cell ending in `~` or `0`.)  We can equivalently write `~[104 101 108 108 111]` which is a special syntax reducing to the same thing.
 
 Two tools that may help:
 
