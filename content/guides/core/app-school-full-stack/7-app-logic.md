@@ -208,7 +208,16 @@ useEffect(() => {
 
   if (subEvent.time !== latestUpdate) {
     if ("entries" in subEvent) {
-      setEntries(entries.concat(subEvent.entries));
+      // NOTE: `BottomScrollListener` can fire on top of `init`, which can
+      // cause entries to be double loaded; we trim duplicates to avoid overlap
+      const [existing, incoming] = [entries, subEvent.entries];
+      const oldestExistingId = existing.length === 0
+        ? Date.now()
+        : existing[existing.length - 1].id;
+      let newestIncomingInd = getDataIndex(oldestExistingId, incoming);
+      newestIncomingInd += newestIncomingInd < incoming.length
+        && incoming[newestIncomingInd].id >= oldestExistingId;
+      setEntries(existing.concat(incoming.slice(newestIncomingInd)));
     } else if ("add" in subEvent) {
       const { time, add } = subEvent;
       const eInd = getDataIndex(add.id, entries);
