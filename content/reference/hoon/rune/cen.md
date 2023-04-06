@@ -805,7 +805,7 @@ Here's that again in tall form:
 ```hoon
 =+  foo
 =>  %=  +2
-      +6  baz
+      +6  baz:+3
     ==
   $
 ```
