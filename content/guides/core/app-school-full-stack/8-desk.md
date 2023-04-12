@@ -118,8 +118,7 @@ Now we can browse to it in the unix terminal:
 cd /path/to/zod/journal
 ```
 
-Currently it has the same files as the `%webterm` desk, so we need to delete
-those:
+Currently it just contains some skeleton files, so we need to delete those:
 
 ```sh {% copy=true %}
 rm -rI /path/to/zod/journal/*
@@ -130,24 +129,25 @@ self-contained, including all mark files and libraries necessary to build them.
 For example, since our app contains a number of `.hoon` files, we need the
 `hoon.hoon` mark, and its dependencies. The easiest way to ensure our desk has
 everything it needs is to copy in the "dev" versions of the `%base` and
-`%garden` desks. To do this, we first clone the Urbit git repository:
+`%garden` desks. To do this, we first clone the Urbit and Landscape git repositories:
 
 ```sh {% copy=true %}
 git clone https://github.com/urbit/urbit.git urbit-git
+git clone https://github.com/tloncorp/landscape.git landscape-git
 ```
 
-If we navigate to the `pkg` directory in the cloned repo:
+If we navigate to the `pkg` directory in the cloned `urbit` repo:
 
 ```sh {% copy=true %}
 cd /path/to/urbit-git/pkg
 ```
 
-...we can combine the `base-dev` and `garden-dev` desks with the included
-`symbolic-merge.sh` script:
+...we can combine the `base-dev` and Landscape `desk-dev` desks with the
+included `symbolic-merge.sh` script:
 
 ```sh {% copy=true %}
 ./symbolic-merge.sh base-dev journal
-./symbolic-merge.sh garden-dev journal
+./symbolic-merge.sh ../../landscape-git/desk-dev journal
 ```
 
 Now, we copy the contents of the new `journal` folder into our empty desk:
@@ -156,8 +156,7 @@ Now, we copy the contents of the new `journal` folder into our empty desk:
 cp -rL journal/* /path/to/zod/journal/
 ```
 
-Note we've used the `L` flag to resolve symbolic links, because the dev-desks
-contain symlinks to files in the actual `arvo` and `garden` folders.
+Note we've used the `L` flag to resolve symbolic links.
 
 We can copy across all of our own files too:
 
