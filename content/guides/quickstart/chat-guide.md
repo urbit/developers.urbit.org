@@ -1595,7 +1595,7 @@ this by adding a `sys.kelvin` file to the root of our `hut` directory:
 
 ```shell {% copy=true %}
 cd hut
-echo "[%zuse 415]" > sys.kelvin
+echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do
