@@ -23,7 +23,10 @@ Clay from a kernel development perspective.
 
 A `%warp` `task` is for reading and subscribing to files and directories.
 
-The `wer` field is the target ship. The `(unit rave)` of the [riff](/reference/arvo/clay/data-types#riff-clay-request-desist) is null to cancel an existing subscription, otherwise the [rave](/reference/arvo/clay/data-types#rave-clay-general-subscription-request) is tagged with one of:
+The `wer` field is the target ship. The `(unit rave)` of the
+[riff](/reference/arvo/clay/data-types#riffclay) is null to cancel an existing
+subscription, otherwise the [rave](/reference/arvo/clay/data-types#raveclay) is
+tagged with one of:
 
 - `%sing` - Read a single file or directory.
 - `%next` - Subscribe for the next change to a file or directory.
@@ -48,7 +51,12 @@ A `%wris` `gift` looks like:
 [%writ p=riot]  ::  response
 ```
 
-The `unit` of the [riot](/reference/arvo/clay/data-types#riot-clay-response) will be null if the target file cannot be found or if a subscription has ended (depending on context). Otherwise it will have a [rant](/reference/arvo/clay/data-types#rant-clay-response-data) with a `cage` containing the data you requested. Its contents will vary depending on the kind of request and `care`.
+The `unit` of the [riot](/reference/arvo/clay/data-types#riotclay) will be null
+if the target file cannot be found or if a subscription has ended (depending on
+context). Otherwise it will have a
+[rant](/reference/arvo/clay/data-types#rantclay) with a `cage` containing the
+data you requested. Its contents will vary depending on the kind of request and
+`care`.
 
 Now we'll look at each of the `rave` request types in turn.
 
@@ -60,9 +68,16 @@ Now we'll look at each of the `rave` request types in turn.
 
 This `rave` is for reading a single file or directory immediately.
 
-The `care` of the [mood](/reference/arvo/clay/data-types#mood-clay-single-subscription-request) will determine what you can read and what type of data will be returned. See the [care](/reference/arvo/clay/data-types#care-clay-clay-submode) documentation and [scry](/reference/arvo/clay/scry) documentation for details on the various `care`s.
+The `care` of the [mood](/reference/arvo/clay/data-types#moodclay) will
+determine what you can read and what type of data will be returned. See the
+[care](/reference/arvo/clay/data-types#careclay) documentation and
+[scry](/reference/arvo/clay/scry) documentation for details on the various
+`care`s.
 
-The [case](/reference/arvo/clay/data-types#case-specifying-a-commit) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
+The [case](/reference/arvo/clay/data-types#caseclay) specifies the `desk`
+revision and you can use whichever kind you prefer. The `path` will usually be
+a path to a file or directory like `/gen/hood/hi/hoon` but may be something
+else depending on the `care`.
 
 #### Example
 
@@ -76,7 +91,9 @@ The [case](/reference/arvo/clay/data-types#case-specifying-a-commit) specifies t
 [%next =mood]  ::  await next version
 ```
 
-This subscribes to the next version of the specified file. See [here](/reference/arvo/clay/data-types#mood-clay-single-subscription-request) for details of the `mood` structure.
+This subscribes to the next version of the specified file. See
+[here](/reference/arvo/clay/data-types#moodclay) for details of the `mood`
+structure.
 
 If you subscribe to the current `case` of the `desk`, Clay will not respond until the file changes. If you subscribe to a previous `case` of the `desk` and the file has changed in between then and now, it will immediately return the first change it comes across in that range. For example, if you're currently at `case` `100`, subscribe to case `50` and the file in question has been modified at both `60` and `80`, clay will immediately return the version of the file at `case` `60`.
 
@@ -126,9 +143,17 @@ If the `track` is `%.y` it will just return a `%writ` like:
 
 ...that merely informs you of a change. If you want the actual data you'll have to request it separately.
 
-If the `track` is `%.n`, the `cage` of the `%writ` will contain a [nako](/reference/arvo/clay/data-types#nako-subscription-response-data) with the relevant data for all changes to a desk between what you have and the `case` requested. It is very large and fairly complicated. The `nako` structure is defined in the `clay.hoon` source file itself rather than in `lull.hoon` or elsewhere since you're unlikely to work with it yourself.
+If the `track` is `%.n`, the `cage` of the `%writ` will contain a
+[nako](/reference/arvo/clay/data-types#nako) with the relevant data for all
+changes to a desk between what you have and the `case` requested. It is very
+large and fairly complicated. The `nako` structure is defined in the
+`clay.hoon` source file itself rather than in `lull.hoon` or elsewhere since
+you're unlikely to work with it yourself.
 
-The `from` and `to` fields of the [moat](/reference/arvo/clay/data-types#moat-clay-range-subscription-request) specify the range of `case`s for which to subscribe. The range is _inclusive_. It can be specified by date or by revision number, whichever you prefer.
+The `from` and `to` fields of the
+[moat](/reference/arvo/clay/data-types#moatclay) specify the range of `case`s
+for which to subscribe. The range is _inclusive_. It can be specified by date
+or by revision number, whichever you prefer.
 
 The `path` in the `moat` is a path to a file or directory. If it's `~` it refers to the root of the `desk` in question. This lets you say "only inform me of changes to the `desk` if the specified file or directory exists". If it doesn't exist, Clay will not send you anything.
 
@@ -164,7 +189,19 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 
 To write or modify a file, we send Clay a `%info` `task`.
 
-The `%|` tag in the [nori](/reference/arvo/clay/data-types#nori-clay-repository-action) is not currently supported and will crash with a `%labelling-not-implemented` if used, so you can focus on the `%&` part. The [soba](/reference/arvo/clay/data-types#soba-clay-delta) in the `nori` is just a list of changes so you can make more than one change in one request. Its `path` is just the path to a file like `/gen/hood/hi/hoon` and the [miso](/reference/arvo/clay/data-types#miso-clay-ankh-delta) is one of these types of requests:
+If the head of the [nori](/reference/arvo/clay/data-types#noriclay) `dit` is
+`%|`, it's a request to add a label to a commit, and the `nori` looks like `[%|
+p=@tas q=(unit aeon)]` where `p` is the label and `q` is the
+[`aeon`](/reference/arvo/clay/data-types#aeonclay) (commit reference). If `q`
+is null, the label is applied to the latest commit in the desk.
+
+If the head of the `nori` is `%&`, it's a request to add, delete or modify one
+or more files in the given desk, and looks like `[%& p=soba]`. The
+[soba](/reference/arvo/clay/data-types#sobaclay) in the `nori` is just a list
+of changes so you can make more than one change in one request. Its `path` is
+just the path to a file like `/gen/hood/hi/hoon` and the
+[miso](/reference/arvo/clay/data-types#misoclay) is one of these types of
+requests:
 
 - `%del` - Delete a file.
 - `%ins` - Insert file. This will also replace an existing file.
@@ -195,7 +232,7 @@ Here are examples of using each of these as well as making multiple changes in o
 ```
 
 Force on/off apps on a desk. A
-[`rein:clay`](/reference/arvo/clay/data-types#rein) is a `map` from Gall agent
+[`rein:clay`](/reference/arvo/clay/data-types#reinclay) is a `map` from Gall agent
 name to `?`, where `%.y` is *on* and `%.n` is *off*. By default, a live desk
 will run the agents defined in its `desk.bill` manifest, so this is used to
 either stop agents in its manifest or start agents which aren't in its manifest.
