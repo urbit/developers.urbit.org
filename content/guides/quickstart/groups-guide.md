@@ -1916,7 +1916,7 @@ this by adding a `sys.kelvin` file to the root of our `squad` directory:
 
 ```shell {% copy=true %}
 cd squad
-echo "[%zuse 417]" > sys.kelvin
+echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do
@@ -1967,10 +1967,10 @@ squad
 ```
 
 Let's now try it out. In the Dojo of our comet,
-we'll create a new desk by forking from an existing one:
+we'll create a new desk with the `|new-desk` generator:
 
 ``` {% copy=true %}
-|merge %squad our %webterm
+|new-desk %squad
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
@@ -1979,9 +1979,8 @@ Next, we'll mount the desk so we can access it from the host OS:
 |mount %squad
 ```
 
-Currently its contents are the same as the `%webterm` desk, so we'll need to
-delete those files and copy in our own instead. In the normal shell, do the
-following:
+Currently it just contains some skeleton files, but we can just delete those
+and add our own instead. In the normal shell, do the following:
 
 ```shell {% copy=true %}
 rm -r dev-comet/squad/*

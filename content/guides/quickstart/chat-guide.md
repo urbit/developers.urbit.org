@@ -1595,7 +1595,7 @@ this by adding a `sys.kelvin` file to the root of our `hut` directory:
 
 ```shell {% copy=true %}
 cd hut
-echo "[%zuse 415]" > sys.kelvin
+echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do
@@ -1635,10 +1635,10 @@ the moment.
 ## Put it together
 
 Our app is now complete, so let's try it out. In the Dojo of our comet,
-we'll create a new desk by forking from an existing one:
+we'll create a new desk with the `|new-desk` generator:
 
 ``` {% copy=true %}
-|merge %hut our %webterm
+|new-desk %hut
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
@@ -1647,8 +1647,8 @@ Next, we'll mount the desk so we can access it from the host OS:
 |mount %hut
 ```
 
-Currently its contents are the same as the `%webterm` desk, so we'll need to
-delete those files and copy in our own instead. In the normal shell, do the
+It'll have a handful of skeleton files in it, but we can just delete those and
+add our own instead. In the normal shell, do the
 following:
 
 ```shell {% copy=true %}

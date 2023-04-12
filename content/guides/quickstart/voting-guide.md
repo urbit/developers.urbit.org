@@ -1902,7 +1902,7 @@ this by adding a `sys.kelvin` file to the root of our `tally` directory:
 
 ```shell {% copy=true %}
 cd tally
-echo "[%zuse 417]" > sys.kelvin
+echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do
@@ -1933,10 +1933,10 @@ following:
 ## Put it together
 
 Our app is now complete, so let's try it out. In the Dojo of our comet, we'll
-create a new desk (filesystem repo) by forking from an existing one:
+create a new desk with the `|new-desk` generator:
 
 ```{% copy=true %}
-|merge %tally our %webterm
+|new-desk %tally
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
@@ -1945,9 +1945,8 @@ Next, we'll mount the desk so we can access it from the host OS:
 |mount %tally
 ```
 
-Currently its contents are the same as the `%webterm` desk, so we'll need to
-delete those files and copy in our own instead. In the normal shell, do the
-following:
+Currently it just contains some skeleton files, but we can delete those and add
+our own instead. In the normal shell, do the following:
 
 ```shell {% copy=true %}
 rm -r dev-comet/tally/*
