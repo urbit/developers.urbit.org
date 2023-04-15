@@ -37,7 +37,7 @@ the specified agent resides. For example:
 
 ```
 > .^(desk %gd /=hark-store=)
-%garden
+%landscape
 > .^(desk %gd /=hood=)
 %base
 ```
@@ -49,7 +49,7 @@ field of the above diagram, and no path, will produce a set of all installed
 agents on that desk and their status. For example:
 
 ```
-> .^((set [=dude:gall live=?]) %ge /=garden=)
+> .^((set [=dude:gall live=?]) %ge /=landscape=)
 { [dude=%hark-system-hook live=%.y]
   [dude=%treaty live=%.y]
   [dude=%docket live=%.y]

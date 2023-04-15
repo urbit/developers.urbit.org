@@ -16,7 +16,7 @@ sometimes you may find structure definitions in `/lib`, for example.
 - `/gen` contains generators. Many applications make use of generators, but also
   each generator in this folder may be run from dojo using `+`. For example,
   `/gen/foo/hoon` in the `%base` desk is run with `+foo`. Generators on desks
-  other than `%base` can be run with `+desk!generator` like `+garden!foo`.
+  other than `%base` can be run with `+desk!generator` like `+landscape!foo`.
 - `/lib` contains libraries that may be shared by multiple agents, threads,
   generators, etc. However, this is not the location of the standard libraries
   (see `/sys`). Libraries are imported from `/lib` with `/+`.
@@ -35,7 +35,7 @@ sometimes you may find structure definitions in `/lib`, for example.
 - `/ted` contains [threads](/reference/arvo/threads/overview). These may be run
   from dojo using `-`. For example, `/ted/foo/hoon` on the `%base` desk is run
   with `-foo`. Threads on desks other than the `%base` desk can be run with
-  `-desk!thread` like `-garden!foo`.
+  `-desk!thread` like `-landscape!foo`.
 - `/tests` contains unit tests intended to be run using the `test` thread. To
   run a particular test `+test-bar` in `/tests/foo.hoon` in dojo, enter `-test %/tests/foo/test-bar ~`. If a file is specified, every test in that file will
   run. If a folder is specified, every test in that folder will run.

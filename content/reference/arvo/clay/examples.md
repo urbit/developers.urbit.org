@@ -419,19 +419,19 @@ Using the `send-task-take-gift.hoon` thread, let's make such a request:
 
 Here we'll look at mounting `desk`s, directories and files to unix by sending Clay a `%mont` `task`.
 
-Let's first try mounting our `%garden` desk:
+Let's first try mounting our `%landscape` desk:
 
 ```
-> |pass [%c [%mont %garden [our %garden da+now] /]]
+> |pass [%c [%mont %landscape [our %landscape da+now] /]]
 ```
 
-If you look in your pier, you should now see a `garden` folder which contains the contents of that `desk`.
+If you look in your pier, you should now see a `landscape` folder which contains the contents of that `desk`.
 
 If we make a `%boat` request as detailed in the [%boat](#boat) section, we'll now see the mount point listed:
 
 ```
 > -send-task-take-gift [%boat ~]
-[%hill p=~[%garden %base]]
+[%hill p=~[%landscape %base]]
 ```
 
 Note the mount point doesn't need to match a `desk`, file or directory. We can also do:
@@ -455,10 +455,10 @@ If you look in your pier you'll now see a `gen` folder with the contents of `/ge
 
 Here we'll look at unmounting `desk`s, directories and files by sending Clay a `%ogre` `task`.
 
-Let's unmount what we mounted in the [%mont](#mont) section. First we'll unmount the `%garden` desk:
+Let's unmount what we mounted in the [%mont](#mont) section. First we'll unmount the `%landscape` desk:
 
 ```
-|pass [%c [%ogre %garden]]
+|pass [%c [%ogre %landscape]]
 ```
 
 Our custom mount point `%wibbly-wobbly`:

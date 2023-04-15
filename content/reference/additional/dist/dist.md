@@ -16,7 +16,7 @@ Every desk is self-contained: the result of validating its files and building it
 
 This symmetry is broken during agent installation, which can emit effects that might trigger other actions that cause the Arvo event to fail and be rolled back. An agent can ask the kernel to kill the Arvo event by using the new `%pyre` effect. Best practice, though, is for no desk to have a hard dependency on another desk.
 
-If you're publishing an app that expects another app to be installed in order to function, the best practice is to check in `+on-init` for the presence of that other app's desk. If it's not installed, your app should display a message to the user and a link to the app that they should install in order to support your app. App-install links are well-supported in Tlon's Landscape, a suite of user-facing applications developed by Tlon.
+If you're publishing an app that expects another app to be installed in order to function, the best practice is to check in `+on-init` for the presence of that other app's desk. If it's not installed, your app should display a message to the user and a link to the app that they should install in order to support your app. App-install links are well-supported in Landscape.
 
 For the moment, every live desk must have the same Kelvin version as the kernel. Future kernels that know how to maintain backward compatibility with older kernels will also allow older desks, but no commitment has yet been made to maintain backward compatibility across kernel versions, so for the time being, app developers should expect to update their apps accordingly.
 
@@ -24,13 +24,23 @@ Each desk defines its own filetypes (called `mark`s), in its `/mar` folder. Ther
 
 It's common for a desk to want to use files that were originally defined in another desk, so that it can interact with agents on that desk. The convention is that if I'm publishing an app that I expect other devs to build client apps for (on other desks), I split out a "dev desk" containing just the external interface to my desk. Typically, both my app desk and clients' app desks will sync from this dev desk.
 
-Tlon has done this internally. Most desks will want to sync the `%base-dev` desk so they can easily interact with the kernel and system apps in the `%base` desk. The `%base` desk includes agents such as `%dojo` and `%hood` (with Kiln as an informal sub-agent of `%hood` that manages desk installations).
+Most desks will want to sync the `%base-dev` desk so they can easily interact with the kernel and system apps in the `%base` desk. The `%base` desk includes agents such as `%dojo` and `%hood` (with Kiln as an informal sub-agent of `%hood` that manages desk installations).
 
-A "landscape app", i.e. a desk that defines a tile that the user can launch from the home screen, should also sync from the `%garden-dev` desk. This desk includes the versioned `%docket-0` mark, which the app needs in order to include a `/desk/docket-0` file.
+A "landscape app", i.e. a desk that defines a tile that the user can launch
+from the home screen, should also sync from the Landscape `desk-dev` [available
+in this repo](https://github.com/tloncorp/landscape). This desk includes the
+versioned `%docket-0` mark, which the app needs in order to include a
+`/desk/docket-0` file.
 
-The `%docket` agent reads the `/desk/docket-0` file to display an app tile on the home screen and hook up other front-end functionality, such as downloading the app's client bundle ([glob](/reference/additional/dist/glob)). Docket is a new agent, in the `%garden` desk, that manages app installations. Docket serves the home screen, downloads client bundles, and communicates with Kiln to configure the apps on your system.
+Docket is an agent in the `%landscape` desk that manages app installations. The
+`%docket` agent reads the `/desk/docket-0` file to display an app tile on the
+home screen and hook up other front-end functionality, such as downloading the
+app's client bundle ([glob](/reference/additional/dist/glob)). Docket serves
+the home screen, downloads client bundles, and communicates with Kiln to
+configure the apps on your system.
 
-For those of you familiar with the old `%glob` and `%file-server` agents, they have now been replaced by Docket.
+For those of you familiar with the old `%glob` and `%file-server` agents, they
+have now been replaced by Docket.
 
 ### Anatomy of a Desk
 

@@ -118,7 +118,7 @@ argument. The first desk must be the base desk that contains the Arvo kernel,
 standard library and related files - typically `%base`.
 
 ```
-~your-urbit:dojo> .urbit/pill +solid %base %garden %landscape %webterm %bitcoin
+~your-urbit:dojo> .urbit/pill +solid %base %landscape %webterm
 ```
 
 #### `+tree`

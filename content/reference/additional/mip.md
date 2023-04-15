@@ -67,7 +67,7 @@ desc = "Used in /lib/mip.hoon"
 +++
 
 A `mip` is a map of maps. These can be constructed manually by nesting
-ordinary `map`s, but the `%garden` desk contains a `/lib/mip.hoon` library which
+ordinary `map`s, but the `%landscape` desk contains a `/lib/mip.hoon` library which
 makes these a bit easier to deal with. You can copy the library into your own
 project. The various `mip` functions are documented below.
 
@@ -104,7 +104,7 @@ A `mold`.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > *(mip:libmip @ @ @)
 {}
@@ -136,7 +136,7 @@ This is the container door for all the mip functions.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > ~(. bi:libmip *(mip:libmip @ @ @))
 < 8.bql
@@ -184,7 +184,7 @@ up empty.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > =mymip (~(put bi:libmip *(mip:libmip @ @ @)) 1 2 3)
 > =mymip (~(put bi:libmip mymip) 1 3 4)
@@ -238,7 +238,7 @@ no `c` in `b` or no `b` in `a`.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > =mymip (~(put bi:libmip *(mip:libmip @ @ @)) 1 2 3)
 
@@ -281,7 +281,7 @@ A noun of the type of the values in the `mip`, or else crashes.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > =mymip (~(put bi:libmip *(mip:libmip @ @ @)) 1 2 3)
 
@@ -327,7 +327,7 @@ A noun, either the type of the value in the map or `d`.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > =mymip (~(put bi:libmip *(mip:libmip @ @ @)) 1 2 3)
 
@@ -369,7 +369,7 @@ A `?` which is true if `c` in `b` exists, and false otherwise.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > =mymip (~(put bi:libmip *(mip:libmip @ @ @)) 1 2 3)
 
@@ -410,7 +410,7 @@ A `(set [type])` where `[type]` is the type of the keys in the inner map.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > =mymip (~(put bi:libmip *(mip:libmip @ @ @)) 1 2 3)
 
@@ -459,7 +459,7 @@ A new, modified `mip`.
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > =mymip (~(put bi:libmip *(mip:libmip @ @ @)) 1 2 3)
 > =mymip (~(put bi:libmip mymip) 1 1 42)
@@ -507,7 +507,7 @@ A triple cell of `[x y v]`, where:
 #### Examples
 
 ```
-> =libmip -build-file /=garden=/lib/mip/hoon
+> =libmip -build-file /=landscape=/lib/mip/hoon
 
 > =mymip (~(put bi:libmip *(mip:libmip @ @ @)) 1 2 3)
 > =mymip (~(put bi:libmip mymip) 1 1 42)

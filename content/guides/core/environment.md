@@ -131,9 +131,11 @@ have to do it again each time. In the dojo:
 ```
 > |mount %base
 >=
-> |mount %garden
->=
 > |mount %landscape
+>=
+> |mount %groups
+>=
+> |mount %talk
 >=
 > |mount %webterm
 >=
@@ -234,36 +236,50 @@ The other `mark` files can just be copied across from the `%base` desk.
 If you're working on something more complex, for example a desk with agents and
 a front-end, there will be a number of `mark` files, libraries, etc, that will
 be necessary. Rather than having to manually copy all the files from the
-relevant default desks, the [Urbit OS repo](https://github.com/urbit/urbit)
+relevant default desks, the [Urbit OS repo](https://github.com/urbit/urbit) and [Tlon Landscape repo](https://github.com/tloncorp/landscape)
 includes some dev desks which can be used as a base. To get these, make sure you
-have git installed and then clone the repo:
+have git installed and then clone the repos:
 
 ```
 git clone https://github.com/urbit/urbit ~/git/urbit
+git clone https://github.com/tloncorp/landscape ~/git/landscape
 ```
 
-If you now change to the `~/git/urbit/pkg` directory, you'll see the source for
-the default desks, among other things:
+If you look in the `~/git/urbit/pkg` directory, you'll see the source for
+the `%base` desk (called `arvo`), and its dev version called `base-dev`:
+
+```
+> tree -L 1 ~/git/urbit/pkg
+~/git/urbit/pkg
+├── arvo
+├── autoprop
+├── base-dev
+├── herb
+├── interface
+├── landscape
+└── symbolic-merge.sh
+```
+
+Likewise, from the separate Landscape repo, `~/git/landscape/desk-dev` is the
+dev desk for `%landscape`.
+
+If your app will have a tile and front-end, you might like to use both
+`base-dev` and Landscape's `desk-dev` as bases. To create such a base, there's
+a `symbolic-merge.sh` script included in the `pkg` directory of the `urbit`
+repo. You can use it like so:
 
 ```
 cd ~/git/urbit/pkg
-```
-
-The desks ending in `-dev`, like `base-dev` and `garden-dev`, contain files for
-interfacing with those respective desks. If you're creating a new desk that has
-a tile and front-end, for example, you might like to use `base-dev` as a base. To create such a base, there's a `symbolic-merge.sh`
-script included in the directory. You can use it like so:
-
-```
 ./symbolic-merge base-dev mydesk
+./symbolic-merge ../../landscape/desk-dev mydesk
 ```
 
 After running that, you'll have a `mydesk` desk in the `pkg` directory that
-contains the symlinked files from that dev desk. To copy the files into
+contains the symlinked files from those two dev desks. To copy the files into
 your pier, you can create and mount a mydesk desk in the dojo:
 
 ```
-|merge %mydesk our %base
+|new-desk %mydesk
 |mount %mydesk
 ```
 
@@ -292,10 +308,10 @@ and copy the actual files.
 Now you can just add a `sys.kelvin` file:
 
 ```
-echo "[%zuse 416]" > mydesk/sys.kelvin
+echo "[%zuse 414]" > mydesk/sys.kelvin
 ```
 
-And you'll be able to mount the desk with `|commit %mydesk`.
+And you'll be able to commit the changes with `|commit %mydesk`.
 
 ## Project organization
 

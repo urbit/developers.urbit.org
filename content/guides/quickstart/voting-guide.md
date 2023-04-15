@@ -105,7 +105,7 @@ our new app will need. We can do this with the `|mount` command:
 ```{% copy=true %}
 |mount %squad
 |mount %base
-|mount %garden
+|mount %landscape
 ```
 
 With those mounted, switch back to a normal shell in another terminal window.
@@ -118,7 +118,7 @@ cp -r dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,dock
 cp -r dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} tally/lib/
 cp -r dev-comet/squad/sur/{docket*, squad*} tally/sur/
 cp -r dev-comet/base/sur/ring.hoon tally/sur/
-cp -r dev-comet/garden/lib/mip.hoon tally/lib/
+cp -r dev-comet/landscape/lib/mip.hoon tally/lib/
 ```
 
 Now we can start working on the app itself.

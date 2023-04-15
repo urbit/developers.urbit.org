@@ -49,13 +49,11 @@ Every urbit has one or more desks, which are independently
 revision-controlled branches. Each desk contains its own `mark`
 definitions, apps, and so forth.
 
-Traditionally, an Urbit ship has at least a `%base` desk, and usually
-`%garden` and `%landscape` desks. The `%base` desk has the kernel and
-base system software. The `%garden` desk has software pertaining to
-the home screen. The `%landscape` desk contains software for the
-Groups app. The `%base` desk is a fork of the `%base` desk of
-whichever ship you download system updates from - typically your
-sponsor, but theoretically may be any ship.
+Traditionally, an Urbit ship has at least a `%base` desk, and usually a
+`%landscape` desk. The `%base` desk has the kernel and base system software.
+The `%landscape` desk has software pertaining to the home screen. The `%base`
+desk is a fork of the `%base` desk of whichever ship you download system
+updates from - typically your sponsor, but theoretically may be any ship.
 
 A desk is a series of numbered commits, the most recent of which
 represents the current state of the desk. A commit is composed of

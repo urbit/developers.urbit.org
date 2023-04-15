@@ -129,7 +129,7 @@ self-contained, including all mark files and libraries necessary to build them.
 For example, since our app contains a number of `.hoon` files, we need the
 `hoon.hoon` mark, and its dependencies. The easiest way to ensure our desk has
 everything it needs is to copy in the "dev" versions of the `%base` and
-`%garden` desks. To do this, we first clone the Urbit and Landscape git repositories:
+`%landscape` desks. To do this, we first clone the Urbit and Landscape git repositories:
 
 ```sh {% copy=true %}
 git clone https://github.com/urbit/urbit.git urbit-git

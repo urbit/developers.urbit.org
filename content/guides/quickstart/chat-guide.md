@@ -97,7 +97,7 @@ our new app will need. We can do this with the `|mount` command:
 
 ```{% copy=true %}
 |mount %squad
-|mount %garden
+|mount %landscape
 ```
 
 With those mounted, switch back to a normal shell in another terminal window.
@@ -109,7 +109,7 @@ mkdir -p hut/{app,sur,mar,lib}
 cp -r dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} hut/mar/
 cp dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} hut/lib/
 cp dev-comet/squad/sur/{docket*,squad*} hut/sur/
-cp dev-comet/garden/lib/mip.hoon hut/lib/
+cp dev-comet/landscape/lib/mip.hoon hut/lib/
 ```
 
 Now we can start working on the app itself.

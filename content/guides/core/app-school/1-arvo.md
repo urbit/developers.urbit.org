@@ -153,15 +153,16 @@ some of these features in more detail later in the guide.
 ## Desk Anatomy
 
 The fundamental unit in Clay is a desk. Desks are kind of like git repositories.
-By default, new urbits come with the following desks included: `%base`, `%garden`, `%landscape`, `%webterm`
-and `%bitcoin`.
+By default, new urbits come with the following desks included: `%base`,
+`%landscape`, `%webterm`, `%groups` and `%talk.
 
-- `%base` - This desk contains the kernel as well as some core agents and utilities.
-- `%garden` - This desk contains agents and utilities for managing apps, and the
-  home screen that displays other app tiles.
-- `%landscape` - This desk contains everything for the Groups app.
+- `%base` - This desk contains the kernel as well as some core agents and
+  utilities.
+- `%landscape` - This desk contains agents and utilities for managing apps, and
+  the home screen that displays other app tiles.
+- `%groups` - This desk contains everything for the Groups app.
+- `%talk` - This desk contains the Talk app.
 - `%webterm` - This desk is for the web dojo app.
-- `%bitcoin` - This desk is for the bitcoin wallet app and bitcoin provider.
 
 You'll typically also have a `%kids` desk, which is just a copy of `%base` from
 upstream that sponsored ships (moons in the case of a planet, planets in the

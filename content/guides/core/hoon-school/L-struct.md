@@ -244,10 +244,10 @@ A `+$vase` is a pair of type and value, such as that returned by `!>` zapgar.  A
 
 - [`++jug`](/reference/hoon/stdlib/2o#jug) is a mold for a `map` of `set`s.  `++jug` uses the  [`++ju`](/reference/hoon/stdlib/2j#ju) core.  (Mnemonic:  jugs hold liquids, evoking the unordered nature of a `set`.)
 
-- `++mip` is a mold for a map of maps.  `++mip` lives in the `%garden` desk in the Urbit repo in `/lib/mip.hoon`.  Affordances are still few and there are not currently docs on how to use `++mip`, but a short example follows:
+- `++mip` is a mold for a map of maps.  `++mip` lives in the `%landscape` desk in the Urbit repo in `/lib/mip.hoon`.  Affordances are still few and there are not currently docs on how to use `++mip`, but a short example follows:
 
     ```hoon
-    > =mip -build-file /=garden=/lib/mip/hoon
+    > =mip -build-file /=landscape=/lib/mip/hoon
     
     > =my-map-warm (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870]])
     

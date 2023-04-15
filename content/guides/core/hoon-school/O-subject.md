@@ -528,7 +528,7 @@ There are many more options with Clay than just accessing file and folder data. 
 
 ```hoon
 > .^((set desk) %cd %)
-{%bitcoin %base %landscape %webterm %garden %kids}
+{%bitcoin %base %landscape %webterm %landscape %kids}
 ```
 
 Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](/reference/arvo).

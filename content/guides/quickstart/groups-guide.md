@@ -91,7 +91,7 @@ can copy them across. We can do this with the `|mount` command:
 
 ```{% copy=true %}
 |mount %base
-|mount %garden
+|mount %landscape
 ```
 
 With those mounted, switch back to a normal shell in another terminal window.
@@ -102,9 +102,9 @@ across that our app will depend on:
 mkdir -p squad/{app,sur,mar,lib}
 cp -r dev-comet/base/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*} squad/mar/
 cp -r dev-comet/base/lib/{agentio*,dbug*,default-agent*,skeleton*} squad/lib/
-cp -r dev-comet/garden/mar/docket-0.hoon squad/mar/
-cp -r dev-comet/garden/lib/docket.hoon squad/lib/
-cp -r dev-comet/garden/sur/docket.hoon squad/sur/
+cp -r dev-comet/landscape/mar/docket-0.hoon squad/mar/
+cp -r dev-comet/landscape/lib/docket.hoon squad/lib/
+cp -r dev-comet/landscape/sur/docket.hoon squad/sur/
 ```
 
 Now we can start working on the app itself.

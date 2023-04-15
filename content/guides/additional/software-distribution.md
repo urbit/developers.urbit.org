@@ -63,9 +63,9 @@ following commands in the Dojo:
 |cp %/mar/txt-diff/hoon /=hello=/mar/txt-diff/hoon
 |cp %/mar/ship/hoon /=hello=/mar/ship/hoon
 |cp %/mar/bill/hoon /=hello=/mar/bill/hoon
-|cp /=garden=/mar/docket-0/hoon /=hello=/mar/docket-0/hoon
-|cp /=garden=/sur/docket/hoon /=hello=/sur/docket/hoon
-|cp /=garden=/lib/docket/hoon /=hello=/lib/docket/hoon
+|cp /=landscape=/mar/docket-0/hoon /=hello=/mar/docket-0/hoon
+|cp /=landscape=/sur/docket/hoon /=hello=/sur/docket/hoon
+|cp /=landscape=/lib/docket/hoon /=hello=/lib/docket/hoon
 ```
 
 ## Mount the desk

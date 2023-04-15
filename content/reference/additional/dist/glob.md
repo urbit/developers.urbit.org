@@ -81,13 +81,13 @@ Note the target desk must have been `|install`ed before uploading its glob. When
 
 ### `-make-glob`
 
-There's a different process for globs to be distributed over HTTP from a webserver rather than over Ames from a ship. For this purpose, the `%garden` desk includes a `%make-glob` thread. The thread takes a folder in a desk and produces a glob of the files it contains, which it then saves to Unix in a [`jam`](/reference/hoon/stdlib/2p#jam)file with a `.glob` extension.
+There's a different process for globs to be distributed over HTTP from a webserver rather than over Ames from a ship. For this purpose, the `%landscape` desk includes a `%make-glob` thread. The thread takes a folder in a desk and produces a glob of the files it contains, which it then saves to Unix in a [`jam`](/reference/hoon/stdlib/2p#jam)file with a `.glob` extension.
 
-To begin, you'll need to spin up a ship (typically a fake ship) and `|mount` a desk for which to add the files. In order for Clay to add the files, the desk must contain `mark` files in its `/mar` directory for all file extensions your folder contains. The `%garden` desk is a good bet because it includes `mark` files for `.js`, `.html`, `.png`, `.svg`, `.woff2` and a couple of others. If there's no desk with a mark for a particular file type you want included in your glob, you may need to add a new mark file. A very rudimentary mark file like the `png.hoon` mark will suffice.
+To begin, you'll need to spin up a ship (typically a fake ship) and `|mount` a desk for which to add the files. In order for Clay to add the files, the desk must contain `mark` files in its `/mar` directory for all file extensions your folder contains. The `%landscape` desk is a good bet because it includes `mark` files for `.js`, `.html`, `.png`, `.svg`, `.woff2` and a couple of others. If there's no desk with a mark for a particular file type you want included in your glob, you may need to add a new mark file. A very rudimentary mark file like the `png.hoon` mark will suffice.
 
 With the desk mounted, add the folder to be globbed to the root of the desk in Unix. It's imporant it's in the root because the `%make-glob` thread will only strip the first level of the folder heirarchy.
 
-Next, `|commit` the files to the desk, then run `-garden!make-glob %the-desk /folder-name`, where `%the-desk` is the desk containing the folder to be globbed and `/folder-name` is its name.
+Next, `|commit` the files to the desk, then run `-landscape!make-glob %the-desk /folder-name`, where `%the-desk` is the desk containing the folder to be globbed and `/folder-name` is its name.
 
 On Unix, if you look in `/path/to/pier/.urb/put`, you'll now see a file which looks like:
 

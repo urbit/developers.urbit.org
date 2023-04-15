@@ -43,7 +43,7 @@ We now need to create a new clean desk in the development ship.  In the Dojo:
 
 ```hoon {% copy=true %}
 |mount %base
-|mount %garden
+|mount %landscape
 |merge %flap our %base
 |mount %flap
 ```
@@ -64,10 +64,10 @@ cp -r comet/base/lib comet/flap
 cp -r comet/base/sur comet/flap
 cp -r comet/base/mar comet/flap
 
-# Copy necessary %garden files to %flap
-yes | cp -r comet/garden/lib comet/flap
-yes | cp -r comet/garden/sur comet/flap
-yes | cp -r comet/garden/mar comet/flap
+# Copy necessary %landscape files to %flap
+yes | cp -r comet/landscape/lib comet/flap
+yes | cp -r comet/landscape/sur comet/flap
+yes | cp -r comet/landscape/mar comet/flap
 
 # Create empty directories for planned files
 mkdir -p comet/flap/app/flap
@@ -111,7 +111,7 @@ At this point, your overall directory structure (not showing most of the files) 
     │   ├── desk.bill
     │   ├── desk.docket-0
     │   └── sys.kelvin
-    └── garden/
+    └── landscape/
 ```
 
 `|commit %flap` to include all of these files.

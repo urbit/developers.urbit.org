@@ -50,4 +50,4 @@ by `=`. Each `=` will be auto-filled with these defaults, for example
 `/=base=`, `/~sampel==`, etc. 
 
 A file path in the dojo would typically be entered like `%/gen/hood/code` or
-`/=garden=/sys/kelvin`.
+`/=landscape=/sys/kelvin`.
