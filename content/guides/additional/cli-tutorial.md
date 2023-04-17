@@ -78,7 +78,7 @@ The additional arms are described below. The Hoon code shows their expected type
 
 ```hoon
   ++  command-parser
-    |~  =sole-id
+    |=  =sole-id
     |~(nail *(like [? command-type]))
 ```
 
