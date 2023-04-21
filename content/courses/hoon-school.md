@@ -1,8 +1,8 @@
 +++
-title = "Hoon School Live"
+title = "Hoon School"
 weight = 100
 next_cohort = "June 2023"
-image = "https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school-live.svg"
+image = "https://storage.googleapis.com/media.urbit.org/developers/card-images/hoon-school.svg"
 description = "Hoon School Live teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification."
 +++
 
@@ -13,7 +13,7 @@ If you prefer to learn as part of a group with a hands-on instructor, regular
 exercises and discussions, and a completion certification, then Hoon School Live
 will be a good fit for you.  We seek to offer it a few times a year.
 
-By completing Hoon School Live as a cohort student, you should be able to read and
+By completing Hoon School as a cohort student, you should be able to read and
 interpret most nonspecialist Hoon code, produce useful standalone code, and
 explain subject-oriented programming.  We omit some of the written Hoon School
 content for time, but you should be well-equipped to understand the optional

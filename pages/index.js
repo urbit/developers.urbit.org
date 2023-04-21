@@ -154,19 +154,19 @@ export default function Home({ search, posts, highlights }) {
             </p>
             <TwoUp>
               <TallCard
-                title="Hoon School"
+                title="Hoon Guide"
                 description="Learn the fundamentals of the Hoon programming language"
                 callout="View Guide"
                 href="/guides/core/hoon-school"
-                image="https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school.svg"
+                image="https://storage.googleapis.com/media.urbit.org/developers/card-images/hoon-guide.svg"
                 className="h-full"
               />
               <TallCard
-                title="App School"
+                title="App Guide"
                 description="Learn how to build Urbit userspace applications by writing your own Gall agents"
                 callout="View Guide"
                 href="/guides/core/app-school"
-                image="https://storage.googleapis.com/media.urbit.org/developers/images/app-school.svg"
+                image="https://storage.googleapis.com/media.urbit.org/developers/card-images/app-guide.svg"
                 className="h-full"
               />
             </TwoUp>

@@ -183,25 +183,25 @@ function Landing({ search, posts }) {
               description="Learn how to get your urbit development environment configured"
               callout="View Guide"
               href="/guides/core/environment"
-              image="https://storage.googleapis.com/media.urbit.org/developers/images/environment.svg"
+              image="https://storage.googleapis.com/media.urbit.org/developers/card-images/environment-setup.svg"
               className="h-full"
             />
             <TallCard
-              title="Hoon School"
+              title="Hoon Guide"
               description="Learn the fundamentals of the Hoon programming language"
               callout="View Guide"
               href="/guides/core/hoon-school"
-              image="https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school.svg"
+              image="https://storage.googleapis.com/media.urbit.org/developers/card-images/hoon-guide.svg"
               className="h-full"
             />
           </TwoUp>
           <TwoUp className="!mt-0">
             <TallCard
-              title="App School"
+              title="App Guide"
               description="Learn how to build Urbit userspace applications by writing your own Gall agents"
               callout="View Guide"
               href="/guides/core/app-school"
-              image="https://storage.googleapis.com/media.urbit.org/developers/images/app-school.svg"
+              image="https://storage.googleapis.com/media.urbit.org/developers/card-images/app-guide.svg"
               className="h-full"
             />
             <TallCard
@@ -209,7 +209,7 @@ function Landing({ search, posts }) {
               description="Learn how to create Gall agents and integrate them into a React front-end"
               callout="View Guide"
               href="/guides/core/app-school-full-stack"
-              image="https://storage.googleapis.com/media.urbit.org/developers/images/app-school-fullstack.svg"
+              image="https://storage.googleapis.com/media.urbit.org/developers/card-images/app-guide-2.svg"
               className="h-full"
             />
           </TwoUp>

@@ -1,8 +1,8 @@
 +++
-title = "Core School Live"
+title = "Core School"
 weight = 10
 next_cohort = "Late Summer 2023"
-image = "https://storage.googleapis.com/media.urbit.org/developers/images/core-school-live.svg"
+image = "https://storage.googleapis.com/media.urbit.org/developers/card-images/core-school.svg"
 description = "Core School prepares experienced Hoon developers to work on the Arvo kernel, the Vere or New Mars runtime, and otherwise build the platform as a senior developer."
 +++
 

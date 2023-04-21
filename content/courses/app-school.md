@@ -1,9 +1,9 @@
 +++
-title = "App School Live"
+title = "App School"
 date = "2023-05-01"
 weight = 90
 next_cohort = "August 2023"
-image = "https://storage.googleapis.com/media.urbit.org/developers/images/app-school-live.svg"
+image = "https://storage.googleapis.com/media.urbit.org/developers/card-images/app-school.svg"
 description = "App School focuses on how to build a backend Gall agent, then on connecting it to a React-based front-end. When you're done, you'll be able to produce and distribute your own Urbit apps."
 +++
 
