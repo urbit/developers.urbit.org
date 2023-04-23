@@ -219,7 +219,7 @@ The most interesting part of the whole app is the `++handle-http` arm:
     ==
 ```
 
-This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/app/feature` are checked for login authentication, while `/app/feature/public` is not.
+This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/apps/feature` are checked for login authentication, while `/apps/feature/public` are not.
 
 ### `POST`
 
