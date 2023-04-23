@@ -74,7 +74,7 @@ For instance, in `/sys/vane/ames.hoon`, we find the definitions
 Thus for Ames, the nested core pattern largely consists of building a list of particular moves and then pulling them back out:  
 
 ```hoon
-  ::  if processing succeded, send positive ack packet and exit
+  ::  if processing succeeded, send positive ack packet and exit
   ++  send-ack
     |=  =bone
     ^+  event-core
