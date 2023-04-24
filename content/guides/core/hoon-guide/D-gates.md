@@ -227,12 +227,12 @@ How can we control what kind of value a gate returns?  Many programming language
 Remember `^-` kethep?  We will use `^-` as a _fence_, a way of making sure only data matching the appropriate structure get passed on.
 
 ```hoon {% copy=true %}
-::  Confirm whether a value is greater than one.
+::  Confirm whether a value is greater than one by return 1 (if no) or 0 (if yes).
 |=  a=@ud
 ^-  @ud
 ?:  (gth a 1)
-  %.n
-%.y
+  1
+0
 ```
 
 **This is the correct way to define a gate.**  Frequent annotation of type with `^-` kethep fences is _essential_ to producing good Hoon code.  From this point forward in Hoon School, we will hew to this standard.

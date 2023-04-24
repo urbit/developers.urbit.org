@@ -115,7 +115,7 @@ Azimuth](https://developers.urbit.org/guides/core/hoon-guide/C-azimuth#the-urbit
 
 While working with Hoon, you'll often want to delete an old fake ship and
 recreate a fresh one. Rather than having to wait a few minutes for the fresh
-ship to be initialised, you can instead create a backup copy of a fake ship.
+ship to be initialized, you can instead create a backup copy of a fake ship.
 That way you can just delete the current copy, replace it with the backup, and
 reboot in a matter of seconds.
 
