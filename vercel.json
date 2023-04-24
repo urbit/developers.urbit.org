@@ -10,32 +10,32 @@
         },
         {
         "source": "/guides/core/hoon-school/:path*",
-        "destination": "/guides/core/hoon-guide/:path",
+        "destination": "/guides/core/hoon-guide/:path"
         },
         {
         "source": "/guides/core/app-school/:path*",
-        "destination": "/guides/core/app-guide/:path",
+        "destination": "/guides/core/app-guide/:path"
         },
         {
         "source": "/guides/core/app-school-full-stack/:path*",
-        "destination": "/guides/core/app-guide-2/:path",
+        "destination": "/guides/core/app-guide-2/:path"
         },
         {
         "source": "/guides/courses/hsl",
-        "destination": "/guides/courses/hoon-school",
+        "destination": "/guides/courses/hoon-school"
         },
         {
         "source": "/guides/courses/asl",
-        "destination": "/guides/courses/app-school",
+        "destination": "/guides/courses/app-school"
         },
         {
         "source": "/guides/courses/awl",
-        "destination": "/guides/courses/app-workshop",
+        "destination": "/guides/courses/app-workshop"
         },
         {
         "source": "/guides/courses/csl",
-        "destination": "/guides/courses/core-school",
-        },
+        "destination": "/guides/courses/core-school"
+        }
     ]
    
 }
