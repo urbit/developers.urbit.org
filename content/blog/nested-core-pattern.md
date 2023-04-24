@@ -74,7 +74,7 @@ For instance, in `/sys/vane/ames.hoon`, we find the definitions
 Thus for Ames, the nested core pattern largely consists of building a list of particular moves and then pulling them back out:  
 
 ```hoon
-  ::  if processing succeded, send positive ack packet and exit
+  ::  if processing succeeded, send positive ack packet and exit
   ++  send-ack
     |=  =bone
     ^+  event-core
@@ -121,7 +121,7 @@ Gall uses two nested cores to manage agents:  `++mo` handles Arvo-level moves, w
 ```hoon
 ::
 ++  mo-core  .
-::  +mo-abed: initialise state with the provided duct
+::  +mo-abed: initialize state with the provided duct
 ++  mo-abed  |=(hun=duct mo-core(hen hun))
 ::  +mo-abet: finalize, reversing moves
 ++  mo-abet  [(flop moves) gall-payload]

@@ -780,7 +780,7 @@ to a `fly` is a `++path`, just a list of text `span`.
 
 (Note that `tank` is overdesigned and due for replacement.)
 
-What does a `toon` mean?  Either your computation succeded (`[0
+What does a `toon` mean?  Either your computation succeeded (`[0
 noun]`, or could not finish because it blocked on one or more
 global paths (`[1 (list path)]`), or it exited with a stack trace
 (`[2 (list tank)]`).
