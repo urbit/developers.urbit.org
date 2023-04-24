@@ -795,9 +795,9 @@ Note that `a` is a wing, not just any expression. Knowing that a function call
 `baz`, and then resolving to the `$` limb, you might think `(foo baz)` would
 mean `%=(foo +6 baz)`.
 
-But it's actually `=+(foo =>(%=(+2 +6 baz) $))`. Even if `foo` is a wing, we
+But it's actually `=+(foo =>(%=(+2 +6 baz:+3) $))`. Even if `foo` is a wing, we
 would just be mutating `+6` within the core that defines the `foo` arm. Instead
-we want to modify the **product** of `foo` -- the gate -- so we have to pin it
+we want to modify the **product** of `foo`—the gate—so we have to pin it
 into the subject.
 
 Here's that again in tall form:
@@ -805,7 +805,7 @@ Here's that again in tall form:
 ```hoon
 =+  foo
 =>  %=  +2
-      +6  baz
+      +6  baz:+3
     ==
   $
 ```
