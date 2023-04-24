@@ -190,7 +190,7 @@ function Landing({ search, posts }) {
               title="Hoon Guide"
               description="Learn the fundamentals of the Hoon programming language"
               callout="View Guide"
-              href="/guides/core/hoon-school"
+              href="/guides/core/hoon-guide"
               image="https://storage.googleapis.com/media.urbit.org/developers/card-images/hoon-guide.svg"
               className="h-full"
             />
@@ -200,15 +200,15 @@ function Landing({ search, posts }) {
               title="App Guide"
               description="Learn how to build Urbit userspace applications by writing your own Gall agents"
               callout="View Guide"
-              href="/guides/core/app-school"
+              href="/guides/core/app-guide"
               image="https://storage.googleapis.com/media.urbit.org/developers/card-images/app-guide.svg"
               className="h-full"
             />
             <TallCard
-              title="App School II (Full Stack)"
+              title="App Guide 2"
               description="Learn how to create Gall agents and integrate them into a React front-end"
               callout="View Guide"
-              href="/guides/core/app-school-full-stack"
+              href="/guides/core/app-school-2"
               image="https://storage.googleapis.com/media.urbit.org/developers/card-images/app-guide-2.svg"
               className="h-full"
             />

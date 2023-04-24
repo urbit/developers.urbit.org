@@ -4,15 +4,15 @@ weight = 2
 type = "tab"
 +++
 
-## [Hoon School](/guides/core/hoon-school){% class="!mb-0 !mt-12" %}
+## [Hoon Guide](/guides/core/hoon-guide){% class="!mb-0 !mt-12" %}
 
 Learn the fundamentals of the Hoon programming language.{% class="!mt-2" %}
 
-## [App School](/guides/core/app-school){% class="!mb-0 !mt-12" %}
+## [App Guide](/guides/core/app-guide){% class="!mb-0 !mt-12" %}
 
 Learn how to build Urbit userspace applications by writing your own Gall agents.{% class="!mt-2" %}
 
-## [App School II (Full Stack)](/guides/core/app-school-full-stack){% class="!mb-0 !mt-12" %}
+## [App Guide 2](/guides/core/app-guide-2){% class="!mb-0 !mt-12" %}
 
 Learn how to create Gall agents and integrate them into a React front-end.{% class="!mt-2" %}
 

@@ -2013,7 +2013,7 @@ ship> %squad` or by searching for `<our ship>` on their ship's homescreen.
 ## Next steps
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon
-School](/guides/core/hoon-school/A-intro) is a comprehensive guide to the
+School](/guides/core/hoon-guide/A-intro) is a comprehensive guide to the
 language, and the best place to start. After learning the basics of Hoon, [App
 School](/guides/core/app-school/intro) will teach you everything you need to
 know about app development.

@@ -5,7 +5,7 @@ nodes = [165, 180]
 objectives = ["Review subject-oriented programming as a design paradigm.", "Discuss stateful v. stateless applications and path dependence.", "Enumerate Hoon's tools for dealing with state:  `=.` tisdot, `=^` tisket, `;<` micgal, `;~` micsig.", "Defer a computation."]
 +++
 
-_This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.  This module does not cover core genericity and variance, which will be explained in [a later module](/guides/core/hoon-school/R-metals)._
+_This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.  This module does not cover core genericity and variance, which will be explained in [a later module](/guides/core/hoon-guide/R-metals)._
 
 
 ##  The Subject
@@ -25,7 +25,7 @@ Generally speaking, the following rune families allow you to do certain things t
 - `%` cen runes pull arms in cores
 - `=` tis runes modify the subject by introducing or replacing values
 
-Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model.  We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](/guides/core/hoon-school/R-metals) as well.
+Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model.  We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](/guides/core/hoon-guide/R-metals) as well.
 
 ### Accessing the Subject
 

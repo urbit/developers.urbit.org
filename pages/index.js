@@ -98,11 +98,13 @@ export default function Home({ search, posts, highlights }) {
                 return (
                   <div
                     key={each.title}
-                    className="basis-full md:basis-1/2 xl:basis-1/3 flex space-x-2 justify-start items-start my-8 pr-8"
+                    className="basis-full md:basis-1/2 xl:basis-1/3 flex space-x-2 justify-start items-center my-8 pr-8"
                   >
+                  <div className="flex flex-col pr-2">
                     {each.icon}
+                  </div>
                     <div className="flex flex-col">
-                      <p className="font-bold text-sm">{each.title}</p>
+                      <p className="font-bold text-md">{each.title}</p>
                       <p className="text-sm">{each.content}</p>
                     </div>
                   </div>
@@ -157,7 +159,7 @@ export default function Home({ search, posts, highlights }) {
                 title="Hoon Guide"
                 description="Learn the fundamentals of the Hoon programming language"
                 callout="View Guide"
-                href="/guides/core/hoon-school"
+                href="/guides/core/hoon-guide"
                 image="https://storage.googleapis.com/media.urbit.org/developers/card-images/hoon-guide.svg"
                 className="h-full"
               />
@@ -165,7 +167,7 @@ export default function Home({ search, posts, highlights }) {
                 title="App Guide"
                 description="Learn how to build Urbit userspace applications by writing your own Gall agents"
                 callout="View Guide"
-                href="/guides/core/app-school"
+                href="/guides/core/app-guide"
                 image="https://storage.googleapis.com/media.urbit.org/developers/card-images/app-guide.svg"
                 className="h-full"
               />

@@ -18,7 +18,7 @@ about 3000 lines of Hoon.
 
 * [Hoon Overview](/reference/hoon/overview): Learn why we created a new language
   to build Urbit in.
-* [Hoon School](/guides/core/hoon-school/): A collection of tutorials
+* [Hoon Guide](/guides/core/hoon-guide/): A collection of tutorials
   designed to teach you the Hoon language.
 * [Guides](/guides/additional/hoon/): Guides to specific Hoon tasks,
 including testing, command-line interface apps, and parsing.

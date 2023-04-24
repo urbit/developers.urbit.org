@@ -70,7 +70,7 @@ for this possibility.
 
 ## State
 
-If you've worked through [Hoon School](/guides/core/hoon-school/), you may
+If you've worked through [Hoon School](/guides/core/hoon-guide/), you may
 recall that a core is a cell of `[battery payload]`. The battery is the core
 itself compiled to Nock, and the payload is the subject which it operates on.
 

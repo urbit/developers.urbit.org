@@ -6,8 +6,8 @@ weight = 1
 This guide will walk through everything you need to know to write your own Gall
 agents.
 
-App School I is suitable for anyone with an intermediate knowledge of Hoon. If
-you've worked through [Hoon School](/guides/core/hoon-school/) or something
+The App Guide is suitable for anyone with an intermediate knowledge of Hoon. If
+you've worked through [Hoon Guide](/guides/core/hoon-guide/) or something
 equivalent, you should be fine.
 
 ## What are Gall agents?

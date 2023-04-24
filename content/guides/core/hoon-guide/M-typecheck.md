@@ -175,7 +175,7 @@ nest-fail
 nest-fail
 ```
 
-We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation [when we discuss type polymorphism](/guides/core/hoon-school/R-metals).
+We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation [when we discuss type polymorphism](/guides/core/hoon-guide/R-metals).
 
 This isn't a comprehensive list of the type checks in Hoon:  for instance, some other runes that include a type check are [`=.`](/reference/hoon/rune/tis#-tisdot) and [`%_` cencab](/reference/hoon/rune/cen#_-cencab).
 

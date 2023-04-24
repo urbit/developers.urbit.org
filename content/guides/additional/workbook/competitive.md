@@ -238,7 +238,7 @@ Now that we can find factors, it should be straightforward to find primes.  In t
 
 While Hoon has a sophisticated text parsing library, the primitives are rather low-level and we won't assume that you want to directly implement a parser using them in a rapid-fire competitive environment.
 
-- [Text Processing III](https://developers.urbit.org/guides/core/hoon-school/Q2-parsing) - This module will cover text parsing.
+- [Text Processing III](https://developers.urbit.org/guides/core/hoon-guide/Q2-parsing) - This module will cover text parsing.
 - [Parsing Text](https://developers.urbit.org/guides/additional/parsing)
 
 Fortunately, there is a regular expression library you can incorporate into your program which will allow you to match and work with code.
@@ -295,7 +295,7 @@ The Filter operation applies a true/false function to each member of a collectio
 
 An interesting feature of Hoon is that it really prefers functions-that-produce-functions, which feels very functional once you get used to the idiom.  Here you can see that done with `++curr`.
 
-- [Functional Programming](https://developers.urbit.org/guides/core/hoon-school/Q-func) - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.
+- [Functional Programming](https://developers.urbit.org/guides/core/hoon-guide/Q-func) - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.
 
 ### Floating-Point Operations
 
@@ -328,7 +328,7 @@ Equivalent mathematical operations for `@rs` values are available in the `++rs` 
 .3.3333333
 ```
 
-- [Mathematics](https://developers.urbit.org/guides/core/hoon-school/S-math) - This module introduces how non-`@ud` mathematics are instrumented in Hoon.
+- [Mathematics](https://developers.urbit.org/guides/core/hoon-guide/S-math) - This module introduces how non-`@ud` mathematics are instrumented in Hoon.
 
 (I picked the above set of examples after perusing the excellent book [Antti Laaksonen (2017) _Guide to Competitive Programming:  Learning and Improving Algorithms Through Contests_](https://link.springer.com/book/10.1007/978-3-319-72547-5).)
 
@@ -377,5 +377,5 @@ This last case can be handled with a couple of expedients:
     
     In general, if you see an error like `find.fork`, it means that the type system is confused by your use of a too general of a type for a particular case.  Use the assertion runes to correct its assumption.
 
-- [Testing Code](https://developers.urbit.org/guides/core/hoon-school/I-testing) - This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.
+- [Testing Code](https://developers.urbit.org/guides/core/hoon-guide/I-testing) - This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.
 - [Unit Tests](https://developers.urbit.org/guides/additional/unit-tests)

@@ -121,7 +121,7 @@ q=15
 
 ##  Aside on Wet Gates
 
-If you've already encountered [wet gates](/guides/core/hoon-school/R-metals) and how they handle their sample, you may eventually circle back around to attempting to write statements which curry a wet gate.  For instance, here is an attempt to curry `++reel` which itself takes a gate (in this case `++add`) as an argument:
+If you've already encountered [wet gates](/guides/core/hoon-guide/R-metals) and how they handle their sample, you may eventually circle back around to attempting to write statements which curry a wet gate.  For instance, here is an attempt to curry `++reel` which itself takes a gate (in this case `++add`) as an argument:
 
 ```hoon
 > ((curr reel add) `(list @)`[1 2 3 4 ~])

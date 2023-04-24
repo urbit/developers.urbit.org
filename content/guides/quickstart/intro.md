@@ -9,8 +9,8 @@ intended for developers with limited knowledge of Urbit and who aren't fluent in
 Hoon (Urbit's programming language). They don't delve deeply into the code, but
 instead focus on the broader process, to give you a basic idea of the platform.
 If instead you want to learn Hoon and app development on Urbit, the best place
-to start is [Hoon School](/guides/core/hoon-school/A-intro), and then after that
-[App School](/guides/core/app-school/intro).
+to start is [Hoon School](/guides/core/hoon-guide/A-intro), and then after that
+[App School](/guides/core/app-guide/intro).
 
 There are so-far three guides in this series:
 

@@ -7,7 +7,7 @@ weight = 60
 
 ##  Introduction
 
-In this tutorial, we will take an off-the-shelf JavaScript game which runs in the browser and connect it to an Urbit back-end.  This page assumes that you have completed some version of Hoon School and App School, whether the [live courses](/courses) or the [written docs](/guides/core/hoon-school/A-intro).  Our goal is to show you one way of directly serving client code from an Urbit ship as server.
+In this tutorial, we will take an off-the-shelf JavaScript game which runs in the browser and connect it to an Urbit back-end.  This page assumes that you have completed some version of Hoon School and App School, whether the [live courses](/courses) or the [written docs](/guides/core/hoon-guide/A-intro).  Our goal is to show you one way of directly serving client code from an Urbit ship as server.
 
 _Flappy Bird_ is an "insanely irritating, difficult and frustrating game which combines a super-steep difficulty curve with bad, boring graphics and jerky movement" ([Huffington Post](https://web.archive.org/web/20140205084251/http://www.huffingtonpost.com/2014/02/03/flappy-bird-tips_n_4717406.html)).  We are going to implement `%flap`, a _Flappy Bird_ leaderboard using ~paldev’s `%pals` peer tracking agent.  The approach given in this tutorial will apply to any game which is primarily run in the browser and has some persistent state to retain across sessions or communicate between players at discrete intervals.  Direct player-v.-player games will require other techniques to implement.
 

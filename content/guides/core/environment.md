@@ -109,7 +109,7 @@ convenient planets and stars:
 | ~ralnyt-botdyt | `65.793` | ~marnec |
 
 Other points can be calculated using [the layout of
-Azimuth](https://developers.urbit.org/guides/core/hoon-school/C-azimuth#the-urbit-address-space).
+Azimuth](https://developers.urbit.org/guides/core/hoon-guide/C-azimuth#the-urbit-address-space).
 
 ### Faster fake ship booting
 

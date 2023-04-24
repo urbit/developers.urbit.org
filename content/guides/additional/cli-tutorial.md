@@ -23,7 +23,7 @@ the functionality of the `%shoe` app and then go through the code line-by-line.
 
 This tutorial can be
 considered to be an application equivalent of the [Hoon school
-lesson](/guides/core/hoon-school/P-stdlib-io#ask-generators) on `sole` and `%ask`
+lesson](/guides/core/hoon-guide/P-stdlib-io#ask-generators) on `sole` and `%ask`
 generators, which only covers the bare minimum necessary to write generators
 that take user input.
 

@@ -5,7 +5,7 @@ nodes = [100, 103]
 objectives = ["Explain what an Urbit ship is.", "Distinguish a fakeship from a liveship.", "Pronounce ASCII characters per standard Hoon developer practice."]
 +++
 
-Hoon School is designed to teach you Hoon without assuming you have an extensive programming background.  You should be able to following most of it even if you have no programming experience at all yet, though of course experience helps.  We strongly encourage you to try out all the examples of each lesson.  Hoon School is meant for the beginner, but it's not meant to be skimmed.  Each lesson consists of:
+The Hoon Guide is designed to teach you Hoon without assuming you have an extensive programming background.  You should be able to following most of it even if you have no programming experience at all yet, though of course experience helps.  We strongly encourage you to try out all the examples of each lesson.  The Hoon Guide is meant for the beginner, but it's not meant to be skimmed.  Each lesson consists of:
 
 - **Explanations**, which are prose-heavy commentary on the Hoon fundamentals.
 
@@ -13,7 +13,7 @@ Hoon School is designed to teach you Hoon without assuming you have an extensive
 
 - **Tutorials**, which are line-by-line commentary on example programs.
 
-There are two flavors of Hoon School:  the Hoon School Live cohort class, in which you work through lessons with other students and receive a certification (`%gora`) for completion, and these written Hoon School docs.  To sign up for a future cohort of Hoon School Live, please [let us know of your interest here](https://developers.urbit.org/courses) and we'll be in touch.
+There are two ways to learn Hoon:  the Hoon School cohort class, in which you work through lessons with other students and receive a certification (`%gora`) for completion, and these written Hoon Guide docs.  To sign up for a future cohort of Hoon School, please [let us know of your interest here](https://developers.urbit.org/courses) and we'll be in touch.
 
 
 ##  Why Hoon?
