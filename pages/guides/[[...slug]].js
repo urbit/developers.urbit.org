@@ -205,10 +205,10 @@ function Landing({ search, posts }) {
               className="h-full"
             />
             <TallCard
-              title="App Guide 2"
+              title="App Guide II"
               description="Learn how to create Gall agents and integrate them into a React front-end"
               callout="View Guide"
-              href="/guides/core/app-school-2"
+              href="/guides/core/app-guide-2"
               image="https://storage.googleapis.com/media.urbit.org/developers/card-images/app-guide-2.svg"
               className="h-full"
             />

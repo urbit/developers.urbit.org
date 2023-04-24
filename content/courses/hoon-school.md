@@ -28,11 +28,11 @@ Until then, feel free to work through the [Hoon Guide](/guides/core/hoon-school)
 
 ###  What will you learn?
 
--   `hsl0`. 🌺 Hoon Syntax
--   `hsl1`. 🌿 Hoon Conventions
--   `hsl2`. 🌵 Text & Lists
--   `hsl3`. 🌳 Loops & Addresses
--   `hsl4`. 🌻 The Subject
--   `hsl5`. 🍁 Molds & Doors
--   `hsl6`. 🌹 The Standard Library
--   `hsl7`. 🌲 Managing State
+-   `hs0`. 🌺 Hoon Syntax
+-   `hs1`. 🌿 Hoon Conventions
+-   `hs2`. 🌵 Text & Lists
+-   `hs3`. 🌳 Loops & Addresses
+-   `hs4`. 🌻 The Subject
+-   `hs5`. 🍁 Molds & Doors
+-   `hs6`. 🌹 The Standard Library
+-   `hs7`. 🌲 Managing State

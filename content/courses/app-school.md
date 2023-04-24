@@ -32,11 +32,11 @@ docs](/guides/core/app-school).
 
 ###  What will you learn?
 
--   `asl0`. 🦀 A Simple Agent
--   `asl1`. 🦦 Arvo Services
--   `asl2`. 🐢 Agents
--   `asl3`. 🐝 Passing Data with JSON
--   `asl4`. 🦩 Front-End
--   `asl5`. 🕷️ Threads
--   `asl6`. 🦭 Production Apps
--   `asl7`. 🦏 Design Patterns
+-   `as0`. 🦀 A Simple Agent
+-   `as1`. 🦦 Arvo Services
+-   `as2`. 🐢 Agents
+-   `as3`. 🐝 Passing Data with JSON
+-   `as4`. 🦩 Front-End
+-   `as5`. 🕷️ Threads
+-   `as6`. 🦭 Production Apps
+-   `as7`. 🦏 Design Patterns

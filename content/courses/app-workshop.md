@@ -27,12 +27,12 @@ Workbook](/guides/additional/app-workbook).
 
 App Workshop is expected to consist of the following lessons:
 
--   `awl0`. 🖧 Server Actions:  serving a web page, using third-party libraries, provisioning a CDN agent
--   `awl1`. ✂ Command Line:  work with `%shoe` and `%sole` to build CLI apps
--   `awl2`. 🖪 Filesystem:  utilize Clay's affordances as a version-controlled typed file system
--   `awl3`. 🖭 Database Structures:  build the backend for a toy example of an Urbit-based database
--   `awl4`. 🖴 Database Operators:  build a CLI for database operations
--   `awl5`. 🖵 Front End:  implement more sophisticated React-based responsive webapps
--   `awlx`. ★ Challenge Exercises:  complete a specified capstone project to take your AWL crown
+-   `aw0`. 🖧 Server Actions:  serving a web page, using third-party libraries, provisioning a CDN agent
+-   `aw1`. ✂ Command Line:  work with `%shoe` and `%sole` to build CLI apps
+-   `aw2`. 🖪 Filesystem:  utilize Clay's affordances as a version-controlled typed file system
+-   `aw3`. 🖭 Database Structures:  build the backend for a toy example of an Urbit-based database
+-   `aw4`. 🖴 Database Operators:  build a CLI for database operations
+-   `aw5`. 🖵 Front End:  implement more sophisticated React-based responsive webapps
+-   `awx`. ★ Challenge Exercises:  complete a specified capstone project to take your AWL crown
 
-The structure of AWL will be slightly different.  We will have biweekly 90-minute working sessions (lecture and discussion) with an expected 10–12 hours per week of homework per lesson.
+The structure of App Workshop will be slightly different.  We will have biweekly 90-minute working sessions (lecture and discussion) with an expected 10–12 hours per week of homework per lesson.
