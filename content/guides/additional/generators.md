@@ -105,7 +105,7 @@ The gate sample follows this pattern, with undesired elements stubbed out by `*`
 The Dojo will modify the sample by inserting `%~` (constant null) at the end of each collection, since the Dojo adapts
 the input arguments into a list (either the unnamed/required argument list or the named/optional argument list).
 
-### Zero argumetns
+### Zero arguments
 
 `/gen/vats.hoon` is commonly used to check on the status of installed desks.  It can be invoked with optional arguments:
 
