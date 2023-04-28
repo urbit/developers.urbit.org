@@ -109,7 +109,7 @@ the input arguments into a list (either the unnamed/required argument list or th
 
 `/gen/vats.hoon` is commonly used to check on the status of installed desks.  It can be invoked with optional arguments:
 
-```hoon
+```
 > +vats
 %base
   /sys/kelvin:           [%zuse 414]
