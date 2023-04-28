@@ -1,6 +1,6 @@
 +++
-title = "%dbug Debugging Wrapper"
-weight = 40
+title = "Debugging Wrapper"
+weight = 42
 +++
 
 
