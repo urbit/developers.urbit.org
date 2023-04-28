@@ -223,8 +223,7 @@ Into the Gorge of Eternal Peril with you!
 Aaaaagh!
 ```
 
-`%ask` generators return `sole-effect`s.  For more information on these, consult the [guide on command-line agents](/guides
-/additional/cli).
+`%ask` generators return `sole-effect`s.  For more information on these, consult the [guide on command-line agents](/guides/additional/cli).
 
 `%ask` generators can also accept arguments, although this is uncommon.
 
