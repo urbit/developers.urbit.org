@@ -16,7 +16,7 @@ moment, only libraries directly related to Ames are documented here, though we
 note that there are jets for other cryptographic functions such as the [SHA
 Hash Family](/reference/hoon/stdlib/3d) as well.
 
-### Ed25519 {% #ed %}
+## Ed25519 {% #ed %}
 
 Urbit implements [Ed25519](http://ed25519.cr.yp.to/) based on the SUPERCOP
 "ref10" implementation. Additionally there is key exchanging and scalar addition
@@ -27,7 +27,7 @@ All code is pure ANSI C without any dependencies, except for the random seed
 generation which uses standard OS cryptography APIs (CryptGenRandom on Windows,
 `/dev/urandom` on nix).
 
-### AES-SIV {% #aes %}
+## AES-SIV {% #aes %}
 
 The library we utilize for AES-SIV is an
 [RFC5297](https://tools.ietf.org/html/rfc5297)-compliant C implementation of

@@ -27,7 +27,7 @@ here](https://github.com/urbit/urbit/tree/master/pkg/npm/api).
 
 Here is the reference material for each section of this walkthrough.
 
-#### Types
+### Types
 
 - [App School /sur section](/guides/core/app-school/7-sur-and-marks#sur) -
   This section of App School covers writing a `/sur` structure library for
@@ -38,7 +38,7 @@ Here is the reference material for each section of this walkthrough.
   This section of `zuse.hoon` contains all the functions for working with
   `mop`s, and is well commented.
 
-#### Agent
+### Agent
 
 - [App School I](/guides/core/app-school/intro) - App School I covers all
   aspects of writing Gall agents in detail.
@@ -52,7 +52,7 @@ Here is the reference material for each section of this walkthrough.
   The `agentio` library in the `%base` desk contains a large number of useful
   functions which making writing Gall agents easier.
 
-#### JSON
+### JSON
 
 - [The JSON Guide](/guides/additional/json-guide) - The stand-alone JSON guide
   covers JSON encoding/decoding in great detail.
@@ -69,7 +69,7 @@ Here is the reference material for each section of this walkthrough.
 - [Eyre Overview](/reference/arvo/eyre/eyre) - This section of the Eyre vane
   documentation goes over the basic features of the Eyre vane.
 
-#### Marks
+### Marks
 
 - [The Marks section of the Clay documentation](/reference/arvo/clay/marks/marks) -
   This section of the Clay vane documentation covers mark files comprehensively.
@@ -80,7 +80,7 @@ Here is the reference material for each section of this walkthrough.
 - [The JSON Guide](/guides/additional/json-guide) - This also covers writing mark
   files to convert to/from JSON.
 
-#### Eyre
+### Eyre
 
 - [The Eyre vane documentation](/reference/arvo/eyre/eyre) - This section of the vane
   docs covers all aspects of Eyre.
@@ -91,7 +91,7 @@ Here is the reference material for each section of this walkthrough.
   documentation walks through using Eyre's external API at a low level (using
   `curl`).
 
-#### React App Setup and Logic
+### React App Setup and Logic
 
 - [HTTP API Guide](/guides/additional/http-api-guide) - Reference documentation for
   `@urbit/http-api`.
@@ -104,7 +104,7 @@ Here is the reference material for each section of this walkthrough.
   code](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) - The
   source code for the `@urbit/http-api` NPM package.
 
-#### Desk and Glob
+### Desk and Glob
 
 - [App publishing/distribution docs](/guides/additional/software-distribution) -
   Documentation covering third party desk composition, publishing and

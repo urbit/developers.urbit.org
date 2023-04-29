@@ -3,11 +3,9 @@ title = "Competitive Programming"
 weight = 10
 +++
 
-#   Competitive Programming
-
 Let's take a quick look at implementations for some common tasks in Hoon.  I assume that you want to use library tools whenever possible, but you can delve into the source code itself if you want to know more.
 
-### Sorting
+## Sorting
 
 - Given a `list` of values, sort the values according to a given rule and produce a `list`.
 
@@ -44,7 +42,7 @@ If something isn't a `list`, the easiest way to sort it is to convert it to a `l
 ~[1 2 3 4 5 6 7 8 9 10]
 ```
 
-### Bitwise Operations
+## Bitwise Operations
 
 Bitwise operations are necessary when you are closely packing data into binary formats or otherwise dealing with binary data.  Basically there are three scenarios:
 
@@ -52,7 +50,7 @@ Bitwise operations are necessary when you are closely packing data into binary f
 2. Working with MIME-type data.  Urbit has standard library support for yielding and parsing these, but it's sometimes a bit confusing where they may be located.
 3. Directly processing particular kinds of data streams, like audio or video data.  On Urbit, you'll be serving these or interfacing with an external service.  (Remember, Urbit is more like a server than a GPU.)
 
-#### Binary Operations
+### Binary Operations
 
 If you are working with packed binary data, you'll typically print the atom data with a `@ux` unsigned hexadecimal aura.
 
@@ -153,7 +151,7 @@ Standard bitwise logical operations are available:
     0b1111.1111.1111.0100
     ```
 
-#### MIME Data Operations
+### MIME Data Operations
 
 [MIME data types](https://en.wikipedia.org/wiki/MIME) allow HTTP communications to include rich content.  The `++html` core in the standard library provides quite a few operations for encoding and decoding MIME-typed values.
 
@@ -187,7 +185,7 @@ There are operations for JSON, [Base58](https://en.wikipedia.org/wiki/Binary-to-
 
 Urbit furthermore has a notion of _jammed noun_, which is essentially a serialization (marshaling, pickling) of a noun into an atom.
 
-### Primes and Factors
+## Primes and Factors
 
 To calculate a prime number, the tried-and-true method is the Sieve of Eratosthenes, which is an elimination algorithm.  In other words, we need to be able to calculate factors of a given positive integer.  We're actually going to do an even simpler (and less efficient) method here, and leave the Sieve as an exercise to the reader.
 
@@ -234,7 +232,7 @@ Now that we can find factors, it should be straightforward to find primes.  In t
 
 - How would you change this algorithm to the more efficient Sieve of Eratosthenes?
 
-### Pragmatic Input/Output
+## Pragmatic Input/Output
 
 While Hoon has a sophisticated text parsing library, the primitives are rather low-level and we won't assume that you want to directly implement a parser using them in a rapid-fire competitive environment.
 
@@ -245,11 +243,11 @@ Fortunately, there is a regular expression library you can incorporate into your
 
 - https://github.com/lynko/re.hoon
 
-### Functional Operators
+## Functional Operators
 
 Hoon is a functional programming language, so naturally it supports the basic collective operations which functional programming languages expect.
 
-#### Curry
+### Curry
 
 [_Currying_](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument. _Binding_, an allied process, is used to set the value of some of those arguments permanently.  Hoon has a left-bind `++cury` and a right-bind `++curr`.
 
@@ -265,7 +263,7 @@ Hoon is a functional programming language, so naturally it supports the basic co
 117
 ```
 
-#### Map
+### Map
 
 The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [`++turn`](https://developers.urbit.org/reference/hoon/stdlib/2b#turn) for a `list`, [`++run:in`](https://developers.urbit.org/reference/hoon/stdlib/2h#repin) for a `set`, and [`++run:by`](https://developers.urbit.org/reference/hoon/stdlib/2i#runby) for a `map`.
 
@@ -273,7 +271,7 @@ The Map operation describes applying a function to each item of a set or iterabl
 > (turn `(list @ud)`~[1 2 3 4 5] one)
 ```
 
-#### Reduce
+### Reduce
 
 The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`++roll`](https://developers.urbit.org/reference/hoon/stdlib/2b#roll) and [`++reel`](https://developers.urbit.org/reference/hoon/stdlib/2b#reel) for a `list`, [`++rep:in`](https://developers.urbit.org/reference/hoon/stdlib/2h#repin) for a `set`, and [`++rep:by`](https://developers.urbit.org/reference/hoon/stdlib/2i#repby) for a `map`.
 
@@ -284,7 +282,7 @@ The Reduce operation applies a function as a sequence of pairwise operations to 
 b=120
 ```
 
-#### Filter
+### Filter
 
 The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`++skim`](https://developers.urbit.org/reference/hoon/stdlib/2b#skim), [`++skid`](https://developers.urbit.org/reference/hoon/stdlib/2b#skid), [`++murn`](https://developers.urbit.org/reference/hoon/stdlib/2b#murn) for a `list`, and [`++rib:by`](https://developers.urbit.org/reference/hoon/stdlib/2i#ribby) for a `map`.
 
@@ -297,7 +295,7 @@ An interesting feature of Hoon is that it really prefers functions-that-produce-
 
 - [Functional Programming](https://developers.urbit.org/guides/core/hoon-school/Q-func) - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.
 
-### Floating-Point Operations
+## Floating-Point Operations
 
 `@ud` unsigned decimal operations are, of course, postive-integer-only.  For floating-point maths, you will need to work with `@rs` for 32-bit single-precision IEEE 754 floating-point atoms.  These are prefixed with a single `.` which is _not_ a decimal point.
 
@@ -332,7 +330,7 @@ Equivalent mathematical operations for `@rs` values are available in the `++rs` 
 
 (I picked the above set of examples after perusing the excellent book [Antti Laaksonen (2017) _Guide to Competitive Programming:  Learning and Improving Algorithms Through Contests_](https://link.springer.com/book/10.1007/978-3-319-72547-5).)
 
-### Debugging and Troubleshooting
+## Debugging and Troubleshooting
 
 Static typing with compile-time type checking turns out to be a secret strength of Hoon.  Once you've satisfied the typechecker, your code is often surprisingly free of bugs (compared to e.g. Python).
 

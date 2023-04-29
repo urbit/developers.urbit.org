@@ -20,14 +20,14 @@ zuse. Second is the write, query, and subscription logic. Finally, there
 is the logic for communicating requests to, and receiving requests from,
 foreign ships.
 
-### User documentation
+## User documentation
 
 [Filesystem](https://urbit.org/using/os/filesystem)
 
 How to interact with the Clay filesystem via Dojo. This includes basics such as
 mounting to Unix, changing directory, merging, and listing files.
 
-### Developer Documentation
+## Developer Documentation
 
 [Architecture](/reference/arvo/clay/architecture)
 

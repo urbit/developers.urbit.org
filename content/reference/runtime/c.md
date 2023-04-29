@@ -13,7 +13,7 @@ says nothing interesting.
 But some of our idiosyncrasies go beyond convention.  Yes, we've
 done awful things to C. Here's what we did and why we did.
 
-### c3: integer types
+## c3: integer types
 
 First, it's generally acknowledged that underspecified integer
 types are C's worst disaster.  C99 fixed this, but the `stdint`
@@ -64,7 +64,7 @@ An enormous number of motes are defined in `i/c/motes.h`.  There
 is no reason to delete motes that aren't being used, or even to
 modularize the definitions.  Keep them alphabetical, though.
 
-### c3: variables and variable naming
+## c3: variables and variable naming
 
 The C3 style uses Hoon style TLV variable names, with a quasi
 Hungarian syntax.  This is weird, but works really well, as long
@@ -93,7 +93,7 @@ c3_w wor_w;     //  32-bit word
 Unlike in standard Hungarian, there is no change for pointer
 variables.  C structure variables take a `_u` suffix.
 
-### c3: loobeans
+## c3: loobeans
 
 The code (from `defs.h`) tells the story:
 

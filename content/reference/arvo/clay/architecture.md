@@ -43,7 +43,7 @@ DVCSes, and more.
 Clay has two other unique properties that we'll cover later on:
 it supports typed data and is referentially transparent.
 
-### Revision Control
+## Revision Control
 
 Every urbit has one or more desks, which are independently
 revision-controlled branches. Each desk contains its own `mark`
@@ -113,7 +113,7 @@ from revision 5 of the `%base` desk on `~sampel-sipnym`, we refer to
 `/~sampel-sipnym/base/5/try/readme/md`. Clay's namespace is thus
 global and referentially transparent.
 
-### A Typed Filesystem
+## A Typed Filesystem
 
 Since Clay is a general filesystem for storing data of arbitrary
 types, in order to revision control correctly it needs to be
@@ -169,7 +169,7 @@ As far as we are aware, Clay is the first generalized,
 type-aware revision control system. We'll go into the workings
 of this system in some detail.
 
-### Marks
+## Marks
 
 Central to a typed filesystem is the idea of file types. In Clay, we
 call these `mark`s. See the [Marks](/reference/arvo/clay/marks/marks)
