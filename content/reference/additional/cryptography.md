@@ -11,13 +11,13 @@ cryptography on Urbit. We first summarize the two categories of keys and how
 they are utilized by each ship type, then cover how different parts of Urbit are
 involved in cryptography.
 
-### Types of keys
+## Types of keys
 
 The two categories of keys are your Azimuth/Ethereum keys and your networking
 keys. In both cases, these are public/private key pairs utilized for public key
 cryptography.
 
-#### Azimuth keys
+### Azimuth keys
 
 Your Urbit ID exists as an ERC-721 non-fungible token on the Ethereum
 blockchain, and as such is contained in a wallet whose private key you possess.
@@ -44,7 +44,7 @@ private keys there is no way to retrieve them somehow from your ship.
 For more information on the usage of these keys and the associated proxies, see
 the [Azimuth documentation](/reference/azimuth/azimuth).
 
-#### Networking keys
+### Networking keys
 
 All communications in Urbit over the [Ames](/reference/glossary/ames) network
 are end-to-end encrypted, and thus your ship stores its own public/private pair
@@ -83,7 +83,7 @@ other method. This is merely a technical limitation imposed by the design of the
 system, not an intentional handicapping of comet abilities. A workaround to this
 limitation is slated to be implemented as of May 2021.
 
-### System components
+## System components
 
 [Ames](/reference/arvo/ames/ames) is Arvo's networking vane. All packets sent by
 Ames are encrypted utilizing a cryptosuite found in `zuse`. The only exception
@@ -113,7 +113,7 @@ infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public
 keys for planets, stars, and galaxies from this store, which are then stored in
 Jael and utilized by Ames for end-to-end encrypted communication.
 
-### Additional documentation
+## Additional documentation
 
 The following pages contained more detailed information about the cryptography
 utilized by each of the system components.

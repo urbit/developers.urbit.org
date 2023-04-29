@@ -3,17 +3,17 @@ title = "Scries"
 weight = 40
 +++
 
-### What is a scry?
+## What is a scry?
 
 A scry is a read-only request to Arvo's global namespace.
 
 Vanes and agents define _scry endpoints_ which allow one to request data from their respective states. The endpoints can process the data in any way before returning it, but they cannot alter the actual state - scries can _only_ read, not modify.
 
-### Why scry?
+## Why scry?
 
 The subject available in something like a Gall agent or thread contains a great many functions and structures from the standard library as well as `zuse` and `lull`, but it does not include any of the actual data stored elsewhere in the ship. All it has is its own state, a `bowl` and any `card`s it has been passed. Ordinarily, in order to access such data, one would need to `%poke` or `%watch` other agents, or `%pass` `task`s to vanes, then wait for a response. Arvo's scry system is the one exception to this; it allows direct retrieval of data from other vanes or agents in situ, from any context, without any of the normal messaging rigmarole.
 
-### How do I scry?
+## How do I scry?
 
 Scries are performed exclusively with the dotket rune: `.^`
 
@@ -25,11 +25,11 @@ One further note on `care`s (which can sometimes be confusing): While `care`s ar
 
 Most other vanes also make use of `care`s in their scry endpoints. While such vanes don't have corresponding submodules with strictly defined behaviour like Clay, the `care`s still confer the general nature of the endpoint. The most widely used `care` is `%x`, which implies reading data in a general sense. Gall has special handling of `%x` scries as described in the [Gall agents](#gall-agents) section below, but otherwise `care`s have no special behaviour for non-Clay vanes (though they must still be included if the endpoint specifies it).
 
-### What can I scry?
+## What can I scry?
 
 There are two places where scry endpoints are defined:
 
-#### Vanes
+### Vanes
 
 Each of Arvo's nine vanes (kernel modules) include a `+scry` arm which defines
 that vane's scry endpoints. The number of endpoints and extent of data available
@@ -43,13 +43,13 @@ endpoints you'd not typically use in your applications).
 
 To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/reference/arvo/overview) section of the documents.
 
-#### Gall agents
+### Gall agents
 
 Gall has a single scry endpoint of its own to check for the existence of an agent, but otherwise all Gall scries are passed through to one of the agents it manages. The target agent to scry is specified in place of the `desk` as described in the diagram above. Each Gall agent includes a `+on-peek` arm that defines its own scry endpoints. For example, `%graph-store` has a number of scry endpoints to access the data it stores, such as chat messages and the like.
 
 Gall agents can expose scry endpoints with any `care`, but most commonly they'll take a `%x` `care`. Gall handles `%x` scries specially - it expects an extra field at the end of the `path` that specifies a `mark`. Gall will attempt to perform a `mark` conversion from the `mark` returned by the scry endpoint to the `mark` specified. Note the trailing `mark` in the `path` will not be passed through to the agent itself.
 
-### What is an endpoint?
+## What is an endpoint?
 
 "Endpoint" refers to a specific scry path in a vane or agent. They will sometimes informally be noted in documentation or source comments like `/x/foo/bar/baz` or maybe just `/foo/bar/baz`. The first part of the former example is the `care`, then the rest is the `path` portion as noted in the diagram earlier.
 
@@ -69,11 +69,11 @@ The case in the beginning says it takes a `%x` `care` and has a `path` of `/keys
 .^(json %gx /(scot %p our)/graph-store/(scot %da now)/keys/json)
 ```
 
-### Web scries
+## Web scries
 
 The webserver vane Eyre has a system which allows clients like web browsers to perform scries over HTTP. For details, refer to the [Scry section of Eyre's External API Reference](/reference/arvo/eyre/external-api-ref#scry).
 
-### Further reading
+## Further reading
 
 [dotket](/reference/hoon/rune/dot#-dotket) - Documentation of the `.^` rune which performs scries.
 

@@ -32,7 +32,7 @@ There are three main steps involved with setting up a roller:
 - starting and configuring `%roller`,
 - aiming your front-end at the roller
 
-### 1. Make sure `%azimuth` state is up to date
+## 1. Make sure `%azimuth` state is up to date
 
 If you are using an ordinary live ship on the network as the roller, you should
 already have the latest `%azimuth` state and this step should not be necessary
@@ -52,7 +52,7 @@ found under the Setting page for the node on infura.io listed under `ENDPOINTS`.
 If you do not perform this step, you'll later see an error "roller not ready"
 when the first roller batch is about to be submitted.
 
-### 2. Starting and configuring `%roller` {% #step2 %}
+## 2. Starting and configuring `%roller` {% #step2 %}
 
 This step must be performed whether you're using a fakezod or a live ship.
 
@@ -125,7 +125,7 @@ work with a front-end if you want to use it on livenet.
 
 We cover the additional settings for `%roller` at the end.
 
-### 3. Aiming Bridge at the roller
+## 3. Aiming Bridge at the roller
 
 The last step is to set up the web interface by which users can submit
 transactions to be batched by the roller, which we refer to as the front-end. We
@@ -153,7 +153,7 @@ REACT_APP_ROLLER_HOST=https://myroller.sampel-pal.net/v1/roller npm run pilot-ma
 This will launch a server running Bridge that utilizes the mainnet roller you
 set up at `https://myroller.sampel-pal.net/v1/roller`.
 
-### Additional `%roller` commmands
+## Additional `%roller` commmands
 
 `%roller` has a few other settings and commands for managing things like the
 rate at which transactions are submitted and manually submitting batches. These

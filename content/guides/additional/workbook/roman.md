@@ -3,7 +3,7 @@ title = "Roman Numerals"
 weight = 50
 +++
 
-#   Challenge:  Printing and Parsing Roman Numerals
+## Challenge: Printing and Parsing Roman Numerals
 
 Roman numerals constitute a numeral system capable of expressing positive integers by additive values (rather than place-number notation).  Additive series are produced by summing values in a series, as `iii` → 3, while subtractive values are produced by prepending certain smaller values ahead of a larger value, as `ix` → 9.
 
@@ -36,7 +36,7 @@ Roman numerals constitute a numeral system capable of expressing positive intege
 
         **Note**:  This design pattern is not optimal since analysis over a union of some types can be difficult to carry out, and it would be better to either separate the generators or use a flag.  In this case, the pattern works because we are distinguishing an atom from a cell.
 
-##  Unit Tests
+## Unit Tests
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
@@ -866,7 +866,7 @@ Following a principle of test-driven development, we compose a series of tests w
 --
 ```
 
-##  Solutions
+## Solutions
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2022.6.  They are made available under both the [MIT license](https://mit-license.org/) and the [CC0 license](https://creativecommons.org/share-your-work/public-domain/cc0).  We ask you to acknowledge authorship should you utilize these elsewhere._
 

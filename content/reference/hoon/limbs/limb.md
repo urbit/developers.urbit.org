@@ -4,13 +4,13 @@ weight = 1
 +++
 A limb is an attribute of subject.
 
-### Produces
+## Produces
 
 There are two kinds of limbs: arms and legs.  An **arm** is a computation of some core.  A **leg** is a piece of data in the subject.
 
 If a limb expression resolves to a leg, the leg is produced.  If a limb expression resolves to an arm -- in particular, by way of an arm name -- then the arm is computed with its parent core as the subject.  The result of that computation is produced.
 
-### Syntax
+## Syntax
 
 Irregular: `+15` is slot `15`.  The value at address `15` of the subject is produced.
 
@@ -26,7 +26,7 @@ Irregular: `^^^abc` is the name `abc`, but which will skip the first three name 
 
 Irregular: `+<-` is "take the tail, then take the head of that, then the head of that." `+` and `>` mean "tail" while `-` and `<` mean "head." This limb syntax starts on `+` or `-` and alternates with `>` or `<` for readability.
 
-### Traverse
+## Traverse
 
 Name resolution happens by way of a search through the subject. The search traverse takes a name `q` and a **skip count** `p`.
 
@@ -47,7 +47,7 @@ If the skip count `p` is nonzero, we pretend our first `p`
 matches are actually mismatches.  This lets the programmer "look
 through" an overriding label.
 
-### Examples
+## Examples
 
 The Dojo prompt gives you a subject with a decent namespace.
 Try:
