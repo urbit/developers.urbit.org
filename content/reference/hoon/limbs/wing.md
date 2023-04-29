@@ -40,3 +40,26 @@ is the same limb as `+`, `..b` is the same wing as `+1.foo`.
 ~zod:dojo> moo.bat.a
 2
 ```
+
+##  Wing Resolution
+
+There are two common syntaxes used to resolve a wing path into the
+current subject:  `.` dot and `:` col.
+
+- `.` dot syntax, as `c.b.a`, resolves the wing path into the subject
+    at the right hand using Nock 0 (or possibly Nock 9 or Nock 10
+    depending on the expression).
+    
+    ```hoon
+    > !,(*hoon c.b.a)
+    [%wing p=~[%c %b %a]]
+    ```
+
+- The `:` col operator expands to a `=>` tisgar to resolve the wing path
+    against its right-hand side as the subject.  This can be a Nock 7
+    or possibly optimized by the compiler to a Nock 0.
+    
+    ```hoon
+    > !,(*hoon c:b:a)
+    [%tsgl p=[%wing p=~[%c]] q=[%tsgl p=[%wing p=~[%b]] q=[%wing p=~[%a]]]]
+    ```
