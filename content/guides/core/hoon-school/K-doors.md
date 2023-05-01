@@ -32,7 +32,7 @@ The second way of making a function call involves an expression that _produces_ 
 246
 ```
 
-The difference is subtle:  the first cast has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
+The difference is subtle:  the first case has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
 
 Are calls to `++add` and `++mul` of the Hoon standard library of the first kind, or the second?
 
