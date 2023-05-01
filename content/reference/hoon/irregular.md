@@ -414,6 +414,18 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
     
     (`$;` bucmic, or manual value mode, lets you "borrow the sample" from a gate,
     for instance.  It is not commonly used.)
+    
+    From value mode to structure mode:
+
+    ```hoon
+    [%ktcl p=spec]
+    ```
+
+    From structure mode to value mode:
+
+    ```hoon
+    [%bcmc p=hoon]
+    ```
 
 2. As wing syntax for stripping a face.
 
