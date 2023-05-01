@@ -3,6 +3,17 @@ title = "Irregular forms"
 weight = 20
 +++
 
+While Hoon has a large amount of sugar syntax, some forms that may look irregular are
+actually regular wing syntax or another language feature, such as `,`.
+
+When in doubt, you can use the [`!,` zapcom](/reference/hoon/rune/zap#-zapcom) rune to
+determine the AST to which Hoon parses an expression.
+
+```
+> !,(*hoon c.b.a)
+[%wing p=~[%c %b %a]]
+```
+
 ## Quick Lookup of Irregular Forms
 
 | Form | Regular Form |
