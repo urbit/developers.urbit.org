@@ -412,8 +412,9 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
     ]
     ```
     
-    (`$;` bucmic, or manual value mode, lets you "borrow the sample" from a gate,
-    for instance.  It is not commonly used.)
+    (`$;` bucmic, or manual value mode, allows the use of value mode syntax to
+    construct a mold.  Concretely, it lets you build a mold out of `hoon` instead
+    of out of `spec`.  It is not commonly used.)
     
     From value mode to structure mode:
 
