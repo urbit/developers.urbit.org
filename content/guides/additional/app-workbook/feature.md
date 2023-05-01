@@ -98,7 +98,7 @@ The system only handles pokes:  there are no subscriptions or Arvo calls except 
         [302 ~ [%login-redirect './apps/feature']]
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) state]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  action  (dejs-action +.json)
       (handle-action action) 
       :: 
@@ -183,7 +183,7 @@ The most interesting part of the whole app is the `++handle-http` arm:
         [302 ~ [%login-redirect './apps/feature']]
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) state]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  action  (dejs-action +.json)
       (handle-action action) 
       :: 

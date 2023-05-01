@@ -335,7 +335,7 @@ The main app implements the logic for exposing and tracking data.
         %'POST'
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) this]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  axn  `action`(dejs-action +.json)
       (on-poke %flap-action !>(axn))
       ::
@@ -848,7 +848,7 @@ With all of the above, you should have a working `%flappy` instance at `http://l
         %'POST'
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) this]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  axn  `action`(dejs-action +.json)
       (on-poke %flap-action !>(axn))
       ::
@@ -1107,7 +1107,7 @@ If you examine `++on-poke` in `/app/flap.hoon`, you will see that HTTP `POST` re
   %'POST'
 ?~  body.request.inbound-request
   [(send [405 ~ [%stock ~]]) this]
-=/  json  (de-json:html q.u.body.request.inbound-request)
+=/  json  (de:json:html q.u.body.request.inbound-request)
 =/  axn  `action`(dejs-action +.json)
 (on-poke %flap-action !>(axn))
 ```
