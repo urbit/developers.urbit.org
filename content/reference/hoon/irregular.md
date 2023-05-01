@@ -377,6 +377,69 @@ See [%sand](/reference/hoon/rune/constants#warm) for other irregular definitions
   "~[1 2 3]"
   ```
 
+### `,` com
+
+`,` can serve in several capacities in Hoon programs:
+
+1. As sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mode.
+    (Toggling out of structure mode is uncommon.)
+
+    ```
+    > !,(*hoon ,[@t @t])
+    [ %ktcl
+      p=[%bccl p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+    ]
+    
+    > !,(*hoon |=(a=,[@t @t] b))
+    [ %brts
+        p
+      [ %bcts
+        p=term=%a
+          q
+        [ %bcmc
+          p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+        ]
+      ]
+      q=[%cnts p=~[[%.y p=2] %a] q=~]
+    ]
+    
+    > !,(*hoon ,,[@t @t])
+    [ %ktcl
+        p
+      [ %bcmc
+        p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+      ]
+    ]
+    ```
+    
+    (`$;` bucmic, or manual value mode, lets you "borrow the sample" from a gate,
+    for instance.  It is not commonly used.)
+
+2. As wing syntax for stripping a face.
+
+    For instance, a line similar to the following is present in many Gall agents
+    receiving HTTP requests via Eyre:
+
+    ```
+    =/  ,request-line:server  (parse-request-line:server url.request.inbound-request)
+    ```
+    
+    This `,` lets you avoid using an outer face when handling the result.
+    
+    ```
+    > =/  ,@ud  1
+      -
+    1
+    > !,(*hoon =/(,@ud 1 -))
+    [ %tsfs
+      p=[%spec spec=[%bcmc p=[%base p=[%atom p=~.ud]]] skin=[%base base=%noun]]
+      q=[%sand p=%ud q=1]
+      r=[%cnts p=~[[%.y p=2]] q=~]
+    ]
+    ```
+
+3. As a separator, e.g. between pairs in an inline `%=` centis expression, `$(i +(i), j (dec j))`.
+
 ## Commentary
 
 In our in-house examples throughout our documentation, we use irregular forms instead of regular for the sake of verbosity. But remember with irregular forms: everything is just runes! Like magic. In general, irregular forms (usually) read better, but of course regular forms provide more information about what you're doing by showing you the full rune. Of course, it's up to you, the Hoon programmer, as to whether or not you want to use these.
