@@ -356,7 +356,7 @@ This syntax is a little bit strange in the Dojo because subsequent expressions, 
 38
 
 > perfect-number
-38
+28
 ```
 
 The difference is that the Dojo “pin” is permanent until deleted:
