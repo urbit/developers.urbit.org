@@ -3,6 +3,10 @@ title = "Scries"
 weight = 40
 +++
 
+{% callout %}
+
+This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](/guides/additional/remote-scry).
+
 ## What is a scry?
 
 A scry is a read-only request to Arvo's global namespace.
