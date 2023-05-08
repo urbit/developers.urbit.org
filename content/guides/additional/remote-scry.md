@@ -135,8 +135,7 @@ With this, we're ready to look at all the new tasks to, and gifts from, Ames:
 ::
 +$  gift
   $%  ...
-      [%tune =path sign=@ux data=(unit page)]  ::  peek result
-      [%miss =path]                            ::  peek dropped
+      [%tune spar roar=(unit roar)]
       ...
   ==
 ```
@@ -161,14 +160,17 @@ At this point, most of these should be very clear, but briefly:
   [%pass /call/back/path %arvo %a %wham ~sampel /g/x/4/test//foo]
   ```
 
-- Ames gives `[%tune =path sign=@ux data=(unit page)]` to the original
-  requester(s) when it knows the value on `path`. It includes a signature
-  `sign`. If `data` is `~`, then the path will *never* have a value.
-
-- Ames gives `[%miss =path]` if it wasn't able to produce the value on `path`.
-  This can happen if the publisher doesn't know the answer, or if the signature
-  verification fails. This does *not* imply that the same request will fail in
-  the future!
+- Ames gives the following to the original requester(s), either when it has a
+  response, or when the request gets `%wham`ed:
+  ```hoon
+  [%tune [=ship =path] roar=(unit roar)]
+  ```
+  The outer `unit` of `roar` will be `~` if Ames doesn't have a
+  response, but may have one in the future. Otherwise, it will
+  contain a signature and the data. The data in the
+  [`$roar`](/reference/arvo/ames/data-types#roar) may be `~`,
+  meaning that there is no value at this path and will never be
+  one.
 
 ## `-keen`
 

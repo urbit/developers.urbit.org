@@ -260,28 +260,18 @@ between the agent and the rest of the path.
 
 #### Returns
 
-Either a `%tune` or `%miss` gift. A `%tune` gift looks like:
+A `%tune` gift. A `%tune` gift looks like:
 
 ```hoon
-[%tune =path sign=@ux data=(unit page)]
+[%tune spar roar=(unit roar)]
 ```
 
-It represents a *result*. The `sign` is a signature from the publisher and the
-`data` is the result itself, which will be null if the requested path at the
-given revision doesn't exist and will never exist (equivalent to the `[~ ~]`
-case of an ordinary scry).
-
-A `%miss` gift looks like:
-
-```hoon
-[%miss =path]
-```
-
-It represents a failure to produce the value at the given path.   This can
-happen if the publisher doesn't know the answer, or if the signature
-verification fails. This does *not* imply the same request will fail in the
-future, unlike a `%tune` with null `data`. This is equivalent to the `~` case
-of an ordinary scry.
+It represents a *result*. The `roar` field is null if Ames doesn't have a
+response, but may have one in the future. The
+[`$roar`](/reference/arvo/ames/data-types#roar) contains a signature and the
+data. The data in the `$roar` will be null if there is no value at the path in
+question and will never be. These two cases are equivalent to `~` and `[~ ~]` of
+a local scry.
 
 ---
 
