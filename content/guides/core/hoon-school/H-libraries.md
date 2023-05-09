@@ -284,22 +284,31 @@ Unfortunately `/` fas runes don't work in the Dojo right now, so we need to buil
 
 A [desk](/reference/glossary/desk) organizes a collection of files, including generators, libraries, agents, and system code, into one coherent bundle.  A desk is similar to a file drive in a conventional computer, or a Git branch.  Desks are supported by the Clay vane in Arvo, the Urbit OS.
 
-At this point, you've likely only worked on the `%base` desk.  You can see data about any particular desk using the `+vat` generator:
+At this point, you've likely only worked on the `%base` desk.  You can see data about any particular desk using the `+vats` generator:
 
 ```hoon
-> +vat %base
+> +vats %base
 %base
-  /sys/kelvin:      [%zuse 417]
-  base hash:        ~
-  %cz hash:         0v2.r1lbp.i9jr2.hosbi.rvg16.pqe7u.i3hnp.j7k27.9jsgv.8k7rp.oi98q
+  /sys/kelvin:           [%zuse 413]
+  base hash ends in:     hih5c
+  %cz hash ends in:      hih5c
+  app status:            running
+  pending updates:       ~
+
+> +vats %base, =verb %.y
+%base
+  /sys/kelvin:      [%zuse 413]
+  base hash:        0v2.vhcjk.rj42q.e3la7.1679q.u2qs2.35vnn.9n1jm.mj66h.kgpe5.hih5c
+  %cz hash:         0v2.vhcjk.rj42q.e3la7.1679q.u2qs2.35vnn.9n1jm.mj66h.kgpe5.hih5c
   app status:       running
   force on:         ~
   force off:        ~
   publishing ship:  ~
-  updates:          local
-  source ship:      ~
-  source desk:      ~
-  source aeon:      ~
+  updates:          remote
+  source ship:      ~marnec-dozzod-marzod
+  source desk:      %kids
+  source aeon:      43
+  kids desk:        %kids
   pending updates:  ~
 ```
 
