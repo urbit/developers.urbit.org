@@ -65,6 +65,15 @@ Application-level message, as a `%pass`.
 - `path` - Internal route on the receiving ship.
 - `payload` - Semantic message contents.
 
+## `$spar`
+
+```hoon
++$  spar  [=ship =path]
+```
+
+Instead of a fully qualifying scry path, Ames infers rift and life based on the
+ship.
+
 ## `$bone`
 
 ```hoon
@@ -167,6 +176,7 @@ All Ames knows about a peer.
   $:  messages=(list [=duct =plea])
       packets=(set =blob)
       heeds=(set duct)
+      keens=(jug path duct)
   ==
 ```
 
@@ -175,6 +185,7 @@ What to do when Ames learns a peer's life and keys.
 - `messages` - [$plea](#plea)s local vanes have asked Ames to send.
 - `packets` - Packets we've tried to send.
 - `heeds` - Local tracking requests; passed through into [$peer-state](#peer-state).
+- `keens` - Subscribers to remote scry paths.
 
 ## `$peer-state`
 
@@ -182,6 +193,7 @@ What to do when Ames learns a peer's life and keys.
 +$  peer-state
   $:  $:  =symmetric-key
           =life
+          =rift
           =public-key
           sponsor=ship
       ==
@@ -192,6 +204,9 @@ What to do when Ames learns a peer's life and keys.
       rcv=(map bone message-sink-state)
       nax=(set [=bone =message-num])
       heeds=(set duct)
+      closing=(set bone)
+      corked=(set bone)
+      keens=(map path keen-state)
   ==
 ```
 
@@ -204,6 +219,137 @@ State for a peer with known life and keys.
 - `rcv` - Per-`bone` message sinks to assemble messages from fragments.
 - `nax` - Unprocessed nacks (negative acknowledgments).
 - `heeds` - Listeners for `%clog` notifications.
+- `closing`: Bones closed on the sender side.
+- `corked`: Bones closed on both sender and receiver.
+- `keens`: Remote scry state.
+
+## `$keen-state`
+
+```hoon
++$  keen-state
+  $:  wan=((mop @ud want) lte)  ::  request packets, sent
+      nex=(list want)           ::  request packets, unsent
+      hav=(list have)           ::  response packets, backward
+      num-fragments=@ud
+      num-received=@ud
+      next-wake=(unit @da)
+      listeners=(set duct)
+      metrics=pump-metrics
+  ==
+```
+
+Remote scry state for a peer.
+
+- `wan`: Request packets, sent.
+- `nex`: Request packets, unsent.
+- `hav`: Response packets, backwards.
+- `num-fragments`: Total fragment count.
+- `num-received`: Fragments received.
+- `next-wake`: Retry timing.
+- `listeners`: Ducts waiting for a response.
+- `metrics`: Stats.
+
+## `$want`
+
+```hoon
++$  want
+  $:  fra=@ud
+      =hoot
+      packet-state
+  ==
+```
+
+Remote scry request fragment.
+
+## `$have`
+
+```hoon
++$  have
+  $:  fra=@ud
+      meow
+  ==
+```
+
+Remote scry response fragment.
+
+## `$meow`
+
+```hoon
++$  meow
+  $:  sig=@ux
+      num=@ud
+      dat=@ux
+  ==
+```
+
+Remote scry response fragment data.
+
+- `sig`: signature.
+- `num`: number of fragments.
+- `dat`: contents.
+
+## `$peep`
+
+```hoon
++$  peep
+  $:  =path
+      num=@ud
+  ==
+```
+
+Remote scry fragment request.
+
+## `$wail`
+
+```hoon
++$  wail
+  $%  [%0 peep]
+  ==
+```
+
+Tagged remote scry request fragment.
+
+## `$roar`
+
+```hoon
++$  roar
+  (tale:pki:jael (pair path (unit (cask))))
+```
+
+Remote scry response message.
+
+A `tale:pki:jael` is a:
+
+```hoon
+++  tale                               ::  urbit-signed *
+  |$  [typ]                            ::  payload mold
+  $:  dat=typ                          ::  data
+      syg=(map ship (pair life oath))  ::  signatures
+  ==                                   ::
+```
+
+Therefore, a `$roar` looks like:
+
+```
+> *roar:ames
+[dat=[p=/ q=~] syg=~]
+```
+
+In `dat`, for the `(pair path (unit (cask)))`, the `path` is the remote scry
+path and the `(unit (cask))` contains the value, or is null if there's no value
+at this path and will never be one (equivalent to the `[~ ~]` case of a local
+scry).
+
+## `$purr`
+
+```hoon
++$  purr
+  $:  peep
+      meow
+  ==
+```
+
+Response packet payload.
 
 ## `$qos`
 

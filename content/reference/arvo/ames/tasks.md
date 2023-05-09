@@ -10,8 +10,8 @@ Some `task`s appear to have more than one arm associated to them, e.g. there are
 four `+on-hear` arms. We denote this where it occurs, but always refer to the
 `+on-hear:event-core` arm.
 
-Ames `task`s can be naturally divided into two categories: messaging tasks and
-system/lifecycle tasks.
+Ames `task`s can be naturally divided into three categories: messaging tasks,
+system/lifecycle tasks, and remote scry tasks.
 
 ## Messaging Tasks
 
@@ -33,6 +33,8 @@ There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to `+on-hear:ev
 
 `%hear` can trigger a number of possible returns. It can trigger the release of zero or more additional packets via `%send` `gift`s. It may also trigger a `%boon` or `%plea` `gift` (collectively referred to as a `%memo` within Ames) to a local vane in the case of a completed message.
 
+---
+
 ### `%heed`
 
 ```hoon
@@ -51,6 +53,8 @@ If the `ship` is indeed being unresponsive, as measured by backed up `%boon`s,
 Ames will `give` a `%clog` `gift` to the requesting vane containing the
 unresponsive peer's urbit address.
 
+---
+
 ### `%jilt`
 
 ```hoon
@@ -67,6 +71,8 @@ The `ship` field specifies the peer we want to stop tracking.
 #### Returns
 
 This `task` returns no `gift`s.
+
+---
 
 ### `%plea`
 
@@ -93,6 +99,8 @@ A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](/
 
 This `task` returns no `gift`s.
 
+---
+
 ## System Tasks
 
 ### `%born`
@@ -110,6 +118,8 @@ In response to a `%born` `task`, Ames `%give`s Jael a `%turf` `gift`.
 The `duct` along which `%born` comes is Ames' only duct to Unix, so `%send`
 `gift`s (which are instructions for Unix to send a packet) are also returned in
 response to `%born`.
+
+---
 
 ### `%init`
 
@@ -134,6 +144,8 @@ contained by Jael.
 
 `%init` sends two moves that subscribe to `%turf` and `%private-keys` in Jael.
 
+---
+
 ### `%sift`
 
 ```hoon
@@ -147,6 +159,8 @@ The `ships` field specifies the ships for which debug output is desired.
 #### Returns
 
 This `task` returns no `gift`s.
+
+---
 
 ### `%snub`
 
@@ -175,6 +189,12 @@ whole modified list and form in a new `%snub` `task`.
 
 {% /callout %}
 
+#### Returns
+
+This `task` returns no `gift`s.
+
+---
+
 ### `%spew`
 
 ```hoon
@@ -191,6 +211,8 @@ Sets verbosity toggles on debug output. This `task` is used internally when the 
 
 This `task` returns no `gift`s.
 
+---
+
 ### `%stir`
 
 ```hoon
@@ -205,6 +227,8 @@ The `arg` field is unused.
 
 This `task` returns no `gift`s.
 
+---
+
 ### `%vega`
 
 ```hoon
@@ -217,3 +241,67 @@ anything in response to this.
 #### Returns
 
 This `task` returns no `gift`s.
+
+---
+
+## Remote scry tasks
+
+### `%keen`
+
+```hoon
+[%keen =ship =path]
+```
+
+A `%keen` `task` asks Ames to perform a remote scry, retrieving the value of
+`path` on the given `ship`. The `path` has the general format of
+`/[vane-letter]/[care]/[revision]/[rest-of-path]`. For a regular read into
+Gall, it's `/g/x/[revision]/[agent]//[rest-of-path]`. Note the empty element in
+between the agent and the rest of the path.
+
+#### Returns
+
+A `%tune` gift. A `%tune` gift looks like:
+
+```hoon
+[%tune spar roar=(unit roar)]
+```
+
+It represents a *result*. The `roar` field is null if Ames doesn't have a
+response, but may have one in the future. The
+[`$roar`](/reference/arvo/ames/data-types#roar) contains a signature and the
+data. The data in the `$roar` will be null if there is no value at the path in
+question and will never be. These two cases are equivalent to `~` and `[~ ~]` of
+a local scry.
+
+---
+
+### `%yawn`
+
+```hoon
+[%keen =ship =path]
+```
+
+A `%yawn` task asks Ames to cancel an existing remote scry request to the given
+`path` on the given `ship`.
+
+#### Returns
+
+This `task` returns no `gift`s.
+
+---
+
+### `%wham`
+
+```hoon
+[%wham =ship =path]
+```
+
+A `%wham` task asks Ames to cancel all existing remote scry requests from all
+vanes on all ducts for the given `path` on the given `ship`.
+
+#### Returns
+
+A `%tune` gift with a null `data` is given to all listeners. See the
+[`%keen`](#keen) entry for more details of the `%tune` gift.
+
+---

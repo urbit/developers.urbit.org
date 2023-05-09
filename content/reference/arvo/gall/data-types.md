@@ -218,6 +218,10 @@ types.
   $%  [%agent [=ship name=term] =task]
       [%arvo note-arvo]
       [%pyre =tang]
+  ::
+      [%grow =spur =page]
+      [%tomb =case =spur]
+      [%cull =case =spur]
   ==
 ```
 
@@ -251,6 +255,9 @@ vanes, or for sending out updates to subscribers. The three cases are:
   documentation](/reference/arvo/overview)
 - `%pyre`: This is for aborting side-effects initiated during agent
   installation. The `tang` is an error message.
+- `%grow`/`%tomb`/`%cull`: These are used for publishing and managing data
+  available for remote scries. For more information, see the [remote scries
+  guide](/guides/additional/remote-scry).
 
 A `note:agent` is always wrapped in a `%pass` [`card:agent`](#cardagent).
 

@@ -15,71 +15,29 @@ define _scry endpoints_ which allow data to be requested from their states. The
 endpoints can process the data in any way before returning it, but they cannot
 alter the actual state - scries can only read, not modify.
 
-Most of the time, scry requests are handled by Arvo, which routes the request to
-the appropriate vane. When you scry a Gall agent you actually scry Gall itself.
-Gall interprets the request, runs it on the specified agent, and then returns
-the result. Scries are performed with the
-[dotket](/reference/hoon/rune/dot#-dotket) (`.^`) rune. Here's a summary of
-their format:
+Gall itself defines some special vane-level endpoints [as described in its scry
+reference](/reference/arvo/gall/scry), but most scries to Gall are routed to
+particular agents and handled by them instead. Agent scries are what we'll
+focus on here. 
+
+Scries are performed with the [dotket](/reference/hoon/rune/dot#-dotket) (`.^`)
+rune. Here's a summary of their format:
 
 ![scry summary diagram](https://storage.googleapis.com/media.urbit.org/docs/arvo/scry-diagram-v2.svg)
 
-A note on `care`s: Cares are most carefully implemented by Clay, where they specify
-submodules and have tightly defined behaviors. For Gall agents, most of these
-don't have any special behavior, and are just used to indicate the general kind
-of data produced by the endpoint. There are a handful of exceptions to this:
-`%d`, `%e`, `%u` and `%x`.
-
-#### `%d`
-
-A scry to Gall with a `%d` `care` and no `path` will produce the `desk` in which
-the specified agent resides. For example:
-
-```
-> .^(desk %gd /=hark-store=)
-%garden
-> .^(desk %gd /=hood=)
-%base
-```
-
-#### `%e`
-
-A scry to Gall with a `%e` `care`, a `desk` rather than agent in the `desk`
-field of the above diagram, and no path, will produce a set of all installed
-agents on that desk and their status. For example:
-
-```
-> .^((set [=dude:gall live=?]) %ge /=garden=)
-{ [dude=%hark-system-hook live=%.y]
-  [dude=%treaty live=%.y]
-  [dude=%docket live=%.y]
-  [dude=%settings-store live=%.y]
-  [dude=%hark-store live=%.y]
-}
-```
-
-#### `%u`
-
-A scry to Gall with a `%u` `care` and no `path` will check whether or not the
-specified agent is installed and running:
-
-```
-> .^(? %gu /=btc-wallet=)
-%.y
-> .^(? %gu /=btc-provider=)
-%.n
-> .^(? %gu /=foobar=)
-%.n
-```
+A note on `care`s: Cares are most carefully implemented by Clay, where they
+specify submodules and have tightly defined behaviors. For Gall agents, most of
+these don't have any special behavior, and are just used to indicate the
+general kind of data produced by the endpoint, with the exception of the `%x`
+care:
 
 #### `%x`
 
-A scry to Gall with a `%x` `care` will be passed to the agent for handling. Gall
-handles `%x` specially, and expects an extra field at the end of the `path` that
-specifies the `mark` to return. Gall will take the data produced by the
-specified endpoint and try to convert it to the given mark, crashing if the mark
-conversion fails. The extra field specifying the mark is not passed through to
-the agent itself. Here's a couple of examples:
+Gall handles `%x` specially, and expects an extra field at the end of the
+`path` that specifies the `mark` to return. Gall will take the data produced by
+the specified endpoint and try to convert it to the given mark, crashing if the
+mark conversion fails. The extra field specifying the mark is not passed
+through to the agent itself. Here's a couple of examples:
 
 ```
 > =store -build-file /=landscape=/sur/graph-store/hoon
@@ -338,8 +296,9 @@ crash!
 - Scries will fail if the scry endpoint does not exist, the requested data does
   not exist, or the data does not nest in the return type specified.
 - Scries can only be performed on the local ship, not on remote ships.
-- Gall scries with an agent name in the `desk` field will be passed to that
-  agent's `on-peek` arm for handling.
+- Gall scries with an agent name in the `desk` field and without an extra empty
+  element at the beginning of the path will be passed to that agent's `on-peek`
+  arm for handling.
 - Gall scries with a `%x` `care` take a `mark` at the end of the scry `path`,
   telling Gall to convert the data returned by the scry endpoint to the mark
   specified.
@@ -352,6 +311,7 @@ crash!
 ## Exercises
 
 - Have a read through the [Scry Guide](/reference/arvo/concepts/scry).
+- Have a look at Gall's [scry reference](/reference/arvo/gall/scry).
 - Have a read through the [dotket rune
   documentation](/reference/hoon/rune/dot#-dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
