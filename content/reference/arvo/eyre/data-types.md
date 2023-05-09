@@ -135,18 +135,35 @@ An unacknowledged event in the channel system.
 ### `$channel`
 
 ```hoon
-+$  channel
-  $:  state=(each timer duct)
-      next-id=@ud
-      last-ack=@da
-      events=(qeu [id=@ud request-id=@ud =channel-event])
-      unacked=(map @ud @ud)
-      subscriptions=(map @ud [ship=@p app=term =path duc=duct])
-      heartbeat=(unit timer)
-  ==
+  +$  channel
+    $:  mode=?(%json %jam)
+        state=(each timer duct)
+        next-id=@ud
+        last-ack=@da
+        events=(qeu [id=@ud request-id=@ud =channel-event])
+        unacked=(map @ud @ud)
+        subscriptions=(map @ud [ship=@p app=term =path duc=duct])
+        heartbeat=(unit timer)
+    ==
+
 ```
 
-This is the state of a particular channel in the channel system. The `state` is either the expiration time or the duct currently listening. The `next-id` is the next event ID to be used in the event stream. The `last-ack` is the date of the last client ack and is used for clog calculations in combination with `unacked`. The `events` queue contains all unacked events - `id` is the server-set event ID, `request-id` is the client-set request ID and the [$channel-event](#channel-event) is the event itself. The `unacked` `map` contains the unacked event count per `request-id` and is used for clog calculations. The `subscriptions` `map` contains gall subscriptions by `request-id`. The `heartbeat` is the SSE heartbeat [$timer](#timer).
+This is the state of a particular channel in the channel system.
+
+- `mode` says whether the channel sends/received JSON or
+  [nouns](/guides/additional/noun-channels).
+- `state` is either the expiration time or the duct currently listening.
+- `next-id` is the next event ID to be used in the event stream.
+- `last-ack` is the date of the last client ack and is used for clog
+  calculations in combination with `unacked`.
+- `events` queue contains all unacked events:
+  - `id` is the server-set event ID.
+  - `request-id` is the client-set request ID.
+  - [$channel-event](#channel-event) is the event itself.
+- `unacked` `map` contains the unacked event count per `request-id` and is used
+  for clog calculations.
+- `subscriptions` `map` contains gall subscriptions by `request-id`.
+- `heartbeat` is the SSE heartbeat [$timer](#timer).
 
 ---
 
@@ -166,15 +183,16 @@ A `binding` is a rule to match a URL `path` and optional `site` domain which can
 ### `$action`
 
 ```hoon
-+$  action
-  $%  [%gen =generator]    ::  dispatch to a generator
-      [%app app=term]      ::  dispatch to an application
-      [%authentication ~]  ::  internal authentication page
-      [%logout ~]          ::  internal logout page
-      [%channel ~]         ::  gall channel system
-      [%scry ~]            ::  gall scry endpoint
-      [%four-oh-four ~]    ::  respond with the default file not found page
-  ==
+  +$  action
+    $%  [%gen =generator]
+        [%app app=term]
+        [%authentication ~]
+        [%logout ~]
+        [%channel ~]
+        [%scry ~]
+        [%name ~]
+        [%four-oh-four ~]
+    ==
 ```
 
 The action to take when a [$binding](#binding) matches an incoming HTTP request.
