@@ -116,7 +116,7 @@ the input arguments into a list (either the unnamed/required argument list or th
   base hash ends in:     drceb
   %cz hash ends in:      drceb
   app status:            running
-  pending updates:       ~::
+  pending updates:       ~
 
 > +vats, =verb %.n
 %base
