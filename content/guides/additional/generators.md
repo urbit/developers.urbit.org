@@ -116,7 +116,7 @@ the input arguments into a list (either the unnamed/required argument list or th
   base hash ends in:     drceb
   %cz hash ends in:      drceb
   app status:            running
-  pending updates:       ~::
+  pending updates:       ~
 
 > +vats, =verb %.n
 %base
@@ -232,8 +232,10 @@ Aaaaagh!
 
 Generators can furthermore interact specifically with agents.
 
-The Hood/Helm tooling like `|install` are generators automatically routed by Dojo to the correct agent.
-
 The [`+dbug` agent](/guides/additional/app-workbook/dbug) is invoked against an agent to display internal state.
 
 Any app can implement generators to wrap raw pokes (see [`%ahoy`](/guides/additional/app-workbook/ahoy) for instance).
+
+For instance, `:dojo|wipe` is equivalent to `:dojo +dojo/wipe`.  This pokes the `%dojo` agent with the output from running the generator located at `/gen/dojo/wipe.hoon`.
+
+The Hood/Helm tooling like `|install` are generators automatically routed by Dojo to the correct agent.  `|commit`, for instance, is equivalent to `:hood +hood/commit`.  `%hood` generators are special-cased because it is the system app.
