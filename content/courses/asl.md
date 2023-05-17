@@ -24,7 +24,7 @@ contribute at the level of basic Urbit userspace bounties.
 
 The next cohort for App School Live will begin the week of August 21st, 2023.
 
-- [Complete this form](https://forms.gle/3c8xBubvSiQfj7Tr6) to sign up for the upcomming class.
+- [Complete this form](https://airtable.com/shrdZcSQrIIb6mAmx) to sign up for the upcomming class.
 
 Until then, feel free to work through the [App School
 docs](/guides/core/app-school).
