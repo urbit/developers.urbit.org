@@ -21,7 +21,7 @@ lessons.
 
 The next cohort will begin in June 2023.
 
-- [Complete this form](https://forms.gle/9tBfJCB4D9MSHCmC9) to sign up for the next Hoon School Live.
+- [Complete this form](https://airtable.com/shrdu1ExiGxcRvhZ5) to sign up for the next Hoon School Live.
 
 Until then, feel free to work through the [Hoon School docs](/guides/core/hoon-school).
 
