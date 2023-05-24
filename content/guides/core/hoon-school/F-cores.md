@@ -779,12 +779,12 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     =/  q  1
     =/  r  *(list @ud)
     |-  ^-  (list @ud)
-    ?:  =(i n)  r
+    ?:  =(index n)  r
     %=  $
-      i  +(i)
-      p  q
-      q  (add p q)
-      r  [q r]
+      index  +(index)
+      p      q
+      q      (add p q)
+      r      [q r]
     ==
     ```
 
@@ -938,13 +938,5 @@ F_{n+1} (x, 0) & = x & \text{if } n \ge 0 \\\\
 F_{n+1} (x, y+1) & = F_n (F_{n+1} (x, y), F_{n+1} (x, y) + y + 1) & \text{if } n\ge 0
 \end{array}
 {% /math %}
-
-<!--
-\begin{array}{lll}
-F_0 (x, y) & = x+y \\
-F_{n+1} (x, 0) & = x & \text{if } n \ge 0 \\
-F_{n+1} (x, y+1) & = F_n (F_{n+1} (x, y), F_{n+1} (x, y) + y + 1) & \text{if } n\ge 0 \\
-\end{array}
--->
 
 - Implement the Sudan function as a gate.
