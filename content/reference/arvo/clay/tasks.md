@@ -748,6 +748,8 @@ Clay only allows a subset of `care`s to be used remotely. They are:
 
 Any other `care` will crash with a `%clay-bad-foreign-request-care` error.
 
+In addition, Clay only allows `%sing` requests -- not `%next`, `%mult`, or `%many`. To be informed when a desk on a foreign ship is updated, first `%sing` the current revision number using `%w` and case `da+now` and then `%sing` again with the next revision number using case `ud+<next-revision-number>`.
+
 The foreign ship will respond only if correct permissions have been set. See the [Permissions](#permissions) section for details.
 
 Note that if you're reading a whole `desk` or directory, all subfolders and files must also permit reading. If even a single file does not permit you reading it, the foreign ship will not respond to the request.
