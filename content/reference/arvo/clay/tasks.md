@@ -748,7 +748,10 @@ Clay only allows a subset of `care`s to be used remotely. They are:
 
 Any other `care` will crash with a `%clay-bad-foreign-request-care` error.
 
-In addition, Clay only allows `%sing` requests -- not `%next`, `%mult`, or `%many`. To be informed when a desk on a foreign ship is updated, first `%sing` the current revision number using `%w` and case `da+now` and then `%sing` again with the next revision number using case `ud+<next-revision-number>`.
+In addition, Clay only allows `%sing` and `%many` requests -- not `%next` or
+`%mult`. One way to get the next revision is to first `%sing` the current
+revision number using `%w` and case `da+now`, then `%sing` again with the next
+revision number using case `ud+<next-revision-number>`.
 
 The foreign ship will respond only if correct permissions have been set. See the [Permissions](#permissions) section for details.
 
