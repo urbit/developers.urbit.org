@@ -4,6 +4,8 @@ description = "Learn about scrying over the network"
 weight = 5
 +++
 
+## WARNING: If you use remote scry today, beware that subscribers often fail due to a bug in the current system, which will be fixed in Kelvin 412. So don't use it yet!
+
 To [scry](/reference/glossary/scry) is to perform a *read* from Urbit's
 referentially transparent namespace. In other words, it's a function from a
 `path` to a `noun` (although in some cases, the resulting type may be more
