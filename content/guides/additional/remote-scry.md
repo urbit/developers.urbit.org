@@ -10,6 +10,21 @@ referentially transparent namespace. In other words, it's a function from a
 constrained). Previously we only supported scrying within the same ship, but
 from Kernel version `[%zuse 413]`, it is possible to scry from *other* ships.
 
+{% callout %}
+
+**Warning**
+
+Remote scries are still a new, experimental feature.
+
+As of `[%zuse 413]`, there is a known bug that causes subscribers to often
+fail. A fix is currently planned for `[%zuse 412]`, and it is not recommended
+to use remote scries in production userspace code until then.
+
+It should also be noted that, while responses are signed, encryption has not
+yet been implemented.
+
+{% /callout %}
+
 ## Lifecycle of a scry
 
 When you think of scry, you probably think of [`.^`
