@@ -14,14 +14,21 @@ from Kernel version `[%zuse 413]`, it is possible to scry from *other* ships.
 
 **Warning**
 
-Remote scries are still a new, experimental feature.
+1. It should also be noted that, while responses are signed, encryption has not
+   yet been implemented.
 
-As of `[%zuse 413]`, there is a known bug that causes subscribers to often
-fail. A fix is currently planned for `[%zuse 412]`, and it is not recommended
-to use remote scries in production userspace code until then.
+2. The initial release of `[%zuse 413]` had a bug in the remote scry client
+   implementation that causes crashes and failed downloads.  This issue was
+   fixed in [this PR](https://github.com/urbit/urbit/pull/6617), which was
+   [released](https://github.com/urbit/urbit/releases/tag/urbit-os-v2.141) (at
+   the same Kelvin) on June 1, 2023.  Any ships that are still on the initial
+   `[%zuse 413]` Kelvin release will continue to experience this bug. 
 
-It should also be noted that, while responses are signed, encryption has not
-yet been implemented.
+   The recommended approach to dealing with this is to include a timer in clients
+   to fall back to using Ames for a download if a remote scry request doesn't
+   succeed within a certain amount of time.  This is what Clay uses, and its main
+   advantage is that client ships on older pre-remote-scry Kelvins can still
+   download data from newer server ships.
 
 {% /callout %}
 
