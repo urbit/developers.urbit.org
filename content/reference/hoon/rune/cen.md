@@ -571,9 +571,9 @@ In the irregular form, `r` may be split into multiple parts. Multiple parts of
 
 #### Semantics
 
-A `%~` expression evaluates the arm of a door (i.e., a core with a sample). `a`
-is a wing that resolves to the arm from within the door in question. `b` is the
-door itself. `c` is the sample of the door.
+A `%~` expression evaluates the arm of a door (i.e., a core with a sample). `p`
+is a wing that resolves to the arm from within the door in question. `q` is the
+door itself. `r` is the sample of the door.
 
 #### Discussion
 
