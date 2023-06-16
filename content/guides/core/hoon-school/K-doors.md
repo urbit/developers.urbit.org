@@ -453,7 +453,7 @@ What is that cell?  Wasn't the value stored as `0xff.8833`?  Well, one fundament
 
 - What does `[~ ~]` mean when returned from a `map`?
 
-`unit`s are common enough that they have their own syntax and set of operational functions.  We'll look at them more in [the next module](/guides/core/hoon-school/K-doors).
+`unit`s are common enough that they have their own syntax and set of operational functions.  We'll look at them more in [the next module](/guides/core/hoon-school/L-struct).
 
 ```hoon
 > (~(get by colors) %brown)
