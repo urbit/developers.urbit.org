@@ -11,7 +11,7 @@ weight = 203
 
 There are no `/sur` or `/mar` files especially for `%snek`, but we will incidentally examine the `/lib/etui.hoon` library file that supports `%snek`'s rendering.
 
-To run `%snek`, prepare a desk containing:
+To run `%snek`, prepare a `%snek` desk containing:
 
 ```
 .
@@ -35,6 +35,9 @@ To run `%snek`, prepare a desk containing:
 │   └── verb.hoon
 └── sys.kelvin
 ```
+
+After `|commit`ing this desk, `|revive %snek` to start the agent.  To interact, you need a terminal instance which can connect to the `%snek` session.  At the time of writing, the Vere terminal instance cannot do this, so you will need ot use the `%webterm`.  Click `+` at the top to connect to a new session and type `snek!snek` to open the game in a terminal tab.  The game is controlled by the standard `←↑↓→` arrow keys and the space bar.
+
 
 ##  `/app` Agent Files
 
