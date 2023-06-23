@@ -423,15 +423,15 @@ The core concepts that `%snek` needs to manage itself are included in its state.
   ==
 ```
 
-Here we see:
+Here we see the quantities:
 
 - `sesh=@ta` refers to a Dill terminal session ID.
 - `area=size` is a play area, by default `[40 40]`.
 - `live` refers to the state of the snake in the game.
 - `snek` is a list of past positions that describe the current body of the snake.
-- `face` is not currently used, but could store the direction the snake is facing if special head symbols are used.
+- `face` shows the direction the snake is facing with special head symbols like `:)`.
 - `food` refers to a position in the play area containing the next objective.
 - `time` is a linear counter of how many steps the game has lasted.
 - `next` manages the pause/play sequence, or death/restart as the case may be.
 
-Games are typically driven by an event loop.  For 
+Games are typically driven by an event loop.  For `%snek`, this role is played by `%behn` sending a wakeup call to `++on-arvo` which is used as a frame timer.  (The refresh rate is set at 0.5s in `++config`.)
