@@ -5,9 +5,9 @@ weight = 4
 
 These are the files used in the [Writing Marks](/reference/arvo/clay/marks/writing-marks) guide.
 
-## `/lib/csv/hoon`
+## `/lib/csv-utils/hoon`
 
-```hoon
+```hoon {% mode="collapse" copy="true" %}
 |%
 ++  validate                                             ::  All rows same length?
   |=  csv=(list (list @t))
@@ -177,8 +177,8 @@ These are the files used in the [Writing Marks](/reference/arvo/clay/marks/writi
 
 ## `/mar/csv/hoon`
 
-```hoon
-/+  *csv
+```hoon {% mode="collapse" copy="true" %}
+/+  *csv-utils
 |_  csv=(list (list @t))
 ++  grab
   |%
@@ -232,7 +232,7 @@ These are the files used in the [Writing Marks](/reference/arvo/clay/marks/writi
 
 ## `/mar/csv-diff/hoon`
 
-```hoon
+```hoon {% copy="true" %}
 |_  dif=(urge:clay (list @t))
 ++  grab
   |%
