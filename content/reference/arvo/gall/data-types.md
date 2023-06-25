@@ -42,18 +42,21 @@ which our agent has subscribed.
 
 ```hoon
 +$  bowl                                              ::  standard app state
-  $:  $:  our=ship                              ::  host
-          src=ship                              ::  guest
-          dap=term                              ::  agent
-      ==                                        ::
-      $:  wex=boat                              ::  outgoing subs
-          sup=bitt                              ::  incoming subs
-      ==                                        ::
-      $:  act=@ud                               ::  change number
-          eny=@uvJ                              ::  entropy
-          now=@da                               ::  current time
-          byk=beak                              ::  load source
-  ==  ==                                        ::
+  $:  $:  our=ship                                    ::  host
+          src=ship                                    ::  guest
+          dap=term                                    ::  agent
+      ==                                              ::
+      $:  wex=boat                                    ::  outgoing subs
+          sup=bitt                                    ::  incoming subs
+          $=  sky                                     ::  scry bindings
+          %+  map  path                               ::
+          ((mop @ud (pair @da (each page @uvI))) lte) ::
+      ==                                              ::
+      $:  act=@ud                                     ::  change number
+          eny=@uvJ                                    ::  entropy
+          now=@da                                     ::  current time
+          byk=beak                                    ::  load source
+  ==  ==                                              ::                                                  ::
 ```
 
 Additional agent state.
@@ -68,6 +71,9 @@ as follows:
   See the [`boat`](#boat) section for details of the type.
 - `sup`: Incoming subscriptions. That is, subscriptions others have made to our
   agent. See the [`bitt`](#bitt) section for details of the type.
+- `sky`: Remote scry bindings. A map from binding paths to a
+  [`mop`](/reference/hoon/zuse/2m#mop) (ordered map) of files by revision
+  number. Tombstoned files have an `@uvI` hash rather than `page`.
 - `act`: The total number of [`move`](/reference/arvo/overview#move)s our agent has
   processed so far.
 - `eny`: 512 bits of entropy.
