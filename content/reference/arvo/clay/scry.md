@@ -530,19 +530,20 @@ Example:
 
 ## `%x` - Read file
 
-A scry with a `care` of `%x` will return the raw data of a file as an `@` or
-crash if it's a directory.
+A scry with a `care` of `%x` will return the data of a file or crash if it's a
+directory. The type returned will be whatever is defined by the `mark` of the
+file.
 
 Examples:
 
 ```
-> .^(@ %cx %/gen/hood/hi/hoon)
-3.548.750.706.400.251.607.252.023.288.575.526.190.856.734.474.077.821.289.791.377.301.707.878.697.553.411.219.689.905.949.957.893.633.811.025.757.107.990.477.902.858.170.125.439.223.250.551.937.540.468.638.902.955.378.837.954.792.031.592.462.617.422.136.386.332.469.076.584.061.249.923.938.374.214.925.312.954.606.277.212.923.859.309.330.556.730.410.200.952.056.760.727.611.447.500.996.168.035.027.753.417.869.213.425.113.257.514.474.700.810.203.348.784.547.006.707.150.406.298.809.062.567.217.447.347.357.039.994.339.342.906
+> .^(@t %cx %/gen/hood/hi/hoon)
+'::  Helm: send message to an urbit\0a::\0a::::  /hoon/hi/hood/gen\0a  ::\0a/?    310\0a:-  %say\0a|=([^ [who=ship mez=$@(~ [a=tape ~])] ~] helm-send-hi+[who ?~(mez ~ `a.mez)])\0a'
 ```
 
 ```
-> .^(@t %cx %/gen/hood/hi/hoon)
-'::  Helm: send message to an urbit\0a::\0a::::  /hoon/hi/hood/gen\0a  ::\0a/?    310\0a:-  %say\0a|=([^ [who=ship mez=$@(~ [a=tape ~])] ~] helm-send-hi+[who ?~(mez ~ `a.mez)])\0a'
+> .^(waft:clay %cx %/sys/kelvin)
+[lal=%zuse num=413]
 ```
 
 ```
