@@ -1,6 +1,6 @@
 +++
 title = "Luhn Number"
-weight = 48
+weight = 128
 +++
 
 ## Challenge: Luhn Number
@@ -208,7 +208,7 @@ Following a principle of test-driven development, we compose a series of tests w
 
 ##  Solutions
 
-_These solutions were submitted by the Urbit community as part of a competition in ~2023.6.  They are made available under the MIT License.  We ask you to acknowledge authorship should you utilize these elsewhere._
+_These solutions were submitted by the Urbit community as part of a competition in ~2023.6.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
 ### Solution #1
 
@@ -291,7 +291,7 @@ _By ~dozreg-toplud._
 
 ### Solution #2
 
-_By ~pardun-nollev. Our speed winner_
+_By ~pardun-nollev._
 
 `lib/luhn-number.hoon`
 ```
