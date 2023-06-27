@@ -178,7 +178,7 @@ Following a principle of test-driven development, we compose a series of tests w
 
 ##  Solutions
 
-_These solutions were submitted by the Urbit community as part of a competition in ~2023.6.  They are made available under the MIT license and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
+_These solutions were submitted by the Urbit community as part of a competition in ~2023.6.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
 ### Solution #1
 
