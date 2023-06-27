@@ -92,7 +92,7 @@ _These solutions were submitted by the Urbit community as part of a competition 
 
 ### Solution #1
 
-_Solution by ~dannul-bortux. A model for literate programming._
+_By ~dannul-bortux. A model for literate programming._
 
 ```
 ::
