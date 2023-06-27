@@ -1,6 +1,6 @@
 +++
 title = "Water Towers"
-weight = 48
+weight = 230
 +++
 
 ## Challenge: Water between Towers
