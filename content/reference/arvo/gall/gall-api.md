@@ -816,13 +816,14 @@ subscription content for all subscribers on a given path.
 #### Structure
 
 ```hoon
-[%fact (list path) =cage]
+[%fact paths=(list path) =cage]
 ```
 
-`(list path)` is a list of the paths to send the update on. If no path is
-given, then the update is only given to the program that instigated the
-request. Typical use of this mode is in `+on-watch` to give an initial update
-to a new subscriber to get them up to date.
+`paths` is a list of the subscription paths to send the update on. In
+`+on-watch` alone, if no path is given, then the update is given
+exclusively to the source of the `%watch` request. This is useful for
+giving initial state to new subscribers. In other contexts, one or more
+subscription paths should be provided.
 
 `cage` is a cage of the subscription update.
 
