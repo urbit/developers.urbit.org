@@ -2,5 +2,5 @@
 title = "Assembly Hackathon 2023"
 image = "https://storage.googleapis.com/media.urbit.org/developers/hackathon/hackathon_logo.svg"
 url="/hackathon"
-description = "Show your Urbit killer app in Lisbon and compete for the biggest prize pool ever on Urbit."
+description = "This year’s Assembly Hackathon has the highest prize pool on Urbit ever. Are you prepared to rise to the challenge, showcase your skills, and claim victory?"
 +++
