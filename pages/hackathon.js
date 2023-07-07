@@ -66,10 +66,8 @@ export default function Hackathon({ search, featuredGroups }) {
 
           <div className="pt-8 md:p-16">
             <p className="type-ui text-center">
-            WIll you be the one who builds Urbit’s killer app? This year’s Assembly Hackathon has the highest prize pool on Urbit ever. Are you ready to compete and win the highest amount of prizes?
-              </p><p>
             Unleash your creativity and join the quest to build Urbit's killer app. This year’s Assembly Hackathon has the most substantial prize pool in Urbit history. Are you prepared to rise to the challenge, showcase your skills, and claim victory?
-            </p>
+              </p>
             <p className="type-ui pt-8 text-center">
             In the first week you’ll enter as an individual and form a team, or register an existing team. Each team will get a mentor who guides you through the Hackathon, helps you solve issues, and keeps you on track. As you progress, they will provide regular meetings to ensure your product reaches its full potential. Access a network of UF team members, valuable resources, and experts from within the Urbit ecosystem. With a dedicated mentor by your side, workshops from our best developers, and a powerhouse team, all that's left for you to provide is the talent and determination
             </p>
