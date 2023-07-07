@@ -40,7 +40,7 @@ export default function Hackathon({ search, featuredGroups }) {
   const post = {
     title: "Urbit Assembly Hackathon",
     description:
-      "Want o build the killer Urbit app? This is your chance.",
+      "WIll you be the one who builds Urbit’s killer app? This is your chance.",
     image:
       "https://storage.googleapis.com/media.urbit.org/developers/hackathon/hackathon_logo.svg",
   };
@@ -66,10 +66,12 @@ export default function Hackathon({ search, featuredGroups }) {
 
           <div className="pt-8 md:p-16">
             <p className="type-ui text-center">
-            Unleash your creativity and join the quest to build Urbit's killer app. This years Assembly Hackathon has the most substantial prize pool in Urbit history. Are you prepared to rise to the challenge, showcase your skills, and claim victory? 
+            WIll you be the one who builds Urbit’s killer app? This year’s Assembly Hackathon has the highest prize pool on Urbit ever. Are you ready to compete and win the highest amount of prizes?
+              </p><p>
+            Unleash your creativity and join the quest to build Urbit's killer app. This year’s Assembly Hackathon has the most substantial prize pool in Urbit history. Are you prepared to rise to the challenge, showcase your skills, and claim victory?
             </p>
             <p className="type-ui pt-8 text-center">
-            In the first week you enter as an individual and form a team or register your existing one. Each team will get a mentor who guides you through the Hackathon, helps you solve issues and keeps you on track. As you progress, they will provide regular meetings to ensure your product reaches its full potential. Access a network of UF team members, valuable resources, and experts from within the Urbit ecosystem. With a dedicated mentor by your side, workshops from our best developers and a powerhouse team, winning the Hackathon is a matter of determination. 
+            In the first week you’ll enter as an individual and form a team, or register an existing team. Each team will get a mentor who guides you through the Hackathon, helps you solve issues, and keeps you on track. As you progress, they will provide regular meetings to ensure your product reaches its full potential. Access a network of UF team members, valuable resources, and experts from within the Urbit ecosystem. With a dedicated mentor by your side, workshops from our best developers, and a powerhouse team, all that's left for you to provide is the talent and determination
             </p>
             <p className="type-ui pt-8 text-center">
             
@@ -90,7 +92,7 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Best overall – 3 Stars</h3>
               <p>
-              On Demo Day the committee of judges will decide which product has the highest score overall, they criteria they will take into account are: innovation, UI design, user value, usage of Urbit and completeness.
+              On Demo Day the committee of judges will decide which product has the highest score overall. The criteria they will take into account are: innovation, UI design, user value, usage of Urbit, and completeness.
               </p>
             </div>
           </div>
@@ -108,7 +110,7 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Best UI – 2 Stars</h3>
               <p>
-                The judges will decide on the Best UI on the criteria of: visual appeal, UX, responsiveness, consistency, innovation and interactivity.
+              The judges will decide on the Best UI on the criteria of: visual appeal, UX, responsiveness, consistency, innovation, and interactivity.
               </p>
             </div>
           </div>
@@ -117,16 +119,16 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Best Composability – 2 Stars</h3>
               <p>
-                The product should seamlessly integrate or interact with other systems, platforms, or APIs. Judges will evaluate how effectively the product can communicate and collaborate with external services or technologies, enabling smooth interoperability and data exchange.
+              The product should seamlessly integrate or interact with other Urbit services or technologies. Judges will evaluate how effectively the product can communicate and collaborate with other services or urbit products, enabling smooth interoperability and data exchange.
               </p>
             </div>
           </div>
           {/* Hooner */}
           <div className="flex flex-col-reverse md:flex-row items-center md:space-x-8">
             <div className="flex flex-col space-y-4 max-w-prose">
-              <h3>Best new Hooner team – Prize TBA</h3>
+              <h3>Rising Stars – Prize TBA</h3>
               <p>
-              This prize will be given out to the best product that consists of minimal 50% members that have graduated Hoon School since last Assembly.
+              This prize will be given to the best product built by a team composed of at least 50% graduates of Hoon School since Assembly 2022.
               </p>
             </div>
           </div>
@@ -135,7 +137,7 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Audience Vote – 1 Star</h3>
               <p>
-              The audience of Demo Day will vote on their favorite.  
+              The Demo Day audience will vote on their favorite.   
               </p>
             </div>
           </div>
