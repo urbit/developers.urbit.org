@@ -6,10 +6,6 @@
         "source": "/guides/quickstart",
         "destination": "/guides/quickstart/chat-guide",
         "permanent": false
-    },
-    {
-        "source": "/hackathon",
-        "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdsyFqt66YZAlVmgHAIZeaSnbDuH-q7vLl1aiU8xzwY79cawA/viewform?usp=sf_link",
-        "permanent": false
-      }]
+    }
+]
 }
