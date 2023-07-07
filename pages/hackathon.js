@@ -57,7 +57,9 @@ export default function Hackathon({ search, featuredGroups }) {
           <div className="flex flex-col items-center justify-center space-y-4">
             <h3 className="uppercase tracking-widest">Urbit Foundation presents</h3>
             <h1 className="text-center">Assembly Hackathon 2023</h1>
+            <Link href="https://zorp.io">
               <a className="text-wall-400 pb-12">Sponsored by Zorp</a>
+              </Link>
           </div>
           <img
               className="flex space-x-8"
