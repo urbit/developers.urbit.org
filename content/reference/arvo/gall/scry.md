@@ -215,6 +215,28 @@ A `cass:clay`, specifically the `%ud` kind.
 
 ---
 
+### `%x`: remote scry file
+
+A scry with a `%x` care and an agent in `q.beak` will get the value
+bound at the remote scry path given in the `spur`. The revision of the
+file must be given in the `beak` portion of the scry path. The general
+format is therefore:
+
+```hoon
+[%gx /[ship]/[agent]/[file revision]//[file path]
+```
+
+See the [remote scry guide](/guides/additional/remote-scry) for more
+details.
+
+#### Produces
+
+The type returned is an `(each page @uvI)`. If the file has been
+tombstoned, it'll be the `@uvI` hash of the file. Otherwise, it will be
+the data as a `page` (a pair of `mark` and `noun`).
+
+---
+
 ### `%z`: hash of value at path
 
 A scry with a `%z` care and an agent in `q.beak` will get the hash identifier
