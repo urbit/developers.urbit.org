@@ -1950,7 +1950,7 @@ our own instead. In the normal shell, do the following:
 
 ```shell {% copy=true %}
 rm -r dev-comet/tally/*
-cp -r tally/* dev-comet/tally/*
+cp -r tally/* dev-comet/tally/
 ```
 
 Back in the Dojo again, we can now commit those files and install the app:
