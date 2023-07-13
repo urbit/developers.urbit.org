@@ -116,7 +116,7 @@ across that our app will depend on:
 mkdir -p tally/{app,sur,mar,lib}
 cp -r dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} tally/mar/
 cp -r dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} tally/lib/
-cp -r dev-comet/squad/sur/{docket*, squad*} tally/sur/
+cp -r dev-comet/squad/sur/{docket*,squad*} tally/sur/
 cp -r dev-comet/base/sur/ring.hoon tally/sur/
 cp -r dev-comet/garden/lib/mip.hoon tally/lib/
 ```
@@ -1950,7 +1950,7 @@ our own instead. In the normal shell, do the following:
 
 ```shell {% copy=true %}
 rm -r dev-comet/tally/*
-cp -r tally/* dev-comet/tally/*
+cp -r tally/* dev-comet/tally/
 ```
 
 Back in the Dojo again, we can now commit those files and install the app:
