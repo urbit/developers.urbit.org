@@ -90,7 +90,7 @@ export default function Hackathon({ search, featuredGroups }) {
           {/* Overall */}
           <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8">
             <div className="flex flex-col space-y-4 max-w-prose">
-              <h3>Best overall – 3 Stars</h3>
+              <h3>Best overall – 3 Stars + 4 unreleased Native Planet devices</h3>
               <p>
               On Demo Day the committee of judges will decide which product has the highest score overall. The criteria they will take into account are: innovation, UI design, user value, usage of Urbit, and completeness.
               </p>
@@ -108,7 +108,7 @@ export default function Hackathon({ search, featuredGroups }) {
           {/* UI */}
           <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8">
             <div className="flex flex-col space-y-4 max-w-prose">
-              <h3>Best UI – 2 Stars</h3>
+              <h3>Best UI – 2 Stars + 3 unreleased Native Planet devices</h3>
               <p>
               The judges will decide on the Best UI on the criteria of: visual appeal, UX, responsiveness, consistency, innovation, and interactivity.
               </p>
@@ -117,7 +117,7 @@ export default function Hackathon({ search, featuredGroups }) {
           {/* Composability */}
           <div className="flex flex-col-reverse md:flex-row items-center md:space-x-8">
             <div className="flex flex-col space-y-4 max-w-prose">
-              <h3>Best Composability – 2 Stars</h3>
+              <h3>Best Composability – 2 Stars + 3 unreleased Native Planet devices</h3>
               <p>
               The product should seamlessly integrate or interact with other Urbit services or technologies. Judges will evaluate how effectively the product can communicate and collaborate with other services or urbit products, enabling smooth interoperability and data exchange.
               </p>
@@ -126,7 +126,7 @@ export default function Hackathon({ search, featuredGroups }) {
           {/* Hooner */}
           <div className="flex flex-col-reverse md:flex-row items-center md:space-x-8">
             <div className="flex flex-col space-y-4 max-w-prose">
-              <h3>Rising Stars – Prize TBA</h3>
+              <h3>Rising Stars – 4 unreleased Native Planet devices </h3>
               <p>
               This prize will be given to the best product built by a team composed of at least 50% graduates of Hoon School since Assembly 2022.
               </p>
