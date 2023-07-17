@@ -54,11 +54,11 @@ has `graph-store`, `group-store`, `contact-store`, and others in its desk.
 Agents are the main thing you'll interact with through Eyre. They have a simple
 interface with three main parts:
 
-| Interface     | Description                                                                                                                                                                                                                                                     |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pokes         | One-off message to an agent. Pokes often represent actions, commands, requests, etc.                                                                                                                                                                            |
+| Interface     | Description |
+| ------------- | ----------- |
+| Pokes         | One-off message to an agent. Pokes often represent actions, commands, requests, etc. |
 | Subscriptions | An agent may have a number of different paths to which you may subscribe. If a subscription request is accepted, you'll continue to receive update/events the agent sends out on that path until you either cancel the subscription or are kicked by the agent. |
-| Scries        | Scries are one-off requests for data. Like subscriptions, they are organized by path. Scry requests will be fulfilled immediately. Scries are "read-only", they cannot alter the state of an agent.                                                             |
+| Scries        | Scries are one-off requests for data. Like subscriptions, they are organized by path. Scry requests will be fulfilled immediately. Scries are "read-only", they cannot alter the state of an agent. |
 
 #### Pokes
 

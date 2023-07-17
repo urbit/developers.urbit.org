@@ -7,12 +7,15 @@
   },
   "scripts": {
     "dev": "npm run prebuild && next dev",
-    "prebuild": "npm run cache-posts && npm run glossary && npm run guide && npm run overview && npm run reference",
+    "prebuild": "npm run cache-posts && npm run glossary && npm run language && npm run userspace && npm run system && npm run ecosystem && npm run manual && npm run overview",
     "cache-posts": "node lib/cache.js",
     "glossary": "node lib/buildGlossary.js",
-    "guide": "node lib/buildPageTree guides weight",
+    "language": "node lib/buildPageTree language weight",
+    "userspace": "node lib/buildPageTree userspace weight",
+    "system": "node lib/buildPageTree system weight",
+    "ecosystem": "node lib/buildPageTree ecosystem weight",
+    "manual": "node lib/buildPageTree manual weight",
     "overview": "node lib/buildPageTree overview weight",
-    "reference": "node lib/buildPageTree reference weight",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -75,14 +75,6 @@ export default function Home({ search, posts, highlights }) {
             </div>
           </Section>
 
-        <Section className="pb-36">
-        
-          <HighlightCard highlight={highlights[0]} key={highlights[0].slug} />
-
-        </Section>
-
-
-
           <Section short>
             <h2 className="font-normal">
               Urbit provides{" "}
@@ -176,72 +168,6 @@ export default function Home({ search, posts, highlights }) {
               </a>
             </Link>
           </Section>
-          <Section className="flex flex-col space-y-12">
-            <h2>Courses</h2>
-            <p className="text-lg max-w-prose">
-              Want an interactive experience to truly learn software development
-              on Urbit? <br/>Join the next cohort for Hoon or App School Live and
-              learn with a group.
-            </p>
-            <Link href="/courses" passHref>
-              <a className="button-lg bg-green-400 text-white w-fit">
-                View Courses
-              </a>
-            </Link>
-          </Section>
-          <Section className="flex flex-col space-y-8">
-            <h2>Community</h2>
-            <p className="text-lg">
-              The developer community is friendly, helpful, and organized from
-              within Urbit itself.
-            </p>
-            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4 pb-4">
-              <Card
-                title="Directory"
-                text="There are many bright minds happy to answer your questions."
-                href="/community/directory"
-                callout="View Directory"
-                className="basis-1/2"
-              />
-              <Card
-                title="Opportunities"
-                text="Urbit is growing and there are many opportunities to find a job, grant, or funding for your great idea."
-                href="/community/opportunities"
-                callout="Explore Opportunities"
-                className="basis-1/2"
-              />
-            </div>
-
-            <Link href="/community" passHref>
-              <a className="button-lg bg-wall-600 text-white w-fit">
-                Explore the Community
-              </a>
-            </Link>
-          </Section>
-          <Section className="flex flex-col space-y-8">
-            <h2>Blog</h2>
-            <TwoUp>
-              {posts.slice(0, 2).map((e) => {
-                const date = generateDisplayDate(e.date);
-                return (
-                  <IndexCard
-                    key={e.slug}
-                    slug={`/blog/${e.slug}`}
-                    title={e.title}
-                    image={e.extra.image}
-                    author={e?.extra?.author || ""}
-                    ship={e?.extra?.ship || ""}
-                    content={
-                      <p className="text-wall-500 type-sub shrink-0">
-                        {formatDate(date)}
-                      </p>
-                    }
-                  />
-                );
-              })}
-            </TwoUp>
-          </Section>
-
           <Section narrow>
             <div className="measure">
               <h2 className="pb-2">[battery payload]</h2>

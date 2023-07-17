@@ -34,9 +34,9 @@ export default function Header({ search }) {
       <IntraNav ourSite="https://developers.urbit.org" search={search} />
       <header className="layout max-w-screen-lg px-4 md:px-8 flex justify-between items-end  pt-8 md:pt-10 lg:pt-12 pb-10 md:pb-12 lg:pb-24">
         <div>
-          <Link href="/" passHref>
+          <Link href="/overview" passHref>
             <a className="text-lg font-semibold leading-3 mr-5">
-              Urbit Developers
+              Urbit Docs
             </a>
           </Link>
           {routeDepth > 2 ? (
@@ -54,37 +54,37 @@ export default function Header({ search }) {
           <ActiveLink
             currentPath={currentPath}
             className="mr-5 type-ui"
-            href="/overview"
+            href="/language/overview"
           >
-            Overview
+            Language
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}
             className="mr-5 type-ui"
-            href="/guides"
+            href="/userspace/overview"
           >
-            Guides
-          </ActiveLink>
-          <ActiveLink
-            currentPath={currentPath}
-            className="mr-5 type-ui"
-            href="/reference"
-          >
-            Reference
+            Userspace
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}
             className="mr-5 type-ui button-text"
-            href="/courses"
+            href="/system/overview"
           >
-            Courses
+            System
+          </ActiveLink>
+          <ActiveLink
+            currentPath={currentPath}
+            className="mr-5 type-ui"
+            href="/ecosystem/overview"
+          >
+           Ecosystem
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}
             className="type-ui"
-            href="/blog"
+            href="/manual/overview"
           >
-            Blog
+            Manual
           </ActiveLink>
         </nav>
 
@@ -113,7 +113,7 @@ export default function Header({ search }) {
             className="mt-4 mr-5 mb-3 type-ui"
             href="/overview"
           >
-            Overview
+            
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}
