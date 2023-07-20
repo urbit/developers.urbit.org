@@ -19,7 +19,7 @@ explain subject-oriented programming.  We omit some of the written Hoon School
 content for time, but you should be well-equipped to understand the optional
 lessons.
 
-The next cohort will begin in June 2023.
+The cohort will start in September until October on Thursdays at 1pm EST | 6pm CEST. 
 
 - [Complete this form](https://airtable.com/shrqzaLRLzDsHDnCX) to sign up for the next Hoon School Live.
 
