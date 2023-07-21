@@ -46,10 +46,6 @@ Jael manages keys and Azimuth state.
 
 Khan is our thread dispatcher.
 
-## [Lick](/reference/arvo/lick/lick)
-
-Lick is our interprocess communication (IPC) vane. Unix process can communicate to applications on Urbit through IPC.
-
 ## [Concepts](/reference/arvo/concepts/)
 
 Explanations of design decisions that are pervasive throughout Arvo.
