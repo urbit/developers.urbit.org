@@ -46,6 +46,7 @@ terminal driving, [Eyre](/reference/glossary/eyre) for the web server,
 [Iris](/reference/glossary/iris) for the HTTP client,
 [Jael](/reference/glossary/jael) for PKI management, and
 [Khan](/reference/glossary/khan) for external control and thread running.
+[Lick](/reference/glossary/lick) for external communication.
 
 Vanes and other programs for Arvo are written in [Hoon](/reference/glossary/hoon).
 
