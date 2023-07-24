@@ -202,10 +202,10 @@ making scry requests from threads using `+keen` in `lib/strandio`. It accepts a
 that demonstrates
 this](https://github.com/urbit/urbit/blob/i/5788/remote-scry/pkg/arvo/ted/keen.hoon).
 You can run it from the dojo using `-keen [ship path]`. For example, this reads
-the thread's own source code out of `~sampel`'s `%kids` desk, try it!
+the `%noun` mark's source code out of `~zod`'s `%kids` desk, try it!
 
 ```
--keen [~sampel /c/x/1/kids/ted/keen/hoon]
+-keen [~zod /c/x/1/kids/mar/noun/hoon]
 ```
 
 ## Additional reading
