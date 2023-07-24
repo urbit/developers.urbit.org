@@ -1,7 +1,7 @@
 +++
 title = "Hoon School Live"
 weight = 100
-next_cohort = "June 2023"
+next_cohort = "September 2023"
 image = "https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school-live.svg"
 description = "Hoon School Live teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification."
 +++
