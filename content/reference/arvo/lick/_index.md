@@ -20,3 +20,8 @@ The scry endpoints of Lick.
 ## [Examples](/reference/arvo/lick/examples)
 
 Practical examples of using Lick's `task`s.
+
+
+## [Guide](/reference/arvo/lick/guide)
+
+A thorough walk-through of using Lick.

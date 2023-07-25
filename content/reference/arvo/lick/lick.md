@@ -13,11 +13,20 @@ transfer data between itself and the Unix application.
 The IPC ports Lick creates are Unix domain sockets (`AF_UNIX` address family)
 of the `SOCK_STREAM` type.
 
-Data sent to and from the socket is a [++jam](/reference/hoon/stdlib/2p#jam)med
-pair of `mark` and `noun`. The process on the host OS must therefore be able to
-[`++cue`](/reference/hoon/stdlib/2p#cue) the jam and (most likely) convert the
-noun into a native data structure. A couple of examples of libraries for this
-purpose are [`pynoun`](https://github.com/urbit/tools) and
+The format of the full message with header and data sent to and from the socket
+is as follows:
+
+|1 byte |4 bytes          |n bytes|
+|-------|-----------------|-------|
+|version|jam size in bytes|jamfile|
+
+The version is currently `0`.
+
+The [++jam](/reference/hoon/stdlib/2p#jam)file contains a pair of `mark` and
+`noun`. The process on the host OS must therefore strip the first 5 bytes,
+[`++cue`](/reference/hoon/stdlib/2p#cue) the jamfile, check the mark and (most
+likely) convert the noun into a native data structure. A couple of libraries
+that can cue/jam are [`pynoun`](https://github.com/urbit/tools) and
 [`nockjs`](https://github.com/urbit/nockjs).
 
 Lick has no novel data types in its API apart from `name`, which is just a
@@ -30,3 +39,5 @@ Lick has no novel data types in its API apart from `name`, which is just a
 [Scry Reference](/reference/arvo/lick/scry) - The scry endpoints of Lick.
 
 [Examples](/reference/arvo/lick/examples) - Practical examples of using Lick's `task`s.
+
+[Guide](/reference/arvo/lick/guide) - A thorough walk-through of using Lick.
