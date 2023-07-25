@@ -224,7 +224,7 @@ def jam_result(mark, msg):
 
 This function takes a `mark` string and `msg` string, converts them to
 integers, forms a cell and jams them with the `jam` function in
-`noun.py`. It's used to produce the jam when sending somethign back to
+`noun.py`. It's used to produce the jam when sending something back to
 the socket.
 
 ```python
