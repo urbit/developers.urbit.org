@@ -25,9 +25,13 @@ The version is currently `0`.
 The [++jam](/reference/hoon/stdlib/2p#jam)file contains a pair of `mark` and
 `noun`. The process on the host OS must therefore strip the first 5 bytes,
 [`++cue`](/reference/hoon/stdlib/2p#cue) the jamfile, check the mark and (most
-likely) convert the noun into a native data structure. A couple of libraries
-that can cue/jam are [`pynoun`](https://github.com/urbit/tools) and
-[`nockjs`](https://github.com/urbit/nockjs).
+likely) convert the noun into a native data structure.
+
+Here are some libraries that can cue/jam:
+
+- [`pynoun`](https://github.com/urbit/tools)
+- [`nockjs`](https://github.com/urbit/nockjs)
+- [Rust Noun](https://github.com/urbit/noun)
 
 Lick has no novel data types in its API apart from `name`, which is just a
 `path` representing the name of a socket.
