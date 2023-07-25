@@ -98,7 +98,7 @@ from the Dojo like:
 > :licker %ping
 ```
 
-### `++ on-arvo`
+### `++on-arvo`
 
 ```hoon
 ++  on-arvo
