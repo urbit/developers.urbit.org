@@ -80,7 +80,7 @@ Some notes:
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
-```
+```hoon
 /+  *test
 /+  ln=luhn-number
 /=  luhn-number  /gen/luhn-number
@@ -215,7 +215,7 @@ _These solutions were submitted by the Urbit community as part of a competition 
 _By ~dozreg-toplud._
 
 `lib/luhn-number.hoon`
-```
+```hoon
 ::  lib/luhn-number.hoon
 ::  Library for HSL challenge #3
 ::
@@ -260,7 +260,7 @@ _By ~dozreg-toplud._
 ```
 
 `gen/luhn-number.hoon`
-```
+```hoon
 ::  gen/luhn-number.hoon
 ::  Naked generator for HSL challenge #3
 ::
@@ -294,7 +294,7 @@ _By ~dozreg-toplud._
 _By ~pardun-nollev._
 
 `lib/luhn-number.hoon`
-```
+```hoon
 |%
 ++  validate
   |=  input=tape
@@ -365,7 +365,7 @@ _By ~pardun-nollev._
 
 `gen/luhn-number.hoon`
 
-```
+```hoon
 /+  luhn-number
 |=  input=tape
 =<
@@ -402,7 +402,7 @@ _By ~motdeg-bintul_
 
 `lib/luhn-number`
 
-```
+```hoon
 ::  lib/luhn-number.hoon
 ::  Your code goes here
 ::
@@ -487,7 +487,7 @@ $(count (add 1 count))
 
 `gen/luhn-number`
 
-```
+```hoon
 ::  gen/luhn-number.hoon
 ::  Your code goes here
 ::

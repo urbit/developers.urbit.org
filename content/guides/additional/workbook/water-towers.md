@@ -31,7 +31,7 @@ Example usage:
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
-``` 
+```hoon
 /+  *test
 /=  water-towers  /gen/water-towers
 |%
@@ -94,7 +94,7 @@ _These solutions were submitted by the Urbit community as part of a competition 
 
 _By ~dannul-bortux. A model for literate programming in Hoon._
 
-```
+```hoon
 ::
 ::  A gate for computing volume of water collected between towers.
 ::
@@ -262,7 +262,7 @@ _By ~dannul-bortux. A model for literate programming in Hoon._
 ### Solution #2
 _By ~racfer-hattes. A short and elegant solution._
 
-```
+```hoon
 =>
 |%
 ++  go 
@@ -285,7 +285,7 @@ _By ~racfer-hattes. A short and elegant solution._
 _By ~dozreg-toplud. Another very literate and clean solution._
 
 
-```
+```hoon
 ::  +water-towers: a solution to the HSL challenge #1
 ::
 ::    https://github.com/tamlut-modnys/template-hsl-water-towers

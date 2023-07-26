@@ -57,7 +57,7 @@ dojo: naked generator failure
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
-```
+```hoon
 /+  *test
 /=  abc-blocks  /gen/abc-blocks
 |%
@@ -184,7 +184,7 @@ _These solutions were submitted by the Urbit community as part of a competition 
 
 _By ~dozreg-toplud.  In the process, he found and fixed a bug in the implementation of `++curr`._
 
-```
+```hoon
 ::  +abc-blocks: a solution to the HSL challenge #2
 ::
 ::    https://github.com/tamlut-modnys/template-hsl-abc-blocks
@@ -323,7 +323,7 @@ _By ~dozreg-toplud.  In the process, he found and fixed a bug in the implementat
 
 _By ~bantus-follus_
 
-```
+```hoon
 |=  [blocks=(list (pair @t @t)) word=@t]
 =<
 =/  alphacheck  (alphabet-check merged-blocks)
@@ -413,7 +413,7 @@ spellcheck
 ### Solution #3
 _By ~dannul-bortux_
 
-```
+```hoon
 !:
 |=  [inlist=(list [@t @t]) inword=@t]
 ^-  $?(%.y %.n)
