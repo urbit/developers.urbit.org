@@ -68,10 +68,10 @@ export default function Hackathon({ search, featuredGroups }) {
 
           <div className="pt-8 md:p-16">
             <p className="type-ui text-center">
-            Unleash your creativity and join the quest to build Urbit's killer app. This year’s Assembly Hackathon has the most substantial prize pool in Urbit history. Are you prepared to rise to the challenge, showcase your skills, and claim victory?
+            Unleash your creativity and join the quest to build Urbit's killer app. This year’s Assembly Hackathon has the most substantial prize pool in Urbit history. We invite you to rise to the challenge, showcase your skills, and claim victory.
               </p>
             <p className="type-ui pt-8 text-center">
-            In the first week you’ll enter as an individual and form a team, or register an existing team. Each team will get a mentor who guides you through the Hackathon, helps you solve issues, and keeps you on track. As you progress, they will provide regular meetings to ensure your product reaches its full potential. Access a network of UF team members, valuable resources, and experts from within the Urbit ecosystem. With a dedicated mentor by your side, workshops from our best developers, and a powerhouse team, all that's left for you to provide is the talent and determination
+            In the first week you’ll enter as an individual and form a team, or register an existing team. Each team will get a mentor who guides you through the Hackathon, helps you solve issues, and keeps you on track. As you progress, they will provide regular meetings to ensure your product reaches its full potential. You'll have access to a network of UF team members, valuable resources, and experts from within the Urbit ecosystem. With a dedicated mentor by your side, workshops from our best developers, and a powerhouse team, all that's left for you to provide is the talent and determination.
             </p>
             <p className="type-ui pt-8 text-center">
             
@@ -85,7 +85,7 @@ export default function Hackathon({ search, featuredGroups }) {
         
         {/* Features */}
         <h2>Prizes</h2>
-        <a className="text-wall-400 pb-12">This years Hackathon has the most substantial prize pool in Urbit history and there is even more tba</a>
+        <a className="text-wall-400 pb-12">This year's Hackathon has the most substantial prize pool in Urbit history, with even more TBA.</a>
         <Section className="flex flex-col space-y-8">
           {/* Overall */}
           <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8">
@@ -101,7 +101,7 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Zorp Category – Prize TBA</h3>
               <p>
-              The best Zorp/zk integration, more details TBA. 
+              The best Zorp/ZK integration. More details TBA. 
               </p>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Best UI – 2 Stars + 3 unreleased Native Planet devices</h3>
               <p>
-              The judges will decide on the Best UI on the criteria of: visual appeal, UX, responsiveness, consistency, innovation, and interactivity.
+              The Best UI winner will be chosen based on visual appeal, user experience, clarity, responsiveness, and interactivity.
               </p>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Best Composability – 2 Stars + 3 unreleased Native Planet devices</h3>
               <p>
-              The product should seamlessly integrate or interact with other Urbit services or technologies. Judges will evaluate how effectively the product can communicate and collaborate with other services or urbit products, enabling smooth interoperability and data exchange.
+              A huge advantage of an Urbit personal server is app composability. Apps can be built to seamlessly interact with each other while keeping data local and private. This prize will be awarded to the product that makes best use of this by showing an innovative and useful integration with other Urbit services.
               </p>
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function Hackathon({ search, featuredGroups }) {
           </div>
           <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdsyFqt66YZAlVmgHAIZeaSnbDuH-q7vLl1aiU8xzwY79cawA/viewform?usp=sf_link">
             <a className="button-lg bg-green-400 text-white w-fit">
-              Sign-up for the Assembly Hackathon
+              Sign up for the Assembly Hackathon
             </a>
           </Link>
         </Section>
