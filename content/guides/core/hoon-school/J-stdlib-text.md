@@ -14,8 +14,8 @@ We've incidentally used `'messages written as cords'` and `"as tapes"`, but asid
 There are four basic ways to represent text in Urbit:
 
 - `@t`, a `cord`, which is an atom (single value)
-- `@ta`, a `knot` or ASCII text, which is an atom (single value)
-- `@tas`, a `term` or ASCII text symbol
+- `@ta`, a `knot` used for URL-safe path elements, which is an atom (single value)
+- `@tas`, a `term` used primarily for constants, which is an atom (single value)
 - `tape`, which is a `(list @t)`
 
 This is more ways than many languages support:  most languages simply store text directly as a character array, or list of characters in memory.  Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_%28computer_science%29), however.
@@ -75,7 +75,7 @@ There are some tools to work with atom `cord`s of text, but most of the time it 
 
 We've hinted a bit at the structure of `list`s before; for now the main thing you need to know is that they are cells which end in a `~` sig.  So rather than have all of the text values stored sequentially in a single atom, they are stored sequentially in a rightwards-branching binary tree of cells.
 
-A tape is a list of `@tD` atoms (i.e., ASCII characters).  (The upper-case character at the end of the aura hints that the `@t` values are D→3 so 2³=8 bits wide.)
+A tape is a list of `@tD` atoms (i.e., characters).  (The upper-case character at the end of the aura hints that the `@t` values are D→3 so 2³=8 bits wide.)
 
 ```hoon
 > "this is a tape"

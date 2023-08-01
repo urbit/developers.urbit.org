@@ -38,8 +38,8 @@ Aura         Meaning                                 Example Literal Syntax
   @sw        signed base64                           --0wbnC.8haTg
   @sx        signed hexadecimal                      -0x5f5.e138
 @t           UTF-8 text (cord)                       'howdy'
-  @ta        ASCII text (knot)                       ~.howdy
-    @tas     ASCII text symbol (term)                %howdy
+  @ta        URL-safe path element text (knot)       ~.howdy
+    @tas     short name text (term)                  %howdy
 @u              unsigned integer
   @ub           unsigned binary                      0b11.1000
   @ud           unsigned decimal                     1.000.056
@@ -55,7 +55,7 @@ two, starting from A.
 
 ```
         @udD    unsigned single-byte (8-bit) decimal
-        @tD     8-bit ASCII text
+        @tD     8-bit UTF-8 text
         @rhE    half-precision (16-bit) floating-point number
         @uxG    unsigned 64-bit hexadecimal
         @uvJ    unsigned, 512-bit integer (frequently used for entropy)
