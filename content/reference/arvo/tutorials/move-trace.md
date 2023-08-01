@@ -127,10 +127,11 @@ Here is the line of code in `arvo.hoon`, found in the [section
 First we note that this line is executed only if the laconic bit is set to true,
 as we did when we input `|verb`. Here, `ovo` is the input `ovum`. Knowing that an `ovum` is a `[p=wire q=curd]`,
 we can then say that this is a `%unix` `move` tagged with `%belt` whose cause is a `wire` given by `//term/1`,
-where the empty span `//` represents Unix and `term/1` represents the terminal
-in Unix. Here we have a `wire` instead of a `duct` (i.e. a list of `wire`s)
-since Unix I/O events are always the beginning and end of the Arvo event loop,
-thus only a single `wire` is ever required at this initial stage.
+where the empty path element `//` represents Unix and `term/1`
+represents the terminal in Unix. Here we have a `wire` instead of a
+`duct` (i.e. a list of `wire`s) since Unix I/O events are always the
+beginning and end of the Arvo event loop, thus only a single `wire` is
+ever required at this initial stage.
 
 The `""` here is a metadatum that keeps track of how many steps deep in the
 causal chain the event is. An event
