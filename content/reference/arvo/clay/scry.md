@@ -79,6 +79,46 @@ Example:
 
 ---
 
+### `/cult/[desk]` - Subscribers
+
+A buc scry with a path of `/cult/[desk]` will return the current subscriptions
+for the specified `desk`.
+
+The type returned is:
+
+```hoon
+(set [@p rave:clay])
+```
+
+See the [`$rave:clay`](/reference/arvo/clay/data-types#raveclay) data
+type entry for more details of the `$rave` structure.
+
+Example:
+
+```
+> .^((set [@p rave:clay]) %cx /=//=/cult/kids)
+{ [~zod [%next mood=[care=%z case=[%da p=~2023.7.27..13.41.30..0536] path=/]]]
+  [~zod [%next mood=[care=%z case=[%da p=~2023.7.27..13.41.30..0536] path=/desk/docket-0]]]
+}
+```
+
+---
+
+### `/flow` - Build cache
+
+A buc scry with a path of `/flow` will return the global build cache.
+The type returned is a
+[`$flow:clay`](/reference/arvo/clay/data-types#flow).
+
+Example:
+
+```
+> ~(wyt by .^(flow:clay %cx /=//=/flow))
+960
+```
+
+---
+
 ### `/domes` - All domes
 
 A buc scry with a path of `/domes` will return a
@@ -188,10 +228,14 @@ Example:
 A scry with a `care` of `%d` will return a `(set desk)` of the `desk`s that
 exist on your ship.
 
+Note this scry should be performed with an empty `desk` field (`%$`) in
+the `beak` (e.g. `/=//=`). If it's not empty, it'll work but Clay will
+complain in the terminal.
+
 Example:
 
 ```
-> .^((set desk) %cd %)  
+> .^((set desk) %cd /=//=)
 {%bitcoin %base %landscape %webterm %garden %kids}
 ```
 
