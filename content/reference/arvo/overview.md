@@ -276,7 +276,7 @@ every step in the path the request takes onto the chain until we get to the
 terminal cause of the computation. Then we use this causal stack to route
 results back to the caller.
 
-The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
+The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty path element for Unix.
 
 Here's a `duct` that was recently observed in the wild upon entering `-time ~s1`
 into the dojo and pressing Enter, which sets a timer for one second that will
@@ -301,7 +301,7 @@ time app. This app returns a `@d` which denotes the current time, which falls do
 which drops it through to the terminal. Terminal drops this down to Dill, which
 converts it into an effect that Unix will recognize as a request to print the
 current time to the screen. When Dill produces this, the last path in the `duct` has an
-initial element of the empty span, so this is routed to Unix, which applies the effects.
+initial empty element, so this is routed to Unix, which applies the effects.
 
 This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a `duct` zero, one, or many times. You can save `duct`s for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
 
