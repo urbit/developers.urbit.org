@@ -497,7 +497,7 @@ Now when we navigate to `localhost:8080/apps/flap`, what do we see?  The game ca
 
 ### Serving Correctly
 
-If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source, or
+If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source or serve the resource from Urbit.
 
 If we hot-link the resources, the corresponding lines will look like this:
 
