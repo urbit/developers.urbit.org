@@ -75,9 +75,16 @@ export default function Header({ search }) {
           <ActiveLink
             currentPath={currentPath}
             className="mr-5 type-ui"
-            href="/ecosystem/overview"
+            href="/tools/overview"
           >
-           Ecosystem
+           Tools
+          </ActiveLink>
+          <ActiveLink
+            currentPath={currentPath}
+            className="type-ui"
+            href="/courses/overview"
+          >
+            Courses
           </ActiveLink>
           <ActiveLink
             currentPath={currentPath}

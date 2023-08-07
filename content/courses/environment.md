@@ -1,7 +1,7 @@
 +++
 title = "Environment Setup"
 description = "How to set up an environment for Urbit development."
-weight = 11
+weight = 2
 +++
 
 This guide covers best practices for preparing your environment to develop
