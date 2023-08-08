@@ -12,13 +12,15 @@ not yet proper libraries for other languages that can make use of it. Therefore,
 these documents will only touch on Khan's internal interface.
 
 Khan's internal interface lets you run threads via Khan rather than having to
-poke [Spider](/reference/arvo/threads/reference) and subscribe for the result. This interface is simpler and more
-ergonomic than Spider's, so is usually preferable.
+poke [Spider](/reference/arvo/threads/reference) and subscribe for the result.
+This interface is simpler and more ergonomic than Spider's, so is usually
+preferable.
 
-There are currently three `task`s to run a thread: `%fard`, `%fyrd`, and `%lard`.
-Only `%fard` is currently documented in
-the [API Reference](/reference/arvo/khan/tasks) section, and a practical example
-is given in the [Example](/reference/arvo/khan/example) section.
+There are two `task`s for running threads from userspace:
+[`%fard`](/reference/arvo/khan/tasks#fard) and
+[`%lard`](/reference/arvo/khan/tasks#lard). The former is for running a thread
+from file and the latter is for running an "in-line" thread, where you pass
+Khan the thread directly.
 
 ## Sections
 
