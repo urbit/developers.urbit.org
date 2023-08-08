@@ -3,8 +3,6 @@ title = "Scries"
 weight = 40
 +++
 
-{% callout %}
-
 This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](/guides/additional/remote-scry).
 
 ## What is a scry?
@@ -52,6 +50,15 @@ To explore what scry endpoints are available for vanes, you can refer to the Scr
 Gall has a single scry endpoint of its own to check for the existence of an agent, but otherwise all Gall scries are passed through to one of the agents it manages. The target agent to scry is specified in place of the `desk` as described in the diagram above. Each Gall agent includes a `+on-peek` arm that defines its own scry endpoints. For example, `%graph-store` has a number of scry endpoints to access the data it stores, such as chat messages and the like.
 
 Gall agents can expose scry endpoints with any `care`, but most commonly they'll take a `%x` `care`. Gall handles `%x` scries specially - it expects an extra field at the end of the `path` that specifies a `mark`. Gall will attempt to perform a `mark` conversion from the `mark` returned by the scry endpoint to the `mark` specified. Note the trailing `mark` in the `path` will not be passed through to the agent itself.
+
+{% callout %}
+
+**Note:** you should not perform agent scries from within the
+`++on-load` arm of your agent. All Gall agents are suspended during
+kernel upgrade, and then reloaded one-by-one. If the agent you scry
+wasn't reloaded before yours, the scry will fail.
+
+{% /callout %}
 
 ## What is an endpoint?
 
