@@ -241,7 +241,7 @@ a hut by poking our agent with a `%post` action. Likewise, we'll be able to
 subscribe to huts for groups on other ships and poke them to post messages.
 Remember, all Urbit ships are both clients and servers.
 
-There's three main agent arms we use for this:
+There are three main agent arms we use for this:
 
 1. `on-poke`: This arm handles one-off actions/requests, such as posting a
    message to a hut.
@@ -368,7 +368,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
   |=  old-vase=vase
   ^-  (quip card _this)
   [~ this(state !<(state-0 old-vase))]
-:: on-poke handles "pokes", one-off requests/actions intiated either
+:: on-poke handles "pokes", one-off requests/actions initiated either
 :: by our local ship, the front-end or other ships on the network.
 ::
 ++  on-poke
@@ -570,7 +570,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
       :: the subscribe succeeded or failed
       ::
         %watch-ack
-      :: if there's no error message it succceeded,
+      :: if there's no error message it succeeded,
       :: do nothing further
       ::
       ?~  p.sign  `this
@@ -784,7 +784,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
   :: switch on the kind of event
   ::
   ?+    -.sign  (on-agent:def wire sign)
-    :: if it was a response to a subscriiption request...
+    :: if it was a response to a subscription request...
       %watch-ack
     :: if there's no error message the subscription succeeded,
     :: no nothing
@@ -1252,7 +1252,7 @@ in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
           ['joined' (en-joined joined.u)]
       ==
     ==
-    :: this function creates an array of the the members of a the
+    :: this function creates an array of the members of a the
     :: huts for a squad
     ::
     ++  en-joined

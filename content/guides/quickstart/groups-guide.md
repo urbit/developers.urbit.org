@@ -139,7 +139,7 @@ For the actions/requests our app will accept, we'll need the following:
 6. Leave a squad.
 7. Make a private squad public.
 8. Make a public squad private.
-9. Change the title of a squad .
+9. Change the title of a squad.
 
 These actions will only be allowed to be taken by the host ship.
 
@@ -256,7 +256,7 @@ host and receive updates such as access control list changes or members joining
 and leaving. Likewise, we'll be able to subscribe to squads on other ships and
 receive their updates. Remember, all Urbit ships are both clients and servers.
 
-There's three main agent arms we use for this:
+There are three main agent arms we use for this:
 
 1. `on-poke`: This arm handles one-off actions/requests (our `act` structure).
    It will also handle requests from the front-end, which we'll create in the
@@ -1103,7 +1103,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
     ==
   ::
     :: if it's a kick alert, it may or may not be intentional,
-    :: so we just automaticall try to resubscribe
+    :: so we just automatically try to resubscribe
     ::
       %kick
     ?.  (~(has by squads) gid)  `this
@@ -1208,7 +1208,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
       :: check whether it's US, and do nothing if so
       ::
       ?:  =(our.bol ship.upd)  `this
-      :: otherwise, update the member list and and let local
+      :: otherwise, update the member list and let local
       :: subscribers know
       ::
       :-  ~[(fact:io cage.sign ~[/local/all])]
@@ -1399,7 +1399,7 @@ mark in `squad/mar/squad/did.hoon`.
 :: first we import our /sur/squad.hoon type defs and expose them directly
 ::
 /-  *squad
-:: the mark door takes an $act action in in the outbound case
+:: the mark door takes an $act action in the outbound case
 ::
 |_  a=act
 :: the grow arm converts from an $act to other things
@@ -1656,7 +1656,7 @@ Save the code below in `squad/app/squad/index.hoon`.
           ?:(success.page "success" "failed")
         success.page
   ==
-:: This component lets a group host change whther a squad is private
+:: This component lets a group host change whether a squad is private
 :: or public. It's a form that POSTs the new state to either the /squad/private
 :: or /squad/public URL path, and our Gall agent processes the request.
 ::
