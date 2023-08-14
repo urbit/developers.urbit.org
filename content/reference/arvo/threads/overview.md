@@ -79,3 +79,7 @@ These docs walk through the basics of interacting with threads from gall agents.
 ## [Reference](/reference/arvo/threads/reference)
 
 Basic reference information. For usage of particular `strandio` functions just refer directly to `/lib/strandio/hoon` since they're largely self-explanatory.
+
+## [Strandio](/reference/arvo/threads/strandio)
+
+Reference documentation of the Strandio helper library.

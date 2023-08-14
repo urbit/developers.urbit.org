@@ -9,9 +9,17 @@ insert_anchor_links = "right"
 
 Overview of threads.
 
-## [Threads Guide](/guides/additional/threads/)
+## [HTTP API](/reference/arvo/threads/http-api)
 
-Tutorial and explanation of the basics of writing threads.
+Documenation of Spider's HTTP API.
+
+## [Reference](/reference/arvo/threads/reference)
+
+Documentation of Spider's API.
+
+## [Strandio](/reference/arvo/threads/strandio)
+
+Reference documentation of the Strandio helper library.
 
 ## [Gall](/reference/arvo/threads/gall/)
 
