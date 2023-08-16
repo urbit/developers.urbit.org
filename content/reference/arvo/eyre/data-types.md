@@ -11,6 +11,24 @@ This document describes the data types used by Eyre as defined in `/sys/lull.hoo
 
 ## Eyre
 
+### `$cache-entry`
+
+```hoon
++$  cache-entry
+  $:  auth=?
+  $=  body
+  $%  [%payload =simple-payload:http]
+  ==  ==
+```
+
+- `auth`: Whether the request must include a valid session cookie or otherwise
+  be authenticated. If this is false, the entry will be publicly accessible.
+- `body`: The HTTP response to give. This contains a `[%payload
+  =simple-payload:http]`. See the [`$simple-payload:http`](#simple-payloadhttp)
+  for more details of the data.
+
+---
+
 ### `$origin`
 
 ```hoon
@@ -18,6 +36,8 @@ This document describes the data types used by Eyre as defined in `/sys/lull.hoo
 ```
 
 A single CORS origin as used in an HTTP Origin header and the [$cors-registry](#cors-registry).
+
+---
 
 ### `$cors-registry`
 
@@ -30,6 +50,8 @@ A single CORS origin as used in an HTTP Origin header and the [$cors-registry](#
 ```
 
 CORS origins categorised by approval status. The `requests` `set` contains all [$origin](#origin)s Eyre has received in the headers of HTTP requests that have not been explicitly approved or rejected. The `approved` and `rejected` `set`s are those that have been explicitly approved or rejected.
+
+---
 
 ### `$outstanding-connection`
 
@@ -44,6 +66,8 @@ CORS origins categorised by approval status. The `requests` `set` contains all [
 
 An HTTP connection that is currently open. The [$action](#action) is how it's being handled (e.g. by a Gall app, the channel system, etc). The [$inbound-request](#inbound-request) is the original request which opened the connection. The `response-header` contains the status code and headers. The `bytes-sent` is the total bytes sent so far in response.
 
+---
+
 ### `$authentication-state`
 
 ```hoon
@@ -51,6 +75,8 @@ An HTTP connection that is currently open. The [$action](#action) is how it's be
 ```
 
 This represents the authentication state of all sessions. It maps session cookies (without the `urbauth-{SHIP}=` prefix) to [$session](#session)s.
+
+---
 
 ### `$session`
 
@@ -63,6 +89,8 @@ This represents the authentication state of all sessions. It maps session cookie
 
 This represents server-side data about a session. The `expiry-time` is when the `session` expires and `channels` is the `set` of [$channel](#channel) names opened by the session.
 
+---
+
 ### `$channel-state`
 
 ```hoon
@@ -74,6 +102,8 @@ This represents server-side data about a session. The `expiry-time` is when the 
 
 The state used by the channel system. The `session` is a `map` between channel names and [$channel](#channel)s and the `duct-to-key` `map`s `duct`s to `channel` names.
 
+---
+
 ### `$timer`
 
 ```hoon
@@ -84,6 +114,8 @@ The state used by the channel system. The `session` is a `map` between channel n
 ```
 
 A reference to a timer so it can be cancelled or updated. The `date` is when it will fire and the `duct` is what set the timer.
+
+---
 
 ### `$channel-event`
 
@@ -98,21 +130,42 @@ A reference to a timer so it can be cancelled or updated. The `date` is when it 
 
 An unacknowledged event in the channel system.
 
+---
+
 ### `$channel`
 
 ```hoon
-+$  channel
-  $:  state=(each timer duct)
-      next-id=@ud
-      last-ack=@da
-      events=(qeu [id=@ud request-id=@ud =channel-event])
-      unacked=(map @ud @ud)
-      subscriptions=(map @ud [ship=@p app=term =path duc=duct])
-      heartbeat=(unit timer)
-  ==
+  +$  channel
+    $:  mode=?(%json %jam)
+        state=(each timer duct)
+        next-id=@ud
+        last-ack=@da
+        events=(qeu [id=@ud request-id=@ud =channel-event])
+        unacked=(map @ud @ud)
+        subscriptions=(map @ud [ship=@p app=term =path duc=duct])
+        heartbeat=(unit timer)
+    ==
+
 ```
 
-This is the state of a particular channel in the channel system. The `state` is either the expiration time or the duct currently listening. The `next-id` is the next event ID to be used in the event stream. The `last-ack` is the date of the last client ack and is used for clog calculations in combination with `unacked`. The `events` queue contains all unacked events - `id` is the server-set event ID, `request-id` is the client-set request ID and the [$channel-event](#channel-event) is the event itself. The `unacked` `map` contains the unacked event count per `request-id` and is used for clog calculations. The `subscriptions` `map` contains gall subscriptions by `request-id`. The `heartbeat` is the SSE heartbeat [$timer](#timer).
+This is the state of a particular channel in the channel system.
+
+- `mode` says whether the channel sends/received JSON or
+  [nouns](/guides/additional/noun-channels).
+- `state` is either the expiration time or the duct currently listening.
+- `next-id` is the next event ID to be used in the event stream.
+- `last-ack` is the date of the last client ack and is used for clog
+  calculations in combination with `unacked`.
+- `events` queue contains all unacked events:
+  - `id` is the server-set event ID.
+  - `request-id` is the client-set request ID.
+  - [$channel-event](#channel-event) is the event itself.
+- `unacked` `map` contains the unacked event count per `request-id` and is used
+  for clog calculations.
+- `subscriptions` `map` contains gall subscriptions by `request-id`.
+- `heartbeat` is the SSE heartbeat [$timer](#timer).
+
+---
 
 ### `$binding`
 
@@ -125,21 +178,26 @@ This is the state of a particular channel in the channel system. The `state` is 
 
 A `binding` is a rule to match a URL `path` and optional `site` domain which can then be tied to an [$action](#action). A `path` of `/foo` will also match `/foo/bar`, `/foo/bar/baz`, etc. If the `site` is `~` it will be determined implicitly. A binding must be unique.
 
+---
+
 ### `$action`
 
 ```hoon
-+$  action
-  $%  [%gen =generator]    ::  dispatch to a generator
-      [%app app=term]      ::  dispatch to an application
-      [%authentication ~]  ::  internal authentication page
-      [%logout ~]          ::  internal logout page
-      [%channel ~]         ::  gall channel system
-      [%scry ~]            ::  gall scry endpoint
-      [%four-oh-four ~]    ::  respond with the default file not found page
-  ==
+  +$  action
+    $%  [%gen =generator]
+        [%app app=term]
+        [%authentication ~]
+        [%logout ~]
+        [%channel ~]
+        [%scry ~]
+        [%name ~]
+        [%four-oh-four ~]
+    ==
 ```
 
 The action to take when a [$binding](#binding) matches an incoming HTTP request.
+
+---
 
 ### `$generator`
 
@@ -152,6 +210,8 @@ The action to take when a [$binding](#binding) matches an incoming HTTP request.
 ```
 
 This refers to a generator on a local ship that can handle requests. Note that serving generators via Eyre is not fully implmented and should not be used.
+
+---
 
 ### `$http-config`
 
@@ -166,6 +226,8 @@ This refers to a generator on a local ship that can handle requests. Note that s
 
 The configuration of the runtime HTTP server itself. The `secure` field contains the PEM-encoded RSA private key and certificate or certificate chain when using HTTPS, and otherwise is `~` when using plain HTTP. The `proxy` field is not currently used. The `log` field turns on HTTP(S) access logs but is not currently implemented. The `redirect` field turns on 301 redirects to upgrade HTTP to HTTPS if the `key` and `cert` are set in `secure`.
 
+---
+
 ### `$http-rule`
 
 ```hoon
@@ -177,6 +239,8 @@ The configuration of the runtime HTTP server itself. The `secure` field contains
 
 This is for updating the server configuration. In the case of `%cert`, a `cert` of `~` clears the HTTPS cert & key, otherwise `cert` contains the PEM-encoded RSA private key and certificate or certificate chain. In the case of `%turf`, a `%put` `action` sets a domain name and a `%del` `action` removes it. The [$turf](#turf) contains the domain name.
 
+---
+
 ### `$address`
 
 ```hoon
@@ -187,6 +251,8 @@ This is for updating the server configuration. In the case of `%cert`, a `cert` 
 ```
 
 A client IP address.
+
+---
 
 ### `$inbound-request`
 
@@ -201,6 +267,8 @@ A client IP address.
 
 An inbound HTTP request and metadata. The `authenticated` field says whether the request was made with a valid session cookie. The `secure` field says whether it was made with HTTPS. The [$address](#address) is the IP address from which the request originated, except if it came from localhost and included a `Forwarded` header, in which case it's the address specified in that header. The [$request:http](#requesthttp) contains the HTTP request itself.
 
+---
+
 ## HTTP
 
 ### `$header-list:http`
@@ -210,6 +278,8 @@ An inbound HTTP request and metadata. The `authenticated` field says whether the
 ```
 
 An ordered list of HTTP headers. The `key` is the header name e.g `'Content-Type'` and the `value` is the value e.g. `text/html`.
+
+---
 
 ### `$method:http`
 
@@ -228,6 +298,8 @@ An ordered list of HTTP headers. The `key` is the header name e.g `'Content-Type
 
 An HTTP method.
 
+---
+
 ### `$request:http`
 
 ```hoon
@@ -241,6 +313,8 @@ An HTTP method.
 
 A single HTTP request. The [$method:http](#methodhttp) is the HTTP method, the `url` is the unescaped URL, the [$header-list:http](#header-listhttp) contains the HTTP headers of the request and the `body` is the actual data. An `octs` is just `[p=@ud q=@]` where `p` is the byte-length of `q`, the data.
 
+---
+
 ### `$response-header:http`
 
 ```hoon
@@ -251,6 +325,8 @@ A single HTTP request. The [$method:http](#methodhttp) is the HTTP method, the `
 ```
 
 The status code and [$header-list:http](#header-listhttp) of an HTTP response.
+
+---
 
 ### `$http-event:http`
 
@@ -275,6 +351,8 @@ Urbit treats Earth's HTTP servers as pipes, where Urbit sends or receives one or
 
 Calculation of control headers such as `'Content-Length'` or `'Transfer-Encoding'` should be performed at a higher level; this structure is merely for what gets sent to or received from Earth.
 
+---
+
 ### `$simple-payload:http`
 
 ```hoon
@@ -286,3 +364,5 @@ Calculation of control headers such as `'Content-Length'` or `'Transfer-Encoding
 ```
 
 A simple, one-event response used for generators. The [$reponse-header:http](#response-headerhttp) contains the status code and HTTP headers. The `octs` in the `data` contains the body of the response and is a `[p=@ud q=@]` where `p` is the byte-length of `q`, the data.
+
+---

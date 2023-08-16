@@ -3,7 +3,7 @@ title = "Rhonda Numbers"
 weight = 48
 +++
 
-#   Challenge:  Rhonda Numbers
+## Challenge: Rhonda Numbers
 
 A Rhonda number is a positive integer _n_ that satisfies the property that, for [a given base _b_](https://en.wikipedia.org/wiki/Radix), the product of the base-_b_ digits of _n_ is equal to _b_ times the sum of _n_'s prime factors.  Only composite bases (non-prime bases) have Rhonda numbers.
 

@@ -5,7 +5,7 @@ weight = 2
 
 Here we'll walk through a practical example of writing a `mark` file.
 
-We'll create a `mark` for CSV (comma separated values) files, a simple format for storing tabular data in a text file. Note that there's already a `csv.hoon` `mark` and library, but we'll create new ones for demonstrative purposes. It shouldn't be an issue to overwrite the existing ones on a fakezod.
+We'll create a `mark` for CSV (comma separated values) files, a simple format for storing tabular data in a text file.
 
 CSV files separate fields with commas and rows with line breaks. They look something like:
 
@@ -69,7 +69,7 @@ The `%mime` `mark` is used by Clay to store and convert `$mime` data. It's an im
 
 So with the nature of the `%mime` `mark` hopefully now clear, the reason we want conversion methods to and from `%mime` in our `%csv` `mark` is so we can import CSV files from Unix and vice versa.
 
-Since a CSV file on Unix will just be a long string with ASCII or UTF-8 encoding, we can treat `q.q` in the `$mime` as a `cord`, and thus write a parser to convert it to a `(list (list @t))`. For this purpose, here's a library: `csv.hoon`, which you can view in full on the [Examples](/reference/arvo/clay/marks/examples#libcsvhoon) page.
+Since a CSV file on Unix will just be a long string with ASCII or UTF-8 encoding, we can treat `q.q` in the `$mime` as a `cord`, and thus write a parser to convert it to a `(list (list @t))`. For this purpose, here's a library: `csv-utils.hoon`, which you can view in full on the [Examples](/reference/arvo/clay/marks/examples#libcsv-utilshoon) page.
 
 The library contains four functions:
 
@@ -83,27 +83,27 @@ The decoding and encoding arms use parsing functions from the Hoon standard libr
 Let's try the library in the dojo. After we've added it to `/lib` and run `|commit`, we can build the file:
 
 ```
-> =csv -build-file %/lib/csv/hoon
+> =csv -build-file %/lib/csv-utils/hoon
 ```
 
 ...try decode a CSV-format `@t`:
 
 ```
-> (de-csv:csv 'foo,bar,baz\0ablah,blah,blah\0a1,2,3')
+> (de-csv:csv-utils 'foo,bar,baz\0ablah,blah,blah\0a1,2,3')
 ~[<|foo bar baz|> <|blah blah blah|> <|1 2 3|>]
 ```
 
 ...and try encode a `(list (list @t))` as a CSV-format `@t`:
 
 ```
-> (en-csv:csv [['foo' 'bar' 'baz' ~] ['blah' 'blah' 'blah' ~] ['1' '2' '3' ~] ~])
+> (en-csv:csv-utils [['foo' 'bar' 'baz' ~] ['blah' 'blah' 'blah' ~] ['1' '2' '3' ~] ~])
 'foo,bar,baz\0ablah,blah,blah\0a1,2,3\0a'
 ```
 
 With that working, we can add an import for our library to our `%csv` `mark` defintion and add a `+mime` arm to both our `+grab` and `+grow` arms:
 
 ```hoon
-/+  *csv
+/+  *csv-utils
 |_  csv=(list (list @t))
 ++  grab
   |%
@@ -184,12 +184,12 @@ For demonstrative purposes, we can just poach the algorithms used in the `+grad`
 
 Our diff format will be a `(urge:clay (list @t))`, and we'll use some `differ` functions from `zuse.hoon` like `+loss`, `+lusk` and `+lurk` to produce diffs and apply patches.
 
-The [csv.hoon library](/reference/arvo/clay/marks/examples#libcsvhoon) we imported also contains a `+csv-join` function which we'll use in the `+join` arm, just to save space here.
+The [csv.hoon library](/reference/arvo/clay/marks/examples#libcsv-utilshoon) we imported also contains a `+csv-join` function which we'll use in the `+join` arm, just to save space here.
 
 Here's the new `%csv` `mark` defintion:
 
 ```hoon
-/+  *csv
+/+  *csv-utils
 |_  csv=(list (list @t))
 ++  grab
   |%

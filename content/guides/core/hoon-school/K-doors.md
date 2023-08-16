@@ -32,7 +32,7 @@ The second way of making a function call involves an expression that _produces_ 
 246
 ```
 
-The difference is subtle:  the first cast has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
+The difference is subtle:  the first case has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
 
 Are calls to `++add` and `++mul` of the Hoon standard library of the first kind, or the second?
 
@@ -453,7 +453,7 @@ What is that cell?  Wasn't the value stored as `0xff.8833`?  Well, one fundament
 
 - What does `[~ ~]` mean when returned from a `map`?
 
-`unit`s are common enough that they have their own syntax and set of operational functions.  We'll look at them more in [the next module](/guides/core/hoon-school/K-doors).
+`unit`s are common enough that they have their own syntax and set of operational functions.  We'll look at them more in [the next module](/guides/core/hoon-school/L-struct).
 
 ```hoon
 > (~(get by colors) %brown)

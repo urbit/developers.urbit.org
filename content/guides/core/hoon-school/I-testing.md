@@ -312,8 +312,6 @@ A `fish-loop` arises when using a recursive mold definition like `list`.  (The r
 fish-loop
 ```
 
-although a promised `?#` wuthax rune should match it once implemented.
-
 ### `generator-build-fail`
 
 A `generator-build-fail` most commonly results from composing code with mismatched runes (and thus the wrong children including hanging expected-but-empty slots).

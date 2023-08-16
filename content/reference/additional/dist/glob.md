@@ -85,7 +85,7 @@ There's a different process for globs to be distributed over HTTP from a webserv
 
 To begin, you'll need to spin up a ship (typically a fake ship) and `|mount` a desk for which to add the files. In order for Clay to add the files, the desk must contain `mark` files in its `/mar` directory for all file extensions your folder contains. The `%garden` desk is a good bet because it includes `mark` files for `.js`, `.html`, `.png`, `.svg`, `.woff2` and a couple of others. If there's no desk with a mark for a particular file type you want included in your glob, you may need to add a new mark file. A very rudimentary mark file like the `png.hoon` mark will suffice.
 
-With the desk mounted, add the folder to be globbed to the root of the desk in Unix. It's imporant it's in the root because the `%make-glob` thread will only strip the first level of the folder heirarchy.
+With the desk mounted, add the folder to be globbed to the root of the desk in Unix. It's imporant it's in the root because the `%make-glob` thread will only strip the first level of the folder heirarchy. Additionally ensure that all file names in the folder you're globbing are lowercase, otherwise this next step will not work correctly.
 
 Next, `|commit` the files to the desk, then run `-garden!make-glob %the-desk /folder-name`, where `%the-desk` is the desk containing the folder to be globbed and `/folder-name` is its name.
 

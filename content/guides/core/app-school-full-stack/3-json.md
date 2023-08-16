@@ -8,7 +8,7 @@ this section, we'll briefly look at how JSON works in Urbit, and write a library
 to convert our agent's structures to and from JSON for our front-end.
 
 JSON data comes into Eyre as a string, and Eyre parses it with the
-[`++de-json:html`](/reference/hoon/zuse/2e_2-3#de-jsonhtml) function in
+[`++de:json:html`](/reference/hoon/zuse/2e_2-3#dejsonhtml) function in
 [`zuse.hoon`](/reference/hoon/zuse). The
 hoon type it's parsed to is `$json`, which is defined as:
 
@@ -29,7 +29,7 @@ agent (unless the mark specified is already `%json`, in which case it will be
 delivered directly). Outbound facts will go through the same process in
 reverse - converted from the agent's native mark to `$json`, then encoded in a
 string by Eyre using
-[`++en-json:html`](/reference/hoon/zuse/2e_2-3#en-jsonhtml) and delivered
+[`++en:json:html`](/reference/hoon/zuse/2e_2-3#enjsonhtml) and delivered
 to the web client. The basic flow for both inbound messages (pokes) and outbound
 messages (facts and scry results) looks like this:
 
@@ -171,7 +171,7 @@ complex nested `$json` decoding function can be built up in this manner.
 For example:
 
 ```
-> =js %-  need  %-  de-json:html
+> =js %-  need  %-  de:json:html
   '''
   {
     "foo": "hello",

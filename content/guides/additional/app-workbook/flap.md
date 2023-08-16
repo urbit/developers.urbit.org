@@ -1,11 +1,7 @@
 +++
-title = "%flap JS Client"
-weight = 60
+title = "Serving a JS Game"
+weight = 193
 +++
-
-#   `%flap` JS Client
-
-##  Introduction
 
 In this tutorial, we will take an off-the-shelf JavaScript game which runs in the browser and connect it to an Urbit back-end.  This page assumes that you have completed some version of Hoon School and App School, whether the [live courses](/courses) or the [written docs](/guides/core/hoon-school/A-intro).  Our goal is to show you one way of directly serving client code from an Urbit ship as server.
 
@@ -339,7 +335,7 @@ The main app implements the logic for exposing and tracking data.
         %'POST'
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) this]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  axn  `action`(dejs-action +.json)
       (on-poke %flap-action !>(axn))
       ::
@@ -501,7 +497,7 @@ Now when we navigate to `localhost:8080/apps/flap`, what do we see?  The game ca
 
 ### Serving Correctly
 
-If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source, or
+If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source or serve the resource from Urbit.
 
 If we hot-link the resources, the corresponding lines will look like this:
 
@@ -852,7 +848,7 @@ With all of the above, you should have a working `%flappy` instance at `http://l
         %'POST'
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) this]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  axn  `action`(dejs-action +.json)
       (on-poke %flap-action !>(axn))
       ::
@@ -1111,7 +1107,7 @@ If you examine `++on-poke` in `/app/flap.hoon`, you will see that HTTP `POST` re
   %'POST'
 ?~  body.request.inbound-request
   [(send [405 ~ [%stock ~]]) this]
-=/  json  (de-json:html q.u.body.request.inbound-request)
+=/  json  (de:json:html q.u.body.request.inbound-request)
 =/  axn  `action`(dejs-action +.json)
 (on-poke %flap-action !>(axn))
 ```

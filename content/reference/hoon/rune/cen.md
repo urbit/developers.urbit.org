@@ -547,8 +547,8 @@ Three arguments, fixed.
 
 - Tall
 - ```hoon
-  %~  p  q
-  r
+  %~  p=wing  q=hoon
+  r=hoon
   ```
 
 ---
@@ -571,13 +571,17 @@ In the irregular form, `r` may be split into multiple parts. Multiple parts of
 
 #### Semantics
 
-A `%~` expression evaluates the arm of a door (i.e., a core with a sample). `a`
-is a wing that resolves to the arm from within the door in question. `b` is the
-door itself. `c` is the sample of the door.
+A `%~` expression evaluates the arm of a door (i.e., a core with a sample). `p`
+is a wing that resolves to the arm from within the door in question. `q` is the
+door itself. `r` is the sample of the door.
 
 #### Discussion
 
 `%~` is the general case of a function call, `%-`. In both, we replace the sample (`+6`) of a core. In `%-` the core is a gate and the `$` arm is evaluated. In `%~` the core is a door and any arm may be evaluated. You must identify the arm to be run: `%~(arm door arg)`.
+
+Note also that `p` is a wing and can therefore be `.`, as in `~(. door
+sample)`. This little idiom lets you load your sample into the door once
+instead of over and over.
 
 See also [`|_`](/reference/hoon/rune/bar#_-barcab).
 
@@ -587,6 +591,9 @@ See also [`|_`](/reference/hoon/rune/bar#_-barcab).
 > =mycore |_  a=@
           ++  plus-two  (add 2 a)
           ++  double  (mul 2 a)
+          ++  mul-by
+            |=  b=@
+            (mul a b)
           --
 
 > ~(plus-two mycore 10)
@@ -594,6 +601,10 @@ See also [`|_`](/reference/hoon/rune/bar#_-barcab).
 
 > ~(double mycore 10)
 20
+
+>  =tencore ~(. mycore 10)
+>  (mul-by:tencore 5)
+50
 ```
 
 ---
@@ -784,9 +795,9 @@ Note that `a` is a wing, not just any expression. Knowing that a function call
 `baz`, and then resolving to the `$` limb, you might think `(foo baz)` would
 mean `%=(foo +6 baz)`.
 
-But it's actually `=+(foo =>(%=(+2 +6 baz) $))`. Even if `foo` is a wing, we
+But it's actually `=+(foo =>(%=(+2 +6 baz:+3) $))`. Even if `foo` is a wing, we
 would just be mutating `+6` within the core that defines the `foo` arm. Instead
-we want to modify the **product** of `foo` -- the gate -- so we have to pin it
+we want to modify the **product** of `foo`—the gate—so we have to pin it
 into the subject.
 
 Here's that again in tall form:
@@ -794,7 +805,7 @@ Here's that again in tall form:
 ```hoon
 =+  foo
 =>  %=  +2
-      +6  baz
+      +6  baz:+3
     ==
   $
 ```

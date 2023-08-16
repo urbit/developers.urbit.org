@@ -23,7 +23,7 @@ HD wallet [below](#hardware-hd-wallet).
 Urbit HD wallets are composed of the following items, which are each assigned to
 their own individual Ethereum key-pairs.
 
-### Master Ticket
+## Master Ticket
 
 Think of your master ticket like a very high-value password. The master ticket
 is the secret code from which all of your other keys are derived. Technically,
@@ -31,14 +31,14 @@ your master ticket is a cryptographic seed. You should never share it with anyon
 store it very securely. This ticket can derive all of your other keys: your
 ownership key and all of the related proxies.
 
-### Ownership Address
+## Ownership Address
 
 An ownership address has all rights over the assets deeded to it. These rights
 are on-chain actions described and implemented in
 [Ecliptic](/reference/glossary/ecliptic), Azimuth's suite of governing
 smart-contracts.
 
-### Proxies
+## Proxies
 
 Each permanent Urbit ID can designate one or more
 [proxies](https://urbit.org/using/id/proxies), which are Ethereum addresses capable of a
@@ -46,7 +46,7 @@ limited subset of Urbit ID transactions, such as spawning planets or rotating
 keys. The HD wallet automatically generates additional addresses utilized as
 proxies according to what is appropriate for your Urbit ID.
 
-### HD wallet generation
+## HD wallet generation
 
 Your Urbit HD wallet is generated from a `@q` seed called `T`, which looks
 something like `~sampel-ticket-bucbel-sipnem`. This is the string known as your
@@ -68,7 +68,7 @@ which will be known as your ownership address. Bridge then automatically uses
 your ownership address to assign the other proxies to the other wallets
 generated.
 
-### ERC-721
+## ERC-721
 
 Most Ethereum tokens use the ERC-20 standard for smart contracts. Urbit
 identities are, however, essentially different from most Ethereum tokens, due to

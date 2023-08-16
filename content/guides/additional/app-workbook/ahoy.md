@@ -1,9 +1,7 @@
 +++
-title = "%ahoy Ship Monitoring"
-weight = 10
+title = "Ship Monitoring"
+weight = 194
 +++
-
-#   `%ahoy` Ship Monitoring
 
 The `%ahoy` desk by [~midden-fabler](https://urbit.org/ids/~midden-fabler) provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `++abet` nested core design pattern, construct CLI generators, and set wakeup timers using [Behn](https://developers.urbit.org/reference/glossary/behn).
 

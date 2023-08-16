@@ -49,7 +49,7 @@ Example:
 ### `/rang` - Get `rang`
 
 A buc scry with a path of `/rang` will return the full
-[`rang`](/reference/arvo/clay/data-types#rangclay) from Clay's state.
+[`rang`](/reference/arvo/clay/data-types#rang) from Clay's state.
 
 Example:
 
@@ -79,10 +79,50 @@ Example:
 
 ---
 
+### `/cult/[desk]` - Subscribers
+
+A buc scry with a path of `/cult/[desk]` will return the current subscriptions
+for the specified `desk`.
+
+The type returned is:
+
+```hoon
+(set [@p rave:clay])
+```
+
+See the [`$rave:clay`](/reference/arvo/clay/data-types#rave) data
+type entry for more details of the `$rave` structure.
+
+Example:
+
+```
+> .^((set [@p rave:clay]) %cx /=//=/cult/kids)
+{ [~zod [%next mood=[care=%z case=[%da p=~2023.7.27..13.41.30..0536] path=/]]]
+  [~zod [%next mood=[care=%z case=[%da p=~2023.7.27..13.41.30..0536] path=/desk/docket-0]]]
+}
+```
+
+---
+
+### `/flow` - Build cache
+
+A buc scry with a path of `/flow` will return the global build cache.
+The type returned is a
+[`$flow:clay`](/reference/arvo/clay/data-types#flow).
+
+Example:
+
+```
+> ~(wyt by .^(flow:clay %cx /=//=/flow))
+960
+```
+
+---
+
 ### `/domes` - All domes
 
 A buc scry with a path of `/domes` will return a
-[`cone:clay`](/reference/arvo/clay/data-types#coneclay) containing the `dome`s
+[`cone`](/reference/arvo/clay/data-types#cone) containing the `dome`s
 and associated metadata for all desks, foreign and local.
 
 Example:
@@ -109,7 +149,7 @@ Example:
 
 A buc scry with a path of `/tire` will return the `rock:tire:clay` for all
 domestic desks, which is a `(map desk [=zest wic=(set weft)])`. The
-[`zest`](/reference/arvo/clay/data-types#zestclay) specifies whether apps on the
+[`zest`](/reference/arvo/clay/data-types#zest) specifies whether apps on the
 desk are running or suspended. The `wic` set contains the `weft`s (kernel
 versions) of any queued updates.
 
@@ -158,7 +198,7 @@ Example:
 
 ## `%b` - Dyn. mark core
 
-A scry with a `care` of `%b` will produce a `dais:clay` processed `mark` core
+A scry with a `care` of `%b` will produce a `dais` processed `mark` core
 for the specified `mark`. The `path` in the scry is a `mark`.
 
 Example:
@@ -169,7 +209,7 @@ Example:
 
 ## %c - Dyn. mark convert
 
-A scry with a `care` of `%c` will produce a `tube:clay` dynamically typed `mark`
+A scry with a `care` of `%c` will produce a `tube` dynamically typed `mark`
 conversion gate. The `path` specifies two `mark`s - _from_ and _to_, like
 `/txt/noun`.
 
@@ -188,10 +228,14 @@ Example:
 A scry with a `care` of `%d` will return a `(set desk)` of the `desk`s that
 exist on your ship.
 
+Note this scry should be performed with an empty `desk` field (`%$`) in
+the `beak` (e.g. `/=//=`). If it's not empty, it'll work but Clay will
+complain in the terminal.
+
 Example:
 
 ```
-> .^((set desk) %cd %)  
+> .^((set desk) %cd /=//=)
 {%bitcoin %base %landscape %webterm %garden %kids}
 ```
 
@@ -199,7 +243,7 @@ Example:
 
 ## `%e` - Static mark core
 
-A scry with a `care` of `%e` will return a statically typed `nave:clay` `mark`
+A scry with a `care` of `%e` will return a statically typed `nave` `mark`
 core. The `path` in the scry specifies the `mark`. The type returned is a
 `(nave:clay [type] [diff])`, where `[type]` is the type the `mark` takes and
 `[diff]` is the type taken by the `mark` specified in `+form:grad`.
@@ -229,7 +273,7 @@ A scry with a `care` of `%f` will return a static `mark` conversion gate. The
 
 A scry with a `care` of `%p` will return the permissions of the file or
 directory in question. The type returned is a [`[dict:clay
-dict:clay]`](/reference/arvo/clay/data-types#dictclay) where the head is read
+dict:clay]`](/reference/arvo/clay/data-types#dict) where the head is read
 permissions and the tail is write permissions.
 
 If the specified file or directory has no permissions set, it will default to
@@ -285,14 +329,14 @@ you use. We'll look at each in turn.
 
 ### `%yaki` - Commit
 
-This will return the [yaki:clay](/reference/arvo/clay/data-types#yakiclay) of
+This will return the [yaki:clay](/reference/arvo/clay/data-types#yaki) of
 the specified commit. It takes a
-[tako:clay](/reference/arvo/clay/data-types#takoclay).
+[tako:clay](/reference/arvo/clay/data-types#tako).
 
 Example:
 
-Here we scry the [dome:clay](/reference/arvo/clay/data-types#domeclay) for `%`,
-get the latest `tako:clay` and the do a `%s` scry for the `yaki:clay` in
+Here we scry the [dome:clay](/reference/arvo/clay/data-types#dome) for `%`,
+get the latest `tako` and the do a `%s` scry for the `yaki` in
 question.
 
 ```
@@ -316,13 +360,13 @@ question.
 
 ### `%blob` - File blob
 
-This will return the [page:clay](/reference/arvo/clay/data-types#pageclay) of
-some file. It takes a [lobe:clay](/reference/arvo/clay/data-types#lobeclay).
+This will return the [page:clay](/reference/arvo/clay/data-types#page) of
+some file. It takes a [lobe:clay](/reference/arvo/clay/data-types#lobe).
 
 Example:
 
-Here we grab the `lobe:clay` of `/gen/hood/hi/hoon` with a `%y` scry, then use
-it to do a `%s` scry for the `blob:clay` of the file.
+Here we grab the `lobe` of `/gen/hood/hi/hoon` with a `%y` scry, then use
+it to do a `%s` scry for the `blob` of the file.
 
 ```
 > =/  =arch  .^(arch %cy %/gen/hood/hi/hoon)
@@ -340,13 +384,13 @@ it to do a `%s` scry for the `blob:clay` of the file.
 ### `%hash` - Commit hash
 
 This will return the `@uvI` (256-bit) content hash of the specified commit. It
-takes a [`tako:clay`](/reference/arvo/clay/data-types#takoclay).
+takes a [`tako`](/reference/arvo/clay/data-types#tako).
 
 Example:
 
-Here we grab the [`dome:clay`](/reference/arvo/clay/data-types#domeclay) for `%`
+Here we grab the [`dome`](/reference/arvo/clay/data-types#dome) for `%`
 with a `%v` scry, get the latest
-[`tako:clay`](/reference/arvo/clay/data-types#takoclay) and then do a `%s`
+[`tako`](/reference/arvo/clay/data-types#tako) and then do a `%s`
 `%hash` scry for it.
 
 ```
@@ -360,11 +404,11 @@ with a `%v` scry, get the latest
 
 ### `%cage` - File as cage
 
-This will return a `cage` of the data of some file. It takes a `lobe:clay`.
+This will return a `cage` of the data of some file. It takes a `lobe`.
 
 Example:
 
-Here we grab the `lobe:clay` of `/gen/hood/hi/hoon` with a `%y` scry, then use it to do a `%s` scry for the `cage` of the data.
+Here we grab the `lobe` of `/gen/hood/hi/hoon` with a `%y` scry, then use it to do a `%s` scry for the `cage` of the data.
 
 ```
 > =/  =arch  .^(arch %cy %/gen/hood/hi/hoon)
@@ -394,10 +438,10 @@ documentaton at a later date.
 
 This will return the most recent revision number of a `desk` that has been fully
 downloaded. The type it returns is a
-[`cass:clay`](/reference/arvo/clay/data-types#cassclay). The `case` in the
+[`cass`](/reference/arvo/clay/data-types#cass). The `case` in the
 `beak` must be a revision number rather than a date. You can just provide a case
 of `1` since it returns the latest regardless. If we have nothing for the
-specified `desk`, this will just return the bunt of a `cass:clay` like
+specified `desk`, this will just return the bunt of a `cass` like
 `cass=[ud=0 da=~2000.1.1]`.
 
 Example:
@@ -498,7 +542,7 @@ Examples:
 ## `%v` - Desk state
 
 A scry with a care of `%v` will return the entire state of a `desk` as a
-[`dome:clay`](/reference/arvo/clay/data-types#domeclay).
+[`dome`](/reference/arvo/clay/data-types#dome).
 
 Example:
 
@@ -516,7 +560,7 @@ Note: If you try printing this it will take forever and probably OOM your ship.
 
 A scry with a `care` of `%w` will return the revision number and date of a given
 `case`. The type returned is a
-[`cass:clay`](/reference/arvo/clay/data-types#cassclay) like `[ud=@ud da=@da]`
+[`cass`](/reference/arvo/clay/data-types#cass) like `[ud=@ud da=@da]`
 where `ud` is the revision number and `da` is the date.
 
 Example:
@@ -530,19 +574,20 @@ Example:
 
 ## `%x` - Read file
 
-A scry with a `care` of `%x` will return the raw data of a file as an `@` or
-crash if it's a directory.
+A scry with a `care` of `%x` will return the data of a file or crash if it's a
+directory. The type returned will be whatever is defined by the `mark` of the
+file.
 
 Examples:
 
 ```
-> .^(@ %cx %/gen/hood/hi/hoon)
-3.548.750.706.400.251.607.252.023.288.575.526.190.856.734.474.077.821.289.791.377.301.707.878.697.553.411.219.689.905.949.957.893.633.811.025.757.107.990.477.902.858.170.125.439.223.250.551.937.540.468.638.902.955.378.837.954.792.031.592.462.617.422.136.386.332.469.076.584.061.249.923.938.374.214.925.312.954.606.277.212.923.859.309.330.556.730.410.200.952.056.760.727.611.447.500.996.168.035.027.753.417.869.213.425.113.257.514.474.700.810.203.348.784.547.006.707.150.406.298.809.062.567.217.447.347.357.039.994.339.342.906
+> .^(@t %cx %/gen/hood/hi/hoon)
+'::  Helm: send message to an urbit\0a::\0a::::  /hoon/hi/hood/gen\0a  ::\0a/?    310\0a:-  %say\0a|=([^ [who=ship mez=$@(~ [a=tape ~])] ~] helm-send-hi+[who ?~(mez ~ `a.mez)])\0a'
 ```
 
 ```
-> .^(@t %cx %/gen/hood/hi/hoon)
-'::  Helm: send message to an urbit\0a::\0a::::  /hoon/hi/hood/gen\0a  ::\0a/?    310\0a:-  %say\0a|=([^ [who=ship mez=$@(~ [a=tape ~])] ~] helm-send-hi+[who ?~(mez ~ `a.mez)])\0a'
+> .^(waft:clay %cx %/sys/kelvin)
+[lal=%zuse num=413]
 ```
 
 ```
@@ -557,7 +602,7 @@ Crash!
 A scry with a `care` of `%y` will return the `arch` of a file or directory.
 
 An `arch` is a `[fil=(unit lobe:clay) dir=(map @ta ~)]`. The `fil` will contain
-the [`lobe:clay`](/reference/arvo/clay/data-types#lobeclay) hash if it's a file,
+the [`lobe`](/reference/arvo/clay/data-types#lobe) hash if it's a file,
 otherwise it will be null. The `dir` will contain a map of the files and
 directories it contains, otherwise it will be null.
 

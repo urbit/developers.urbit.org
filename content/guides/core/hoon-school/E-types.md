@@ -106,9 +106,9 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@sv`  | signed base32                | `-0v1df64.49beg` |
 | `@sw`  | signed base64                | `--0wbnC.8haTg` |
 | `@sx`  | signed hexadecimal           | `-0x5f5.e138` |
-| `@t`   | UTF-8 text (cord)            | `'howdy'` |
-| `@ta`  | ASCII text (knot)            | `~.howdy` |
-| `@tas` | ASCII text symbol (term)     | `%howdy` |
+| `@t`   | UTF-8 text (`cord`)          | `'howdy'` |
+| `@ta`  | ASCII text (subset) (`knot`)          | `~.howdy` |
+| `@tas` | ASCII text symbol (subset) (`term`)   | `%howdy` |
 | `@u`   | unsigned integer             | no literal |
 | `@ub`  | unsigned binary              | `0b11.1000` |
 | `@ud`  | unsigned decimal             | `1.000.056` |
@@ -117,6 +117,8 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@ux`  | unsigned hexadecimal         | `0x5f5.e138` |
 
 Some of these auras nest under others.  For example, `@u` is for all unsigned auras.  But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc.  (For a more complete list of auras, see [Auras](/reference/hoon/auras).)
+
+`knot` and `term` values each use a URL-safe subset of ASCII, omitting characters like spaces.
 
 ### Aura Inference in Hoon
 

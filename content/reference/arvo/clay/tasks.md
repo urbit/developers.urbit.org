@@ -23,7 +23,10 @@ Clay from a kernel development perspective.
 
 A `%warp` `task` is for reading and subscribing to files and directories.
 
-The `wer` field is the target ship. The `(unit rave)` of the [riff](/reference/arvo/clay/data-types#riff-clay-request-desist) is null to cancel an existing subscription, otherwise the [rave](/reference/arvo/clay/data-types#rave-clay-general-subscription-request) is tagged with one of:
+The `wer` field is the target ship. The `(unit rave)` of the
+[riff](/reference/arvo/clay/data-types#riff) is null to cancel an existing
+subscription, otherwise the [rave](/reference/arvo/clay/data-types#rave) is
+tagged with one of:
 
 - `%sing` - Read a single file or directory.
 - `%next` - Subscribe for the next change to a file or directory.
@@ -48,7 +51,12 @@ A `%wris` `gift` looks like:
 [%writ p=riot]  ::  response
 ```
 
-The `unit` of the [riot](/reference/arvo/clay/data-types#riot-clay-response) will be null if the target file cannot be found or if a subscription has ended (depending on context). Otherwise it will have a [rant](/reference/arvo/clay/data-types#rant-clay-response-data) with a `cage` containing the data you requested. Its contents will vary depending on the kind of request and `care`.
+The `unit` of the [riot](/reference/arvo/clay/data-types#riot) will be null
+if the target file cannot be found or if a subscription has ended (depending on
+context). Otherwise it will have a
+[rant](/reference/arvo/clay/data-types#rant) with a `cage` containing the
+data you requested. Its contents will vary depending on the kind of request and
+`care`.
 
 Now we'll look at each of the `rave` request types in turn.
 
@@ -60,9 +68,16 @@ Now we'll look at each of the `rave` request types in turn.
 
 This `rave` is for reading a single file or directory immediately.
 
-The `care` of the [mood](/reference/arvo/clay/data-types#mood-clay-single-subscription-request) will determine what you can read and what type of data will be returned. See the [care](/reference/arvo/clay/data-types#care-clay-clay-submode) documentation and [scry](/reference/arvo/clay/scry) documentation for details on the various `care`s.
+The `care` of the [mood](/reference/arvo/clay/data-types#mood) will
+determine what you can read and what type of data will be returned. See the
+[care](/reference/arvo/clay/data-types#care) documentation and
+[scry](/reference/arvo/clay/scry) documentation for details on the various
+`care`s.
 
-The [case](/reference/arvo/clay/data-types#case-specifying-a-commit) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
+The [case](/reference/arvo/clay/data-types#case) specifies the `desk`
+revision and you can use whichever kind you prefer. The `path` will usually be
+a path to a file or directory like `/gen/hood/hi/hoon` but may be something
+else depending on the `care`.
 
 #### Example
 
@@ -76,7 +91,9 @@ The [case](/reference/arvo/clay/data-types#case-specifying-a-commit) specifies t
 [%next =mood]  ::  await next version
 ```
 
-This subscribes to the next version of the specified file. See [here](/reference/arvo/clay/data-types#mood-clay-single-subscription-request) for details of the `mood` structure.
+This subscribes to the next version of the specified file. See
+[here](/reference/arvo/clay/data-types#mood) for details of the `mood`
+structure.
 
 If you subscribe to the current `case` of the `desk`, Clay will not respond until the file changes. If you subscribe to a previous `case` of the `desk` and the file has changed in between then and now, it will immediately return the first change it comes across in that range. For example, if you're currently at `case` `100`, subscribe to case `50` and the file in question has been modified at both `60` and `80`, clay will immediately return the version of the file at `case` `60`.
 
@@ -126,9 +143,17 @@ If the `track` is `%.y` it will just return a `%writ` like:
 
 ...that merely informs you of a change. If you want the actual data you'll have to request it separately.
 
-If the `track` is `%.n`, the `cage` of the `%writ` will contain a [nako](/reference/arvo/clay/data-types#nako-subscription-response-data) with the relevant data for all changes to a desk between what you have and the `case` requested. It is very large and fairly complicated. The `nako` structure is defined in the `clay.hoon` source file itself rather than in `lull.hoon` or elsewhere since you're unlikely to work with it yourself.
+If the `track` is `%.n`, the `cage` of the `%writ` will contain a
+[nako](/reference/arvo/clay/data-types#nako) with the relevant data for all
+changes to a desk between what you have and the `case` requested. It is very
+large and fairly complicated. The `nako` structure is defined in the
+`clay.hoon` source file itself rather than in `lull.hoon` or elsewhere since
+you're unlikely to work with it yourself.
 
-The `from` and `to` fields of the [moat](/reference/arvo/clay/data-types#moat-clay-range-subscription-request) specify the range of `case`s for which to subscribe. The range is _inclusive_. It can be specified by date or by revision number, whichever you prefer.
+The `from` and `to` fields of the
+[moat](/reference/arvo/clay/data-types#moat) specify the range of `case`s
+for which to subscribe. The range is _inclusive_. It can be specified by date
+or by revision number, whichever you prefer.
 
 The `path` in the `moat` is a path to a file or directory. If it's `~` it refers to the root of the `desk` in question. This lets you say "only inform me of changes to the `desk` if the specified file or directory exists". If it doesn't exist, Clay will not send you anything.
 
@@ -164,7 +189,19 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 
 To write or modify a file, we send Clay a `%info` `task`.
 
-The `%|` tag in the [nori](/reference/arvo/clay/data-types#nori-clay-repository-action) is not currently supported and will crash with a `%labelling-not-implemented` if used, so you can focus on the `%&` part. The [soba](/reference/arvo/clay/data-types#soba-clay-delta) in the `nori` is just a list of changes so you can make more than one change in one request. Its `path` is just the path to a file like `/gen/hood/hi/hoon` and the [miso](/reference/arvo/clay/data-types#miso-clay-ankh-delta) is one of these types of requests:
+If the head of the [nori](/reference/arvo/clay/data-types#nori) `dit` is
+`%|`, it's a request to add a label to a commit, and the `nori` looks like `[%|
+p=@tas q=(unit aeon)]` where `p` is the label and `q` is the
+[`aeon`](/reference/arvo/clay/data-types#aeon) (commit reference). If `q`
+is null, the label is applied to the latest commit in the desk.
+
+If the head of the `nori` is `%&`, it's a request to add, delete or modify one
+or more files in the given desk, and looks like `[%& p=soba]`. The
+[soba](/reference/arvo/clay/data-types#soba) in the `nori` is just a list
+of changes so you can make more than one change in one request. Its `path` is
+just the path to a file like `/gen/hood/hi/hoon` and the
+[miso](/reference/arvo/clay/data-types#miso) is one of these types of
+requests:
 
 - `%del` - Delete a file.
 - `%ins` - Insert file. This will also replace an existing file.
@@ -195,7 +232,7 @@ Here are examples of using each of these as well as making multiple changes in o
 ```
 
 Force on/off apps on a desk. A
-[`rein:clay`](/reference/arvo/clay/data-types#rein) is a `map` from Gall agent
+[`rein`](/reference/arvo/clay/data-types#rein) is a `map` from Gall agent
 name to `?`, where `%.y` is *on* and `%.n` is *off*. By default, a live desk
 will run the agents defined in its `desk.bill` manifest, so this is used to
 either stop agents in its manifest or start agents which aren't in its manifest.
@@ -228,7 +265,7 @@ A `rock:tire` is a:
 +$  rock  (map desk [=zest wic=(set weft)])
 ```
 
-The [`zest:clay`](/reference/arvo/clay/data-types#zestclay) says whether the
+The [`zest`](/reference/arvo/clay/data-types#zest) says whether the
 desk is running (`%live`), suspended (`%dead`), or suspended pending a
 kernel-compatible update (`%held`). The `wic` set contains the `weft`s (kernel
 versions) of any queued updates.
@@ -264,7 +301,7 @@ Try to apply a queued kernel update.
 ```
 
 A `%zest` `task` suspends or unsuspends a desk. the
-[`zest:clay`](/reference/arvo/clay/data-types#zestclay) in `liv` is one of:
+[`zest`](/reference/arvo/clay/data-types#zest) in `liv` is one of:
 
 - `%live`: running.
 - `%dead`: suspended.
@@ -279,7 +316,7 @@ A `%zest` `task` suspends or unsuspends a desk. the
 ```
 
 Tombstoning is the deletion of data for old desk revisions. Clay has a single
-`%tomb` `task`, but its [`clue:clay`](/reference/arvo/clay/data-types#clueclay)
+`%tomb` `task`, but its [`clue`](/reference/arvo/clay/data-types#clue)
 has a number of different possible actions:
 
 ```hoon
@@ -302,7 +339,7 @@ We'll look at each of these in turn.
 ```
 
 A `%tomb` `task` with a `%lobe` `clue` will tombstone the `page` matching the
-given [`lobe:clay`](/reference/arvo/clay/data-types#lobeclay). If the `page` in
+given [`lobe`](/reference/arvo/clay/data-types#lobe). If the `page` in
 question is used in the current revision of any desks, it will fail. Otherwise,
 it will be tombstoned globally.
 
@@ -327,7 +364,7 @@ by current desk revisions, globally. This should be used with caution.
 
 A `%tomb` `task` with a `%pick` `clue` will perform garbage collection,
 tombstoning any data that should be tombstoned according to current tombstoning
-policy ([`norm`](/reference/arvo/clay/data-types#normclay)s).
+policy ([`norm`](/reference/arvo/clay/data-types#norm)s).
 
 ---
 
@@ -339,7 +376,7 @@ policy ([`norm`](/reference/arvo/clay/data-types#normclay)s).
 
 A `%tomb` `task` with a `%norm` `clue` will set the default tombstoning policy
 for the given `desk` and `ship`. A
-[`norm:clay`](/referende/arvo/clay/data-types#normclay) is an `(axal ?)`. An
+[`norm`](/referende/arvo/clay/data-types#norm) is an `(axal ?)`. An
 `axal` is like a recursive `arch`, and is defined in `arvo.hoon`. The `?` says
 whether to *keep* the given file or directory. You may want to look at the `+of`
 axal engine in `arvo.hoon` for constructing and manipulating the `norm`.
@@ -358,7 +395,7 @@ make your changes.
 
 A `%tomb` `task` with a `%worn` `clue` is like
 [`%norm`](#norm---default-policy), except it only applies to a specific commit
-for a ship/desk. The [`tako:clay`](/reference/arvo/clay/data-types#takoclay)
+for a ship/desk. The [`tako`](/reference/arvo/clay/data-types#tako)
 denotes the commit to apply the policy.
 
 ---
@@ -371,10 +408,10 @@ denotes the commit to apply the policy.
 
 A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing,
 tombstoned data and integrate it into Clay's object store. The
-[`cash:clay`](/reference/arvo/clay/data-types#cashclay) is a reference to a
+[`cash`](/reference/arvo/clay/data-types#cash) is a reference to a
 commit on the given ship/desk as either a
-[`tako:clay`](/reference/arvo/clay/data-types#takoclay) or a
-[`case:clay`](/reference/arvo/clay/data-types#caseclay).
+[`tako`](/reference/arvo/clay/data-types#tako) or a
+[`case`](/reference/arvo/clay/data-types#case).
 
 ---
 
@@ -421,7 +458,7 @@ The type it returns is a `%hill` `gift`, which looks like:
 
 A `%mont` `task` mounts the specified `beam` to the specified `term` mount point.
 
-A `beam:clay` is the following structure:
+A `beam` is the following structure:
 
 ```hoon
 +$  beam  [[p=ship q=desk r=case] s=path]  ::  global name
@@ -447,7 +484,7 @@ Clay does not return a `gift` in response to a `%mont` `%task`.
 
 A `%ogre` `task` unmounts the specified mount.
 
-It's defined in `lull.hoon` as taking `$@(desk beam)` but in fact it will only unmount the target when specified as a `term` mount name. Passing it a `desk` will incidentally work if the mount is named the same as the `desk` but otherwise it won't work. Passing it a `beam:clay` will simply not work.
+It's defined in `lull.hoon` as taking `$@(desk beam)` but in fact it will only unmount the target when specified as a `term` mount name. Passing it a `desk` will incidentally work if the mount is named the same as the `desk` but otherwise it won't work. Passing it a `beam` will simply not work.
 
 #### Returns
 
@@ -532,9 +569,9 @@ If permissions are not set for a particular file, they will be inherited from th
 
 A group is called a `crew` and is just a `set` of ships with a `@ta` name.
 
-The permissions for each file or directory are a pair of `dict:clay` where the head is read permissions and the tail is write permissions.
+The permissions for each file or directory are a pair of `dict` where the head is read permissions and the tail is write permissions.
 
-A `dict:clay` is this structure:
+A `dict` is this structure:
 
 ```hoon
 +$  dict  [src=path rul=real]  ::  effective permission
@@ -703,13 +740,18 @@ To read files on a foreign `desk`, you just send Clay a `%warp` `task` (as you w
 Clay only allows a subset of `care`s to be used remotely. They are:
 
 - `%u` - Check for existence of file.
-- `%v` - Get entire `dome:clay` state of a desk.
+- `%v` - Get entire `dome` state of a desk.
 - `%w` - Get revision number.
 - `%x` - Get data of file.
 - `%y` - Get `arch` of file or directory.
 - `%z` - Get content hash of file or directory.
 
 Any other `care` will crash with a `%clay-bad-foreign-request-care` error.
+
+In addition, Clay only allows `%sing` and `%many` requests -- not `%next` or
+`%mult`. One way to get the next revision is to first `%sing` the current
+revision number using `%w` and case `da+now`, then `%sing` again with the next
+revision number using case `ud+<next-revision-number>`.
 
 The foreign ship will respond only if correct permissions have been set. See the [Permissions](#permissions) section for details.
 

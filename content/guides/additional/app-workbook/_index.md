@@ -5,11 +5,14 @@ weight = 3
 insert_anchor_links = "right"
 +++
 
-## [`%ahoy`](/guides/additional/app-workbook/ahoy)
+## [Building a CLI App with `%rpn`](/guides/additional/app-workbook/rpn)
 
-## [`%dbug`](/guides/additional/app-workbook/dbug)
+## [Debugging Wrapper with `%dbug`](/guides/additional/app-workbook/dbug)
 
-## [`%flap`](/guides/additional/app-workbook/flap)
+## [Hosting a Website with `%feature`](/guides/additional/app-workbook/feature)
 
-## [`%feature`](/guides/additional/app-workbook/feature)
+## [Serving a JS Game with `%flap`](/guides/additional/app-workbook/flap)
 
+## [Ship Monitoring with `%ahoy`](/guides/additional/app-workbook/ahoy)
+
+## [Styled Text with `%track7`](/guides/additional/app-workbook/track7)

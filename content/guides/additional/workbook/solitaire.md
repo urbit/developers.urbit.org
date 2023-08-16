@@ -3,9 +3,7 @@ title = "Solitaire Cipher"
 weight = 60
 +++
 
-#   Solitaire Cipher
-
-##  Challenge:  Solitaire Encryption Cipher
+## Challenge: Solitaire Encryption Cipher
 
 The [Solitaire or Pontifex algorithm](https://en.wikipedia.org/wiki/Solitaire_%28cipher%29) is a cryptographic algorithm designed by cryptographer [Bruce Schneier](https://www.schneier.com/academic/solitaire/) based on coordinating two decks of cards so that they can be used to communicate between two field agents.  Given a standard deck of 52 playing cards and two distinguishable jokers, a message may be encrypted as a keystream, or sequence of values combined with the message to encrypt or decrypt it.  The algorithm features prominently in Neal Stephenson's novel _Cryptonomicon_.
 
@@ -43,7 +41,7 @@ To generate one character:
 The foregoing hyperlinks showcase worked examples of Solitaire in action.
 
 
-##  Solutions
+## Solutions
 
 _This solution was produced by ~rabsef-bicrym.  It is made available under the [GNU GPL](https://github.com/rabsef-bicrym/urbitasofia/blob/master/LICENSE).  (Note that this is different from the other code snippets on this site, which are made available under the [MIT license](https://mit-license.org/)._
 

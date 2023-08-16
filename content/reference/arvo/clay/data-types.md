@@ -11,7 +11,7 @@ filesystem.
 These types are only used inside of Clay. These are only relevant if you're
 working directly on Clay itself, or trying to understand its inner workings.
 
-### `$cane`
+### `cane`
 
 The set of changes between the mergebase and one of the desks being merged.
 
@@ -33,26 +33,12 @@ The set of changes between the mergebase and one of the desks being merged.
 
 ---
 
-### `$cult`
-
-Subscriptions
-
-```hoon
-+$  cult  (jug wove duct)
-```
-
-`cult`s keep track of subscribers. [`$wove`](#wove)s are associated to requests,
-and each `wove` is mapped to a set of `duct`s associated to subscribers who
-should be notified when the request is filled/updated.
-
----
-
-### `$melt`
+### `melt`
 
 State for ongoing `%fuse` merges.
 
 ```hoon
-+$  melt  [bas=beak con=(list [beak germ]) sto=(map beak (unit dome:clay))]
++$  melt  [bas=beak con=(list [beak germ]) sto=(map beak (unit domo))]
 ```
 
 - `con` maintains the ordering.
@@ -61,7 +47,7 @@ State for ongoing `%fuse` merges.
 
 ---
 
-### `$dojo`
+### `dojo`
 
 Domestic desk state
 
@@ -86,167 +72,7 @@ ship.
 
 ---
 
-### `$dome`
-
-Desk data
-
-```hoon
-+$  dome
-  $:  let=aeon                                          ::  top id
-      hit=(map aeon tako)                               ::  versions by id
-      lab=(map @tas aeon)                               ::  labels
-      tom=(map tako norm)                               ::  tomb policies
-      nor=norm                                          ::  default policy
-      mim=(map path mime)                               ::  mime cache
-      fod=flue                                          ::  ford cache
-      wic=(map weft yoki)                               ::  commit-in-waiting
-      liv=zest                                          ::  running agents
-      ren=rein                                          ::  force agents on/off
-  ==                                                    ::
-```
-
-A `dome` is the state of a `desk` and associated data.
-
-- `let` is the number of the most recently numbered commit. This is also the
-  total number of numbered commits.
-- `hit` is a map of numerical IDs to commit hashes. These hashes are mapped into
-  their associated commits in the [`$rang`](#rang) of the the [`$raft`](#raft)
-  of Clay. In general, the keys of this map are exactly the numbers from 1 to
-  `let`, with no gaps. Of course, when there are no numbered commits, `let` is
-  0, so `hit` is null. Additionally, each of the commits is an ancestor of every
-  commit numbered greater than this one. Thus, each is a descendant of every
-  commit numbered less than this one. Since it is true that the date in each
-  commit (`t.yaki`) is no earlier than that of each of its parents, the numbered
-  commits are totally ordered in the same way by both pedigree and date. If that
-  sounds too complicated to you, don't worry about it. It basically behaves
-  exactly as you would expect.
-- `lab` is a map of textual labels to numbered commits. Labels must be unique
-  across a desk.
-- `tom` contains the tombstoning policies for all files in the desk.
-- `nor` is the default tombstoning policy.
-- `mim` is a cache of the content in the directories that are mounted to Unix.
-- `fod` is the Ford cache, which keeps a cache of the results of builds
-  performed at this `desk`'s current revision, including a full transitive
-  closure of dependencies for each completed build.
-- `wic` contains commits waiting for future kernel versions.
-- `liv` says whether agents on the desk are running or suspended.
-- `ren` records which agents have been forced on or off, differing from the
-  desk's `desk.bill` manifest.
-  
----
-
-### `$flow`
-
-Global Ford cache
-
-```hoon
-+$  flow  (map leak [refs=@ud =soak])
-```
-
-Refcount includes references from other items in the cache, and from `spill`s in
-each desk.
-
-This is optimized for minimizing the number of rebuilds, and given that,
-minimizing the amount of memory used. It is relatively slow to lookup, because
-generating a cache key can be fairly slow (for files, it requires parsing; for
-`tube`s, it even requires building the marks).
-
----
-
-### `$flue`
-
-Per-desk build cache
-
-```hoon
-+$  flue  [spill=(set leak) sprig=(map mist [=leak =soak])]
-```
-
-- `spill` is the set of "roots" we have into the [global ford cache](#flow). We
-  add a root for everything referenced directly or indirectly on a desk, then
-  invalidate them on commit only if their dependencies change.
-- `sprig` is a fast-lookup index over the global ford cache. The only goal is to
-  make cache hits fast.
-
----
-
-### `$mist`
-
-Ford build without content
-
-```hoon
-+$  mist
-  $%  [%file =path]
-      [%nave =mark]
-      [%dais =mark]
-      [%cast =mars]
-      [%tube =mars]
-      [%vale =path]
-      [%arch =path]
-  ==
-```
-
-This is used at the index of `sprig`s in [`$flue`](#flue)s.
-
----
-
-### `$pour`
-
-Ford build with content.
-
-```hoon
-+$  pour
-  $%  [%file =path]
-      [%nave =mark]
-      [%dais =mark]
-      [%cast =mars]
-      [%tube =mars]
-      ::  leafs
-      ::
-      [%vale =path =lobe]
-      [%arch =path =(map path lobe)]
-  ==
-```
-
-Like a [`$mist`](#mist) except the leaf nodes (files and directories) contain
-the [`$lobe:clay`](#lobeclay) (content hash).
-
----
-
-### `$soak`
-
-Ford result
-
-```hoon
-+$  soak
-  $%  [%cage =cage]
-      [%vase =vase]
-      [%arch dir=(map @ta vase)]
-      [%dais =dais]
-      [%tube =tube]
-  ==
-```
-
-The actual data in the Ford cache.
-
----
-
-### `$leak`
-
-Ford cache key
-
-```hoon
-+$  leak
-  $~  [*pour ~]
-  $:  =pour
-      deps=(set leak)
-  ==
-```
-
-This includes all build inputs, including transitive dependencies, recursively.
-
----
-
-### `$nako`
+### `nako`
 
 New desk data
 
@@ -266,7 +92,7 @@ any data you don't have yet.
 
 ---
 
-### `$raft`
+### `raft`
 
 Formal state
 
@@ -308,7 +134,7 @@ calls to Clay is stored in this state.
 
 ---
 
-### `$rand`
+### `rand`
 
 Unvalidated response to a request.
 
@@ -324,7 +150,7 @@ Like a [`$rant`](#rant), but with a page of data rather than a cage of it.
 
 ---
 
-### `$rede`
+### `rede`
 
 Generic desk state
 
@@ -361,7 +187,7 @@ domestic.
 
 ---
 
-### `$rind`
+### `rind`
 
 Foreign request manager
 
@@ -383,7 +209,7 @@ When we send a request to a foreign ship, we keep track of it in here.
 
 ---
 
-### `$bill`
+### `bill`
 
 The list of agents that should be automatically started on a desk
 
@@ -391,7 +217,7 @@ The list of agents that should be automatically started on a desk
 +$  bill  (list dude:gall)
 ```
 
-### `$update-state`
+### `update-state`
 
 State of outstanding foreign request
 
@@ -416,7 +242,7 @@ foreign `desk`.
 
 ---
 
-### `$room`
+### `room`
 
 Filesystem per domestic ship
 
@@ -436,7 +262,7 @@ This is the representation of the filesystem of a ship on our pier.
 
 ---
 
-### `$cach`
+### `cach`
 
 Cached result of a request
 
@@ -446,7 +272,7 @@ Cached result of a request
 
 ---
 
-### `$wove`
+### `wove`
 
 Stored source and request
 
@@ -456,7 +282,7 @@ Stored source and request
  
 ---
 
-### `$rove`
+### `rove`
 
 Stored request
 
@@ -474,12 +300,12 @@ Stored request
           ==                                            ::
 ```
 
-Like a [`$rave:clay`](#raveclay) but with caches of current versions for `%next`
+Like a [`$rave`](#rave) but with caches of current versions for `%next`
 and `%many`. Generally used when we store a request in our state somewhere.
 
 ---
 
-### `$rung`
+### `rung`
 
 Foreign desk data
 
@@ -499,60 +325,63 @@ the `desk`s we know about on their ship.
 These types are defined in `lull.hoon`, and are used in Clay's external
 interface.
 
-### `$aeon:clay`
+### `aeon`
 
 Desk revision number
 
 ```hoon
-+$  aeon  @ud                                         ::  version number
++$  aeon  @ud
 ```
 
 ---
 
-### `$beam:clay`
+### `beam`
 
 Global name
 
 ```hoon
-+$  beam  [[p=ship q=desk r=case] s=path]             ::  global name
++$  beam  [[p=ship q=desk r=case] s=path]
 ```
 
 The full path to a file or directory.
 
 ---
 
-### `$beak:clay`
+### `beak`
 
 Path prefix
 
 ```hoon
-+$  beak  [p=ship q=desk r=case]                      ::  path prefix
++$  beak  [p=ship q=desk r=case]
 ```
 
-A [`$beam:clay`](#beamclay) sans the specific file path.
+A [`$beam`](#beam) sans the specific file path.
 
 ---
 
-### `$cable:clay`
+### `cable`
 
 `/lib`, `/sur` or `mark` reference
 
 ```hoon
-+$  cable                                             ::  lib/sur/mark ref
-  $:  face=(unit term)                                ::
-      file-path=term                                  ::
-  ==                                                  ::
++$  cable
+  $:  face=(unit term)
+      file-path=term
+  ==
 ```
 
 ---
 
-### `$care:clay`
+### `care`
 
 Clay submodule
 
 ```hoon
-  +$  care                                              ::  clay submode
-    ?(%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z)  ::
++$  care
+  $?  %a  %b  %c  %d  %e  %f
+      %p  %q  %r  %s  %t  %u
+      %v  %w  %x  %y  %z
+  ==
 ```
 
 This specifies what type of information is requested in a subscription
@@ -567,8 +396,8 @@ or a scry.
 - `%e`: builds a statically typed `mark` by name (a `$nave` mark-interface
   core).
 - `%f`: builds a statically typed mark converstion gate.
-- `%p`: produces the permissions for a directory, returned as a `[dict:clay
-  dict:clay]`.
+- `%p`: produces the permissions for a directory, returned as a `[dict
+  dict]`.
 - `%r`: requests the file in the same fashion as `%x`, but wraps the result in a
   `vase`.
 - `%s`: has miscellaneous debug endpoints.
@@ -580,7 +409,7 @@ or a scry.
   `aeon`. When used on a foreign `desk`, this get us up-to-date to the requested
   version.
 - `%w`: requests the revision number and date of the specified path, returned as
-  a `cass:clay`.
+  a `cass`.
 - `%x`: requests the file at a specified path at the specified commit, returned
   as an `@`. If there is no node at that path or if the node has no contents
   (that is, if `fil:ankh` is null), then this crashes.
@@ -593,129 +422,144 @@ See the [scry reference](/reference/arvo/clay/scry) for more details.
 
 ---
 
-### `$case:clay`
-
-Revision reference
-
-```hoon
-+$  case                                              ::  ship desk case spur
-  $%  [%da p=@da]                                     ::  date
-      [%tas p=@tas]                                   ::  label
-      [%ud p=@ud]                                     ::  number
-  ==                                                  ::
-```
-
-A commit can be referred to in up to three ways:
-
-- `%da`: commit date
-- `%tas`: label (seldom used currently)
-- `%ud`: sequential revision number
-
----
-
-### `$cash:clay`
+### `cash`
 
 `case` or `tako`
 
 ```hoon
-+$  cash                                              ::  case or tako
-  $%  [%tako p=tako]                                  ::
-      case                                            ::
-  ==                                                  ::
++$  cash
+  $%  [%tako p=tako]
+      case
+  ==
 ```
 
 ---
 
-### `$cass:clay`
+### `cass`
 
 Cases for revision
 
 ```hoon
-+$  cass  [ud=@ud da=@da]                             ::  cases for revision
++$  cass  [ud=@ud da=@da]
 ```
 
 This is returned by a `%w` read.
 
 ---
 
-### `$clue:clay`
+### `clue`
 
 Tombstone target
 
 ```hoon
-+$  clue                                              ::  murder weapon
-  $%  [%lobe =lobe]                                   ::  specific lobe
-      [%all ~]                                        ::  all safe targets
-      [%pick ~]                                       ::  collect garbage
-      [%norm =ship =desk =norm]                       ::  set default norm
-      [%worn =ship =desk =tako =norm]                 ::  set commit norm
-      [%seek =ship =desk =cash]                       ::  fetch source blobs
-  ==                                                  ::
++$  clue
+  $%  [%lobe =lobe]
+      [%all ~]
+      [%pick ~]
+      [%norm =ship =desk =norm]
+      [%worn =ship =desk =tako =norm]
+      [%seek =ship =desk =cash]
+  ==
 ```
+
+- `%lobe`: specific [`lobe`](#lobe).
+- `%all`: all safe tombstone targets.
+- `%pick`: collect garbage.
+- `%norm`: set default [`norm`](#norm).
+- `%worn`: set [`norm`](#norm) for a specific commit.
+- `%seek`: backfill tombstoned commit.
 
 ---
 
-### `$cone:clay`
+### `cone`
 
 Domes
 
 ```hoon
-+$  cone  (map [ship desk] foam)                      ::  domes
++$  cone  (map [ship desk] dome)
 ```
 
 ---
 
-### `$foam:clay`
+### `dome`
 
-Desk state with additional metadata
+Desk data
 
 ```hoon
-+$  foam
-  $:  dome
++$  dome
+  $:  let=aeon
+      hit=(map aeon tako)
+      lab=(map @tas aeon)
       tom=(map tako norm)
       nor=norm
+      mim=(map path mime)
+      fod=flue
+      wic=(map weft yoki)
       liv=zest
-      ren=(map dude:gall ?)
+      ren=rein
   ==
 ```
 
-- `dome`: desk state
-- `tom`: specific tombstone policies
-- `nor`: default tombstone policy
-- `liv`: agent activation status
-- `ren`: `%rein`'d agents (forced on/off)
+A `dome` is the state of a `desk` and associated data.
 
+- `let` is the number of the most recently numbered commit. This is also the
+  total number of numbered commits.
+- `hit` is a map of numerical IDs to commit hashes. These hashes are mapped into
+  their associated commits in the [`$rang`](#rang) of the the [`$raft`](#raft)
+  of Clay. In general, the keys of this map are exactly the numbers from 1 to
+  `let`, with no gaps. Of course, when there are no numbered commits, `let` is
+  0, so `hit` is null. Additionally, each of the commits is an ancestor of every
+  commit numbered greater than this one. Thus, each is a descendant of every
+  commit numbered less than this one. Since it is true that the date in each
+  commit (`t.yaki`) is no earlier than that of each of its parents, the numbered
+  commits are totally ordered in the same way by both pedigree and date. If that
+  sounds too complicated to you, don't worry about it. It basically behaves
+  exactly as you would expect.
+- `lab` is a map of textual labels to numbered commits. Labels must be unique
+  across a desk.
+- `tom` contains the tombstoning policies for all files in the desk.
+- `nor` is the default tombstoning policy.
+- `mim` is a cache of the content in the directories that are mounted to Unix.
+- `fod` is the Ford cache, which keeps a cache of the results of builds
+  performed at this `desk`'s current revision, including a full transitive
+  closure of dependencies for each completed build.
+- `wic` contains commits waiting for future kernel versions.
+- `liv` says whether agents on the desk are running or suspended.
+- `ren` records which agents have been forced on or off, differing from the
+  desk's `desk.bill` manifest.
+  
 ---
 
-### `$crew:clay`
+### `crew`
 
 Permission group
 
 ```hoon
-+$  crew  (set ship)                                  ::  permissions group
++$  crew  (set ship)
 ```
 
 ---
 
-### `$dict:clay`
+### `dict`
 
 Effective permission
 
 ```hoon
-  +$  dict  [src=path rul=real]                         ::  effective permission
-
++$  dict  [src=path rul=real]
 ```
 
 ---
 
-### `$dome:clay`
+### `domo`
+
+Project state
 
 ```hoon
-+$  dome                                              ::  project state
-  $:  let=@ud                                         ::  top id
-      hit=(map @ud tako)                              ::  changes by id
-      lab=(map @tas @ud)                              ::  labels
-  ==                                                  ::
++$  dome
+  $:  let=@ud
+      hit=(map @ud tako)
+      lab=(map @tas @ud)
+  ==
 ```
 
 - `let`: current revision number
@@ -724,24 +568,24 @@ Effective permission
 
 ---
 
-### `$germ:clay`
+### `germ`
 
 Merge strategy
 
 ```hoon
-+$  germ                                              ::  merge style
-  $?  %init                                           ::  new desk
-      %fine                                           ::  fast forward
-      %meet                                           ::  orthogonal files
-      %mate                                           ::  orthogonal changes
-      %meld                                           ::  force merge
-      %only-this                                      ::  ours with parents
-      %only-that                                      ::  hers with parents
-      %take-this                                      ::  ours unless absent
-      %take-that                                      ::  hers unless absent
-      %meet-this                                      ::  ours if conflict
-      %meet-that                                      ::  hers if conflict
-  ==                                                  ::
++$  germ            ::  merge style
+  $?  %init         ::  new desk
+      %fine         ::  fast forward
+      %meet         ::  orthogonal files
+      %mate         ::  orthogonal changes
+      %meld         ::  force merge
+      %only-this    ::  ours with parents
+      %only-that    ::  hers with parents
+      %take-this    ::  ours unless absent
+      %take-that    ::  hers unless absent
+      %meet-this    ::  ours if conflict
+      %meet-that    ::  hers if conflict
+  ==                ::
 ```
 
 See the [Strategies](/reference/arvo/clay/using#strategies) section of "Using
@@ -749,32 +593,32 @@ Clay" for further details of their meaning.
 
 ---
 
-### `$lobe:clay`
+### `lobe`
 
 File reference
 
 ```hoon
-+$  lobe  @uvI                                        ::  blob ref
++$  lobe  @uvI
 ```
 
-This is a hash of a [`page`](#pageclay). These are most notably used in
-[`lat.rang`](#rangclay), where they are associated with the actual `page`, and
-as the values in [`q.yaki`](#yakiclay), where `path`s are associated with their
+This is a hash of a [`page`](#page). These are most notably used in
+[`lat.rang`](#rang), where they are associated with the actual `page`, and
+as the values in [`q.yaki`](#yaki), where `path`s are associated with their
 content hashes in a commit.
 
 ---
 
-### `$miso:clay`
+### `miso`
 
 File delta
 
 ```hoon
-+$  miso                                              ::  file delta
-  $%  [%del ~]                                        ::  delete
-      [%ins p=cage]                                   ::  insert
-      [%dif p=cage]                                   ::  mutate from diff
-      [%mut p=cage]                                   ::  mutate from raw
-  ==                                                  ::
++$  miso
+  $%  [%del ~]
+      [%ins p=cage]
+      [%dif p=cage]
+      [%mut p=cage]
+  ==
 ```
 
 There are four kinds of changes that may be made to a node in a `desk`.
@@ -790,48 +634,76 @@ There are four kinds of changes that may be made to a node in a `desk`.
 
 ---
 
-### `$moar:clay`
+### `misu`
+
+Computed delta
+
+```hoon
++$  misu
+  $%  [%del ~]
+      [%ins p=cage]
+      [%dif p=lobe q=cage]
+  ==
+```
+
+- `%del`: deletes the node.
+- `%ins`: inserts file `p`.
+- `%dif`: currently unimplemented.
+
+---
+
+### `mizu`
+
+New state
+
+```hoon
++$  mizu  [p=@u q=(map @ud tako) r=rang]
+```
+
+---
+
+### `moar`
 
 Normal change range
 
 ```hoon
-+$  moar  [p=@ud q=@ud]                               ::  normal change range
++$  moar  [p=@ud q=@ud]
 ```
 
 ---
 
-### `$moat:clay`
+### `moat`
 
 Range subscription request
 
 ```hoon
-+$  moat  [from=case to=case =path]                   ::  change range
++$  moat  [from=case to=case =path]
 ```
 
-This represents a request for all changes between `from` and `to` on `path`. You
-will be notified when a change is made to the node referenced by the `path` or
-to any of its children.
+This represents a request for all changes between `from` and `to` on
+`path`. You will be notified when a change is made to the node
+referenced by the `path` or to any of its children.
 
 ---
 
-### `$mode:clay`
+### `mode`
 
 External files
 
 ```hoon
-+$  mode  (list [path (unit mime)])                   ::  external files
++$  mode  (list [path (unit mime)])
 ```
 
 This is used when there's a commit from the host system.
 
 ---
 
-### `$mood:clay`
+### `mood`
 
 Single subscription request
 
 ```hoon
-+$  mood  [=care =case =path]                         ::  request in desk
++$  mood  [=care =case =path]
 ```
 
 This represents a request for data related to the state of the `desk` at a
@@ -840,15 +712,28 @@ information is desired, and the `path` specifies the path we are requesting.
 
 ---
 
-### `$nori:clay`
+### `mool`
+
+Requests in desk
+
+```hoon
++$  mool  [=case paths=(set (pair care path))]
+```
+
+This is used in a `%mult` [`rave`](#rave) to specify the next
+version of multiple files with multiple cares.
+
+---
+
+### `nori`
 
 Repository action
 
 ```hoon
-+$  nori                                              ::  repository action
-  $%  [%& p=soba]                                     ::  delta
-      [%| p=@tas q=(unit aeon)]                       ::  label
-  ==                                                  ::
++$  nori
+  $%  [%& p=soba]
+      [%| p=@tas q=(unit aeon)]
+  ==
 ```
 
 This describes a change that we are asking Clay to make to the `desk`. There are
@@ -860,7 +745,23 @@ the given label to the commit specified in `q`, or the current one if it's null.
 
 ---
 
-### `$norm:clay`
+### `nuri`
+
+Repository action
+
+```hoon
++$  nuri
+  $%  [%& p=suba]
+      [%| p=@tas]
+  ==
+```
+
+Same as a [`nori`](#nori) but a [`suba`](#suba) rather
+than [`soba`](#soba).
+
+---
+
+### `norm`
 
 Tombstone policy.
 
@@ -873,53 +774,88 @@ it should be tombstoned or not.
 
 ---
 
-### `$page:clay`
+### `open`
+
+Get prelude
+
+```hoon
++$  open  $-(path vase)
+```
+
+This defines the type of a function for retrieving imported files.
+
+---
+
+### `page`
 
 A raw, unvalidated file.
 
 ```hoon
-+$  page  ^page                                       ::  export for compat
++$  page  ^page
 ```
 
 This is just the `page` defined in `arvo.hoon`: a pair of a mark and a noun.
 
 ---
 
-### `$rang:clay`
+### `pour`
+
+Ford build with content.
+
+```hoon
++$  pour
+  $%  [%file =path]
+      [%nave =mark]
+      [%dais =mark]
+      [%cast =mars]
+      [%tube =mars]
+      ::  leafs
+      ::
+      [%vale =path =lobe]
+      [%arch =path =(map path lobe)]
+  ==
+```
+
+Like a [`$mist`](#mist) except the leaf nodes (files and directories) contain
+the [`$lobe`](#lobe) (content hash).
+
+---
+
+### `rang`
 
 Data repository
 
 ```hoon
-+$  rang                                              ::  repository
-  $:  hut=(map tako yaki)                             ::  changes
-      lat=(map lobe page)                             ::  data
-  ==                                                  ::
++$  rang
+  $:  hut=(map tako yaki)
+      lat=(map lobe page)
+  ==
 ```
 
 This is a data repository keyed by hash. Thus, this is where the "real" data is
 stored, but it is only meaningful if we know the hash of what we're looking for.
 
-`hut` is a `map` from commit hashes ([`tako`](#takoclay)s) to commits
-([`yaki`](#yakiclay)s). We often get the hashes from [`hit.dome`](#domeclay),
+`hut` is a `map` from commit hashes ([`tako`](#tako)s) to commits
+([`yaki`](#yaki)s). We often get the hashes from [`hit.dome`](#dome),
 which keys them by numerical id.
 
-`lat` is a `map` from content hashes ([`lobe`](#lobeclay)s) to the actual
-content ([`page`](#pageclay)s). We often get the hashes from a
-[`yaki`](#yakiclay), which references this `map` to get the data. There is no
-`page` in `yaki:clay`. They are only accessible through `lat`.
+`lat` is a `map` from content hashes ([`lobe`](#lobe)s) to the actual
+content ([`page`](#page)s). We often get the hashes from a
+[`yaki`](#yaki), which references this `map` to get the data. There is no
+`page` in `yaki`. They are only accessible through `lat`.
 
 ---
 
-### `$rant:clay`
+### `rant`
 
 Response data
 
 ```hoon
-+$  rant                                              ::  response to request
-  $:  p=[p=care q=case r=desk]                        ::  clade release book
-      q=path                                          ::  spur
-      r=cage                                          ::  data
-  ==                                                  ::
++$  rant
+  $:  p=[p=care q=case r=desk]
+      q=path
+      r=cage
+  ==
 ```
 
 This is the data associated to the response to a request.
@@ -933,23 +869,22 @@ This is the data associated to the response to a request.
 
 ---
 
-### `$rave:clay`
+### `rave`
 
 General subscription request
 
 ```hoon
-+$  rave                                              ::  general request
-  $%  [%sing =mood]                                   ::  single request
-      [%next =mood]                                   ::  await next version
-      [%mult =mool]                                   ::  next version of any
-      [%many track=? =moat]                           ::  track range
-  ==                                                  ::
++$  rave
+  $%  [%sing =mood]
+      [%next =mood]
+      [%mult =mool]
+      [%many track=? =moat]
+  ==
 ```
 
 This represents a subscription request for a `desk`.
 
 - `%sing`: asks for data at single revision.
-
 - `%next`: asks to be notified the next time there’s a change to the specified
   file.
 - `%mult`: asks to be notified the next time there's a change to a specified set
@@ -959,41 +894,41 @@ This represents a subscription request for a `desk`.
 
 ---
 
-### `$real:clay`
+### `real`
 
 Resolved permissions
 
 ```hoon
-+$  real                                              ::  resolved permissions
-  $:  mod=?(%black %white)                            ::
-      who=(pair (set ship) (map @ta crew))            ::
-  ==                                                  ::
++$  real
+  $:  mod=?(%black %white)
+      who=(pair (set ship) (map @ta crew))
+  ==
 ```
 
 - `mod`: whether it's a blacklist or whitelist.
 - `who`: the ships who are blacklisted/whitelisted. It can have both individual
-  ships as well as [`crew`](#crewclay) (permission groups).
+  ships as well as [`crew`](#crew) (permission groups).
 
 ---
 
-### `$regs:clay`
+### `regs`
 
 Permission rules for paths
 
 ```hoon
-+$  regs  (map path rule)                             ::  rules for paths
++$  regs  (map path rule)
 ```
 
-A map from file/directory paths to permission [`rule`](#ruleclay)s.
+A map from file/directory paths to permission [`rule`](#rule)s.
 
 ---
 
-### `$rein:clay`
+### `rein`
 
 Forced on/off apps
 
 ```hoon
-+$  rein  (map dude:gall ?)                           ::  extra apps
++$  rein  (map dude:gall ?)
 ```
 
 A `dude:gall` is the name of a Gall agent and the `?` is whether it's forced on
@@ -1002,12 +937,12 @@ manifest or stopped when it *is* on the manifest.
 
 ---
 
-### `$riff:clay`
+### `riff`
 
 Request/desist
 
 ```hoon
-+$  riff  [p=desk q=(unit rave)]                      ::  request+desist
++$  riff  [p=desk q=(unit rave)]
 ```
 
 This represents a request for data about a particular `desk`. If `q` contains a
@@ -1016,16 +951,30 @@ null, then this tells Clay to cancel the subscription along this duct.
 
 ---
 
-### `$rite:clay`
+### `riff-any`
+
+Versioned [`riff`](#riff)
+
+```hoon
+  +$  riff-any
+    $%  [%1 =riff]
+    ==
+```
+
+Currently there's only one version.
+
+---
+
+### `rite`
 
 New permissions
 
 ```hoon
-+$  rite                                              ::  new permissions
-  $%  [%r red=(unit rule)]                            ::  for read
-      [%w wit=(unit rule)]                            ::  for write
-      [%rw red=(unit rule) wit=(unit rule)]           ::  for read and write
-  ==                                                  ::
++$  rite
+  $%  [%r red=(unit rule)]
+      [%w wit=(unit rule)]
+      [%rw red=(unit rule) wit=(unit rule)]
+  ==
 ```
 
 - `%r`: read permissions.
@@ -1034,12 +983,12 @@ New permissions
 
 ---
 
-### `$riot:clay`
+### `riot`
 
 Response
 
 ```hoon
-+$  riot  (unit rant)                                 ::  response+complete
++$  riot  (unit rant)
 ```
 
 A `riot` is a response to a subscription. If null, the subscription has been
@@ -1048,12 +997,12 @@ produced data.
 
 ---
 
-### `$rule:clay`
+### `rule`
 
 Node permission
 
 ```hoon
-+$  rule  [mod=?(%black %white) who=(set whom)]       ::  node permission
++$  rule  [mod=?(%black %white) who=(set whom)]
 ```
 
 - `mod`: whether it's a blacklist or whitelist.
@@ -1061,12 +1010,50 @@ Node permission
 
 ---
 
-### `$soba:clay`
+### `rump`
+
+Relative path
+
+```hoon
++$  rump  [p=care q=case r=@tas s=path]
+```
+
+---
+
+### `saba`
+
+Patch plus merge
+
+```hoon
++$  saba  [p=ship q=@tas r=moar s=dome]
+```
+
+---
+
+### `soak`
+
+Ford result
+
+```hoon
++$  soak
+  $%  [%cage =cage]
+      [%vase =vase]
+      [%arch dir=(map @ta vase)]
+      [%dais =dais]
+      [%tube =tube]
+  ==
+```
+
+The actual data in the Ford cache.
+
+---
+
+### `soba`
 
 Delta
 
 ```hoon
-+$  soba  (list [p=path q=miso])                      ::  delta
++$  soba  (list [p=path q=miso])
 ```
 
 This describes a `list` of changes to make to a `desk`. The `path`s are `path`s
@@ -1075,31 +1062,55 @@ the change itself.
 
 ---
 
-### `$tako:clay`
+### `suba`
+
+Delta
+
+```hoon
++$  suba  (list [p=path q=misu])
+```
+
+Same as a [`soba`](#soba) but with a [`misu`](misu)
+rather than [`miso`](miso).
+
+---
+
+### `tako`
 
 Commit reference
 
 ```hoon
-+$  tako  @uvI                                        ::  yaki ref
++$  tako  @uvI
 ```
 
-This is a hash of a [`yaki`](#yakiclay), a commit. These are most notably used
-as the keys in [`hut.rang`](#rangclay), where they are associated with the
-actual `yaki`, and as the values in [`hit.dome`](#domeclay), where sequential
-numerical ids are associated with these.
+This is a hash of a [`yaki`](#yaki), a commit. These are most
+notably used as the keys in [`hut.rang`](#rang), where they are
+associated with the actual `yaki`, and as the values in
+[`hit.dome`](#dome), where sequential numerical ids are associated
+with these.
 
 ---
 
-### `+unce:clay`
+### `toro`
+
+General change
+
+```hoon
++$  toro  [p=@ta q=nori]
+```
+
+---
+
+### `unce`
 
 Change part of a list.
 
 ```hoon
-++  unce                                              ::  change part
-  |*  a=mold                                          ::
-  $%  [%& p=@ud]                                      ::  skip[copy]
-      [%| p=(list a) q=(list a)]                      ::  p -> q[chunk]
-  ==                                                  ::
+++  unce
+  |*  a=mold
+  $%  [%& p=@ud]
+      [%| p=(list a) q=(list a)]
+  ==
 ```
 
 This is a single change in a list of elements of type `a`. For example,
@@ -1110,12 +1121,12 @@ This is a single change in a list of elements of type `a`. For example,
 
 ---
 
-### `+urge:clay`
+### `urge`
 
 List change
 
 ```hoon
-++  urge  |*(a=mold (list (unce a)))                  ::  list change
+++  urge  |*(a=mold (list (unce a)))
 ```
 
 This is a parametrized type for list changes. For example, `(urge @t)` is a list
@@ -1123,14 +1134,14 @@ change for lines of text.
 
 ---
 
-### `$waft:clay`
+### `waft`
 
 Kelvin range
 
 ```hoon
-+$  waft                                              ::  kelvin range
-  $^  [[%1 ~] p=(set weft)]                           ::
-  weft                                                ::
++$  waft
+  $^  [[%1 ~] p=(set weft)]
+  weft
 ```
 
 A `waft` is the result of reading a `sys.kelvin` file in a desk. It lists all
@@ -1143,84 +1154,84 @@ either be a single `weft` like `[%zuse 417]`, or a range like:
 
 ---
 
-### `$whom:clay`
+### `whom`
 
 Ship or named crew
 
 ```hoon
-+$  whom  (each ship @ta)                             ::  ship or named crew
++$  whom  (each ship @ta)
 ```
 
-Either a single ship or a set of ships in a [`crew`](#crewclay) (permission
+Either a single ship or a set of ships in a [`crew`](#crew) (permission
 group). This is used for read/write permissions.
 
 ---
 
-### `$yoki:clay`
+### `yoki`
 
 Commit
 
 ```hoon
-  +$  yoki  (each yuki yaki)                            ::  commit
++$  yoki  (each yuki yaki)
 ```
 
-Either a [`yuki`](#yukiclay) or a [`yaki`](#yakiclay). A `yuki` is a
-proto-commit, a `yaki` is a final commit whose data is entirely in the general
-object store.
+Either a [`yuki`](#yuki) or a [`yaki`](#yaki). A `yuki` is a
+proto-commit, a `yaki` is a final commit whose data is entirely in the
+general object store.
 
 ---
 
-### `$yuki:clay`
+### `yuki`
 
 Proto-commit
 
 ```hoon
-+$  yuki                                              ::  proto-commit
-  $:  p=(list tako)                                   ::  parents
-      q=(map path (each page lobe))                   ::  namespace
-  ==                                                  ::
++$  yuki
+  $:  p=(list tako)
+      q=(map path (each page lobe))
+  ==
 ```
 
 A `yuki` is a proto-commit: a new, proposed commit that has not yet been
-finalized. This is in contrast to a [`yaki`](#yakiclay). The main difference is
+finalized. This is in contrast to a [`yaki`](#yaki). The main difference is
 that a `yuki` may contain actual data, while a `yaki` only contains
-[`lobe`](#lobeclay)s ( content hashes used as references to data in the general
+[`lobe`](#lobe)s ( content hashes used as references to data in the general
 object store).
 
 - `p`: commit references of any parents.
-- `q`: a `map` from file paths to either [`page`](#page:clay) data or `lobe`s.
+- `q`: a `map` from file paths to either [`page`](#page) data or `lobe`s.
 
 ---
 
-### `$yaki:clay`
+### `yaki`
 
 Finalized commit
 
 ```hoon
-+$  yaki                                              ::  commit
-  $:  p=(list tako)                                   ::  parents
-      q=(map path lobe)                               ::  namespace
-      r=tako                                          ::  self-reference
-      t=@da                                           ::  date
-  ==                                                  ::
++$  yaki
+  $:  p=(list tako)
+      q=(map path lobe)
+      r=tako
+      t=@da
+  ==
 ```
 
 - `p`: a `list` of the hashes of the parents of this commit. In most cases,
   this will be a single commit, but in a merge there may be more parents.
 - `q`: is a `map` of the `path`s on a desk to the content hashes at that
-  location. If you understand what a [`lobe`](#lobeclay) and a
-  [`page`](#pageclay) is, then the type signature here tells the whole story.
+  location. If you understand what a [`lobe`](#lobe) and a
+  [`page`](#page) is, then the type signature here tells the whole story.
 - `r`: is the hash associated with this commit.
 - `t`: is the date at which this commit was made.
 
 ---
 
-### `$zest:clay`
+### `zest`
 
 How live
 
 ```hoon
-+$  zest  $~(%dead ?(%dead %live %held))              ::  how live
++$  zest  $~(%dead ?(%dead %live %held))
 ```
 
 This represents the state of apps on the desk.
@@ -1230,3 +1241,171 @@ This represents the state of apps on the desk.
 - `%live`: running.
 
 ---
+
+### `rock:tire`
+
+App states
+
+```hoon
++$  rock  (map desk [=zest wic=(set weft)])
+```
+
+- [`zest`](#zest) says whether the desk is running or
+  suspended.
+- `wic` is the set of kernel versions ([`weft`](#weft)s) for
+  which the desk has queued commits awaiting kernel updates.
+
+---
+
+### `wave:tire`
+
+App state changes
+
+```hoon
++$  wave
+  $%  [%wait =desk =weft]
+      [%warp =desk =weft]
+      [%zest =desk =zest]
+  ==
+```
+
+- `%wait`: blocked commit by [`weft`](#weft).
+- `%warp`: unblocked commit by `weft`.
+- `%zest`: desk is now running/suspended/held.
+
+---
+
+### `leak`
+
+Ford cache key
+
+```hoon
++$  leak
+  $~  [*pour ~]
+  $:  =pour
+      deps=(set leak)
+  ==
+```
+
+This includes all build inputs, including transitive dependencies,
+recursively.
+
+---
+
+### `flow`
+
+Global Ford cache
+
+```hoon
++$  flow  (map leak [refs=@ud =soak])
+```
+
+Refcount includes references from other items in the cache, and from `spill`s in
+each desk.
+
+This is optimized for minimizing the number of rebuilds, and given that,
+minimizing the amount of memory used. It is relatively slow to lookup, because
+generating a cache key can be fairly slow (for files, it requires parsing; for
+`tube`s, it even requires building the marks).
+
+---
+
+### `flue`
+
+Per-desk build cache
+
+```hoon
++$  flue  [spill=(set leak) sprig=(map mist [=leak =soak])]
+```
+
+- `spill` is the set of "roots" we have into the [global ford cache](#flow). We
+  add a root for everything referenced directly or indirectly on a desk, then
+  invalidate them on commit only if their dependencies change.
+- `sprig` is a fast-lookup index over the global ford cache. The only goal is to
+  make cache hits fast.
+
+---
+
+### `mist`
+
+Ford build without content
+
+```hoon
++$  mist
+  $%  [%file =path]
+      [%nave =mark]
+      [%dais =mark]
+      [%cast =mars]
+      [%tube =mars]
+      [%vale =path]
+      [%arch =path]
+  ==
+```
+
+This is used at the index of `sprig`s in [`$flue`](#flue)s.
+
+---
+
+### `pile`
+
+Preprocessed hoon source file
+
+```hoon
++$  pile
+  $:  sur=(list taut)
+      lib=(list taut)
+      raw=(list [face=term =path])
+      raz=(list [face=term =spec =path])
+      maz=(list [face=term =mark])
+      caz=(list [face=term =mars])
+      bar=(list [face=term =mark =path])
+      =hoon
+  ==
+```
+
+- `sur`: surface imports from `/sur` (`/-`).
+- `lib`: library imports from `/lib` (`/+`).
+- `raw`: imports built hoon file at path (`/=`).
+- `raz`: imports built hoon files from directory (`/~`).
+- `maz`: imports mark definition from `/mar` (`/%`).
+- `caz`: imports mark converter from `/mar` (`/$`).
+- `bar`: unbuilt file imports, as mark (`/*`).
+- `hoon`: the rest of the hoon file.
+
+---
+
+### `taut`
+
+File import from `/lib` or `/sur`
+
+```hoon
++$  taut  [face=(unit term) pax=term]
+```
+
+---
+
+### `mars`
+
+Mark conversion request
+
+```hoon
++$  mars  [a=mark b=mark]
+```
+
+From `a` to `b`.
+
+---
+
+### `tube`
+
+Mark conversion gate
+
+```hoon
++$  tube  $-(vase vase)
+```
+
+A gate that takes a `vase` and produces a `vase`. This is the type of
+mark convertion gate returned by `%c`-care scries and read requests.
+
+---
+

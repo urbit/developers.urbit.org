@@ -1,9 +1,7 @@
 +++
-title = "%feature Page Hosting"
-weight = 160
+title = "Host a Website"
+weight = 85
 +++
-
-#   `%feature` Page Hosting
 
 [`%feature`](https://github.com/hanfel-dovned/Feature) by [~hanfel-dovned](https://urbit.org/ids/~hanfel-dovned) hosts a simple HTML page from an Urbit ship at an associated URL.  This tutorial examines how it uses the middleware [`%schooner`](https://github.com/dalten-collective/schooner/) library by Quartus to return a web page when contacted by a web browser.  You will learn how a basic site hosting app can handle HTTP requests and render a page using an `%html` mark.
 
@@ -100,7 +98,7 @@ The system only handles pokes:  there are no subscriptions or Arvo calls except 
         [302 ~ [%login-redirect './apps/feature']]
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) state]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  action  (dejs-action +.json)
       (handle-action action) 
       :: 
@@ -185,7 +183,7 @@ The most interesting part of the whole app is the `++handle-http` arm:
         [302 ~ [%login-redirect './apps/feature']]
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) state]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  action  (dejs-action +.json)
       (handle-action action) 
       :: 
@@ -219,7 +217,7 @@ The most interesting part of the whole app is the `++handle-http` arm:
     ==
 ```
 
-This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/app/feature` are checked for login authentication, while `/app/feature/public` is not.
+This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/apps/feature` are checked for login authentication, while `/apps/feature/public` are not.
 
 ### `POST`
 
