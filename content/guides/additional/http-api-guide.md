@@ -685,7 +685,7 @@ as a reference:
 
 [eyre-ext-ref]: /reference/arvo/eyre/external-api-ref
 [eyre-guide]: /reference/arvo/eyre/guide
-[http-api-src]: https://github.com/urbit/urbit/tree/master/pkg/npm/http-api
+[http-api-src]: https://github.com/urbit/js-http-api
 [eyre]: /reference/glossary/eyre
 [vane]: /reference/glossary/vane
 [arvo]: /reference/glossary/arvo
