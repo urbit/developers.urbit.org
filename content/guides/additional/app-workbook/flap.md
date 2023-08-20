@@ -1,13 +1,11 @@
 +++
-title = "Serving a Browser Game"
-weight = 11
+title = "Serving a JS Game"
+weight = 193
 +++
-
-## Introduction
 
 In this tutorial, we will take an off-the-shelf JavaScript game which runs in the browser and connect it to an Urbit back-end.  This page assumes that you have completed some version of Hoon School and App School, whether the [live courses](/courses) or the [written docs](/guides/core/hoon-school/A-intro).  Our goal is to show you one way of directly serving client code from an Urbit ship as server.
 
-_Flappy Bird_ is an "insanely irritating, difficult and frustrating game which combines a super-steep difficulty curve with bad, boring graphics and jerky movement" ([Huffington Post](https://web.archive.org/web/20140205084251/http://www.huffingtonpost.com/2014/02/03/flappy-bird-tips_n_4717406.html)).  We are going to implement `%flap`, a _Flappy Bird_ leaderboard using `%pals`.  The approach given in this tutorial will apply to any game which is primarily run in the browser and has some persistent state to retain across sessions or communicate between players at discrete intervals.  Direct player-v.-player games will require other techniques to implement.
+_Flappy Bird_ is an "insanely irritating, difficult and frustrating game which combines a super-steep difficulty curve with bad, boring graphics and jerky movement" ([Huffington Post](https://web.archive.org/web/20140205084251/http://www.huffingtonpost.com/2014/02/03/flappy-bird-tips_n_4717406.html)).  We are going to implement `%flap`, a _Flappy Bird_ leaderboard using ~paldev’s `%pals` peer tracking agent.  The approach given in this tutorial will apply to any game which is primarily run in the browser and has some persistent state to retain across sessions or communicate between players at discrete intervals.  Direct player-v.-player games will require other techniques to implement.
 
 Our objective is to illustrate a minimum viable set of changes necessary to implement the task.  We should the following components when complete:
 
@@ -18,7 +16,7 @@ Our objective is to illustrate a minimum viable set of changes necessary to impl
 
 We will conceive of this app's communications structure as consisting of a _vertical_ component (which is the communication between the client in the browser and the Urbit ship as database) and a _horizontal_ component (which is the communication between Urbit peers).  Vertical communication will take place using JSON via the `%flap-action` mark, while horizontal communication will take place using the `%flap-update` mark.  Apps can achieve good data modularity using this separation.
 
-![](vert-horz.svg)
+![](https://storage.googleapis.com/media.urbit.org/developers/vert-horz.svg)
 
 
 ##  Desk Setup
@@ -51,7 +49,7 @@ Back on Earth:
 ```sh {% copy=true %}
 rm -rf comet/flap/*
 echo "~[%flap]" > comet/flap/desk.bill
-echo "[%zuse 418]" > comet/flap/sys.kelvin
+echo "[%zuse 417]" > comet/flap/sys.kelvin
 ```
 
 At this point, we need to take stock of what kind of file marks and libraries we need to make available:  `kelvin`, `docket-0`, and so forth.  While there are marks for `js` and `png`, there is no `wav` so we'll handle that directly.
@@ -337,7 +335,7 @@ The main app implements the logic for exposing and tracking data.
         %'POST'
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) this]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  axn  `action`(dejs-action +.json)
       (on-poke %flap-action !>(axn))
       ::
@@ -499,7 +497,7 @@ Now when we navigate to `localhost:8080/apps/flap`, what do we see?  The game ca
 
 ### Serving Correctly
 
-If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source, or
+If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source or serve the resource from Urbit.
 
 If we hot-link the resources, the corresponding lines will look like this:
 
@@ -850,7 +848,7 @@ With all of the above, you should have a working `%flappy` instance at `http://l
         %'POST'
       ?~  body.request.inbound-request
         [(send [405 ~ [%stock ~]]) this]
-      =/  json  (de-json:html q.u.body.request.inbound-request)
+      =/  json  (de:json:html q.u.body.request.inbound-request)
       =/  axn  `action`(dejs-action +.json)
       (on-poke %flap-action !>(axn))
       ::
@@ -1109,7 +1107,7 @@ If you examine `++on-poke` in `/app/flap.hoon`, you will see that HTTP `POST` re
   %'POST'
 ?~  body.request.inbound-request
   [(send [405 ~ [%stock ~]]) this]
-=/  json  (de-json:html q.u.body.request.inbound-request)
+=/  json  (de:json:html q.u.body.request.inbound-request)
 =/  axn  `action`(dejs-action +.json)
 (on-poke %flap-action !>(axn))
 ```

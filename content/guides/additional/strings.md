@@ -1,6 +1,7 @@
 +++
-title = "Working with Strings"
-weight = 40
+title = "Strings"
+description = "Learn about Hoon's two main string types"
+weight = 99
 +++
 
 This document discusses hoon's two main string types: `cord`s (as well as its
@@ -33,7 +34,7 @@ is that UTF-8 characters vary in their byte-length. ASCII characters are all
 8-bit, but others can occupy up to four bytes. Accounting for this variation in
 character size can complicate otherwise simple functions. Tapes, on the other
 hand, don't have this problem because each character is a separate item in the
-list, regardless of it byte-length. This fact makes it much easier to process
+list, regardless of its byte-length. This fact makes it much easier to process
 tapes in non-trivial ways with simple list functions.
 
 In light of this, a general rule of thumb is to use cords for simple things like
@@ -514,6 +515,8 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 
 - [Parsing](/guides/additional/parsing) - A guide to writing fully-fledged
   functional parsers in hoon.
+  
+- [Developer Blog, "What Every Hooner Should Know About Text on Urbit"](/blog/text-overview)
 
 - [Auras](/reference/hoon/auras) - Details of auras in hoon.
 

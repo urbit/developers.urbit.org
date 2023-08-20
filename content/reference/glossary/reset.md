@@ -2,6 +2,18 @@
 title = "Factory Reset"
 [extra]
 category = "arvo"
+
+[glossaryEntry.breach]
+name = "breach"
+symbol = ""
+usage = "azimuth"
+desc = "A factory reset generating a new public/private key pair."
+
+[glossaryEntry."factory reset"]
+  name = "factory reset"
+  symbol = ""
+  usage = "azimuth"
+  desc = "A factory reset generating a new public/private key pair."
 +++
 
 Continuity on the [Ames](/reference/glossary/ames) network occasionally needs to be
@@ -15,11 +27,16 @@ connectivity error. The easiest way to do this is with [Bridge](/reference/gloss
 The option to perform a factory reset is given when changing the networking keys,
 and when transferring the Urbit ID to a new ownership address.
 
-Historically, there were also "network resets", which happened when a major
+In practical terms, the `life` (or key revision number) and `rift` (or
+continuity number) are both incremented.  (The `rift` may be revised without a
+corresponding change in keys, however, so these numbers may differ.)
+
+Historically, there were also "network resets" or "network breaches", which happened when a major
 Arvo revision that could not be implemented via an [OTA update](/reference/glossary/ota-updates)
 occured. Network resets were effectively factory resetting every ship on the network
 at once. The most recent network reset occurred in December 2020, and we expect
-it to be the final one.
+it to be the final one.  Each period between network breaches was called an "era",
+so we are living in the final era.
 
 Factory resets used to be called "breaches", and you may still see this language
 used in some places. The notion is identical, only the name differs.
@@ -29,3 +46,7 @@ used in some places. The notion is identical, only the name differs.
 - [Guide to Factory Resets](https://urbit.org/using/id/guide-to-resets): A more in-depth
   explanation of factory resets, including how to perform one.
 - [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
+- [Life and Rift](https://developers.urbit.org/reference/azimuth/life-and-rift)
+- [Using Bridge](https://urbit.org/using/id/using-bridge): A guide to starting out with Bridge.
+- [The Azimuth concepts page](/reference/azimuth/advanced-azimuth-tools): A more in-depth explanation of our identity layer.
+

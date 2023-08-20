@@ -1,6 +1,7 @@
 +++
-title = "Using the HTTP API"
-weight = 15
+title = "HTTP API"
+description = "Learn how to interact with ships through Eyre's web API"
+weight = 40
 +++
 
 [Eyre] is the web-server [vane] (kernel module) of [Arvo], an Urbit ship's
@@ -678,13 +679,13 @@ discarded and a fresh channel ID will be generated.
 Here are some examples which make use of `@urbit/http-api` that might be useful
 as a reference:
 
-- [Bitcoin Wallet](https://github.com/urbit/urbit/tree/master/pkg/btc-wallet)
+- [Bitcoin Wallet](https://github.com/urbit/bitcoin-wallet)
 - [Web Terminal](https://github.com/urbit/urbit/tree/master/pkg/interface/webterm)
 - [UrChatFM](https://github.com/urbit/urbit-webrtc/tree/master/urchatfm)
 
 [eyre-ext-ref]: /reference/arvo/eyre/external-api-ref
 [eyre-guide]: /reference/arvo/eyre/guide
-[http-api-src]: https://github.com/urbit/urbit/tree/master/pkg/npm/http-api
+[http-api-src]: https://github.com/urbit/js-http-api
 [eyre]: /reference/glossary/eyre
 [vane]: /reference/glossary/vane
 [arvo]: /reference/glossary/arvo

@@ -32,7 +32,7 @@ There are three main steps involved with setting up a roller:
 - starting and configuring `%roller`,
 - aiming your front-end at the roller
 
-### 1. Make sure `%azimuth` state is up to date
+## 1. Make sure `%azimuth` state is up to date
 
 If you are using an ordinary live ship on the network as the roller, you should
 already have the latest `%azimuth` state and this step should not be necessary
@@ -52,7 +52,7 @@ found under the Setting page for the node on infura.io listed under `ENDPOINTS`.
 If you do not perform this step, you'll later see an error "roller not ready"
 when the first roller batch is about to be submitted.
 
-### 2. Starting and configuring `%roller` {% #step2 %}
+## 2. Starting and configuring `%roller` {% #step2 %}
 
 This step must be performed whether you're using a fakezod or a live ship.
 
@@ -125,7 +125,7 @@ work with a front-end if you want to use it on livenet.
 
 We cover the additional settings for `%roller` at the end.
 
-### 3. Aiming Bridge at the roller
+## 3. Aiming Bridge at the roller
 
 The last step is to set up the web interface by which users can submit
 transactions to be batched by the roller, which we refer to as the front-end. We
@@ -139,6 +139,7 @@ This is outside the scope of the tutorial, but we suggest using a tool like
 `https://myroller.sampel-pal.net` and use the port you'd ordinarily use to
 access Landscape, probably `80` or `8080`. To be clear, this is the same process
 you'd use if you set up a custom URL to access your urbit hosted in the cloud.
+The associated roller URL will then be `https://myroller.sampel-pal.net/v1/roller`.
 
 To point Bridge at your roller we [launch
 Bridge](https://github.com/urbit/bridge/blob/master/DEVELOPMENT.md) with a
@@ -146,13 +147,13 @@ custom command that modifies an environment variable called
 `REACT_APP_ROLLER_HOST`:
 
 ```
-REACT_APP_ROLLER_HOST=https://myroller.sampel-pal.net npm run pilot-mainnet
+REACT_APP_ROLLER_HOST=https://myroller.sampel-pal.net/v1/roller npm run pilot-mainnet
 ```
 
 This will launch a server running Bridge that utilizes the mainnet roller you
-set up at `https://myroller.sampel-pal.net`.
+set up at `https://myroller.sampel-pal.net/v1/roller`.
 
-### Additional `%roller` commmands
+## Additional `%roller` commmands
 
 `%roller` has a few other settings and commands for managing things like the
 rate at which transactions are submitted and manually submitting batches. These

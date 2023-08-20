@@ -42,16 +42,28 @@ If you've already got the `urbit` CLI runtime installed, you can skip this step.
 Otherwise, run one of the commands below, depending on your platform. It will
 fetch the binary and save it in the current directory.
 
-#### Linux
+#### Linux (`x86_64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/linux64/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### Mac
+#### Linux (`aarch64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/mac/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
+```
+
+#### macOS (`x86_64`)
+
+```shell {% copy=true %}
+curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
+```
+
+#### macOS (`aarch64`)
+
+```shell {% copy=true %}
+curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 ## Development ship
@@ -127,7 +139,7 @@ For the actions/requests our app will accept, we'll need the following:
 6. Leave a squad.
 7. Make a private squad public.
 8. Make a public squad private.
-9. Change the title of a squad .
+9. Change the title of a squad.
 
 These actions will only be allowed to be taken by the host ship.
 
@@ -244,7 +256,7 @@ host and receive updates such as access control list changes or members joining
 and leaving. Likewise, we'll be able to subscribe to squads on other ships and
 receive their updates. Remember, all Urbit ships are both clients and servers.
 
-There's three main agent arms we use for this:
+There are three main agent arms we use for this:
 
 1. `on-poke`: This arm handles one-off actions/requests (our `act` structure).
    It will also handle requests from the front-end, which we'll create in the
@@ -258,7 +270,7 @@ Let's look at each part in a little more detail.
 #### `on-poke`
 
 For this app, the `on-poke` will only allow pokes from the local ship - either
-other agents using Squad's API or Squad's front-end. It will accept pokes with a
+other agents using Squad's API or Squad's front-end. It will accept pokes with
 either a `%squad-do` mark containing an `act` action we defined earlier, or a
 `%handle-http-request` mark from the front-end. The latter case will be handles
 by the `handle-http` arm. We'll check which URL path the request was sent to
@@ -1091,7 +1103,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
     ==
   ::
     :: if it's a kick alert, it may or may not be intentional,
-    :: so we just automaticall try to resubscribe
+    :: so we just automatically try to resubscribe
     ::
       %kick
     ?.  (~(has by squads) gid)  `this
@@ -1196,7 +1208,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
       :: check whether it's US, and do nothing if so
       ::
       ?:  =(our.bol ship.upd)  `this
-      :: otherwise, update the member list and and let local
+      :: otherwise, update the member list and let local
       :: subscribers know
       ::
       :-  ~[(fact:io cage.sign ~[/local/all])]
@@ -1387,7 +1399,7 @@ mark in `squad/mar/squad/did.hoon`.
 :: first we import our /sur/squad.hoon type defs and expose them directly
 ::
 /-  *squad
-:: the mark door takes an $act action in in the outbound case
+:: the mark door takes an $act action in the outbound case
 ::
 |_  a=act
 :: the grow arm converts from an $act to other things
@@ -1644,7 +1656,7 @@ Save the code below in `squad/app/squad/index.hoon`.
           ?:(success.page "success" "failed")
         success.page
   ==
-:: This component lets a group host change whther a squad is private
+:: This component lets a group host change whether a squad is private
 :: or public. It's a form that POSTs the new state to either the /squad/private
 :: or /squad/public URL path, and our Gall agent processes the request.
 ::
@@ -1904,7 +1916,7 @@ this by adding a `sys.kelvin` file to the root of our `squad` directory:
 
 ```shell {% copy=true %}
 cd squad
-echo "[%zuse 418]" > sys.kelvin
+echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do
@@ -1955,10 +1967,10 @@ squad
 ```
 
 Let's now try it out. In the Dojo of our comet,
-we'll create a new desk by forking from an existing one:
+we'll create a new desk with the `|new-desk` generator:
 
 ``` {% copy=true %}
-|merge %squad our %webterm
+|new-desk %squad
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
@@ -1967,9 +1979,8 @@ Next, we'll mount the desk so we can access it from the host OS:
 |mount %squad
 ```
 
-Currently its contents are the same as the `%webterm` desk, so we'll need to
-delete those files and copy in our own instead. In the normal shell, do the
-following:
+Currently it just contains some skeleton files, but we can just delete those
+and add our own instead. In the normal shell, do the following:
 
 ```shell {% copy=true %}
 rm -r dev-comet/squad/*

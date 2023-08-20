@@ -1,13 +1,33 @@
-export default function Meta(post, disableImage) {
+export default function Meta(post, disableImage, large = false) {
   const author = post?.extra?.author || "Urbit";
   const title = post?.title ? `${post.title} - ` : "";
   const description =
-    post?.description || "Urbit is a personal server built from scratch.";
+    post?.description || "Urbit provides foundational primitives at the operating system layer, serving as a better platform for building networked, decentralized applications.";
   const image =
-    post?.extra?.image || "https://media.urbit.org/logo/urbit-logo-card.png";
+    post?.extra?.image || "https://storage.googleapis.com/media.urbit.org/site/opengraph/sig-white.png";
   return (
-      
     <>
+
+      <link rel="icon" type="image/png" href="/images/favicon.ico" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/images/apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/images/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/images/favicon-16x16.png"
+      />
+      <link rel="manifest" href="/images/site.webmanifest" />
+      
       <meta
         name="twitter:card"
         content="summary_large_image"
@@ -26,6 +46,7 @@ export default function Meta(post, disableImage) {
       {!disableImage && (
         <meta name="twitter:image" content={image} key="image" />
       )}
+
 
     </>
   );

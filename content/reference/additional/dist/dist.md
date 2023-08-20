@@ -37,7 +37,7 @@ For those of you familiar with the old `%glob` and `%file-server` agents, they h
 Desks still contain helper files in `/lib` and `/sur`, generators in `/gen`, marks in `/mar`, threads in `/ted`, tests in `/tests`, and agents in `/app`. In addition, desks now also contain these files:
 
 ```
-/sys/kelvin     ::  Kernel kelvin, e.g. [%zuse 418]
+/sys/kelvin     ::  Kernel kelvin, e.g. [%zuse 417]
 /desk/bill      ::  (optional, read by Kiln) list of agents to run
 /desk/docket-0  ::  (optional, read by Docket) app metadata
 /desk/ship      ::  (optional, read by Docket) ship of original desk publisher, e.g. ~zod

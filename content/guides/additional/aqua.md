@@ -1,9 +1,10 @@
 +++
-title = "Writing Aqua Tests"
+title = "Aqua Tests"
+description = "Learn to write tests with Aqua"
 weight = 5
 +++
 
-# Concepts
+## Concepts
 
 Aqua (short for "aquarium", alluding to the idea that you're running
 multiple ships in a safe, artificial environment and watching them
@@ -13,7 +14,7 @@ within a single host.
 pH is a library of functions designed to make it easy to write
 integration tests using Aqua.
 
-# First test
+## First test
 
 To run your first pH test, run the following commands:
 
@@ -63,7 +64,7 @@ breaches, mock http clients or servers, or anything you can imagine.
 Check out `/lib/ph/io.hoon` for other available functions, and look at
 other tests in `/ted/ph/` for inspiration.
 
-# Reference
+## Reference
 
 Aqua has the following commands:
 

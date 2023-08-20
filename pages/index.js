@@ -28,22 +28,32 @@ import Card from "../components/Card";
 import TallCard from "../components/TallCard";
 import HoonIcon from "../components/icons/TallCard/hoon";
 import AppIcon from "../components/icons/TallCard/app";
+import Meta from "../components/Meta";
+import HighlightCard from "../components/HighlightCard";
 
-export default function Home({ search, posts }) {
+export default function Home({ search, posts, highlights }) {
+
+  const post = {
+    title: "Urbit Developers",
+    description: "Discover the creative possibilities of a unified operating system.",
+    image: "https://storage.googleapis.com/media.urbit.org/site/opengraph/developers.png"
+  };
+
   return (
     <div>
       <Head>
         <title>Urbit Developers</title>
+        {Meta(post, false, true)}
       </Head>
       <Container>
         <Header search={search} />
         <SingleColumn>
-          <Section className="pb-72">
+          <Section className="pb-36">
             {/* Hero statement */}
             <div className="flex flex-col space-y-4">
               <h1 className="max-w-prose">
                 Discover the creative possibilities of a unified operating
-                system
+                system.
               </h1>
               <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 pt-4">
                 <Link href="/guides/quickstart/intro" passHref>
@@ -64,6 +74,15 @@ export default function Home({ search, posts }) {
               </div>
             </div>
           </Section>
+
+        <Section className="pb-36">
+        
+          <HighlightCard highlight={highlights[0]} key={highlights[0].slug} />
+
+        </Section>
+
+
+
           <Section short>
             <h2 className="font-normal">
               Urbit provides{" "}
@@ -91,17 +110,16 @@ export default function Home({ search, posts }) {
               })}
             </div>
             <div className="pt-12">
-              <p>
+              <h3 className="max-w-prose font-normal">
                 Thanks to this architecture, you can take software into
-                production within weeks rather than months. Check out our
-                Lightning Tutorials below to jump right in and build an app in
-                15 minutes.
-              </p>
+                production within weeks rather than months.
+              </h3>
             </div>
           </Section>
           <Section>
             <h2 className="pt-12">Quickstart: Lightning Tutorials</h2>
-            <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
+            <p className="pt-12 text-lg">Jump right in and build an app in under a half hour.</p>
+            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-8 pt-12">
               <Card
                 icon={<Squad />}
                 title="Groups Application"
@@ -117,7 +135,7 @@ export default function Home({ search, posts }) {
                 href="/guides/quickstart/chat-guide"
               />
             </div>
-            <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
+            <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-8 pt-8">
               <Card
                 icon={<Ringsig />}
                 title="Ring Signature Voting App"
@@ -130,9 +148,9 @@ export default function Home({ search, posts }) {
           </Section>
           <Section className="flex flex-col space-y-12">
             <h2>Guides</h2>
-            <p className="text-lg">
+            <p className="text-lg max-w-prose">
               Learn the foundations of software development on Urbit with our
-              core curriculum of guides.
+              core curriculum of guides and workbooks.
             </p>
             <TwoUp>
               <TallCard
@@ -140,7 +158,7 @@ export default function Home({ search, posts }) {
                 description="Learn the fundamentals of the Hoon programming language"
                 callout="View Guide"
                 href="/guides/core/hoon-school"
-                image={HoonIcon}
+                image="https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school.svg"
                 className="h-full"
               />
               <TallCard
@@ -148,7 +166,7 @@ export default function Home({ search, posts }) {
                 description="Learn how to build Urbit userspace applications by writing your own Gall agents"
                 callout="View Guide"
                 href="/guides/core/app-school"
-                image={AppIcon}
+                image="https://storage.googleapis.com/media.urbit.org/developers/images/app-school.svg"
                 className="h-full"
               />
             </TwoUp>
@@ -160,9 +178,9 @@ export default function Home({ search, posts }) {
           </Section>
           <Section className="flex flex-col space-y-12">
             <h2>Courses</h2>
-            <p className="text-lg">
+            <p className="text-lg max-w-prose">
               Want an interactive experience to truly learn software development
-              on Urbit? Join the next cohort for Hoon or App School Live and
+              on Urbit? <br/>Join the next cohort for Hoon or App School Live and
               learn with a group.
             </p>
             <Link href="/courses" passHref>
@@ -278,7 +296,16 @@ const pitch = [
   },
 ];
 
+
+
 export async function getStaticProps() {
+
+  // Highlights
+  const highlights = getAllPosts(
+    ["title", "slug", "image", "url", "description"],
+    "highlights"
+  );
+
   const posts = getAllPosts(
     ["title", "slug", "date", "description", "extra"],
     "blog",
@@ -287,6 +314,7 @@ export async function getStaticProps() {
   return {
     props: {
       posts,
+      highlights
     },
   };
 }

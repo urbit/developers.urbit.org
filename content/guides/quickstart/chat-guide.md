@@ -28,7 +28,7 @@ has three folders inside:
 1. `bare-desk`: just the hoon files created here without any dependencies.
 2. `full-desk`: `bare-desk` plus all dependencies. Note some files are
    symlinked, so if you're copying them you'll need to do `cp -rL`.
-3. `react-frontend`: the React front-end files.
+3. `ui`: the React front-end files.
 
 Let's get started.
 
@@ -38,16 +38,28 @@ If you've already got the `urbit` CLI runtime installed, you can skip this step.
 Otherwise, run one of the commands below, depending on your platform. It will
 fetch the binary and save it in the current directory.
 
-#### Linux
+#### Linux (`x86_64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/linux64/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### Mac
+#### Linux (`aarch64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/mac/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
+```
+
+#### macOS (`x86_64`)
+
+```shell {% copy=true %}
+curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
+```
+
+#### macOS (`aarch64`)
+
+```shell {% copy=true %}
+curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 ## Development ship
@@ -94,9 +106,9 @@ across that our app will depend on:
 
 ```shell {% copy=true %}
 mkdir -p hut/{app,sur,mar,lib}
-cp dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} hut/mar/
+cp -r dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} hut/mar/
 cp dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} hut/lib/
-cp dev-comet/squad/sur/{docket*, squad*} hut/sur/
+cp dev-comet/squad/sur/{docket*,squad*} hut/sur/
 cp dev-comet/garden/lib/mip.hoon hut/lib/
 ```
 
@@ -229,7 +241,7 @@ a hut by poking our agent with a `%post` action. Likewise, we'll be able to
 subscribe to huts for groups on other ships and poke them to post messages.
 Remember, all Urbit ships are both clients and servers.
 
-There's three main agent arms we use for this:
+There are three main agent arms we use for this:
 
 1. `on-poke`: This arm handles one-off actions/requests, such as posting a
    message to a hut.
@@ -356,7 +368,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
   |=  old-vase=vase
   ^-  (quip card _this)
   [~ this(state !<(state-0 old-vase))]
-:: on-poke handles "pokes", one-off requests/actions intiated either
+:: on-poke handles "pokes", one-off requests/actions initiated either
 :: by our local ship, the front-end or other ships on the network.
 ::
 ++  on-poke
@@ -558,7 +570,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
       :: the subscribe succeeded or failed
       ::
         %watch-ack
-      :: if there's no error message it succceeded,
+      :: if there's no error message it succeeded,
       :: do nothing further
       ::
       ?~  p.sign  `this
@@ -772,7 +784,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
   :: switch on the kind of event
   ::
   ?+    -.sign  (on-agent:def wire sign)
-    :: if it was a response to a subscriiption request...
+    :: if it was a response to a subscription request...
       %watch-ack
     :: if there's no error message the subscription succeeded,
     :: no nothing
@@ -1105,7 +1117,7 @@ in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
 ::
 ++  grow
   |%
-  :: this mark is primarily used inbound from the 
+  :: this mark is primarily used inbound from the
   :: front-end, so we only need a simple %noun
   :: conversion method here
   ::
@@ -1240,7 +1252,7 @@ in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
           ['joined' (en-joined joined.u)]
       ==
     ==
-    :: this function creates an array of the the members of a the
+    :: this function creates an array of the members of a the
     :: huts for a squad
     ::
     ++  en-joined
@@ -1321,248 +1333,256 @@ in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
 Our back-end is complete, so we can now work on our React front-end. We'll just
 look at the basic setup process here, but you can get the full React app by
 cloning [this repo on Github](https://github.com/urbit/docs-examples) and run
-`npm i` in `chat-app/react-frontend`. Additional commentary on the code is in
-the [additional commentary](#additional-commentary) section below.
+`npm i` in `chat-app/ui`. Additional commentary on the code is in the
+[additional commentary](#additional-commentary) section below.
 
 #### Basic setup process
 
-When creating it from scratch, we can first run `create-react-app` like usual:
+When creating it from scratch, first make sure you have Node.js installed on
+your computer (you can download it from their
+[website](https://nodejs.org/en/download)) and then run `create-landscape-app`:
 
-```shell {% copy=true %}
-npx create-react-app hut-ui
-cd hut-ui
+```shell
+npx @urbit/create-landscape-app
+✔ What should we call your application? … hut
+✔ What URL do you use to access Urbit? … http://127.0.0.1:8080
 ```
 
-To make talking to our ship easy, we'll install the `@urbit/http-api` module:
+This will generate a React project in the `hut/ui` directory with all the
+basic necessities for Urbit front-end development. Next, run the following
+commands to install the project's dependencies:
 
-```
-npm i @urbit/http-api
-```
-
-`http-api` handles most of the tricky parts of communicating with our ship for
-us, and has a simple set of methods for doing things like pokes, subscriptions,
-receiving updates, etc.
-
-The next thing we need to do is edit `package.json`. We'll change the name of
-the app, and we'll also add an additional `"homepage"` entry. Front-ends are
-serve at `/apps/<name>`, so we need to set that as the root for when we build
-it:
-
-```json
-"name": "hut",
-"homepage": "/apps/hut/",
+```shell
+cd hut/ui
+npm i
 ```
 
-Next, we need to edit `public/index.html` and add a script import to the
-`<head>` section. `http-api` needs to know the name of our ship in order to talk
-to it, so our ship serves a simple script at `/session.js` that just does
-`window.ship = "sampel-palnet";`.
-
-```html
-<script src="/session.js"></script>
-```
-
-We can now open `src/App.js`, wipe its contents, and start writing our own app.
-The first thing is to import the `Urbit` class from `@urbit/http-api`:
+We can now open `src/app.jsx`, wipe its contents, and start writing our own
+app. The first thing is to import the `Urbit` class from `@urbit/http-api`:
 
 ```javascript
-import React, {Component} from "react";
+import React, {useEffect, useState} from "react";
 import Urbit from "@urbit/http-api";
-// .....
 ```
 
-In our App class, we'll create a new `Urbit` instance and tell it our ship name.
-We'll also add some connection state callbacks. Our app is simple and will just
-display the connection status in the top-right corner.
+We'll create an `App` component that will create a new `Urbit` instance on load
+to monitor our front-end's connection with our ship. Our app is simple and will
+just display the connection status in the top-left corner:
 
 ```javascript
-constructor(props) {
-  super(props);
-  window.urbit = new Urbit("");
-  window.urbit.ship = window.ship;
-  // ......
-  window.urbit.onOpen = () => this.setState({conn: "ok"});
-  window.urbit.onRetry = () => this.setState({conn: "try"});
-  window.urbit.onError = () => this.setState({conn: "err"});
-  // ......
-};
+export function App() {
+  const [status, setStatus] = useState("try");
+
+  useEffect(() => {
+    window.urbit = new Urbit("");
+    window.urbit.ship = window.ship;
+
+    window.urbit.onOpen = () => setStatus("con");
+    window.urbit.onRetry = () => setStatus("try");
+    window.urbit.onError = () => setStatus("err");
+
+    const subscription = window.urbit.subscribe({
+      app: "hut",
+      path: "/all",
+      event: (e) => console.log(e),
+    });
+
+    return () => window.urbit.unsubscribe(subscription);
+  }, []);
+
+  return (<h1>{status}</h1>);
+}
 ```
 
-```javascript
-constructor(props) {
-  super(props);
-  window.urbit = new Urbit("");
-  window.urbit.ship = window.ship;
-  // ......
-  window.urbit.onOpen = () => this.setState({conn: "ok"});
-  window.urbit.onRetry = () => this.setState({conn: "try"});
-  window.urbit.onError = () => this.setState({conn: "err"});
-  // ......
-};
-```
+After we've finished writing our React app, we can build it and view the
+resulting files in the `dist` directory:
 
-After we've finished writing our React app, we can build it:
-
-```shell {% copy=true %}
+```shell
 npm run build
+ls dist
 ```
 
 #### Additional commentary
 
-There are a fair few functions our front-end uses, so we'll just look at a
-handful. The first is `doPoke`, which (as the name suggests) sends a poke to a
-ship. It takes the poke in JSON form. It then calls the `poke` method of our
-`Urbit` object to perform the poke.
+There are a fair few functions in the
+[complete front-end source for `%hut`](https://github.com/urbit/docs-examples);
+we'll just look at a handful to cover the basics. The first is the `appPoke`
+in `src/lib.js`, which (as the name suggests) sends a poke to a ship. It takes
+the poke in JSON form and calls the `poke` method of our `Urbit` object to
+perform the poke:
 
 ```javascript
-doPoke = jon => {
-  window.urbit.poke({
+export function appPoke(jon) {
+  return api.poke({
     app: "hut",
     mark: "hut-do",
     json: jon,
-  })
-};
+  });
+}
 ```
 
-Here's an example of a `%join`-type `act` in JSON form:
+An example of sending a `poke` with a `%join`-type `act` in JSON form can be
+found in the `src/components/SelectGid.jsx` source file:
 
 ```javascript
-joinGid = () => {
-  const joinSelect = this.state.joinSelect
-  if (joinSelect === "def") return;
-  const [host, name] = joinSelect.split("/");
-  this.doPoke(
-    {"join": {
-      "gid" : {"host": host, "name": name},
-      "who" : this.our
-    }}
-  );
-  this.setState({joinSelect: "def"})
+const handleJoin = () => {
+  if (joinSelect !== "def") {
+    const [host, name] = joinSelect.split("/");
+    appPoke({
+      "join": {
+        "gid" : {"host": host, "name": name},
+        "who" : OUR
+      }
+    });
+  }
 };
 ```
 
 Our front-end will subscribe to updates for all groups our `%hut` agent is
 currently tracking. To do so, it calls the `subscribe` method of the `Urbit`
-object with the `path` to subscribe to and an `event` callback to handle each
-update it receives. Our agent publishes all updates on the local-only `/all`
-path.
+object (aliased to `api` in our example) with the `path` to subscribe to and an
+`event` callback to handle each update it receives. Our agent publishes all
+updates on the local-only `/all` path. Here's the source in the `src/app.jsx`
+file:
 
 ```javascript
-subscribe = () => {
-  window.urbit.subscribe({
-    app: "hut",
-    path: "/all",
-    event: this.handleUpdate
-  });
-};
+const subscription = api.subscribe({
+  app: "hut",
+  path: "/all",
+  event: setSubEvent,
+});
 ```
 
-Here's the `handleUpdate` function we gave as a callback. The update will be one
-of our `hut-upd` types in JSON form, so we just switch on the type and handle it
-as appropriate.
+Notice that the above call to `subscribe` passes the `setSubEvent` function.
+This is part of a common pattern for Urbit React applications wherein a state
+variable is used to track new events and cause component re-rendering. The
+broad outline for this workflow is as follows:
+
+1. Create a component subscription event variable with:
+   ```javascript
+   const [subEvent, setSubEvent] = useState();
+   ```
+2. Call the `subscribe` function, passing `setSubEvent` as the `event` keyword
+   argument:
+   ```javascript
+   urbit.subscribe({ /* ... */, event: setSubEvent });
+   ```
+3. Create a subscription handler function that updates when new events are
+   available with:
+   ```javascript
+   useEffect(() => {/* handler goes here */}, [subEvent]);
+   ```
+
+The source for the final `useEffect` portion of this workflow (found in the
+`src/app.jsx` file) can be found below:
 
 ```javascript {% mode="collapse" %}
-handleUpdate = upd => {
-  const {huts, msgJar, joined, currentGid, currentHut} = this.state;
-  if ("initAll" in upd) {
-    upd.initAll.huts.forEach(obj =>
-      huts.set(this.gidToStr(obj.gid), new Set(obj.names))
-    );
-    this.setState({
-      huts: huts,
-      msgJar: new Map(
-        upd.initAll.msgJar.map(obj => [this.hutToStr(obj.hut), obj.msgs])
-      ),
-      joined: new Map(
-        upd.initAll.joined.map(obj =>
-          [this.gidToStr(obj.gid), new Set(obj.ppl)]
-        )
-      )
-    })
-  } else if ("init" in upd) {
-    upd.init.msgJar.forEach(obj =>
-      msgJar.set(this.hutToStr(obj.hut), obj.msgs)
-    );
-    this.setState({
-      msgJar: msgJar,
-      huts: huts.set(
-        this.gidToStr(upd.init.huts[0].gid),
-        new Set(upd.init.huts[0].names)
-      ),
-      joined: joined.set(
-        this.gidToStr(upd.init.joined[0].gid),
-        new Set(upd.init.joined[0].ppl)
-      )
-    })
-  } else if ("new" in upd) {
-    const gidStr = this.gidToStr(upd.new.hut.gid);
-    const hutStr = this.hutToStr(upd.new.hut);
-    (huts.has(gidStr))
-      ? huts.get(gidStr).add(upd.new.hut.name)
-      : huts.set(gidStr, new Set(upd.new.hut.name));
-    this.setState({
-      huts: huts,
-      msgJar: msgJar.set(hutStr, upd.new.msgs)
-    })
-  } else if ("post" in upd) {
-    const hutStr = this.hutToStr(upd.post.hut);
-    (msgJar.has(hutStr))
-      ? msgJar.get(hutStr).push(upd.post.msg)
-      : msgJar.set(hutStr, [upd.post.msg]);
-    this.setState(
-      {msgJar: msgJar},
-      () => {
-        (hutStr === this.state.currentHut)
-          && this.scrollToBottom();
+useEffect(() => {
+  const updateFuns = {
+    "initAll": (update) => {
+      update.huts.forEach(obj =>
+        huts.set(gidToStr(obj.gid), new Set(obj.names))
+      );
+
+      setHuts(new Map(huts));
+      setChatContents(new Map(
+        update.msgJar.map(o => [hutToStr(o.hut), o.msgs])
+      ));
+      setChatMembers(new Map(
+        update.joined.map(o => [gidToStr(o.gid), new Set(o.ppl)])
+      ));
+    }, "init": (update) => {
+      setChatContents(new Map(update.msgJar.reduce(
+        (a, n) => a.set(hutToStr(n.hut), n.msgs)
+      , chatContents)));
+      setHuts(new Map(huts.set(
+        gidToStr(update.huts[0].gid),
+        new Set(update.huts[0].names)
+      )));
+      setChatMembers(new Map(chatMembers.set(
+        gidToStr(update.joined[0].gid),
+        new Set(update.joined[0].ppl)
+      )));
+    }, "new": (update) => {
+      const gidStr = gidToStr(update.hut.gid);
+      const hutStr = hutToStr(update.hut);
+      if (huts.has(gidStr)) {
+        huts.get(gidStr).add(update.hut.name);
+      } else {
+        huts.set(gidStr, new Set(update.hut.name));
       }
-    )
-  } else if ("join" in upd) {
-    const gidStr = this.gidToStr(upd.join.gid);
-    (joined.has(gidStr))
-      ? joined.get(gidStr).add(upd.join.who)
-      : joined.set(gidStr, new Set([upd.join.who]));
-    this.setState({joined: joined})
-  } else if ("quit" in upd) {
-    const gidStr = this.gidToStr(upd.quit.gid);
-    if ("~" + window.ship === upd.quit.who) {
-      (huts.has(gidStr)) &&
-        huts.get(gidStr).forEach(name =>
-          msgJar.delete(gidStr + "/" + name)
+
+      setHuts(new Map(huts));
+      setChatMembers(new Map(chatMembers.set(hutStr, update.msgs)));
+    }, "post": (update) => {
+      const newHut = hutToStr(update.hut);
+      if (chatContents.has(newHut)) {
+        chatContents.set(newHut, [...chatContents.get(newHut), update.msg]);
+      } else {
+        chatContents.set(newHut, [update.msg]);
+      }
+
+      setChatContents(new Map(chatContents));
+    }, "join": (update) => {
+      const gidStr = gidToStr(update.gid);
+      if (chatMembers.has(gidStr)) {
+        chatMembers.get(gidStr).add(update.who)
+      } else {
+        chatMembers.set(gidStr, new Set([update.who]));
+      }
+
+      setChatMembers(new Map(chatMembers));
+      setJoinSelect("def");
+    }, "quit": (update) => {
+      const gidStr = gidToStr(update.gid);
+      if (update.who === OUR) {
+        huts.delete(gidStr);
+        chatMembers.delete(gidStr);
+        if(huts.has(gidStr)) {
+          huts.get(gidStr).forEach(name =>
+            chatContents.delete(gidStr + "/" + name)
+          );
+        }
+
+        setHuts(new Map(huts));
+        setChatMembers(new Map(chatMembers));
+        setChatContents(new Map(chatContents));
+        setCurrGid((currGid === gidStr) ? null : currGid);
+        setCurrHut((currHut === null)
+          ? null
+          : (`${currHut.split("/")[0]}/${currHut.split("/")[1]}` === gidStr)
+            ? null
+            : currHut
         );
-      huts.delete(gidStr);
-      joined.delete(gidStr);
-      this.setState({
-        msgJar: msgJar,
-        huts: huts,
-        joined: joined,
-        currentGid: (currentGid === gidStr)
-          ? null : currentGid,
-        currentHut: (currentHut === null) ? null :
-          (
-            currentHut.split("/")[0] + "/" + currentHut.split("/")[1]
-              === gidStr
-          )
-          ? null : currentHut,
-        make: (currentGid === gidStr) ? "" : this.state.make
-      })
-    } else {
-      (joined.has(gidStr)) &&
-        joined.get(gidStr).delete(upd.quit.who);
-      this.setState({joined: joined})
-    }
-  } else if ("del" in upd) {
-    const gidStr = this.gidToStr(upd.del.hut.gid);
-    const hutStr = this.hutToStr(upd.del.hut);
-    (huts.has(gidStr)) &&
-      huts.get(gidStr).delete(upd.del.hut.name);
-    msgJar.delete(hutStr);
-    this.setState({
-      huts: huts,
-      msgJar: msgJar,
-      currentHut: (currentHut === hutStr) ? null : currentHut
-    })
+        setViewSelect("def");
+        setHutInput((currGid === gidStr) ? "" : hutInput);
+      } else {
+        if (chatMembers.has(gidStr)) {
+          chatMembers.get(gidStr).delete(update.who);
+        }
+
+        setChatMembers(new Map(chatMembers));
+      }
+    }, "del": (update) => {
+      const gidStr = gidToStr(update.hut.gid);
+      const hutStr = hutToStr(update.hut);
+      if (huts.has(gidStr)) {
+        huts.get(gidStr).delete(update.hut.name);
+      }
+      chatContents.delete(hutStr);
+
+      setHuts(new Map(huts));
+      setChatContents(new Map(chatContents));
+      setCurrHut((currHut === hutStr) ? null : currHut);
+    },
+  };
+
+  const eventTypes = Object.keys(subEvent);
+  if (eventTypes.length > 0) {
+    const eventType = eventTypes[0];
+    updateFuns[eventType](subEvent[eventType]);
   }
-};
+}, [subEvent]);
 ```
 
 ## Desk config
@@ -1575,7 +1595,7 @@ this by adding a `sys.kelvin` file to the root of our `hut` directory:
 
 ```shell {% copy=true %}
 cd hut
-echo "[%zuse 418]" > sys.kelvin
+echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do
@@ -1615,10 +1635,10 @@ the moment.
 ## Put it together
 
 Our app is now complete, so let's try it out. In the Dojo of our comet,
-we'll create a new desk by forking from an existing one:
+we'll create a new desk with the `|new-desk` generator:
 
 ``` {% copy=true %}
-|merge %hut our %webterm
+|new-desk %hut
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
@@ -1627,12 +1647,12 @@ Next, we'll mount the desk so we can access it from the host OS:
 |mount %hut
 ```
 
-Currently its contents are the same as the `%webterm` desk, so we'll need to
-delete those files and copy in our own instead. In the normal shell, do the
+It'll have a handful of skeleton files in it, but we can just delete those and
+add our own instead. In the normal shell, do the
 following:
 
 ```shell {% copy=true %}
-rm -r dev-comet/hut/*
+rm -rI dev-comet/hut/*
 cp -r hut/* dev-comet/hut/
 ```
 
@@ -1648,7 +1668,7 @@ to `localhost:8080` (or just `localhost` on a Mac). Login with the comet's web
 code, which you can get by running `+code` in the Dojo. Next, go to
 `localhost:8080/docket/upload` (or `localhost/docket/upload` on a Mac) and
 it'll bring up the Docket Globulator tool. Select the `hut` desk from the
-drop-down menu, then navigate to `hut-ui/build` and select the whole folder.
+drop-down menu, then navigate to `hut/ui/dist` and select the whole folder.
 Finally, hit `glob!` and it'll upload our React app.
 
 If we return to `localhost:8080` (or `localhost` on a Mac), we should see a

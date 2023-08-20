@@ -123,3 +123,21 @@ A scry with a `%x` `care` and a `path` of `/snd-bones/[ship]/[bone]`, where `[sh
   ]
 ]
 ```
+
+## /snubbed
+
+A scry with a `%x` `care` and a `path` of `/snubbed` will return Ames' current
+ship whitelist/blacklist. The type is a `[form=?(%allow %deny) ships=(list
+ship)]`, where `form` says whether it's a whitelist or blacklist and `ships`
+are the ships on that list.
+
+#### Example
+
+
+```
+> |ames-snub %deny ~wet ~sampel
+>=
+
+> .^([form=?(%allow %deny) ships=(list ship)] %ax /=//=/snubbed)
+[form=%deny ships=[i=~sampel t=[i=~wet t=~]]]
+```

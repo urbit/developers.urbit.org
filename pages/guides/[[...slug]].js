@@ -21,12 +21,9 @@ import {
   getNextPost,
 } from "@urbit/foundation-design-system";
 import { Comms, Ringsig, Squad } from "../../components/icons";
-import HoonIcon from "../../components/icons/TallCard/hoon";
-import EnvironmentIcon from "../../components/icons/TallCard/env";
-import AppIcon from "../../components/icons/TallCard/app";
-import FullStackIcon from "../../components/icons/TallCard/full";
 import guidesTree from "../../cache/guides.json";
 import { join } from "path";
+import { pair } from '../../lib/util';
 
 export default function GuidePage({
   search,
@@ -38,7 +35,7 @@ export default function GuidePage({
   nextPost,
 }) {
   if (!params.slug) {
-    return <Landing search={search} />;
+    return <Landing search={search} posts={posts} />;
   }
   return (
     <>
@@ -115,12 +112,22 @@ const breadcrumbs = (posts, paths) => {
   return results;
 };
 
-function Landing({ search }) {
+function Landing({ search, posts }) {
   const post = {
     title: "Guides",
     description:
       "Everything you need to know to start building applications on Urbit.",
   };
+
+  const additionalGuides = pair([
+    ...posts.children.additional.pages,
+    ...Object.entries(posts.children.additional.children)
+      .filter(([, e]) => e !== "pages").map(([k, v]) => ({ ...v, ...{ slug: k } }))]
+    .sort((a, b) => {
+      return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+    })
+  );
+
   return (
     <Container>
       <Head>
@@ -133,7 +140,7 @@ function Landing({ search }) {
           <h1>Guides</h1>
         </Section>
         <Section short>
-          <h3 className="pt-12">Quickstart: Lightning Tutorials</h3>
+          <h2 className="pt-12">Quickstart: Lightning Tutorials</h2>
           <p className="pt-4">
             Build an application on Urbit in 15 minutes with these instant
             application guides.
@@ -154,7 +161,7 @@ function Landing({ search }) {
               href="/guides/quickstart/chat-guide"
             />
           </div>
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
+          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6 pb-12">
             <Card
               icon={<Ringsig />}
               title="Ring Signature Voting App"
@@ -166,10 +173,9 @@ function Landing({ search }) {
           </div>
         </Section>
         <Section short className="space-y-6">
-          <h3>Core Curriculum</h3>
+          <h2>Core Curriculum</h2>
           <p>
-            The following guides will teach you everything you need to know to
-            start building applications on Urbit.
+            Learn to code and how to build applications on Urbit.
           </p>
           <TwoUp>
             <TallCard
@@ -177,7 +183,7 @@ function Landing({ search }) {
               description="Learn how to get your urbit development environment configured"
               callout="View Guide"
               href="/guides/core/environment"
-              image={EnvironmentIcon}
+              image="https://storage.googleapis.com/media.urbit.org/developers/images/environment.svg"
               className="h-full"
             />
             <TallCard
@@ -185,7 +191,7 @@ function Landing({ search }) {
               description="Learn the fundamentals of the Hoon programming language"
               callout="View Guide"
               href="/guides/core/hoon-school"
-              image={HoonIcon}
+              image="https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school.svg"
               className="h-full"
             />
           </TwoUp>
@@ -195,7 +201,7 @@ function Landing({ search }) {
               description="Learn how to build Urbit userspace applications by writing your own Gall agents"
               callout="View Guide"
               href="/guides/core/app-school"
-              image={AppIcon}
+              image="https://storage.googleapis.com/media.urbit.org/developers/images/app-school.svg"
               className="h-full"
             />
             <TallCard
@@ -203,101 +209,30 @@ function Landing({ search }) {
               description="Learn how to create Gall agents and integrate them into a React front-end"
               callout="View Guide"
               href="/guides/core/app-school-full-stack"
-              image={FullStackIcon}
+              image="https://storage.googleapis.com/media.urbit.org/developers/images/app-school-fullstack.svg"
               className="h-full"
             />
           </TwoUp>
         </Section>
 
         <Section short>
-          <h3 className="pt-12">Additional Guides</h3>
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-12">
-            <CardText
-              title="Writing Aqua Tests"
-              text="Learn to write tests with Aqua"
-              className="basis-1/2"
-              href="/guides/additional/aqua"
-            />
-            <CardText
-              title="CLI Apps"
-              text="Learn to build command line applications"
-              className="basis-1/2"
-              href="/guides/additional/cli-tutorial"
-            />
-          </div>
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
-            <CardText
-              title="Using the HTTP API"
-              text="Learn how to interact with ships through Eyre’s web API"
-              className="basis-1/2"
-              href="/guides/additional/http-api-guide"
-            />
-            <CardText
-              title="Working with JSON"
-              text="Learn how to handle this common data standard in Urbit"
-              className="basis-1/2"
-              href="/guides/additional/json-guide"
-            />
-          </div>
-
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
-            <CardText
-              title="Parsing"
-              text="Learn to parse text with Hoon"
-              className="basis-1/2"
-              href="/guides/additional/parsing"
-            />
-            <CardText
-              title="Sail: HTML in Hoon"
-              text="Learn the basics of Sail"
-              className="basis-1/2"
-              href="/guides/additional/sail"
-            />
-          </div>
-
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
-            <CardText
-              title="Distributing Software"
-              text="Learn to publish a desk that others can install"
-              className="basis-1/2"
-              href="/guides/additional/software-distribution"
-            />
-            <CardText
-              title="Working with Strings"
-              text="Learn about Hoon’s two main string types"
-              className="basis-1/2"
-              href="/guides/additional/strings"
-            />
-          </div>
-
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
-            <CardText
-              title="Writing Unit Tests"
-              text="Learn to write unit tests in Hoon"
-              className="basis-1/2"
-              href="/guides/additional/unit-tests"
-            />
-            <CardText
-              title="Threads"
-              text="Learn to write asynchronous I/O functions"
-              className="basis-1/2"
-              href="/guides/additional/threads/fundamentals"
-            />
-          </div>
-
-          <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 pt-6">
-            <CardText
-              title="Serving a Browser Game"
-              text="Serve a client-side game from Urbit"
-              className="basis-1/2"
-              href="/guides/additional/client"
-            />
-            <div className="basis-1/2" />
-          </div>
+          <h2 className="my-12">Additional Guides</h2>
+          {additionalGuides.map((pair) => {
+            return <TwoUp>
+              {pair.map((guide) => {
+                return <CardText
+                  title={guide.title}
+                  text={guide.description}
+                  className="basis-1/2"
+                  href={`/guides/additional/${guide.slug}`}
+                />
+              })}
+            </TwoUp>
+          })}
         </Section>
       </SingleColumn>
       <Footer />
-    </Container >
+    </Container>
   );
 }
 

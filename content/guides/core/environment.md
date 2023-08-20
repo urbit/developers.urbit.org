@@ -16,13 +16,6 @@ different text editors. These are listed below.
 fail to parse Windows-style line endings (CRLF). Make sure your editor is set
 to use LF for line endings, especially if you're developing on Windows.
 
-#### Atom
-
-Atom is free and open-source and runs on all major operating systems. It is
-available [here](https://atom.io/). A package for Hoon support is maintained by
-Tlon and may be obtained using the package manager within the editor by
-searching for `Hoon`.
-
 #### Sublime Text
 
 Sublime Text is closed-source, but may be downloaded for free and there is no
@@ -85,11 +78,44 @@ Now in the fakezod's dojo, try:
 hi ~bus successful
 ```
 
+### Local Networking
+
+Fake ships run on their own network using fake keys and do not communicate
+with live-net ships in any way. Multiple fake ships running on the same
+machine can network with each other. However, these fake ships still have
+'realistic' packet routing: fake galaxies can talk to each other, but fake
+stars/planets cannot - unless they have the appropriate fake sponsors
+running, too.
+
+```
+~tex & ~mex:            GOOD
+~tex & ~bintex:         GOOD
+~mex & ~bintex:         BAD
+~tex, ~mex, & ~bintex:  GOOD
+```
+
+For your convenience, note the following relationships of several
+convenient planets and stars:
+
+| Ship | Number | Parent |
+| --- | --- | --- |
+| ~zod | `0` | — |
+| ~nec | `1` | — |
+| ~marzod | `256` | ~zod |
+| ~marnec | `257` | ~nec |
+| ~dapnep-ronmyl | `65.536` | ~zod |
+| ~milrys-soglec | `65.537` | ~nec |
+| ~wicdev-wisryt | `65.792` | ~marzod |
+| ~ralnyt-botdyt | `65.793` | ~marnec |
+
+Other points can be calculated using [the layout of
+Azimuth](https://developers.urbit.org/guides/core/hoon-school/C-azimuth#the-urbit-address-space).
+
 ### Faster fake ship booting
 
 While working with Hoon, you'll often want to delete an old fake ship and
 recreate a fresh one. Rather than having to wait a few minutes for the fresh
-ship to be initialised, you can instead create a backup copy of a fake ship.
+ship to be initialized, you can instead create a backup copy of a fake ship.
 That way you can just delete the current copy, replace it with the backup, and
 reboot in a matter of seconds.
 
@@ -108,8 +134,6 @@ have to do it again each time. In the dojo:
 > |mount %garden
 >=
 > |mount %landscape
->=
-> |mount %bitcoin
 >=
 > |mount %webterm
 >=
@@ -200,17 +224,17 @@ compatible. You can copy it across from the `%base` desk, or just run the
 following in the terminal from within the desk directory:
 
 ```sh
-echo "[%zuse 418]" > sys.kelvin
+echo "[%zuse 416]" > sys.kelvin
 ```
 
 The other `mark` files can just be copied across from the `%base` desk.
 
-### Using dev desks
+### Using `dev` desks
 
 If you're working on something more complex, for example a desk with agents and
 a front-end, there will be a number of `mark` files, libraries, etc, that will
 be necessary. Rather than having to manually copy all the files from the
-relevant default desks, the [urbit git repo](https://github.com/urbit/urbit)
+relevant default desks, the [Urbit OS repo](https://github.com/urbit/urbit)
 includes some dev desks which can be used as a base. To get these, make sure you
 have git installed and then clone the repo:
 
@@ -227,17 +251,15 @@ cd ~/git/urbit/pkg
 
 The desks ending in `-dev`, like `base-dev` and `garden-dev`, contain files for
 interfacing with those respective desks. If you're creating a new desk that has
-a tile and front-end, for example, you might like to use `base-dev` and
-`garden-dev` as a base. To create such a base, there's a `symbolic-merge.sh`
+a tile and front-end, for example, you might like to use `base-dev` as a base. To create such a base, there's a `symbolic-merge.sh`
 script included in the directory. You can use it like so:
 
 ```
 ./symbolic-merge base-dev mydesk
-./symbolic-merge garden-dev mydesk
 ```
 
 After running that, you'll have a `mydesk` desk in the `pkg` directory that
-contains the symlinked files from both those dev desks. To copy the files into
+contains the symlinked files from that dev desk. To copy the files into
 your pier, you can create and mount a mydesk desk in the dojo:
 
 ```
@@ -270,7 +292,7 @@ and copy the actual files.
 Now you can just add a `sys.kelvin` file:
 
 ```
-echo "[%zuse 418]" > mydesk/sys.kelvin
+echo "[%zuse 416]" > mydesk/sys.kelvin
 ```
 
 And you'll be able to mount the desk with `|commit %mydesk`.

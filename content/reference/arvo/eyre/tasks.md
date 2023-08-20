@@ -23,6 +23,8 @@ The `insecure` field is the HTTP port and `secure` is the optional HTTPS port.
 
 Eyre returns no `gift` in response to a `%live` `task`.
 
+---
+
 ## `%rule`
 
 ```hoon
@@ -36,6 +38,8 @@ The [$http-rule](/reference/arvo/eyre/data-types#http-rule) is either tagged wit
 #### Returns
 
 Eyre returns no `gift` in response to a `%rule` `task`.
+
+---
 
 ## `%request`
 
@@ -51,6 +55,8 @@ The `secure` field says whether it's over HTTPS. The `address` is the IP address
 
 Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
 
+---
+
 ## `%request-local`
 
 ```hoon
@@ -62,6 +68,8 @@ This `task` is how Eyre receives an inbound HTTP request over the local loopback
 #### Returns
 
 Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
+
+---
 
 ## `%cancel-request`
 
@@ -76,6 +84,8 @@ This `task` takes no arguments.
 #### Returns
 
 Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the state of the connection and other factors.
+
+---
 
 ## `%connect`
 
@@ -110,6 +120,8 @@ The `accepted` field says whether the binding succeeded and the `binding` is the
 #### Example
 
 See the [Agents: Direct HTTP](/reference/arvo/eyre/guide#agents-direct-http) section of the [Guide](/reference/arvo/eyre/guide) document for an example.
+
+---
 
 ## `%serve`
 
@@ -147,6 +159,8 @@ Eyre will return a `%bound` `gift` as described at the end of the [%connect](#co
 
 See the [Generators](/reference/arvo/eyre/guide#generators) section of the [Guide](/reference/arvo/eyre/guide) document for an example.
 
+---
+
 ## `%disconnect`
 
 ```hoon
@@ -160,6 +174,8 @@ The [$binding](/reference/arvo/eyre/data-types#binding) is the URL path and doma
 #### Returns
 
 Eyre returns no `gift` in response to a `%disconnect` `task`.
+
+---
 
 ## `%code-changed`
 
@@ -210,3 +226,47 @@ Eyre returns no `gift` in response to a `%reject-origin` `task`.
 #### Example
 
 See the [Managing CORS Origins](/reference/arvo/eyre/guide#managing-cors-origins) section of the [Guide](/reference/arvo/eyre/guide) document for an example.
+
+---
+## `%set-response`
+
+```hoon
+[%set-response url=@t entry=(unit cache-entry)]
+```
+
+This `task` tells Eyre to set a cache entry for a URL path. Adding entries to
+Eyre's cache will make them much faster to load, and more capable of handling
+many connections.
+
+The `url` field is the URL path you want to bind with the cache entry. Note this
+will just be the URL path as a cord like `'/foo/bar/baz'`, it does not include
+the host, etc.
+
+The `entry` field is a
+[`$cache-entry`](/reference/arvo/eyre/data-types#cache-entry) in a `unit`. If
+the unit is null, the specified `url` will be unbound and the cache entry
+removed. If non-null, the given `entry` will be added to the cache (or updated
+if the binding already exists).
+
+Each time the entry for a URL path is changed, its revision number will be
+incremented.
+
+See the [`$cache-entry`](/reference/arvo/eyre/data-types#cache-entry) entry in
+Eyre's type reference for more details of the entry itself.
+
+#### Returns
+
+Eyre gives a `%grow` `gift` in response to a `%set-response` `task`. A `%grow`
+`gift` looks like:
+
+```hoon
+[%grow =path]
+```
+
+The `path` will be of the format `/cache/[revision]/[url]`, for example
+`/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the
+entry is updated, including if it's removed, and is in `@ud` format. The url
+element uses `%t` [`++scot`](/reference/hoon/stdlib/4m#scot) encoding, so will
+need to be decoded with `%t` [`++slav`](/reference/hoon/stdlib/4m#slav).
+
+---

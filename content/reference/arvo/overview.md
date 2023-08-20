@@ -129,7 +129,7 @@ language. Arvo is an interpreter, which is important for us since it allows us
 to perform deterministic [over-the-air updates](#over-the-air-updates) by the
 direct transfer of raw source code.
 
-To understand what we mean by _solid state_ interpreter, consider the operation of a solid state hard drive when a computer shuts down or loses power. Data written to an SSD is permanent unless otherwise deleted - loss of power may leave some partially written data, but nothing is ever lost. Thus, the state of an SDD can be considered to be equivalent to the data that it contains. That is to say, you do not need to know anything about the system which is utilizing the SSD to know everything there is to know about the SSD. There is no notion of "rebooting" a SSD - it simply stores data, and when power is restored to it, it is in exactly the same state as it was when power was lost.
+To understand what we mean by _solid state_ interpreter, consider the operation of a solid state hard drive when a computer shuts down or loses power. Data written to an SSD is permanent unless otherwise deleted - loss of power may leave some partially written data, but nothing is ever lost. Thus, the state of an SSD can be considered to be equivalent to the data that it contains. That is to say, you do not need to know anything about the system which is utilizing the SSD to know everything there is to know about the SSD. There is no notion of "rebooting" a SSD - it simply stores data, and when power is restored to it, it is in exactly the same state as it was when power was lost.
 
 Contrast this with other popular operating systems, such as Windows, Mac, or Linux. The state of the operating system is something that crucially depends on having a constant power supply because much of the state of the operating system is stored in RAM, which is volatile. When you reboot your computer or suddenly lose power, any information stored in RAM is lost. Modern operating systems do mitigate this loss of information to some extent. For instance, it may remember what applications you were running at the time power was lost and try to restore them. Particularly durable programs may go as far as writing their state to disk every few seconds so that only very minimal information can be lost in a power outage. However, this is not the default behavior, and indeed if it were then they would be so slow as to be unusable, as you would effectively be using your hard disk as the RAM.
 
@@ -276,7 +276,7 @@ every step in the path the request takes onto the chain until we get to the
 terminal cause of the computation. Then we use this causal stack to route
 results back to the caller.
 
-The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
+The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty path element for Unix.
 
 Here's a `duct` that was recently observed in the wild upon entering `-time ~s1`
 into the dojo and pressing Enter, which sets a timer for one second that will
@@ -301,7 +301,7 @@ time app. This app returns a `@d` which denotes the current time, which falls do
 which drops it through to the terminal. Terminal drops this down to Dill, which
 converts it into an effect that Unix will recognize as a request to print the
 current time to the screen. When Dill produces this, the last path in the `duct` has an
-initial element of the empty span, so this is routed to Unix, which applies the effects.
+initial empty element, so this is routed to Unix, which applies the effects.
 
 This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a `duct` zero, one, or many times. You can save `duct`s for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
 
@@ -530,7 +530,7 @@ As described above, we use Arvo proper to route and control the flow of `move`s.
 However, Arvo proper is rarely directly responsible for processing the event
 data that directly causes the desired outcome of a `move`. This event data is contained within a `card`. Instead, Arvo proper passes the `card` off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
 
-As of this writing, we have eight vanes, which each provide the following services:
+As of this writing, we have nine vanes, which each provide the following services:
 
 - [Ames](/reference/arvo/ames/ames): the name of both our network and the vane that communicates over it.
 - [Behn](/reference/arvo/behn/behn): a simple timer.
@@ -540,6 +540,7 @@ As of this writing, we have eight vanes, which each provide the following servic
 - [Gall](/reference/arvo/gall/gall): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - [Iris](/reference/arvo/iris/iris): an http client.
 - [Jael](/reference/arvo/jael/jael): storage for Azimuth information.
+- [Khan](/reference/arvo/khan/khan): control plane and thread runner.
 
 #### Applying your knowledge
 

@@ -155,7 +155,7 @@ This includes:
 - [`++equ:rs`](/reference/hoon/stdlib/3b#equrs), check equality (but not nearness!)
 - [`++sqt:rs`](/reference/hoon/stdlib/3b#sqtrs), square root
 
-##  Exercise:  `++is-close`
+### Exercise:  `++is-close`
 
 The `++equ:rs` arm checks for complete equality of two values.  The downside of this arm is that it doesn't find very close values:
 
@@ -259,7 +259,7 @@ This program shows several interesting aspects, which we've covered before but h
 - [`~|` sigbar](/reference/hoon/rune/sig#-sigbar) produces an error message in case of a bad input.
 - [`+$` lusbuc](/reference/hoon/rune/lus#-lusbuc) is a type constructor arm, here for a type union over units of length.
 
-##  Exercise:  Measurement Converter
+### Exercise:  Measurement Converter
 
 - Add to this generator the ability to convert some other measurement (volume, mass, force, or another of your choosing).
 - Add an argument to the cell required by the gate that indicates whether the measurements are distance or your new measurement.
@@ -354,7 +354,7 @@ There are tradeoffs in compactness of representation and efficiency of mathemati
 | ---- | ------- | ------- |
 | `@s` | signed integer|  |
 | `@sb` | signed binary | `--0b11.1000` (positive) |
-|       |               | `--0b11.1000` (negative) |
+|       |               | `-0b11.1000` (negative) |
 | `@sd` | signed decimal | `--1.000.056` (positive) |
 |       |                | `-1.000.056` (negative) |
 | `@sx` | signed hexadecimal | `--0x5f5.e138` (positive) |
@@ -485,7 +485,7 @@ The Hoon standard library at the current time omits many [transcendental functio
 
     (We will use these in subsequent examples.)
 
-##  Exercise:  Calculate the Fibonacci Sequence
+### Exercise:  Calculate the Fibonacci Sequence
 
 The Binet expression gives the {% math %}n^\text{th}{% /math %} Fibonacci number.
 
@@ -505,7 +505,7 @@ F_n = \frac{\varphi^n-(-\varphi)^{-n}}{\sqrt 5} = \frac{\varphi^n-(-\varphi)^{-n
 Date and time calculations are challenging for a number of reasons:  What is the correct granularity for an integer to represent?  What value should represent the starting value?  How should time zones and leap seconds be handled?
 
 One particularly complicating factor is that there is no [Year Zero](https://en.wikipedia.org/wiki/Year_zero); 1 B.C. is immediately followed by A.D. 1.
-The Julian date system used in astronomy differs from standard time in this regard.
+(The date systems used in astronomy [differ](https://en.wikipedia.org/wiki/Julian_day#cite_note-7) from standard time in this regard, for instance.)
 
 In computing, absolute dates are calculated with respect to some base value; we refer to this as the _epoch_.  Unix/Linux systems count time forward from Thursday 1 January 1970 00:00:00 UT, for instance.  Windows systems count in 10⁻⁷ s intervals from 00:00:00 1 January 1601.  The Urbit epoch is `~292277024401-.1.1`, or 1 January 292,277,024,401 B.C.; since values are unsigned integers, no date before that time can be represented.
 
@@ -592,6 +592,58 @@ The Urbit date system correctly compensates for the lack of Year Zero:
 
 The [`++yo`](/reference/hoon/stdlib/3c#yo) core contains constants useful for calculating time, but in general you should not hand-roll time or timezone calculations.
 
+### Tutorial:  Julian Day
+
+Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to uniquely denote days.  (This is not to be confused with the Julian calendar.)  The following core demonstrates conversion to and from Julian days using signed integer (`@sd`) and date (`@da`) mathematics.
+
+```hoon {% copy=true mode="collapse" %}
+|%
+++  ju
+  |%
+  ++  to
+    |=  =@da  ^-  @sd
+    =,  si
+    =/  date  (yore da)
+    =/  y=@sd  (sun y.date)
+    =/  m=@sd  (sun m.date)
+    =/  d=@sd  (sun d.t.date)
+    ;:  sum
+      (fra (pro --1.461 :(sum y --4.800 (fra (sum m -14) --12))) --4)
+      (fra (pro --367 :(sum m -2 (pro -12 (fra (sum m -14) --12)))) --12)
+      (fra (pro -3 (fra :(sum y --4.900 (fra (sum m -14) --12)) --100)) --4)
+      d
+      -32.075
+    ==
+  ++  from
+    |=  =@sd  ^-  @da
+      =,  si
+      :: f = J + 1401 + (((4 × J + 274277) ÷ 146097) × 3) ÷ 4 - 38
+      =/  f  ;:  sum 
+               sd
+               --1.401
+               (fra (pro (fra (sum (pro --4 sd) --274.277) --146.097) --3) --4)
+               -38
+             ==
+      :: e = 4 × f + 3
+      =/  e  (sum (pro --4 f) --3)
+      :: g = mod(e, 1461) ÷ 4
+      =/  g  (fra (mod e --1.461) --4)
+      :: h = 5 × g + 2
+      =/  h  (sum (pro --5 g) --2)
+      :: D = (mod(h, 153)) ÷ 5 + 1
+      =/  dy  (sum (fra (mod h --153) --5) --1)
+      :: M = mod(h ÷ 153 + 2, 12) + 1
+      =/  mn  (sum (mod (sum (fra h --153) --2) --12) --1)
+      :: Y = (e ÷ p) - y + (n + m - M) ÷ n
+      =/  yr  (sum (dif (fra e --1.461) --4.716) (fra (sum --12 (dif --2 mn)) --12))
+      =/  dy=@ud  (div dy 2)
+      =/  mn=@ud  (div mn 2)
+      =/  yr=@ud  (div yr 2)
+      (year [[a=(gth yr --0) yr] mn [dy 0 0 0 ~]])
+--
+```
+
+
 
 ##  Unusual Bases
 
@@ -674,7 +726,7 @@ Computers often mix both deterministic processes (called “pseudorandom number 
 
 Given a source of entropy to seed a random number generator, one can then use the [`++og`](/reference/hoon/stdlib/3d#og) door to produce various kinds of random numbers.  The basic operations of `++og` are described in [the lesson on subject-oriented programming](/guides/core/hoon-school/O-subject).
 
-##  Exercise:  Implement a random-number generator from scratch
+### Exercise:  Implement a random-number generator from scratch
 
 - Produce a random stream of bits using the linear congruential random number generator.
 
@@ -703,7 +755,7 @@ The linear congruential random number generator produces a stream of random bits
 
 Can you verify that `1`s constitute about half of the values in this bit stream, as Cook illustrates in Python?
 
-##  Exercise:  Produce uniformly-distributed random numbers
+### Exercise:  Produce uniformly-distributed random numbers
 
 - Using entropy as the source, produce uniform random numbers:  that is, numbers in the range [0, 1] with equal likelihood to machine precision.
 
@@ -746,7 +798,7 @@ We use the LCG defined above, then chop out 23-bit slices using [`++rip`](/refer
 
 - Produce a higher-quality Mersenne Twister uniform RNG, such as [per this method](https://xilinx.github.io/Vitis_Libraries/quantitative_finance/2022.1/guide_L1/RNGs/RNG.html).
 
-##  Exercise:  Produce normally-distributed random numbers
+### Exercise:  Produce normally-distributed random numbers
 
 - Produce a normally-distributed random number generator using the uniform RNG described above.
 
@@ -866,7 +918,7 @@ To calculate an arbitrary power of a floating-point number, we require a few tra
 --
 ```
 
-##  Exercise:  Upgrade the normal RNG
+### Exercise:  Upgrade the normal RNG
 
 A more complicated formula uses several constants to improve the accuracy significantly:
 
@@ -1089,6 +1141,6 @@ Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [t
     0x4c13.ef8b.09cf.6e59.05c4.f203.71a4.9cec.3432.ba26.0174.f964.48f1.5475.b2dd.2c59.98c2.017c.9c03.cbea.9d5f.591b.ff23.bbff.b0ae.9c67.a4a9.dd8d.748a.8e14.c006.cbcc
     ```
 
-##  Exercise:  Produce a secure password tool
+### Exercise:  Produce a secure password tool
 
 - Produce a basic secure password tool.  It should accept a password, salt it (add a predetermined value to the password), and hash it.  _That_ hash is then compared to a reference hash to determine whether or not the password is correct.

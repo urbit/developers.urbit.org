@@ -54,7 +54,7 @@ Hoon developers often employ irregular forms, sometimes called “sugar syntax�
 
 You should get used to reading and interpreting these forms.  We will start to use them actively during this lesson.  You can find other irregular forms in the [irregular forms reference](/reference/hoon/irregular).
 
-##  Exercise:  Converting Between Forms
+### Exercise:  Converting Between Forms
 
 Convert each of the following irregular forms into the correct regular runic syntax.
 
@@ -201,7 +201,7 @@ In the example gate above, `inc`, the sample is defined by `a=@`.  This means th
 
 The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go.  In `inc`, the product is defined by `(add 1 a)`.  There's not much to it—it returns the value of `a+1`!
 
-##  Exercise:  Double a Value
+### Exercise:  Double a Value
 
 - Produce a gate which accepts any `@` unsigned integer value and doubles it.  Call it `double`.
 
@@ -212,7 +212,7 @@ The second subexpression after the `|=` bartis rune is used to build the gate's 
     10
     ```
 
-##  Exercise:  Convert Between Auras
+### Exercise:  Convert Between Auras
 
 - Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent.  Call it `myship`.
 
@@ -227,12 +227,12 @@ How can we control what kind of value a gate returns?  Many programming language
 Remember `^-` kethep?  We will use `^-` as a _fence_, a way of making sure only data matching the appropriate structure get passed on.
 
 ```hoon {% copy=true %}
-::  Confirm whether a value is greater than one.
+::  Confirm whether a value is greater than one by return 1 (if no) or 0 (if yes).
 |=  a=@ud
 ^-  @ud
 ?:  (gth a 1)
-  %.n
-%.y
+  1
+0
 ```
 
 **This is the correct way to define a gate.**  Frequent annotation of type with `^-` kethep fences is _essential_ to producing good Hoon code.  From this point forward in Hoon School, we will hew to this standard.
@@ -351,7 +351,7 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 
 **Note**: If you're using VS Code on Windows, you might need to manually change the line endings from Windows-style `CRLF` to Unix-style `LF` in the status bar at the bottom.  Urbit requires Unix-style line endings for Hoon files.
 
-##  Exercise:  Triangular Function
+### Exercise:  Triangular Function
  
 - Implement the triangular function as a gate and save it as a generator `tri.hoon`.
 
@@ -385,7 +385,7 @@ There are also a number of other import runes which make library, structure, and
 
 For simplicity, everything we do will take place on the `%base` desk for now.  We will learn how to create a library in a subsequent lesson.
 
-##  Exercise:  Loading a Library
+### Exercise:  Loading a Library
 
 In a generator, load the `number-to-words` library using the `/+` faslus rune.  (This must take place at the very top of your file.)
  

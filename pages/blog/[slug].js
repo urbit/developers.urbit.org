@@ -37,7 +37,7 @@ export default function BlogPost({
     <Container>
       <Head>
         <title>{post.title} • Blog • developers.urbit.org</title>
-        {Meta(post)}
+        {Meta(post, false, true)}
       </Head>
       <Header search={search} />
       <SingleColumn>

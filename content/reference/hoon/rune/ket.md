@@ -1,6 +1,6 @@
 +++
-title = "Casts ^ ('ket')"
-weight = 11
+title = "^ ket · Casts"
+weight = 70
 
 [glossaryEntry.ket]
 name = "ket"
@@ -157,9 +157,7 @@ The prettyprinter shows the core metal (`.` gold, `|` iron):
 
 ## `^:` "ketcol"
 
-Mold gate for type `p`.
-
-**Note this rune is now redundant.**
+Switch parser into structure mode (mold definition) and produce a gate for type `p`.  (See [`,` com]() which toggles modes.)
 
 #### Syntax
 
@@ -187,7 +185,9 @@ One argument, fixed.
 ---
 
 - Irregular
-- None.
+- ```hoon
+  ,p
+  ```
 {% /table %}
 
 #### AST
@@ -198,16 +198,20 @@ One argument, fixed.
 
 #### Produces
 
-A gate that returns the sample value if it's of the correct type, but crashes
+A gate that returns the sample value if it is of the correct type, but crashes
 otherwise.
 
 #### Discussion
 
 `^:` is used to produce a mold that crashes if its sample is of the wrong type.
 
+In structure mode, `[a=@ b=@]` is a mold for a cell, whereas in value mode it's
+a pair of molds.  Sometimes you need a structure in value mode, in which you can
+use `^:` or `,`.
+
 Molds used to produced their bunt value if they couldn't mold their sample. This
-is no longer the case: molds now crash if molding fails, so **this rune is
-redundant**.
+is no longer the case: molds now crash if molding fails, so this rune is
+redundant in certain cases.
 
 One may expect that `^:(path /foo)` would result in a syntax error since `^:`
 only takes one child, but instead it will parse as `=< ^ %:(path /foo)`. Since
@@ -231,6 +235,15 @@ syntax for `=<`.
 
 > (^:(@) [22 33])
 ford: %ride failed to execute:
+
+> (,cord 55)
+'7'
+
+> (ream ',@t')
+[%ktcl p=[%base p=[%atom p=~.t]]]
+
+> (ream ',cord')
+[%ktcl p=[%like p=~[%cord] q=~]]
 ```
 
 ---
@@ -374,7 +387,7 @@ infinite loop in the compiler).
 ~zod:dojo> ^-(@t (add 90 7))
 'a'
 
-/~zod:dojo> =foo |=  a=@tas
+/~zod:dojo> =foo |=  a=@
                  ^-  (unit @ta)
                  `a
 

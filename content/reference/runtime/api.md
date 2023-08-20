@@ -5,7 +5,7 @@ weight = 4
 Let's run through the `u3` modules one by one.  All public
 functions are commented, but the comments may be cryptic.
 
-### u3m: main control
+## u3m: main control
 
 To start `u3`, run
 
@@ -77,7 +77,7 @@ and asserts if it finds any leaks or incorrect refcounts.  This
 tool is for debugging and long-term maintenance only; refcounts
 should never err.
 
-### u3j: jets
+## u3j: jets
 
 The jet system, `u3j`, is what makes `u3` and `nock` in any sense
 a useful computing environment.  Except perhaps `u3a` (there is
@@ -94,7 +94,7 @@ Indeed such a coupling would be wholly wrongtious and un-Urbit.
 But the jet system is not Hoon-specific.  It is specific to nock
 runtime systems that use a design pattern we call a `core`.
 
-#### u3j: core structure
+### u3j: core structure
 
 A core is no more than a cell `[code data]`, in which a `code` is
 either a Nock formula or a cell of `code`s, and `data` is anything.
@@ -186,7 +186,7 @@ payload to be `[sample static-core]`, or even `[sample core]`.
 Any such constraint would not be rich enough to handle Hoon,
 let alone other languages.
 
-#### u3j: jet state
+### u3j: jet state
 
 There are two fundamental rules of computer science: (1) every
 system is best understood through its state; (2) less state is
@@ -303,7 +303,7 @@ the dying road.  Reaping promotes anything we've learned about
 any battery that either (a) already existed in the outer road, or
 (b) is being saved to the outer road.
 
-#### u3j: jet binding
+### u3j: jet binding
 
 Jet binding starts with a `%fast` hint.  (In Hoon, this is
 produced by the runes `~%`, for the general case, or `~/`
@@ -589,7 +589,7 @@ For historical reasons, all internal jet code in `j/[a-f]`
 do not do this in new `g` jets!  The new standard protocol is to
 transfer both arguments and results.
 
-### u3a: allocation functions
+## u3a: allocation functions
 
 `u3a` allocates on the current road (u3R).  Its internal
 structures are uninteresting and typical of a naive allocator.
@@ -677,7 +677,7 @@ threads within its own synchronization primitives - for this to
 work with `u3a_malloc()`, we'd have to introduce our own locks on
 the surface-level road (which might be a viable solution).
 
-### u3n: nock execution
+## u3n: nock execution
 
 The `u3n` routines execute Nock itself.  On the inside, they have
 a surprising resemblance to the spec proper (the only interesting
@@ -780,7 +780,7 @@ to a `fly` is a `++path`, just a list of text `span`.
 
 (Note that `tank` is overdesigned and due for replacement.)
 
-What does a `toon` mean?  Either your computation succeded (`[0
+What does a `toon` mean?  Either your computation succeeded (`[0
 noun]`, or could not finish because it blocked on one or more
 global paths (`[1 (list path)]`), or it exited with a stack trace
 (`[2 (list tank)]`).
@@ -823,7 +823,7 @@ caller's exception layer.  (Maintaining this illusion is slightly
 nontrivial.)  Finally, `u3n_nock_an()` is a sandbox with a null
 namespace.
 
-### u3e: persistence
+## u3e: persistence
 
 The only `u3e` function you should need to call is `u3e_save()`,
 which saves the loom.  As it can be restored on any platform,
@@ -831,7 +831,7 @@ please make sure you don't have any state in the loom that is
 bound to your process or architecture - except for exceptions
 like the warm jet state, which is actively purged on reboot.
 
-### u3r: reading nouns (weak)
+## u3r: reading nouns (weak)
 
 As befits accessors they don't make anything, `u3r` noun reading
 functions always retain their arguments and their returns.  They
@@ -869,14 +869,14 @@ It's important to remember that `u3r_mug()`, which produces a
 noun as a lazy cache.  There are a number of variants of
 `u3r_mug()` that can get you out of building unneeded nouns.
 
-### u3x: reading nouns (bail)
+## u3x: reading nouns (bail)
 
 `u3x` functions are like `u3r` functions, but instead of
 returning `u3_none` when (for instance) we try to take the head
 of an atom, they bail with `%exit`.  In other words, they do what
 the same operation would do in Nock.
 
-### u3h: hash tables.
+## u3h: hash tables.
 
 We can of course use the Hoon `map` structure as an associative
 array.  This is a balanced treap and reasonably fast.  However,
@@ -898,7 +898,7 @@ The only funky function is `u3h_gut()`, which unifies keys with
 `u3r_sung()`.  As with all cases of `u3r_sung()`, this must be
 used with extreme caution.
 
-### u3z: memoization
+## u3z: memoization
 
 Connected to the `~+` rune in Hoon, via the Nock `%memo` hint,
 the memoization facility is a general-purpose cache.
@@ -947,11 +947,11 @@ road, and goes away when it goes away.  (In future, we may wish
 to promote keys/values which outlive the road, as we do with jet
 state.)  There is no cache reclamation at present, so be careful.
 
-### u3t: tracing and profiling.
+## u3t: tracing and profiling.
 
 TBD.
 
-### u3v: the Arvo kernel
+## u3v: the Arvo kernel
 
 An Arvo kernel - or at least, a core that compiles with the Arvo
 interface - is part of the global `u3` state.  What is an Arvo

@@ -1,6 +1,7 @@
 +++
-title = "Parsing"
-weight = 25
+title = "Parsing Text"
+description = "Learn to parse text with Hoon"
+weight = 80
 +++
 
 This document serves as an introduction to parsing text with Hoon. No prior
@@ -272,6 +273,25 @@ is `%foo`.
 One common scenario where `+cold` sees play is when writing [command line
 interface (CLI) apps](/guides/additional/cli-tutorial). We usher the
 reader there to find an example where `+cold` is used.
+
+### [`+less`](/reference/hoon/stdlib/4f/#less)
+
+`+less` builds a `rule` to exclude matches to its first argument.  It is commonly
+used to filter out an undesired match.
+
+```
+> (;~(less buc next) [[1 1] " "])
+[p=[p=1 q=2] q=[~ [p=' ' q=[p=[p=1 q=2] q=""]]]]
+
+> (;~(less ace next) [[1 1] " "])
+[p=[p=1 q=1] q=~]
+```
+
+Here we see that the first case refuses to parse `buc` `$` (which is not present), so
+the `ace` ` ` succeeds (via `+next` which matches any character).
+
+The second case attempts to parse the excluded character `ace` ` ` and fails on the
+first character as it should.
 
 ### [`+knee`](/reference/hoon/stdlib/4f/#knee)
 

@@ -172,7 +172,7 @@ As you can see the `set` is now empty, so we know the `%nuke` succeeded and Jael
 
 ## `%turf`
 
-Here we'll look at using a `%turf` `task` to get Jael's list of domains. Note on a fake ship the list will be empty, so you may with to run it on a comet or moon.
+Here we'll look at using a `%turf` `task` to get Jael's list of domains. Note on a fake ship the list will be empty, so you may wish to run it on a comet or moon.
 
 Here's a simple thread that'll pass Jael a `%turf` `task`, take the `%turf` `gift` it sends back and print it to the terminal:
 

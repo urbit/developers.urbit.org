@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { configure, GlobalHotKeys } from "react-hotkeys";
-import Search from "../components/Search";
+import { init } from "@socialgouv/matomo-next";
+import { Search } from "@urbit/foundation-design-system";
 import Head from "next/head";
 
 import "@urbit/foundation-design-system/styles/globals.css";
@@ -8,8 +9,21 @@ import "@urbit/foundation-design-system/styles/markdown.css";
 import "@urbit/foundation-design-system/styles/prism.css";
 import "../styles/developers.css";
 
+const MATOMO_URL = process?.env?.NEXT_PUBLIC_MATOMO_URL || "";
+const MATOMO_SITE_ID = process?.env?.NEXT_PUBLIC_MATOMO_SITE_ID || "";
+
+
 function MyApp({ Component, pageProps }) {
   const [showSearch, setSearch] = useState(false);
+
+  useEffect(() => {
+    init({
+      url: MATOMO_URL,
+      siteId: MATOMO_SITE_ID,
+    });
+  });
+
+
   const closeSearch = (event) => {
     if (event?.preventDefault) {
       event.preventDefault();
@@ -45,32 +59,11 @@ function MyApp({ Component, pageProps }) {
   configure({
     // ignoreTags: [],
     ignoreTags: ["input", "select", "textarea"],
-    ignoreEventsCondition: function () {},
+    ignoreEventsCondition: function () { },
   });
 
   return (
     <>
-      <Head>
-        <link rel="icon" type="image/png" href="/images/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/images/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/images/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/images/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/images/site.webmanifest" />
-      </Head>
 
       <GlobalHotKeys keyMap={keyMap} handlers={handlers} />
       <Search
@@ -78,6 +71,8 @@ function MyApp({ Component, pageProps }) {
         toggleSearch={toggleSearch}
         closeSearch={closeSearch}
         openSearch={openSearch}
+        order={["dev", "org", "ops", "roadmap"]}
+        ourSite="https://developers.urbit.org"
       />
       <Component
         {...pageProps}

@@ -32,7 +32,7 @@ The second way of making a function call involves an expression that _produces_ 
 246
 ```
 
-The difference is subtle:  the first cast has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
+The difference is subtle:  the first case has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
 
 Are calls to `++add` and `++mul` of the Hoon standard library of the first kind, or the second?
 
@@ -380,7 +380,7 @@ In the above example we created a door `c` with sample `b=@` and found that the 
 
 Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example.  You will learn more about how types are inferred in the [next module](/guides/core/hoon-school/L-struct).
 
-##  Exercise:  Adding Arms to a Door
+### Exercise:  Adding Arms to a Door
 
 Recall the quadratic equation door.
 
@@ -453,7 +453,7 @@ What is that cell?  Wasn't the value stored as `0xff.8833`?  Well, one fundament
 
 - What does `[~ ~]` mean when returned from a `map`?
 
-`unit`s are common enough that they have their own syntax and set of operational functions.  We'll look at them more in [the next module](/guides/core/hoon-school/K-doors).
+`unit`s are common enough that they have their own syntax and set of operational functions.  We'll look at them more in [the next module](/guides/core/hoon-school/L-struct).
 
 ```hoon
 > (~(get by colors) %brown)
@@ -499,7 +499,7 @@ You can apply a gate to each value using `++run:by`.  For instance, these gates 
 }
 ```
 
-##  Exercise:  Display Cards
+### Exercise:  Display Cards
 
 - Recall the `/lib/playing-cards.hoon` library.  Use a map to pretty-print the `darc`s as Unicode card symbols.
 

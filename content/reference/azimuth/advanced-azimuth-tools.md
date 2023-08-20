@@ -22,7 +22,7 @@ modify the code so it's best to do this on a ship you can make mistakes on.
 Be sure to have mounted your base desk so you can easily edit files on it. The
 first edit that will probably need to be made is in
 [`app/claz.hoon`](https://github.com/urbit/urbit/blob/85435e9a81e105809d5d381b5d34fae1d4daa3b8/pkg/arvo/app/claz.hoon#L14).
-The listed url will need to be changed to a valid Ethereum endpoint. infura.io
+The listed url will need to be changed to a valid Ethereum endpoint. `infura.io`
 provides an Ethereum API that you can use.
 
 The second change that may potentially be needed is to modify the [gas

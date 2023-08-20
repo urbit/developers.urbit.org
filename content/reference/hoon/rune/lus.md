@@ -1,5 +1,5 @@
 +++
-title = "Arms + ('lus')"
+title = "+ lus · Arms"
 weight = 8
 
 [glossaryEntry.lus]

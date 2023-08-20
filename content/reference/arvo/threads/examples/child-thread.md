@@ -92,19 +92,17 @@ We note that this is mostly the same as `await-thread:strandio`.
 =,  strand=strand:spider
 =>
 |%
-++  url  "https://www.whatsthelatestbasehash.com/"
+++  url  "https://sampledataapi.com/API/getcategory"
 --
 ^-  thread:spider
 |=  arg=vase
 =/  m  (strand ,vase)
 ^-  form:m
 ;<  =cord  bind:m  (fetch-cord url)
-=/  hash-as-cord  `@t`(end [3 (sub (met 3 cord) 1)] cord)
-=/  hash  `@uv`(slav %uv hash-as-cord)
-(pure:m !>(hash))
+(pure:m !>(cord))
 ```
 
-`child.hoon` simply grabs the latest base hash from https://www.whatsthelatestbasehash.com/ and returns it.
+`child.hoon` simply grabs the JSON response from https://sampledataapi.com/ and returns it as a cord.  (There is also a `++fetch-json:strandio` gate that could be employed here.)
 
 `parent.hoon` is a bit more complicated so we'll look at it line-by-line
 

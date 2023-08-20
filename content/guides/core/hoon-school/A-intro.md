@@ -13,9 +13,8 @@ Hoon School is designed to teach you Hoon without assuming you have an extensive
 
 - **Tutorials**, which are line-by-line commentary on example programs.
 
-There are two flavors of Hoon School:  the Hoon School Live cohort class, in which you work through lessons with other students and receive a certification (`%gora`) for completion, and these written Hoon School docs.  To sign up for a future cohort of Hoon School Live, please [let us know of your interest here](https://forms.gle/bbW6QtJPMhsjCCML8) and we'll be in touch.
+There are two flavors of Hoon School:  the Hoon School Live cohort class, in which you work through lessons with other students and receive a certification (`%gora`) for completion, and these written Hoon School docs.  To sign up for a future cohort of Hoon School Live, please [let us know of your interest here](https://developers.urbit.org/courses) and we'll be in touch.
 
-<!-- TODO point to HSL/ASL landing pages -->
 
 ##  Why Hoon?
 

@@ -157,6 +157,7 @@ A `note-arvo` is defined in `lull.hoon` like so:
       [%g task:gall]
       [%i task:iris]
       [%j task:jael]
+      [%k task:khan]
       [%$ %whiz ~]
       [@tas %meta vase]
   ==

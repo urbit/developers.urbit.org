@@ -1,6 +1,6 @@
 +++
-name = "~palfun-foslup"
+name = "Mark"
 patp = "~palfun-foslup"
-org = "Tlon"
+org = "Core Developers"
 title = "Software engineer, Tlon"
 +++

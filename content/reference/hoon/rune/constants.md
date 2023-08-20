@@ -1,5 +1,5 @@
 +++
-title = "Atoms and strings"
+title = "Constants (Atoms and Strings)"
 weight = 1
 +++
 

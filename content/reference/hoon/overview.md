@@ -11,7 +11,7 @@ language that set it apart from others. If you're looking to learn Hoon, check
 out our tutorial series called [Hoon School](/guides/core/hoon-school/)
 below.
 
-### What can Hoon do that other languages can't?
+## What can Hoon do that other languages can't?
 
 The short answer is: implement a purely functional operating system.
 Try to do this in a principled way in Haskell, and the problems you'll
@@ -25,7 +25,7 @@ functional languages are:
 - Typesafe metaprogramming, and
 - Hot code reload and online data migration.
 
-### What is Hoon good at?
+## What is Hoon good at?
 
 Hoon is mostly good at compiling and running other Hoon code. Urbit
 consists of many layers of bootstrapping. Several of these layers lean
@@ -34,7 +34,7 @@ build system, the Dojo shell, and the Arvo kernel itself. Even Urbit's
 chat application lets you run Hoon expressions and share the results
 with your friends.
 
-### Why did we write the OS in Hoon?
+## Why did we write the OS in Hoon?
 
 The chain of reasoning goes something like this:
 
@@ -78,13 +78,13 @@ Urbit's solution to these design constraints. Some Lisps come close to
 meeting these criteria — and Nock is very Lisp-like — but no practical
 Lisp dialects are nearly as pure or axiomatic as Nock.
 
-### What is special about Hoon?
+## What is special about Hoon?
 
 It's a purely functional systems language. Calling it a functional
 analog of C is not too far off in several ways. Almost all code
 throughout Urbit's kernelspace and userspace is written in Hoon.
 
-### What properties does Hoon have? What type of language is it?
+## What properties does Hoon have? What type of language is it?
 
 Hoon is a statically typed, purely functional, strictly evaluated
 programming language.
@@ -215,7 +215,7 @@ Hoon and Nock have several unusual properties:
   calmness of working with such inert building blocks is addictive, as
   many Hoon programmers will attest.
 
-### Why is Hoon the way it is?
+## Why is Hoon the way it is?
 
 Minimalism, mostly.
 

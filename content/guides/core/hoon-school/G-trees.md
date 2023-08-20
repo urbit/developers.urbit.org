@@ -40,7 +40,7 @@ We can refer to any data stored anywhere in this tree.  The numbers in the label
 
 Most of any possible tree will be unoccupied for any actual data structure.  For instance, `list`s (and thus `tape`s) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation.  (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself—that's a function of the algorithms working with the data.)
 
-##  Exercise:  Map Nouns to Tree Diagrams
+### Exercise:  Map Nouns to Tree Diagrams
 
 - Consider each of the following nouns.  Which tree diagram do they correspond to?  (This is a matching exercise.)
 
@@ -50,7 +50,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
     | 2. `[[1 2] 3 4]` | B. ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
     | 3. `[1 2 3 4]` | C. ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
 
-##  Exercise:  Produce a List of Numbers
+### Exercise:  Produce a List of Numbers
 
 - Produce a generator called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`.  For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
@@ -98,7 +98,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
 
 ### Tuples as Trees
 
-What we've been calling a running cell would more conventionally be named a _tuple_, so we'll switch to that syntax now that the idea is more familiar.  Basically its a cell series which doesn't necessarily end in `~`.
+What we've been calling a running cell would more conventionally be named a _tuple_, so we'll switch to that syntax now that the idea is more familiar.  Basically it's a cell series which doesn't necessarily end in `~`.
 
 Given the cell `[1 2 3 4 ~]` (or equivalently `~[1 2 3 4]`, an irregular form for a null-terminated tuple or list), what tree address does each value occupy?
 
@@ -191,9 +191,9 @@ Everything in Urbit is a binary tree.  And all code in Urbit is also represented
 
 There are three different ways to access values:
 
-1. _Numeric addressing_ is useful when you know the address, rather like knowing a house's street address directly.
-2. _Positional addressing_ is helpful when you don't want to figure out the room number, but you know how to navigate to the value.  This is like knowing the directions somewhere even if you don't know the house number.
-3. _Wing addressing_ is a way of attaching a name to the address so that you can access it directly.
+1. [Numeric addressing](/guides/core/hoon-school/G-trees#numeric-addressing) is useful when you know the address, rather like knowing a house's street address directly.
+2. [Positional addressing](/guides/core/hoon-school/G-trees#positional-addressing-(lark-notation)) is helpful when you don't want to figure out the room number, but you know how to navigate to the value.  This is like knowing the directions somewhere even if you don't know the house number.
+3. [Wing addressing](/guides/core/hoon-school/G-trees#wings) is a way of attaching a name to the address so that you can access it directly.
 
 ### Numeric Addressing
 
@@ -203,7 +203,7 @@ We have already seen numeric addressing used to refer to parts of a binary tree.
 
 Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to decide if the contents of a node is a direct value or a tree:  it just happens.
 
-##  Exercise:  Tapes for Text
+### Exercise:  Tapes for Text
  
 A `tape` is one way of representing a text message in Hoon.  It is written with double quotes:
  
@@ -219,7 +219,7 @@ A `tape` is actually a `(list @t)`, a binary tree of single characters which onl
 
 ### Positional Addressing (Lark Notation)
 
-Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree.  These are written using `-` (left) and `+` (right) alternating with `<` (left) and `<` (right).
+Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree.  These are written using `-` (left) and `+` (right) alternating with `<` (left) and `>` (right).
 
 ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
@@ -233,7 +233,7 @@ Lark notation is not preferred in modern Hoon for more than one or two elements 
 
 When lark expressions resolve to the part of the subject containing an arm, they don't evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
 
-##  Exercise:  Address the Fruit Tree
+### Exercise:  Address the Fruit Tree
 
 Produce the numeric and lark-notated equivalent addresses for each of the following nodes in the binary fruit tree:
 
@@ -251,7 +251,7 @@ Produce the numeric and lark-notated equivalent addresses for each of the follow
 
 There is a solution at the bottom of the page.
 
-##  Exercise:  Lark Notation
+### Exercise:  Lark Notation
 
 - Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
 
@@ -271,11 +271,11 @@ There is a solution at the bottom of the page.
       6   7
     ```
 
-- Use a lark expression to obtain the value `9` in the following noun: `[[5 6] 7 [[8 9 10] 3] 2]`.
+- Use a lark expression to obtain the value `9` in the following noun: `[[[5 6 7] 8 9] 10 11 12 13]`.
 
 Solutions to these exercises may be found at the bottom of this lesson.
 
-### Wings
+## Wings
 
 One can also identify a resource by a label, called a _wing_.  A wing represents a depth-first search into the current subject (context).  A wing is a limb resolution path into the subject. A wing expression indicates the path as a series of limb expressions separated by the `.` character. E.g.,
 
@@ -337,7 +337,7 @@ A wing is a limb resolution path into the subject.  This definition includes as 
 
 We mention this because it is convenient to refer to all limbs and non-trivial wings as simply “wings”.
 
-#### Names and Faces
+### Names and Faces
 
 A name can resolve either an arm or a leg of the subject.  Recall that arms are for computations and legs are for data.  When a name resolves to an arm, the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.
 
@@ -391,7 +391,7 @@ You can even give faces to faces:
 c=123
 ```
 
-#### Duplicate Faces
+### Duplicate Faces
 
 There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables:
 
@@ -534,7 +534,7 @@ where `=|` tisbar means to add its sample to the current subject with the given 
 
 Similarly, `|-` barhep produces a core with one arm `$`.  How could you write that in terms of `|%` and `++`?
 
-#### Example:  Number to Digits
+### Example:  Number to Digits
 
 - Compose a generator which accepts a number as `@ud` unsigned decimal and returns a list of its digits.
 
@@ -594,7 +594,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 - Extend the above generator so that it accepts a cell of type and value (a `vase` as produced by the [`!>` zapgar](/reference/hoon/rune/zap#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
-##  Exercise:  Resolving Wings
+### Exercise:  Resolving Wings
 
 Enter the following into dojo:
 
@@ -617,7 +617,7 @@ Enter the following into dojo:
 
     The answers are at the bottom of the page.
 
-### List operations
+## List operations
 
 Once you have your data in the form of a `list`, there are a lot of tools available to manipulate and analyze the data:
 
@@ -628,9 +628,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     ~[5 4 3 2 1]
     ```
 
-    **Exercise:  `++flop` Yourself**
-
-    - Without using flop, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of the page.
+  **Exercise:  `++flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of the page.
 
 - [`++sort`](/reference/hoon/stdlib/2b#sort) uses a `list` and a comparison function (like `++lth`) to order things:
 
@@ -671,9 +669,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     "Happy Birthday!"
     ```
 
-    **Exercise:  `++weld` Yourself**
-
-    - Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists.  There is a solution at the bottom of the page.
+    **Exercise:  `++weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists.  There is a solution at the bottom of the page.
 
 There are a couple of sometimes-useful `list` builders:
 
@@ -722,7 +718,7 @@ There are a few more that you should pick up eventually, but these are enough to
 
 Using what we know to date, most operations that we would do on a collection of data require a trap.
 
-##  Exercise:  Evaluating Expressions
+### Exercise:  Evaluating Expressions
 
 - Without entering these expressions into the Dojo, what are the products of the following expressions?
 
@@ -732,7 +728,7 @@ Using what we know to date, most operations that we would do on a collection of 
     (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
     ```
 
-##  Exercise:  Welding Nouns
+### Exercise:  Welding Nouns
 
 First, bind these faces.
 
@@ -753,11 +749,11 @@ First, bind these faces.
     > (add (lent b) (lent c))
     ```
 
-##  Exercise:  Palindrome
+### Exercise:  Palindrome
 
 - Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise.  You may use the `++flop` function.
 
-#### Solutions to Exercises
+## Solutions to Exercises
 
 - Fruit Tree:
 

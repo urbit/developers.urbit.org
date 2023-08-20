@@ -100,7 +100,7 @@ Corresponds to the layer 2 `%spawn` action.
 ```
 
 Transfer `_point` to `_target`, clearing all permissions data and keys if
-`_reset` is true. `_reset` set to makes this transaction a
+`_reset` is true. `_reset` set to true makes this transaction a
 [breach](https://urbit.org/using/id/guide-to-resets), and thus this action increments the
 [`continuityNumber`](/reference/azimuth/azimuth-eth#points) of `_point`, and usually
 the `keyRevisionNumber` as well (see [Life and

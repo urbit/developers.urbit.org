@@ -222,7 +222,7 @@ It's important to remember to include a cast rune with each gate and trap expres
 
 By now you've used the `|=` rune to define several gates.  This rune is used to produce a _dry gate_, which has different type-checking and type-inference properties than a _wet gate_ does.  We won't explain the distinction until [a later module](/guides/core/hoon-school/R-metals)—for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
 
-The first subexpression after the `|=` defines the sample type.  Any faces used in this definition have the type declared for it in this definition.  Consider an addition generator `/gen/add.hoon`:
+The first subexpression after the `|=` defines the sample type.  Any faces used in this definition have the type declared for it in this definition.  Consider an addition generator `/gen/sum.hoon`:
 
 ```hoon {% copy=true %}
 |=  [a=@ b=@]
@@ -235,10 +235,10 @@ $(a +(a), b (dec b))
 We run it in the Dojo using a cell to pass the two arguments:
 
 ```hoon
-> +add 12 14
+> +sum [12 14]
 26
 
-> +add 22
+> +sum 22
 nest-fail
 -need.[a=@ b=@]
 -have.@ud

@@ -1,18 +1,20 @@
 import Head from "next/head";
-import Link from "next/link";
 import {
   Markdown,
   Container,
   SingleColumn,
   Section,
+  Sigil,
   TwoUp,
   getAllPosts,
 } from "@urbit/foundation-design-system";
-import Sigil from "../../components/Sigil";
 import Card from "../../components/Card";
 import Meta from "../../components/Meta";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { pair } from '../../lib/util';
+import Link from "next/link";
+
 export default function Directory({ search, directory }) {
   const post = {
     title: "Directory",
@@ -20,9 +22,9 @@ export default function Directory({ search, directory }) {
       "Our community is comprised of individuals, all of whom happen to be pretty friendly.",
   };
 
-  const tlon = pair(
+  const core = pair(
     directory
-      .filter((e) => e.org === "Tlon")
+      .filter((e) => e.org === "Core Developers")
       .sort((a, b) => a.name.localeCompare(b.name))
   );
   const uf = pair(
@@ -87,9 +89,9 @@ export default function Directory({ search, directory }) {
           </div>
         </Section>
         <Section>
-          <h3>Tlon Corporation</h3>
+          <h3>Core Developers</h3>
           <div className="flex flex-wrap mt-4">
-            {tlon.map((pair, i) => {
+            {core.map((pair, i) => {
               return (
                 <TwoUp key={i}>
                   {pair.map((e) => (
@@ -150,19 +152,20 @@ export default function Directory({ search, directory }) {
             })}
           </div>
         </Section>
+        <Section>
+          <h3>Developer Mailing List</h3>
+          <div className="flex flex-wrap mt-4">
+            <p>Active contributors to urbit can be be found in conversation around new releases on <Link href="https://groups.google.com/a/urbit.org/g/dev">urbit-dev</Link>, our Google group and developer mailing list.
+            </p>
+          </div>
+        </Section>
+
+
       </SingleColumn>
       <Footer />
     </Container>
   );
 }
-
-const pair = (arr) =>
-  arr.reduce(function (rows, key, index) {
-    return (
-      (index % 2 == 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) &&
-      rows
-    );
-  }, []);
 
 export async function getStaticProps() {
   const directory = getAllPosts(

@@ -29,8 +29,8 @@ For instance, it's common to represent strings (or even whole
 text files) as atoms, arranging them LSB first - so "foo" becomes
 `0x6f6f66`.  How do we know to print this as "foo", not `0x6f6f66`?
 We need external information - such as a Hoon type.  Similarly,
-other common atomic types - signed integers, floating point, etc
-- are all straightforward to map into atoms.
+other common atomic types - signed integers, floating point, etc -
+are all straightforward to map into atoms.
 
 It's also important to note that, unlike Lisp, Nock cannot create
 cyclical data structures.  It is normal and common for nouns in a
@@ -521,6 +521,24 @@ depends both on the original subject and the new variable.
 With `c`, we produce a noun which contains both code and data - a
 **core**.  We use this core as the subject, and evaluate the
 formula within it at slot `b`.
+
+### `10`, replace at address
+
+`10` is how Nock updates a tree by altering a particular slot.
+
+```
+*[a 10 [b c] d]      #[b *[a c] *[a d]]
+```
+
+This operation relies on the `#` hax operator, which has the form
+
+```
+#[mem-slot new-val target-tree]
+```
+
+This replaces the memory slot `mem-slot` in `target-tree` with `new-val`.
+
+So all together, `10` means that we calculate `*[a c]` and `*[a d]`, then replace memory slot `b` in the latter with the result of the former.
 
 ### `6`, if-then-else
 

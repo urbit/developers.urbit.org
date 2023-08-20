@@ -14,7 +14,7 @@ The best place to start when building a new agent is its type definitions in its
 Let's look at each of these questions in turn, and put together our agent's
 `/sur` file, which we'll call `/sur/journal.hoon`.
 
-### 1. Basic types
+## 1. Basic types
 
 Our journal entries will just be plain text, so a simple `@t` will work fine to
 store their contents. Entries will be organized by date, so we'll also need to
@@ -34,7 +34,7 @@ The structure for a journal entry can therefore be:
 +$  entry  [=id =txt]
 ```
 
-### 2. Actions
+## 2. Actions
 
 Now that we know what a journal entry looks like, we can think about what kind
 of actions/commands our agent will handle in its `++on-poke` arm. For our
@@ -54,7 +54,7 @@ We can create a tagged union structure for these actions, like so:
   ==
 ```
 
-### 3. Updates
+## 3. Updates
 
 Updates are a little more complicated than our actions. Firstly, our front-end
 needs to be able to retrieve an initial list of journal entries to display. Once
@@ -113,7 +113,7 @@ milliseconds since the Unix Epoch:
   ==
 ```
 
-### 4. State
+## 4. State
 
 We need to store two things in our state: the journal entries and the update
 log. We could just use a couple of `map`s like so:

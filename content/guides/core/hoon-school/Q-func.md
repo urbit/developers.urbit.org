@@ -60,11 +60,11 @@ One can also [`++cork`](/reference/hoon/stdlib/2n#cork) a gate, or arrange it su
 0x13
 ```
 
-##  Exercise:  Bind Gate Arguments
+### Exercise:  Bind Gate Arguments
 
 - Create a gate `++inc` which increments a value in one step, analogous to `++dec`.
 
-##  Exercise:  Chain Gate Values
+### Exercise:  Chain Gate Values
 
 - Write an expression which yields the parent galaxy of a planet's sponsoring star by composing two gates.
 
@@ -114,7 +114,7 @@ q=15
 120
 ```
 
-##  Exercise:  Calculate a Factorial
+### Exercise:  Calculate a Factorial
 
 - Use `++reel` to produce a gate which calculates the factorial of a number.
 
@@ -138,3 +138,14 @@ One solution is to “dry out” the wet gate using [`++bake`](/reference/hoon/s
 > ((curr (bake reel ,[(list @) _add]) add) `(list @)`[1 2 3 4 ~])
 10
 ```
+
+
+##  Classic Operations
+
+Functional programmers frequently rely on three design patterns to produce operations on collections of data:
+
+1. Map.  The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed.  In Hoon terms, we would say slamming a gate on each member of a `list` or `set`.  The standard library arms that accomplish this include [`++turn`](https://developers.urbit.org/reference/hoon/stdlib/2b#turn) for a `list`, [`++run:in`](https://developers.urbit.org/reference/hoon/stdlib/2h#repin) for a `set`, and [`++run:by`](https://developers.urbit.org/reference/hoon/stdlib/2i#runby) for a `map`.
+
+2. Reduce.  The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value.  The standard library arms that accomplish this are [`++roll`](https://developers.urbit.org/reference/hoon/stdlib/2b#roll) and [`++reel`](https://developers.urbit.org/reference/hoon/stdlib/2b#reel) for a `list`, [`++rep:in`](https://developers.urbit.org/reference/hoon/stdlib/2h#repin) for a `set`, and [`++rep:by`](https://developers.urbit.org/reference/hoon/stdlib/2i#repby) for a `map`.
+
+3. Filter.  The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set.  In Hoon, the library arms that carry this out include [`++skim`](https://developers.urbit.org/reference/hoon/stdlib/2b#skim), [`++skid`](https://developers.urbit.org/reference/hoon/stdlib/2b#skid), [`++murn`](https://developers.urbit.org/reference/hoon/stdlib/2b#murn) for a `list`, and [`++rib:by`](https://developers.urbit.org/reference/hoon/stdlib/2i#ribby) for a `map`.

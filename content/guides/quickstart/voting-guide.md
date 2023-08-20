@@ -45,16 +45,28 @@ If you've already got the `urbit` CLI runtime installed, you can skip this step.
 Otherwise, run one of the commands below, depending on your platform. It will
 fetch the binary and save it in the current directory.
 
-#### Linux
+#### Linux (`x86_64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/linux64/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### Mac
+#### Linux (`aarch64`)
 
 ```shell {% copy=true %}
-curl -L https://urbit.org/install/mac/latest | tar xzk --strip=1
+curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
+```
+
+#### macOS (`x86_64`)
+
+```shell {% copy=true %}
+curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
+```
+
+#### macOS (`aarch64`)
+
+```shell {% copy=true %}
+curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 ## Development ship
@@ -104,7 +116,7 @@ across that our app will depend on:
 mkdir -p tally/{app,sur,mar,lib}
 cp -r dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} tally/mar/
 cp -r dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} tally/lib/
-cp -r dev-comet/squad/sur/{docket*, squad*} tally/sur/
+cp -r dev-comet/squad/sur/{docket*,squad*} tally/sur/
 cp -r dev-comet/base/sur/ring.hoon tally/sur/
 cp -r dev-comet/garden/lib/mip.hoon tally/lib/
 ```
@@ -134,10 +146,10 @@ be sent or received in *pokes* (one-off messages):
 - `%withdraw`: delete a poll.
 
 
-We'll also define an `update` structure, which wil be the kinds of events that
+We'll also define an `update` structure, which will be the kinds of events that
 subscribers may be notified about:
 
-- `%init`: given the intial polls and their state to a new subscriber.
+- `%init`: given the initial polls and their state to a new subscriber.
 - `%vote`: someone has voted on a poll.
 - `%new`: someone has created a new poll.
 - `%withdraw`: someone has withdrawn an existing poll.
@@ -305,12 +317,12 @@ groups we're a member of. It additionally handles group updates from the
 `%squad` agent. In the former case, the events we'll receive will contain
 `update`s, which we'll process in a similar manner to the `action`s in
 `on-poke`. All incoming votes will be validated here also. In the latter case,
-we'll receive `%squad` `upd` updates, such as members joining or leave groups,
+we'll receive `%squad` `upd` updates, such as members joining or leaving groups,
 and we'll handle them as appropriate.
 
 We differentiate between these two cases by testing the `wire`, which is a
 message tag we set when we initially subscribed. For `%squad` updates it will be
-`/squad`, and for the rest it'll be the group ID we've subscribe to.
+`/squad`, and for the rest it'll be the group ID we've subscribed to.
 
 #### The code
 
@@ -416,7 +428,7 @@ Gall agents live in the `/app` directory of a desk, so save this code in
     %1  `this(state old)
     %0  `this(state [%1 by-group.old voted.old withdrawn.old %subs])
   ==
-:: on-poke handles "pokes", which are one-off requests/actions intiated
+:: on-poke handles "pokes", which are one-off requests/actions initiated
 :: locally or by remote ships. If it's a %tally-action we call
 :: a handle-action function, and if it's a %handle-http-request from the
 :: front-end we call the handle-http function
@@ -442,7 +454,7 @@ Gall agents live in the `/app` directory of a desk, so save this code in
     ?.  authenticated.req
       :_  state(section %subs)
       (give-http:hc rid [307 ['Location' '/~/login?redirect='] ~] ~)
-    :: otherwise, switch on the method, prodicing a 405 response for
+    :: otherwise, switch on the method, producing a 405 response for
     :: unhandled methods
     ::
     ?+  method.request.req
@@ -604,7 +616,7 @@ Gall agents live in the `/app` directory of a desk, so save this code in
       :: calculate the expiry data
       ::
       =/  expiry=@da  (add now.bol (yule days.act 0 0 0 ~))
-      :: retreive all polls from state for this gid
+      :: retrieve all polls from state for this gid
       ::
       =/  polls=(map pid [=poll =votes])
         (fall (~(get by by-group) gid.act) *(map pid [=poll =votes]))
@@ -635,7 +647,7 @@ Gall agents live in the `/app` directory of a desk, so save this code in
       :: vote on a poll
       ::
         %vote
-      :: retreive the target poll from state
+      :: retrieve the target poll from state
       ::
       =/  [=poll =votes]  (~(got bi by-group) gid.act pid.act)
       :: make sure it hasn't expired
@@ -725,7 +737,7 @@ Gall agents live in the `/app` directory of a desk, so save this code in
       ?>  ?|  =(our.bol src.bol)
               &(=(src.bol creator.poll) (gte expiry.poll now.bol))
           ==
-      :: update state and notify subscribers of the withdrawl
+      :: update state and notify subscribers of the withdrawal
       ::
       :_  %=  state
             by-group   (~(del bi by-group) gid.act pid.act)
@@ -765,7 +777,7 @@ Gall agents live in the `/app` directory of a desk, so save this code in
       (fall (~(get by by-group) gid) *(map pid [=poll =votes]))
   ==
 :: on-agent handles either responses to requests we've
-:: initated or subscription updates from people or agents
+:: initiated or subscription updates from people or agents
 :: to which we've previously subscribed
 ::
 ++  on-agent
@@ -1317,7 +1329,7 @@ Save the code below in `tally/app/tally/index.hoon`.
       ==
     ==
   ==
-:: we retreive a list of all squads and sort them
+:: we retrieve a list of all squads and sort them
 :: alphabetically by title
 ::
 =/  all-squads=(list (pair gid squad))
@@ -1890,7 +1902,7 @@ this by adding a `sys.kelvin` file to the root of our `tally` directory:
 
 ```shell {% copy=true %}
 cd tally
-echo "[%zuse 418]" > sys.kelvin
+echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do
@@ -1921,10 +1933,10 @@ following:
 ## Put it together
 
 Our app is now complete, so let's try it out. In the Dojo of our comet, we'll
-create a new desk (filesystem repo) by forking from an existing one:
+create a new desk with the `|new-desk` generator:
 
 ```{% copy=true %}
-|merge %tally our %webterm
+|new-desk %tally
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
@@ -1933,13 +1945,12 @@ Next, we'll mount the desk so we can access it from the host OS:
 |mount %tally
 ```
 
-Currently its contents are the same as the `%webterm` desk, so we'll need to
-delete those files and copy in our own instead. In the normal shell, do the
-following:
+Currently it just contains some skeleton files, but we can delete those and add
+our own instead. In the normal shell, do the following:
 
 ```shell {% copy=true %}
 rm -r dev-comet/tally/*
-cp -r tally/* dev-comet/tally/*
+cp -r tally/* dev-comet/tally/
 ```
 
 Back in the Dojo again, we can now commit those files and install the app:

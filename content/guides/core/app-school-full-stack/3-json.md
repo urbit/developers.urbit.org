@@ -8,8 +8,8 @@ this section, we'll briefly look at how JSON works in Urbit, and write a library
 to convert our agent's structures to and from JSON for our front-end.
 
 JSON data comes into Eyre as a string, and Eyre parses it with the
-[`++de-json:html`](/reference/hoon/zuse/2e_2-3#de-jsonhtml) function in
-[`zuse.hoon`](/reference/hoon/zuse/table-of-contents). The
+[`++de:json:html`](/reference/hoon/zuse/2e_2-3#dejsonhtml) function in
+[`zuse.hoon`](/reference/hoon/zuse). The
 hoon type it's parsed to is `$json`, which is defined as:
 
 ```hoon
@@ -29,7 +29,7 @@ agent (unless the mark specified is already `%json`, in which case it will be
 delivered directly). Outbound facts will go through the same process in
 reverse - converted from the agent's native mark to `$json`, then encoded in a
 string by Eyre using
-[`++en-json:html`](/reference/hoon/zuse/2e_2-3#en-jsonhtml) and delivered
+[`++en:json:html`](/reference/hoon/zuse/2e_2-3#enjsonhtml) and delivered
 to the web client. The basic flow for both inbound messages (pokes) and outbound
 messages (facts and scry results) looks like this:
 
@@ -48,7 +48,7 @@ we'll write a library called `/lib/journal.hoon` with the conversion functions.
 
 ## `$json` utilities
 
-[`zuse.hoon`](/reference/hoon/zuse/table-of-contents) contains three main
+[`zuse.hoon`](/reference/hoon/zuse) contains three main
 cores for converting to and from `$json`:
 
 - [`++enjs:format`](/reference/hoon/zuse/2d_1-5#enjsformat) - Functions to
@@ -171,7 +171,7 @@ complex nested `$json` decoding function can be built up in this manner.
 For example:
 
 ```
-> =js %-  need  %-  de-json:html
+> =js %-  need  %-  de:json:html
   '''
   {
     "foo": "hello",
@@ -342,7 +342,7 @@ when you write `$json` encoding functions, and is the reason there are far fewer
 
 - [The JSON Guide](/guides/additional/json-guide) - The stand-alone JSON guide
   covers JSON encoding/decoding in great detail.
-- [The Zuse reference](/reference/hoon/zuse/table-of-contents) - The
+- [The Zuse reference](/reference/hoon/zuse) - The
   `zuse.hoon` reference documents all JSON-related functions in detail.
 
 - [`++enjs:format` reference](/reference/hoon/zuse/2d_1-5#enjsformat) -

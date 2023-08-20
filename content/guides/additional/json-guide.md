@@ -1,16 +1,17 @@
 +++
-title = "Working with JSON"
-weight = 20
+title = "JSON"
+description = "Learn how to handle this common data standard in Urbit"
+weight = 50
 +++
 
-If you are working on a Gall agent with any kind of web interface, it's likely you will encounter the problem of converting Hoon data structures to JSON and vice versa. This is what we'll look at in this document.
+If you are working on a Gall agent with any kind of web interface, it's likely you will encounter the problem of converting Hoon data structures to JSON and vice versa. This is what we'll examine in this document.
 
 Urbit represents JSON data with the `$json` structure (defined in `lull.hoon`). You can refer to the [json type](#the-json-type) section below for details.
 
 JSON data on the web is encoded in text, so Urbit has two functions in `zuse.hoon` for dealing with this:
 
-- [`+en-json:html`](/reference/hoon/zuse/2e_2-3#en-jsonhtml) - For printing `$json` to a text-encoded form.
-- [`+de-json:html`](/reference/hoon/zuse/2e_2-3#de-jsonhtml) - For parsing text-encoded JSON to a `$json` structure.
+- [`+en:json:html`](/reference/hoon/zuse/2e_2-3#enjsonhtml) - For printing `$json` to a text-encoded form.
+- [`+de:json:html`](/reference/hoon/zuse/2e_2-3#dejsonhtml) - For parsing text-encoded JSON to a `$json` structure.
 
 You typically want `$json` data converted to some other `noun` structure or vice versa, so Urbit has three collections of functions for this purpose, also in `zuse.hoon`:
 
@@ -20,7 +21,7 @@ You typically want `$json` data converted to some other `noun` structure or vice
 
 The relationship between these types and functions look like this:
 
-![json diagram](https://media.urbit.org/docs/json-diagram.svg)
+![json diagram](https://media.urbit.org/docs/json-diagram-v2.svg)
 
 Note this diagram is a simplification - the `+dejs:format` and `+enjs:format` collections in particular are tools to be used in writing conversion functions rather than simply being used by themselves, but it demonstrates the basic relationships. Additionally, it is less common to do printing/parsing manually - this would typically be handled automatically by Eyre, though it may be necessary if you're retrieving JSON data via the web client vane Iris.
 
@@ -156,10 +157,10 @@ Now we can try calling the `+to-js` function with our data to convert it to `$js
 ]
 ```
 
-Let's also see how that `$json` would look as real JSON encoded in text. We can do that with `+en-json:html`:
+Let's also see how that `$json` would look as real JSON encoded in text. We can do that with `+en:json:html`:
 
 ```
-> (crip (en-json:html (to-js:user-lib usr)))
+> (en:json:html (to-js:user-lib usr))
 '{"joined":1631440078,"username":"john456","name":["John","William","Smith"],"email":"john.smith@example.com"}'
 ```
 
@@ -280,13 +281,13 @@ Let's look at an example. Here's a gate that takes in some `$json`, decodes it w
 Let's try it:
 
 ```
-> +of-test (need (de-json:html '{"foo":"Hello"}'))
+> +of-test (need (de:json:html '{"foo":"Hello"}'))
 'Hello!!!'
 
-> +of-test (need (de-json:html '{"bar":true}'))
+> +of-test (need (de:json:html '{"bar":true}'))
 'Yes'
 
-> +of-test (need (de-json:html '{"baz":["a","b","c"]}'))
+> +of-test (need (de:json:html '{"baz":["a","b","c"]}'))
 'abc'
 ```
 
@@ -321,13 +322,13 @@ Let's look at a practical example. Here's a generator you can save in the `%base
 Let's try it:
 
 ```
-> +ou-test (need (de-json:html '{"foo":"hello","bar":true,"baz":[1,2,3,4]}'))
+> +ou-test (need (de:json:html '{"foo":"hello","bar":true,"baz":[1,2,3,4]}'))
 ['hello' %.y {1 2 3 4}]
 
-> +ou-test (need (de-json:html '{"foo":"hello","bar":true}'))
+> +ou-test (need (de:json:html '{"foo":"hello","bar":true}'))
 ['hello' %.y {}]
 
-> +ou-test (need (de-json:html '{"foo":"hello"}'))
+> +ou-test (need (de:json:html '{"foo":"hello"}'))
 [%key 'bar']
 dojo: hoon expression failed
 ```
@@ -432,7 +433,7 @@ First, we'll save the code above as `user.hoon` in the `/mar` directory our of `
 Let's quickly create a `$json` object to work with:
 
 ```
-> =jon (need (de-json:html '{"joined":1631440078,"username":"john456","name":["John","William","Smith"],"email":"john.smith@example.com"}'))
+> =jon (need (de:json:html '{"joined":1631440078,"username":"john456","name":["John","William","Smith"],"email":"john.smith@example.com"}'))
 > jon
 [ %o
     p
@@ -491,7 +492,7 @@ Let's test it out by giving it our `$user` data:
 Finally, let's see how that looks as JSON encoded in text:
 
 ```
-> (crip (en-json:html (user-to-json usr)))
+> (en:json:html (user-to-json usr))
 '{"joined":1631440078,"username":"john456","name":["John","William","Smith"],"email":"john.smith@example.com"}'
 ```
 
@@ -499,7 +500,7 @@ Usually (though not in all cases) these mark conversions will be performed impli
 
 ## Further reading
 
-[The Zuse library reference](/reference/hoon/zuse/table-of-contents) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
+[The Zuse library reference](/reference/hoon/zuse) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
 
 [The Marks section of the Clay documentation](/reference/arvo/clay/marks/marks) - Comprehensive documentation of `mark`s.
 

@@ -74,11 +74,11 @@ example would look like `/foo/~2021.11.14..13.30.39..6b17`. For more information
 on decoding atoms in strings, see the [Strings
 Guide](/guides/additional/strings#decoding-from-text).
 
-In the last case of `[%bar baz *]`, we're allowing a variable number of elements
-in the path. First we check it's `/foo/bar/...something...`, and then we check
+In the last case of `[%bar %baz *]`, we're allowing a variable number of elements
+in the path. First we check it's `/bar/baz/...something...`, and then we check
 what the "something" is in another wutlus expression and handle it
-appropriately. In this case, it could be `/foo/bar`, `/foo/bar/abc/def`, or
-`/foo/bar/blah`. You could of course also have "wildcard" elements here too, so
+appropriately. In this case, it could be `/bar/baz`, `/bar/baz/abc/def`, or
+`/bar/baz/blah`. You could of course also have "wildcard" elements here too, so
 there's not really a limit to the complexity of your subscription paths, or the
 data that might be encoded therein.
 

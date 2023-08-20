@@ -5,7 +5,7 @@ nodes = [170, 190]
 objectives = ["Run existing unit tests.", "Produce a unit test.", "Employ a debugging strategy to identify and correct errors in Hoon code."]
 +++
 
-_This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies._
+_This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.  It may be considered optional and skipped if you are speedrunning Hoon School._
 
 > Code courageously.
 >
@@ -63,7 +63,7 @@ Hoon unit tests come in two categories:
 
 Let's look at a practical example first, then dissect these.
 
-##  Exercise:  Testing a Library
+### Exercise:  Testing a Library
 
 Consider an absolute value arm `++absolute` for `@rs` values. The unit tests for `++absolute` should accomplish a few things:
 
@@ -311,8 +311,6 @@ A `fish-loop` arises when using a recursive mold definition like `list`.  (The r
 [%test ~[[%.y p=2]]]
 fish-loop
 ```
-
-although a promised `?#` wuthax rune should match it once implemented.
 
 ### `generator-build-fail`
 

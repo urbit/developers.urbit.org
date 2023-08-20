@@ -7,180 +7,253 @@ Here are the data types used by Dill, as defined in `/sys/lull.hoon`.
 
 ## `$blew`
 
+Terminal dimension.
+
 ```hoon
-  +$  blew  [p=@ud q=@ud]
++$  blew  [p=@ud q=@ud]
 ```
 
-Terminal dimension; `p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [%blew](/reference/arvo/dill/tasks#blew) `task` whenever the dimensions of the terminal changes.
+`p` is columns, `q` is rows. This structure is passed to Dill by the
+runtime in a [%blew](/reference/arvo/dill/tasks#blew) `task` whenever
+the dimensions of the terminal changes.
+
+---
 
 ## `$belt`
 
-```hoon
-+$  belt
-  $?  bolt
-  $%  [%mod mod=?(%ctl %met %hyp) key=bolt]
-      [%txt p=(list @c)]
-      [%ctl p=@c]
-      [%met p=@c]
-  ==  ==
-```
-
 Terminal client input.
 
-A `$belt` is passed to Dill in a [%belt](/reference/arvo/dill/tasks#belt) `task` by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [$dill-belt](#dill-belt) is used between Dill and Arvo.
+```hoon
++$  belt                                              ::  client input
+  $?  bolt                                            ::  simple input
+      [%mod mod=?(%ctl %met %hyp) key=bolt]           ::  w/ modifier
+      [%txt p=(list @c)]                              ::  utf32 text
+      ::TODO  consider moving %hey, %rez, %yow here   ::
+  ==                                                  :: 
+```
+
+A `$belt` is passed to Dill in a
+[%belt](/reference/arvo/dill/tasks#belt) `task` by the runtime whenever
+there is input, such as a user typing in the console. This is only used
+between the terminal client and Dill, a [$dill-belt](#dill-belt) is used
+between Dill and Arvo.
 
 May either be a [$bolt](#bolt) or one of:
 
-- `%mod` - Modifier (Ctrl, Meta or Hyper) plus [key].
-- `%txt` - A series of characters
-- `%ctl` - Ctrl+[key], deprecated in favour of `%mod`.
-- `%met` - Meta+[key], deprecated in favour of `%mod`.
+- `%mod` - Modifier (Ctrl, Meta or Hyper) plus a key (see
+  [`$bolt`](#bolt).
+- `%txt` - A series of UTF-32 characters.
+
+--
 
 ## `$bolt`
 
-```hoon
-+$  bolt
-  $@  @c
-  $%  [%aro p=?(%d %l %r %u)]
-      [%bac ~]
-      [%del ~]
-      [%hit r=@ud c=@ud]
-      [%ret ~]
-  ==
-```
-
 Simple input.
 
-Either a single simple character or one of:
+```hoon
++$  bolt                                              ::  simple input
+  $@  @c                                              ::  simple keystroke
+  $%  [%aro p=?(%d %l %r %u)]                         ::  arrow key
+      [%bac ~]                                        ::  true backspace
+      [%del ~]                                        ::  true delete
+      [%hit x=@ud y=@ud]                              ::  mouse click
+      [%ret ~]                                        ::  return
+  ==                                                  ::
+```
+
+Either a single UTF-32 character or one of:
 
 - `%aro` - Arrow keys.
 - `%bac` - Backspace key.
 - `%del` - Delete key.
-- `%hit` - Mouse click - `r` is row and `c` is column. Note these are zero-indexed, with `[0 0]` being the _bottom left_ corner.
+- `%hit` - Mouse click - `r` is row and `c` is column. Note these are
+  zero-indexed, with `[0 0]` being the _bottom left_ corner.
 - `%ret` - Return (Enter) key.
+
+---
 
 ## `$blit`
 
-```hoon
-+$  blit
-  $%  [%bel ~]
-      [%clr ~]
-      [%hop p=@ud]
-      [%klr p=stub]
-      [%lin p=(list @c)]
-      [%mor ~]
-      [%sag p=path q=*]
-      [%sav p=path q=@]
-      [%url p=@t]
-  ==
-```
-
 Terminal client output.
 
-A `$blit` is given to the terminal client by Dill in a `%blit` `gift` when it wants to print some text, clear the screen, go _ding_ or what have you.
+```hoon
++$  blit                                              ::  client output
+  $%  [%bel ~]                                        ::  make a noise
+      [%clr ~]                                        ::  clear the screen
+      [%hop p=$@(@ud [x=@ud y=@ud])]                  ::  set cursor col/pos
+      [%klr p=stub]                                   ::  put styled
+      [%mor p=(list blit)]                            ::  multiple blits
+      [%nel ~]                                        ::  newline
+      [%put p=(list @c)]                              ::  put text at cursor
+      [%sag p=path q=*]                               ::  save to jamfile
+      [%sav p=path q=@]                               ::  save to file
+      [%url p=@t]                                     ::  activate url
+      [%wyp ~]                                        ::  wipe cursor line
+  ==                                                  ::
+```
 
-This is only used between Dill and the terminal client, a [$dill-blit](#dill-blit) is used instead between Arvo and Dill.
+A `$blit` is given to the terminal client by Dill in a `%blit` `gift`
+when it wants to print some text, clear the screen, go _ding_ or what
+have you.
+
+This is directly used between Dill and the terminal client, while a
+[$dill-blit](#dill-blit) is used between Arvo and Dill. A `$dill-blit`
+includes the `$blit` union as a subset.
 
 A `$blit` is one of:
 
 - `%bel` - Ring the terminal bell.
 - `%clr` - Clear the screen.
-- `%hop` - Set cursor position, `p` specifies its position on the prompt line.
+- `%hop` - Set cursor position. If `p` is an atom, it specifies the
+  horizontal position on the prompt line. If `p` is a cell, it
+  represents a 2D location where `x` is columns and `y` is
+  rows.
 - `%klr` - Set styled line, the `$stub` specifies the text and style.
-- `%lin` - Set current line, `p` contains the text.
-- `%mor` - Newline.
-- `%sag` - Save to jamfile, typically in `/[pier]/.urb/put/`. `p` is `/[path]/[filename]/[extension]`. For example, `/foo/bar` will save it in `/[pier]/.urb/put/foo.bar`, `/a/b/c/foo/bar` will save it in `/[pier]/.urb/put/a/b/c/foo.bar`, and `/foo` will save it in `/[pier]/.urb/put.foo`. `q` is the `noun` to `jam` and save in the file.
-- `%sav` - Save to file. Same behaviour as `%sag` except `q` is an `atom` rather than a `noun` and therefore doesn't need to be `jam`med. The `atom` is written to disk as if it were the bytestring in the tail of an `$octs`. That is, `%sav`ing the `cord` `'abcdef'`, whose `@ux` value is `0x6665.6463.6261`, results in a unix file whose hex dump renders as `61 62 63 64 65 66`.
+- `%mor` - multiple `$blit`s.
+- `%nel` - a newline.
+- `%put` - put text (as a list of UTF-32 characters) at the current
+  cursor position.
+- `%sag` - Save to jamfile, typically in `/[pier]/.urb/put/`. `p` is
+  `/[path]/[filename]/[extension]`. For example, `/foo/bar` will save it
+  in `/[pier]/.urb/put/foo.bar`, `/a/b/c/foo/bar` will save it in
+  `/[pier]/.urb/put/a/b/c/foo.bar`, and `/foo` will save it in
+  `/[pier]/.urb/put.foo`. `q` is the `noun` to `jam` and save in the
+  file.
+- `%sav` - Save to file. Same behaviour as `%sag` except `q` is an
+  `atom` rather than a `noun` and therefore doesn't need to be `jam`med.
+  The `atom` is written to disk as if it were the bytestring in the tail
+  of an `$octs`. That is, `%sav`ing the `cord` `'abcdef'`, whose `@ux`
+  value is `0x6665.6463.6261`, results in a unix file whose hex dump
+  renders as `61 62 63 64 65 66`.
 - `%url` - Activate URL, `p` is the URL.
+- `%wyp` - clear the cursor line.
+
+---
 
 ## `$dill-belt`
 
-```hoon
-+$  dill-belt
-  $%  [%aro p=?(%d %l %r %u)]
-      [%bac ~]
-      [%cru p=@tas q=(list tank)]
-      [%ctl p=@]
-      [%del ~]
-      [%hey ~]
-      [%met p=@]
-      [%ret ~]
-      [%rez p=@ud q=@ud]
-      [%txt p=(list @c)]
-      [%yow p=gill:gall]
-  ==
-```
-
 Terminal input for Arvo.
 
-While [$belt](#belt) is used between the terminal client and Dill, `$dill-belt` is used between Dill and Arvo.
+```hoon
++$  dill-belt                                         ::  arvo input
+  $%  belt                                            ::  client input
+      [%cru p=@tas q=(list tank)]                     ::  errmsg (deprecated)
+      [%hey ~]                                        ::  refresh
+      [%rez p=@ud q=@ud]                              ::  resize, cols, rows
+      [%yow p=gill:gall]                              ::  connect to app
+  ==                                                  ::
+```
 
-a `$dill-belt` is one of:
+A [$belt](#belt) is used between the terminal client and Dill, while a
+`$dill-belt` is used between Dill and Arvo. A `$dill-belt` includes the
+`$belt` union as a subset.
 
-- `%aro` - Arrow keys.
-- `%bac` - Backspace key.
-- `%cru` - Echo error, `p` is an error `@tas` and `q` is a traceback.
-- `%ctl` - Ctrl+[key].
-- `%del` - Delete key.
+a `$dill-belt` is either [`$belt`](#belt) or one of:
+
+- `%cru` - Echo error, `p` is some error tag and `q` is a stack trace.
 - `%hey` - Refresh.
-- `%met` - Meta+[key].
-- `%ret` - Return key (Enter).
 - `%rez` - Terminal resized, `p` is columns and `q` is rows.
-- `%txt` - Text input.
 - `%yow` - Connect to app.
+
+---
 
 ## `$dill-blit`
 
-```hoon
-+$  dill-blit
-  $%  [%bel ~]
-      [%clr ~]
-      [%hop p=@ud]
-      [%klr p=stub]
-      [%mor p=(list dill-blit)]
-      [%pom p=stub]
-      [%pro p=(list @c)]
-      [%qit ~]
-      [%out p=(list @c)]
-      [%sag p=path q=*]
-      [%sav p=path q=@]
-      [%url p=@t]
-  ==
-```
-
 Terminal output from Arvo.
 
-While [$blit](#blit) is used between Dill and the terminal client, `$dill-blit` is used between Arvo and Dill.
+```hoon
++$  dill-blit                                         ::  arvo output
+  $%  blit                                            ::  client output
+      [%qit ~]                                        ::  close console
+  ==                                                  ::
+```
 
-A `$dill-blit` is one of:
+While [$blit](#blit) is used between Dill and the terminal client,
+`$dill-blit` is used between Arvo and Dill. A `$blit` is a subset of a
+`$dill-blit`.
 
-- `%bel` - Terminal bell.
-- `%clr` - Clear screen.
-- `%hop` - Set cursor position, `p` is its horizontal position on the prompt line.
-- `%klr` - Styled text, the `$stub` specifies both the text and style.
-- `%mor` - Multiple `$dill-blit`.
-- `%pom` - Styled prompt, the `$stub` specifies both the text and style.
-- `%pro` - Set prompt, `p` is the text for the prompt.
+A `$dill-blit` is either a [`$blit`](#blit) or a:
+
 - `%qit` - Close console.
-- `%out` - Print text.
-- `%sag` - Save `noun` to jamfile. See [$blit](#blit) section for further details.
-- `%sav` - Save `atom` to file. See [$blit](#blit) section for further details.
-- `%url` - Activate URL.
+
+---
 
 ## `$flog`
 
-```hoon
-+$  flog
-  $%  [%crop p=@ud]
-      [%crud p=@tas q=(list tank)]
-      [%heft ~]
-      [%meld ~]
-      [%pack ~]
-      [%text p=tape]
-      [%verb ~]
-  ==
-```
-
 Wrapped Dill `task`s.
 
-These are a subset of Dill's `task`s which can be wrapped in a `%flog` `task`. See the [API Reference](/reference/arvo/dill/tasks) document for details of each of these `task`s.
+```hoon
++$  flog                                              ::  sent to %dill
+  $%  [%crop p=@ud]                                   ::  trim kernel state
+      $>(%crud told)                                  ::
+      [%heft ~]                                       ::
+      [%meld ~]                                       ::  unify memory
+      [%pack ~]                                       ::  compact memory
+      $>(%text told)                                  ::
+      [%verb ~]                                       ::  verbose mode
+  ==                                                  ::
+```
+
+These are a subset of Dill's `task`s which can be wrapped in a `%flog`
+`task`. See the [API Reference](/reference/arvo/dill/tasks) document for
+details of each of these `task`s.
+
+---
+
+## `$poke`
+
+Dill to userspace.
+
+```hoon
++$  poke                                              ::  dill to userspace
+  $:  ses=@tas                                        ::  target session
+      dill-belt                                       ::  input
+  ==                                                  ::
+```
+
+A [`$dill-belt`](#dill-belt) (client input) for a particular session.
+
+---
+
+## `$session-task`
+
+A subset of [Dill's `task`s](/reference/arvo/dill/tasks#session-tasks)
+for interacting with a particular session.
+
+```hoon
++$  session-task                                      ::  session request
+  $%  [%belt p=belt]                                  ::  terminal input
+      [%blew p=blew]                                  ::  terminal config
+      [%flee ~]                                       ::  unwatch session
+      [%hail ~]                                       ::  terminal refresh
+      [%open p=dude:gall q=(list gill:gall)]          ::  setup session
+      [%shut ~]                                       ::  close session
+      [%view ~]                                       ::  watch session blits
+  ==                                                  ::
+```
+
+This type is used in the [`%shot`](/reference/arvo/dill/tasks#shot)
+wrapper `task`.
+
+See the [Session Tasks](/reference/arvo/dill/tasks#session-tasks) entry
+in the API reference for more details of these `task`s.
+
+---
+
+## `$told`
+
+A subset of [Dill's `task`s](/reference/arvo/dill/tasks#session-tasks)
+for basic text printing.
+
+```hoon
++$  told                                              ::  system output
+  $%  [%crud p=@tas q=tang]                           ::  error
+      [%talk p=(list tank)]                           ::  tanks (in order)
+      [%text p=tape]                                  ::  tape
+  ==                                                  ::
+```
+
+See the [Told Tasks](/reference/arvo/dill/tasks#told-tasks) entry
+in the API reference for more details of these `task`s.
+
+---

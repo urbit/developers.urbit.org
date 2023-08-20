@@ -81,7 +81,7 @@ It is frequently helpful, when constructing these, to be able to output the valu
   sum
 %=  $
   counter  (add counter 1)
-  sum      (add sum counter))
+  sum      (add sum counter)
 ==
 ```
 
@@ -97,11 +97,11 @@ You can do even better using _interpolation_:
   sum
 %=  $
   counter  (add counter 1)
-  sum      (add sum counter))
+  sum      (add sum counter)
 ==
 ```
 
-##  Exercise:  Calculate a Factorial
+### Exercise:  Calculate a Factorial
 
 - Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number {% math %}n{% /math %} is {% math %}n \times (n-1) \times \ldots \times 2 \times 1{% /math %}.  We will introduce a couple of new bits of syntax and a new gate (`++dec`).  Make this into a generator `factorial.hoon`:
 
@@ -146,7 +146,7 @@ You can do even better using _interpolation_:
 
     - Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
 
-##  Exercise:  Tracking Expression Structure
+### Exercise:  Tracking Expression Structure
 
 As we write more complicated programs, it is helpful to learn to read the runes by identifying which daughter expressions attach to which runes, e.g.:
 
@@ -216,7 +216,7 @@ We will revert to the irregular form more and more.  If you would like to see ex
 
 (_There's a lot going on in there._  Focus on the four-letter runic identifiers:  `%sgpm` for `~&` sigpam, for instance.)
 
-##  Exercise:  Calculate a sequence of numbers
+### Exercise:  Calculate a sequence of numbers
 
 Produce a gate (generator) which accepts a `@ud` value and calculates the series where the {% math %}i^\text{th}{% /math %} term in the series is given by the equation
 
@@ -236,13 +236,13 @@ that is, the first numbers are 0, 1, 4, 9, 16, 25, etc.
 
 For this exercise, you do not need to store these values in a list.  Calculate each one but only return the final value.
 
-##  Exercise:  Output each letter in a `tape`
+### Exercise:  Output each letter in a `tape`
 
 Produce a gate (generator) which accepts a `tape` value and returns a `(list @ud)` containing the ASCII value of each character.  Use a `|-` barhep trap.
 
 The previous code simply modified a value by addition.  You can generalize this to other arithmetic processes, like multiplication, but you can also grow a data structure like a list.
 
-For example, given the `tape` `"hello"`, the generator should return the list `~[104 101 108 108 111]`.
+For example, given the `tape` `"hello"`, the generator should return the list `[104 101 108 108 111 ~]`.  (A list is structurally a null-terminated tuple, or rightwards-branching cell ending in `~` or `0`.)  We can equivalently write `~[104 101 108 108 111]` which is a special syntax reducing to the same thing.
 
 Two tools that may help:
 
@@ -324,7 +324,7 @@ Give the name `adder` to the above, and use it thus:
 
 Notice here that we read the arm resolution from right-to-left.  This isn't the only way to address an arm, but it's the most common one.
 
-##  Exercise:  Produce a Gate Arm
+### Exercise:  Produce a Gate Arm
 
 - Compose a core which contains arms for multiplying a value by two and for dividing a value by two.
 
@@ -437,7 +437,7 @@ Like all arms, `$` buc is computed with its parent core as the subject.  When `$
 
 We will always call the values supplied to the gate the “sample” since we will later discover that this technical meaning (`[battery [sample context]]`) holds throughout more advanced cores.
 
-##  Exercise:  Another Way to Calculate a Factorial
+### Exercise:  Another Way to Calculate a Factorial
 
 Let's revisit our factorial code from above:
 
@@ -779,12 +779,12 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     =/  q  1
     =/  r  *(list @ud)
     |-  ^-  (list @ud)
-    ?:  =(i n)  r
+    ?:  =(index n)  r
     %=  $
-      i  +(i)
-      p  q
-      q  (add p q)
-      r  [q r]
+      index  +(index)
+      p      q
+      q      (add p q)
+      r      [q r]
     ==
     ```
 
@@ -927,7 +927,7 @@ The Ackermann function is not terribly useful in and of itself, but it has an in
 
 - Calculate some of the {% math %}m{% /math %}/{% math %}n{% /math %} pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).
 
-##  Exercise:  The Sudan Function
+### Exercise:  The Sudan Function
 
 The [Sudan function](https://en.wikipedia.org/wiki/Sudan_function) is related to the Ackermann function.
 
@@ -938,13 +938,5 @@ F_{n+1} (x, 0) & = x & \text{if } n \ge 0 \\\\
 F_{n+1} (x, y+1) & = F_n (F_{n+1} (x, y), F_{n+1} (x, y) + y + 1) & \text{if } n\ge 0
 \end{array}
 {% /math %}
-
-<!--
-\begin{array}{lll}
-F_0 (x, y) & = x+y \\
-F_{n+1} (x, 0) & = x & \text{if } n \ge 0 \\
-F_{n+1} (x, y+1) & = F_n (F_{n+1} (x, y), F_{n+1} (x, y) + y + 1) & \text{if } n\ge 0 \\
-\end{array}
--->
 
 - Implement the Sudan function as a gate.

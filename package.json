@@ -2,6 +2,9 @@
   "name": "developers.urbit.org",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=14.17.6"
+  },
   "scripts": {
     "dev": "npm run prebuild && next dev",
     "prebuild": "npm run cache-posts && npm run glossary && npm run guide && npm run overview && npm run reference",
@@ -16,15 +19,15 @@
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
+    "@socialgouv/matomo-next": "^1.4.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tlon/sigil-js": "^1.4.5",
-    "@urbit/foundation-design-system": "^0.5.3",
+    "@urbit/foundation-design-system": "0.7.5",
     "@urbit/markdoc": "^0.1.6",
     "axios": "^0.26.1",
     "buffer": "^6.0.3",
     "classnames": "^2.3.1",
     "deepmerge": "^4.2.2",
-    "downshift": "^6.1.5",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "leven-sort": "^3.0.0",

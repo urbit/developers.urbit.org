@@ -65,7 +65,7 @@ variable sequences, and cores/engines. Let’s talk about each.
 
 A fixed sequence is a rune with a fixed number of children. Most
 runes are fixed sequences. In wide mode we terminate a fixed
-sequence with a right-parenthesis (“rit”). In tall mode there is
+sequence with a right-parenthesis (“par”). In tall mode there is
 no terminator.
 
 With a fixed sequence, we typically use “backstep indentation.”
@@ -199,7 +199,7 @@ a nontrivial amount of work and ambiguity in reading.
 
 ### Comments and unparsed bytes
 
-Hoon comments are 8-column lines which contain whitespace, then
+Hoon comments are 80-column lines which contain whitespace, then
 `::`, then optional text.
 
 Blank lines are lines containing no characters, or only whitespace.
