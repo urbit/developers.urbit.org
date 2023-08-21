@@ -2,7 +2,7 @@
 title = "App School Live"
 date = "2023-05-01"
 weight = 90
-next_cohort = "August 2023"
+next_cohort = "Early 2024"
 image = "https://storage.googleapis.com/media.urbit.org/developers/images/app-school-live.svg"
 description = " App School teaches you all about Urbit-based backend design using Gall agents, as well as interfacing with a React-based front-end.  When you're done, you'll be able to produce and distribute your own Urbit apps."
 +++
@@ -18,7 +18,7 @@ will be a good fit for you.
 
 By completing App School, you will have the basic skillset to design and implement apps, pick up Urbit userspace bounties, and participate in Hackathons.
 
-The next cohort for App School Live will begin the week of August 21st, 2023.
+A cohort for App School Live began the week of August 21st, 2023.  The next cohort will take place in early 2024.
 
 - [Complete this form](https://airtable.com/shrdZcSQrIIb6mAmx) to sign up for the upcoming class.
 
