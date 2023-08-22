@@ -104,7 +104,7 @@ First we consider the elementary operations between two sets.
 ### Union (_A_ ∪ _B_)
 
 {% math block=true %}
-A \cup B \equiv \{ x : x \in A \;\textrm{or}\; x \in B \}
+A \cup B \equiv \{ x : x \in A \text{ or } x \in B \}
 {% /math %}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-union.png)
@@ -121,7 +121,7 @@ A \cup B \equiv \{ x : x \in A \;\textrm{or}\; x \in B \}
 ### Intersection (_A_ ∩ _B_)
 
 {% math block=true %}
-A \cap B \equiv \{ x : x \in A \;\textrm{and}\; x \in B \}
+A \cap B \equiv \{ x : x \in A \text{ and } x \in B \}
 {% /math %}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-intersection.png)
@@ -167,12 +167,12 @@ For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then _Aꟲ_ = {_
 ### Symmetric Difference (_A_ Δ _B_)
 
 {% math block=true %}
-A \bigtriangleup B \equiv \{x : x\,\text{belongs to exactly one of}\, A\, \textrm{and}\, B\}
+A \bigtriangleup B \equiv \{x : x \text{ belongs to exactly one of } A \text{ and } B\}
 {% /math %}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-symmetric-difference.png)
 
-The symmetric difference of two sets $A$ and $B$ consists of those elements in exactly one of the sets.  Use `++uni:in` with `++dif:in` to identify this set.
+The symmetric difference of two sets _A_ and _B_ consists of those elements in exactly one of the sets.  Use `++uni:in` with `++dif:in` to identify this set.
 
 For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B_ = {_a_, _b_, _d_, _e_}.
 
