@@ -135,7 +135,7 @@ A \cap B \equiv \{ x : x \in A \;\textrm{and}\; x \in B \}
 {%c}
 ```
 
-If two sets are disjoint, then their intersection is $\varnothing$.
+If two sets are disjoint, then their intersection is ∅.
 
 ```hoon
 =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -167,7 +167,7 @@ For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then _Aꟲ_ = {_
 ### Symmetric Difference (_A_ Δ _B_)
 
 {% math block=true %}
-A \bigtriangleup B \equiv \{x : x\,\textrm{belongs to exactly one of}\, A\, \textrm{and}\, B\}
+A \bigtriangleup B \equiv \{x : x\,\text{belongs to exactly one of}\, A\, \textrm{and}\, B\}
 {% /math %}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-symmetric-difference.png)
