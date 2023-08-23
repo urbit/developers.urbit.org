@@ -231,9 +231,8 @@ details.
 
 #### Produces
 
-The type returned is an `(each page @uvI)`. If the file has been
-tombstoned, it'll be the `@uvI` hash of the file. Otherwise, it will be
-the data as a `page` (a pair of `mark` and `noun`).
+The type returned is the raw `noun` from the `page`. If the file has
+been tombstoned or does not exist, the scry will fail.
 
 ---
 
