@@ -1,6 +1,6 @@
 +++
 title = "Software Distribution"
-weight = 900
+weight = 90
 sort_by = "weight"
 insert_anchor_links = "right"
 +++
