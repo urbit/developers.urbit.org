@@ -85,14 +85,14 @@ export default function Hackathon({ search, featuredGroups }) {
         
         {/* Features */}
         <h2>Prizes</h2>
-        <a className="text-wall-400 pb-12">This year's Hackathon has the most substantial prize pool in Urbit history, with even more TBA.</a>
+        <a className="text-wall-400 pb-12">This year's Hackathon has the most substantial prize pool in Urbit history.</a>
         <Section className="flex flex-col space-y-8">
           {/* Overall */}
           <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8">
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Best overall – 3 Stars + unreleased Native Planet devices</h3>
               <p>
-              On Demo Day the committee of judges will decide which product has the highest score overall. The criteria they will take into account are: innovation, UI design, user value, usage of Urbit, and completeness.
+              On Demo Day the committee of judges will decide which product has the highest score overall. The criteria they will take into account are: innovation, usefulness, usage of Urbit, UI design, and completeness.
               </p>
             </div>
           </div>
@@ -101,7 +101,7 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Best use of Zorp ZKVM – 2 Stars</h3>
               <p>
-              This prize will be awarded to the most unique, compelling, and fleshed out application built that makes use of our zkvm as a core component. For this category you will get early access to Zorps ZKVM and hands-on help from their developers.
+              This prize will be awarded to the most unique, compelling, and fleshed out application built that makes use of Zorp's ZKVM (zero knowledge virtual machine) as a core component. For this category, you will get early access to Zorps ZKVM and hands-on help from their developers.
               </p>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function Hackathon({ search, featuredGroups }) {
             <div className="flex flex-col space-y-4 max-w-prose">
               <h3>Best UI – 2 Stars + unreleased Native Planet devices</h3>
               <p>
-              The Best UI winner will be chosen based on visual appeal, user experience, clarity, responsiveness, and interactivity.
+              This prize will be awarded to the userspace application with the best user interface design, judged based on visual appeal, user experience, clarity, responsiveness, and interactivity.
               </p>
             </div>
           </div>
