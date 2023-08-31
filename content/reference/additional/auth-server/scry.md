@@ -11,7 +11,7 @@ Below are all the scry paths you can query. All paths are `%x` scries.
 Make a [`proof`](/reference/additional/auth-server/types#proof) for the given
 [`turf`](/reference/additional/auth-server/types#turf) (domain). This is put in a
 [`manifest`](/reference/additional/auth-server/types#manifest) and published at
-`<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth uses it to
+`<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to
 validate requests.
 
 #### Returns
@@ -32,7 +32,7 @@ Make a [`proof`](/reference/additional/auth-server/types#proof) for the given
 [`++wood`-encoded](/reference/additional/auth-server/overview#additional-note)
 [`turf`](/reference/additional/auth-server/types#turf) (domain). This is put in a
 [`manifest`](/reference/additional/auth-server/types#manifest) and published at
-`<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth uses it to
+`<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to
 validate requests.
 
 #### Returns

@@ -61,7 +61,7 @@ A list of [`request`](#request)s, their [`id`](#id)s, and their current
 ## `manifest`
 
 An array of [`proof`](#proof)s. This is published at
-`<domain>/.well-known/appspecific/org.urbit.auth.json`, and then Auth uses
+`<domain>/.well-known/appspecific/org.urbit.auth.json`, and then Auth Client uses
 it to validate requests.
 
 #### Example
@@ -83,7 +83,7 @@ it to validate requests.
 
 An attestation that a ship is an agent of a site. An array of such `proof`s are
 published at `<domain>/.well-known/appspecific/org.urbit.auth.json` in a
-[`manifest`](#manifest), and then Auth uses them to validate requests.
+[`manifest`](#manifest), and then Auth Client uses them to validate requests.
 
 #### Example
 

@@ -17,16 +17,16 @@ quickly go over how the system works.
    `~sampel-palnet`.
 2. `example.com` sends an authorization request to their ship `~master` running
    Auth Server.
-3. Auth Server on `~master` sends the request to the Auth app on
+3. Auth Server on `~master` sends the request to the Auth Client app on
    `~sampel-palnet`.
 4. Auth on `~sampel-palnet` gets the request and makes an HTTP request for
    `http://example.com/.well-known/appspecific/org.urbit.auth.json` and
    retrieves an attestation that `~master` is an agent of `example.com`.
-5. Auth verifies the signature in the attestation using the pubkey of `~master`
+5. Auth Client verifies the signature in the attestation using the pubkey of `~master`
    it got from Azimuth, then displays an authorization request for the user
    that looks like: ![auth example](https://media.urbit.org/docs/auth/auth-example.png)
-6. The user of `~sampel-palnet` clicks "Approve" in Auth.
-7. Auth on `~sampel-palnet` sends an update to Auth Server on `~master` saying
+6. The user of `~sampel-palnet` clicks "Approve" in Auth Client.
+7. Auth Client on `~sampel-palnet` sends an update to Auth Server on `~master` saying
    the request was approved.
 8. Auth Server notifies `example.com` that the request was authorized.
 9. `example.com` logs the user in.
@@ -82,7 +82,7 @@ follows:
   here to inform the user.
 - `code`: This field is *optional*, and should be `null` if you don't use it.
   The main purpose of this code is so the user can easily visually associate a
-  particular request in Auth with the particular login request on your site.
+  particular request in Auth Client with the particular login request on your site.
   In theory you use it like two-factor authentication and make them type it into
   your site, but you generally shouldn't need to as Urbit networking verifies
   provenance of packets.
@@ -179,7 +179,7 @@ specified is the oldest time you think you could reasonably care about.
 
 ### Attestations
 
-As described at the beginning, Auth checks
+As described at the beginning, Auth Client checks
 `<domain>/.well-known/appspecific/org.urbit.auth.json` to verify a request
 actually comes from the domain it claims. That `.json` file must contain a
 [`manifest`](/reference/additional/auth-server/types#manifest), which is just an
@@ -213,7 +213,7 @@ them on the `/.well-known/...` path. The `turf` in the path is your domain.
 
 The `manifest` is allowed to contain multiple proofs for the same ship,
 including different `live`s (key revisions), as well as for multiple different
-ships and domains. Auth will try find the best case with the following
+ships and domains. Auth Client will try find the best case with the following
 priority:
 
 1. Valid signature at current life.
@@ -228,12 +228,12 @@ icon with an alert that it's outdated and may not come from the URL it claims.
 Otherwise, it'll show a red unlock icon and a warning that it may not come from
 the URL it claims.
 
-If Auth successfully validates a domain for a particular ship, it'll
+If Auth Client successfully validates a domain for a particular ship, it'll
 remember it for 30 days and not bother to revalidate requests during that time.
 For any other outcome, it won't remember and will try validate it again the next
 time.
 
-When trying to retrieve the `manifest`, Auth will follow up to 5 redirects,
+When trying to retrieve the `manifest`, Auth Client will follow up to 5 redirects,
 and will retry up to 3 times if it doesn't get a `20x` status response. If it
 gets a `20x` response but the manifest is missing or malformed, it will give up
 immediately. If there are too many retries, too many redirects, or a `20x`
@@ -242,7 +242,7 @@ icon and a warning as described above.
 
 {% callout %}
 
-Auth cannot follow relative redirect URLs - redirects MUST be absolute URLs
+Auth Client cannot follow relative redirect URLs - redirects MUST be absolute URLs
 including protocol.
 
 {% /callout %}
