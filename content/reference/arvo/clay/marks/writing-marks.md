@@ -83,7 +83,7 @@ The decoding and encoding arms use parsing functions from the Hoon standard libr
 Let's try the library in the dojo. After we've added it to `/lib` and run `|commit`, we can build the file:
 
 ```
-> =csv -build-file %/lib/csv-utils/hoon
+> =csv-utils -build-file %/lib/csv-utils/hoon
 ```
 
 ...try decode a CSV-format `@t`:
