@@ -1,4 +1,7 @@
-+++ title = "Fast Hints and Jets" +++
++++
+title = "Fast Hints and Jets"
+weight = 50
++++
 
 The computational feasibility of practical Nock computation depends upon the run-time "jetting" certain recognized nock computations. Naively, some subset of subject-formula pairs should not be stepped through according to the Nock reductions, but should instead be replaced by more efficient computations, which must return the *same result* as evaluation according to the Nock spec, even if the Sun would die before the Nock evaluation completed.
 
