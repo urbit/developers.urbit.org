@@ -10,6 +10,8 @@ to their `example.com` accounts with their Urbit ships using the Auth app,
 assuming the developers of `example.com` have integrated their site with the
 Auth Server app.
 
+Both Auth and Auth Server can be installed from `~bitdeg`
+
 These docs primarily deal with the API of the Auth Server app, but first we'll
 quickly go over how the system works.
 
