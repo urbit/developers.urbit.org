@@ -285,7 +285,7 @@ If we again examine our agent core's payload by looking at the tail of
 
 - A Gall agent is a door with exactly ten specific arms and a sample of `bowl:gall`.
 - Each of the ten arms handle different kinds of events - Gall calls the
-  appropriate arm for the kind event it receives.
+  appropriate arm for the kind of event it receives.
 - The ten arms fit roughly into five categories:
   - State management.
   - Request handlers.
