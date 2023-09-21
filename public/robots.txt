@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://developers.urbit.org
+
+# Sitemaps
+Sitemap: https://developers.urbit.org/sitemap.xml
