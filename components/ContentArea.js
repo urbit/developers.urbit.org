@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { TableOfContents } from "@urbit/foundation-design-system";
 
+import { DocSearch } from '@docsearch/react';
+
 export default function ContentArea(props) {
   const [shortcut, setShortcut] = useState("");
 
@@ -50,15 +52,11 @@ export default function ContentArea(props) {
             {props.breadcrumbs}
           </div>
           <div className="hidden md:block">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                props.search.toggleSearch();
-              }}
-              className="bg-wall-100 text-wall-500 flex px-3 py-2 rounded-lg font-semibold text-lg"
-            >
-              Search<div className="ml-4 text-wall-400">{shortcut}</div>
-            </button>
+            <DocSearch
+              appId="3EVOAL3MOI"
+              apiKey="00ccef825c17a672ef1c1a9bea3a9903"
+              indexName="developers-urbit"
+            />
           </div>
         </div>
         <div className="flex justify-between">

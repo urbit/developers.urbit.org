@@ -27,7 +27,8 @@ export default function Meta(post, disableImage, large = false) {
         href="/images/favicon-16x16.png"
       />
       <link rel="manifest" href="/images/site.webmanifest" />
-      
+      <link rel="preconnect" href="https://3EVOAL3MOI-dsn.algolia.net" crossorigin />
+
       <meta
         name="twitter:card"
         content="summary_large_image"

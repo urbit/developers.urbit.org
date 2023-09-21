@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classnames from "classnames";
 import { IntraNav, capitalize, MenuTray } from "@urbit/foundation-design-system";
+
+import '@docsearch/css';
 
 function ActiveLink({ children, href, className, currentPath }) {
   const firstCrumb = currentPath.split("/")[1];

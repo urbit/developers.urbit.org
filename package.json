@@ -19,11 +19,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@docsearch/react": "^3.5.2",
     "@iarna/toml": "^2.2.5",
     "@socialgouv/matomo-next": "^1.4.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tlon/sigil-js": "^1.4.5",
-    "@urbit/foundation-design-system": "0.7.5",
+    "@urbit/foundation-design-system": "urbit/foundation-design-system#74572cd4a5cd7e29c99419672fdc8f709617f063",
     "@urbit/markdoc": "^0.1.6",
     "axios": "^0.26.1",
     "buffer": "^6.0.3",
