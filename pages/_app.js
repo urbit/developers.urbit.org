@@ -51,9 +51,9 @@ function MyApp({ Component, pageProps }) {
   };
 
   const handlers = {
-    closeSearch: (event) => closeSearch(event),
-    openSearch: (event) => openSearch(event),
-    toggleSearch: (event) => toggleSearch(event),
+    // closeSearch: (event) => closeSearch(event),
+    // openSearch: (event) => openSearch(event),
+    // toggleSearch: (event) => toggleSearch(event),
   };
 
   configure({

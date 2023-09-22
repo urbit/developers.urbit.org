@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
 
 export default function Document() {
@@ -28,6 +28,13 @@ export default function Document() {
               startup: {
                 typeset: false,
                 ready: () => {
+                  // setting data-theme so that @docsearch/react understands
+                  // whether it should be in dark mode or not
+                  if (window.matchMedia) {
+                    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                      document.querySelector("html").setAttribute("data-theme", "dark");
+                    }
+                  }
                   MathJax.startup.defaultReady();
                   window.__MathJax_State__.isReady = true;
                   resolve();
