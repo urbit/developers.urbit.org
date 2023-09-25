@@ -46,6 +46,10 @@ Jael manages keys and Azimuth state.
 
 Khan is our thread dispatcher.
 
+## [Lick](/reference/arvo/lick/lick)
+
+Lick is the IPC vane.
+
 ## [Concepts](/reference/arvo/concepts/)
 
 Explanations of design decisions that are pervasive throughout Arvo.
