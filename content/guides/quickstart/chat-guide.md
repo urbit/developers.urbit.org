@@ -1668,7 +1668,7 @@ to `localhost:8080` (or just `localhost` on a Mac). Login with the comet's web
 code, which you can get by running `+code` in the Dojo. Next, go to
 `localhost:8080/docket/upload` (or `localhost/docket/upload` on a Mac) and
 it'll bring up the Docket Globulator tool. Select the `hut` desk from the
-drop-down menu, then navigate to `hut-ui/build` and select the whole folder.
+drop-down menu, then navigate to `hut/ui/dist` and select the whole folder.
 Finally, hit `glob!` and it'll upload our React app.
 
 If we return to `localhost:8080` (or `localhost` on a Mac), we should see a

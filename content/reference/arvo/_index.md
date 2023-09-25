@@ -48,7 +48,7 @@ Khan is our thread dispatcher.
 
 ## [Lick](/reference/arvo/lick/lick)
 
-Lick is our interprocess communication (IPC) vane. Unix process can communicate to applications on Urbit through IPC.
+Lick is the IPC vane.
 
 ## [Concepts](/reference/arvo/concepts/)
 
