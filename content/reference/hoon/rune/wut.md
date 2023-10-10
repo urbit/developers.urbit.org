@@ -41,7 +41,7 @@ name = "wuthep"
 symbol = "?-"
 usage = "Conditionals"
 slug = "#--wuthep"
-desc = "<code>[%wthp p=wing q=(list (pair spec value))]</code>: switch against a union, with no default."
+desc = "<code>[%wthp p=wing q=(list (pair spec hoon))]</code>: switch against a union, with no default."
 
 [glossaryEntry.wutket]
 name = "wutket"
@@ -264,7 +264,7 @@ One fixed argument, then a variable number of pairs.
 #### AST
 
 ```hoon
-[%wthp p=wing q=(list (pair spec value))]
+[%wthp p=wing q=(list (pair spec hoon))]
 ```
 
 #### Expands to
