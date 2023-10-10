@@ -39,4 +39,4 @@ underlying [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) and
 similar interface style.
 
 While the jets are found in `pkg/urbit/jets/e`, the statically-linked package is
-found at `pkg/libas_siv/`.
+found at `pkg/urcrypt/`.
