@@ -59,7 +59,7 @@ _Everything_ in Hoon (and Nock, and Urbit) is a noun.  The Urbit OS itself is a 
 
 ### Atoms
 
-If an atom is a nonzero number, how do we represent anything else?  Hoon provides each atom an _aura_, a tag which lets you treat a number as text, time, date, Urbit address, IP address, and much more.
+If an atom is a non-negative number, how do we represent anything else?  Hoon provides each atom an _aura_, a tag which lets you treat a number as text, time, date, Urbit address, IP address, and much more.
 
 An aura always begins with `@` pat, which denotes an atom (as opposed to a cell, `^` ket, or the general noun, `*` tar).  The next letter or letters tells you what kind of representation you want the value to have.
 
