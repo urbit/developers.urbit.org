@@ -96,15 +96,6 @@ export default function Hackathon({ search, featuredGroups }) {
               </p>
             </div>
           </div>
-          {/* Zorp */}
-          <div className="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-            <div className="flex flex-col space-y-4 max-w-prose">
-              <h3>Best use of Zorp ZKVM – 2 Stars</h3>
-              <p>
-              This prize will be awarded to the most unique, compelling, and fleshed out application built that makes use of Zorp's ZKVM (zero knowledge virtual machine) as a core component. For this category, you will get early access to Zorps ZKVM and hands-on help from their developers.
-              </p>
-            </div>
-          </div>
           {/* Core */}
           <div className="flex flex-col-reverse md:flex-row items-center md:space-x-8">
             <div className="flex flex-col space-y-4 max-w-prose">
