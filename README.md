@@ -1,3 +1,9 @@
+# DEPRECATED
+
+The developers site has been deprecated. The new docs repo can be found at [urbit/docs.urbit.org](https://github.com/urbit/docs.urbit.org).
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

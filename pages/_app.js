@@ -12,7 +12,6 @@ import "../styles/developers.css";
 const MATOMO_URL = process?.env?.NEXT_PUBLIC_MATOMO_URL || "";
 const MATOMO_SITE_ID = process?.env?.NEXT_PUBLIC_MATOMO_SITE_ID || "";
 
-
 function MyApp({ Component, pageProps }) {
   const [showSearch, setSearch] = useState(false);
 
@@ -22,7 +21,6 @@ function MyApp({ Component, pageProps }) {
       siteId: MATOMO_SITE_ID,
     });
   });
-
 
   const closeSearch = (event) => {
     if (event?.preventDefault) {
@@ -59,12 +57,11 @@ function MyApp({ Component, pageProps }) {
   configure({
     // ignoreTags: [],
     ignoreTags: ["input", "select", "textarea"],
-    ignoreEventsCondition: function () { },
+    ignoreEventsCondition: function () {},
   });
 
   return (
     <>
-
       <GlobalHotKeys keyMap={keyMap} handlers={handlers} />
       <Search
         showSearch={showSearch}
@@ -74,6 +71,24 @@ function MyApp({ Component, pageProps }) {
         order={["dev", "org", "ops", "roadmap"]}
         ourSite="https://developers.urbit.org"
       />
+      <div className="flex items-center justify-center"
+           style={{ backgroundColor: "#5A5A6E" }}
+      >
+        <div
+          className="text-base p-2"
+          style={{ color: "#F0FFFF" }}
+        >
+          This site has been deprecated. Go to{" "}
+          <a
+            className="font-medium"
+            style={{ color: "#A0DCE6" }}
+            href="https://docs.urbit.org"
+          >
+            docs.urbit.org
+          </a>
+          .
+        </div>
+      </div>
       <Component
         {...pageProps}
         search={{
