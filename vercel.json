@@ -2,11 +2,6 @@
     "github": {
         "silent": true
     },
-    "functions": {
-        "pages/api/**/*.js": {
-            "runtime": "nodejs18.x"
-        }
-    },
     "redirects": [
         {
             "source": "/(.*)",
