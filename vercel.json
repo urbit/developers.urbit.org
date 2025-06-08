@@ -2,10 +2,11 @@
     "github": {
         "silent": true
     },
-    "redirects": [{
-        "source": "/guides/quickstart",
-        "destination": "/guides/quickstart/chat-guide",
-        "permanent": false
-    }
-]
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "destination": "https://docs.urbit.org/",
+            "permanent": true
+        }
+    ]
 }
