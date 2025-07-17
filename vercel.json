@@ -2,6 +2,17 @@
     "github": {
         "silent": true
     },
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "x-robots-tag",
+                    "value": "noindex"
+                }
+            ]
+        }
+    ],
     "redirects": [
         {
             "source": "/(.*)",
