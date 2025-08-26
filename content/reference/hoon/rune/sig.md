@@ -428,7 +428,9 @@ fixed argument.
 
 #### Expands to
 
-`s`.
+```hoon
+~<(%fast.[p !=(q) r] s)
+```
 
 #### Convention
 
